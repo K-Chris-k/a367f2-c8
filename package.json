@@ -1,0 +1,16 @@
+{
+  "name": "a367f2-c8-theme",
+  "version": "1.0.0",
+  "description": "The production theme project of a367f2-c8",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "shopify theme dev --host=0.0.0.0 -s a367f2-c8.myshopify.com -x package.json",
+    "update": "shopify theme pull -s a367f2-c8.myshopify.com -l -x package.json",
+    "push": "shopify theme push -s a367f2-c8.myshopify.com -l -x templates/**.json -x templates/**.liquid -x config/*_data.json -x package.json -x locales/**.json -n"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
+

@@ -1,0 +1,316 @@
+<style>
+  .section-brand-list{margin-top: {{ section.settings.padding_top }}px;margin-bottom: {{ section.settings.padding_bottom }}px;background:#F5F5F5}
+  .section-brand-list .product-collection{padding:100px 0px 100px}
+  .section-brand-list h2{text-align:center}
+   #shopify-section-{{ section.id }} .product-collection h2 {
+    font-size: 46px;
+    font-weight: 700;
+    text-align: center;
+    color: #000;
+  }
+  .brand-main-slider{margin-top:40px;margin-bottom:{% if section.settings.logo_position == false %}120px{% else %}0px{% endif %};}
+  .brand-main-slider .slick-list { transform: translate3d(0, 0, 0);}
+  .brand-main-slider .slick-track {display: flex;gap:16px}
+  .brand-main-slider .slide {min-height:390px;max-height:390px;background:#fff;  transition: all 0.3s ease;cursor: pointer;}
+  .brand-main-slider .slide .detail{line-height:26px;font-size:20px;color: #666;padding:16px 34px 0px 34px;
+     {% comment %} padding:16px 34px; {% endcomment %}
+    {% comment %} overflow-wrap: break-word;word-break:break-word; {% endcomment %}
+  display: -webkit-box;-webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: calc(1.2em * 8); 
+            line-height: 1.2;
+}
+  .slick-dotted .slick-dots {margin-top:30px;display: flex ;visibility:visible;gap:8px;align-items: center;justify-content: center;}
+  .slick-dotted .slick-dots .slick-active button{width:2rem; background: #3250C3;}
+  .slick-dotted .slick-dots button {
+    padding:0px;
+    width:2rem;
+    height:0.4rem;
+    border-radius:0.2rem;
+    background: #D9D9D9;
+    color: transparent;
+    transition: all .4s ease;
+  }
+  .slick-dotted .slick-dots button:before{display:none}
+  .logo-title{margin-top:100px}
+  .slick-dots li{display: inline-flex;    align-items: center;}
+  .logo-box{margin-top:40px}
+  .logo-position-center{padding-bottom:24px}
+
+  @media (max-width: 1280px) {
+    .brand-main-slider .slide .detail{line-height:26px;font-size:18px}
+  }
+  @media (max-width: 768px) {
+     .section-brand-list{margin-top:  {% if section.settings.custom_mobile_padding_top != blank %}{{section.settings.custom_mobile_padding_top | divided_by: 2 }}px{% else %}{{ section.settings.padding_top | divided_by: 2  }}px{% endif %};margin-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;}
+     .section-brand-list .product-collection{padding:5rem 0rem 5rem;}
+      #shopify-section-{{ section.id }} .section-brand-list h2{line-height:34px;font-size:28px}
+     .brand-main-slider{margin-top:0px;margin-bottom:2rem}
+     .brand-main-slider .slick-track {margin-top:2rem;gap:0px}
+     .brand-main-slider .slide{min-height:350px;max-height:350px;}
+     .brand-main-slider .slide .detail{margin-top:0px;padding:18px 19px;line-height:20px;font-size:14px;
+  display: block;
+                overflow: visible;
+                text-overflow: clip;
+                -webkit-line-clamp: initial;
+                max-height: none;
+                white-space: normal;
+    }
+     .slick-dotted .slick-dots{margin-top:0px;gap:0px}
+     .logo-box{margin:5rem 3rem 0rem 3rem}
+     .logo-position-center{padding-bottom:0px}
+     .logo-title{margin-top:7rem}
+  }
+</style>
+{% liquid
+    assign motion_delay = 50
+%}
+<div class="section section-brand-list">
+  <div class="product-collection product-slider-container">
+    {% if section.settings.title !=blank %}
+    <h2>
+       <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}"><span>{{ section.settings.title }}</span></motion-element>
+    </h2>
+    {% if section.settings.logo_position %}
+       <div class="logo-position-center">
+          <div class="page-width section--padding logo-box">
+            {% if section.settings.logo_pc_image != blank %}
+                    <picture>
+                      <source
+                        media="(max-width: 749px)"
+                        srcset="
+                          {{ section.settings.logo_mobile_image | img_url: '800x' }} 1x,
+                          {{ section.settings.logo_mobile_image | img_url: '1600x' }} 2x
+                        "
+                      >
+                      <source
+                        media="(min-width: 750px)"
+                        srcset="
+                          {{ section.settings.logo_pc_image | img_url: '1200x' }} 1x,
+                          {{ section.settings.logo_pc_image | img_url: '2400x' }} 2x
+                        "
+                      >
+                      <img
+                        src="{{ section.settings.logo_pc_image | img_url: '1200x' }}"
+                        alt="{{ section.settings.logo_title | escape }}"
+                        loading="lazy"
+                        width="{{ section.settings.logo_pc_image.width }}"
+                        height="{{ section.settings.logo_pc_image.height }}"
+                      >
+                    </picture>
+
+                  {% else %}
+                    {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {% endif %}
+           </div>
+       </div>
+    {% endif %}
+    <div class="brand-main-slider">
+      {% for block in section.blocks %}
+        <div class="slide">
+          <div class="imgs">
+            {% if block.settings.image != blank %}
+              <picture>
+                <source
+                  media="(max-width: 749px)"
+                  srcset="
+                    {{ block.settings.image | img_url: '800x' }} 1x,
+                    {{ block.settings.image | img_url: '1600x' }} 2x
+                  "
+                >
+                <source
+                  media="(min-width: 750px)"
+                  srcset="
+                    {{ block.settings.image | img_url: '1200x' }} 1x,
+                    {{ block.settings.image | img_url: '2400x' }} 2x
+                  "
+                >
+                <img
+                  src="{{ block.settings.image | img_url: '1200x' }}"
+                  alt="{{ block.settings.description | escape }}"
+                  loading="lazy"
+                  width="{{ block.settings.image.width }}"
+                  height="{{ block.settings.image.height }}"
+                >
+              </picture>
+
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          <div class="detail"   title='{{ block.settings.description }}'>{{ block.settings.description }}</div>
+        </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if section.settings.logo_position == false%}
+     <h2 class="logo-title">
+       <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}"> <span>{{ section.settings.logo_title }}</span></motion-element>
+    </h2>
+    <div class="page-width section--padding logo-box">
+       {% if section.settings.logo_pc_image != blank %}
+              <picture>
+                <source
+                  media="(max-width: 749px)"
+                  srcset="
+                    {{ section.settings.logo_mobile_image | img_url: '800x' }} 1x,
+                    {{ section.settings.logo_mobile_image | img_url: '1600x' }} 2x
+                  "
+                >
+                <source
+                  media="(min-width: 750px)"
+                  srcset="
+                    {{ section.settings.logo_pc_image | img_url: '1200x' }} 1x,
+                    {{ section.settings.logo_pc_image | img_url: '2400x' }} 2x
+                  "
+                >
+                <img
+                  src="{{ section.settings.logo_pc_image | img_url: '1200x' }}"
+                  alt="{{ section.settings.logo_title | escape }}"
+                  loading="lazy"
+                  width="{{ section.settings.logo_pc_image.width }}"
+                  height="{{ section.settings.logo_pc_image.height }}"
+                >
+              </picture>
+
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $('.brand-main-slider').slick({
+      slidesToShow: 3,
+      dots: true,
+      arrows: false,
+      autoplay: true,
+      speed: 300,  // 动画速度(毫秒)
+      touchThreshold: 10,  // 触摸阈值
+      waitForAnimate: true,  // 等待动画完成
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: { slidesToShow: 2 }
+        },
+        {
+          breakpoint: 767,
+          settings: { slidesToShow: 1 }
+        }
+      ]
+    });
+ 
+  });
+</script>
+{% schema %}
+{
+  "name": "brand-list",
+  "tag": "section",
+  "class": "section section-brand-list",
+  "max_blocks": 15,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Bekannt aus"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "custom_mobile_padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 80
+    },
+    {
+      "type": "text",
+      "id": "logo_title",
+      "label": "Logo标题",
+      "default": "Befürwortet von"
+    },
+    {
+      "type": "checkbox",
+      "id": "logo_position",
+      "label": "Logo是否插入列表中间",
+      "default": false
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_pc_image",
+      "label": "PC端Logo图片"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_mobile_image",
+      "label": "手机端Logo图片"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "brand item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "描述"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "品牌列表",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

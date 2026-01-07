@@ -1,0 +1,260 @@
+<style>
+  .countdown-wrapper {
+    margin: 20px 0;
+    text-align: left;
+  }
+
+  .countdown-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+    color: inherit;
+  }
+
+  .countdown-timer {
+    display: inline-flex;
+    gap: 8px;
+    {% comment %} padding: 16px 20px; {% endcomment %}
+    border-radius: 8px;
+  }
+  .countdown-timer .dot{ display: flex;align-items: center;min-height: 47px;position: relative;top: 50%;margin-top: -23px;}
+  .countdown-style-compact {
+    padding: 8px 12px;
+    gap: 6px;
+  }
+
+  .countdown-style-large {
+    padding: 20px 24px;
+    gap: 12px;
+    font-size: 1.1em;
+  }
+
+  .countdown-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    {% comment %} min-width: 60px; {% endcomment %}
+  }
+
+  .countdown-style-compact .countdown-item {
+    min-width: 40px;
+  }
+
+  .countdown-style-large .countdown-item {
+    min-width: 80px;
+  }
+
+
+ 
+
+  .countdown-number {
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1;
+    background: transparent;
+    padding: 12px 10px;
+    border-radius: 4px;
+    border: 1px solid #DC222C;
+    min-width:47px;
+    max-width:47px;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  .countdown-style-compact .countdown-number {
+    font-size: 1.4em;
+    padding: 4px 6px;
+  }
+
+  .countdown-style-large .countdown-number {
+    font-size: 2.2em;
+    padding: 12px;
+  }
+
+  .countdown-label {
+    font-size: 0.6em;
+    margin-top: 3px;
+    letter-spacing: 0.5px;
+  }
+
+  .countdown-style-compact .countdown-label {
+    font-size: 0.7em;
+  }
+
+  .countdown-style-large .countdown-label {
+    font-size: 0.9em;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    .countdown-wrapper{margin:16px 0px;text-align:center}
+    .countdown-timer {
+      gap: 6px;
+      padding: 12px 16px;
+    }
+
+    .countdown-item {
+      min-width: 50px;
+    }
+
+    .countdown-number {
+      font-size: 1.8rem;
+      padding: 7px;
+      min-width: 40px;
+      max-width: 40px
+    }
+
+    .countdown-label {
+      margin-top:2px;
+      font-size:1rem
+    }
+
+      .countdown-title {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin-bottom: 3px;
+    color: inherit;
+  }
+  }
+</style>
+<div class="countdown-wrapper" data-countdown="{{ block.settings.end_date | escape }}">
+  {%- if block.settings.countdown_title != blank -%}
+    <div class="countdown-title">{{ block.settings.countdown_title }}</div>
+  {%- endif -%}
+
+  <div
+    class="countdown-timer countdown-style-{{ block.settings.countdown_style }}"
+    data-show-days="{{ block.settings.show_days }}"
+    data-show-hours="{{ block.settings.show_hours }}"
+    data-show-minutes="{{ block.settings.show_minutes }}"
+    data-show-seconds="{{ block.settings.show_seconds }}"
+    style="color: {{ block.settings.countdown_text_color }};"
+  >
+    {%- if block.settings.show_days -%}
+      <div class="countdown-item">
+        <span class="countdown-number days">00</span>
+        <span class="countdown-label">{{ 'countdown.days' | t }}</span>
+      </div>
+      <div class="dot">:</div>
+    {%- endif -%}
+
+    {%- if block.settings.show_hours -%}
+      <div class="countdown-item">
+        <span class="countdown-number hours">00</span>
+        <span class="countdown-label">{{ 'countdown.hours' | t }}</span>
+      </div>
+      <div class="dot">:</div>
+    {%- endif -%}
+
+    {%- if block.settings.show_minutes -%}
+      <div class="countdown-item">
+        <span class="countdown-number minutes">00</span>
+        <span class="countdown-label">{{ 'countdown.minutes' | t }}</span>
+      </div>
+      <div class="dot">:</div>
+    {%- endif -%}
+
+    {%- if block.settings.show_seconds -%}
+      <div class="countdown-item">
+        <span class="countdown-number seconds">00</span>
+        <span class="countdown-label">{{ 'countdown.seconds' | t }}</span>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script>
+  // 倒计时功能
+  class CountdownTimer {
+    constructor(container) {
+      this.container = container;
+      this.countdownElement = container.querySelector('.countdown-timer');
+      this.endDate = new Date(container.dataset.countdown).getTime();
+      this.showDays = this.countdownElement.dataset.showDays === 'true';
+      this.showHours = this.countdownElement.dataset.showHours === 'true';
+      this.showMinutes = this.countdownElement.dataset.showMinutes === 'true';
+      this.showSeconds = this.countdownElement.dataset.showSeconds === 'true';
+
+      this.init();
+    }
+
+    init() {
+      this.updateCountdown();
+      this.interval = setInterval(() => this.updateCountdown(), 1000);
+    }
+
+    updateCountdown() {
+      const now = new Date().getTime();
+      const distance = this.endDate - now;
+
+      if (distance < 0) {
+        this.handleCountdownEnd();
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      if (this.showDays) {
+        const daysElement = this.countdownElement.querySelector('.days');
+        if (daysElement) daysElement.textContent = this.formatTime(days);
+      }
+
+      if (this.showHours) {
+        const hoursElement = this.countdownElement.querySelector('.hours');
+        if (hoursElement) hoursElement.textContent = this.formatTime(hours);
+      }
+
+      if (this.showMinutes) {
+        const minutesElement = this.countdownElement.querySelector('.minutes');
+        if (minutesElement) minutesElement.textContent = this.formatTime(minutes);
+      }
+
+      if (this.showSeconds) {
+        const secondsElement = this.countdownElement.querySelector('.seconds');
+        if (secondsElement) secondsElement.textContent = this.formatTime(seconds);
+      }
+    }
+
+    formatTime(time) {
+      return time < 10 ? `0${time}` : time.toString();
+    }
+
+    handleCountdownEnd() {
+      clearInterval(this.interval);
+      this.countdownElement.innerHTML = '<div class="countdown-ended">时间已到！</div>';
+      this.countdownElement.style.opacity = '0.7';
+
+      // 触发自定义事件，方便其他功能监听
+      this.container.dispatchEvent(new CustomEvent('countdownEnded'));
+    }
+
+    destroy() {
+      if (this.interval) {
+        clearInterval(this.interval);
+      }
+    }
+  }
+
+  // 初始化所有倒计时
+  document.addEventListener('DOMContentLoaded', function () {
+    const countdownContainers = document.querySelectorAll('.countdown-wrapper');
+
+    countdownContainers.forEach((container) => {
+      try {
+        new CountdownTimer(container);
+      } catch (error) {
+        console.error('倒计时初始化失败:', error);
+      }
+    });
+  });
+
+  // 如果使用动态加载内容，可以导出这个类供其他地方使用
+  if (typeof module !== 'undefined' && module.exports) {
+    module.exports = CountdownTimer;
+  } else {
+    window.CountdownTimer = CountdownTimer;
+  }
+</script>

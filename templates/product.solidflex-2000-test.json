@@ -1,0 +1,1663 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "klaviyo_reviews_average_rating_eJiBiB": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/average-rating/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "sleek_social_sharing_share_button_meejVn": {
+          "type": "shopify://apps/sleek-social-sharing/blocks/share_button/5db01bc3-c590-40f6-be34-5072c106e3f4",
+          "settings": {}
+        },
+        "taxs_nEaGBP": {
+          "type": "taxs",
+          "settings": {
+            "title": "0% MwSt. auf PV-Sets in Deutschland",
+            "content": "Hiermit bestätigen Sie, dass Sie die Voraussetzungen für eine umsatzsteuerfreie Lieferung gemäß § 12 Abs. 3 von Deutschland erfüllen.",
+            "taxs_title": "Erfahren Sie mehr.",
+            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie hier um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
+            "heading_1": "Hinweis: Bestellungen können in mehreren Paketen versendet werden.",
+            "heading_2": ""
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "awards_rpNbYK": {
+          "type": "awards",
+          "settings": {
+            "title": "Produktauszeichnung",
+            "image_pc": "shopify://shop_images/awards.jpg",
+            "image_mobile": "shopify://shop_images/awards.jpg"
+          }
+        },
+        "reviews_list_QJMCGK": {
+          "type": "reviews_list",
+          "settings": {
+            "title": "Trustpilot",
+            "more": "Mehr anzeigen",
+            "more_url": "https://www.trustpilot.com/review/de.indevolt.com"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 40,
+            "size_title": "Size",
+            "size_chart_from_page": ""
+          }
+        },
+        "globo_product_options_variant_app_block_biRwgN": {
+          "type": "shopify://apps/globo-product-options-variant/blocks/app-block/fdc9fad5-1a0f-4bd4-9c8a-1af6a6eef6b8",
+          "disabled": true,
+          "settings": {}
+        },
+        "koala_upsells_gifts_product_page_banner_JmkCYf": {
+          "type": "shopify://apps/koala-upsells-gifts/blocks/product-page-banner/baf92dc5-8ffa-40c0-967e-57b74cddc9e3",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "selleasy_lb_upsell_widget_pal_PA4D48": {
+          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-pal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+          "settings": {}
+        },
+        "logistics_pN3qrf": {
+          "type": "logistics",
+          "settings": {
+            "enable_sticky_info": true
+          }
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "name": "支付信息",
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "certificate",
+            "image_1": "shopify://shop_images/brand-icon1.svg",
+            "heading_1": "Bequem bezahlen",
+            "content_image_1": "shopify://shop_images/card.png",
+            "icon_2": "truck",
+            "image_2": "shopify://shop_images/brand-icon2.svg",
+            "content_image_2": "shopify://shop_images/track.png",
+            "heading_2": "Zuverlässige Lieferung",
+            "icon_3": "star-four",
+            "heading_3": ""
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "tag",
+            "product_list_limit": 4,
+            "products_per_page": 1,
+            "image_ratio": "adapt",
+            "enable_quick_add": true
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "klaviyo_reviews_average_rating_eJiBiB",
+        "price",
+        "sleek_social_sharing_share_button_meejVn",
+        "taxs_nEaGBP",
+        "description",
+        "awards_rpNbYK",
+        "reviews_list_QJMCGK",
+        "variant_picker",
+        "globo_product_options_variant_app_block_biRwgN",
+        "koala_upsells_gifts_product_page_banner_JmkCYf",
+        "buy_buttons",
+        "selleasy_lb_upsell_widget_pal_PA4D48",
+        "logistics_pN3qrf",
+        "icon_with_text",
+        "complementary"
+      ],
+      "custom_css": [
+        ".loox-rating {margin-top: -1rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": true,
+        "enable_product_sticky_bar": true,
+        "media_size": "medium",
+        "gallery_layout": "carousel",
+        "mobile_thumbnails": "show",
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "service_info_eEcMjc": {
+      "type": "service-info",
+      "name": "单张图片",
+      "settings": {
+        "title": "",
+        "container": "fixed",
+        "ids": "uberblick",
+        "image_pc": "shopify://shop_images/SF2000-KSP.png",
+        "image_mobile": "shopify://shop_images/SF2000-KSP-mob_8e7f5778-01e4-47cb-aaab-b9d40c888bef.png",
+        "margin_top": 60,
+        "margin_bottom": 0
+      }
+    },
+    "youtube_popup_eHUQqP": {
+      "type": "youtube-popup",
+      "name": "Video Popup Player",
+      "settings": {
+        "alignment": "center",
+        "video_type": "youtube",
+        "youtube_url": "https://www.youtube.com/watch?v=MDleTF2lBbQ",
+        "custom_thumbnail": "shopify://shop_images/video-img1.gif",
+        "shopify_video": "",
+        "autoplay": true,
+        "alt_text": "Video thumbnail",
+        "video_width": 300,
+        "video_height": 64,
+        "padding_top": 40,
+        "padding_bottom": 120
+      }
+    },
+    "video_p6VPeC": {
+      "type": "video",
+      "name": "t:sections.video.name",
+      "settings": {
+        "container": "full",
+        "video": "shopify://files/videos/sf2000-video1.mp4",
+        "video_mobile": "shopify://files/videos/SF2000-3-1-MOB.mp4",
+        "ids": "eigenschaften",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_ratio": "16/9",
+        "description": "",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "enable_parallax": false,
+        "enable_radius": false,
+        "image_container": "fixed",
+        "parallax_direction": "vertical",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_with_text_animate_7Re4hR": {
+      "type": "image-with-text-animate",
+      "blocks": {
+        "heading_x6WMwE": {
+          "type": "heading",
+          "settings": {
+            "heading": "Der weltweit erste Balkonkraftwerk-Speicher mit halbfesten LiFePO₄-Akkus",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_VDjKYj": {
+          "type": "text",
+          "settings": {
+            "text": "<p><a href=\"https://de.indevolt.com/pages/halbfeste-akkus\" title=\"https://de.indevolt.com/pages/halbfeste-akkus\">Halbfeste Lithium-Eisenphosphat-Akkus </a>gelten in der Branche als die zentrale Kerntechnologie für die nächste Generation von Lithium-Akkus. Durch eine innovative Kombination der Vorteile von Festkörper- und Flüssigheltrolyten bieten sie eine deutlich verbesserte thermische Stabilität und Schlagfestigkeit und erhöhen so die Sicherheit auch unter extremen Bedingungen erheblich.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "big_image_pd7yYi": {
+          "type": "big_image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/sichere.jpg",
+            "mobile_image": "shopify://shop_images/speicher-mobile.jpg",
+            "image_text": "Sicherer. Langlebiger. Dichter.",
+            "button_label": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/pages/halbfeste-akkus",
+            "button_style": "btn--primary",
+            "button_target": "_self"
+          }
+        },
+        "subheading_wH7Bi4": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Rundum geschützt – von der Zelle bis zum System",
+            "heading_size": "hd2",
+            "padding_top": 120
+          }
+        },
+        "image_list_j7NHBd": {
+          "type": "image_list",
+          "settings": {
+            "image_1": "shopify://shop_images/sichere-img1.jpg",
+            "mobile_image_1": "shopify://shop_images/sichere-img1.jpg",
+            "title_1": "Materialschutz",
+            "desc_1": "Halbfester Akku, der Fest- und Flüssig-Elektrolyt verschmelzen lässt und die thermische Stabilität auf Materialebene optimiert.",
+            "icon_1": "shopify://shop_images/sichere-icon1.png",
+            "mobile_icon_1": "shopify://shop_images/sichere-mobile-icon1.png",
+            "image_2": "shopify://shop_images/sichere-img2.jpg",
+            "mobile_image_2": "shopify://shop_images/sichere-img2.jpg",
+            "title_2": "Aktiver Schutz",
+            "desc_2": "In jeder Speichereinheit befinden sich zwei Zellen, das BMS überwacht in Echtzeit Temperatur, Spannung und weitere Schlüsselparameter, und durch kontinuierliche Datenanalyse wird der Betrieb des Systems stets auf höchster Sicherheit und Stabilität gehalten.",
+            "icon_2": "shopify://shop_images/sichere-icon2.png",
+            "mobile_icon_2": "shopify://shop_images/sichere-mobile-icon2.png",
+            "image_3": "shopify://shop_images/sichere-img3.jpg",
+            "mobile_image_3": "shopify://shop_images/sichere-img3.jpg",
+            "title_3": "Strukturschutz",
+            "desc_3": "Die Energiespeicher-Modulgehäuse bestehen aus hochwertiger Aluminiumlegierung, bietet dank Festigkeit und Verformungsbeständigkeit eine stabile Schutzumgebung und hervorragenden Brandschutz für die Kernkomponenten.",
+            "icon_3": "shopify://shop_images/sichere-icon3.png",
+            "mobile_icon_3": "shopify://shop_images/sichere-mobile-icon3.png",
+            "image_4": "shopify://shop_images/sichere-img4.jpg",
+            "mobile_image_4": "shopify://shop_images/sichere-img4.jpg",
+            "title_4": "Wasserresistenz",
+            "desc_4": "Exzellenter Staub- und Wasserschutz schützt die Kernbauteile zuverlässig vor Outdoor-Staub und Regen und sorgt so für langfristige Zuverlässigkeit in anspruchsvollen Umgebungen.",
+            "icon_4": "shopify://shop_images/sichere-icon4.png",
+            "mobile_icon_4": "shopify://shop_images/sichere-mobile-icon4.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_x6WMwE",
+        "text_VDjKYj",
+        "big_image_pd7yYi",
+        "subheading_wH7Bi4",
+        "image_list_j7NHBd"
+      ],
+      "name": "image-with-text-animate",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "ids": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "image_top": 60,
+        "video_radius": 0,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "left"
+      }
+    },
+    "rich_text_x6YUUc": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_tEyr3d": {
+          "type": "heading",
+          "settings": {
+            "heading": "CycBoost-Technologie",
+            "heading_mobile": "",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_hapjAt": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Durch unsere innovative 3-in-1 CycBoost Technologie, bestehend aus Großzellen, dedizierter Ausgleichsschaltung und <a href=\"https://blog.indevolt.com/indevolt-batterie-optimierer-maximale-nutzbare-kapazitat/\" target=\"_blank\" title=\"https://blog.indevolt.com/indevolt-batterie-optimierer-maximale-nutzbare-kapazitat/\">Batterieoptimierer</a>, beheben wir das Problem des Ungleichgewichts in Akkus. Dadurch maximieren wir die nutzbare Speicherkapazität und verlängern die Lebensdauer der Akkus, was deine Rendite erheblich steigert.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "video_popup_tFgzBG": {
+          "type": "video_popup",
+          "settings": {
+            "video_alignment": "center",
+            "video_type": "youtube",
+            "youtube_url": "https://www.youtube.com/watch?v=10S_L4gJkbo",
+            "shopify_video": "",
+            "custom_thumbnail": "shopify://shop_images/f94902e8c44af8c52a0841943f6be11b.jpg",
+            "video_width": 200,
+            "video_height": 64,
+            "alt_text": "产品展示视频"
+          }
+        }
+      },
+      "block_order": [
+        "heading_tEyr3d",
+        "text_hapjAt",
+        "video_popup_tFgzBG"
+      ],
+      "custom_css": [
+        "a {text-decoration: none; color: #3250c3;}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top_inner": 60,
+        "padding_bottom_inner": 0,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "left"
+      }
+    },
+    "slider_center_yFRkwq": {
+      "type": "slider-center",
+      "blocks": {
+        "card_FhNm8H": {
+          "type": "card",
+          "settings": {
+            "title": "Großzellen-Technologie",
+            "video": "https://cdn.shopify.com/videos/c/vp/bfbb909bc0fc4effbb3d74ee0299f862/bfbb909bc0fc4effbb3d74ee0299f862.HD-720p-4.5Mbps-54950683.mp4",
+            "description": "Weniger Akkuzellen bedeuten eine geringere Wahrscheinlichkeit für den „Flaschenhals-Effekt“. So gewährleistet unser System eine höhere Stabilität."
+          }
+        },
+        "card_EUaLze": {
+          "type": "card",
+          "settings": {
+            "title": "Batterieoptimierer-Technologie",
+            "video": "https://cdn.shopify.com/videos/c/vp/0c7310be08da4a96b9f8f8a7bae47dd6/0c7310be08da4a96b9f8f8a7bae47dd6.HD-720p-3.0Mbps-54951208.mp4",
+            "description": "Jeder Akkupack ist mit einem innovativen Batterieoptimierer ausgestattet, der unabhängiges Laden und Entladen ermöglicht. So wird der „Flaschenhals-Effekt“ zwischen den Akkupacks vermieden, was zu mehr verfügbarer Energie und einer verlängerten Lebensdauer der Akkus führt."
+          }
+        },
+        "card_4NKP4D": {
+          "type": "card",
+          "settings": {
+            "title": "Spezielle Ausgleichsschaltung",
+            "video": "https://cdn.shopify.com/videos/c/vp/24e347ac4f754e2d8ac5526a08587a5c/24e347ac4f754e2d8ac5526a08587a5c.HD-720p-4.5Mbps-54951225.mp4",
+            "description": "In Kombination mit speziellen Ausgleichsschaltungen ermöglicht sie die Echtzeitüberwachung und dynamische Anpassung der Spannungen der beiden Akkuzellen. Dadurch wird die Sicherheit erhöht und die Verschlechterung von Inkonsistenzen verlangsamt."
+          }
+        }
+      },
+      "block_order": [
+        "card_FhNm8H",
+        "card_EUaLze",
+        "card_4NKP4D"
+      ],
+      "custom_css": [
+        "@media (max-width: 760px) {.text-center, .tabs__tab-name {text-align: left !important; padding-left: 0px; } .tabs__nav-wrap {justify-content: left; } .detail {text-align: left !important; padding-left: 20px !important; } span {text-align: left !important; padding-left: 20px !important; }}"
+      ],
+      "name": "全屏轮播",
+      "settings": {
+        "title": "Geschikt voor Diverse Scenario's",
+        "tip_title": "Flaschenhals-Effekt",
+        "tip_popup_title": "Was ist der Flaschenhals-Effekt?",
+        "tip_popup_content": "<p>Bei herkömmlichen Akkupacks beeinflusst die schwächste Zelle das gesamte System. Wenn sie voll ist, stoppen alle Zellen den Ladevorgang. Wenn sie leer ist, stoppen alle Zellen den Entladevorgang.<br/><br/></p>",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "sf2000_scence_tabs_7UhwRM": {
+      "type": "sf2000-scence-tabs",
+      "blocks": {
+        "tab_JagNrW": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "",
+            "navigation_title": "Wohnsolarsystem",
+            "image": "shopify://shop_images/2-1_1adcd21d-f304-470e-9566-4f43a08a26a1.png",
+            "mobile_image": "shopify://shop_images/11_e7342763-1e26-45e4-88b3-0309b990e51e.png",
+            "heading": "Collage tab heading",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Es ist keine Umrüstung deiner bestehenden PV-Anlagen erforderlich. Der smarte Stromzähler erkennt automatisch den ins Netz eingespeisten Strom und speichert ihn, um ihn nachts freizugeben und somit dein Zuhause mit Energie zu versorgen.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_DgkTDY": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "",
+            "navigation_title": "Mikrowechselrichter-Solarsystem",
+            "image": "shopify://shop_images/sf2000-Plug-2-2_5a2b0975-a7c7-4816-b783-1ffb846b2ede.png",
+            "mobile_image": "shopify://shop_images/sf2000-Plug-2-2-mob_54f34410-1e1d-4f3f-84a5-2d30ad326ce0.png",
+            "heading": "Collage tab heading",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Das SolidFlex 2000 ist mit 99% der Mikrowechselrichter kompatibel und ermöglicht eine maximale Leistung von bis zu 2400W. Es arbeitet effizient und nutzt deine Energie optimal aus.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "tab_JagNrW",
+        "tab_DgkTDY"
+      ],
+      "custom_css": [
+        "@media (max-width: 760px) {.text-center, .tabs__tab-name {text-align: left !important; padding-left: 0px; } .tabs__nav-wrap {justify-content: left; } .h2-title {text-align: left !important; padding-left: 0px; }}"
+      ],
+      "name": "sf2000-scence-tabs",
+      "settings": {
+        "bg_color": "#ffffff",
+        "tab_title_color": "#000000",
+        "tab_content_color": "#666",
+        "title": "Plug & Play, AC-gekoppelte",
+        "heading_size": "h4",
+        "desktop_navigation_alignment": "center",
+        "desktop_image_position": "left",
+        "desktop_image_width": 100,
+        "image_aspect_ratio": "adapt",
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_ETK98q": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_39L6N8": {
+          "type": "heading",
+          "settings": {
+            "heading": "Dynamische Stromtarife",
+            "heading_mobile": "",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_8gifBP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Die Indevolt-App ermöglicht den Zugang zu Energieanbietern wie Nord Pool, Octopus, Tibber, aWATTar und anderen. Alle 60 Minuten analysiert sie die Tarifdaten, um bei günstigen Preisen zu laden und bei hohen Preisen einzuspeisen.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "button_YUfhEL": {
+          "type": "button",
+          "settings": {
+            "button_label": "Über dynamische Preise informieren >",
+            "button_link": "https://blog.indevolt.com/dynamische-strompreise-energiewende-smart-meter/",
+            "button_style": "btn--underline",
+            "button_target": "_self"
+          }
+        }
+      },
+      "block_order": [
+        "heading_39L6N8",
+        "text_8gifBP",
+        "button_YUfhEL"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top_inner": 60,
+        "padding_bottom_inner": 0,
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "left"
+      }
+    },
+    "video_AzeRLN": {
+      "type": "video",
+      "name": "t:sections.video.name",
+      "settings": {
+        "container": "fixed",
+        "video": "shopify://files/videos/sf2000-video5.mp4",
+        "ids": "",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_ratio": "adapt",
+        "description": "",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "enable_parallax": false,
+        "enable_radius": false,
+        "image_container": "fixed",
+        "image": "shopify://shop_images/Group_275.png",
+        "mobile_image": "shopify://shop_images/Group_287.png",
+        "parallax_direction": "vertical",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_image_list_xWPfNc": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_iVL7G8": {
+          "type": "heading",
+          "settings": {
+            "heading": "Optimiere deine Energieeinsparungen mit Smart AI",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_VGcCbp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Indevolt Smart AI entwickelt maßgeschneiderte Energielösungen durch fortschrittliche Big-Data-Analyse. Indem wir historische Stromverbräuche und Wetterdaten nutzen, prognostizieren wir deinen stündlichen Verbrauch für den Tag. Unsere Technologie schätzt außerdem die Solarstromerzeugung auf Grundlage von Wetterprognosen und der Leistung deines Photovoltaik-Systems. Mit Echtzeit-Updates zu dynamischen Strompreisen und dem Akkustatus kannst du die Kosten pro Kilowattstunde überwachen. So bestimmen wir automatisch die optimalen Lade- und Entlade-Strategien, um deine Energieeinsparungen zu maximieren und die Abrechnung zu optimieren.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "image_wFhm9g": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/sf2000AI.png",
+            "mobile_image": "shopify://shop_images/mobimage.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_iVL7G8",
+        "text_VGcCbp",
+        "image_wFhm9g"
+      ],
+      "name": "富文本与图片",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "image_top": 60,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "left"
+      }
+    },
+    "rich_text_image_list_fg6cwJ": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_ecA3gP": {
+          "type": "heading",
+          "settings": {
+            "heading": "Entdecke, wie viel das Indevolt SolidFlex 2000 an Kosten und CO₂-Emissionen einsparen kann.",
+            "heading_size": "hd3",
+            "heading_highlight_style": "none"
+          }
+        },
+        "image_V444PP": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/solidflex2000-img6.jpg",
+            "mobile_image": "shopify://shop_images/solidflex2000-mobile-img6.jpg"
+          }
+        },
+        "text_pp6Mtp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>*Die Berechnung basiert auf der folgenden Produktkonfiguration: SolidFlex 2000 (1792 Wh) + 4 x 500W-Solarmodule (2000W) + 5 Erweiterungsakkus (8960 Wh). </p>",
+            "text_size": "text-inherit"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ecA3gP",
+        "image_V444PP",
+        "text_pp6Mtp"
+      ],
+      "name": "富文本与图片",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "",
+        "padding_top": 60,
+        "padding_bottom": 120,
+        "image_top": 60,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "left"
+      }
+    },
+    "image_with_text_list_9kpz7i": {
+      "type": "image-with-text-list",
+      "blocks": {
+        "card_H8V9yF": {
+          "type": "card",
+          "settings": {
+            "desktop_content_position": "center",
+            "desktop_content_alignment": "left",
+            "enable_reserve_pc": false,
+            "enable_parallax": false,
+            "parallax_direction": "vertical",
+            "enable_reserve_mobile": true,
+            "mobile_content_alignment": "left",
+            "image": "shopify://shop_images/Frame_253.png",
+            "heading": "<strong>Vielseitige Verbindungen</strong>",
+            "heading_size": "hd2",
+            "text": "<p>Das SolidFlex 2000 bietet verschiedene Anschlussmöglichkeiten und unterstützt die lokale Steuerung ganz ohne Cloud-Server.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "card_e6me38": {
+          "type": "card",
+          "settings": {
+            "desktop_content_position": "center",
+            "desktop_content_alignment": "left",
+            "enable_reserve_pc": true,
+            "enable_parallax": false,
+            "parallax_direction": "vertical",
+            "enable_reserve_mobile": false,
+            "mobile_content_alignment": "left",
+            "image": "shopify://shop_images/2_54ecf6b0-805c-4ceb-a7be-60b164700bc3.png",
+            "heading": "<strong>Nahtlose Integration ins Smart Home</strong>",
+            "heading_size": "hd1",
+            "text": "<p>Das SolidFlex 2000 verfügt über eine offene lokale API und unterstützt gängige offene Protokolle wie HTTP. So lässt es sich mühelos in Drittanbieter‑Smart‑Home‑Systeme wie Home Assistant integrieren.</p>",
+            "text_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "card_H8V9yF",
+        "card_e6me38"
+      ],
+      "name": "image-with-text-list",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#ffffff",
+        "layout": "image_first",
+        "image_height": "adapt",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_image_list_PJKrKJ": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_xdFx6m": {
+          "type": "heading",
+          "settings": {
+            "heading": "Max.2400W Notstromversorgung",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_XEBDYw": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Mit einer Off-Grid AC-Steckdose schaltet die SolidFlex 2000 in nur 10 ms automatisch, damit deine wichtigsten Geräte auch bei Stromausfall sanft weiterlaufen. Im Off-Grid-Betrieb oder bei Ausfall bietet sie eine maximale Leistung von 1000W. Mit dem SFA1800-Erweiterungsakku steigt die Leistung auf 2000W; mit zwei Akkus sind sogar bis zu 2400W möglich.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "image_i9e8xj": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/11_e3ae838b-c68d-4a09-8b2b-72748d975db5.png",
+            "mobile_image": "shopify://shop_images/SF2000_64023559-c878-46e6-a035-4c12df1177ec.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_xdFx6m",
+        "text_XEBDYw",
+        "image_i9e8xj"
+      ],
+      "name": "富文本与图片",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "",
+        "padding_top": 120,
+        "padding_bottom": 60,
+        "image_top": 60,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "left"
+      }
+    },
+    "image_with_text_list_HL7qnh": {
+      "type": "image-with-text-list",
+      "blocks": {
+        "card_RJqwUP": {
+          "type": "card",
+          "settings": {
+            "desktop_content_position": "center",
+            "desktop_content_alignment": "left",
+            "enable_reserve_pc": false,
+            "enable_parallax": false,
+            "parallax_direction": "vertical",
+            "enable_reserve_mobile": true,
+            "mobile_content_alignment": "left",
+            "image": "shopify://shop_images/sf2000-image-sence1.jpg",
+            "heading": "<strong>2400W bidirektionales Laden</strong>",
+            "heading_size": "hd2",
+            "text": "<p>Der SolidFlex 2000 ist mit einem integrierten bidirektionalen Wechselrichter ausgestattet, der Lade- und Entladeleistungen von 2400W bietet. Wenn die Strompreise niedrig sind, kann es schnell Strom speichern und so die Stromkosten senken.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "card_LywqH6": {
+          "type": "card",
+          "settings": {
+            "desktop_content_position": "center",
+            "desktop_content_alignment": "left",
+            "enable_reserve_pc": true,
+            "enable_parallax": false,
+            "parallax_direction": "vertical",
+            "enable_reserve_mobile": false,
+            "mobile_content_alignment": "left",
+            "image": "shopify://shop_images/sf2000-image-sence2.jpg",
+            "heading": "Parallelerweiterung",
+            "heading_size": "hd2",
+            "text": "<p>SolidFlex 2000 bietet nahtlose Dreifach-Parallelerweiterung – ideal für Ein- und Dreiphasen-Haushalte. Nach der Erweiterung ergeben sich bis zu 7200W Systemleistung, 7200W PV-Eingang und 32,4 kWh Kapazität. Für hohe Leistungsanforderungen ist eine erstklassige Wahl.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "card_JGbmxD": {
+          "type": "card",
+          "settings": {
+            "desktop_content_position": "center",
+            "desktop_content_alignment": "left",
+            "enable_reserve_pc": false,
+            "enable_parallax": false,
+            "parallax_direction": "vertical",
+            "enable_reserve_mobile": true,
+            "mobile_content_alignment": "left",
+            "image": "shopify://shop_images/sf2000-image-sence3.jpg",
+            "heading": "<strong>Modulares Stapel-Design</strong>",
+            "heading_size": "hd2",
+            "text": "<p>Die Kapazität kann erweitert werden, indem die Akkupacks einfach aufeinander gestapelt werden.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "card_RJqwUP",
+        "card_LywqH6",
+        "card_JGbmxD"
+      ],
+      "name": "image-with-text-list",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#ffffff",
+        "layout": "image_first",
+        "image_height": "adapt",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "multicolumn_xTyLxF": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_pP6VCj": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Group_244.png",
+            "image_link": "shopify://products/indevolt-smarter-stromzahler",
+            "image_width": "full",
+            "title": "<a href=\"/products/indevolt-smarter-stromzahler\" title=\"Indevolt Smarter Stromzähler\">Vollständige Präzisionskontrolle</a>",
+            "heading_size": "h5",
+            "text": "<p>Reaktionszeit: &lt;5s | Genauigkeit: &lt;10W</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_iFz7dc": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Group_245.png",
+            "image_link": "shopify://products/indevolt-smart-plug",
+            "image_width": "full",
+            "title": "<a href=\"/products/indevolt-smart-plug\" title=\"Indevolt Smart Plug\">Dynamischer Antwortschalter</a>",
+            "heading_size": "h5",
+            "text": "<p>Reaktionszeit: &lt;5s | Genauigkeit: &lt;10W<br/><br/></p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_g3gYbJ": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/sf2000-3-3_e4d1954f-9297-4816-8a7d-93f4d5adc988.png",
+            "image_link": "shopify://products/shelly-pro-3em-120a",
+            "image_width": "full",
+            "title": "<a href=\"/products/shelly-pro-3em-120a\" title=\"Shelly Pro 3EM (120A)\">Drittanbieter-Kompatibilität</a>",
+            "heading_size": "h5",
+            "text": "<p>Kompatibel mit Shelly Pro 3EM und EcoTracker IR</p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "column_pP6VCj",
+        "column_iFz7dc",
+        "column_g3gYbJ"
+      ],
+      "custom_css": [],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "color_scheme": "scheme-inverse",
+        "heading": "",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "column_alignment": "left",
+        "columns_desktop": 3,
+        "column_gap": "large",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "fullscreen_slider_7gy4ke": {
+      "type": "fullscreen-slider",
+      "blocks": {
+        "slide_dnaNrk": {
+          "type": "slide",
+          "settings": {
+            "links": "",
+            "image_pc": "shopify://shop_images/solidflex2000-fimg1.jpg",
+            "image_mobile": "shopify://shop_images/solidflex2000-mobile-fimg1.jpg",
+            "author": "",
+            "title": "",
+            "describe": "",
+            "date": ""
+          }
+        },
+        "slide_GYN6ae": {
+          "type": "slide",
+          "settings": {
+            "links": "",
+            "image_pc": "shopify://shop_images/solidflex2000-fimg2.jpg",
+            "image_mobile": "shopify://shop_images/solidflex2000-mobile-fimg3.jpg",
+            "author": "",
+            "title": "",
+            "describe": "",
+            "date": ""
+          }
+        },
+        "slide_VBKMdJ": {
+          "type": "slide",
+          "settings": {
+            "links": "",
+            "image_pc": "shopify://shop_images/solidflex2000-fimg3.jpg",
+            "image_mobile": "shopify://shop_images/solidflex2000-mobile-fimg2.jpg",
+            "author": "",
+            "title": "",
+            "describe": "",
+            "date": ""
+          }
+        },
+        "slide_byKJhH": {
+          "type": "slide",
+          "settings": {
+            "links": "",
+            "image_pc": "shopify://shop_images/solidflex2000-fimg4.jpg",
+            "image_mobile": "shopify://shop_images/solidflex2000-mobile-fimg4.jpg",
+            "author": "",
+            "title": "",
+            "describe": "",
+            "date": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_dnaNrk",
+        "slide_GYN6ae",
+        "slide_VBKMdJ",
+        "slide_byKJhH"
+      ],
+      "name": "Fullscreen Slider",
+      "settings": {
+        "title": "Ideal für vielseitige Anwendungen",
+        "more_title": "",
+        "more_url": "",
+        "autoplay": false,
+        "autoplay_speed": 3000,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "custom_liquid_ma3yWD": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n        table {\n            table-layout: fixed;\n            width: 100%;\n            margin-bottom: 10px;\n \n    }\n\n    .diytable{\n       /* border: 0.1rem solid rgba(var(--color-foreground),.2); */\n       border-collapse: collapse;\n    }\n \n\n        td {\n            \n        border: 0.1rem solid rgba(var(--color-foreground),.2);\n        text-align: center; /* 默认所有单元格居中 */\n        padding: 30px;\n        /* border: 1px solid #ddd; */\n        font-size: 16px;\n        font-family: 'Inter';\n        line-height: 19px;\n        font-weight: 400;\n        word-wrap: break-word;\n        color: #262626;\n        }\n\n        .diytable img{\n            width:150px;\n            /* vertical-align:center; */\n        }\n\n        td:first-child {\n     \n        text-align: left; /* 第一列靠左 */\n        font-family: 'Inter';\n        font-size: 18px;\n        font-weight: 500;\n        line-height: 22px;\n        border-left: none !important;\n        }\n\n       td:last-child {\n        border-right:  none !important;\n        }\n\n        tr:first-child td{\n            border-top:  none !important;\n            font-family: 'Inter';\n            font-size: 18px;\n            font-weight: 600;\n            line-height: 22px;\n            color: #3250C3;\n        }\n\n\n        @media screen and (max-width: 760px)  {\n            td {\n                text-align: center; /* 默认所有单元格居中 */\n                padding: 20px 8px 20px 8px;\n                border: 1px solid #ddd;\n                font-size: 12px;\n                font-family: 'Inter';\n                line-height: 15px;\n                font-weight: 400;\n                color: #262626;\n            }\n            \n            .diytable img{\n                width:90px;\n                vertical-align:center;\n            }\n\n            td:first-child {\n                width:35%;\n                text-align: left; /* 第一列靠左 */\n                font-family: 'Inter';\n                font-size: 12px;\n                font-weight: 500;\n                line-height: 15px;\n            }\n\n\n        tr:first-child td{\n            font-family: 'Inter';\n            font-size: 12px;\n            font-weight: 600;\n            line-height: 15px;\n            color: #3250C3;\n        }\n        } \n \n        .hidden-row {\n            display: none;\n        }\n        .controls_pc {\n            margin-bottom: 10px;\n        }\n        button {\n            padding: 5px 10px;\n            cursor: pointer;\n        }\n\n        .controls_pc a{\n            font-size: 16px;\n            font-family: 'Inter';\n            line-height: 19px;\n            font-weight: 400;\n            color: #3250C3;\n        }\n\n        /* 为带有特定类的td设置背景图片 */\n            td.with-image {\n            background-image: url('https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Union.svg?v=1753958300');\n            \n            background-position: center;\n            background-repeat: no-repeat;\n            background-size: 15px 11px; /* 使图片匹配单元格尺寸 */\n            width:15px;\n            height:11px;\n            }\n            \n \n \n    </style>\n \n\n<div id=\"vergleich\">\n    <table id=\"myTable\" class=\"diytable \">\n            <tr style=\"border-top: none;\">\n                <td style=\"  border-collapse: collapse;\n  border: 1px solid #ddd; \n  border-top: none;       \n  border-left: none;      \n  border-right: none; width: 43.3%;\"></td>\n                <td style=\"width: 33.3%;\"><img src=\"https://cdn.shopify.com/s/files/1/0596/6367/9587/files/3_1.png?v=1753941892\" style=\"padding-bottom:20px;\" /><br>SolidFlex 2000</td>\n                <td style=\"width: 33.3%;\"><a href=\"/products/powerflex-2000-balkonkraftwerk-mit-speicher\"  ><img src=\"https://cdn.shopify.com/s/files/1/0596/6367/9587/files/3_1.png?v=1753941892\" style=\"padding-bottom:20px;\"/><br>PowerFlex 2000</a></td>\n            </tr>\n            <tr>\n                <td>Akkutyp</td>\n                <td>Halbfeste LiFePO₄</td>\n                <td>LiFePO₄</td>\n            </tr>\n            <tr>\n                <td>Kapazität</td>\n                <td>1792 Wh</td>\n                <td>2010 Wh</td>\n            </tr>\n            <tr >\n                <td>Lebenszyklen</td>\n                <td>8000</td>\n                <td>7000</td>\n            </tr>\n             <tr>\n                <td>PV-Eingang</td>\n                <td>2400W（je 600w）</td>\n                <td>2400W（je 600w）</td>\n            </tr>\n            <tr >\n                <td>Anzahl der MPPTS</td>\n                <td>4</td>\n                <td>4</td>\n            </tr>\n                        <tr >\n                <td>AC-Eingangs-/ Ausgangsleistung</td>\n                <td>2400W (mit Erweiterungsakkus)</td>\n                <td>2400W (mit Erweiterungsakkus)</td>\n            </tr>\n                        <tr >\n                <td>Kabellose Verbindung</td>\n                <td>Bluetooth, 2.4GHz Wi-Fi, 4G (Optional)</td>\n                <td>Bluetooth, 2.4GHz Wi-Fi, 4G (Optional)</td>\n            </tr>\n                        <tr >\n                <td>Wasserdichte Bewertung</td>\n                <td>IP65</td>\n                <td>IP65</td>\n            </tr>\n                        <tr >\n                <td>Einfacher Aufbau (Plug & Play)</td>\n                <td class=\"with-image\"> </td>\n                <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Akkuheizfunktion</td>\n                <td class=\"with-image\"> </td>\n               <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>App Steuerung</td>\n                <td class=\"with-image\"> </td>\n                <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Smart Meter für Nulleinspeisung</td>\n               <td class=\"with-image\"> </td>\n                <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Smart Plugs</td>\n               <td class=\"with-image\"> </td>\n               <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Bidirektionales Laden</td>\n               <td class=\"with-image\"> </td>\n               <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Zeitsteuerung</td>\n               <td class=\"with-image\"> </td>\n               <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Dynamische Stromtarife</td>\n               <td class=\"with-image\"> </td>\n                <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Notstromfunktion bei Stromausfall</td>\n               <td class=\"with-image\"> </td>\n               <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>EPS (10ms)</td>\n               <td class=\"with-image\"> </td>\n               <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Smarte DC-DC Technologie für effizientes Batteriemanagement</td>\n               <td class=\"with-image\"> </td>\n              <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>99% kompatibel mit dem aktuellen Mikroinverter</td>\n                <td class=\"with-image\"> </td>\n               <td class=\"with-image\"> </td>\n            </tr>\n\n                                    <tr >\n                <td>Bypass Modus bei vollem Akku</td>\n                <td class=\"with-image\"> </td>\n               <td class=\"with-image\"> </td>\n            </tr>\n    </table>\n    <div id=\"controls_pc\" class=\"controls_pc\" style=\"width:100%;text-align:center;\">\n        <a href=\"javascript:void(0)\"   onclick=\"showAll()\">weitere Infos &darr;</a>\n        <a href=\"javascript:void(0)\" style=\"display:none;\"  onclick=\"showPartial()\">weniger anzeigen &uarr;</a>\n    </div>\n</div>\n    <script>\n        function showAll() {\n           const rows = document.querySelectorAll('#myTable tr');\n            rows.forEach((row, index) => {\n                 row.style.display = '';\n            });\n            const arows = document.querySelectorAll('#controls_pc a');\n            arows.forEach((arow, index) => {\n                if(index==0){\n                    arow.style.display = 'none';\n                }else{\n                    arow.style.display = '';\n                }\n                 \n            });\n\n        }\n\n        function showPartial() {\n       \n            const rows = document.querySelectorAll('#myTable tr');\n            rows.forEach((row, index) => {\n                if (index >= 4) { // 只显示前2行，其余隐藏\n                    row.style.display = 'none';\n                } else {\n                    row.style.display = '';\n                }\n            });\n\n        const arows = document.querySelectorAll('#controls_pc a');\n            arows.forEach((arow, index) => {\n                if(index==0){\n                    arow.style.display = '';\n                }else{\n                    arow.style.display = 'none';\n                }\n                 \n            });\n        }\n\n        // 初始状态显示部分行\n        document.addEventListener('DOMContentLoaded', showPartial);\n    </script>",
+        "container": "fixed",
+        "color_scheme": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "rich_text_image_list_hmCAn8": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_nEX8NT": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lieferumfang",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "image_biTg8T": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/sf2000packlistpc.png",
+            "mobile_image": "shopify://shop_images/sf2000packlistmob.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_nEX8NT",
+        "image_biTg8T"
+      ],
+      "name": "富文本与图片",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "lieferumfang",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "image_top": 28,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "parameter_3GPQ6x": {
+      "type": "parameter",
+      "blocks": {
+        "card_zpKC6A": {
+          "type": "card",
+          "settings": {
+            "title": "Max. PV Eingangsleistung",
+            "content": "2400W (4 MPPT, jeweils 600W)",
+            "note": ""
+          }
+        },
+        "card_ngxa4f": {
+          "type": "card",
+          "settings": {
+            "title": "Abmessungen",
+            "content": "425×195×260 mm",
+            "note": ""
+          }
+        },
+        "card_LERwBg": {
+          "type": "card",
+          "settings": {
+            "title": "Akkutyp",
+            "content": "Halbfeste LiFePO₄",
+            "note": ""
+          }
+        },
+        "card_e4NVaY": {
+          "type": "card",
+          "settings": {
+            "title": "Kapazität",
+            "content": "1,8 kWh (erweiterbar auf 10,8 kWh)",
+            "note": ""
+          }
+        },
+        "card_gQj3P3": {
+          "type": "card",
+          "settings": {
+            "title": "Anzahl der parallelen Erweiterungen",
+            "content": "3 Gruppen",
+            "note": ""
+          }
+        },
+        "card_TbPTp3": {
+          "type": "card",
+          "settings": {
+            "title": "Kapazität der parallelen Erweiterungen",
+            "content": "32,4 kWh",
+            "note": ""
+          }
+        },
+        "card_G8hrRR": {
+          "type": "card",
+          "settings": {
+            "title": "Maximale AC-Ausgangsleistung",
+            "content": "2400W (mit Erweiterungsakkus)",
+            "note": ""
+          }
+        },
+        "card_fqKtyp": {
+          "type": "card",
+          "settings": {
+            "title": "Maximale AC-Ladeleistung",
+            "content": "2400W (mit Erweiterungsakkus)",
+            "note": ""
+          }
+        },
+        "card_j6ECRE": {
+          "type": "card",
+          "settings": {
+            "title": "Betriebsspannung",
+            "content": "16-60V DC",
+            "note": ""
+          }
+        },
+        "card_exbrwd": {
+          "type": "card",
+          "settings": {
+            "title": "Nettogewicht",
+            "content": "21,5 KG",
+            "note": ""
+          }
+        },
+        "card_iMbbQd": {
+          "type": "card",
+          "settings": {
+            "title": "Lebenszyklen",
+            "content": "8000",
+            "note": ""
+          }
+        },
+        "card_QcQCiw": {
+          "type": "card",
+          "settings": {
+            "title": "Betriebstemperatur",
+            "content": "-20°C ~ 60°C",
+            "note": ""
+          }
+        },
+        "card_fbUEKG": {
+          "type": "card",
+          "settings": {
+            "title": "Garantie",
+            "content": "10 Jahre",
+            "note": ""
+          }
+        },
+        "card_QTqJAf": {
+          "type": "card",
+          "settings": {
+            "title": "Lebensdauer",
+            "content": "20 Jahre",
+            "note": ""
+          }
+        },
+        "card_V4pWRq": {
+          "type": "card",
+          "settings": {
+            "title": "Konnektivität",
+            "content": "Bluetooth, 2.4GHz Wi-Fi, 4G (Optional), LORA",
+            "note": ""
+          }
+        },
+        "card_gJBB8B": {
+          "type": "card",
+          "settings": {
+            "title": "Schutzart",
+            "content": "IP65",
+            "note": ""
+          }
+        },
+        "card_PiiBXD": {
+          "type": "card",
+          "settings": {
+            "title": "Einhaltung der Zertifizierung",
+            "content": "VDE-AR-N 4105<br>IEC 62619<br>EN 62109<br>IEC 61000-6-2/4 <br>EN 50549<br> UN38.3+MSDS<br> RoHS 2.0",
+            "note": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_zpKC6A",
+        "card_ngxa4f",
+        "card_LERwBg",
+        "card_e4NVaY",
+        "card_gQj3P3",
+        "card_TbPTp3",
+        "card_G8hrRR",
+        "card_fqKtyp",
+        "card_j6ECRE",
+        "card_exbrwd",
+        "card_iMbbQd",
+        "card_QcQCiw",
+        "card_fbUEKG",
+        "card_QTqJAf",
+        "card_V4pWRq",
+        "card_gJBB8B",
+        "card_PiiBXD"
+      ],
+      "name": "参数列表",
+      "settings": {
+        "title": "Technische Daten",
+        "ids": "parameter",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "download_eFJ3zG": {
+      "type": "download",
+      "blocks": {
+        "card_9MAiht": {
+          "type": "card",
+          "settings": {
+            "title": "SolidFlex 2000",
+            "content": "Bedienungsanleitung",
+            "date": "2025-06-03",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_Bedienungsanleitung.pdf?v=1750645951"
+          }
+        },
+        "card_jimMXt": {
+          "type": "card",
+          "disabled": true,
+          "settings": {
+            "title": "SolidFlex 2000 CE-EMC",
+            "content": "EMC",
+            "date": "2025-09-08",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex2000_CE--EMC.pdf?v=1757316164"
+          }
+        },
+        "card_VpDFmL": {
+          "type": "card",
+          "settings": {
+            "title": "SolidFlex 2000 RoHS Zertifikat",
+            "content": "RoHS",
+            "date": "2025-09-08",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000-RoHS.pdf?v=1757316238"
+          }
+        },
+        "card_L47jed": {
+          "type": "card",
+          "settings": {
+            "title": "SolidFlex 2000 Österreich Grid Connection",
+            "content": "",
+            "date": "2025-09-08",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_Osterreich_Grid_Connection.pdf?v=1757316388"
+          }
+        },
+        "card_77znFt": {
+          "type": "card",
+          "settings": {
+            "title": "SolidFlex 2000 Deutschland Grid Connection",
+            "content": "VDE",
+            "date": "2025-09-08",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_Zertifikat_fur_den_NA-Schutz.pdf?v=1757316512"
+          }
+        },
+        "card_e7iVix": {
+          "type": "card",
+          "settings": {
+            "title": "SolidFlex 2000 CE Zertifikat",
+            "content": "CE",
+            "date": "2025-09-08",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_CE_Zertifikat.pdf?v=1757316616"
+          }
+        },
+        "card_7ndAkh": {
+          "type": "card",
+          "settings": {
+            "title": "SFA1800 CE Zertifikat",
+            "content": "CE",
+            "date": "2025-09-08",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SFA1800_CE_Zertifikat.pdf?v=1757316694"
+          }
+        },
+        "card_N3ziDC": {
+          "type": "card",
+          "settings": {
+            "title": "SolidFlex 2000 REACH-Verordnung",
+            "content": "Umweltschutz",
+            "date": "2025-09-08",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_REACH-Verordnung.pdf?v=1757330086"
+          }
+        }
+      },
+      "block_order": [
+        "card_9MAiht",
+        "card_jimMXt",
+        "card_VpDFmL",
+        "card_L47jed",
+        "card_77znFt",
+        "card_e7iVix",
+        "card_7ndAkh",
+        "card_N3ziDC"
+      ],
+      "name": "下载列表",
+      "settings": {
+        "title": "Downloads"
+      }
+    },
+    "collapsible_tabs_NyK4qU": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "collapsible_item_AQttRm": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wie funktioniert SolidFlex 2000?",
+            "content": "<p>Schließen Sie das SolidFlex 2000 einfach an eine beliebige Steckdose im Haushalt an. Die von den Solarmodulen erzeugte Energie wird im System durch einen eingebauten Mikro-Wechselrichter umgewandelt und kann dann in das Hausnetz eingespeist werden, um den Haushaltsverbrauch zu reduzieren. Darüber hinaus kann es über das Stromnetz, bestehende Photovoltaikanlagen sowie Balkonkraftwerke geladen werden.<br/><br/></p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_MT3fnn": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann ich das SolidFlex 2000 Balkonkraftwerk selbst installieren?",
+            "content": "<p>Ja. Das SolidFlex 2000 ist ein Plug-and-Play‑Balkonkraftwerk mit einer Nennleistung von bis zu 800W und ist so konzipiert, dass eine einfache Selbstinstallation möglich ist.Wichtig: Wenn Sie eine Netto-Erzeugungsleistung von mehr als 800W anstreben, empfehlen wir dringend, die Installation von einem qualifizierten Fachbetrieb durchführen zu lassen.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_3xJ9Be": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann man das auch im Winter verwenden? Was ist zu beachten?",
+            "content": "<p>Ja, das Gerät kann im Winter verwendet werden. Es verfügt über eine Heizfunktion, die automatisch aktiviert wird, wenn die Geräte-Temperatur unter 0 °C fällt.Wichtig: Bei niedrigen Temperaturen nimmt die Aktivität von Lithiumbatterien ab, wodurch sie schneller entladen und einen höheren Leistungsbedarf haben können.Empfehlung: Im Winter sollte stets eine Reserve an Batterieladung eingeplant werden — mindestens 30% bis 50%.Bei Schneefall: Besondere Vorsicht: Halten Sie idealerweise etwa 70% Ladezustand, damit die Batterie genügend Reservekapazität hat.<br/><br/></p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_8tkxWm": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Ist die SolidFlex 2000 Solarbatterie sicher?",
+            "content": "<p>Ja. Sicherheit hat bei unserem System höchste Priorität. Im Gegensatz zu herkömmlichen Akkus setzt das System einen halbfesten Lithium-Eisenphosphat-Akku (LiFePO4) ein, die die Vorteile von Fest- und Flüssigelektrolyten kombiniert und dadurch die thermische Stabilität bereits auf Materialebene erhöht.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_DfKf8N": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann das SolidFlex 2000 Balkonkraftwerk mit Speicher im Freien verwendet werden?",
+            "content": "<p>Ja. Das SolidFlex 2000 verfügt über die Schutzart IP65, ist also staubdicht und gegen Strahlwasser aus beliebigem Winkel geschützt und damit sehr gut für den Außeneinsatz geeignet.Hinweis: Trotz IP65-Schutz sollten Sie das Gerät nicht dauerhaft in starkem Regen oder unter dauerhaft stehendem Wasser betreiben.Empfehlung: Installieren Sie das Gerät an einem gut belüfteten, stabilen Ort mit sicherer Montage und beachten Sie lokale Installationsvorgaben sowie die Bedienungsanleitung.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_BY674Q": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Ist das SolidFlex 2000 Balkonkraftwerk mit Shelly- oder EcoTrack-Stromzählern kompatibel?",
+            "content": "<p>Ja. Das SolidFlex 2000 ist vollständig kompatibel mit Shelly- und EcoTrack-Zählern und lässt sich problemlos integrieren.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_PizNbf": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann ich meine Haushaltsgeräte über die Off-Grid-Steckdose des SolidFlex 2000 versorgen, wenn es an das Hausnetz angeschlossen ist?",
+            "content": "<p>Ja. Wenn das SolidFlex 2000 mit dem Hausnetz verbunden ist, kann die Off-Grid-Steckdose Geräte mit einer maximalen Leistung von 3600W versorgen. Leistungsteile, die über die dauerhafte Eigenleistung von 2400W hinausgehen, werden automatisch vom Hausnetz ergänzt.Hinweis: Damit das SolidFlex 2000 zuverlässig 2400W bereitstellen kann, sind mindestens zwei Erweiterungsakkus erforderlich.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_BDUxMB": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Welche Vorteile kann die CycBoost‑Technologie meinem Balkonkraftwerk mit Speicher bringen?",
+            "content": "<p>Der offensichtlichste Vorteil ist, dass sie vollständig verhindert, dass das Akkupack durch den schwächsten Akku ausgebremst wird. Zum Beispiel begrenzt in traditionellen Szenarien bei gemischter Nutzung alter und neuer Akkus der alte Akku die Leistungsentfaltung des neuen Akkus, wodurch die Effizienz des gesamten Akkupacks nicht vollständig freigesetzt werden kann. Genau dieses Branchenproblem löst unsere CycBoost‑Technologie.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_pwfkTP": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Ist der Akku des SolidFlex 2000 langlebig?",
+            "content": "<p>Der SolidFlex 2000 Akku ist besonders langlebig. Selbst bei einer Entladungstiefe von 100% behält der Akku nach 8000 Zyklen noch 70% seiner anfänglichen Kapazität. Dies ist dem Einsatz von Halbfeststoff-Akkutechnologie und großvolumigen Akkuzellen zu verdanken, wodurch die Lebensdauer des Akkupacks verlängert wird.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_AWKjdj": {
+          "type": "collapsible_item",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "heading": "Wie optimiert SolidFlex 2000 das Energiemanagement mithilfe von KI?",
+            "content": "<p>Das System analysiert historische Stromverbrauchsdaten und aktuelle Wetterparameter, um ein dynamisches Vorhersagemodell zu erstellen. Zudem bestimmen wir automatisch die besten Lade- und Entladeentscheidungen anhand der dynamischen Strompreise, um Ihre Energiekosten zu minimieren und die Energieabrechnung zu optimieren.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_qXgjtf": {
+          "type": "collapsible_item",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "heading": "Kann ich SolidFlex 2000 selbst installieren?",
+            "content": "<p>Ja, das ist möglich! Der SolidFlex 2000 ist im Plug-and-Play-Design ausgelegt, sodass Sie die Installation problemlos selbst durchführen können. Wenn Sie jedoch eine Nettoproduktionsleistung von über 800 W benötigen, empfehlen wir, einen Fachmann für die Installation zu beauftragen.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_AnNVAY": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wie hoch ist die maximale Ausgangsleistung des SolidFlex 2000 bei netzunabhängigem Betrieb?",
+            "content": "<p>Wenn das Gerät mit dem Stromnetz verbunden ist, kann über den netzunabhängigen Anschluss eine Leistung von bis zu 2400W bereitgestellt werden. Im netzunabhängigen Betrieb oder während eines Stromausfalls beträgt die maximale Leistung jedoch 1000W. Mit einem SFA1800 Erweiterungsakku steigt die Leistung auf 2000W, und mit zwei Akkupacks sind sogar bis zu 2400W möglich.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_Hdi7TG": {
+          "type": "collapsible_item",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "heading": "Wie kann die Speicherkapazität des SolidFlex 2000 erweitert werden? Wie hoch ist die maximale Kapazität?",
+            "content": "<p>Sie können die Kapazität durch das Stapeln mehrerer Akkupacks erweitern. In einem einzelnen System können bis zu fünf Akkupacks (einschließlich des integrierten Akkus des Hauptgeräts) gestapelt werden, wodurch die Gesamtkapazität auf bis zu 10,8 kWh erhöht wird. Wenn drei Systeme parallel geschaltet werden, kann die maximale Kapazität sogar auf 32,4 kWh erweitert werden.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_bt4hec": {
+          "type": "collapsible_item",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "heading": "Kann das Gerät nach einem Ausfall eines Akkupacks weiterhin normal verwendet werden?",
+            "content": "<p>Ja, das ist möglich. Sollte ein Akkupack völlig ausfallen, isoliert das System es sofort, um zu verhindern, dass es die Leistung der anderen Akkupacks beeinträchtigt.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_g4tbh3": {
+          "type": "collapsible_item",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "heading": "Beeinflusst die gleichzeitige Verwendung neuer und alter Akkus die Lebensdauer des gesamten Systems beim SolidFlex 2000?",
+            "content": "<p>Nein, das hat keinen Einfluss. Jedes Akkupack lädt und entlädt sich unabhängig. Der SolidFlex 2000 erkennt automatisch den Zustand von neuen und alten Akkus, sodass ältere Akkus nicht mehr bis zum Ende entladen werden und neue Akkus nicht übermäßig beansprucht werden. Dadurch wird die Gesamtlaufzeit nachhaltiger.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_g6ewke": {
+          "type": "collapsible_item",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "heading": "Kann der SolidFlex 2000 mit Drittanbieter-Mikroinvertern kompatibel sein? Welche Leistung von Mikroinvertern kann er koppeln?",
+            "content": "<p>Ja, der SolidFlex 2000 ist mit 99% der auf dem Markt verfügbaren Mikroinverter kompatibel. Er passt perfekt zu den Upgrade-Anforderungen der bestehenden 2400W-Mikroinverter-Nutzer und vermeidet somit Ressourcenverschwendung, die durch eine unzureichende Kapazitätsanpassung entstehen könnte.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_Lge4ak": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann das Indevolt Speichersystem auch ohne Internetverbindung genutzt werden?",
+            "content": "<p>Ja, der SolidFlex 2000 kann auch in einer Umgebung ohne Internetverbindung schnell reagieren und lokale Steuerung durchführen. Er ermöglicht intelligente Steuerung und präzises Management, sodass Ihre Haushaltsgeräte eine optimale Leistungsbilanz aufrechterhalten und unnötige Verluste reduziert werden.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_9w6dR4": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wie kann ich die Sicherheit und Stabilität meiner Daten gewährleisten?",
+            "content": "<p>Der SolidFlex 2000 verfügt über Funktionen zur lokalen Steuerung, bei denen die Daten ausschließlich auf der lokalen Hardware gespeichert werden. Selbst bei Netzwerkunterbrechungen oder Ausfällen von Drittanbieterdiensten kann das System stabil weiterlaufen. Daher müssen Sie sich keine Sorgen über das Risiko von Datenschutzverletzungen oder die Stabilität des Geräts machen.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_9CcG9P": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Unterstützt der SolidFlex 2000 die Installation von zwei unabhängigen Systemen, die gemeinsam betrieben werden? Wie kann ich einschätzen, ob mein Zuhause für eine Multisystemlösung geeignet ist?",
+            "content": "<p>Ja, der SolidFlex 2000 unterstützt den Betrieb von zwei Systemeinheiten im Kooperationsmodus und kann bis zu drei Systeme unterstützen. Wenn Ihr Strombedarf hoch ist, Sie die Abhängigkeit vom Stromnetz weiter reduzieren möchten oder signifikante Einsparungen bei den Stromkosten durch eine skalierte Konfiguration erzielen möchten, ist die Installation mehrerer Systeme eine ideale Wahl.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_NMrFWj": {
+          "type": "collapsible_item",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "heading": "Warum gilt der SolidFlex 2000 als sicheres Balkonkraftwerk?",
+            "content": "<p>Unsere Akkus verwenden halbfeste Lithium-Eisenphosphat-Akkus, die im Vergleich zu herkömmlichen Akkus mit flüssigem Elektrolyt, der leicht entflammbar ist, weniger Brandgefahr bieten. Selbst bei unerwarteten Stößen oder Durchbrüchen ist das Risiko eines Lecks bei den festen Elektrolyten gering, was das Brandrisiko senkt. Außerdem bietet die verbesserte Temperaturkontrolle im Inneren der Akkus bei hohen Sommertemperaturen in geschlossenen Räumen einen besseren Schutz gegen thermisches Durchgehen, was zu einer erhöhten Sicherheit beiträgt.<br/><br/></p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_jqFdEe": {
+          "type": "collapsible_item",
+          "disabled": true,
+          "settings": {
+            "icon": "none",
+            "heading": "Wie lange ist die Lebensdauer des SolidFlex 2000 Akkus?",
+            "content": "<p>Derzeit bietet unsere SolidFlex 2000 Akkus die höchste Zykluslebensdauer in der Branche. Bei einer Entladungstiefe (DOD) von 70 % kann sie bis zu 8000 Zyklen erreichen, wobei die Akkukapazität weiterhin 70-80 % des ursprünglichen Wertes behält.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_Bj9bRB": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wie viel Leistung kann der SolidFlex 2000 für mein Zuhause bereitstellen? Welche Geräte können betrieben werden?",
+            "content": "<p>Der SolidFlex 2000 entspricht den deutschen Vorschriften für Photovoltaikanlagen und kann von den Nutzern selbst installiert werden. Er bietet eine Leistung von 800W für Ihr Zuhause. Bitte beachten Sie: Wenn Sie eine netzgebundene Leistung von 2400W erhalten möchten, muss dies von einem zugelassenen Elektriker erfolgen, und es muss ein Installationsplan an den örtlichen Netzbetreiber eingereicht werden. Im Off-Grid-Betrieb kann er 2400W ausgeben und deckt damit die meisten mittel- und niedrigleistungsfähigen Geräte ab.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_99WPKm": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Ist es normal, dass der Ladezustand (SOC) der Akkupacks stark auseinandergeht?",
+            "content": "<p>Dies ist ein normales Phänomen und beeinträchtigt Ihre Nutzererfahrung nicht. In der Praxis ist eine Abweichung der Restladung zwischen den Akkus von bis zu 10% sinnvoll – dank des Batterieoptimierers. Dieser sorgt dafür, dass jede Zelle eigenständig laden und entladen wird, sodass ihre Leistungen sich nicht gegenseitig beeinflussen. Warum traditionelle Akkus tendenziell kleinere SOC-Unterschiede zeigen: Sie setzen auf parallele Gleichverteilung, was Ringströme erzeugt, Energieverschwendung mit sich bringt und vom „Flaschenhals-Effekt“ betroffen sein kann. Unsere Lösung adressiert genau dieses Problem.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_item_AQttRm",
+        "collapsible_item_MT3fnn",
+        "collapsible_item_3xJ9Be",
+        "collapsible_item_8tkxWm",
+        "collapsible_item_DfKf8N",
+        "collapsible_item_BY674Q",
+        "collapsible_item_PizNbf",
+        "collapsible_item_BDUxMB",
+        "collapsible_item_pwfkTP",
+        "collapsible_item_AWKjdj",
+        "collapsible_item_qXgjtf",
+        "collapsible_item_AnNVAY",
+        "collapsible_item_Hdi7TG",
+        "collapsible_item_bt4hec",
+        "collapsible_item_g4tbh3",
+        "collapsible_item_g6ewke",
+        "collapsible_item_Lge4ak",
+        "collapsible_item_9w6dR4",
+        "collapsible_item_9CcG9P",
+        "collapsible_item_NMrFWj",
+        "collapsible_item_jqFdEe",
+        "collapsible_item_Bj9bRB",
+        "collapsible_item_99WPKm"
+      ],
+      "name": "t:sections.collapsible-tabs.presets.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "ids": "faq",
+        "header_layout": "vertical",
+        "heading": "FAQ",
+        "heading_size": "hd2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "item_style": "standard",
+        "item_color_scheme": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h5",
+        "item_icon_size": "extra-large",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "1758853090704a66e2": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_reviews_product_reviews_KiXgP9": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "klaviyo_reviews_product_reviews_KiXgP9"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_XVMgRn": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<div style=\"background-color:#000000;padding:15px; display: flex;\n  justify-content: center;\n  align-items: center;\">\n<div data-page-id=\"Dm5hdIPgEokbCOxNAt2c2IiTnMc\" data-lark-html-role=\"root\" data-docx-has-block-data=\"false\">\n\n<div style=\"max-width:1280px;\">\n\n<div data-zone-id=\"0\" data-line-index=\"0\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);text-align: center;\"><h3 style=\"color:#ffffff;\">Haftungsausschluss</h3>\n\n \n</span></div>\n\n\n<div data-zone-id=\"0\" data-line-index=\"1\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"2\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\">Stromkostenersparnis, CO₂-Einsparungen: Bis zu 1.046 € pro Jahr und 1996 kg CO₂.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"3\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\"><b>1. Stromerzeugung:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"4\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\">Die Berechnung basiert auf der folgenden Produktkonfiguration: SolidFlex 2000 (1792 Wh) + 4 x 500W-Solarmodule (2000W) + 5 Erweiterungsakkus (8960 Wh). Die jährlichen Sonnenstunden in Deutschland betragen 1160 Stunden, und die jährliche Stromproduktion beträgt: 1160 * 2000 = 2320 kWh. Die jährliche Speicherkapazität beträgt: 10,75 x 365 = 3924 kWh.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"5\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\"><b>2. Berechnungsannahmen:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"6\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\">Der Eigenverbrauchsanteil beträgt 85%<a href=\"https://solar.htw-berlin.de/rechner/unabhaengigkeitsrechner\"  style=\"color:gray\" target=\"_blank\" rel=\"nofollow\">(Quelle);</a> </span></div>\n<div data-zone-id=\"0\" data-line-index=\"7\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\">Fester Strompreis: 0,40 €/kWh;</span></div>\n<div data-zone-id=\"0\" data-line-index=\"8\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\">Preisdifferenz zwischen Spitzen- und Nebenzeiten: 0,132 €/kWh.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"9\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\"><b>3. CO₂-Reduktion:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"10\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\">Jede 1 kWh Solarstrom reduziert die CO₂-Emissionen um ungefähr 0,997 kg.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"11\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\"><b>4. Haftungsausschluss:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"12\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\">Alle Daten basieren auf idealen Testbedingungen; tatsächliche Ergebnisse können je nach individuellen Umständen variieren.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"13\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"14\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\"><b>Berechnungsdetails:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"15\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\"><b>Jährliche Stromkostenersparnis</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"16\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\">= Ersparnisse aus Eigenverbrauch + Ersparnisse aus KI-optimiertem Laden</span></div>\n<div data-zone-id=\"0\" data-line-index=\"17\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\">= 2320 kWh × 85% × 0,40 € + (3924 kWh − 2320 kWh × 85%) × 0,132 € </span></div>\n<div data-zone-id=\"0\" data-line-index=\"18\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\">≈ 1.046,46 €</span></div>\n<div data-zone-id=\"0\" data-line-index=\"19\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\"><b>Geschätzte CO₂-Emissionsreduktion</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"20\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\">= 2320 kWh × 85% × 0,997</span></div>\n<div data-zone-id=\"0\" data-line-index=\"21\" data-line=\"true\"><span style=\"color: rgb(255, 255, 255);\">≈ 1996 kg</span></div>\n<div data-zone-id=\"0\" data-line-index=\"22\" data-line=\"true\"><br></div>\n \n</div>\n\n</div>",
+        "container": "full",
+        "color_scheme": "",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "service_info_eEcMjc",
+    "youtube_popup_eHUQqP",
+    "video_p6VPeC",
+    "image_with_text_animate_7Re4hR",
+    "rich_text_x6YUUc",
+    "slider_center_yFRkwq",
+    "sf2000_scence_tabs_7UhwRM",
+    "rich_text_ETK98q",
+    "video_AzeRLN",
+    "rich_text_image_list_xWPfNc",
+    "rich_text_image_list_fg6cwJ",
+    "image_with_text_list_9kpz7i",
+    "rich_text_image_list_PJKrKJ",
+    "image_with_text_list_HL7qnh",
+    "multicolumn_xTyLxF",
+    "fullscreen_slider_7gy4ke",
+    "custom_liquid_ma3yWD",
+    "rich_text_image_list_hmCAn8",
+    "parameter_3GPQ6x",
+    "download_eFJ3zG",
+    "collapsible_tabs_NyK4qU",
+    "1758853090704a66e2",
+    "custom_liquid_XVMgRn"
+  ]
+}

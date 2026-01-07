@@ -1,0 +1,244 @@
+{{ 'component-scene-card.css' | asset_url | stylesheet_tag }}
+<style>
+  .section-about-tech-list .title {
+    line-height: normal;
+    color: #000;
+    text-align: center;
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 700;
+    padding: 0 4.8rem;
+  }
+
+  .content-wrapper {
+    left: 44px;
+    top: auto;
+    transform: inherit;
+    bottom: 26px;
+    padding: 0px;
+    text-align: left;
+  }
+  .content-wrapper .grid-title {
+    line-height: 29px;
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .content-wrapper .grid-title p {
+    color: #fff;
+  }
+  .section-about-tech-list .product-box {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 60px;
+  }
+  .section-about-tech-list .block-1,
+  .section-about-tech-list .block-4,
+  .section-about-tech-list .block-5 {
+    width: 49%;
+  }
+  .section-about-tech-list .block-2,
+  .section-about-tech-list .block-3,
+  .section-about-tech-list .block-6 {
+    width: 49%;
+  }
+  .section-about-tech-list .grid-item{ height:auto!important}
+  .section-about-tech-list .image-container {
+    position:relative;
+    height:auto;
+    overflow: hidden;
+    display: block;
+    border-radius: 16px;
+    transition: box-shadow 0.3s;
+  }
+  .section-about-tech-list .image-container .grid-image-link {
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    will-change: transform;
+  }
+  .section-about-tech-list .grid-item:hover .image-container .grid-image-link,
+  .section-about-tech-list .grid-item:focus .image-container .grid-image-link {
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  }
+  @media (max-width: 1050px) {
+    .section-about-tech-list .block-1,
+    .section-about-tech-list .block-4,
+    .section-about-tech-list .block-5 {
+      width: 55%;
+    }
+  }
+  @media (max-width: 767.98px) {
+    .section-about-tech-list .title {
+      padding: 0px 4.8rem;
+      font-size: 28px;
+    }
+    .section-about-tech-list .product-box {
+      margin-top: 3rem;
+    }
+    .section-about-tech-list .grid-item {
+      width: 100% !important;
+    }
+    .content-wrapper {
+      left: 1.2rem;
+      bottom: 1rem;
+    }
+    .content-wrapper .grid-title {
+      line-height: 22px;
+      font-size: 18px;
+    }
+    .section-about-tech-list .product-box {
+      grid-template-columns: 100%;
+      grid-template-rows: auto;
+    }
+  }
+</style>
+{% liquid
+  assign motion_delay = 50
+%}
+<div
+  class="section section--padding  page-width section-about-tech-list"
+  style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+  <h2 class="title">
+    <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+      <span>{{ section.settings.section_title }}</span>
+    </motion-element>
+  </h2>
+  <div class="section__wrapper grid-container product-box">
+    {% for block in section.blocks %}
+      <div class="grid-item block-{{ forloop.index }}">
+        <a href="{% if block.settings.links != blank %}{{ block.settings.links }}{% else %}javascript:void(0);{% endif %}" alt="{{ block.settings.title | escape }}" target="{% if block.settings.links != blank %}_blank{% else %}_self{% endif %}">
+          <div class="image-container">
+            {% if block.settings.image != blank %}
+              <picture>
+                <!-- 移动端图片 -->
+                <source
+                  media="(max-width: 749px)"
+                  srcset="
+                    {{ block.settings.mobile_image | img_url: '800x' }} 1x,
+                    {{ block.settings.mobile_image | img_url: '1600x' }} 2x
+                  "
+                >
+
+                <!-- 桌面端图片 -->
+                <source
+                  media="(min-width: 750px)"
+                  srcset="
+                    {{ block.settings.image | img_url: '1200x' }} 1x,
+                    {{ block.settings.image | img_url: '2400x' }} 2x
+                  "
+                >
+
+                <!-- 默认图片 -->
+                <img
+                  src="{{ block.settings.image | img_url: '1200x' }}"
+                  alt="{{ block.settings.title | escape }}"
+                  class="grid-image {% if block.settings.links != blank %} grid-image-link{% endif %}"
+                  loading="lazy"
+                  width="{{ block.settings.image.width }}"
+                  height="{{ block.settings.image.height }}"
+                >
+              </picture>
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          <div class="content-wrapper">
+            <h2 class="grid-title">{{ block.settings.title }}</h2>
+          </div>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "sections.about-tech-list",
+  "tag": "section",
+  "class": "section section-about-tech-list",
+  "max_blocks": 10,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "分区标题",
+      "default": "我们的特色分区"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 50
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "scene item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image_pc"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "image_mobile"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "大标题"
+        },
+        {
+          "type": "url",
+          "id": "links",
+          "label": "链接"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "技术优势",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

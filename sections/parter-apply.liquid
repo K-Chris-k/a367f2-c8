@@ -1,0 +1,95 @@
+<style>
+.section-parter-applymain {padding-top:112px; background: #F3F3F3;}
+.section-parter-applymain h2{ line-height:58px;font-size:46px;font-weight: 700;text-align:center}
+.section-parter-applymain .apply-list li {margin-top:32px}
+.section-parter-applymain .apply-list li .tit h2{ line-height:42px;font-size: 32px;text-align:left}
+.section-parter-applymain .apply-list li .decribe{ line-height:42px;font-size:24px;text-align:left}
+.section-parter-applymain .apply-list li .decribe a{text-decoration: underline;color: #3250C3;}
+.section-parter-applymain .apply-list li .decribe p{margin:0px}
+  @media (max-width: 768px) {
+   .section-parter-applymain {padding-top:5rem;}
+   .section-parter-applymain h2{ line-height:29px;font-size:24px;}
+   .section-parter-applymain .apply-list li {margin-top:10px}
+   .section-parter-applymain .apply-list li .tit h2{ line-height:42px;font-size: 20px;}
+   .section-parter-applymain .apply-list li .decribe{ line-height:23px;font-size:14px;}
+  }
+</style>
+{% liquid
+    assign motion_delay = 50
+%}
+<div class="section page-width section--padding section-parter-applymain">
+       <h2 class="titie"> {{ section.settings.title }}</h2>
+    <div class="apply-list">
+      <ul>
+        {% for block in section.blocks %}
+        <li>
+              <div class="tit">
+                <h2>{{ block.settings.title }}</h2>
+              </div>
+              <div class="decribe">
+                {{ block.settings.description }}
+              </div>
+        </li>
+        {% endfor %}
+      </ul>
+      
+    </div>
+    <div class="note">{{ section.settings.note }}</div>
+</div>
+<script>
+ 
+</script>
+{% schema %}
+{
+  "name": "parter-apply",
+  "tag": "section",
+  "class": "section section-parter-apply",
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Kies Het Juiste Programma Voor U"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "aus item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "标题"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "描述",
+          "default": "<p>Your description here</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "合作伙伴-申请",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

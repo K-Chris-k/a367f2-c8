@@ -1,0 +1,501 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badges": {
+          "type": "badges",
+          "settings": {
+            "show_soldout_badge": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 40,
+            "size_title": "Size",
+            "size_chart_from_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "name": "支付信息",
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "certificate",
+            "image_1": "shopify:\/\/shop_images\/brand-icon1.svg",
+            "heading_1": "Bequem bezahlen",
+            "content_image_1": "shopify:\/\/shop_images\/card.png",
+            "icon_2": "truck",
+            "image_2": "shopify:\/\/shop_images\/brand-icon2.svg",
+            "content_image_2": "shopify:\/\/shop_images\/track.png",
+            "heading_2": "Zuverlässige Lieferung",
+            "icon_3": "star-four",
+            "heading_3": ""
+          }
+        },
+        "logistics_pN3qrf": {
+          "type": "logistics",
+          "settings": {
+            "enable_sticky_info": true
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "tag",
+            "product_list_limit": 4,
+            "products_per_page": 1,
+            "image_ratio": "adapt",
+            "enable_quick_add": true
+          }
+        }
+      },
+      "block_order": [
+        "badges",
+        "title",
+        "price",
+        "description",
+        "variant_picker",
+        "buy_buttons",
+        "icon_with_text",
+        "logistics_pN3qrf",
+        "complementary"
+      ],
+      "custom_css": [
+        ".loox-rating {margin-top: -1rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": true,
+        "media_size": "medium",
+        "gallery_layout": "carousel",
+        "mobile_thumbnails": "show",
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "meter_parameter_G3taNk": {
+      "type": "meter-parameter",
+      "blocks": {
+        "card_eNFQWn": {
+          "type": "card",
+          "settings": {
+            "title": "Eenvoudig in gebruik"
+          }
+        },
+        "card_jJ3Lhx": {
+          "type": "card",
+          "settings": {
+            "title": "Hoge Compatibiliteit"
+          }
+        },
+        "card_kMjdDQ": {
+          "type": "card",
+          "settings": {
+            "title": "Uitstekende Prestatie"
+          }
+        },
+        "card_tAEp7x": {
+          "type": "card",
+          "settings": {
+            "title": "Stabiel en Betrouwbaar"
+          }
+        },
+        "card_MJnrFR": {
+          "type": "card",
+          "settings": {
+            "title": "Voldoet aan EN303645"
+          }
+        }
+      },
+      "block_order": [
+        "card_eNFQWn",
+        "card_jJ3Lhx",
+        "card_kMjdDQ",
+        "card_tAEp7x",
+        "card_MJnrFR"
+      ],
+      "name": "meter特色列表",
+      "settings": {
+        "title": "P1 Meter lezer Kenmerken"
+      }
+    },
+    "meter_parameter_table_4aNGgG": {
+      "type": "meter-parameter-table",
+      "blocks": {
+        "card_fbHyHM": {
+          "type": "card",
+          "settings": {
+            "title": "Afstandscommunicatie",
+            "content": "<p>2.4GHz WiFi<\/p>"
+          }
+        },
+        "card_m7dwV3": {
+          "type": "card",
+          "settings": {
+            "title": "WiFi-standaard",
+            "content": "<p>802.11b\/g\/n<\/p>"
+          }
+        },
+        "card_hXLNqK": {
+          "type": "card",
+          "settings": {
+            "title": "WiFi-frequentie",
+            "content": "<p>2.412GHz-2.472GHz (CH1-CH13)<\/p>"
+          }
+        },
+        "card_B8nBwf": {
+          "type": "card",
+          "settings": {
+            "title": "WiFi-uitzendvermogen",
+            "content": "<p>802.11b: +17dBm @ 111Mbps<br\/>802.11g: +15dBm @ 54Mbps<br\/>802.11n: +14dBm @ HT20, MC57<\/p>"
+          }
+        },
+        "card_4YmLFW": {
+          "type": "card",
+          "settings": {
+            "title": "Bluetooth-standaard",
+            "content": "<p>BLE5.0<\/p>"
+          }
+        },
+        "card_fnGAYQ": {
+          "type": "card",
+          "settings": {
+            "title": "Bluetooth-frequentie",
+            "content": "<p>2.402GHz-2.480GHz<\/p>"
+          }
+        },
+        "card_yVbtae": {
+          "type": "card",
+          "settings": {
+            "title": "Bluetooth-uitzendvermogen",
+            "content": "<p>Max 15dBm<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_fbHyHM",
+        "card_m7dwV3",
+        "card_hXLNqK",
+        "card_B8nBwf",
+        "card_4YmLFW",
+        "card_fnGAYQ",
+        "card_yVbtae"
+      ],
+      "name": "meter特色表格",
+      "settings": {
+        "title": "P1 Meter lezer Kenmerken",
+        "column_title": "Communicatieparameters"
+      }
+    },
+    "meter_parameter_table_NkrAYR": {
+      "type": "meter-parameter-table",
+      "blocks": {
+        "card_crUgQQ": {
+          "type": "card",
+          "settings": {
+            "title": "Data-interface",
+            "content": "<p>P1-RJ12<\/p>"
+          }
+        },
+        "card_TtaVg3": {
+          "type": "card",
+          "settings": {
+            "title": "Externe interface",
+            "content": "<p>USB Type-C & RJ12<\/p>"
+          }
+        },
+        "card_y3BbqN": {
+          "type": "card",
+          "settings": {
+            "title": "Werkspanning",
+            "content": "<p>DC 5.0V ±5%<\/p>"
+          }
+        },
+        "card_FntWcj": {
+          "type": "card",
+          "settings": {
+            "title": "Werkvermogen",
+            "content": "<p>&lt;1W<\/p>"
+          }
+        },
+        "card_TqfRGU": {
+          "type": "card",
+          "settings": {
+            "title": "Indicatorlicht",
+            "content": "<p>P1 groene licht toont verbindingsstatus met meter<br\/>WiFi blauwe licht toont verbindingsstatus met server<\/p>"
+          }
+        },
+        "card_f99kRN": {
+          "type": "card",
+          "settings": {
+            "title": "Geheugen",
+            "content": "<p>8MB FLASH<br\/><\/p>"
+          }
+        },
+        "card_QMGCCd": {
+          "type": "card",
+          "settings": {
+            "title": "Werktemperatuur",
+            "content": "<p>-20°C to +50°C<\/p>"
+          }
+        },
+        "card_LM8gE4": {
+          "type": "card",
+          "settings": {
+            "title": "Werkvochtigheid",
+            "content": "<p>10% ~ 90% RV (geen condensatie)<br\/><br\/><\/p>"
+          }
+        },
+        "card_tQYwbk": {
+          "type": "card",
+          "settings": {
+            "title": "Opslagtemperatuur",
+            "content": "<p>-30°C ~ +60°C<\/p>"
+          }
+        },
+        "card_YqUatG": {
+          "type": "card",
+          "settings": {
+            "title": "Opslagvochtigheid",
+            "content": "<p>≤40% RV (geen condensatie)<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_crUgQQ",
+        "card_TtaVg3",
+        "card_y3BbqN",
+        "card_FntWcj",
+        "card_TqfRGU",
+        "card_f99kRN",
+        "card_QMGCCd",
+        "card_LM8gE4",
+        "card_tQYwbk",
+        "card_YqUatG"
+      ],
+      "name": "meter特色表格",
+      "settings": {
+        "title": "",
+        "column_title": "Hardwareparameters"
+      }
+    },
+    "meter_parameter_table_dLMNyp": {
+      "type": "meter-parameter-table",
+      "blocks": {
+        "card_aH8kBR": {
+          "type": "card",
+          "settings": {
+            "title": "Aantal verbindingen",
+            "content": "<p>Eén P1 meter<\/p>"
+          }
+        },
+        "card_G7AQtF": {
+          "type": "card",
+          "settings": {
+            "title": "Seriële communicatiesnelheid",
+            "content": "<p>Standaard: 115200bps (configureerbaar)<\/p>"
+          }
+        },
+        "card_9GyxjJ": {
+          "type": "card",
+          "settings": {
+            "title": "Data-overdrachtsinterval",
+            "content": "<p>Standaard: 5 minuten (60-600s configureerbaar)<\/p>"
+          }
+        },
+        "card_8CeGAk": {
+          "type": "card",
+          "settings": {
+            "title": "Firmware-upgrade",
+            "content": "<p>Afstandsupgrade\/Lokale upgrade<\/p>"
+          }
+        },
+        "card_MaBc8D": {
+          "type": "card",
+          "settings": {
+            "title": "Gebruik configuratie",
+            "content": "<p>APP\/Webpagina<\/p>"
+          }
+        },
+        "card_Dhx67m": {
+          "type": "card",
+          "settings": {
+            "title": "Software watchdog",
+            "content": "<p>√<\/p>"
+          }
+        },
+        "card_7TXjWT": {
+          "type": "card",
+          "settings": {
+            "title": "Overig",
+            "content": "<p>Echt-tijd controle<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_aH8kBR",
+        "card_G7AQtF",
+        "card_9GyxjJ",
+        "card_8CeGAk",
+        "card_MaBc8D",
+        "card_Dhx67m",
+        "card_7TXjWT"
+      ],
+      "name": "meter特色表格",
+      "settings": {
+        "title": "",
+        "column_title": "Softwareparameters"
+      }
+    },
+    "rich_text_FxaXee": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Ghc9Ft": {
+          "type": "heading",
+          "settings": {
+            "heading": "Werkt met uw Slimme Meter",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_EC8Frm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>De P1 Meter Reader klik in de P1-poort van uw slimme meter en toont u het elektriciteits- en gasverbruik van uw huis. De P1 Meter Reader is compatibel met de meeste moderne meters in Europa, en bij moderne slimme meters hebt u zelfs geen voedingsadapter nodig! Steek hem in, maak verbinding met Wi-Fi en u bent klaar. Controleer of mijn slimme meter compatibel is? om er zeker van te zijn dat deze compatibel is.<\/p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Ghc9Ft",
+        "text_EC8Frm"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "service_info_ETabEi": {
+      "type": "service-info",
+      "name": "服务信息",
+      "settings": {
+        "title": "",
+        "image_pc": "shopify:\/\/shop_images\/meter-img1.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/meter-img-mobile1.jpg",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "rich_text_Na6fBk": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_X4ez3G": {
+          "type": "heading",
+          "settings": {
+            "heading": "Bekijk Live of Ga Terug in de Tijd",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_XtyPYC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Met de app weet je precies wat er gebeurt, of je kunt terug in de tijd gaan.<\/p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_X4ez3G",
+        "text_XtyPYC"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "service_info_eywpfb": {
+      "type": "service-info",
+      "name": "服务信息",
+      "settings": {
+        "title": "",
+        "image_pc": "shopify:\/\/shop_images\/meter-img2.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/meter-img-mobile2.jpg",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "meter_parameter_G3taNk",
+    "meter_parameter_table_4aNGgG",
+    "meter_parameter_table_NkrAYR",
+    "meter_parameter_table_dLMNyp",
+    "rich_text_FxaXee",
+    "service_info_ETabEi",
+    "rich_text_Na6fBk",
+    "service_info_eywpfb"
+  ]
+}

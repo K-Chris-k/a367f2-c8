@@ -1,0 +1,839 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_overlay_7NqLRV": {
+      "type": "image-with-text-overlay",
+      "custom_css": [
+        "@media (max-width: 768px) {.image-with-text-overlay, .media-wrapper {} .content-overlay--middle-center {justify-content: start; }}"
+      ],
+      "name": "t:sections.image-with-text-overlay.name",
+      "settings": {
+        "container": "full",
+        "image": "shopify://shop_images/KV_91fa5100-a897-4eec-9fa2-8134bdb3f0bf.png",
+        "desktop_height": "extra-medium",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-center",
+        "content_alignment": "center",
+        "image_mobile": "shopify://shop_images/KV_1f7b128e-b53e-4577-b0bc-fe70fb573ccf.png",
+        "mobile_height": "extra-large",
+        "padding_top": 0,
+        "padding_bottom": 50
+      }
+    },
+    "rich_text_6PT8cM": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_VyFjhD": {
+          "type": "heading",
+          "settings": {
+            "heading": "Sparplan",
+            "heading_mobile": "",
+            "heading_size": "hd1",
+            "heading_highlight_style": "none"
+          }
+        },
+        "subheading_CqKPH9": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Balkonkraftwerk ohne Speicher",
+            "heading_size": "hd2"
+          }
+        },
+        "text_cCDa46": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Da das Balkonkraftwerk kein Speichersystem hat, kann es nachts nicht betrieben werden, wodurch durchschnittlich60 % der erzeugten Energie verloren gehen</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_VyFjhD",
+        "subheading_CqKPH9",
+        "text_cCDa46"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top_inner": 0,
+        "padding_bottom_inner": 0,
+        "padding_top": 120,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "image_with_text_KQtK6h": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_jNhX9K": {
+          "type": "heading",
+          "settings": {
+            "heading": "Solarmodule+PV-Wechselrichter",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_yiEhda": {
+          "type": "text",
+          "settings": {
+            "text": "<p><br/>60% der energie werden verschwendet<br/><br/></p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_jNhX9K",
+        "text_yiEhda"
+      ],
+      "custom_css": [
+        "@media (min-width: 760px) {.rich-text {padding-left: 70px; }}",
+        "@media (max-width: 760px) {.rich-text {padding-left: 20px; padding-right: 20px; }}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "scheme-1",
+        "custom_background": "#f1f1f1",
+        "image": "shopify://shop_images/jetztkaufenundsparen-img2.png",
+        "image_height": "adapt",
+        "layout": "text_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": false,
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_aFqRMD": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Rkerpf": {
+          "type": "heading",
+          "settings": {
+            "heading": "Balkonkraftwerk mit Speicher",
+            "heading_mobile": "",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_erNBc3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Das Balkonkraftwerk mit Speicher kann überschüssige Sonnenenergie tagsüber speichern, um sie abends zu nutzen.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Rkerpf",
+        "text_erNBc3"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top_inner": 0,
+        "padding_bottom_inner": 0,
+        "padding_top": 120,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "image_with_text_zrp9Pi": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_wfRgQ9": {
+          "type": "heading",
+          "settings": {
+            "heading": "Mehr Energie Sparen",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_UyeW94": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Mit einem <a href=\"/products/bk1600-balkonkraftwerk-mit-speicher\" title=\"Indevolt BK1600 Balkonkraftwerk mit Speicher\">Balkonkraftwerk mit Speicher </a>kannst du durch die Einspeisung ins Netz jährlich bis zu 406 € für die Versorgung deines Hauses sparen. </p>",
+            "text_size": "text-lg"
+          }
+        },
+        "logo_img_QXXB3Y": {
+          "type": "logo_img",
+          "settings": {
+            "logo_img": "shopify://shop_images/jetztkaufenundsparen-simg1.png",
+            "mobile_logo_img": "shopify://shop_images/jetztkaufenundsparen-simg1.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_wfRgQ9",
+        "text_UyeW94",
+        "logo_img_QXXB3Y"
+      ],
+      "custom_css": [
+        "a {text-decoration: none; color: #3250c3;}",
+        "@media (min-width: 760px) {.rich-text {padding-right: 70px; }}",
+        "@media (max-width: 760px) {.rich-text {padding-left: 20px; padding-right: 20px; }}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#f1f1f1",
+        "image": "shopify://shop_images/jetztkaufenundsparen-img3.png",
+        "image_height": "adapt",
+        "layout": "image_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": false,
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_with_text_mwHhHT": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_rJwH9Y": {
+          "type": "heading",
+          "settings": {
+            "heading": "Intelligentes Steuerungssystem",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_6M7pQh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Mit unserem intelligenten Stromverteilungssystem kannst du Energieverschwendung vermeiden und Energiekosten senken. Es analysiert deinen Verbrauch und optimiert die Stromverteilung in deinem Zuhause.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "logo_img_CdH6tb": {
+          "type": "logo_img",
+          "settings": {
+            "logo_img": "shopify://shop_images/intelligente-img1.png",
+            "mobile_logo_img": "shopify://shop_images/intelligente-img1-mob.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_rJwH9Y",
+        "text_6M7pQh",
+        "logo_img_CdH6tb"
+      ],
+      "custom_css": [
+        "@media (min-width: 760px) {.rich-text {padding-left: 70px; }}",
+        "@media (max-width: 760px) {.rich-text {padding-left: 20px; padding-right: 20px; }}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#f1f1f1",
+        "image": "shopify://shop_images/jetztkaufenundsparen-img4.png",
+        "image_height": "adapt",
+        "layout": "text_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": false,
+        "mobile_content_alignment": "left",
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_KwwEjJ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_DtCNPY": {
+          "type": "heading",
+          "settings": {
+            "heading": "Nutze Indevolt <span>|</span> Spare Mehr",
+            "heading_mobile": "Nutze Indevolt  Spare Mehr",
+            "heading_size": "hd1",
+            "heading_highlight_style": "none"
+          }
+        },
+        "subheading_djYe7f": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Dein Geld steigt deutlich",
+            "heading_size": "hd2"
+          }
+        },
+        "text_7hLRbU": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Keine Verschwendung mehr! Mit diesem Balkonkraftwerk mit Speicher verbesserst du die Effizienz deiner Solarenergie und reduzierst den Stromverbrauch aus dem Netz. Deine Eigenverbrauchsquote steigt von 40 % auf 97 %. Deine Ersparnisse erhöhen sich von 167 € auf 406 €</p>",
+            "text_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "heading_DtCNPY",
+        "subheading_djYe7f",
+        "text_7hLRbU"
+      ],
+      "custom_css": [
+        ".mobile-text span {display: none;}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top_inner": 0,
+        "padding_bottom_inner": 0,
+        "padding_top": 120,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "rich_text_image_list_qfNExP": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "image_3jgnkj": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/406-img1.png",
+            "mobile_image": "shopify://shop_images/406-img1-mob.png"
+          }
+        },
+        "image_fNxDXn": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/406-img2.png",
+            "mobile_image": "shopify://shop_images/406-img2-mob.png"
+          }
+        }
+      },
+      "block_order": [
+        "image_3jgnkj",
+        "image_fNxDXn"
+      ],
+      "name": "富文本+图片+视频",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "ids": "",
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "image_top": 60,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "rich_text_xzPnXr": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_pwL8hK": {
+          "type": "heading",
+          "settings": {
+            "heading": "Maximale Kosteneinsparungen",
+            "heading_mobile": "",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_XWVqak": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Nutze die Indevolt-App, um Solarenergie optimal zu nutzen und mit dem Stromnetz sowie der gespeicherten Energie maximal zu sparen.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "button_e4XctK": {
+          "type": "button",
+          "settings": {
+            "button_label": "Über KI-Energiemanagement informieren >",
+            "button_link": "https://blog.indevolt.com/ki-energiemanagement-lassen-sie-intelligente-systeme-ihre-stromkosten-senken/",
+            "button_style": "btn--underline",
+            "button_target": "_blank"
+          }
+        }
+      },
+      "block_order": [
+        "heading_pwL8hK",
+        "text_XWVqak",
+        "button_e4XctK"
+      ],
+      "custom_css": [],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top_inner": 0,
+        "padding_bottom_inner": 0,
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "product_two_bimage_RTTidP": {
+      "type": "product-two-bimage",
+      "blocks": {
+        "featured_collection_ajxgyY": {
+          "type": "featured_collection",
+          "settings": {
+            "image": "shopify://shop_images/left.png",
+            "mobile_image": "shopify://shop_images/balkonkraftwerk-app-1-mob.png",
+            "title": "",
+            "description": "",
+            "button_title": "",
+            "button_link": ""
+          }
+        },
+        "featured_collection_4rNjV9": {
+          "type": "featured_collection",
+          "settings": {
+            "image": "shopify://shop_images/right.png",
+            "mobile_image": "shopify://shop_images/balkonkraftwerk-app-2-mob.png",
+            "title": "",
+            "description": "",
+            "button_title": "",
+            "button_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_ajxgyY",
+        "featured_collection_4rNjV9"
+      ],
+      "name": "产品两个放大图片",
+      "settings": {
+        "section_title": "我们的特色分区",
+        "content_top": "auto",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "collapsible_tabs_HpCtD8": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "collapsible_item_4K77c7": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Bayern",
+            "content": "<ul><li><strong>Bubenreuth:</strong> 25% der Anschaffungskosten, maximal 250 Euro bis zu 600 Watt</li><li><strong>Buckenhof:</strong> 50 Euro pro 100 Watt-Peak, maximal 150 Euro</li><li><strong>Diessen:</strong> 100 Euro pro Haushalt, bis zu 600 Watt</li><li><strong>Erlangen:</strong> 50 Euro pro 100 Watt-Peak, maximal 300 Euro (bis zu 600 Watt)</li><li><strong>Forchheim:</strong> 100 Euro (brutto) pro angefangenem kWp, maximal 400 Euro (brutto) pro Gebäude/Wohneinheit bis zu 3,9 kWp</li><li><strong>Fürth:</strong> Bis zu 160 Euro (110 Euro für die Einrichtung eines Zweirichtungszählers, 50 Euro für die Anschaffungskosten einer steckerfertigen PV-Anlage für Stromkunden der infra)</li><li><strong>Großenseebach:</strong> 50 Euro pro Wohneinheit, bis zu 600 Watt</li><li><strong>Günzburg:</strong> Pauschal 100 Euro pro Anlage</li><li><strong>Höchstadt:</strong> 50 Euro pro Anlage und Wohneinheit, bis zu 600 Watt</li><li><strong>Ingolstadt:</strong> 200 Euro pro Anlage, mindestens 300 Watt bis 600 Watt</li><li><strong>Marolffstein:</strong> 50 Euro pro 100 Wp, maximal 200 Euro pro Antragsteller/in</li><li><strong>München:</strong> 0,4 Euro je Wp, bis zu 600 Wp je Wohneinheit, jedoch maximal 50% der förderfähigen Investitionskosten, bis zu 600 Watt</li><li><strong>Moosburg:</strong> 50% der Nettoanschaffungskosten, maximal 200 Euro pro Anlage</li><li><strong>Peiting:</strong> 120 Euro pro Anlage, bis zu 600 Watt</li><li><strong>Poing:</strong> 25% der Anschaffungskosten, jedoch maximal 250 Euro</li><li><strong>Spardorf:</strong> 50 Euro pro 100 Watt-Peak, maximal 200 Euro</li><li><strong>Unterschleißheim:</strong> 25% der Anschaffungskosten, maximal 200 Euro, bis zu 600 Watt</li><li><strong>Vilseck:</strong> 100 Euro / 300 Watt; 150 Euro / 600 Watt</li><li><strong>Weilheim in Oberbayern:</strong> 25% der Brutto-Anschaffungskosten, maximal 200 Euro, bis zu 600 Watt</li><li><strong>Würzburg:</strong> 25% der Brutto-Anschaffungskosten, maximal 200 Euro, bis zu 600 Watt </li></ul>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_CxUgLH": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Berlin",
+            "content": "<p>Höchstens 500 Euro pro PV Balkonkraftwerk pro Wohnung (maximal 14.000 Fälle)Der Berliner Senat hat im Doppelhaushalt 2022-2023 das Budget für das \"SolarPlus\" Förderprogramm für PV Balkonkraftwerke erheblich erhöht, von 2,4 Millionen Euro im Jahr 2022 auf 23,7 Millionen Euro im Jahr 2023, wobei 7 Millionen Euro für neue PV-Förderungen vorgesehen sind. Die konkrete Politik wurde offiziell am 10. Februar 2023 gestartet. Hauptmieter in Berlin können online beim IBB-Geschäftsteam (IBT) einen Zuschuss von bis zu 500 Euro für den Kauf eines Balkon-Solarsystems beantragen. Ursprünglich profitierten nur Mieter von dem Programm, mittlerweile wurde es jedoch auf Ein- und Zweifamilienhäuser, Reihenhäuser und Gartenanlagen erweitert. Die Senatsregierung erwartet, dass die erweiterte \"SolarPlus\" Initiative in den nächsten Monaten 14.000 Anträge erhalten wird.<br/><br/></p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_hz6rC7": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Baden-Württemberg",
+            "content": "<ul><li><strong>Bühl:</strong> 300 Euro pro PV Balkonkraftwerk bis zu 600 Watt</li><li><strong>Freiburg:</strong> Pauschal 200 Euro</li><li><strong>Friedrichshafen:</strong> 300 Euro pro Haushalt mit mindestens 300 Watt</li><li><strong>Friolzheim:</strong> 100 Euro pro Haushalt bis zu 600 Watt Höchstleistung</li><li><strong>Heidelberg:</strong> Bis zu 750 Euro - Heidelberger-Pass(+)-Inhaber: Möglicherweise fast vollständige Deckung der Kosten für das Balkonmodul, nur ein Eigenanteil von 50 Euro, bis zu 600 Watt</li><li><strong>Kornwestheim:</strong> 200 Euro pro Haushalt bis zu 600 Watt</li><li><strong>Lörrach:</strong> Pauschal 200 Euro pro Haushalt bis zu 600 Watt Höchstleistung</li><li><strong>Ludwigsburg:</strong> Maximal 300 Euro, für LudwigsburgCard-Inhaber bis zu 800 Euro</li><li><strong>Neubulach:</strong> 300 Watt-Peak-Anlage / 50 Euro // 600 Watt-Peak-Anlagen / 100 Euro</li><li><strong>Schwaikheim:</strong> 200 Euro pro Haushalt</li><li><strong>Stuttgart:</strong> Pauschal 100 Euro pro PV Balkonkraftwerk</li><li><strong>Ulm:</strong> 250 Euro pro Wohneinheit bis zu 600 Watt</li><li><strong>Weinheim:</strong> 50 Euro pro Modul, maximal 2 Module (maximale Gesamtleistung 600 Watt)</li></ul>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_BGrdjL": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Hessen",
+            "content": "<ul><li><strong>Darmstadt:</strong> Pauschal 200 Euro für ein Standard-Modul (300 Watt), 400 Euro pauschal für zwei Standard-Module (2x 300 Watt), maximal 50% der Anschaffungs- und Installationskosten</li><li><strong>Lampertheim:</strong> 60% Zuschuss, maximal 500 Euro</li><li><strong>Marburg-Biedenkopf:</strong> 100 Euro pro PV Balkonkraftwerk, bis zu 600 Watt</li><li><strong>Mörfelden-Walldorf:</strong> 200 Euro Zuschuss</li><li><strong>Main-Taunus-Kreis:</strong> Pauschal 100 Euro pro Wohnung, bis zu 600 Watt</li><li><strong>Nidda:</strong> 200 Euro, maximal 30% der Anschaffungskosten pro Haushalt, es können 1-2 Anlagen finanziert werden, bis zu 600 Watt</li><li><strong>Wiesbaden:</strong> Zwischen 3,0 kW und 6,0 kW, 300 Euro - 400 Euro</li></ul>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_P89yiw": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Mecklenburg-Vorpommern",
+            "content": "<p>Maximal 500 Euro pro PV Balkonkraftwerk pro Haushalt<br/><br/></p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_83YDWC": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Niedersachsen",
+            "content": "<ul><li><strong>Braunschweig:</strong> Bis 400 Watt 250 Euro / Bis 600 Watt 400 Euro</li><li><strong>Friesoythe:</strong> 200 Euro pro Haushalt, bis zu 600 Watt</li><li><strong>Göttingen:</strong> Pauschal 180 Euro pro PV Balkonkraftwerk</li><li><strong>Jever:</strong> 120 Euro pro Anlage, maximal 2 Anlagen pro Antragsteller werden gefördert</li><li><strong>Lüneburg:</strong> 150 Euro + 30% der Investitionskosten pro PV Balkonkraftwerk</li></ul>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_eaDmQj": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Nordrhein-Westfalen",
+            "content": "<ul><li><strong>Aachen:</strong> Pauschal 300 Euro, 150 - 600 Volt-Ampere</li><li><strong>Ahaus:</strong> 50% der förderfähigen Kosten, maximal 200 Euro, bis zu 600 Watt</li><li><strong>Bönen:</strong> 100 Euro pro Wohneinheit</li><li><strong>Bonn:</strong> 50 Euro für 1 Modul, 100 Euro für 2 Module, bis zu 600 Watt</li><li><strong>Borgentreich:</strong> Pauschal 100 Euro pro Anlage (pro Haushalt)</li><li><strong>Bottrop:</strong> 100 Euro pro Haushalt, bis zu 600 Watt</li><li><strong>Castrop-Rauxel:</strong> 100 Euro je Wohnung</li><li><strong>Düsseldorf:</strong> 50% der förderfähigen Kosten, maximal 400 Euro, bis zu 600 Watt</li><li><strong>Freudenberg:</strong> 150 Euro pro Anlage</li><li><strong>Fröndenberg:</strong> 100 Euro pro Modul, maximal 200 Euro, bis zu 600 Watt-Peak</li><li><strong>Gelsenkirchen:</strong> Pauschal 100 Euro, bis zu 600 Watt</li><li><strong>Gladbeck:</strong> 150 Euro pro Haushalt</li><li><strong>Gronau:</strong> 250 Euro pro Modul, maximal 2 Module, maximal 60% der Anschaffungskosten, bis zu 600 Watt</li><li><strong>Halver:</strong> 100 Euro pro Anlage pro Haushalt, bis zu 600 Watt</li><li><strong>Hamm:</strong> Pauschal 200 Euro pro Anlage, bis zu 600 Watt</li><li><strong>Hiddenhausen:</strong> Steckerfertige Stromerzeugungsmodule (150 Euro pauschal), Steckerfertige Stromerzeugungsmodule mit Speicher (300 Euro pauschal), bis zu 600 Watt</li><li><strong>Kamp-Lintfort:</strong> 100 Euro pro Wohnung, bis zu 600 Watt</li><li><strong>Kirchlengern:</strong> 300 Euro pro Anlage, bis zu 600 Volt-Ampere</li><li><strong>Köln:</strong> 200 Euro pro Anlage, bis zu 600 Watt</li><li><strong>Löhne:</strong> 150 Euro pro Haushalt, bis zu 600 Watt</li><li><strong>Langenfeld:</strong> 200 Euro pro Anlage, bis zu 600 Watt</li><li><strong>Lüdenscheid:</strong> 500 Euro pro Anlage, bis zu 600 Watt</li><li><strong>Oberhausen:</strong> 100 Euro je Wohnung, bis zu 600 Watt</li><li><strong>Oelde:</strong> 30% des Anschaffungspreises inklusive Mehrwertsteuer, maximal 200 Euro</li><li><strong>Olsberg:</strong> Pauschal 200 Euro pro Anlage, bis zu 600 Watt</li><li><strong>Rheinberg:</strong> 100 Euro je Wohnung, bis zu 600 Watt</li><li><strong>Rheinisch-Bergischer-Kreis:</strong> Photovoltaikanlagen mit einem Gesamtpreis unter 10.000 Euro (z. B. Steckersolaranlagen) werden mit 10 Prozent der förderfähigen Ausgaben gefördert</li><li><strong>Rietberg:</strong> 80 Euro pro Solarmodul, maximal 2 Module pro Haushalt</li><li><strong>Solingen:</strong> 300 Euro pro Solaranlage bzw. 150 Euro pro Modul</li><li><strong>Troisdorf:</strong> 150 Euro pro Anlage, bis zu 600 Watt</li><li><strong>Voerde am Niederrhein:</strong> 100 Euro je Wohnung, bis zu 600 Watt</li><li><strong>Wesel:</strong> 50% der nachgewiesenen Kosten, maximal 200 Euro, bis zu 600 Watt</li><li><strong>Winterberg:</strong> 250 Euro pro Anlage pro Haushalt, bis zu 600 Watt</li><li><strong>Wickede (Ruhr):</strong> Steckerfertige Stromerzeugungsmodule (150 Euro pauschal), Steckerfertige Stromerzeugungsmodule mit Speicher (300 Euro pauschal)</li><li><strong>Willich:</strong> 250 Euro pro Wohneinheit, 0,4 - 0,6 kWh</li></ul>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_mawqVi": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Rheinland-Pfalz",
+            "content": "<ul><li><strong>Koblenz:</strong> 70 Euro pro Modul (maximal 2 Module)</li><li><strong>Pirmasens:</strong> 75 Euro für Anlagen bis zu maximal 325 Watt; 150 Euro für Anlagen bis zu 600 Watt</li><li><strong>Urmitz:</strong> 100 Euro pro Modul, maximal 200 Euro, bis zu 600 Watt</li></ul>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_9GLjXM": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Sachsen",
+            "content": "<p>Festbetrag von 300 Euro als Zuschuss</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_6YaMMK": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Schleswig-Holstein",
+            "content": "<ul><li><strong>Kiel:</strong> Pauschal 100 Euro pro PV Balkonkraftwerk</li><li><strong>Lübeck:</strong> 200 Euro pro Haushalt, bis zu 600 Watt</li><li>Schleswig-Holstein war im Jahr 2020 das erste Bundesland, das die Förderung von PV Balkonkraftwerken eingeführt hat. Im Januar 2023 hat die Landesregierung das Förderprogramm erneut gestartet. Dabei werden Stecker-Solargeräte in Schleswig-Holstein mit einem Zuschuss von 200 Euro gefördert. Das Budget für die Förderung beträgt insgesamt 75 Millionen Euro. Seit dem 31. März 2023 werden im Bundesland wieder Anträge für Balkonkraftwerke angenommen.</li></ul>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_YH7F9X": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Thüringen",
+            "content": "<p>Thüringen unterstützt derzeit den Kauf und die Installation von PV Balkonkraftwerken in Jena durch ein spezielles Förderprogramm. Je nach Einkommen werden Zuschüsse von 200 bis 600 Euro gewährt. In Jena können berechtigte Personen sogar bis zu 600 Euro erhalten (JENABONUS-Berechtigte).</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_jwUBRM": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Anderen Staaten",
+            "content": "<p>In Brandenburg, Bremen, Hamburg, Saarland und Sachsen-Anhalt haben wir bisher keine Subventionen für Balkon-Solarkraftwerke gefunden. Unser Ratschlag: Es ist ratsam, vor dem Kauf eine kurze Internetrecherche durchzuführen, um herauszufinden, ob es in Ihrer Stadt oder Gemeinde einen Förderfonds gibt. Oftmals ist es dann notwendig, schnell zu handeln: Das Interesse an Mini-Solaranlagen und den damit verbundenen Zuschüssen ist enorm, und entsprechend schnell sind die Fördermittel aufgebraucht</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_item_4K77c7",
+        "collapsible_item_CxUgLH",
+        "collapsible_item_hz6rC7",
+        "collapsible_item_BGrdjL",
+        "collapsible_item_P89yiw",
+        "collapsible_item_83YDWC",
+        "collapsible_item_eaDmQj",
+        "collapsible_item_mawqVi",
+        "collapsible_item_9GLjXM",
+        "collapsible_item_6YaMMK",
+        "collapsible_item_YH7F9X",
+        "collapsible_item_jwUBRM"
+      ],
+      "name": "t:sections.collapsible-tabs.presets.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "ids": "",
+        "header_layout": "vertical",
+        "heading": "Informiere dich über die Fördermöglichkeiten in deinem Bundesland",
+        "heading_size": "hd2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "item_style": "standard",
+        "item_color_scheme": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h4",
+        "item_icon_size": "extra-large",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "product_collection_7f9xXb": {
+      "type": "product-collection",
+      "blocks": {
+        "card_XkdcXz": {
+          "type": "card",
+          "settings": {
+            "product_item": "bk1600-balkonkraftwerk-mit-speicher",
+            "custom_image": "shopify://shop_images/home-produk-1.png",
+            "mobile_image": "shopify://shop_images/home-produk-1-mob.png",
+            "custom_title": "BK1600",
+            "custom_describe": "2*445W Bifaziale Solarpanel",
+            "price": "599,00 €",
+            "original": "1.328,00 €",
+            "button_text": "Mehr erfahren",
+            "button_link": "/products/bk1600-balkonkraftwerk-mit-speicher?variant=43351637491811"
+          }
+        },
+        "card_8nnA4a": {
+          "type": "card",
+          "settings": {
+            "product_item": "bk1600-ultra-balkonkraftwerk-mit-speicher",
+            "custom_image": "shopify://shop_images/BK1600Ultra-BK1600-440.png",
+            "mobile_image": "shopify://shop_images/BK1600Ultra-BK1600-440.png",
+            "custom_title": "BK1600 Ultra + BK1600",
+            "custom_describe": "4*445W Bifaziale Solarpanel",
+            "price": "1.547,00 €",
+            "original": "2.747,00 €",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/bk1600-ultra-balkonkraftwerk-mit-speicher?variant=43685501436003"
+          }
+        },
+        "card_4jFQbL": {
+          "type": "card",
+          "settings": {
+            "product_item": "indevolt-flexibles-solarpanel",
+            "custom_image": "shopify://shop_images/home-produk-3.png",
+            "mobile_image": "shopify://shop_images/home-produk-3-mob.png",
+            "custom_title": "SolidFlex 2000 + SFA1800",
+            "custom_describe": "4*445W Bifaziale Solarpanel",
+            "price": "1.699,00 €",
+            "original": "2.447,00 €",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/solidflex-2000-balkonkraftwerk-mit-speicher?variant=43685622087779"
+          }
+        },
+        "card_FQAcNi": {
+          "type": "card",
+          "settings": {
+            "product_item": "indevolt-860w-solarpanels-430w-2er-pack",
+            "custom_image": "shopify://shop_images/home_produck_bk1600ultra_img1.png",
+            "mobile_image": "shopify://shop_images/home_produck_bk1600ultra_img1.png",
+            "custom_title": "BK1600 Ultra + 800W Mikrowechselrichter",
+            "custom_describe": "4*445W Bifaziale Solarpanel",
+            "price": "1.199,00 €",
+            "original": "1.599,00 €",
+            "button_text": "Mehr erfahren",
+            "button_link": "/products/indevolt-bk1600-ultra-kombination"
+          }
+        }
+      },
+      "block_order": [
+        "card_XkdcXz",
+        "card_8nnA4a",
+        "card_4jFQbL",
+        "card_FQAcNi"
+      ],
+      "name": "产品推荐",
+      "settings": {
+        "title": "Produktempfehlung"
+      }
+    },
+    "rich_text_image_list_aLVtba": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_hFDfVg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Installation und Stromkostensenkung",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_Be7B9X": {
+          "type": "text",
+          "settings": {
+            "text": "<p>durch Solarenergiespeicher</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "image_p3UdHP": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/jetztkaufenundsparen-img7.jpg",
+            "mobile_image": "shopify://shop_images/jetztkaufenundsparen-mobile-img7.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_hFDfVg",
+        "text_Be7B9X",
+        "image_p3UdHP"
+      ],
+      "name": "富文本+图片+视频",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "ids": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "image_top": 60,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "collapsible_tabs_h3pcja": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "collapsible_item_DFgcxk": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann man wirklich Geld sparen, indem man Solarenergie nutzt?",
+            "content": "<p>Ja. Eine Investition in Solarenergie stellt heutzutage eine überaus sinnvolle Maßnahme dar. Dank technologischer Fortschritte und staatlicher Subventionen sind die Kosten für Solarmodule und Solarstromspeicher kontinuierlich gesunken, während ihre Effizienz deutlich gesteigert werden konnte. Durch die signifikante Reduzierung oder gar vollständige Eliminierung Ihrer Stromrechnung amortisiert sich Ihre Investition in absehbarer Zeit, und der selbst erzeugte Strom steht Ihnen anschließend kostenfrei zur Verfügung.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_XBpDLA": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wie viele Jahre dauert es, um mit der Nutzung von Solarenergiespeichern die Kosten zu decken?",
+            "content": "<p>Durch den Umstieg auf Solarenergie reduzierst oder eliminierst Du Deine Stromkosten und sparst sofort. Die Zeit, bis sich Deine Investition auszahlt, hängt vom Solarsystem ab, das Du Dir aussuchst. Staatliche Förderungen und die Entwicklung der Photovoltaik machen erneuerbare Energien auch für Dich wirtschaftlich interessant.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_kfGYtP": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wie viel Geld kann ich mit Indevolt PV Anlage mit Speicher sparen?",
+            "content": "<p>Deine Ersparnisse hängen von deiner anfänglichen Nettoinvestition, deinen aktuellen Stromkosten und der Menge an Kilowattstunden ab, die du mit Solarenergie erzeugst. Mit dem BK1600 kannst du bis zu 406 Euro pro Jahr sparen.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_item_DFgcxk",
+        "collapsible_item_XBpDLA",
+        "collapsible_item_kfGYtP"
+      ],
+      "name": "t:sections.collapsible-tabs.presets.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "ids": "",
+        "header_layout": "vertical",
+        "heading": "FAQ",
+        "heading_size": "hd2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "item_style": "standard",
+        "item_color_scheme": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h4",
+        "item_icon_size": "extra-large",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_7NqLRV",
+    "rich_text_6PT8cM",
+    "image_with_text_KQtK6h",
+    "rich_text_aFqRMD",
+    "image_with_text_zrp9Pi",
+    "image_with_text_mwHhHT",
+    "rich_text_KwwEjJ",
+    "rich_text_image_list_qfNExP",
+    "rich_text_xzPnXr",
+    "product_two_bimage_RTTidP",
+    "collapsible_tabs_HpCtD8",
+    "product_collection_7f9xXb",
+    "rich_text_image_list_aLVtba",
+    "collapsible_tabs_h3pcja"
+  ]
+}

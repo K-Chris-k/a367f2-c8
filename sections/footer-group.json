@@ -1,0 +1,136 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "newsletter_YHJwhz": {
+      "type": "newsletter",
+      "custom_css": [],
+      "name": "t:sections.newsletter.presets.name",
+      "settings": {
+        "color_scheme": "scheme-inverse",
+        "layout": "vertical",
+        "heading": "50€ Rabatt sichern",
+        "heading_size": "h2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "<p>Newsletter abonnieren und 50€ sparen (ab 500€ Einkauf)</p>",
+        "text_size": "text-base",
+        "alignment": "center",
+        "design": "design-1",
+        "form_width": 500,
+        "newsletter_term": "<p>Ich stimme dem Inhalt der <a href=\"/pages/privacy-policy\" title=\"privacy-policy\">Datenschutzrichtlinie</a> zu.</p>",
+        "newsletter_term_size": "text-base",
+        "button_style": "btn--primary",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "menu_DEKGYP": {
+          "type": "menu",
+          "settings": {
+            "block_width": 25,
+            "heading": "Produkte",
+            "heading_size": "h4",
+            "menu": "foooter-produkte",
+            "menu_2": "",
+            "open_default": false,
+            "show_divider": false
+          }
+        },
+        "menu_4eCrBB": {
+          "type": "menu",
+          "settings": {
+            "block_width": 25,
+            "heading": "Support",
+            "heading_size": "h4",
+            "menu": "footer-support",
+            "menu_2": "footer-vorteile",
+            "open_default": false,
+            "show_divider": false
+          }
+        },
+        "menu_4HwJkC": {
+          "type": "menu",
+          "settings": {
+            "block_width": 25,
+            "heading": "Unternehmen",
+            "heading_size": "h4",
+            "menu": "footer-unternehmen",
+            "menu_2": "",
+            "open_default": false,
+            "show_divider": false
+          }
+        },
+        "image_text_F3FNhx": {
+          "type": "image_text",
+          "settings": {
+            "block_width": 25,
+            "heading": "Power Genius GmbH",
+            "heading_size": "h4",
+            "image_width": 150,
+            "text": "<p><a href=\"mailto:service@indevolt.com\" title=\"mailto:service@indevolt.com\">Email: service@indevolt.com</a></p>",
+            "button_label": "",
+            "button_link": "",
+            "open_default": false,
+            "show_divider": false
+          }
+        },
+        "newsletter_3qCrWc": {
+          "type": "newsletter",
+          "disabled": true,
+          "settings": {
+            "block_width": 25,
+            "heading": "20€ Rabatt sichern",
+            "heading_size": "h2",
+            "newsletter_description": "<p>Jetzt anmelden und 20€ Rabatt sichern.<br/></p>",
+            "newsletter_term": "<p>Ich stimme dem Inhalt der <a href=\"https://de.indevolt.com/policies/privacy-policy\">Datenschutzrichtlinie</a> zu</p>",
+            "newsletter_text_alignment": "left",
+            "form_width": 465,
+            "order_first": true
+          }
+        }
+      },
+      "block_order": [
+        "menu_DEKGYP",
+        "menu_4eCrBB",
+        "menu_4HwJkC",
+        "image_text_F3FNhx",
+        "newsletter_3qCrWc"
+      ],
+      "custom_css": [
+        ".form-control {--color-border: var(--color-field);}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-inverse",
+        "enable_follow_on_shop": false,
+        "show_social": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": true,
+        "image": "shopify://shop_images/footer-paylist.png",
+        "mobile_image": "shopify://shop_images/footer-paylist-mobile.png",
+        "footer_bottom_menu": "footer-bottom",
+        "show_section_divider": true,
+        "divider_width": "full"
+      }
+    }
+  },
+  "order": [
+    "newsletter_YHJwhz",
+    "footer"
+  ]
+}

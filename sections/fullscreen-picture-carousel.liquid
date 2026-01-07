@@ -1,0 +1,355 @@
+<style>
+      #shopify-section-{{ section.id }} {margin-top: {{ section.settings.padding_top }}px;
+      margin-bottom: {{ section.settings.padding_bottom }}px;}
+     .section-fullscreen-picture-carousel h2 {
+       line-height: 56px;
+       font-size: 46px;
+       font-weight: 700;
+       text-align: center;
+       color: #000;
+     }
+     .fullscreen-picture-wrapper {
+       position: relative;
+       margin-top: 60px;
+     }
+     .fullscreen-picture-wrapper .slick-track{gap:0px}
+     .fullscreen-picture-wrapper .slide {
+       padding: 0 8px;
+       box-sizing: border-box;
+       transition: opacity 0.3s ease;
+     }
+
+    .fullscreen-picture-wrapper .slide-inner {
+       border-radius: 8px;
+       position: relative;
+       cursor: pointer;
+     }
+     .fullscreen-picture-wrapper .content{ padding:20px 15px;text-align:center  }
+     .fullscreen-picture-wrapper .content .title{line-height:36px;font-size: 30px;}
+     .fullscreen-picture-wrapper .content .caption{margin-top:17px;line-height:17px;font-size: 14px;}
+     .slide-img {
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       display: block;
+     }
+
+     .partial-view-slider .slick-slide {
+       opacity: 0.6;
+       transition: opacity 0.3s ease;
+     }
+     .partial-view-slider .slick-slide.slick-active {
+       opacity: 1;
+     }
+     .carousel-controls {
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       margin-top: 20px;
+       gap: 20px;
+     }
+     .section-fullscreen-picture-carousel .carousel-arrows {
+       position:relative;
+       display: flex;
+       margin-top:0px;
+       width: 244px;
+       left: 50%;
+       transform: translateX(-50%);
+     }
+     .section-fullscreen-picture-carousel .carousel-arrows button.prev-arrow,
+     .section-fullscreen-picture-carousel .carousel-arrows button.next-arrow{
+       position:absolute;
+       top:0px;
+       background: #fff;
+       border: 1px solid #000;
+       border-radius: 50%;
+       width: 40px;
+       height: 40px;
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       cursor: pointer;
+       transition: all 0.3s ease;
+     }
+     .section-fullscreen-picture-carousel .carousel-arrows button.prev-arrow::after,
+     .section-fullscreen-picture-carousel .carousel-arrows button.next-arrow::after{border-color: #000}
+     .section-fullscreen-picture-carousel .carousel-arrows button.prev-arrow::after{margin-left:0px}
+     /* 圆点样式 */
+     .slick-dots {
+       position: relative;
+       bottom: auto;
+       display: flex;
+       justify-content: center;
+       padding: 0;
+       margin: 0;
+       list-style: none;
+     }
+
+     .slick-dots li {
+       margin: 0 5px;
+     }
+
+     .slick-dots li button {
+       width: 20px;
+       height: 4px;
+       padding: 0;
+       border-radius:4px;
+       background: #d9d9d9;
+       text-indent: -9999px;
+       border: none;
+       cursor: pointer;
+       transition: all 0.3s ease;
+     }
+
+     .slick-dots li.slick-active button {
+       background: #3250C3;
+     }
+     @media (max-width: 768px) {
+       #shopify-section-{{ section.id }}{margin-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+       margin-bottom: {{ section.settings.padding_bottom | divided_by: 2}}px;}
+       .section-fullscreen-picture-carousel h2 {
+         line-height: 34px;
+         font-size: 28px;
+       }
+       .fullscreen-picture-wrapper {
+         margin-top: 22px;
+       }
+
+       .fullscreen-picture-wrapper .slick-track{display:flex;gap:16px;}
+       .fullscreen-picture-wrapper .slide {
+          padding: 0px;
+        }
+       .fullscreen-picture-wrapper .content {
+            line-height: 36px;
+            font-size: 30px;
+        }
+        .fullscreen-picture-wrapper .content .title {
+            line-height: 24px;
+            font-size: 20px;
+        }
+      .fullscreen-picture-wrapper .content .caption{margin-top:10px;line-height: 19px;font-size: 16px;}
+      .fullscreen-picture-wrapper .slick-center .slide {
+          opacity: 1 !important;
+          transform: scale(1.05);
+          transition: transform 0.3s ease;
+        }
+       .partial-view-slider .slick-slide {
+         opacity: 1;
+       }
+      .fullscreen-picture-wrapper .slide-inner {
+       position: relative;
+       {% comment %} width:335px; {% endcomment %}
+       height:240px;
+     }
+      .fullscreen-picture-wrapper .slide-inner img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease
+      }
+     }
+</style>
+{% liquid
+  assign motion_delay = 50
+%}
+<div
+  class="section section--padding  section-fullscreen-picture-carousel"
+>
+  <h2>
+    <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+      <span>{{ section.settings.title }}</span></motion-element
+    >
+  </h2>
+  <div class="fullscreen-picture-wrapper">
+    <div class="partial-view-slider fullscreen-picture-container">
+      {% for block in section.blocks %}
+        <div class="slide">
+          <div class="slide-inner">
+            {% if block.settings.slide_image %}
+              <picture>
+                <!-- 移动端图片 -->
+                <source
+                  media="(max-width: 749px)"
+                  srcset="
+                    {{ block.settings.slide_image_h5 | img_url: '800x' }} 1x,
+                    {{ block.settings.slide_image_h5 | img_url: '1600x' }} 2x
+                  "
+                >
+
+                <!-- 桌面端图片 -->
+                <source
+                  media="(min-width: 750px)"
+                  srcset="
+                    {{ block.settings.slide_image | img_url: '1200x' }} 1x,
+                    {{ block.settings.slide_image | img_url: '2400x' }} 2x
+                  "
+                >
+
+                <!-- 默认图片 -->
+                <img
+                  src="{{ block.settings.slide_image | img_url: '1200x' }}"
+                  alt="{{ block.settings.slide_alt | escape }}"
+                  class="grid-image"
+                  loading="lazy"
+                  width="{{ block.settings.slide_image.width }}"
+                  height="{{ block.settings.slide_image.height }}"
+                >
+              </picture>
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          {% if block.settings.slide_alt != blank %}
+            <div class="content">
+                <h4 class="title">{{ block.settings.slide_alt }}</h4>
+              {% if block.settings.slide_caption != blank %}
+                <div class="caption">{{ block.settings.slide_caption }}</div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- 自定义箭头 -->
+    <div class="carousel-arrows carousel-controls">
+      {% comment %}
+        <button class="prev-arrow">❮</button>
+        <button class="next-arrow">❯</button>
+      {% endcomment %}
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    let $slider = $('.fullscreen-picture-container');
+    $slider.slick({
+      autoplay: false,
+      infinite: false,
+      speed: 300,
+      slidesToShow: 2.5,
+      slidesToScroll: 1,
+      centerMode: false,
+      focusOnSelect: false,
+      variableWidth: false,
+      swipeToSlide: true,
+      draggable: true,
+      dots: true,
+      arrows: false, 
+      appendDots: $('.carousel-controls'), 
+      {% comment %} prevArrow: $('.carousel-controls .prev-arrow'),
+      nextArrow: $('.carousel-controls .next-arrow'), {% endcomment %}
+      // 响应式设置
+      responsive: [
+        {
+      
+          breakpoint: 768,
+          settings: {
+          infinite:true,
+          centerMode: true,         
+          centerPadding: '10%', 
+          variableWidth:true,
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          variableWidth: false
+          },
+        },
+      ],
+    });
+    {% comment %} $('.prev-arrow').click(function () {
+      $slider.slick('slickPrev');
+    });
+
+    $('.next-arrow').click(function () {
+      $slider.slick('slickNext');
+    }); {% endcomment %}
+  });
+</script>
+{% schema %}
+{
+  "name": "fullscreen-pic-carousel",
+  "class": "section-fullscreen-picture-carousel",
+  "max_blocks": 10,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Mehr Optionen bei Verwendung"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "幻灯片",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "slide_image",
+          "label": "幻灯片图片"
+        },
+        {
+          "type": "image_picker",
+          "id": "slide_image_h5",
+          "label": "移动端幻灯片图片"
+        },
+        {
+          "type": "text",
+          "id": "slide_alt",
+          "label": "图片替代文本",
+          "default": "产品展示"
+        },
+        {
+          "type": "richtext",
+          "id": "slide_caption",
+          "label": "图片说明文字",
+          "default": "<p>Your description here</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "全屏二屏半轮播",
+      "category": "自定义产品组件",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

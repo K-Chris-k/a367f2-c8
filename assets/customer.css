@@ -1,0 +1,362 @@
+/* Login/Register */
+.customer {
+  background: #f5f5f5;
+}
+
+.login .section__wrapper,
+.register .section__wrapper,
+.activate .section__wrapper,
+.reset-password .section__wrapper {
+  width: 100%;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+}
+
+.login p,
+.register p,
+.activate p,
+.reset-password p {
+  margin: 2.4rem 0 0;
+}
+
+.customer-box {
+  justify-content: space-between;
+  gap: 112px;
+  background: #ffffff;
+  border-radius: 20px;
+}
+
+.customer-box__image {
+  margin: 29px 0px 91px 0px;
+  min-width: 480px;
+  max-width: 620px
+}
+
+.customer-box__image .image-container {
+  position: relative;
+  min-width: 480px;
+  max-width: 620px
+}
+
+.customer-box__form {
+  min-width: 413px;
+  margin: 126px 135px 134px 0px;
+}
+
+.customer-box__form .form-control {
+  padding-left: 0px;
+  border-top: none !important;
+  border-right: none !important;
+  border-left: none !important;
+  border-radius: 0px;
+  background: transparent;
+}
+
+.customer-box__form .form-control:focus,
+.form-control:focus-visible {
+  box-shadow: none;
+  border-bottom-color: rgb(var(--color-foreground));
+}
+
+.customer-box__form .title {
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 27px;
+  color: #0B0000;
+  margin-bottom: 57px;
+  font-family: Inter;
+}
+
+.customer-box__form .logo-img {
+  margin-bottom: 80px;
+}
+
+.customer-box__form form button.btn--primary {
+  margin-top: 3.8rem;
+  border-radius: 5px;
+}
+
+.customer-box__form form a.btn--secondary {
+  margin-top: 1.6rem;
+  border-radius: 5px;
+}
+
+.login .customer-box__form form .text-subtext {
+  font-size: 12px;
+  line-height: 15px;
+  color: rgba(50, 80, 195, 1);
+  text-transform: inherit;
+}
+.login-goole-fackbook{ margin-top:40px;}
+.h_wizard .h_buttons{margin-top:10px;justify-content: start;}
+@media (max-width: 1250px) {
+  .customer-box {
+    gap: 80px;
+  }
+
+  .customer-box__form {
+    min-width: 380px;
+  }
+
+  .customer-box__image {
+    display: flex;
+    align-items: center;
+  }
+
+  .customer-box__image,
+  .customer-box__image .image-container {
+    min-width: 400px;
+  }
+}
+
+@media (max-width:1023.98px) {
+  .customer-box {
+    flex-direction: column;
+    gap: 0px;
+    padding: 0px;
+  }
+
+  .customer-box__image {
+    min-width: 100%;
+    max-width: 100%;
+    margin: 0px;
+  }
+
+  .customer-box__image .image-container {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  .customer-box__form {
+    min-width: 100%;
+    margin-top: 38px;
+    margin-bottom: 38px;
+    padding: 0px 32px 0px 32px;
+  }
+
+  .login .section__wrapper,
+  .register .section__wrapper,
+  .activate .section__wrapper,
+  .reset-password .section__wrapper {
+    padding: 0px;
+  }
+
+  .customer-box__form .logo-img {
+    margin-bottom: 3.8rem;
+  }
+  .customer-box__form .logo-img img{
+    height:13px;
+  }
+  .customer-box__form .title {
+    margin-bottom: 3.6rem;
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+  }
+
+  .login p,
+  .register p,
+  .activate p,
+  .reset-password p {
+    margin-top: 1.6rem;
+  }
+}
+
+.login .form-field+a,
+.register .form-field+a,
+.activate .form-field+a,
+.reset-password .form-field+a {
+  margin-top: 0.8rem;
+}
+
+.login form,
+.register form,
+.activate form,
+.reset-password form {
+  margin: 3.2rem 0 0;
+}
+
+.login form button,
+.login form .btn--secondary,
+.register form button,
+.register form .btn--secondary,
+.activate form button,
+.activate form .btn--secondary,
+.reset-password form button,
+.reset-password form .btn--secondary {
+  margin-top: 3.2rem;
+}
+
+.login form button+a,
+.login form .btn--secondary+a,
+.register form button+a,
+.register form .btn--secondary+a,
+.activate form button+a,
+.activate form .btn--secondary+a,
+.reset-password form button+a,
+.reset-password form .btn--secondary+a {
+  margin-top: 2rem;
+}
+
+.login form button+button,
+.login form .btn--secondary+button,
+.register form button+button,
+.register form .btn--secondary+button,
+.activate form button+button,
+.activate form .btn--secondary+button,
+.reset-password form button+button,
+.reset-password form .btn--secondary+button {
+  margin-top: 1.6rem;
+}
+
+@media (max-width: 767.98px) {
+  .login-goole-fackbook{ margin-top:20px;}
+  .h_wizard .h_buttons{margin-top:8px;}
+  .login form,
+  .register form,
+  .activate form,
+  .reset-password form {
+    margin-top: 2.4rem;
+  }
+
+  .login form button,
+  .register form button,
+  .activate form button,
+  .reset-password form button {
+    margin-top: 2rem;
+  }
+}
+
+#customer_login_guest button {
+  margin-top: 0;
+}
+
+#recover,
+#recover+div {
+  display: none;
+}
+
+#recover:target {
+  display: block;
+}
+
+#recover:target+div {
+  display: block;
+}
+
+#recover:target~#login,
+#recover:target~#login+div {
+  display: none;
+}
+
+#recover,
+#login {
+  scroll-margin-top: 20rem;
+}
+
+#recover {
+  margin-bottom: 0;
+}
+
+.customer__header {
+  margin-bottom: 4rem;
+}
+
+@media (max-width: 767.98px) {
+  .customer__header {
+    margin-bottom: 3.2rem;
+  }
+}
+
+.customer__body {
+  display: flex;
+  column-gap: 3rem;
+}
+
+.customer__sidebar {
+  flex: 0 0 32rem;
+  align-self: self-start;
+}
+
+.customer__sidebar p {
+  margin: 0;
+}
+
+.customer__widget {
+  padding: 2.4rem;
+  background-color: rgb(var(--color-secondary-background));
+}
+
+.customer__content {
+  flex: 1;
+}
+
+.customer .rich-text {
+  margin-bottom: 2.4rem;
+}
+
+@media (max-width: 767.98px) {
+  .customer .rich-text {
+    margin-bottom: 1.2rem;
+  }
+}
+
+@media (max-width: 1023.98px) {
+  .customer__body {
+    flex-direction: column;
+    row-gap: 3.2rem;
+  }
+
+  .customer__sidebar {
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+}
+
+/* Account */
+/* Order */
+.order-total-amount {
+  margin-top: 2.4rem;
+}
+
+.order-total-amount li+li {
+  margin-top: 0.8rem;
+}
+
+/* Address */
+.addresses .section__wrapper {
+  width: 100%;
+  max-width: 70rem;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+}
+
+.addresses [data-address] {
+  padding: 3.2rem;
+  margin-bottom: 3.2rem;
+}
+
+@media (max-width: 767.98px) {
+  .addresses [data-address] {
+    padding: 2.4rem;
+  }
+}
+
+.addresses__edit-form {
+  margin-top: 2.4rem;
+  padding-top: 2.4rem;
+  border-top: 1px solid rgb(var(--color-border));
+}
+
+.address-info__default-badge {
+  margin-bottom: 0.4rem;
+}
+
+.address-info p {
+  margin: 0;
+}
+
+.address-info button {
+  padding: 0;
+  height: auto;
+  line-height: normal;
+}

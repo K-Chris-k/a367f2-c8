@@ -1,0 +1,141 @@
+<style>
+.section-parter-advantage { background: #F3F3F3;}
+.section-parter-advantage h2{ line-height:58px;font-size:46px;font-weight: 700;text-align:center}
+.advantage-list{ padding-top:28px}
+.advantage-list ul{display:flex;gap:16px; flex-wrap: nowrap;}
+.advantage-list li{padding:27px;border-radius: 20px;flex:1;background: #FFF;text-align:center}
+.advantage-list li .image-wrapper{ margin: 50px 0px 40px;}
+.advantage-list li .tit{ padding-bottom:23px;border-bottom:1px dashed #262626}
+.advantage-list li .tit h2{display: flex;align-items: center;justify-content: center;max-height:58px;min-height:58px;line-height:29px;font-size: 24px; overflow-wrap: break-word;word-break: break-word;}
+.advantage-list li .decribe{padding:23px 16px; line-height:22px;font-size: 18px;color: #262626;}
+  @media (max-width: 768px) {
+     .section-parter-advantage h2{ line-height:29px;font-size:24px;}
+     .advantage-list{padding-top:1rem}
+     .advantage-list ul{gap:1.6rem;flex-wrap: wrap;justify-content: space-between;}
+     .advantage-list li{flex:1;padding: 1.4rem;border-radius:10px}
+     .advantage-list li .image-wrapper{position: relative; left: 50%;transform: translateX(-50%);width: 72px; height: 72px;margin: 30px 0px 12px;}
+     .advantage-list li .tit{ padding-bottom:1.4rem;}
+     .advantage-list li .tit h2{max-height:3.7rem;min-height:37px;line-height:17px;font-size:12px;}
+     .advantage-list li .decribe{padding:1.6rem 0rem; line-height:12px;font-size: 10px;color: #262626;}
+  }
+</style>
+{% liquid
+    assign motion_delay = 50
+%}
+<div class="section page-width section--padding section-parter-advantage">
+       <h2 class="titie"> {{ section.settings.title }}</h2>
+    <div class="advantage-list">
+      <ul>
+        {% for block in section.blocks %}
+        <li>
+           {% if block.settings.image != blank %}
+            <div class="image-wrapper">
+              <picture>
+                <source
+                  media="(max-width: 749px)"
+                  srcset="
+                    {{ block.settings.image_mobile | img_url: '800x' }} 1x,
+                    {{ block.settings.image_mobile | img_url: '1600x' }} 2x
+                  "
+                >
+                <source
+                  media="(min-width: 750px)"
+                  srcset="
+                    {{ block.settings.image | img_url: '1200x' }} 1x,
+                    {{ block.settings.image | img_url: '2400x' }} 2x
+                  "
+                >
+                <img
+                  src="{{ block.settings.image | img_url: '1200x' }}"
+                  alt="{{ block.settings.image | escape }}"
+                  loading="lazy"
+                  width="{{ block.settings.image.width }}"
+                  height="{{ block.settings.image.height }}"
+                >
+              </picture>
+             </div>
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+              <div class="tit">
+                <h2>{{ block.settings.title }}</h2>
+              </div>
+              <div class="decribe">
+                {{ block.settings.description }}
+              </div>
+        </li>
+        {% endfor %}
+      </ul>
+      
+    </div>
+</div>
+<script>
+ 
+</script>
+{% schema %}
+{
+  "name": "parter-advantage",
+  "tag": "section",
+  "class": "section section-parter-advantage",
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Word een partner van Indevolt"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "brand item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "h5 image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "标题"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "描述",
+          "default": "<p>Your description here</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "合作伙伴-优势",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

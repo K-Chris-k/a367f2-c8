@@ -1,0 +1,103 @@
+<style>
+   .section-download {margin:120px 0px 60px;}
+   .section-download h2{ line-height:56px;font-size:46px;text-align:center}
+   .section-download .download-box{margin-top:60px;font-size: 16px;line-height: 21px;}
+   .section-download .download-box li {display:flex; flex-wrap: nowrap;justify-content: space-between;width: 100%;line-height:22px;font-size:18px}
+   .section-download .download-box li span{flex:1;padding:10px 5px}
+   .section-download .download-box li span:nth-child(1),.section-download .download-box li span:nth-child(2){flex:1;min-width: 9rem;
+    word-break: break-word;}
+   .section-download .download-box li span:nth-child(2){min-width:15rem;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;}
+   .section-download .download-box li span:nth-child(3){min-width: 10rem;}
+   .section-download .download-box li span:nth-child(4){flex: 0.2;padding-top:15px;text-align:right;}
+   #shopify-section-{{ section.id }} li {
+        border-bottom: 1px solid #e5e7eb;
+        padding-top: 12px;
+        padding-bottom: 12px;  
+   }
+  @media (max-width: 768px) {
+    .section-download {margin:60px 0px 30px;}
+    .section-download h2{ line-height:34px;font-size:28px;text-align:center}
+    .section-download .download-box{margin-top:20px}
+    .section-download .download-box li { font-size: 14px;}
+     
+  }
+</style>
+<div class="section section--padding page-width section-download">
+  <div class="product-collection product-slider-container">
+    <h2>
+       <span>{{ section.settings.title }}</span>
+    </h2>
+    <div class="download-box">
+      {% for block in section.blocks %}
+      <ul>
+        <li><span>{{ block.settings.title }}</span><span>{{ block.settings.content }}</span>
+        <span>{{ block.settings.date }}</span><span><a href="{{ block.settings.pdf_file }}"  target="_blank" title="{{block.settings.content}}">{% render 'icon-download', size: 'small' %}</a></span></li>
+      </ul>
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "download",
+  "tag": "section",
+  "class": "section section-download",
+  "max_blocks": 10,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Downloads"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "download item",
+      "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "标题",
+        "default": "Indevolt Flexible Solar Panel (225W, 4-pack)"
+      },
+      {
+        "type": "text",
+        "id": "content",
+        "label": "描述",
+        "default": "Gebruiksaanwijzing"
+      },
+      {
+        "type": "text",
+        "id": "date",
+        "label": "发布日期",
+        "default": "2024-01-01"
+      },
+      {
+        "type": "url",
+        "id": "pdf_file",
+        "label": "PDF 文件",
+        "info": "上传 PDF 文件"
+      }
+     ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "下载列表",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

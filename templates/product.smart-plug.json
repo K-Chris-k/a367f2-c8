@@ -1,0 +1,543 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badges": {
+          "type": "badges",
+          "disabled": true,
+          "settings": {
+            "show_soldout_badge": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "judge_me_reviews_preview_badge_dp3Ppm": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "sleek_social_sharing_share_button_h7nwaE": {
+          "type": "shopify://apps/sleek-social-sharing/blocks/share_button/5db01bc3-c590-40f6-be34-5072c106e3f4",
+          "settings": {}
+        },
+        "taxs_nKrHah": {
+          "type": "taxs",
+          "settings": {
+            "title": "0% MwSt. auf PV-Sets in Deutschland",
+            "content": "Hiermit bestätigen Sie, dass Sie die Voraussetzungen für eine umsatzsteuerfreie Lieferung gemäß § 12 Abs. 3 von Deutschland erfüllen.",
+            "taxs_title": "Erfahren Sie mehr.",
+            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie hier um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
+            "heading_1": "",
+            "heading_2": ""
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 40,
+            "size_title": "Size",
+            "size_chart_from_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "selleasy_lb_upsell_widget_pal_JtYtQQ": {
+          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-pal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+          "settings": {}
+        },
+        "logistics_pN3qrf": {
+          "type": "logistics",
+          "settings": {
+            "enable_sticky_info": true
+          }
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "name": "支付信息",
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "certificate",
+            "heading_1": "Orders over $50 ship free",
+            "content_image_1": "shopify://shop_images/card.png",
+            "icon_2": "truck",
+            "content_image_2": "shopify://shop_images/track.png",
+            "heading_2": "30 day returns",
+            "icon_3": "star-four",
+            "heading_3": ""
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "tag",
+            "product_list_limit": 4,
+            "products_per_page": 1,
+            "image_ratio": "adapt",
+            "enable_quick_add": true
+          }
+        }
+      },
+      "block_order": [
+        "badges",
+        "title",
+        "judge_me_reviews_preview_badge_dp3Ppm",
+        "price",
+        "sleek_social_sharing_share_button_h7nwaE",
+        "taxs_nKrHah",
+        "description",
+        "variant_picker",
+        "buy_buttons",
+        "selleasy_lb_upsell_widget_pal_JtYtQQ",
+        "logistics_pN3qrf",
+        "icon_with_text",
+        "complementary"
+      ],
+      "custom_css": [
+        ".loox-rating {margin-top: -1rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": true,
+        "enable_product_sticky_bar": false,
+        "media_size": "large",
+        "gallery_layout": "carousel",
+        "mobile_thumbnails": "show",
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "image_with_text_kPUheB": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_cndngj": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Energie auf Abruf</strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_wk6n73": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Überwachung und Steuerung mit dem intelligenten Stecker.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cndngj",
+        "text_wk6n73"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#ffffff",
+        "image": "shopify://shop_images/Smart-Plug-img1.jpg",
+        "image_height": "adapt",
+        "layout": "text_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": true,
+        "mobile_content_alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_with_text_3MQzPU": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_ENp7Ew": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Plug & Play </strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_bHb4UC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Spare dir teure Elektriker-Kosten. Während Smart Meter an einer Schiene installiert werden müssen, ist der Smart Plug in nur 3 Sekunden einsatzbereit.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ENp7Ew",
+        "text_bHb4UC"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#ffffff",
+        "image": "shopify://shop_images/Smart-Plug-img2.jpg",
+        "image_height": "adapt",
+        "layout": "image_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": true,
+        "mobile_content_alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_image_list_XqwtLH": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_hQt9pk": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Intelligente Fernsteuerung & Energiemonitoring</strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_jTzfyJ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Stelle eine WLAN-Verbindung her und passe deine Energie ganz bequem von überall aus an. Der intelligente Stecker erfasst den Echtzeit-Stromverbrauch automatisch und hilft, Energieverschwendung zu vermeiden.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "image_Lm8dbD": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/Smart-Plug-img3.jpg",
+            "mobile_image": "shopify://shop_images/8.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_hQt9pk",
+        "text_jTzfyJ",
+        "image_Lm8dbD"
+      ],
+      "name": "富文本+图片+视频",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "",
+        "show_title_icon": false,
+        "img-href": "",
+        "padding_top": 120,
+        "padding_bottom": 60,
+        "image_top": 28,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "image_with_text_L67EDY": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_gUm6AL": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Leistungsstarke Funktionen in kompakter Bauweise</strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_wRteTP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Das feuerfeste PC-Gehäuse ist resistent gegen Fett, Säure und Alkalien. Mit einer maximalen Eingangsleistung von 3680 W sorgt es für deine Sicherheit.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gUm6AL",
+        "text_wRteTP"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#ffffff",
+        "image": "shopify://shop_images/Smart-Plug-img4.jpg",
+        "image_height": "adapt",
+        "layout": "text_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": true,
+        "mobile_content_alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "multicolumn_Mxt4d3": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_ppme79": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Smart-Plug-img5.png",
+            "image_link": "",
+            "image_width": "extra-large",
+            "title": "",
+            "heading_size": "h4",
+            "text": "<h5>Indevolt Smart Plug</h5>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_6eYcFq": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/Smart-Plug-img6.jpg",
+            "image_link": "",
+            "image_width": "extra-large",
+            "title": "",
+            "heading_size": "h4",
+            "text": "<h5>Bedienungsanleitung</h5>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "column_ppme79",
+        "column_6eYcFq"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "heading": "Lieferumfang",
+        "heading_size": "hd2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "column_alignment": "center",
+        "columns_desktop": 2,
+        "column_gap": "large",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "parameter_MCPY6c": {
+      "type": "parameter",
+      "blocks": {
+        "card_LYWhYC": {
+          "type": "card",
+          "settings": {
+            "title": "Produktmodell",
+            "content": "SP16",
+            "note": ""
+          }
+        },
+        "card_8bwHK3": {
+          "type": "card",
+          "settings": {
+            "title": "Technische Parameter",
+            "content": "110-250V 50/60Hz 16A, MAX 3680W",
+            "note": ""
+          }
+        },
+        "card_mP8iNt": {
+          "type": "card",
+          "settings": {
+            "title": "Betriebstemperatur",
+            "content": "-20℃ bis 50℃",
+            "note": ""
+          }
+        },
+        "card_Fhrd9a": {
+          "type": "card",
+          "settings": {
+            "title": "Konnektivität",
+            "content": "Bluetooth und WLAN",
+            "note": ""
+          }
+        },
+        "card_jBnG3t": {
+          "type": "card",
+          "settings": {
+            "title": "Installation",
+            "content": "Plug & Play",
+            "note": ""
+          }
+        },
+        "card_LW3bBH": {
+          "type": "card",
+          "settings": {
+            "title": "Kompatibilität",
+            "content": "Indevolt Produkte",
+            "note": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_LYWhYC",
+        "card_8bwHK3",
+        "card_mP8iNt",
+        "card_Fhrd9a",
+        "card_jBnG3t",
+        "card_LW3bBH"
+      ],
+      "name": "参数列表",
+      "settings": {
+        "title": "Technische Daten",
+        "ids": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "limit": 6,
+        "columns": 4,
+        "column_gap": "extra-small",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "controls_position": "inside",
+        "pcard_image_ratio": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "download_mXHehV": {
+      "type": "download",
+      "blocks": {
+        "card_PE3GWy": {
+          "type": "card",
+          "settings": {
+            "title": "Indevolt Smart Plug",
+            "content": "Bedienungsanleitung",
+            "date": "2025-03-05",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Indevolt_Smart_Plug_SP16.pdf?v=1736134981"
+          }
+        }
+      },
+      "block_order": [
+        "card_PE3GWy"
+      ],
+      "name": "下载列表",
+      "settings": {
+        "title": "Downloads"
+      }
+    },
+    "1757571915a449bccc": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_rgiYc4": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_rgiYc4"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "image_with_text_kPUheB",
+    "image_with_text_3MQzPU",
+    "rich_text_image_list_XqwtLH",
+    "image_with_text_L67EDY",
+    "multicolumn_Mxt4d3",
+    "parameter_MCPY6c",
+    "related-products",
+    "download_mXHehV",
+    "1757571915a449bccc"
+  ]
+}

@@ -1,0 +1,982 @@
+{% render 'divider',
+  show_divider: section.settings.show_section_divider,
+  divider_width: section.settings.divider_width
+%}
+<style>
+  #shopify-section-{{ section.id }} {
+    margin-top: {{ section.settings.padding_top }}px;
+    margin-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  
+  #shopify-section-{{ section.id }} .rich-text {
+    flex-flow: column;
+    padding-top: {{ section.settings.padding_top_inner }}px;
+    padding-bottom: {{ section.settings.padding_bottom_inner }}px;
+  }
+  
+  #shopify-section-{{ section.id }} .hd2,
+  #shopify-section-{{ section.id }} .text-subheading.hd2 {
+    line-height: 56px;
+    font-size: 46px;
+  }
+  
+  #shopify-section-{{ section.id }} .text-subheading.hd3 {
+    line-height: 36px;
+    font-size: 30px;
+    margin-top: 8px;
+  }
+  
+  #shopify-section-{{ section.id }} .text-subheading.hd4 {
+    line-height: 36px;
+    font-size: 20px;
+    margin: 0px;
+  }
+  
+  #shopify-section-{{ section.id }} .text-lg {
+    margin-top: 14px;
+  }
+  
+  #shopify-section-{{ section.id }} p {
+    font-family: 'Inter';
+    line-height: 22px;
+    font-size: 18px;
+    color: #666;
+  }
+  
+  #shopify-section-{{ section.id }} .details-box {
+    gap: 168px;
+  }
+  
+  #shopify-section-{{ section.id }} .details-box .item {
+    display: flex;
+    flex-flow: column;
+  }
+  
+  #shopify-section-{{ section.id }} .details-box strong {
+    line-height: 44px;
+    font-weight: 700;
+    font-size: 36px;
+    background: linear-gradient(180deg, #3250C3 0%, #91AFFA 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  #shopify-section-{{ section.id }} .details-box span {
+    line-height: 19px;
+    font-size: 16px;
+  }
+  {% comment %} #shopify-section-{{ section.id }} .a_underline{ padding-bottom: 0 !important;} {% endcomment %}
+  /* 新增视频区块样式 */
+  #shopify-section-{{ section.id }} .video-popup-block {
+    margin-top: 30px;
+    padding: 0px;
+  }
+
+  #shopify-section-{{ section.id }} .video-container-inner {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    margin: 0 auto;
+  }
+
+  #shopify-section-{{ section.id }} .video-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: opacity 0.3s ease;
+  }
+
+  .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    transition: transform 0.2s ease;
+  }
+
+  .play-button:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .play-button::before {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    border-left: 25px solid #fff;
+    margin-left: 5px;
+  }
+
+  .video-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .video-modal.active {
+    display: flex;
+    opacity: 1;
+  }
+
+  .modal-content {
+    width: 90%;
+    max-width: 1000px;
+    position: relative;
+    padding:0px;
+    background:none;
+    border:none
+  }
+
+  .close-button-inner {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10001;
+  }
+
+  .video-player {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .video-player iframe,
+  .video-player video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+    .btn--underline {
+      color: #3250c3  !important;
+    }
+  #shopify-section-{{ section.id }} .pc-text { display: block; }
+  #shopify-section-{{ section.id }} .mobile-text { display: none; }
+  @media (max-width: 767.98px) {
+    #shopify-section-{{ section.id }} .pc-text { display: none; }
+    #shopify-section-{{ section.id }} .mobile-text { display: block; }
+    #shopify-section-{{ section.id }} {
+      margin-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      margin-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+    
+    #shopify-section-{{ section.id }} .rich-text {
+      flex-flow: column;
+      padding-top: {{ section.settings.padding_top_inner | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom_inner | divided_by: 2 }}px;
+    }
+    
+    #shopify-section-{{ section.id }} .hd2,
+    #shopify-section-{{ section.id }} .text-subheading.hd2 {
+      line-height: 34px;
+      font-size: 28px;
+    }
+    
+    #shopify-section-{{ section.id }} .text-lg {
+      margin-top: 1rem;
+    }
+    
+    #shopify-section-{{ section.id }} p {
+      line-height: 19px;
+      font-size: 16px;
+    }
+    
+    #shopify-section-{{ section.id }} .details-box {
+      gap: 65px;
+    }
+    
+    #shopify-section-{{ section.id }} .details-box strong {
+      line-height: 22px;
+      font-size: 18px;
+    }
+    
+    #shopify-section-{{ section.id }} .details-box span {
+      line-height: 10px;
+      font-size: 8px;
+    }
+    
+    #shopify-section-{{ section.id }} .video-container-inner {
+      width: 200px !important;
+      height: 36px !important;
+    }
+    
+    #shopify-section-{{ section.id }} .text-subheading.hd3 {
+      line-height: 22px;
+      font-size: 18px;
+    }
+    {% comment %} #shopify-section-{{ section.id }} .a_underline{ padding-bottom: 0rem !important;} {% endcomment %}
+    .video-popup-block {
+      margin-top: 20px; 
+    }
+    
+    .close-button-inner {
+      top: -40px;
+      font-size: 30px;
+    }
+    
+    .play-button {
+      width: 50px;
+      height: 50px;
+    }
+    
+    .play-button::before {
+      border-top: 10px solid transparent;
+      border-bottom: 10px solid transparent;
+      border-left: 15px solid #fff;
+      margin-left: 3px;
+    }
+
+
+
+  }
+</style>
+{%- assign motion_delay = 50 -%}
+<div class="section section--padding rich-text-section color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="rich-text md:flex items-{{ section.settings.content_alignment }} text-{{ section.settings.mobile_content_alignment }} md:text-{{ section.settings.content_alignment }}">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'subheading' %}
+            {% if block.settings.heading_size == 'hd2' %}
+                  <h4 class="rich-text__heading {{ block.settings.heading_size }}" {{ block.shopify_attributes }}> 
+                    {{ block.settings.subheading }}
+                  </h4>
+            {% else %}
+                  <h4 class="block rich-text__subheading text-subheading {{ block.settings.heading_size }}" {{ block.shopify_attributes }}> 
+                    {{ block.settings.subheading }}
+                  </h4>
+            {% endif %}
+
+            {%- assign motion_delay = motion_delay | plus: 50 -%}
+          {% when 'heading' %}
+            <h2 class="rich-text__heading {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
+              <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+                {% render 'highlight-text',
+                  text: block.settings.heading,
+                  mobile_text:block.settings.heading_mobile,
+                  style: block.settings.heading_highlight_style
+                %}
+              </motion-element>
+            </h2>
+            {%- assign motion_delay = motion_delay | plus: 50 -%}
+          {% when 'text' %}
+            <motion-element data-motion="fade-up" data-motion-delay="{{ motion_delay }}" class="block rich-text__text rte {{ block.settings.text_size }}" {{ block.shopify_attributes }}>
+              {{ block.settings.text }}
+            </motion-element>
+            {%- assign motion_delay = motion_delay | plus: 50 -%}
+          {% when 'details' %}
+            <motion-element data-motion="fade-up" data-motion-delay="{{ motion_delay }}" class="block rich-text__text rte {{ block.settings.text_size }}" {{ block.shopify_attributes }}>
+              {% if block.settings.details1 != blank or block.settings.detail1_description != blank %}
+                <div class="flex justify-center details-box">
+                  <div class="item">
+                    <strong>{{ block.settings.details1 }}</strong>
+                    <span>{{ block.settings.detail1_description }}</span>
+                  </div>
+                  <div class="item">
+                    <strong>{{ block.settings.details2 }}</strong>
+                    <span>{{ block.settings.detail2_description }}</span>
+                  </div>
+                </div>
+              {% endif %}
+            </motion-element>
+            {%- assign motion_delay = motion_delay | plus: 50 -%}
+          {% when 'button' %}
+            <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+              {% if block.settings.button_label != blank %}
+                <a
+                  {% if block.settings.button_link != blank %}
+                    href="{{ block.settings.button_link }}"
+                    target="{{ block.settings.button_target }}"
+                  {% else %}
+                    role="link" aria-disabled="true"
+                  {% endif %}
+                  class="btn  {{ block.settings.button_style }} a_underline"
+                  {{ block.shopify_attributes }}
+                >
+                 
+                  {{- block.settings.button_label -}}
+                </a>
+              {% endif %}
+            </motion-element>
+            {%- assign motion_delay = motion_delay | plus: 50 -%}
+          {% when 'video_popup' %}
+            <div class="page-width md:flex justify-{{ block.settings.video_alignment }} video-popup-block">
+              <div class="section-video-box md:flex justify-{{ block.settings.video_alignment }}">
+                {%- liquid
+                  assign video_type = block.settings.video_type
+                  assign autoplay = block.settings.autoplay
+                  assign thumbnail_url = ""
+                  
+                  # YouTube视频处理
+                  if video_type == 'youtube' and block.settings.youtube_url != blank
+                    assign video_id = block.settings.youtube_url | split: 'v=' | last | split: '&' | first
+                    
+                    if block.settings.custom_thumbnail != blank
+                      assign thumbnail_url = block.settings.custom_thumbnail | img_url: '800x'
+                    else
+                      assign thumbnail_url = 'https://img.youtube.com/vi/' | append: video_id | append: '/maxresdefault.jpg'
+                    endif
+                  endif
+                  
+                  # Shopify自有视频处理
+                  if video_type == 'shopify' and block.settings.shopify_video != blank
+                    assign video_url = block.settings.shopify_video
+                    
+                    if block.settings.cover_image != blank
+                      assign thumbnail_url = block.settings.cover_image | img_url: '800x'
+                    else
+                      assign thumbnail_url = settings.video_thumbnail | img_url: '800x'
+                    endif
+                  endif
+                -%}
+                
+                <div
+                  class="video-container-inner"
+                  style="width: {{ block.settings.video_width }}px; height: {{ block.settings.video_height }}px;"
+                  data-video-type="{{ video_type }}"
+                  {% if video_type == 'youtube' %}
+                    data-video-id="{{ video_id }}"
+                  {% elsif video_type == 'shopify' %}
+                    data-video-url="{{ video_url }}"
+                  {% endif %}
+                >
+                  {% if thumbnail_url != blank %}
+                    <img
+                      class="video-thumbnail"
+                      src="{{ thumbnail_url }}"
+                      alt="{{ block.settings.alt_text | default: 'Video thumbnail' }}"
+                      loading="lazy"
+                      width="800"
+                      height="{{ 800 | divided_by: 1.77 | round }}"
+                    >
+                  {% else %}
+                    <div class="video-placeholder">
+                      {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                    </div>
+                  {% endif %}
+                  
+                  <div class="play-button" aria-label="Play video"></div>
+                </div>
+              </div>
+            </div>
+            {%- assign motion_delay = motion_delay | plus: 50 -%}
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<!-- 视频弹窗结构 -->
+<div class="video-modal">
+  <div class="modal-content">
+    <button class="close-button-inner">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg></button>
+    <div class="video-player"></div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const videoModal = document.querySelector('.video-modal');
+  const videoPlayer = document.querySelector('.video-player');
+  const closeBtn = document.querySelector('.close-button-inner');
+  
+  // 关闭弹窗
+  function closeModal() {
+    videoModal.classList.remove('active');
+    document.body.style.overflow = '';
+    videoPlayer.innerHTML = '';
+  }
+  
+  // 点击关闭按钮
+  closeBtn.addEventListener('click', closeModal);
+  
+  // 点击模态框外部关闭
+  videoModal.addEventListener('click', function(e) {
+    if (e.target === videoModal) closeModal();
+  });
+  
+  // 处理视频容器点击
+  document.querySelectorAll('.video-container-inner').forEach(container => {
+    container.addEventListener('click', function() {
+      const videoType = this.dataset.videoType;
+      
+      if (videoType === 'youtube') {
+        const videoId = this.dataset.videoId;
+        videoPlayer.innerHTML = `
+          <iframe 
+            src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        `;
+      } 
+      else if (videoType === 'shopify') {
+        const videoUrl = this.dataset.videoUrl;
+        videoPlayer.innerHTML = `
+          <video controls autoplay playsinline>
+            <source src="${videoUrl}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        `;
+      }
+      
+      videoModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  
+  // ESC键关闭弹窗
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+});
+</script>
+{% schema %}
+{
+  "name": "t:sections.rich-text.name",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "[Read How-to](https://foxecom.link/E1POXzl)"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.general.name"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.content.name"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.all.text_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.all.text_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.all.text_alignment.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.all.text_alignment.label"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_inner",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "内部顶部填充",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_inner",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "内部底部填充",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.divider.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider",
+      "default": false,
+      "label": "t:sections.all.divider.settings.show_divider.label"
+    },
+    {
+      "type": "select",
+      "id": "divider_width",
+      "options": [
+        {
+          "value": "fixed",
+          "label": "t:sections.all.container.options__fixed.label"
+        },
+        {
+          "value": "full",
+          "label": "t:sections.all.container.options__full.label"
+        }
+      ],
+      "default": "fixed",
+      "label": "t:sections.all.divider.settings.divider_width.label"
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "select",
+      "id": "mobile_content_alignment",
+      "label": "t:sections.all.text_alignment.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.all.text_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.all.text_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.all.text_alignment.options__3.label"
+        }
+      ],
+      "default": "center"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subheading",
+      "name": "t:sections.all.subheading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "subheading",
+          "default": "Add a tagline",
+          "label": "t:sections.all.subheading.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "t:sections.all.text_size.heading.label",
+          "default": "hd1",
+          "options": [
+            {
+              "value": "h6",
+              "label": "t:sections.all.text_size.options__h6.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:sections.all.text_size.options__h5.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:sections.all.text_size.options__h4.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:sections.all.text_size.options__h3.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:sections.all.text_size.options__h2.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.text_size.options__h1.label"
+            },
+            {
+              "value": "hd3",
+              "label": "t:sections.all.text_size.options__hd3.label"
+            },
+            {
+              "value": "hd2",
+              "label": "t:sections.all.text_size.options__hd2.label"
+            },
+            {
+              "value": "hd1",
+              "label": "t:sections.all.text_size.options__hd1.label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "t:sections.all.heading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Talk about your brand",
+          "label": "t:sections.all.heading.label"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading_mobile",
+          "label": "移动端标题"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "t:sections.all.text_size.heading.label",
+          "default": "hd1",
+          "options": [
+            {
+              "value": "h6",
+              "label": "t:sections.all.text_size.options__h6.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:sections.all.text_size.options__h5.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:sections.all.text_size.options__h4.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:sections.all.text_size.options__h3.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:sections.all.text_size.options__h2.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.text_size.options__h1.label"
+            },
+            {
+              "value": "hd3",
+              "label": "t:sections.all.text_size.options__hd3.label"
+            },
+            {
+              "value": "hd2",
+              "label": "t:sections.all.text_size.options__hd2.label"
+            },
+            {
+              "value": "hd1",
+              "label": "t:sections.all.text_size.options__hd1.label"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.highlight_text.header.content"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.all.highlight_text.paragraph.content"
+        },
+        {
+          "type": "select",
+          "id": "heading_highlight_style",
+          "label": "t:sections.all.highlight_text.settings.highlight_style.label",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.all.highlight_text.settings.highlight_style.options__1.label"
+            },
+            {
+              "value": "underline",
+              "label": "t:sections.all.highlight_text.settings.highlight_style.options__2.label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.all.text.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+          "label": "t:sections.all.text.label"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "label": "t:sections.all.text_size.text.label",
+          "default": "text-base",
+          "options": [
+            {
+              "value": "text-sm",
+              "label": "t:sections.all.text_size.options__small.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:sections.all.text_size.options__base.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:sections.all.text_size.options__large.label"
+            },
+            {
+              "value": "text-inherit",
+              "label": "t:sections.all.text_size.options__inherit.label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "name": "两个说明",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "details1",
+          "default": "4,9 kWh",
+          "label": "描述1-标题"
+        },
+        {
+          "type": "text",
+          "id": "detail1_description",
+          "default": "Parallelerweiterung",
+          "label": "描述1-内容"
+        },
+        {
+          "type": "text",
+          "id": "details2",
+          "default": "3,6 kW",
+          "label": "描述2-标题"
+        },
+        {
+          "type": "text",
+          "id": "detail2_description",
+          "default": "PV-Eingangsleistung",
+          "label": "描述2-内容"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "t:sections.all.button.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.all.button.button_label.label",
+          "default": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.all.button.button_link.label"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:sections.all.button.button_style.label",
+          "options": [
+            {
+              "value": "btn--primary",
+              "label": "t:sections.all.button.button_style.options__1.label"
+            },
+            {
+              "value": "btn--secondary",
+              "label": "t:sections.all.button.button_style.options__2.label"
+            },
+            {
+              "value": "btn--underline",
+              "label": "t:sections.all.button.button_style.options__4.label"
+            }
+          ],
+          "default": "btn--primary"
+        },
+         {
+          "type": "select",
+          "id": "button_target",
+          "label": "链接打开方式",
+          "options": [
+            {
+              "value": "_blank",
+              "label": "新窗口打开"
+            },
+            {
+              "value": "_self",
+              "label": "默认"
+            },
+          ],
+          "default": "_self"
+        }
+      ]
+    },
+    {
+      "type": "video_popup",
+      "name": "视频弹窗",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "video_alignment",
+          "label": "Video Mobile Alignment",
+          "options": [
+            {
+              "value": "start",
+              "label": "Start"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "end",
+              "label": "End"
+            }
+          ],
+          "default": "start"
+        },
+        {
+          "type": "select",
+          "id": "video_type",
+          "label": "视频类型",
+          "options": [
+            {
+              "value": "youtube",
+              "label": "YouTube"
+            },
+            {
+              "value": "shopify",
+              "label": "Shopify 视频"
+            }
+          ],
+          "default": "youtube"
+        },
+        {
+          "type": "video_url",
+          "id": "youtube_url",
+          "label": "YouTube 视频链接",
+          "accept": ["youtube"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        },
+        {
+          "type": "text",
+          "id": "shopify_video",
+          "label": "Shopify 视频链接",
+          "info": "在设置 > 文件中上传视频并粘贴链接"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_thumbnail",
+          "label": "youtube自定义缩略图",
+          "info": "覆盖默认缩略图"
+        },
+        {
+          "type": "image_picker",
+          "id": "cover_image",
+          "label": "封面图片",
+          "info": "仅用于Shopify视频"
+        },
+        {
+          "type": "range",
+          "id": "video_width",
+          "default": 200,
+          "min": 100,
+          "max": 500,
+          "step": 10,
+          "unit": "px",
+          "label": "Container Width"
+        },
+        {
+          "type": "range",
+          "id": "video_height",
+          "default": 64,
+          "min": 64,
+          "max": 324,
+          "step": 10,
+          "unit": "px",
+          "label": "Container Height"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "替代文本",
+          "default": "产品展示视频"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.rich-text.presets.name",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "button"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

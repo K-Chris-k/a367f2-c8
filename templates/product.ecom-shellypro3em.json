@@ -1,0 +1,37 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "layout": "theme",
+  "sections": {
+    "ecom-shellypro3em-product": {
+      "type": "ecom-shellypro3em-product",
+      "blocks": {
+        "ecom-zojnrt01p6c": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/average-rating/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "ecom-h7c6yqauaaw": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "ecom-zojnrt01p6c",
+        "ecom-h7c6yqauaaw"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "ecom-shellypro3em-product"
+  ]
+}

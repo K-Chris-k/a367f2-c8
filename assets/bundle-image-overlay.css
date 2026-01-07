@@ -1,0 +1,63 @@
+/* Bundle 产品图片叠加样式 */
+
+.bundle-overlay-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.bundle-overlay-wrapper img {
+  position: absolute;
+  object-fit: contain;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+}
+
+/* 主图调整动画 */
+.product-big-image img,
+.product__media img {
+  transition: transform 0.3s ease;
+}
+
+/* 主图叠加状态标记 */
+.bundle-main-image-adjusted {
+  transform: scale(0.8) translate(-10%, 10%);
+}
+
+.bundle-main-image-adjusted-bottom {
+  transform: scale(0.8) translate(-16%, 22%);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .bundle-other-display-text{
+    left:0 !important;
+  }
+  
+  /* 主图移动端调整 */
+  .bundle-main-image-adjusted {
+    transform: scale(0.8) translate(0, 10%) !important;
+  }
+  
+  .bundle-main-image-adjusted-bottom {
+    transform: scale(0.8) translate(0, 20%) !important;
+  }
+  
+  /* 太阳能板移动端样式 */
+  .bundle-overlay-wrapper img[data-overlay-type="solar"] {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  /* 支架移动端样式 */
+  .bundle-overlay-wrapper img[data-overlay-type="mount"] {
+    width: 30% !important;
+    height: 30% !important;
+    top: 0 !important;
+    transform: scale(0.5) translate(-20%, -20%) !important;
+  }
+}

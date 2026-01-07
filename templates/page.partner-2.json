@@ -1,0 +1,258 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "parter_banner_RmfMUt": {
+      "type": "parter-banner",
+      "blocks": {
+        "card_9DRCHU": {
+          "type": "card",
+          "settings": {
+            "description": ""
+          }
+        },
+        "card_ExGHx3": {
+          "type": "card",
+          "settings": {
+            "description": ""
+          }
+        },
+        "card_4WUWp8": {
+          "type": "card",
+          "settings": {
+            "description": ""
+          }
+        },
+        "card_UaiaYH": {
+          "type": "card",
+          "settings": {
+            "description": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_9DRCHU",
+        "card_ExGHx3",
+        "card_4WUWp8",
+        "card_UaiaYH"
+      ],
+      "name": "合作伙伴-banner",
+      "settings": {
+        "title": "Werden Sie unser Geschäftspartner bei Indevolt ",
+        "subtitle": "Gestalten Sie mit uns eine grüne Zukunft!",
+        "decribe": "<p>Bei Indevolt setzen wir uns für die Förderung nachhaltiger Energien ein, indem wir Haushalte dabei unterstützen, die Sonnenenergie zu nutzen und ihre Energiekosten zu senken.Werden Sie unser Vertriebspartner und bieten Sie innovative Photovoltaik-Speicherlösungen an. Gemeinsam gestalten wir den Übergang zu umweltfreundlicher Energie und unterstützen das Wachstum Ihres Unternehmens.</p>",
+        "banner": "shopify://shop_images/cowork.png",
+        "banner_mobile": "shopify://shop_images/mobkv_23a9ebec-565c-469b-a10f-82267754d62a.png"
+      }
+    },
+    "parter_advantage_LWtwdK": {
+      "type": "parter-advantage",
+      "blocks": {
+        "card_ELhFbm": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/aaa.png",
+            "image_mobile": "shopify://shop_images/aaa.png",
+            "title": "Hochwertige Produkte",
+            "description": "Wir bieten Produkte mit innovationsreichem Design und erstklassiger Leistung für ein optimales Benutzererlebnis."
+          }
+        },
+        "card_DtibCW": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/bbb.png",
+            "image_mobile": "shopify://shop_images/bbb.png",
+            "title": "Marktnachfrage",
+            "description": "Das wachsende Interesse an erneuerbaren Energien eröffnet großen Potenzial für PV-Speicherprodukte."
+          }
+        },
+        "card_H6yfDp": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/ccc.png",
+            "image_mobile": "shopify://shop_images/ccc.png",
+            "title": "Flexibles Kooperationsmodell",
+            "description": "Wir bieten verschiedene Kooperationsmöglichkeiten, um das passende Geschäftsmodell für Sie zu finden."
+          }
+        },
+        "card_iimGeA": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/ddd.png",
+            "image_mobile": "shopify://shop_images/ddd.png",
+            "title": "Attraktiver Gewinnspielraum",
+            "description": "Unser Rabattsystem ermöglicht Ihnen hohe Gewinne: Je mehr Sie kaufen, desto größer ist der Rabatt!"
+          }
+        }
+      },
+      "block_order": [
+        "card_ELhFbm",
+        "card_DtibCW",
+        "card_H6yfDp",
+        "card_iimGeA"
+      ],
+      "name": "合作伙伴-优势",
+      "settings": {
+        "title": "Unsere Vorteile"
+      }
+    },
+    "parter_aus_afpMBD": {
+      "type": "parter-aus",
+      "blocks": {
+        "card_KNxCfg": {
+          "type": "card",
+          "settings": {
+            "title": "Batterieparameter",
+            "description1": "10 - 50 Stück",
+            "description2": "51 - 100 Stück",
+            "description3": "Über 100 Stück"
+          }
+        },
+        "card_b8HAgK": {
+          "type": "card",
+          "settings": {
+            "title": "Rabattquote",
+            "description1": "30%",
+            "description2": "?%",
+            "description3": "?%"
+          }
+        }
+      },
+      "block_order": [
+        "card_KNxCfg",
+        "card_b8HAgK"
+      ],
+      "name": "合作伙伴-配件",
+      "settings": {
+        "title": "Wählen Sie Ihr passendes Angebot aus",
+        "note": "<p>*Rabatt basiert auf dem MSRP € des Produkts.</p><p>*Nur für Balkonkraftwerke mit Speicher.</p><p>*Wenn Sie kein passendes Angebot finden, kontaktieren Sie uns bitte, und wir erstellen Ihnen ein individuelles Angebot.</p>"
+      }
+    },
+    "parter_service_dNGyNK": {
+      "type": "parter-service",
+      "blocks": {
+        "card_BkBzCP": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Mask_group111.png",
+            "image_mobile": "shopify://shop_images/Mask_group111.png",
+            "title": "<p>Schulung zum<br/>Produktwissen</p>"
+          }
+        },
+        "card_gUKiht": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/Mask_group2222_740f3218-d876-4c2a-b8bf-80a8acaeb77d.png",
+            "image_mobile": "shopify://shop_images/Mask_group2222_740f3218-d876-4c2a-b8bf-80a8acaeb77d.png",
+            "title": "<p>Aftersales-<br/>Schulungen</p>"
+          }
+        },
+        "card_ph7wEW": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/A_719c786c-8e36-4e22-8e87-5f77e45f7e1e.png",
+            "image_mobile": "shopify://shop_images/A_719c786c-8e36-4e22-8e87-5f77e45f7e1e.png",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_BkBzCP",
+        "card_gUKiht",
+        "card_ph7wEW"
+      ],
+      "name": "合作伙伴-服务",
+      "settings": {
+        "title": "Unsere Unterstützung"
+      }
+    },
+    "parter_apply_JWk4A6": {
+      "type": "parter-apply",
+      "blocks": {
+        "card_DCWEqz": {
+          "type": "card",
+          "settings": {
+            "title": "1. Antragsformular ausfüllen",
+            "description": "<p>Klicken Sie auf den Link unten, um das <a href=\"https://de.indevolt.com/pages/partner-formular\">Formular für die Händlerpartnerschaft</a> auszufüllen.</p>"
+          }
+        },
+        "card_cViLV7": {
+          "type": "card",
+          "settings": {
+            "title": "2. Antrag prüfen",
+            "description": "<p>Wir melden uns nach der Prüfung bei Ihnen und geben Ihnen weitere Informationen.</p>"
+          }
+        },
+        "card_CLMzNy": {
+          "type": "card",
+          "settings": {
+            "title": "3. Verkauf starten!",
+            "description": "<p>Nach Genehmigung Ihres Antrags können Sie mit dem Verkauf von Indevolt-Produkten beginnen und von unserem Support sowie Rabatten profitieren.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_DCWEqz",
+        "card_cViLV7",
+        "card_CLMzNy"
+      ],
+      "name": "合作伙伴-申请",
+      "settings": {
+        "title": "So treten Sie uns bei"
+      }
+    },
+    "parter_contact_gtqQVn": {
+      "type": "parter-contact",
+      "blocks": {
+        "card_6GMabE": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/646401_31f22922-6c9c-456b-8535-77d14ad2894a.png",
+            "image_mobile": "shopify://shop_images/646401_31f22922-6c9c-456b-8535-77d14ad2894a.png",
+            "description": "<p><strong>E-Mail: </strong><a href=\"mailto:sales@indevolt.com\">sales@indevolt.com</a></p>"
+          }
+        },
+        "card_jDcnfW": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/646402_e9a5f2ff-5239-41ca-ab4a-a5c5f7d18a4d.png",
+            "image_mobile": "shopify://shop_images/646402_e9a5f2ff-5239-41ca-ab4a-a5c5f7d18a4d.png",
+            "description": "<p><strong>Telef on:</strong> +49 (0)174 3150766</p>"
+          }
+        }
+      },
+      "block_order": [
+        "card_6GMabE",
+        "card_jDcnfW"
+      ],
+      "name": "合作伙伴-联系我们",
+      "settings": {
+        "title": "Kontaktieren Sie uns",
+        "description": "<p>Bei Fragen oder für weitere Informationen kontaktieren Sie uns bitte jederzeit:</p>"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "parter_banner_RmfMUt",
+    "parter_advantage_LWtwdK",
+    "parter_aus_afpMBD",
+    "parter_service_dNGyNK",
+    "parter_apply_JWk4A6",
+    "parter_contact_gtqQVn"
+  ]
+}

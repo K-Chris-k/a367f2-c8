@@ -1,0 +1,317 @@
+<style>
+  .section-video-list .slick-track {
+    display: flex !important;
+    gap: 1.6rem;
+  }
+  .section-video-list .product-collection{padding-top: {{ section.settings.padding_top }}px;padding-bottom: {{ section.settings.padding_bottom }}px;}
+  .section-video-list .product-collection .title{ font-size: 46px;font-weight: 700;text-align:center;color:#000}
+  .iframe-carousel-container, .iframe-carousel {
+    position: relative;
+    margin-top:40px;
+    width: 100%;
+  }
+  
+  .section-video-list .iframe-carousel {
+    margin-top:0px;
+    display: flex;
+    gap: 16px;
+    justify-content: flex-start;
+  }
+  
+ .section-video-list .iframe-carousel .carousel-slide {
+    flex: 1 1 0;
+    min-width: 240px;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-left: 0px;
+  }
+  
+  .section-video-list .video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+  }
+  
+ .section-video-list .iframe-carousel iframe {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border: none;
+    display: block;
+  }
+  
+ .carousel-arrows {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 10;
+    pointer-events: none; /* 防止挡住轮播内容，按钮本身 pointer-events: all */
+  }
+  .carousel-arrows button {
+    position: relative;
+    {% comment %} background: rgba(118, 118, 118, 0.2); {% endcomment %}
+     background: #3250C3;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 0; /* 隐藏文本 */
+    cursor: pointer;
+    color: #fff;
+    transition: background 0.3s;
+    pointer-events: all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .carousel-arrows button:hover {
+    {% comment %} background: rgba(118, 118, 118, 0.5); {% endcomment %}
+     background: #3D60E4;
+  }
+  .section-video-list .carousel-arrows button.slick-disabled {
+    background: rgba(50, 80, 195, 0.2);
+  }
+  .carousel-arrows button.prev-arrow,
+  .carousel-arrows button.next-arrow {
+    left: unset;
+    right: unset;
+  }
+  
+  .carousel-arrows button.prev-arrow::after,
+  .carousel-arrows button.next-arrow::after {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+  }
+  
+  .carousel-arrows button.prev-arrow::after {
+    transform: rotate(45deg);
+  }
+  
+  .carousel-arrows button.next-arrow::after {
+    transform: rotate(-135deg);
+  }
+  
+  /* 按钮位置 */
+  .section-video-list .carousel-arrows button.prev-arrow { margin-left: 60px; }
+  .section-video-list .carousel-arrows button.next-arrow { margin-right: 60px; }
+  @media (max-width: 767.98px) {
+    {% comment %} .section-video-list { margin:0px 0rem } {% endcomment %}
+    .section-video-list .product-collection{padding-top: {{ section.settings.padding_top | divided_by: 2  }}px;padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;}
+    .section-video-list .product-collection .title{font-size: 28px;}
+    .iframe-carousel-container { margin-top:2rem }
+    .section-video-list .slick-track { gap:0px }
+    .iframe-carousel .carousel-slide {  margin-left: 0px;min-width: 180px; }
+    .video-container { border-radius: 8px; }
+    .section-video-list .slick-dotted .slick-dots{margin-top:0px}
+    .section-video-list .carousel-arrows button { width: 38px; height: 38px; }
+    .section-video-list .carousel-arrows button.prev-arrow { margin-left: 10px; }
+    .section-video-list .carousel-arrows button.next-arrow{ margin-right: 10px;}
+    .carousel-arrows button.next-arrow { margin-right: 10px; }
+
+  }
+</style>
+{% liquid
+    assign motion_delay = 50
+%}
+<div class="section section-video-list">
+  <div class="product-collection product-slider-container">
+    <h2 class="title">
+      <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">  <span>{{ section.settings.title }}</span></motion-element>
+    </h2>
+    <div class="iframe-carousel-container">
+      <div class="iframe-carousel">
+        {% for block in section.blocks %}
+          {%- liquid
+            # 从每个区块的视频URL中提取视频ID
+            assign video_url = block.settings.video_url
+            assign video_id = ""
+            
+            # 处理不同格式的YouTube URL
+            if video_url contains "youtube.com/watch?v="
+              assign video_id = video_url | split: '?v=' | last | split: '&' | first
+            elsif video_url contains "youtu.be/"
+              assign video_id = video_url | split: '.be/' | last | split: '?' | first
+            elsif video_url contains "youtube.com/embed/"
+              assign video_id = video_url | split: '/embed/' | last | split: '?' | first
+            endif
+          -%}
+          
+          {% if video_id != "" %}
+            <div class="carousel-slide">
+              <div class="video-container">
+              <iframe
+                src="https://www.youtube.com/embed/{{ video_id }}?rel=0&amp;controls=1&amp;showinfo=0&amp;autoplay=0&amp;loop=1&amp;mute=1&enablejsapi=1"
+                allow="autoplay; encrypted-media"
+                allowfullscreen
+                class="embed-responsive-item"
+                loading="lazy"
+                data-video-id="{{ video_id }}"
+              ></iframe>
+              </div>
+            </div>
+          {% else %}
+            <div class="carousel-slide error-slide">
+              <p>无效的视频URL: {{ video_url }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="carousel-arrows">
+        <button class="prev-arrow">❮</button>
+        <button class="next-arrow">❯</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    // 初始化轮播
+    let $carousel = $('#shopify-section-{{ section.id }} .iframe-carousel').slick({
+    autoplay: false,
+      slidesToShow: 2.5,
+      slidesToScroll: 1,
+      infinite: false, 
+      variableWidth: false,
+      dots: false,
+      arrows: true,
+        prevArrow: $('#shopify-section-{{ section.id }} .prev-arrow'),
+        nextArrow: $('#shopify-section-{{ section.id }} .next-arrow'),
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 2,
+                    variableWidth: false
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1.5,
+                    variableWidth: false
+                }
+            },
+            {
+                breakpoint: 767.98,
+                settings: {
+                    slidesToShow: 1,
+                    variableWidth: false
+                }
+            }
+        ]
+    });
+
+    // 暂停其他视频当新幻灯片激活时
+    $carousel.on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+        // 暂停当前播放的视频
+        const currentIframe = $(slick.$slides[currentSlide]).find('iframe')[0];
+        if (currentIframe && currentIframe.contentWindow) {
+            currentIframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        }
+    });
+
+    // 视频点击处理 - 在移动设备上全屏播放
+    $('.iframe-carousel').on('click', '.carousel-slide', function() {
+        const iframe = $(this).find('iframe')[0];
+        if (iframe) {
+            const videoId = $(this).find('iframe').data('video-id');
+            if (videoId) {
+                // 在移动设备上，使用YouTube应用打开以获得更好体验
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                    window.open(`https://www.youtube.com/watch?v=${videoId}`, '_blank');
+                } else if (iframe.contentWindow) {
+                    // 在桌面设备上，直接播放
+                    iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                }
+            }
+        }
+    });
+});
+</script> 
+{% schema %}
+{
+  "name": "video-list",
+  "tag": "section",
+  "class": "section section-video-list",
+  "max_blocks": 10,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Kundenbewertungen"
+    },
+     {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "video item",
+      "settings": [
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "accept": ["vimeo", "youtube"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+          "label": "视频"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "视频列表",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

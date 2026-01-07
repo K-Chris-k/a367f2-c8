@@ -1,0 +1,189 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_overlay_7NqLRV": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_e97FBN": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Download-Center",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_e97FBN"
+      ],
+      "custom_css": [
+        "@media (max-width: 768px) {.media--adapt, .media-wrapper {height: 390px; } .content-overlay--middle-center {justify-content: start; }}"
+      ],
+      "name": "t:sections.image-with-text-overlay.name",
+      "settings": {
+        "container": "full",
+        "bg_color": "#ffffff",
+        "title_color": "#000000",
+        "text_color": "#666",
+        "btn_wrapper_alignment": "start",
+        "image": "shopify://shop_images/FAQ-KV-PC.png",
+        "desktop_height": "adapt",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 720,
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "image_mobile": "shopify://shop_images/FAQ-kv-mob.png",
+        "mobile_height": "auto",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "breadcrumbs_MKedxR": {
+      "type": "breadcrumbs",
+      "disabled": true,
+      "custom_css": [
+        ".section--breadcrumb {background: #f5f5f5;}",
+        ".breadcrumbs {justify-content: flex-start;}"
+      ],
+      "name": "t:sections.breadcrumbs.name",
+      "settings": {
+        "text_alignment": "center"
+      }
+    },
+    "download_faq_UiGJYL": {
+      "type": "download-faq",
+      "blocks": {
+        "category_rbdMpi": {
+          "type": "category",
+          "settings": {
+            "category_name": "Kontoprobleme",
+            "faq_list": "<p>Wie erstelle ich ein Konto?|Um ein Konto zu erstellen, klicken Sie einfach auf die Schaltfläche „Mein Konto“ in der oberen rechten Ecke der Startseite. Folgen Sie den Anweisungen, um Ihre E-Mail-Adresse einzugeben, ein Passwort festzulegen und die erforderlichen persönlichen Daten einzugeben. Ihr Konto wird dann erfolgreich registriert.\nIch habe mein Passwort vergessen, was soll ich tun?|Wenn Sie Ihr Passwort vergessen haben, klicken Sie auf der Anmeldeseite auf den Link „Passwort vergessen“. Geben Sie die E-Mail-Adresse ein, mit der Sie sich registriert haben. Das System sendet Ihnen eine E-Mail zum Zurücksetzen Ihres Passworts. Befolgen Sie in der E-Mail die angegebenen Anweisungen.\nKann ich meine Kontoinformationen ändern?|Ja, Sie können Ihre Kontoinformationen jederzeit ändern. Melden Sie sich an und besuchen Sie den Bereich „Personal Center“. Klicken Sie auf „Informationen bearbeiten“, um Ihren Benutzernamen, Ihre Kontaktinformationen, Adresse und weitere Angaben zu ändern.\nWie lösche ich mein Konto?|Wenn Sie Ihr Konto löschen möchten, senden Sie uns bitte über die Seite „Kontakt“ eine Löschanfrage. Unser Kundenservice wird Ihre Anfrage so schnell wie möglich bearbeiten und die Kontolöschung bestätigen.</p>"
+          }
+        },
+        "category_pBtRfz": {
+          "type": "category",
+          "settings": {
+            "category_name": "Bestellprobleme",
+            "faq_list": "<p>Wie überprüfe ich den Status meiner Bestellung?|Melden Sie sich bei Ihrem Konto an und rufen Sie die Seite „Meine Bestellungen“ auf, um den Status Ihrer Bestellung und die Logistikinformationen zu überprüfen. Falls Sie noch kein Konto haben, können Sie Ihre Bestellung auch über die Bestellnummer auf unserer Seite „Bestellanfrage“ nachverfolgen.\nWie kann ich eine Bestellung stornieren?|Bestellungen können vor dem Versand storniert werden. Wenn Sie ein Indevolt-Konto besitzen, können Sie die Bestellung direkt in Ihrem Konto stornieren. Wenn Sie die Bestellung ohne Anmeldung aufgegeben haben, kontaktieren Sie bitte unseren Kundenservice, geben Sie Ihre Bestellnummer an und erläutern Sie den Grund für die Stornierung. Wir kümmern uns um die Abwicklung für Sie.\nWerden Rückerstattungen gewährt?|Ja, wir bieten einen Rückerstattungsservice an. Für erstattungsfähige Produkte können Sie innerhalb von 30 Tagen nach Erhalt eine Rückerstattung beantragen. Weitere Informationen finden Sie auf unserer Seite „Garantie und Rückgabebedingungen“.\nWann erfolgt der Versand nach der Bestellung?|Die normale Lieferzeit beträgt 1-3 Werktage nach erfolgreicher Zahlung. Weitere Informationen finden Sie in der Auftragsverwaltung unter „Mein Konto“.</p>"
+          }
+        },
+        "category_R4k4gd": {
+          "type": "category",
+          "settings": {
+            "category_name": "Zahlungsprobleme",
+            "faq_list": "Welche Zahlungsmethoden gibt es?|Wir unterstützen eine Vielzahl von Zahlungsmethoden, darunter PayPal, Kreditkarten. An der Kasse können Sie die für Sie passende Zahlungsart auswählen.\nWarum ist die Zahlung fehlgeschlagen?|<li>Löschen Sie die Cookies in Ihrem aktuellen Browser oder versuchen Sie es mit einem anderen Browser (z. B. Google Chrome).</li><li>Wechsels Sie zu einem anderen Gerät (Smartphone, Computer oder Tablet) und überprüfen Sie, ob die Zahlung dort funktioniert.</li><li>Wenden Sie sich an Ihre Bank, um zu klären, ob internationale Gebühren akzeptiert werden.</li><li>Falls die oben genannten Schritte nicht helfen oder Sie weitere Fragen haben, senden Sie uns bitte einen Screenshot des Problems, die genaue Uhrzeit sowie das von Ihnen verwendete Gerät und den Browser, den Sie genutzt haben.</li>"
+          }
+        },
+        "category_C6WF4g": {
+          "type": "category",
+          "settings": {
+            "category_name": "Logistikprobleme",
+            "faq_list": "<p>Wie lange dauert der Versand?|In Deutschland erhalten Sie Ihre Bestellung innerhalb von 3-7 Werktagen. In Österreich beträgt die Lieferzeit 6-12 Werktage.\nIn welche Länder versenden Sie?|Momentan versenden wir Indevolt-Balkonspeicherprodukte und Zubehör nur nach Deutschland und Österreich. Weitere europäische Länder werden schrittweise hinzugefügt.\nWie wird meine Sendung versendet?|Zu unseren Logistikpartnern zählen DHL, EMS, FedEx, USPS, DPD und weitere. Wir wählen den für Ihre Bestelladresse am besten geeigneten Versanddienstleister aus.\nIst der Versand kostenlos?|Ja, Indevolt bietet kostenlosen Versand für alle Bestellungen an.</p>"
+          }
+        },
+        "category_jb4wh9": {
+          "type": "category",
+          "settings": {
+            "category_name": "Probleme mit der Website",
+            "faq_list": "Kundendienst kontaktieren:|<dt>TEL: +49 (0)174 3150766</dt><dt> E-Mail: Schreiben Sie an service@indevolt.com</dt>\nIst die Website sicher?|Unsere Website verwendet moderne SSL/TLS-Verschlüsselung, um Ihre persönlichen Daten und Zahlungsinformationen zu schützen. Alle Zahlungsinformationen werden sicher übertragen, um Datenlecks zu vermeiden.\nWie abonniere ich E-Mails?|Um die neuesten Nachrichten und Angebote zu erhalten, tragen Sie Ihre E-Mail-Adresse im Abonnementfeld am Ende der Website ein und klicken Sie auf „Abonnieren“.\nWie kann ich mich von E-Mails abmelden?|Um keine weiteren E-Mails von uns zu erhalten, klicken Sie bitte auf den Link „Abbestellen“ am Ende jeder E-Mail. Bei Fragen hilft Ihnen unser Kundenservice jederzeit gerne weiter."
+          }
+        }
+      },
+      "block_order": [
+        "category_rbdMpi",
+        "category_pBtRfz",
+        "category_R4k4gd",
+        "category_C6WF4g",
+        "category_jb4wh9"
+      ],
+      "disabled": true,
+      "name": "Downlaod faq",
+      "settings": {
+        "title": "Häufig gestellte Fragen",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
+    },
+    "custom_liquid_ycLwrE": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "a {color: #3250c3;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>FAQS</title>\n    <link rel=\"stylesheet\" href=\"https://cdn.shopify.com/s/files/1/0596/6367/9587/files/faqs.css?v=1764308409\">\n</head>\n<body>\n    <div class=\"faq-container\">\n        <div class=\"faq-categories\">\n            <h2><i class=\"fas\">\n                    <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon icon-faqs icon--{{ size | default: 'medium' }}\"\n                        width=\"24\" height=\"24\" viewBox=\"0 0 31 30\" fill=\"none\">\n                        <g clip-path=\"url(#clip0_739_262)\">\n                            <mask id=\"mask0_739_262\" style=\"mask-type:luminance\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\"\n                                width=\"31\" height=\"30\">\n                                <path d=\"M0.75 1.90735e-06H30.75V30H0.75V1.90735e-06Z\" fill=\"white\" />\n                            </mask>\n                            <g mask=\"url(#mask0_739_262)\">\n                                <path\n                                    d=\"M29.7824 13.4512C29.7378 13.0543 29.2748 12.7557 28.8744 12.7557C27.5805 12.7557 26.4321 11.9962 25.9505 10.8207C25.4589 9.6171 25.7761 8.21361 26.7402 7.32925C27.0438 7.05164 27.0808 6.58675 26.8263 6.26408C26.1638 5.42302 25.4111 4.66324 24.5891 4.00476C24.2676 3.74677 23.795 3.78275 23.5159 4.0916C22.6742 5.02376 21.1623 5.37017 19.9939 4.88267C18.7785 4.37132 18.0113 3.13927 18.0867 1.81693C18.1115 1.40126 17.8077 1.04015 17.3935 0.991869C16.3385 0.86976 15.2744 0.866187 14.2164 0.983551C13.8075 1.02878 13.5038 1.38134 13.5174 1.79173C13.5632 3.10119 12.7873 4.31144 11.5837 4.80451C10.4294 5.27613 8.92789 4.93224 8.08795 4.00828C7.81027 3.70394 7.34604 3.66656 7.02225 3.91904C6.1761 4.58308 5.40647 5.34339 4.73791 6.17759C4.47735 6.50185 4.51584 6.97183 4.82205 7.25044C5.80514 8.14072 6.12207 9.55628 5.61166 10.774C5.12434 11.9349 3.91895 12.6827 2.53912 12.6827C2.09141 12.6684 1.77272 12.9691 1.72326 13.3764C1.59916 14.4369 1.59781 15.518 1.71723 16.5872C1.76188 16.9859 2.23854 17.2819 2.6433 17.2819C3.87324 17.2507 5.05338 18.0117 5.54914 19.2168C6.04244 20.4204 5.72486 21.8233 4.75924 22.7089C4.45719 22.9865 4.41863 23.4503 4.67363 23.7726C5.32942 24.6084 6.08275 25.3687 6.90723 26.0327C7.2309 26.2934 7.70158 26.2569 7.98213 25.9476C8.82711 25.0133 10.3388 24.6675 11.5024 25.1559C12.7214 25.666 13.4882 26.8979 13.4133 28.2206C13.3888 28.6362 13.6934 28.9985 14.1061 29.0457C14.6459 29.1088 15.1886 29.14 15.733 29.14C16.2497 29.14 16.7664 29.1118 17.2832 29.0543C17.6926 29.0091 17.9957 28.6561 17.9819 28.2456C17.9346 26.9368 18.7122 25.7265 19.9144 25.2343C21.0764 24.7597 22.5712 25.1071 23.4116 26.0297C23.6907 26.3334 24.1521 26.3703 24.4773 26.1189C25.322 25.4565 26.0901 24.6966 26.7616 23.8602C27.0224 23.5365 26.9854 23.0659 26.6775 22.7868C25.6946 21.8972 25.376 20.481 25.8864 19.2645C26.3662 18.1192 27.5267 17.3502 28.775 17.3502L28.9496 17.3549C29.3549 17.3877 29.7273 17.0757 29.7763 16.6622C29.9009 15.6008 29.9023 14.5208 29.7824 13.4512Z\"\n                                    stroke=\"black\" stroke-width=\"2\" stroke-miterlimit=\"10\" />\n                                <path\n                                    d=\"M23.2139 15.0189C23.2139 19.1411 19.8722 22.4828 15.75 22.4828C11.6278 22.4828 8.28607 19.1411 8.28607 15.0189C8.28607 10.8967 11.6278 7.55498 15.75 7.55498C19.8722 7.55498 23.2139 10.8967 23.2139 15.0189Z\"\n                                    stroke=\"black\" stroke-width=\"2\" stroke-miterlimit=\"10\" />\n                                <path\n                                    d=\"M13.6783 12.9743C13.6783 11.7816 14.6863 10.8242 15.8969 10.9077C16.9185 10.9782 17.7462 11.8058 17.8166 12.8274C17.8777 13.7132 17.3815 14.4905 16.6436 14.8439C16.0904 15.1088 15.75 15.6808 15.75 16.2943\"\n                                    stroke=\"black\" stroke-width=\"2\" stroke-miterlimit=\"10\" stroke-linecap=\"round\" />\n                                <path d=\"M15.75 18.7007V19.2482\" stroke=\"black\" stroke-width=\"2\" stroke-miterlimit=\"10\"\n                                    stroke-linecap=\"round\" />\n                            </g>\n                        </g>\n                        <defs>\n                            <clipPath id=\"clip0_739_262\">\n                                <rect width=\"30\" height=\"30\" fill=\"white\" transform=\"translate(0.75)\" />\n                            </clipPath>\n                        </defs>\n                    </svg></i>\n                Häufig gestellte Fragen</h2>\n\n        </div>\n        <div class=\"faq-main\">\n            <div class=\"faq-left\">\n                <div class=\"search-container\">\n                    <div class=\"search-box\">\n                        <input type=\"text\" id=\"search-input\" placeholder=\"Suchen\">\n                        <button id=\"search-btn\">\n                            <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon icon-search icon--large\"\n                                viewBox=\"0 0 24 24\" fill=\"none\">\n                                <path\n                                    d=\"M10.875 18.75C15.2242 18.75 18.75 15.2242 18.75 10.875C18.75 6.52576 15.2242 3 10.875 3C6.52576 3 3 6.52576 3 10.875C3 15.2242 6.52576 18.75 10.875 18.75Z\"\n                                    stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"\n                                    stroke-linejoin=\"round\"></path>\n                                <path d=\"M16.4434 16.4453L20.9997 21.0016\" stroke=\"currentColor\" stroke-width=\"1.5\"\n                                    stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n                            </svg>\n                        </button>\n                    </div>\n                </div>\n\n                <ul class=\"category-list\" id=\"category-list\">\n                </ul>\n            </div>\n            <!-- 右侧内容 -->\n            <div class=\"faq-content\">\n                <div class=\"current-category\">\n                    <a href=\"javascript:void(0);\">\n                        <i class=\"fas fa-folder\"></i>\n                        <span id=\"current-category-path\">Alle anzeigen</span>\n                    </a>\n                </div>\n\n\n                <div class=\"faq-list\" id=\"faq-list\">\n                    <div class=\"no-results\" id=\"no-results\">\n                        <i class=\"fas fa-search fa-3x\"></i>\n                        <h3>Wurden keine Ergebnisse gefunden.</h3>\n                        <p>Überprüfen Sie die Rechtschreibung oder verwenden Sie ein anderes Wort oder eine andere\n                            Phrase.\n                        </p>\n                    </div>\n                </div>\n\n                <!-- 分页控件 -->\n                <div class=\"pagination\" id=\"pagination\" style=\"display: none;\">\n                    <button id=\"prev-page\" disabled>\n                        <svg viewBox=\"64 64 896 896\" focusable=\"false\" data-icon=\"left\" width=\"1em\" height=\"1em\"\n                            fill=\"currentColor\" aria-hidden=\"true\">\n                            <path\n                                d=\"M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z\">\n                            </path>\n                        </svg>\n                    </button>\n                    <div class=\"pagination-numbers\" id=\"pagination-numbers\"></div>\n                    <button id=\"next-page\">\n                        <svg viewBox=\"64 64 896 896\" focusable=\"false\" data-icon=\"right\" width=\"1em\" height=\"1em\"\n                            fill=\"currentColor\" aria-hidden=\"true\">\n                            <path\n                                d=\"M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z\">\n                            </path>\n                        </svg>\n                    </button>\n                    <!-- <div class=\"pagination-info\" id=\"pagination-info\"></div> -->\n                </div>\n            </div>\n        </div>\n\n    </div>\n   <script src=\"https://cdn.shopify.com/s/files/1/0596/6367/9587/files/faqs.js?v=1767168683\" type=\"text/javascript\"></script>\n</body>\n</html>",
+        "container": "fixed",
+        "color_scheme": "",
+        "padding_top": 120,
+        "padding_bottom": 60
+      }
+    },
+    "rich_text_DniyDK": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_AqLLYg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Kannst du nicht finden, was du suchst?",
+            "heading_mobile": "",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "button_DPnAyg": {
+          "type": "button",
+          "settings": {
+            "button_label": "Kontaktiere uns",
+            "button_link": "shopify://pages/contact-us",
+            "button_style": "btn--primary",
+            "button_target": "_self"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AqLLYg",
+        "button_DPnAyg"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "content_alignment": "center",
+        "padding_top_inner": 120,
+        "padding_bottom_inner": 120,
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_7NqLRV",
+    "breadcrumbs_MKedxR",
+    "download_faq_UiGJYL",
+    "custom_liquid_ycLwrE",
+    "rich_text_DniyDK"
+  ]
+}

@@ -1,0 +1,533 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_overlay_7NqLRV": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_raEGDm": {
+          "type": "heading",
+          "settings": {
+            "heading": "Über Indevolt",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_raEGDm"
+      ],
+      "custom_css": [
+        ".media--extra-medium {height: 540px;}",
+        "@media (max-width: 768px) {.image-with-text-overlay, .media-wrapper {height: 400px; } .content-overlay--middle-center {justify-content: start; }}"
+      ],
+      "name": "t:sections.image-with-text-overlay.name",
+      "settings": {
+        "container": "full",
+        "bg_color": "#ffffff",
+        "title_color": "#ffffff",
+        "text_color": "#666",
+        "btn_wrapper_alignment": "start",
+        "image": "shopify://shop_images/aboutus.jpg",
+        "desktop_height": "extra-medium",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 720,
+        "content_position": "middle-center",
+        "content_alignment": "center",
+        "image_mobile": "shopify://shop_images/aboutus-mobile.jpg",
+        "mobile_height": "auto",
+        "padding_top": 0,
+        "padding_bottom": 50
+      }
+    },
+    "image_with_text_KQtK6h": {
+      "type": "image-with-text",
+      "blocks": {
+        "logo_img_XC7C8H": {
+          "type": "logo_img",
+          "settings": {
+            "logo_img": "shopify://shop_images/logo.png",
+            "mobile_logo_img": "shopify://shop_images/logo.png"
+          }
+        },
+        "subheading_EpAUMd": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Indevolt ist eine von Power Genius gegründete Marke im Jahr 2022 für Energiespeicherung, die sich auf selbst entwickelte Speichersysteme spezialisiert hat. Der Name Indevolt kombiniert Independent und Volt und steht für autonome und steuerbare Energieversorgung."
+          }
+        }
+      },
+      "block_order": [
+        "logo_img_XC7C8H",
+        "subheading_EpAUMd"
+      ],
+      "custom_css": [
+        "@media (max-width: 767.98px) {.image-wrapper img {object-fit: none; }}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#ffffff",
+        "image": "shopify://shop_images/pc01_18df3340-1060-4694-9111-f181bc9ea030.png",
+        "image_height": "adapt",
+        "layout": "text_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": false,
+        "mobile_content_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_with_text_zrp9Pi": {
+      "type": "image-with-text",
+      "blocks": {
+        "logo_img_nexn7F": {
+          "type": "logo_img",
+          "settings": {
+            "logo_img": "shopify://shop_images/new-about-logo2.png",
+            "mobile_logo_img": "shopify://shop_images/about-mlogo2.png"
+          }
+        },
+        "heading_wfRgQ9": {
+          "type": "heading",
+          "settings": {
+            "heading": "Unsere Mission",
+            "heading_size": "hd1",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_UyeW94": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Solarenergie schnell und einfach für alle nutzbar zu machen, um Energieautonomie und nachhaltige Entwicklung zu fördern.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "logo_img_nexn7F",
+        "heading_wfRgQ9",
+        "text_UyeW94"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#ffffff",
+        "image": "shopify://shop_images/pc02_b28551e4-1130-4902-91be-92b1f1599502.png",
+        "image_height": "adapt",
+        "layout": "image_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "center",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": false,
+        "mobile_content_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_with_text_mwHhHT": {
+      "type": "image-with-text",
+      "blocks": {
+        "logo_img_CdH6tb": {
+          "type": "logo_img",
+          "settings": {
+            "logo_img": "shopify://shop_images/about-logo3.png",
+            "mobile_logo_img": "shopify://shop_images/about-logo3.png"
+          }
+        },
+        "heading_rJwH9Y": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Unsere Vision</strong>",
+            "heading_size": "hd1",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_6M7pQh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Der führende Anbieter für die Energieunabhängigkeit von Haushalten zu werden und die umfassende Nutzung erneuerbarer Energien voranzutreiben.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "logo_img_CdH6tb",
+        "heading_rJwH9Y",
+        "text_6M7pQh"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#ffffff",
+        "image": "shopify://shop_images/PC003_5ef26522-694d-4fce-810d-f05e6a3ae12c.png",
+        "image_height": "adapt",
+        "layout": "text_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "center",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": false,
+        "mobile_content_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_with_text_overlay_dfeCKj": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_MhQfVt": {
+          "type": "heading",
+          "settings": {
+            "heading": "Unsere Geschichte",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_f9Tn9k": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Indevolt wird von einem engagierten Kernteam geleitet, das aus Absolventen der Technischen Universität München besteht und über umfassende Erfahrungen in der Photovoltaik-, Speicher- und Elektrofahrzeugindustrie verfügt. Die Teammitglieder haben zuvor in renommierten Unternehmen wie Siemens, Nokia und Huawei gearbeitet.<br/><br/>Angesichts der stark steigenden Energiepreise in Europa und des Mangels an qualifizierten Installateuren hat das Team die Dringlichkeit erkannt, Solarenergie für Haushalte zugänglicher zu machen. Mit einer globalen Perspektive und fundiertem technischem Wissen haben sie führende Technologien und Ressourcen der Lieferkette integriert, um ein innovatives Plug-and-Play-Speichersystem zu entwickeln, das von den Nutzern selbst installiert werden kann.<br/><br/>Nach drei Generationen von Produktiterationen und -optimierungen wurde dieses System 2024 offiziell auf den Markt gebracht. Damit bringen wir grüne Energie in jeden Haushalt und leisten einen wichtigen Beitrag zur globalen Energiewende.<br/><br/><br/><br/></p>",
+            "text_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "heading_MhQfVt",
+        "text_f9Tn9k"
+      ],
+      "custom_css": [
+        ".image-with-text-overlay__content-wrapper {margin-top: 97px;}",
+        "@media (max-width: 768px) {.image-with-text-overlay__content-wrapper {margin-top: 0px; } h2 {line-height: 34px; font-size: 28px; } p {line-height: 17px; font-size: 14px; }}"
+      ],
+      "name": "t:sections.image-with-text-overlay.name",
+      "settings": {
+        "container": "full",
+        "bg_color": "#ffffff",
+        "title_color": "#ffffff",
+        "text_color": "#ffffff",
+        "btn_wrapper_alignment": "start",
+        "image": "shopify://shop_images/1_38998959-07c1-489a-80ce-9291042da858.png",
+        "desktop_height": "extra-large",
+        "overlay_opacity": 25,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 1280,
+        "content_position": "top-center",
+        "content_alignment": "left",
+        "image_mobile": "shopify://shop_images/mob013.png",
+        "mobile_height": "auto",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "about_scene_list_bAMYUA": {
+      "type": "about-scene-list",
+      "blocks": {
+        "featured_collection_UYzVj8": {
+          "type": "featured_collection",
+          "settings": {
+            "image": "shopify://shop_images/aboutus-6-1.png",
+            "mobile_image": "shopify://shop_images/aboutus-6-1-mob.png",
+            "title": "<p>CycBoost-Technologie</p><p>für mehr Energie</p>",
+            "links": "https://blog.indevolt.com/indevolt-batterie-optimierer-maximale-nutzbare-kapazitat/"
+          }
+        },
+        "featured_collection_N4bX9P": {
+          "type": "featured_collection",
+          "settings": {
+            "image": "shopify://shop_images/aboutus-6-3.png",
+            "mobile_image": "shopify://shop_images/aboutus-6-3-mob.png",
+            "title": "<p>Halbfeste Akkus<br/>für erhöhte Sicherheit</p>",
+            "links": "https://de.indevolt.com/pages/halbfeste-akkus"
+          }
+        },
+        "featured_collection_gdeHTD": {
+          "type": "featured_collection",
+          "settings": {
+            "image": "shopify://shop_images/aboutus-6-2.png",
+            "mobile_image": "shopify://shop_images/aboutus-6-2-mob.png",
+            "title": "<p>Lokale Kommunikation<br/>für netzunabhängigen Betrieb</p>",
+            "links": ""
+          }
+        },
+        "featured_collection_QBdqhE": {
+          "type": "featured_collection",
+          "settings": {
+            "image": "shopify://shop_images/aboutus-6-4.png",
+            "mobile_image": "shopify://shop_images/aboutus-6-4-mob.png",
+            "title": "<p>KI‑Steuerungsalgorithmus<br/>für maximale Energieeffizienz</p>",
+            "links": "https://blog.indevolt.com/ki-energiemanagement-lassen-sie-intelligente-systeme-ihre-stromkosten-senken/"
+          }
+        },
+        "featured_collection_89REqd": {
+          "type": "featured_collection",
+          "settings": {
+            "image": "shopify://shop_images/aboutus-6-5.png",
+            "mobile_image": "shopify://shop_images/aboutus-6-5-mob.png",
+            "title": "<p>Drahtlose Paralleltechnik<br/>verdoppelt Leistung und Kapazität</p>",
+            "links": "https://blog.indevolt.com/drahtlose-balkonkraftwerk-speicher/"
+          }
+        },
+        "featured_collection_eyny4Q": {
+          "type": "featured_collection",
+          "settings": {
+            "image": "shopify://shop_images/aboutus-6-6.png",
+            "mobile_image": "shopify://shop_images/aboutus-6-6-mob.png",
+            "title": "<p>Offene API<br/>für Home Assistant</p>",
+            "links": ""
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_UYzVj8",
+        "featured_collection_N4bX9P",
+        "featured_collection_gdeHTD",
+        "featured_collection_QBdqhE",
+        "featured_collection_89REqd",
+        "featured_collection_eyny4Q"
+      ],
+      "custom_css": [
+        "p {margin: 0px;}"
+      ],
+      "name": "技术优势",
+      "settings": {
+        "section_title": "Indevolt-Technologie",
+        "padding_top": 50,
+        "padding_bottom": 50
+      }
+    },
+    "image_with_text_overlay_JkktAy": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_XNyeaQ": {
+          "type": "heading",
+          "settings": {
+            "heading": "Indevolt Ökosystem für Heimenergie",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_XNyeaQ"
+      ],
+      "custom_css": [
+        "h2 {line-height: 56px; font-size: 46px; font-weight: 700;}",
+        "@media (max-width: 767.98px) {h2 {line-height: 34px; font-size: 28px; }}"
+      ],
+      "name": "t:sections.image-with-text-overlay.name",
+      "settings": {
+        "container": "full",
+        "bg_color": "#ffffff",
+        "title_color": "#ffffff",
+        "text_color": "#666",
+        "btn_wrapper_alignment": "start",
+        "image": "shopify://shop_images/about-img3.png",
+        "desktop_height": "extra-small",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 1280,
+        "content_position": "top-center",
+        "content_alignment": "center",
+        "image_mobile": "shopify://shop_images/about-img-mobile3.png",
+        "mobile_height": "auto",
+        "padding_top": 50,
+        "padding_bottom": 0
+      }
+    },
+    "brand_list_f89p3i": {
+      "type": "brand-list",
+      "blocks": {
+        "card_c9hybT": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/connect-logo.png",
+            "description": "Das System SolidFlex 2000 von Indevolt setzt zur Stromspeicherung auf robuste „halbfeste\" Lithum-Eisenphosphat-Akkus und ein intelligentes Plug-and-Play-Konzept. Ganzjährig sorgt eine Batterieoptimierungs-Elektronik für Akkupflege und -konditionierung sowie ein Ausbalancieren der einzelnen Akkuzellen. Eine gut gemachte App dient dabei als zentrale Schaltstelle und unterstützt mit unterschiedlichen Betriebsarten alle relevanten Einsatzszenarien. Zudem überzeugt das Indevlot-System als Notstrom-Speicher mit schneller Umschaltzeit von 10 ms."
+          }
+        },
+        "card_DxtPqQ": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/inFranken_7152f0bb-f3c5-4493-a510-6586e459a700.png",
+            "description": "„Der SolidFlex 2000 bietet innovative Technologie, die auf modernster halbfester Lithium-Eisen-Phosphat-Batterie basiert und überzeugt durch hohe Sicherheit, lange Lebensdauer und flexible Erweiterungsmöglichkeiten. Profitiere von der zukunftssicheren Technologie von INDEVOLT und mache dein Zuhause unabhängiger, sicherer und intelligenter – mit dem SolidFlex 2000!\""
+          }
+        },
+        "card_eJxVmm": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo8.png",
+            "description": "„Der Indevolt SolidFlex 2000 Speicher für Balkonkraftwerke oder kleine PV-Anlagen punktet durch einfache Plug-and-Play installation und unterbrechungsfreier Notstromversorgung. Außerdem lässt er sich auf bis zu 10,8 kWh erweitern und sogar ins Smart Home einbinden.\""
+          }
+        },
+        "card_NpGde9": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo2.jpg",
+            "description": "„Ein echtes Highlight war für mich die intelligente Energieverteilung: An einem durchschnittlichen Sonnentag konnte ich problemlos mehrere energieintensive Geräte gleichzeitig betreiben, ohne das Stromnetz zu belasten.\""
+          }
+        },
+        "card_rhPExB": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo3.jpg",
+            "description": "„Das Indevolt BK1600 überzeugt als Al-ln-One-Lösung für alle, die ihre eigene Energie dezentral erzeugen und nutzen möchten.\""
+          }
+        },
+        "card_VLCChp": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo4.jpg",
+            "description": "„Die erfolgreiche Kombination von leistungsstarker PV-Technologie und effizienter Speicherlösung in einem kompakten, benutzerfreundlichen Paket überzeugt. Dieses Konzept macht das System zur idealen Wahl für Stadtbewohner und Mieter, die ohne bauliche Veränderungen in die Solarenergie einsteigen.\""
+          }
+        },
+        "card_DamLEY": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo5.png",
+            "description": "„Das Indevolt BK1600 verbindet fortschrittliche Effizienz, praxisgerechte Speicherkapazität und benutzerfreundliche Bedienung in einem durchdachten Komplettsystem und markiert damit einen bedeutenden Entwicklungsschritt in Richtung urbaner Energieautonomie für Stadtbewohnerinnen und Stadtbewohner.\""
+          }
+        },
+        "card_LyAdiP": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo6.png",
+            "description": "„Obwohl der initiale Anschaffungspreis hoch erscheinen mag, rechtfertigen die langfristigen Einsparungen und der Beitrag zum Klimaschutz diese Investition. Das Indevolt BK1600 ist somit mehr als nur ein Produkt – es ist ein Schritt in Richtung einer nachhaltigeren und unabhängigeren Energieversorgung für Stadtbewohner.\""
+          }
+        },
+        "card_YUY478": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo1.jpg",
+            "description": "„Mit dem Indevolt BK1600 holen Sie sich mehr als ein Balkonkraftwerk nach Hause - Sie erleben UnabhangigkeitNachhaltigkeit und innovative Energieversorgung in einem kompakten System.\""
+          }
+        },
+        "card_3qB3fM": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo7.png",
+            "description": "„Die Kombination aus Balkonkraftwerk und integriertem Speicher in einer kompakten Einheit differenziert Indevolt von zahlreichen Wettbewerbern.\""
+          }
+        },
+        "card_DaEW7c": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo9.png",
+            "description": "„Günstige Kombi aus Hausakku und Powerstation. Mit einem aktuellen Preis ist das Indevolt BK1600 bereits dann attraktiv, wenn man es als stationaren Akku fürBalkonkraftwerke mit der Option zur Optimierung seines dynamischen Stromtarifs verwenden will.\""
+          }
+        },
+        "card_V8H6Ki": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo10.png",
+            "description": "„Der Energiespeicher BK1600 für Balkonkraftwerke lässt sich in Drittanbieterplattformen integrieren, was eine Echtzeit-Fernsteuerung sowie die Teilnahme an Strommarkttransaktionen ermöglicht.\""
+          }
+        }
+      },
+      "block_order": [
+        "card_c9hybT",
+        "card_DxtPqQ",
+        "card_eJxVmm",
+        "card_NpGde9",
+        "card_rhPExB",
+        "card_VLCChp",
+        "card_DamLEY",
+        "card_LyAdiP",
+        "card_YUY478",
+        "card_3qB3fM",
+        "card_DaEW7c",
+        "card_V8H6Ki"
+      ],
+      "custom_css": [
+        ".section-brand-list,.section-brand-list .section-brand-list {margin-top: 0px; margin-bottom: 0px;}",
+        "@media (max-width: 768px) {.section-brand-list, .section-brand-list .section-brand-list {margin-top: 0px; margin-bottom: 0px; }}"
+      ],
+      "name": "品牌列表",
+      "settings": {
+        "title": "Bekannt aus",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "custom_mobile_padding_top": 80,
+        "logo_title": "Befürwortet von",
+        "logo_position": false,
+        "logo_pc_image": "shopify://shop_images/LOGO_683abf5c-2c78-4ae6-9835-af6ac7abd327.png",
+        "logo_mobile_image": "shopify://shop_images/1219-mob.png"
+      }
+    },
+    "image_with_text_overlay_GTNKkk": {
+      "type": "image-with-text-overlay",
+      "custom_css": [
+        ".media--adapt {height: 512px;}",
+        ".media-wrapper > img {/* object-fit: inherit; */}",
+        "@media (max-width: 767.98px) {.mb\\:media--small {height: 176px; }}"
+      ],
+      "name": "t:sections.image-with-text-overlay.name",
+      "settings": {
+        "container": "full",
+        "bg_color": "#ffffff",
+        "title_color": "#000000",
+        "text_color": "#666",
+        "btn_wrapper_alignment": "start",
+        "image": "shopify://shop_images/about-us-footer.jpg",
+        "desktop_height": "small",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 720,
+        "content_position": "top-center",
+        "content_alignment": "center",
+        "image_mobile": "shopify://shop_images/37c62bbdbbec0f6303f689508b6968e5.png",
+        "mobile_height": "small",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_7NqLRV",
+    "image_with_text_KQtK6h",
+    "image_with_text_zrp9Pi",
+    "image_with_text_mwHhHT",
+    "image_with_text_overlay_dfeCKj",
+    "about_scene_list_bAMYUA",
+    "image_with_text_overlay_JkktAy",
+    "brand_list_f89p3i",
+    "image_with_text_overlay_GTNKkk"
+  ]
+}

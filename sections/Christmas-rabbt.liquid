@@ -1,0 +1,561 @@
+ {%- liquid
+  assign motion_delay = 50
+-%}
+<style>
+
+  .title{ font-size: 48px;font-weight: 700;text-align:center;color:#000}
+  #shopify-section-{{ section.id }} {
+    margin-top: {{ section.settings.padding_top }}px;
+    margin-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+    #shopify-section-{{ section.id }} .rich-text {
+    flex-flow: column;
+    padding-top: {{ section.settings.padding_top_inner }}px;
+    padding-bottom: {{ section.settings.padding_bottom_inner }}px;
+  }
+
+
+ .scene-section .fullscreen-grid-section {
+    width: 100%;
+    padding:1rem;
+    overflow: hidden;
+  }
+  .grid-container {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    gap: 1rem;
+  }
+  .grid-item {
+    position: relative;
+    border-radius:20px;
+    height: 298px;
+    overflow: hidden;
+  }
+  .grid-item:hover .grid-image {
+    /*transform: scale(1.05);*/
+  }
+
+  @media screen and (min-width: 769px) {
+    #shopify-section-{{ section.id }} .grid-item:nth-child(3) {
+      grid-column: 1 / span 2;
+    }
+  }
+
+  .image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+    min-width: 100%;
+  }
+  .grid-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  .placeholder-image {
+    width: 100%;
+    height: 100%;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .content-wrapper {
+    position: absolute;
+    width:100%;
+    top: 30px;
+    left: 50%;
+    padding:0px 60px;
+    transform: translate(-50%, 0%);
+    display: flex;
+    flex-flow: column;
+    text-align: left;
+    z-index: 2;
+  }
+  .content-wrapper h2,.content-wrapper h4{
+    line-height: 22px;
+    color:#fff
+  }
+
+  .flex-container {
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+  }
+
+   .copy-button{
+    background: #DC222C;
+    color: #ffffff;
+    {% comment %} border: 2px solid #DC222C; {% endcomment %}
+  }      
+
+  .copy-button:hover{
+    background-color: #DC222C!important;
+    color: #ffffff;
+    color-border:#DC222C!important;
+    {% comment %} border: 2px solid #DC222C; {% endcomment %}
+  }    
+ 
+  .rabatt p{color: #FFFFFF!important;text-align: left;max-width:820px;line-height: 22px;font-size: 18px;}
+  .content-wrapper .grid-title{line-height: 34px;font-size: 28px;font-family: 'Inter';font-weight: 700;color:#1A1A1A!important;}
+  .content-wrapper .grid-des{margin-top:6px;line-height: 24px;font-size: 20px;font-family: 'Inter';font-weight: 500;color:#1A1A1A!important;}
+  .content-wrapper .grid-des strong{font-weight: 700;display:block;}
+  .content-wrapper .links{margin-top:20px;padding:10px 20px;max-width: 178px;}
+  .content-wrapper .links:hover,.content-wrapper .links:focus{border-color:#DC222C!important}
+
+
+  #shopify-section-{{ section.id }} .icon-gift{ width: 3rem; height: 3rem;margin: 0px 10px;}
+
+  #shopify-section-{{ section.id }} button:hover {
+      /* 不设置任何样式，或者重置为默认样式 */
+      background-color: #DC222C!important;
+      color: #ffffff!important;
+      cursor: default;
+      /* 移除所有可能的变化 */
+      transform: none;
+      box-shadow: none;
+  }
+
+  .snow-top-mc-mob{
+     display:none;
+  }
+  .snow-top-mc{
+     display:block;
+  }
+
+  @media screen and (max-width: 820px) {
+    .grid-item{border-radius: 8px;height: 205px;}
+     #shopify-section-{{ section.id }} .grid-item:nth-child(3) {
+      height: 386;
+    }
+  }
+    @media screen and (max-width: 440px) {
+    .grid-item{border-radius: 8px;height: 205px;}
+     #shopify-section-{{ section.id }} .grid-item:nth-child(3) {
+      height: 386px;
+    }
+  }
+
+    {% comment %} https://cdn.shopify.com/s/files/1/0596/6367/9587/files/mc-snow-mob.png?v=1764920183 {% endcomment %}
+
+    @media screen and (max-width: 420px) {
+    .grid-item{border-radius: 8px;height: 195px;}
+     #shopify-section-{{ section.id }} .grid-item:nth-child(3) {
+      height: 365px;
+    }
+  }
+
+  
+ @media screen and (max-width: 390px) {
+    .grid-item{border-radius: 8px;height: 185px;}
+     #shopify-section-{{ section.id }} .grid-item:nth-child(3) {
+      height: 344px;
+    }
+  }
+
+
+  @media screen and (max-width: 375px) {
+    .grid-item{border-radius: 8px;height: 178px;}
+     #shopify-section-{{ section.id }} .grid-item:nth-child(3) {
+      height: 332px;
+    }
+  }
+  @media screen and (max-width: 749px) {
+    .title{ font-size: 28px;}
+    #shopify-section-{{ section.id }} {
+      margin-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      margin-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+
+
+    
+    
+    #shopify-section-{{ section.id }} .rich-text {
+      flex-flow: column;
+      padding-top: {{ section.settings.padding_top_inner | divided_by: 2 }}px;
+      padding-bottom: {{ section.settings.padding_bottom_inner | divided_by: 2 }}px;
+    }
+
+
+
+
+    .scene-section .fullscreen-grid-section{ padding: 3rem 2rem 0rem 2rem;}
+
+      .grid-container {
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: 4fr;
+        gap: 1.5rem;
+      }
+    .content-wrapper{top:29px;white-space: pre-line; }
+    .content-wrapper .grid-title{white-space:nowrap;line-height: 22px;font-size: 18px;}
+    .content-wrapper .grid-des{margin-top:2px;line-height: 15px;font-size:12px;}
+    .content-wrapper .links{max-width: 104px;margin-top:20px;line-height: 15px;font-size:12px}
+    .content-wrapper .btn {        height: 3rem;}
+
+
+    .content-wrapper {
+      position: absolute;
+      width:100%;
+      top: 29px;
+      left: 50%;
+      padding:0px 20px;
+      transform: translate(-50%, 0%);
+      display: flex;
+      flex-flow: column;
+      text-align: left;
+      z-index: 2;
+    }
+
+      .flex-container {
+    display: flex;
+    justify-content: left;
+    gap: 10px;
+  }
+
+    #shopify-section-{{ section.id }} .icon-gift{ display:none;}
+
+  .snow-top-mc-mob{
+     display:block;
+  }
+  .snow-top-mc{
+      display:none;
+  }
+
+
+  .rabatt p{max-width:100%;line-height: 15px;font-size: 12px;}
+
+  }
+
+
+
+</style>
+<div class="section scene-section color-scheme-1"   id="{{section.settings.ids}}">
+  <div class="page-width ">
+    <div class="rich-text">
+     <h2 class="title"> 
+      <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+        {% render 'icon-gift' -%}
+        <span>{{section.settings.section_title}}</span>
+        {% render 'icon-gift' -%}
+    </motion-element></h2>
+    <image class="snow-top-mc" src="https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SNOW.png?v=1764560321" style="  margin-bottom: -8%;position: relative;z-index: 1;"></image>
+    <image class="snow-top-mc-mob" src="https://cdn.shopify.com/s/files/1/0596/6367/9587/files/mc-snow-mob.png?v=1764920183" style="  margin-bottom: -16%;position: relative;z-index: 1;"></image>
+    <div class="section__wrapper grid-container product-box" style="">
+          {% for block in section.blocks %}
+           {% case block.type %}
+            {% when 'featured_collection' %}
+            <div class="grid-item block-{{ forloop.index }}">
+              <div class="image-container">
+                {% if block.settings.image != blank %}
+                  <picture>
+                    <!-- 移动端图片 -->
+                    <source
+                      media="(max-width: 749px)"
+                      srcset="
+                        {{ block.settings.mobile_image | img_url: '800x' }} 1x,
+                        {{ block.settings.mobile_image | img_url: '1600x' }} 2x
+                      "
+                    >
+
+                    <!-- 桌面端图片 -->
+                    <source
+                      media="(min-width: 750px)"
+                      srcset="
+                        {{ block.settings.image | img_url: '1200x' }} 1x,
+                        {{ block.settings.image | img_url: '2400x' }} 2x
+                      "
+                    >
+
+                    <!-- 默认图片 -->
+                    <img
+                      src="{{ block.settings.image | img_url: '1200x' }}"
+                      alt="{{ block.settings.title | escape }}"
+                      class="grid-image"
+                      loading="lazy"
+                      width="{{ block.settings.image.width }}"
+                      height="{{ block.settings.image.height }}"
+                    >
+                  </picture>
+                {% else %}
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+              </div>
+              <div class="content-wrapper">
+                <h2 class="grid-title">{{ block.settings.title }}</h2>
+                <h4 class="grid-des">{{ block.settings.description }}</h4>
+                {% if block.settings.button_link != blank %} 
+                  <div class="flex-container">
+                  <button
+                    type="button"  data-rabatt="{{ block.settings.rabatt }}"
+                    class="btn btn--primary links copy-button"  {% if block.settings.rabatt != blank %}  aria-controls="PopupModal-{{ section.id }}" {% endif %} 
+                  > 
+                    <a href="javascript:void(0)" class="grid-button">
+                      {{ block.settings.button_title_copy }}
+                    </a>
+                  </button>
+                <basic-modal id="PopupModal-{{section.id}}" class="drawer modal" style="--modal-width: 50rem;">
+                  <div class="fixed-overlay" aria-controls="PopupModal-{{section.id}}"></div>
+                  <div class="drawer__inner tip-background">
+                    <div class="drawer__body v-scrollable">
+                        <button
+                                          aria-controls="PopupModal-{{ section.id }}"
+                                          class="drawer__close-btn z-1"
+                                        >
+                                          {%- render 'icon-close' -%}
+                                        </button>
+                        {% comment %} <h5>Kopieren erfolgreich!</h5> {% endcomment %}
+                        <div class="content">Der Gutschein wurde erfolgreich aktiviert und wird beim Checkout automatisch abgezogen.<br/>Gültig: 8. - 19. Dezember</div>
+                    </div>
+                  </div>
+                </basic-modal>
+                  </div>
+                {% endif %} 
+              </div>
+            </div>
+
+
+            {% endcase %}
+          {% endfor %}
+       </div>
+
+         {% for block in section.blocks %}
+           {% case block.type %}
+            {% when 'text' %}
+            <motion-element
+              data-motion="fade-up"
+              data-motion-delay="{{ motion_delay }}" style="text-align:center;color:#FFA81D !important;"
+              class="block  rich-text__text rabatt rte {{ block.settings.text_size }}"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.text }}
+            </motion-element>
+            {%- assign motion_delay = motion_delay | plus: 50 -%}
+            {% endcase %}
+          {% endfor %}
+    </div>
+  </div>
+
+</div>
+
+<script>
+
+function copyText(text, button) {
+    navigator.clipboard.writeText(text).then(() => {
+   
+    }).catch(err => {
+        
+    });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+      // 为按钮添加点击事件
+var buttons=document.getElementsByClassName('copy-button');
+  Array.from(buttons).forEach(button => {
+            // 为每个按钮添加点击事件监听器
+            button.addEventListener('click', function() {
+              const rabattCode = this.getAttribute('data-rabatt');
+              console.log("rabattCode-------------"+rabattCode);
+              if(rabattCode && rabattCode=='CODE100'){
+                copyText(rabattCode, this);
+              }else{
+                              window._klOnsite = window._klOnsite || [];
+window._klOnsite.push(['openForm', 'SaexN5']);
+              }
+              
+
+            });
+    });
+ 
+});
+
+
+
+
+</script>
+{% schema %}
+{
+  "name": "sections.scene-list",
+  "tag": "section",
+  "class": "section section-scene-list",
+  "max_blocks": 10,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+     {
+      "type": "text",
+      "id": "ids",
+      "label": "设置ID",
+    },
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "分区标题",
+      "default": "我们的特色分区"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_inner",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "内部顶部填充",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_inner",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "内部底部填充",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "scene item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image_pc"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "image_mobile"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "大标题"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "描述"
+        },
+        {
+          "type": "text",
+          "id": "button_title",
+          "label": "按钮标题"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "按钮链接"
+        },
+
+         {
+          "type": "text",
+          "id": "button_title_copy",
+          "label": "复制按钮标题"
+        },
+        {
+          "type": "text",
+          "id": "rabatt",
+          "label": "优惠码"
+        },
+        
+      ]
+    },
+
+       {
+      "type": "text",
+      "name": "t:sections.all.text.name",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+          "label": "t:sections.all.text.label"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "label": "t:sections.all.text_size.text.label",
+          "default": "text-base",
+          "options": [
+            {
+              "value": "text-sm",
+              "label": "t:sections.all.text_size.options__small.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:sections.all.text_size.options__base.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:sections.all.text_size.options__large.label"
+            },
+            {
+              "value": "text-inherit",
+              "label": "t:sections.all.text_size.options__inherit.label"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "优惠券列表圣诞节",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "text"
+        } 
+     
+      ]
+    }
+  ]
+}
+{% endschema %}

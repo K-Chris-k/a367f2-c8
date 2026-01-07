@@ -1,0 +1,1750 @@
+{%- liquid
+  assign size_option_name = block.settings.size_title | downcase
+  assign size_chart_content = product.metafields.foxtheme.size_chart.value.content
+  assign size_chart_modal_id = 'SizeChartModal-' | append: block.id
+
+  if size_chart_content == blank and block.settings.size_chart_from_page != blank
+    assign size_chart_content = pages[block.settings.size_chart_from_page].content
+  endif
+
+  # 获取元字段配置
+  assign variant_config = product.metafields.custom.variant_display_config.value
+
+  # 如果没有配置，回退到标准展示
+  if variant_config == blank
+    echo '<!-- No variant config found, falling back to standard display -->'
+  endif
+-%}
+
+<style>
+  /* Cascading Variant Picker Styles */
+  .cascading-variant-picker {
+    width: 100%;
+  }
+
+  /* Tabs */
+  .variant-picker-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .variant-picker-tab {
+    flex: 1;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+    background: transparent;
+    border: none;
+    border-bottom: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .variant-picker-tab.active {
+    color: #3250c3;
+    font-weight: 400;
+  }
+
+  .variant-picker-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% + 20px);
+    height: 2px;
+    background-color: #3250c3;
+  }
+
+  .variant-picker-tab-content {
+    display: none;
+  }
+
+  .variant-picker-tab-content.active {
+    display: block;
+  }
+
+  /* Extension Pattern Styles */
+  .variant-extension-card {
+    width: 100%;
+    border: 2px solid #3250c3;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+    background: #fff;
+  }
+
+  .variant-extension-base {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 16px;
+  }
+
+  .variant-extension-base-image {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .variant-extension-base-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .variant-extension-base-content {
+    flex: 1;
+  }
+
+  .variant-extension-base-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin: 0 0 8px 0;
+  }
+
+  .variant-extension-base-price {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .variant-extension-base-price .current-price {
+    color: #000;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  .variant-extension-base-price .original-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-left: 8px;
+  }
+
+  .variant-extension-badges {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .variant-extension-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .variant-extension-badge.new {
+    background: #3250c3;
+    color: #fff;
+  }
+
+  .variant-extension-badge.best {
+    background: #ff6b35;
+    color: #fff;
+  }
+
+  .variant-extension-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .variant-extension-section-image {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .variant-extension-section-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .variant-extension-section-content {
+    flex: 1;
+  }
+
+  .variant-extension-section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin: 0 0 8px 0;
+  }
+
+  .variant-extension-section-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+  }
+
+  .variant-extension-qty-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .variant-extension-qty-btn {
+    padding: 8px 16px;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 36px;
+    min-width: 48px;
+  }
+
+  .variant-extension-qty-btn:hover:not(.selected):not(.disabled) {
+    border-color: #3250c3;
+  }
+
+  .variant-extension-qty-btn.selected {
+    background: #3250c3;
+    color: #fff;
+    border-color: #3250c3;
+    font-weight: 500;
+  }
+
+  .variant-extension-qty-btn.disabled,
+  .variant-extension-qty-btn[disabled],
+  label.variant-extension-qty-btn.disabled,
+  label.variant-extension-qty-btn[disabled] {
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    color: var(--color-foreground-lighten-19) !important;
+    border-color: var(--color-foreground-lighten-19) !important;
+    background: #fff !important;
+    position: relative !important;
+  }
+
+  .variant-extension-qty-btn.disabled::before,
+  .variant-extension-qty-btn[disabled]::before,
+  label.variant-extension-qty-btn.disabled::before,
+  label.variant-extension-qty-btn[disabled]::before {
+    content: "" !important;
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    background: linear-gradient(to bottom left, transparent calc(50% - 1px), var(--color-foreground-lighten-19) 50%, transparent calc(50% + 1px)) no-repeat !important;
+    border-radius: inherit !important;
+    z-index: 1 !important;
+  }
+
+  .variant-capacity-display {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 16px;
+  }
+
+  .variant-capacity-display .value {
+    color: #3250c3;
+    font-weight: 500;
+  }
+
+  /* Category Group Pattern Styles (Type 2) */
+  .variant-category-cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .variant-category-card {
+    width: 100%;
+    max-width: 100%;
+    border: 2px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 16px 16px 6px 16px;
+    background: #fff;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    /* min-height: 280px; */
+    box-sizing: border-box;
+  }
+
+  .variant-category-card.selected {
+    border-color: #3250c3;
+  }
+
+  .variant-category-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 0px;
+    flex-shrink: 0;
+    align-items: center;
+  }
+
+  .variant-category-card-image {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .variant-category-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .variant-category-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .variant-category-qty-buttons {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-bottom: 0px;
+    flex: 1;
+    /* min-height: 100px; */
+  }
+
+  .variant-category-qty-btn {
+    padding: 10px 16px;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 40px;
+    height: 40px;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .variant-category-qty-btn:hover:not(.selected):not(.disabled) {
+    border-color: #3250c3;
+  }
+
+  .variant-category-qty-btn.selected {
+    background: #3250c3;
+    color: #fff;
+    border-color: #3250c3;
+    font-weight: 500;
+  }
+
+  .variant-category-qty-btn.disabled,
+  .variant-category-qty-btn[disabled],
+  label.variant-category-qty-btn.disabled,
+  label.variant-category-qty-btn[disabled] {
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    color: var(--color-foreground-lighten-19) !important;
+    border-color: var(--color-foreground-lighten-19) !important;
+    background: #fff !important;
+    position: relative !important;
+  }
+
+  .variant-category-qty-btn.disabled::before,
+  .variant-category-qty-btn[disabled]::before,
+  label.variant-category-qty-btn.disabled::before,
+  label.variant-category-qty-btn[disabled]::before {
+    content: "" !important;
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    background: linear-gradient(to bottom left, transparent calc(50% - 1px), var(--color-foreground-lighten-19) 50%, transparent calc(50% + 1px)) no-repeat !important;
+    border-radius: inherit !important;
+    z-index: 1 !important;
+  }
+
+  .variant-category-wattage {
+    font-size: 16px;
+    color: #666;
+    margin-top: auto;
+    padding-top: 8px;
+    flex-shrink: 0;
+  }
+
+  .variant-category-wattage .value {
+    color: #3250c3;
+    font-weight: 500;
+  }
+
+  .variant-none-btn {
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    background: #fff;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    margin-top: 16px;
+  }
+
+  .variant-none-btn:hover:not(.selected):not(.disabled) {
+    border-color: #3250c3;
+  }
+
+  .variant-none-btn.selected {
+    {% comment %} background: #3250c3 !important; {% endcomment %}
+    color: #3250c3 !important;
+    border-color: #3250c3 !important;
+    font-weight: 600 !important;
+  }
+
+  .variant-none-btn.disabled,
+  .variant-none-btn[disabled],
+  label.variant-none-btn.disabled,
+  label.variant-none-btn[disabled] {
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    color: var(--color-foreground-lighten-19) !important;
+    border-color: var(--color-foreground-lighten-19) !important;
+    background: #fff !important;
+    position: relative !important;
+  }
+
+  .variant-none-btn.disabled::before,
+  .variant-none-btn[disabled]::before,
+  label.variant-none-btn.disabled::before,
+  label.variant-none-btn[disabled]::before {
+    content: "" !important;
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    background: linear-gradient(to bottom left, transparent calc(50% - 1px), var(--color-foreground-lighten-19) 50%, transparent calc(50% + 1px)) no-repeat !important;
+    border-radius: inherit !important;
+    z-index: 1 !important;
+  }
+
+  @media (max-width: 768px) {
+    .variant-picker-tab {
+      padding: 10px 12px;
+      font-size: 14px;
+    }
+
+    .variant-extension-base-image,
+    .variant-extension-section-image {
+      width: 60px;
+      height: 60px;
+    }
+
+    .variant-extension-qty-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      min-height: 32px;
+    }
+
+    .variant-category-cards-wrapper {
+      grid-template-columns: 1fr;
+    }
+
+    .variant-category-card-image {
+      width: 60px;
+      height: 60px;
+    }
+
+    .variant-category-qty-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      min-height: 32px;
+    }
+
+    .variant-none-btn {
+      font-size: 14px;
+    }
+  }
+</style>
+
+{%- liquid
+  # 收集推荐产品（用于判断是否显示标签页）
+  assign has_recommendations = false
+
+  if section.blocks
+    for block_item in section.blocks
+      if block_item.type == 'recommend_product' and has_recommendations == false
+        assign recommended_product = all_products[block_item.settings.recommended_product1]
+        if recommended_product != blank
+          assign has_recommendations = true
+        endif
+      endif
+    endfor
+  endif
+-%}
+
+<script src="{{ 'variant-selects.js' | asset_url }}" defer="defer"></script>
+<variant-selects
+  id="variant-selects-{{ section.id }}"
+  data-section="{{ section.id }}"
+  data-url="{{ product.url }}"
+  data-update-url="{% if update_url == false %}false{% else %}true{% endif %}"
+  class="cascading-variant-picker"
+>
+
+    {%- if has_recommendations -%}
+    <!-- Tabs -->
+    <div class="variant-picker-tabs">
+      <button type="button" class="variant-picker-tab active" data-tab="set-kombination">Set-Kombination</button>
+      {% comment %} {%- if has_recommendations -%} {% endcomment %}
+        <button type="button" class="variant-picker-tab" data-tab="empfehlung">Empfehlung</button>
+      {% comment %} {%- endif -%} {% endcomment %}
+    </div>
+
+   {%- endif -%}
+
+  <!-- Tab Content: Set-Kombination -->
+  <div class="variant-picker-tab-content active" data-tab-content="set-kombination">
+    {%- unless product.has_only_default_variant -%}
+      {%- for option in product.options_with_values -%}
+        {%- liquid
+          # 查找当前选项的配置
+          assign option_config = null
+          if variant_config and variant_config.options
+            for opt_cfg in variant_config.options
+              if opt_cfg.name == option.name
+                assign option_config = opt_cfg
+                break
+              endif
+            endfor
+          endif
+
+          assign option_index = forloop.index0
+          assign option_name_downcase = option.name | downcase
+
+          # 创建一个包含 value_mapping 的 variant_config 对象传递给子片段
+          # 因为新的 JSON 结构中 value_mapping 在每个 option 内部
+          assign variant_config_for_render = variant_config
+        -%}
+
+        {%- comment -%} 如果有配置，使用配置渲染 {%- endcomment -%}
+        {%- if option_config and option_config.display_type -%}
+          {%- if option_config.display_type == 'extension' -%}
+            {%- comment -%} ========== 扩展模式渲染（基于配置） ========== {%- endcomment -%}
+            {%- render 'variant-picker-extension',
+              option: option,
+              option_config: option_config,
+              variant_config: variant_config_for_render,
+              product: product,
+              product_form_id: product_form_id,
+              section: section,
+              option_index: option_index
+            -%}
+
+          {%- elsif option_config.display_type == 'category_grid' -%}
+            {%- comment -%} ========== 类别网格渲染（基于配置） ========== {%- endcomment -%}
+            {%- render 'variant-picker-category-grid',
+              option: option,
+              option_config: option_config,
+              variant_config: variant_config_for_render,
+              product: product,
+              product_form_id: product_form_id,
+              section: section,
+              option_index: option_index
+            -%}
+
+          {%- else -%}
+            {%- comment -%} ========== 标准渲染（基于配置，未来扩展） ========== {%- endcomment -%}
+            {% render 'product-variant-options', option: option, product: product, block: block %}
+          {%- endif -%}
+
+        {%- else -%}
+          {%- comment -%} ========== 没有配置，不渲染（因为走到这个文件就应该有配置） ========== {%- endcomment -%}
+        {%- endif -%}
+        {%- comment -%} 结束配置检查 {%- endcomment -%}
+      {%- endfor -%}
+    {%- endunless -%}
+  </div>
+
+  <!-- Tab Content: Empfehlung -->
+  {%- if has_recommendations -%}
+    <div class="variant-picker-tab-content" data-tab-content="empfehlung">
+      {%- render 'recommendation-products', section: section -%}
+    </div>
+  {%- endif -%}
+
+  <script type="application/json" data-selected-variant>
+    {{ product.selected_or_first_available_variant | json }}
+  </script>
+
+  {%- comment -%} 添加所有 variants 数据用于 JavaScript 验证 {%- endcomment -%}
+  <script type="application/json" data-product-variants>
+    {{ product.variants | json }}
+  </script>
+</variant-selects>
+
+{%- if size_chart_content != blank -%}
+  <div id="SizeChart-{{ section.id }}">
+    <basic-modal id="{{ size_chart_modal_id }}" class="drawer modal" style="--modal-width: 77rem;">
+      <div class="fixed-overlay" aria-controls="{{ size_chart_modal_id }}"></div>
+      <div class="drawer__inner">
+        <button
+          class="drawer__close-btn"
+          aria-controls="{{ size_chart_modal_id }}"
+          aria-label="{{ 'accessibility.close' | t }}"
+        >
+          {% render 'icon-close' %}
+        </button>
+        <div class="drawer__body v-scrollable h-full rte">
+          {{ size_chart_content }}
+        </div>
+      </div>
+    </basic-modal>
+  </div>
+{%- endif -%}
+
+<script>
+  (function () {
+    // 保存当前目标 tab（用于在 DOM 更新后恢复）
+    let currentTargetTab = 'set-kombination';
+
+    // 标签页切换功能
+    function handleTabSwitch(e) {
+      // 检查点击的是否是标签页按钮
+      const tab = e.target.closest('.variant-picker-tab');
+      if (!tab) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const targetTab = tab.dataset.tab;
+      if (!targetTab) return;
+
+      // 保存目标 tab（在 DOM 更新前保存，确保后续恢复时使用最新的值）
+      currentTargetTab = targetTab;
+
+      // 找到variant-selects元素（可能在product-info内部）
+      const picker = tab.closest('variant-selects');
+      if (!picker) return;
+
+      // 获取所有标签页和内容
+      const tabs = picker.querySelectorAll('.variant-picker-tab');
+      const tabContents = picker.querySelectorAll('.variant-picker-tab-content');
+
+      // 更新标签页状态
+      tabs.forEach((t) => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // 更新内容显示
+      tabContents.forEach((content) => {
+        if (content.dataset.tabContent === targetTab) {
+          content.classList.add('active');
+        } else {
+          content.classList.remove('active');
+        }
+      });
+
+      // 如果切换到 Set-Kombination 标签页，立即重置到第一个选项并清空推荐产品选择
+      if (targetTab === 'set-kombination') {
+        // 先清空推荐产品选择，这样价格会回到主产品价格
+        clearAllRecommendationSelections();
+        // 然后重置到第一个选项（resetToFirstOption 完成后会显示主产品 sticky-atc-bar）
+        resetToFirstOption();
+      }
+
+      // 如果切换到 Empfehlung 标签页，隐藏主产品 sticky-atc-bar，清空所有选择
+      // 等用户选中推荐产品后，推荐产品专用的 bar 会自动显示
+      if (targetTab === 'empfehlung') {
+        clearAllRecommendationSelections();
+      }
+
+      // 触发标签页切换事件
+      document.dispatchEvent(
+        new CustomEvent('tab:change', {
+          detail: { activeTab: targetTab },
+        })
+      );
+    }
+
+    // 重置到第一个选项（用于Set-Kombination tab）
+    function resetToFirstOption() {
+      const variantSelects = document.querySelector('variant-selects');
+      if (!variantSelects) return;
+
+      // 尝试找到第一个可用的变体，直接选中它
+      const variantsDataEl = variantSelects.querySelector('[data-product-variants]');
+      let firstAvailableVariant = null;
+      
+      if (variantsDataEl) {
+        try {
+          const allVariants = JSON.parse(variantsDataEl.textContent);
+          firstAvailableVariant = allVariants.find(v => v.available);
+        } catch (e) {
+          console.error('[Variant Picker] 解析 variants 数据失败:', e);
+        }
+      }
+
+      // 延迟一点执行，确保 DOM 准备好
+      setTimeout(() => {
+        if (firstAvailableVariant) {
+          console.log('[Variant Picker] 重置到第一个可用变体:', firstAvailableVariant);
+          
+          const fieldsets = variantSelects.querySelectorAll('fieldset.product-form__input');
+          
+          firstAvailableVariant.options.forEach((optionValue, index) => {
+            if (fieldsets[index]) {
+              const fieldset = fieldsets[index];
+              // 在这个 fieldset 里找 value 匹配的 radio
+              // 注意：我们需要精确匹配 value
+              const targetRadio = Array.from(fieldset.querySelectorAll('input[type="radio"]'))
+                .find(r => r.value === optionValue);
+                
+              if (targetRadio) {
+                // 取消同名 radio
+                const radioName = targetRadio.name;
+                fieldset.querySelectorAll(`input[type="radio"][name="${radioName}"]`).forEach(r => r.checked = false);
+                
+                // 选中目标 radio
+                targetRadio.checked = true;
+                
+                // 触发 change 事件
+                const changeEvent = new Event('change', { bubbles: true, cancelable: true });
+                targetRadio.dispatchEvent(changeEvent);
+                fieldset.dispatchEvent(changeEvent);
+              }
+            }
+          });
+          
+          // 触发 variantSelects 的 change
+          const changeEvent = new Event('change', { bubbles: true, cancelable: true });
+          variantSelects.dispatchEvent(changeEvent);
+          
+        } else {
+          // 回退逻辑：每个 fieldset 选第一个未禁用的
+          console.warn('[Variant Picker] 未找到可用变体，执行默认重置');
+          const fieldsets = variantSelects.querySelectorAll('fieldset.product-form__input');
+          
+          fieldsets.forEach((fieldset) => {
+            let firstEnabledRadio = fieldset.querySelector('input[type="radio"]:not([disabled]):not(.disabled)');
+            if (!firstEnabledRadio) {
+               firstEnabledRadio = fieldset.querySelector('input[type="radio"]');
+            }
+
+            if (firstEnabledRadio) {
+              const radioName = firstEnabledRadio.name;
+              fieldset.querySelectorAll(`input[type="radio"][name="${radioName}"]`).forEach((r) => {
+                r.checked = false;
+              });
+
+              firstEnabledRadio.checked = true;
+              const changeEvent = new Event('change', { bubbles: true, cancelable: true });
+              firstEnabledRadio.dispatchEvent(changeEvent);
+              fieldset.dispatchEvent(changeEvent);
+            }
+          });
+          
+          const changeEvent = new Event('change', { bubbles: true, cancelable: true });
+          variantSelects.dispatchEvent(changeEvent);
+        }
+        
+        // 强制验证一次可用性
+        if (typeof validateAndUpdateOptionAvailability === 'function') {
+          validateAndUpdateOptionAvailability();
+        }
+        
+      }, 10);
+
+      // 等待 DOM 更新后恢复 tab 状态（使用最新的 currentTargetTab）
+      setTimeout(() => {
+        restoreTabState(currentTargetTab);
+      }, 150);
+    }
+
+    // 恢复 tab 状态
+    function restoreTabState(targetTab) {
+      const variantSelects = document.querySelector('variant-selects');
+      if (!variantSelects) return;
+
+      const tabs = variantSelects.querySelectorAll('.variant-picker-tab');
+      const tabContents = variantSelects.querySelectorAll('.variant-picker-tab-content');
+
+      // 更新标签页状态
+      tabs.forEach((t) => {
+        if (t.dataset.tab === targetTab) {
+          t.classList.add('active');
+        } else {
+          t.classList.remove('active');
+        }
+      });
+
+      // 更新内容显示
+      tabContents.forEach((content) => {
+        if (content.dataset.tabContent === targetTab) {
+          content.classList.add('active');
+        } else {
+          content.classList.remove('active');
+        }
+      });
+    }
+
+    // 清空所有推荐产品选择（用于Empfehlung tab）
+    function clearAllRecommendationSelections() {
+      // 清除所有选中状态
+      document.querySelectorAll('.recommendation-select-on-click[recommendation-selected]').forEach((card) => {
+        card.classList.remove('selected');
+        card.removeAttribute('recommendation-selected');
+      });
+
+      // 清除sessionStorage
+      sessionStorage.removeItem('recommendation_selection');
+
+      // 恢复主产品图片（如果之前被推荐产品图片覆盖了）
+      if (window.restoreMainProductImage) {
+        window.restoreMainProductImage();
+      }
+
+      // 触发推荐产品变化事件，确保价格更新
+      document.dispatchEvent(
+        new CustomEvent('recommendation:change', {
+          detail: { recommendation: null },
+        })
+      );
+
+      // 更新价格
+      if (window.updateStickyBarPrice) {
+        window.updateStickyBarPrice();
+      }
+    }
+
+    // 初始化函数
+    function initTabSwitching() {
+      // 找到product-info元素（它不会被替换）
+      const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
+      if (!productInfo) return;
+
+      // 移除旧的事件监听器（如果存在）
+      if (productInfo._tabSwitchHandler) {
+        productInfo.removeEventListener('click', productInfo._tabSwitchHandler);
+      }
+
+      // 添加新的事件监听器（事件委托）
+      productInfo._tabSwitchHandler = handleTabSwitch;
+      productInfo.addEventListener('click', productInfo._tabSwitchHandler);
+    }
+
+    // 检查选项是否与当前其他选项兼容
+    function checkOptionCompatibility(radio, optionValue, variantSelects) {
+      if (!variantSelects) return false;
+
+      const variantsDataEl = variantSelects.querySelector('[data-product-variants]');
+      if (!variantsDataEl) return false;
+
+      try {
+        const allVariants = JSON.parse(variantsDataEl.textContent);
+
+        // 获取当前所有选中的选项值（除了当前选项）
+        const checkedRadios = variantSelects.querySelectorAll('input[type="radio"]:checked');
+        const selectedValues = Array.from(checkedRadios)
+          .filter((r) => r.name !== radio.name)
+          .map((r) => r.value);
+
+        // 添加当前要选择的选项值
+        selectedValues.push(optionValue);
+
+        // 检查是否有 variant 匹配这个选择组合
+        return allVariants.some((variant) => {
+          if (!variant.available) return false;
+          return (
+            variant.options &&
+            selectedValues.length === variant.options.length &&
+            selectedValues.every((val) => variant.options.includes(val))
+          );
+        });
+      } catch (e) {
+        console.error('[Variant Picker] 解析 variants 数据失败:', e);
+        return false;
+      }
+    }
+
+    // 隐藏主产品的 sticky-atc-bar（不兼容时），不影响推荐产品的 bar
+    function hideStickyAtcBar() {
+      // 只选择主产品的 sticky bar，不选择推荐产品的 bar
+      const mainStickyBar = document.querySelector('#shopify-section-sticky-atc-bar .sticky-atc-bar:not(.sticky-atc-bar-recommendation)');
+      if (mainStickyBar) {
+        mainStickyBar.style.display = 'none';
+        console.log('[Variant Picker] 隐藏主产品 sticky-atc-bar（选项不兼容）');
+      }
+    }
+
+    // 显示主产品的 sticky-atc-bar（兼容时）
+    function showStickyAtcBar() {
+      // 只选择主产品的 sticky bar
+      const mainStickyBar = document.querySelector('#shopify-section-sticky-atc-bar .sticky-atc-bar:not(.sticky-atc-bar-recommendation)');
+      if (mainStickyBar) {
+        mainStickyBar.style.display = '';
+        console.log('[Variant Picker] 显示主产品 sticky-atc-bar');
+      }
+    }
+
+    // 清除当前选项之后的所有选项的选中状态，并自动选中"Keine"
+    function clearSubsequentOptions(currentRadio, variantSelects) {
+      if (!variantSelects) return;
+      
+      // 隐藏 sticky-atc-bar
+      hideStickyAtcBar();
+      // 从 radio name 中提取 position（格式：OptionName-Position）
+      const currentRadioName = currentRadio.name;
+      const currentPosition = parseInt(currentRadioName.split('-').pop()) || 0;
+
+      // 收集所有后续的 fieldsets
+      const subsequentFieldsets = new Set();
+
+      // 找到所有 position > 当前 position 的选项
+      const allRadios = variantSelects.querySelectorAll('input[type="radio"]:checked');
+
+      allRadios.forEach((r) => {
+        const radioName = r.name;
+        const radioPosition = parseInt(radioName.split('-').pop()) || 0;
+
+        // 如果这个选项在当前选项之后，清除它的选中状态
+        if (radioPosition > currentPosition) {
+          const fieldset = r.closest('fieldset');
+          if (fieldset) {
+            subsequentFieldsets.add(fieldset);
+          }
+
+          r.checked = false;
+
+          // 清除对应的 label 选中状态
+          const label = document.querySelector(`label[for="${r.id}"]`);
+          if (label && label.classList) {
+            label.classList.remove('selected');
+          }
+
+          // 如果是类别按钮，清除类别卡片的选中状态
+          const categoryCard = r.closest('.variant-category-card');
+          if (categoryCard && categoryCard.classList) {
+            categoryCard.classList.remove('selected');
+            const categoryButtons = categoryCard.querySelectorAll('.variant-category-qty-btn');
+            if (categoryButtons) {
+              categoryButtons.forEach((btn) => {
+                if (btn && btn.classList) {
+                  btn.classList.remove('selected');
+                }
+              });
+            }
+          }
+
+          // 如果是扩展按钮，清除扩展按钮的选中状态
+          const extensionCard = r.closest('.variant-extension-card');
+          if (extensionCard) {
+            const extensionButtons = extensionCard.querySelectorAll('.variant-extension-qty-btn');
+            if (extensionButtons) {
+              extensionButtons.forEach((btn) => {
+                if (btn && btn.classList) {
+                  btn.classList.remove('selected');
+                }
+              });
+            }
+          }
+        }
+      });
+
+      // 对于每个后续的 fieldset，尝试选中"Keine"选项
+      subsequentFieldsets.forEach((fieldset) => {
+        // 先清除该 fieldset 内所有选项的选中状态
+        fieldset.querySelectorAll('input[type="radio"]').forEach((r) => {
+          r.checked = false;
+          const label = document.querySelector(`label[for="${r.id}"]`);
+          if (label && label.classList) {
+            label.classList.remove('selected');
+          }
+        });
+
+        // 清除类别按钮和卡片的选中状态
+        fieldset.querySelectorAll('.variant-category-qty-btn').forEach((btn) => {
+          if (btn && btn.classList) {
+            btn.classList.remove('selected');
+          }
+        });
+        fieldset.querySelectorAll('.variant-category-card').forEach((card) => {
+          if (card && card.classList) {
+            card.classList.remove('selected');
+          }
+        });
+
+        // 清除扩展按钮的选中状态
+        fieldset.querySelectorAll('.variant-extension-qty-btn').forEach((btn) => {
+          if (btn && btn.classList) {
+            btn.classList.remove('selected');
+          }
+        });
+
+        // 查找"Keine"按钮的 label 并选中
+        const noneLabel = fieldset.querySelector('label.variant-none-btn');
+        if (noneLabel && !noneLabel.classList.contains('disabled')) {
+          const noneInputId = noneLabel.getAttribute('for');
+          if (noneInputId) {
+            const noneRadio = document.getElementById(noneInputId);
+            if (noneRadio && !noneRadio.classList.contains('disabled')) {
+              // 选中"Keine"选项
+              noneRadio.checked = true;
+              noneLabel.classList.add('selected');
+              console.log('[Variant Picker] 自动选中后续选项的"Keine":', noneRadio.value);
+            }
+          }
+        }
+      });
+
+      console.log('[Variant Picker] 清除后续选项并选中"Keine"');
+    }
+
+    // 处理扩展数量按钮点击
+    function handleExtensionQtyClick(e) {
+      const label = e.target.closest('.variant-extension-qty-btn');
+      if (!label) return;
+      
+      // 立即返回如果按钮被禁用
+      if (label.classList.contains('disabled')) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      // 从 label 的 for 属性找到对应的 input
+      const inputId = label.getAttribute('for');
+      if (!inputId) return;
+
+      const radio = document.getElementById(inputId);
+      if (!radio || radio.classList.contains('disabled')) return;
+
+      const optionValue = radio.value;
+      const variantId = radio.dataset.variantId;
+      const qty = parseInt(radio.dataset.qty) || 0;
+
+      const card = label.closest('.variant-extension-card');
+      if (!card) {
+        console.warn('[Variant Picker] handleExtensionQtyClick: card not found');
+        return;
+      }
+
+      const variantSelects = radio.closest('variant-selects');
+      if (!variantSelects) {
+        console.warn('[Variant Picker] handleExtensionQtyClick: variantSelects not found');
+        return;
+      }
+
+      // 检查兼容性
+      const isCompatible = checkOptionCompatibility(radio, optionValue, variantSelects);
+
+      // 更新 label 状态
+      const extensionButtons = card.querySelectorAll('.variant-extension-qty-btn');
+      if (extensionButtons) {
+        extensionButtons.forEach((l) => {
+          if (l && l.classList) {
+            l.classList.remove('selected');
+          }
+        });
+      }
+      label.classList.add('selected');
+
+      // 取消所有同名的radio（确保只有一个被选中）
+      const radioName = radio.name;
+      const allRadios = document.querySelectorAll(`input[type="radio"][name="${radioName}"]`);
+      allRadios.forEach((r) => {
+        r.checked = false;
+      });
+
+      // 选中对应的radio
+      radio.checked = true;
+
+      // 如果不兼容，清除后续选项的选中状态，不触发 change 事件
+      if (!isCompatible) {
+        console.warn('[Variant Picker] handleExtensionQtyClick: 选项不兼容，清除后续选项', {
+          optionValue,
+          variantId,
+        });
+        clearSubsequentOptions(radio, variantSelects);
+        // 更新容量显示
+        updateCapacityDisplay(optionValue, variantId);
+        // 验证并更新所有选项的可用性
+        setTimeout(() => validateAndUpdateOptionAvailability(), 50);
+        return;
+      }
+
+      // 如果兼容，正常触发 change 事件，并显示 sticky-atc-bar
+      showStickyAtcBar();
+
+      const fieldset = radio.closest('fieldset');
+      if (!fieldset) {
+        console.warn('Radio input not in fieldset');
+      }
+
+      const changeEvent = new Event('change', {
+        bubbles: true,
+        cancelable: true,
+      });
+
+      radio.dispatchEvent(changeEvent);
+
+      if (fieldset) {
+        fieldset.dispatchEvent(changeEvent);
+      }
+
+      if (variantSelects) {
+        variantSelects.dispatchEvent(changeEvent);
+      }
+
+      // 更新容量显示
+      updateCapacityDisplay(optionValue, variantId);
+
+      // 验证并更新所有选项的可用性
+      setTimeout(() => validateAndUpdateOptionAvailability(), 50);
+    }
+
+    // 更新容量显示
+    function updateCapacityDisplay(optionValue, variantId) {
+      const capacityDisplay = document.querySelector('[data-capacity-display]');
+      if (!capacityDisplay) return;
+
+      // 尝试从选项值中提取容量
+      if (optionValue && optionValue.includes('(')) {
+        const match = optionValue.match(/\(([^)]+)\)/);
+        if (match && match[1]) {
+          capacityDisplay.textContent = match[1].trim();
+          return;
+        }
+      }
+
+      // 如果选项值中没有容量，尝试从variant数据中获取
+      if (variantId) {
+        const variantDataEl = document.querySelector('[data-selected-variant]');
+        if (variantDataEl) {
+          try {
+            const variantData = JSON.parse(variantDataEl.textContent);
+            // 这里可以尝试从variant的title或其他字段中提取容量
+            // 暂时使用选项值中的容量
+          } catch (e) {
+            console.error('Error parsing variant data:', e);
+          }
+        }
+      }
+    }
+
+    // 处理类别数量按钮点击(第二种类型)
+    function handleCategoryQtyClick(e) {
+      const label = e.target.closest('.variant-category-qty-btn');
+      if (!label) return;
+      
+      // 立即返回如果按钮被禁用
+      if (label.classList.contains('disabled')) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      // 从 label 的 for 属性找到对应的 input
+      const inputId = label.getAttribute('for');
+      if (!inputId) return;
+
+      const radio = document.getElementById(inputId);
+      if (!radio || radio.classList.contains('disabled')) return;
+
+      const optionValue = radio.value;
+      const variantId = radio.dataset.variantId;
+      const wattage = radio.dataset.wattage;
+      const category = label.closest('.variant-category-card');
+      
+      const variantSelects = radio.closest('variant-selects');
+      if (!variantSelects) {
+        console.warn('[Variant Picker] handleCategoryQtyClick: variantSelects not found');
+        return;
+      }
+
+      // 检查兼容性
+      const isCompatible = checkOptionCompatibility(radio, optionValue, variantSelects);
+
+      // 更新 label 状态
+      if (category) {
+        const categoryButtons = category.querySelectorAll('.variant-category-qty-btn');
+        if (categoryButtons) {
+          categoryButtons.forEach((l) => {
+            if (l && l.classList) {
+              l.classList.remove('selected');
+            }
+          });
+        }
+        label.classList.add('selected');
+
+        // 更新卡片选中状态
+        const allCategoryCards = document.querySelectorAll('.variant-category-card');
+        if (allCategoryCards) {
+          allCategoryCards.forEach((card) => {
+            if (card && card.classList) {
+              card.classList.remove('selected');
+            }
+          });
+        }
+        category.classList.add('selected');
+      }
+
+      // 取消所有同名的radio
+      const radioName = radio.name;
+      document.querySelectorAll(`input[type="radio"][name="${radioName}"]`).forEach((r) => {
+        r.checked = false;
+      });
+
+      // 选中对应的radio
+      radio.checked = true;
+
+      // 如果不兼容，清除后续选项的选中状态，不触发 change 事件
+      if (!isCompatible) {
+        console.warn('[Variant Picker] handleCategoryQtyClick: 选项不兼容，清除后续选项', {
+          optionValue,
+          variantId,
+        });
+        clearSubsequentOptions(radio, variantSelects);
+
+        // 更新瓦数显示
+        if (category && wattage) {
+          const wattageDisplay = category.querySelector('[data-wattage-display]');
+          if (wattageDisplay) {
+            wattageDisplay.textContent = wattage;
+          }
+        }
+
+        // 更新类别图片
+        if (category) {
+          const imageEl = category.querySelector('.variant-category-card-image img');
+          if (imageEl) {
+            const imageUrl = radio.dataset.imageUrl;
+            if (imageUrl) {
+              imageEl.src = imageUrl;
+            } else {
+              const defaultImageUrl = category.dataset.defaultImageUrl;
+              if (defaultImageUrl) {
+                imageEl.src = defaultImageUrl;
+              }
+            }
+          }
+        }
+
+        // 验证并更新所有选项的可用性
+        setTimeout(() => validateAndUpdateOptionAvailability(), 50);
+        return;
+      }
+
+      // 如果兼容，正常触发 change 事件，并显示 sticky-atc-bar
+      showStickyAtcBar();
+
+      const changeEvent = new Event('change', { bubbles: true, cancelable: true });
+      radio.dispatchEvent(changeEvent);
+
+      const fieldset = radio.closest('fieldset');
+      if (fieldset) {
+        fieldset.dispatchEvent(changeEvent);
+      }
+
+      if (variantSelects) {
+        variantSelects.dispatchEvent(changeEvent);
+      }
+
+      // 更新瓦数显示
+      if (category) {
+        if (wattage) {
+          const wattageDisplay = category.querySelector('[data-wattage-display]');
+          if (wattageDisplay) {
+            wattageDisplay.textContent = wattage;
+          }
+        }
+
+        // 更新类别图片
+        const imageEl = category.querySelector('.variant-category-card-image img');
+        if (imageEl) {
+          const imageUrl = radio.dataset.imageUrl;
+          if (imageUrl) {
+            imageEl.src = imageUrl;
+          } else {
+            const defaultImageUrl = category.dataset.defaultImageUrl;
+            if (defaultImageUrl) {
+              imageEl.src = defaultImageUrl;
+            }
+          }
+        }
+      }
+
+      // 验证并更新所有选项的可用性
+      setTimeout(() => validateAndUpdateOptionAvailability(), 50);
+    }
+
+    // 处理"Keine"按钮点击
+    function handleNoneButtonClick(e) {
+      const label = e.target.closest('.variant-none-btn');
+      if (!label) return;
+      
+      // 立即返回如果按钮被禁用
+      if (label.classList.contains('disabled')) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      // 从 label 的 for 属性找到对应的 input
+      const inputId = label.getAttribute('for');
+      if (!inputId) {
+        console.warn('[Variant Picker] handleNoneButtonClick: label 没有 for 属性', label);
+        return;
+      }
+
+      const radio = document.getElementById(inputId);
+      if (!radio) {
+        console.warn('[Variant Picker] handleNoneButtonClick: 找不到对应的 input，inputId:', inputId);
+        return;
+      }
+
+      if (radio.classList.contains('disabled')) {
+        console.log('[Variant Picker] handleNoneButtonClick: input 被禁用');
+        return;
+      }
+
+      const optionValue = radio.value;
+      const variantId = radio.dataset.variantId;
+
+      console.log('[Variant Picker] handleNoneButtonClick:', {
+        inputId,
+        optionValue,
+        variantId,
+        radio: radio,
+        label: label,
+      });
+
+      if (!optionValue) {
+        console.error('[Variant Picker] handleNoneButtonClick: optionValue 为空', {
+          inputId,
+          radioValue: radio.value,
+          radio: radio,
+        });
+        return;
+      }
+
+      // 检查是否有对应的 variant ID，以及这个 variant 是否与当前其他选项兼容
+      const hasVariantId = variantId && variantId !== 'null' && variantId !== 'undefined' && variantId.trim() !== '';
+      const noneVariantSelects = radio.closest('variant-selects');
+
+      // 检查兼容性
+      const isCompatible = hasVariantId && checkOptionCompatibility(radio, optionValue, noneVariantSelects);
+
+      console.log('[Variant Picker] handleNoneButtonClick 兼容性检查:', {
+        variantId,
+        hasVariantId,
+        isCompatible,
+      });
+
+      // 如果没有 variant ID 或者 variant 不兼容，只更新 UI 状态，不触发 change 事件
+      if (!hasVariantId || !isCompatible) {
+        console.warn('[Variant Picker] handleNoneButtonClick: 选项不兼容，清除后续选项', {
+          optionValue,
+          variantId,
+          hasVariantId,
+          isCompatible,
+        });
+
+        // 只更新当前选项的 UI 状态
+        const currentFieldset = radio.closest('fieldset');
+        if (currentFieldset) {
+          // 更新当前 fieldset 内的 label 状态
+          currentFieldset.querySelectorAll('.variant-none-btn').forEach((l) => {
+            l.classList.remove('selected');
+          });
+          label.classList.add('selected');
+
+          // 取消当前 fieldset 内的类别按钮选中状态
+          currentFieldset.querySelectorAll('.variant-category-qty-btn').forEach((b) => {
+            b.classList.remove('selected');
+          });
+          currentFieldset.querySelectorAll('.variant-category-card').forEach((card) => {
+            card.classList.remove('selected');
+          });
+
+          // 清除当前 fieldset 内的瓦数显示
+          currentFieldset.querySelectorAll('[data-wattage-display]').forEach((display) => {
+            display.textContent = '0Wp';
+          });
+
+          // 恢复当前 fieldset 内的类别图片为默认
+          currentFieldset.querySelectorAll('.variant-category-card').forEach((card) => {
+            const imageEl = card.querySelector('.variant-category-card-image img');
+            if (imageEl) {
+              const defaultImageUrl = card.dataset.defaultImageUrl;
+              if (defaultImageUrl) {
+                imageEl.src = defaultImageUrl;
+              }
+            }
+          });
+
+          // 取消所有同名的radio
+          const radioName = radio.name;
+          document.querySelectorAll(`input[type="radio"][name="${radioName}"]`).forEach((r) => {
+            r.checked = false;
+          });
+
+          // 选中对应的radio（但不触发 change 事件）
+          radio.dataset.skipChangeEvent = 'true';
+          radio.checked = true;
+          setTimeout(() => {
+            delete radio.dataset.skipChangeEvent;
+          }, 0);
+        }
+
+        // 清除后续选项的选中状态
+        clearSubsequentOptions(radio, noneVariantSelects);
+
+        // 验证并更新所有选项的可用性
+        setTimeout(() => validateAndUpdateOptionAvailability(), 50);
+
+        // 不触发 change 事件，避免清空其他选项
+        return;
+      }
+
+      // 如果有 variant ID 且兼容，正常处理，并显示 sticky-atc-bar
+      showStickyAtcBar();
+
+      // 更新 label 状态
+      document.querySelectorAll('.variant-none-btn').forEach((l) => {
+        l.classList.remove('selected');
+      });
+      label.classList.add('selected');
+
+      // 取消所有类别按钮的选中状态
+      document.querySelectorAll('.variant-category-qty-btn').forEach((b) => {
+        b.classList.remove('selected');
+      });
+      document.querySelectorAll('.variant-category-card').forEach((card) => {
+        card.classList.remove('selected');
+      });
+
+      // 清除所有瓦数显示
+      document.querySelectorAll('[data-wattage-display]').forEach((display) => {
+        display.textContent = '0Wp';
+      });
+
+      // 恢复类别图片为默认
+      document.querySelectorAll('.variant-category-card').forEach((card) => {
+        const imageEl = card.querySelector('.variant-category-card-image img');
+        if (imageEl) {
+          const defaultImageUrl = card.dataset.defaultImageUrl;
+          if (defaultImageUrl) {
+            imageEl.src = defaultImageUrl;
+          }
+        }
+      });
+
+      // 取消所有同名的radio
+      const radioName = radio.name;
+      document.querySelectorAll(`input[type="radio"][name="${radioName}"]`).forEach((r) => {
+        r.checked = false;
+      });
+
+      // 选中对应的radio
+      radio.checked = true;
+
+      // 触发change事件
+      const changeEvent = new Event('change', { bubbles: true, cancelable: true });
+      radio.dispatchEvent(changeEvent);
+
+      const fieldset = radio.closest('fieldset');
+      if (fieldset) {
+        fieldset.dispatchEvent(changeEvent);
+      }
+
+      const variantSelects = radio.closest('variant-selects');
+      if (variantSelects) {
+        variantSelects.dispatchEvent(changeEvent);
+      }
+
+      // 验证并更新所有选项的可用性
+      setTimeout(() => validateAndUpdateOptionAvailability(), 50);
+    }
+
+    // // 调试函数：打印所有没有找到variant的按钮信息
+    // function debugDisabledButtons() {
+    //   const disabledButtons = document.querySelectorAll('.variant-extension-qty-btn.disabled');
+    //   if (disabledButtons.length === 0) {
+    //     console.log('[Variant Debug] 所有按钮都有对应的variant');
+    //     return;
+    //   }
+
+    //   console.group('[Variant Debug] 没有找到variant的按钮:');
+    //   disabledButtons.forEach((btn, index) => {
+    //     const reason = btn.dataset.debugReason || 'unknown';
+    //     const prevOptions = btn.dataset.debugPrevOptions || 'none';
+    //     const currentValue = btn.dataset.debugCurrentValue || 'unknown';
+    //     const optionIndex = btn.dataset.optionIndex || 'unknown';
+    //     const qty = btn.dataset.qty || 'unknown';
+    //     const optionValue = btn.dataset.optionValue || 'unknown';
+
+    //     console.group(`按钮 ${index + 1}:`);
+    //     console.log('数量 (qty):', qty);
+    //     console.log('选项索引 (option_index):', optionIndex);
+    //     console.log('当前选项值 (current_value):', currentValue);
+    //     console.log('选项值 (option_value):', optionValue);
+    //     console.log('上级选项值 (prev_options):', prevOptions);
+    //     console.log('未找到原因 (reason):', reason);
+    //     console.log('按钮元素:', btn);
+    //     console.groupEnd();
+    //   });
+    //   console.groupEnd();
+    // }
+    // window.debugDisabledButtons = debugDisabledButtons;
+
+    // 初始化扩展数量按钮
+    function initExtensionButtons() {
+      const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
+      if (!productInfo) return;
+
+      // 移除旧的事件监听器（如果存在）
+      if (productInfo._extensionQtyHandler) {
+        productInfo.removeEventListener('click', productInfo._extensionQtyHandler);
+      }
+      if (productInfo._categoryQtyHandler) {
+        productInfo.removeEventListener('click', productInfo._categoryQtyHandler);
+      }
+      if (productInfo._noneButtonHandler) {
+        productInfo.removeEventListener('click', productInfo._noneButtonHandler);
+      }
+
+      // 添加新的事件监听器（事件委托）
+      productInfo._extensionQtyHandler = handleExtensionQtyClick;
+      productInfo._categoryQtyHandler = handleCategoryQtyClick;
+      productInfo._noneButtonHandler = handleNoneButtonClick;
+
+      productInfo.addEventListener('click', productInfo._extensionQtyHandler);
+      productInfo.addEventListener('click', productInfo._categoryQtyHandler);
+      productInfo.addEventListener('click', productInfo._noneButtonHandler);
+    }
+
+    // 初始化瓦数显示
+    function initWattageDisplay() {
+      // 找到所有选中的类别按钮，更新对应的瓦数显示
+      document.querySelectorAll('.variant-category-qty-btn.selected').forEach((btn) => {
+        const wattage = btn.dataset.wattage;
+        const category = btn.closest('.variant-category-card');
+        if (category && wattage) {
+          const wattageDisplay = category.querySelector('[data-wattage-display]');
+          if (wattageDisplay) {
+            wattageDisplay.textContent = wattage;
+          }
+
+          const imageEl = category.querySelector('.variant-category-card-image img');
+          if (imageEl) {
+            const imageUrl = btn.dataset.imageUrl;
+            if (imageUrl) {
+              imageEl.src = imageUrl;
+            }
+          }
+        }
+      });
+    }
+
+    // 验证并更新所有选项按钮的可用性（基于当前选择组合）
+    // 只检查当前选项和之前选项是否兼容，后续选项不影响当前选项的可用性
+    function validateAndUpdateOptionAvailability() {
+      const variantSelects = document.querySelector('variant-selects');
+      if (!variantSelects) return;
+
+      // 获取所有 variants 数据
+      const variantsDataEl = variantSelects.querySelector('[data-product-variants]');
+      if (!variantsDataEl) return;
+
+      let allVariants;
+      try {
+        allVariants = JSON.parse(variantsDataEl.textContent);
+      } catch (e) {
+        console.error('Failed to parse variants data:', e);
+        return;
+      }
+
+      // 获取当前所有选中的 radio inputs，并按 position 排序
+      const checkedRadios = variantSelects.querySelectorAll('input[type="radio"]:checked');
+      const selectedRadiosByPosition = {};
+      checkedRadios.forEach((radio) => {
+        const position = parseInt(radio.name.split('-').pop()) || 0;
+        selectedRadiosByPosition[position] = radio.value;
+      });
+
+      // 获取所有按钮选择器（这些是 label 元素）
+      const buttonSelectors = ['.variant-extension-qty-btn', '.variant-category-qty-btn', '.variant-none-btn'];
+
+      // 遍历所有按钮，检查是否有匹配的 variant
+      buttonSelectors.forEach((selector) => {
+        const buttons = variantSelects.querySelectorAll(selector);
+
+        buttons.forEach((btn) => {
+          // label 的 for 属性指向对应的 input
+          const inputId = btn.getAttribute('for');
+          if (!inputId) return;
+
+          // 获取对应的 radio input
+          const radio = document.getElementById(inputId);
+          if (!radio) return;
+
+          // 从 radio input 获取 option-value
+          const optionValue = radio.dataset.optionValue || radio.value;
+          if (!optionValue) return;
+
+          // 获取这个 radio 的 position
+          const radioName = radio.name;
+          const currentPosition = parseInt(radioName.split('-').pop()) || 0;
+
+          // 构建测试值：只包含当前选项和之前选项的值
+          // 这样后续选项不会影响当前选项的可用性判断
+          const testValues = [];
+          
+          // 添加之前选项的选中值
+          Object.keys(selectedRadiosByPosition).forEach((pos) => {
+            const position = parseInt(pos);
+            if (position < currentPosition) {
+              testValues.push(selectedRadiosByPosition[pos]);
+            }
+          });
+          
+          // 添加当前测试的按钮值
+          testValues.push(optionValue);
+
+          // 检查是否有 variant 匹配这个选择组合
+          // 只检查 variant 是否包含所有测试值，不要求完全匹配
+          const hasMatchingVariant = allVariants.some((variant) => {
+            if (!variant.available) return false;
+
+            // 检查 variant 的选项是否包含所有测试值
+            return testValues.every((testValue) => {
+              return variant.options && variant.options.includes(testValue);
+            });
+          });
+
+          // 根据是否有匹配的 variant 更新按钮状态
+          if (!hasMatchingVariant) {
+            btn.classList.add('disabled');
+            btn.setAttribute('disabled', 'disabled');
+          } else {
+            // 只有当按钮本身不是因为 value.available=false 被禁用时才启用
+            // 检查对应的 radio input 是否有 disabled 类（这是 Liquid 渲染时设置的）
+            if (!radio.classList.contains('disabled')) {
+              btn.classList.remove('disabled');
+              btn.removeAttribute('disabled');
+            }
+          }
+        });
+      });
+
+      console.log('[Variant Picker] 更新选项可用性完成，当前选中:', selectedRadiosByPosition);
+    }
+
+    // DOM加载完成后初始化
+    function initAll() {
+      initTabSwitching();
+      initExtensionButtons();
+      initWattageDisplay();
+      // 初始化时验证一次选项可用性
+      setTimeout(() => validateAndUpdateOptionAvailability(), 100);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAll);
+    } else {
+      initAll();
+    }
+
+    // 使用MutationObserver监听variant-selects的变化
+    // 当variant-selects被替换后，重新初始化
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (mutation.type === 'childList') {
+          // 检查是否有新的variant-selects被添加
+          mutation.addedNodes.forEach(function (node) {
+            if (node.nodeType === 1 && node.tagName === 'VARIANT-SELECTS') {
+              // 新的variant-selects被添加，确保标签页和扩展按钮功能正常
+              setTimeout(function () {
+                initTabSwitching();
+                initExtensionButtons();
+                initWattageDisplay();
+                // 重新验证选项可用性
+                validateAndUpdateOptionAvailability();
+                // 恢复 tab 状态（使用最新的 currentTargetTab，而不是旧的 DOM 状态）
+                restoreTabState(currentTargetTab);
+              }, 100);
+            }
+          });
+        }
+      });
+    });
+
+    // 开始观察product-info元素的变化
+    function startObserving() {
+      const pi = document.querySelector('product-info[id^="MainProduct-"]');
+      if (pi) {
+        observer.observe(pi, {
+          childList: true,
+          subtree: true,
+        });
+        return true;
+      }
+      return false;
+    }
+
+    // 尝试开始观察
+    if (!startObserving()) {
+      // 如果product-info还没加载，等待它加载
+      const checkProductInfo = setInterval(function () {
+        if (startObserving()) {
+          clearInterval(checkProductInfo);
+        }
+      }, 100);
+    }
+  })();
+</script>

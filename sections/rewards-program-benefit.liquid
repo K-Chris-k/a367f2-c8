@@ -1,0 +1,139 @@
+<style>
+  #shopify-section-{{ section.id }}{padding-top:{{ section.settings.padding_top }}px;padding-bottom:{{ section.settings.padding_bottom }}px;}
+  .bon-header .content>p{ margin-bottom: 2.4rem !important;}
+  .rewards-program-benefit h2{padding-bottom:40px; line-height:58px;font-size:48px;font-weight:700;text-align:center;}
+  .rewards-program-benefit-box { display: grid; grid-template-columns: repeat(4, 1fr);gap: 15px;}
+  .benefit-item{display: flex;justify-content:space-between;flex-flow: column;padding:30px 38px;border-radius: 20px;background-color: #F1F1F1;text-align: center;}
+  .benefit-item:nth-child(5){padding-bottom:0px}
+  .benefit-item:nth-child(8) .benefit-image{padding-bottom: 18px;}
+  .benefit-image{ padding-top: 32px;}
+  .benefit-name{font-family: 'Inter';font-size:18px;font-weight:500;}
+  .bon-btn-secondary:hover,.bon-btn-secondary:focus{box-shadow:none;color: #fff;}
+  @media (max-width: 767.98px) {
+   #shopify-section-{{ section.id }}{padding-top:{{ section.settings.padding_top | divided_by: 2  }}px;padding-bottom:{{ section.settings.padding_bottom | divided_by: 2  }}px;}
+   .rewards-program-benefit h2{padding-bottom:20px; line-height:34px;font-size:28px;}
+   .rewards-program-benefit-box { display: grid; grid-template-columns: repeat(2, 1fr);gap: 6px;}
+   .benefit-item{padding: 20px 16px;max-height: 245px;border-radius: 10px;}
+   .benefit-name{line-height:17px;font-size: 14px;}
+   .benefit-image{ padding-top: 16px;}
+   .benefit-image img{max-width:50%}
+   .benefit-item:nth-child(5) .benefit-image img{max-width:70%}
+  }
+</style>
+<div class="page-width section-padding rewards-program-benefit" data-section-id="{{ section.id }}"  id="{{section.settings.ids}}">
+    <h2>
+      <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">{{ section.settings.title }}</motion-element>
+    </h2>
+  <div class="rewards-program-benefit-box grid-container">
+    {% for block in section.blocks %}
+      <div class="benefit-item grid-item" data-motion="fade-up" data-motion-delay="{{ forloop.index0 | times: 100 }}">
+        <h3 class="benefit-name">{{ block.settings.list_name }}</h3>
+        <div class="benefit-image">
+          {% if block.settings.list_image != blank %}
+            <img src="{{ block.settings.list_image | img_url: '400x' }}" alt="{{ block.settings.list_name }}" loading="lazy" />
+          {% else %}
+            {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+          {% endif %}
+        </div>
+      
+      </div>
+    {% endfor %}
+    
+  </div>
+</div>
+<script>
+ 
+</script>
+{% schema %}
+{
+  "name": "Rewards Program Benefit",
+  "tag": "section",
+  "class": "section rewards-program-benefit",
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "ids",
+      "label": "设置ID",
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Vorteile für offizielle Indevolt-Mitglieder"
+    },
+     {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 120
+    }
+  ],
+  "blocks": [
+    {
+      "type": "list",
+      "name": "权益分类",
+      "settings": [
+        {
+          "type": "text",
+          "id": "list_name",
+          "label": "权益名称",
+        },
+        {
+          "type": "image_picker",
+          "id": "list_image",
+          "label": "权益图片"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Rewards Program Benefit",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "list"
+        },
+        {
+          "type": "list"
+        },
+        {
+          "type": "list"
+        },
+        {
+          "type": "list"
+        },       
+        {
+          "type": "list"
+        },
+        {
+          "type": "list"
+        },
+        {
+          "type": "list"
+        },
+        {
+          "type": "list"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,262 @@
+{%- liquid
+  assign enable_rtl = settings.enable_rtl
+  assign language_support_rtl = settings.language_support_rtl
+  if enable_rtl and language_support_rtl != blank
+    assign shop_locale = localization.language.iso_code
+    assign language_support_rtl_list = language_support_rtl | split: ','
+    assign is_rtl = language_support_rtl_list | where: shop_locale
+    if is_rtl.size > 0
+      assign enable_rtl = true
+    else
+      assign enable_rtl = false
+    endif
+  endif
+-%}
+<!doctype html>
+<html
+  class="no-js{% if cart != empty %} cart-has-items{% endif %}"
+  lang="{{ request.locale.iso_code }}"
+  {% if enable_rtl %}
+    dir="rtl"
+  {% endif %}
+>
+  <head>
+ {% comment %} {%- render 'ecom_header' -%} {% endcomment %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="google-site-verification" content="vkebElfgOiwmT3NDJp-ti04FZIrkjOyqZwhu1Tl0B9A" />
+    <link rel="canonical" href="{{ canonical_url }}">
+    <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
+
+    {%- if settings.favicon != blank -%}
+      <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
+    {%- endif -%}
+
+    {%- unless settings.type_header_font.system? and settings.type_body_font.system? -%}
+      <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
+    {%- endunless -%}
+    <title>
+      {{- page_title -}}
+      {%- if current_tags -%}
+        {%- assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags -}}
+      {%- endif -%}
+      {%- if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif -%}
+      {%- if template == 'password' -%}
+        {{- shop.name -}}
+      {%- else -%}
+        {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+      {%- endif -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {%- liquid
+      render 'meta-tags'
+      render 'css-variables'
+      echo 'vendor.css' | asset_url | stylesheet_tag: preload: true
+      echo 'theme.css' | asset_url | stylesheet_tag: preload: true
+      echo 'slick.css' | asset_url | stylesheet_tag: preload: true
+
+      if enable_rtl
+        echo 'rtl.css' | asset_url | stylesheet_tag: preload: true
+      endif
+    -%}
+    {% comment %} {{ 'slick.css' | asset_url | stylesheet_tag }} {% endcomment %}
+    {% if request.path == '/pages/autumn-sales-subscription' %}
+         <style>
+            #shopify-section-sections--17431691755619__newsletter_YHJwhz,.floating-icon,
+            .footer,.announcement-bar,#trustbadge-container-98e3dadd90eb493088abdc5597a70810{display:none!important}
+         </style>
+    {% endif %}
+    {% if request.path == '/pages/rewards-program' %}
+      {{ 'rewards-program.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+     {% if request.path == '/pages/black-friday' %}
+      {{ 'black-friday-presale.css' | asset_url | stylesheet_tag }}
+    {% endif %}
+    {% if customer %}
+        <style>
+          #bon-onclick-scrollto-redeem {
+            display: none !important;
+          }
+        </style>
+    {% endif %}
+    {{ content_for_header }}
+    {% if content_for_header contains 'jquery' %}
+      {% comment %} 检测主题是否已自带 jQuery .header,{% endcomment %}
+      <script>
+        console.warn('jQuery already loaded by theme');
+      </script>
+    {% else %}
+      {{ '//ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js' | script_tag }}
+      <script>
+        window.jQuery || document.write('<script src="{{ 'jquery.min.js' | asset_url }}" async><\/script>')
+      </script>
+    {% endif %} 
+    {% comment %} {{ 'jquery.min.js' | asset_url | script_tag }} {% endcomment %}
+     {% comment %} <script src="{{ 'jquery.min.js' | asset_url }}" defer="defer"></script> {% endcomment %}
+    <script src="{{ 'vendor.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'theme.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
+    {% comment %} {%- if template.name == 'product' -%} {% endcomment %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    {% comment %} {% endif %} {% endcomment %}
+    {%- if request.page_type contains 'customers/' -%}
+      <script src="{{ 'shopify_common.js' | shopify_asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    <script>
+      if (Shopify.designMode) {
+        document.documentElement.classList.add('shopify-design-mode');
+      }
+
+      (function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"343220475", disableAutoPageView: true, enableAutoSpaTracking: false};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
+        window.uetq = window.uetq || [];
+        window.uetq.push('consent', 'update', {
+            'ad_storage': 'granted'
+            });
+    </script>
+
+    {%- if request.design_mode -%}
+      <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- render 'js-variables' -%}
+
+    {% render 'bon-loyalty-custom' %}
+
+    {% comment %} Custom metafield for head tag like GTag tracking {% endcomment %}
+    {{ shop.metafields.foxtheme.code_head.value }}
+    {% comment %} End custom metafield for head tag like GTag tracking {% endcomment %}
+<script>
+/*
+ * JTracking: Shopify Theme Script
+ *
+*/
+!function(e,t,n,a){e[a]=e[a]||[],e[a].push({"gtm.start":(new Date).getTime(),event:"gtm.js"});var r=t.getElementsByTagName(n)[0],i=t.createElement(n);i.async=!0,i.src="https://www.googletagmanager.com/gtm.js?id=GTM-MFHS6JXV",r.parentNode.insertBefore(i,r)}(window,document,"script","dataLayer"),(()=>{location.href.match(/gtm_debug=\d+/)&&sessionStorage.setItem("jtracking_gtm_debug_flag",!0);window.addEventListener("message",e=>{const t=e.data;if("JTracking-Shopify-Custom-Events"!==t.source)return;if("object"!=typeof t||null===t||!t.event)return;let n={...t};if("[JTracking][DL] view_item"===t.event){const e=(e=>{try{if(!e)return null;const t=new URL(e),n=t.pathname,a=t.searchParams;if(n.startsWith("/collections/"))return{item_list_name:n,item_list_id:n};if("/search"===n){const e=a.get("q");if(e){const t=`/search/${e}`;return{item_list_name:t,item_list_id:t}}}return null}catch(e){return null}})(document.referrer);e&&(n={...n,...e})}delete n.source,window.dataLayer=window.dataLayer||[],window.dataLayer.push(n)})})();
+</script>
+  </head>
+
+  <body
+    class="{{ request.page_type }}-template {{ template.suffix }} blocks-corner--{{ settings.blocks_corner_radius }}{% if request.design_mode %} shopify-design-mode{% endif %}"
+    data-initializing
+  >
+    {% comment %} Custom metafield for body tag like GTag tracking {% endcomment %}
+    {{ shop.metafields.foxtheme.code_body.value }}
+    {% comment %} End custom metafield for body tab like GTag tracking {% endcomment %}
+
+    <a class="skip-to-content-link button visually-hidden" href="#MainContent">
+      {{ 'accessibility.skip_to_text' | t }}
+    </a>
+
+    {%- liquid
+      if settings.enable_page_transition
+        render 'page-transition'
+      endif
+    -%}
+
+    {% if page.handle == 'black-friday' %}
+    
+      <script>
+      window.location.href = "/pages/cyber-monday";
+      </script>
+    {% endif %}
+
+    <div class="site-wrapper min-height-screen">
+      {% sections 'header-group' %}
+
+      <main id="MainContent" class="main-content content-for-layout focus-none" role="main" tabindex="-1">
+        {{ content_for_layout }}
+      </main>
+
+      {% sections 'footer-group' %}
+    </div>
+
+    {% sections 'overlay-group' %}
+    {%- liquid
+      if template.name == 'product'
+        section 'sticky-atc-bar'
+      endif
+      if settings.enable_back_to_top
+        render 'back-to-top'
+      endif
+    -%}
+
+    <ul hidden>
+      <li id="a11y-refresh-page-message">{{ 'accessibility.refresh_page' | t }}</li>
+      <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
+    </ul>
+
+    {% if settings.pcard_show_quickview_button or settings.pcard_choose_options_actions == 'open_popup' %}
+      <script src="{{ 'quick-view.js' | asset_url }}" defer="defer"></script>
+    {% endif %}
+  {% comment %} {%- render "ecom_footer"-%} {% endcomment %}
+
+
+
+
+      <!-- 悬浮图标HTML -->
+<div class="floating-icon">
+  <a href="/pages/contact-us"  title="Kontakt">
+    <svg t="1745479723438" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2702" width="42" height="42"><path d="M895.658667 213.333333H120.618667A78.506667 78.506667 0 0 0 42.666667 292.394667v481.92C42.666667 817.962667 77.568 853.333333 120.576 853.333333h775.04c43.093333 0 77.909333-35.328 77.909333-79.018666V292.48C973.525333 248.832 938.666667 213.333333 895.573333 213.333333L895.658667 213.333333z m-18.602667 56.618667l-309.12 277.930667c-26.922667 24.362667-46.933333 36.48-59.818667 36.48-12.842667 0-32.853333-12.117333-59.818666-36.48L139.178667 269.952h737.877333zM100.608 756.778667V321.28l241.408 214.656-241.493333 220.8h0.085333z m40.533333 39.936l242.346667-218.154667 39.765333 35.285333c23.04 20.437333 51.456 30.976 84.906667 30.976 33.536 0 61.824-10.496 84.906667-30.976l39.722666-35.285333 242.346667 218.154667H141.184z m774.528-39.978667l-241.450666-220.714667 241.493333-214.698666v435.413333z" fill="currentColor" p-id="2703"></path></svg>
+  </a>
+</div>
+
+<style>
+  .kl_reviews__summary.kl_reviews__summary.kl_reviews__summary h2{ line-height: 56px!important;font-size: 46px!important;text-align: center!important;border-bottom:none!important;}
+  /* 悬浮图标样式 */
+  .floating-icon {
+    position: fixed;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    top: 72%; 
+    transform: translateY(-60%); 
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+{% comment %}   
+  .floating-icon:hover {
+    transform: scale(1.1);
+    background-color: #fff;
+  } {% endcomment %}
+  
+  .floating-icon svg {
+    padding-top:6px;
+    width: 30px;
+    height: 30px;
+  }
+  #bon-loyalty-btn{min-width:42px!important;min-height:42px!important;bottom:19vh!important}
+  @media (max-width: 768px) {  
+      .floating-icon {width: 42px; height: 42px;}
+      .floating-icon svg{ width: 30px;height: 30px;}
+      #bon-loyalty-btn{min-width:42px!important;min-height:42px!important;bottom:19vh!important}
+      .kl_reviews__summary.kl_reviews__summary.kl_reviews__summary h2{ line-height:34px!important;font-size:28px!important}
+  }
+</style>
+
+<script>
+  // 可选：添加点击动画效果
+  document.querySelector('.floating-icon').addEventListener('click', function() {
+     this.style.transform = 'scale(0.9)';
+    setTimeout(() => {
+      this.style.transform = 'scale(1)';
+    }, 300);
+  });
+
+
+  
+</script>
+{% render 'gpo-custom' %}
+</body>
+</html>

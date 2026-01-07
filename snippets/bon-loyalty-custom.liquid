@@ -1,0 +1,241 @@
+<script>
+    if(window.location.href.includes('pages/rewards-program')) {
+        var BonCrispTargetNode = document;
+        var BonCrispObserverOptions = {
+          childList: true,
+          attributes: true,
+          attributeFilter: ['data-id'],
+          subtree: true //Omit or set to false to observe only changes to the parent node.
+        }
+        
+        function BonScrispObsCallback(mutationList, observer) {
+          mutationList.forEach((mutation) => {
+            if(mutation.type=='childList'){
+              var addedNodes=mutation.addedNodes
+              for(x=0;x<addedNodes.length;x++){
+                var aNode = addedNodes[x]
+        
+                if(aNode.tagName=='DIV') {
+                  // check script content
+                  if(aNode.classList.contains('bon-body')){
+                    var bonMyrewardDoc =  document.getElementById('bon-onclick-dropdown-myreward')
+                    if(bonMyrewardDoc) {
+                      var svgBonMyrewardDoc = bonMyrewardDoc.querySelector('.bon-icon-large');
+                      
+                      var srcBonMyrewardDoc; // undefined
+                      
+                      if (svgBonMyrewardDoc) {
+                          var imgBonReward = document.createElement("img");
+                          imgBonReward.src = srcBonMyrewardDoc || "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/meine-belohnungen.svg?v=1761786759";
+                          imgBonReward.width = 36;
+                          imgBonReward.height = 36;
+                          {% comment %} imgBonReward.style.marginRight = 10px; {% endcomment %}
+                      
+                          svgBonMyrewardDoc.replaceWith(imgBonReward);
+                      }
+  
+                    }
+                    
+                    // change my balance icon
+                    var bonBalanceDoc =  document.getElementById('bon-onclick-dropdown-mybalance')
+                    if(bonBalanceDoc) {
+                      var svgBalanceDoc = bonBalanceDoc.querySelector('.bon-icon-large');
+                      
+                      var srcBonMyBalanceDoc; // undefined
+                      
+                      if (svgBalanceDoc) {
+                          var imgBonBalance = document.createElement("img");
+                          imgBonBalance.src = srcBonMyBalanceDoc || "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/meine-aktivitaten.svg?v=1761786759";
+                          imgBonBalance.width = 36;
+                          imgBonBalance.height = 36;
+                      
+                          svgBalanceDoc.replaceWith(imgBonBalance);
+                      }
+                    }
+
+                    var redeemCheckCount = 0;
+                    var redeemCheck = setInterval(function(){
+                      /*
+                      * REDEEM ICON BON LOYALTY
+                      */
+                      // redeem icons 5 €
+                      var bonIconRedeem0 =  document.getElementById('icon-redeem-0301408')
+                      if(typeof bonIconRedeem0 != 'undefined') {
+                          var srcBonMyBalanceDoc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/rectangle-coupon5_84088e0d-8056-4f2c-8d44-285379ca7b55.png?v=1762309322'; // undefined
+                          
+                          changeBonIcon(bonIconRedeem0, srcBonMyBalanceDoc, 206, 206)
+                        }
+
+                        // redeem icons 10 €
+                      var bonIconRedeem0 =  document.getElementById('icon-redeem-0301297')
+                      if(typeof bonIconRedeem0 != 'undefined') {
+                          var srcBonMyBalanceDoc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/rectangle-coupon10_17f45e62-7720-4800-877c-1f7773182e76.png?v=1762309323'; // undefined
+                          
+                          changeBonIcon(bonIconRedeem0, srcBonMyBalanceDoc, 206, 206)
+                        }
+
+                        // redeem icons 20 €
+                      var bonIconRedeem0 =  document.getElementById('icon-redeem-0301409')
+                      if(typeof bonIconRedeem0 != 'undefined') {
+                          var srcBonMyBalanceDoc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/rectangle-coupon20_19235b80-6a98-40be-b80f-77fb4656d041.png?v=1762309322'; // undefined
+                          
+                          changeBonIcon(bonIconRedeem0, srcBonMyBalanceDoc, 206, 206)
+                        }
+
+                        // redeem icons 30 €
+                      var bonIconRedeem0 =  document.getElementById('icon-redeem-0301410')
+                      if(typeof bonIconRedeem0 != 'undefined') {
+                          var srcBonMyBalanceDoc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/rectangle-coupon30_f907cbf5-fca1-4548-bf2a-8ee7801fd146.png?v=1762309322'; // undefined
+                          
+                          changeBonIcon(bonIconRedeem0, srcBonMyBalanceDoc, 206, 206)
+                        }
+
+                        // redeem icons 50 €
+                      var bonIconRedeem0 =  document.getElementById('icon-redeem-0301411')
+                      if(typeof bonIconRedeem0 != 'undefined') {
+                          var srcBonMyBalanceDoc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/rectangle-coupon50.png?v=1761550651'; // undefined
+                          
+                          changeBonIcon(bonIconRedeem0, srcBonMyBalanceDoc, 206, 206)
+                        }
+
+                        // redeem icons 100 €
+                      var bonIconRedeem0 =  document.getElementById('icon-redeem-0301412')
+                      if(typeof bonIconRedeem0 != 'undefined') {
+                          var srcBonMyBalanceDoc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/rectangle-coupon100.png?v=1761550651'; // undefined
+                          
+                          changeBonIcon(bonIconRedeem0, srcBonMyBalanceDoc, 206, 206)
+                        }
+
+                        // redeem icons 150 €
+                      var bonIconRedeem0 =  document.getElementById('icon-redeem-0301413')
+                      if(typeof bonIconRedeem0 != 'undefined') {
+                          var srcBonMyBalanceDoc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/rectangle-coupon150.png?v=1761550651'; // undefined
+                          
+                          changeBonIcon(bonIconRedeem0, srcBonMyBalanceDoc, 206, 206)
+                        }
+
+                        // redeem icons 200 €
+                      var bonIconRedeem0 =  document.getElementById('icon-redeem-0301414')
+                      if(typeof bonIconRedeem0 != 'undefined') {
+                          var srcBonMyBalanceDoc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/rectangle-coupon200.png?v=1761550651'; // undefined
+                          
+                          changeBonIcon(bonIconRedeem0, srcBonMyBalanceDoc, 206, 206)
+                        }
+                      
+                      // earning icons join
+                      var bonIconEarning0 =  document.getElementById('paint0_linear_11182_26475');
+                      if(typeof bonIconEarning0 != 'undefined') {
+                          var srcBonEarning0Doc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/energie-anmelden.svg?v=1761550678'; // undefined
+                          
+                          changeBonIcon(bonIconEarning0, srcBonEarning0Doc)
+                      }
+                      // earning icons complete order
+                      var bonIconEarning0 =  document.getElementById('paint0_linear_11561_13375');
+                      if(typeof bonIconEarning0 != 'undefined') {
+                          var srcBonEarning0Doc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/energie-bestellung.svg?v=1761550678'; // undefined
+                          changeBonIcon(bonIconEarning0, srcBonEarning0Doc)
+                      }
+
+                      // earning icons complete order
+                      var bonIconEarning0 =  document.getElementById('paint0_linear_11561_13475');
+                      if(typeof bonIconEarning0 != 'undefined') {
+                          var srcBonEarning0Doc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/energie-abonnieren.svg?v=1761550678'; // undefined
+                          changeBonIcon(bonIconEarning0, srcBonEarning0Doc)
+                      }
+
+                      // earning icons complete order
+                      var bonIconEarning0 =  document.getElementById('paint0_linear_11561_13299');
+                      if(typeof bonIconEarning0 != 'undefined') {
+                          var srcBonEarning0Doc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/energie-geburtstagsvorteile.svg?v=1761550678'; // undefined
+                          
+                          changeBonIcon(bonIconEarning0, srcBonEarning0Doc)
+                      }
+
+                      // earning icons complete order
+                      var bonIconEarning0 =  document.getElementById('paint0_linear_11561_13515');
+                      if(typeof bonIconEarning0 != 'undefined') {
+                          var srcBonEarning0Doc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/energie-produktbewertung-schreiben.svg?v=1761550678'; // undefined
+                          changeBonIcon(bonIconEarning0, srcBonEarning0Doc)
+                      }
+
+                      // earning icons complete order
+                      var bonIconEarning0 =  document.getElementById('paint0_linear_11561_13704');
+                      if(typeof bonIconEarning0 != 'undefined') {
+                          var srcBonEarning0Doc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/energie-Instagram-folgen.svg?v=1761550677'; // undefined
+                          changeBonIcon(bonIconEarning0, srcBonEarning0Doc)
+                      }
+
+                      // earning icons complete order
+                      var bonIconEarning0 =  document.getElementById('paint0_linear_11561_13667');
+                      if(typeof bonIconEarning0 != 'undefined') {
+                          var srcBonEarning0Doc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/energie-auf-x-teilen.svg?v=1761550678'; // undefined
+                          changeBonIcon(bonIconEarning0, srcBonEarning0Doc)
+                      }
+
+                      // earning icons complete order
+                      var bonIconEarning0 =  document.getElementById('paint0_linear_11561_13883');
+                      if(typeof bonIconEarning0 != 'undefined') {
+                          var srcBonEarning0Doc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/energie-auf-reddit-teilen.svg?v=1761550678'; // undefined
+                          changeBonIcon(bonIconEarning0, srcBonEarning0Doc)
+                      }
+
+                      // earning icons complete order
+                      var bonIconEarning0 =  document.getElementById('paint0_linear_11561_13491');
+                      if(typeof bonIconEarning0 != 'undefined') {
+                          var srcBonEarning0Doc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/energie-tiktok-folgen.svg?v=1761550678'; // undefined
+                          changeBonIcon(bonIconEarning0, srcBonEarning0Doc)
+                      }
+
+                      // earning icons complete order
+                      var bonIconEarning0 =  document.getElementById('icon-earning-15');
+                      if(typeof bonIconEarning0 != 'undefined') {
+                          var srcBonEarning0Doc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/energie-discord-folgen.svg?v=1761550678'; // undefined
+                          changeBonIcon(bonIconEarning0, srcBonEarning0Doc)
+                      }
+
+                      // earning icons complete order
+                      var bonIconEarning0 =  document.getElementById('paint0_linear_11561_13580');
+                      if(typeof bonIconEarning0 != 'undefined') {
+                          var srcBonEarning0Doc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/energie-facebook-gruppFacebook.svg?v=1761550678'; // undefined
+                          changeBonIcon(bonIconEarning0, srcBonEarning0Doc)
+                      }
+
+                      // earning icons complete order
+                      var bonIconEarning0 =  document.getElementById('icon-earning-18-1');
+                      if(typeof bonIconEarning0 != 'undefined') {
+                          var srcBonEarning0Doc = 'https://cdn.shopify.com/s/files/1/0596/6367/9587/files/energie-youtube-abonnieren.svg?v=1761550678'; // undefined
+                          changeBonIcon(bonIconEarning0, srcBonEarning0Doc)
+                      }
+  
+                      if(redeemCheckCount>=10) {
+                        clearInterval(redeemCheck);
+                      }
+                      
+                      redeemCheckCount = redeemCheckCount + 1;
+                    }, 1000)
+                  }
+                }
+              }
+            }
+          });
+        }
+  
+        function changeBonIcon(doc, imgSrc, width = 52, height = 52){
+          var img = document.createElement("img");
+          img.src = imgSrc; 
+          img.width = width;
+          img.height = height;
+      
+          doc?.parentNode?.parentNode?.replaceWith(img);
+        }
+        
+        var BonCrispObserver = new MutationObserver(BonScrispObsCallback);
+        BonCrispObserver.observe(BonCrispTargetNode, BonCrispObserverOptions);
+    }
+</script>
+
+<style>
+  #bon-onclick-dropdown-mybalance img, #bon-onclick-dropdown-myreward img {
+    margin-right: 10px;
+  }
+</style>

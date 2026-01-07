@@ -1,0 +1,267 @@
+<style>
+   #shopify-section-{{ section.id }} .section-picture-carousel{margin-top: {{ section.settings.padding_top }}px;margin-bottom: {{ section.settings.padding_bottom }}px;}
+   #shopify-section-{{ section.id }} .section-picture-carousel h2 {
+    line-height: 56px;
+    font-size: 46px;
+    font-weight: 700;
+    text-align: center;
+    color: #000;
+  }
+  #shopify-section-{{ section.id }} .section-picture-carousel .slider-wrapper {
+    position: relative;
+    margin-top: 60px;
+    overflow: hidden;
+  }
+  #shopify-section-{{ section.id }} .section-picture-carousel .slide {
+    padding: 0 10px;
+    box-sizing: border-box;
+    transition: opacity 0.3s ease;
+  }
+
+  #shopify-section-{{ section.id }} .section-picture-carousel .slide-inner {
+    background: #f8f8f8;
+    border-radius: 8px;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+  }
+  #shopify-section-{{ section.id }} .section-picture-carousel .slide-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  #shopify-section-{{ section.id }} .section-picture-carousel .caption {
+    position: absolute;
+    bottom: 30px;
+    left: 50px;
+    right: 0;
+    line-height: 36px;
+    font-size: 30px;
+    font-weight: 700;
+    text-align: left;
+    color: #fff;
+  }
+  #shopify-section-{{ section.id }} .section-picture-carousel .partial-view-slider .slick-slide {
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+  }
+  #shopify-section-{{ section.id }} .section-picture-carousel .partial-view-slider .slick-slide.slick-active {
+    opacity: 1;
+  }
+  #shopify-section-{{ section.id }} .section-picture-carousel .carousel-arrows {
+    left: 0px;
+  }
+  #shopify-section-{{ section.id }} .section-picture-carousel .carousel-arrows button.prev-arrow {
+    left: 20px;
+  }
+ #shopify-section-{{ section.id }} .section-picture-carousel  .carousel-arrows button.next-arrow {
+    right: 20px;
+  }
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .section-picture-carousel{margin-top: {{ section.settings.padding_top | divided_by: 2 }}px;margin-bottom: {{ section.settings.padding_bottom | divided_by: 2}}px;}
+    #shopify-section-{{ section.id }} .section-picture-carousel h2 {
+      line-height: 34px;
+      font-size: 28px;
+    }
+    #shopify-section-{{ section.id }} .section-picture-carousel .slider-wrapper {
+      margin-top: 22px;
+    }
+    #shopify-section-{{ section.id }} .section-picture-carousel .caption {
+      position: absolute;
+      bottom: 8px;
+      left: 10px;
+      right: 0;
+      line-height: 19px;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    #shopify-section-{{ section.id }} .section-picture-carousel .carousel-arrows button {
+      width: 38px;
+      height: 38px;
+    }
+    #shopify-section-{{ section.id }} .section-picture-carousel .carousel-arrows button.prev-arrow {
+      left: 1rem;
+    }
+    #shopify-section-{{ section.id }} .section-picture-carousel .carousel-arrows button.next-arrow {
+      right: 1rem;
+    }
+    #shopify-section-{{ section.id }} .section-picture-carousel .partial-view-slider .slick-slide {
+      opacity: 1;
+    }
+  }
+</style>
+{% liquid
+  assign motion_delay = 50
+%}
+<div
+  class="section section--padding  page-width section-picture-carousel"
+>
+  <h2>
+    <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+      <span>{{ section.settings.title }}</span></motion-element
+    >
+  </h2>
+  <div class="slider-wrapper">
+    <div class="partial-view-slider">
+      {% for block in section.blocks %}
+        <div class="slide">
+          <div class="slide-inner">
+            {% if block.settings.slide_image %}
+              <picture>
+                <!-- 移动端图片 -->
+                <source
+                  media="(max-width: 749px)"
+                  srcset="
+                    {{ block.settings.slide_image_h5 | img_url: '800x' }} 1x,
+                    {{ block.settings.slide_image_h5 | img_url: '1600x' }} 2x
+                  "
+                >
+
+                <!-- 桌面端图片 -->
+                <source
+                  media="(min-width: 750px)"
+                  srcset="
+                    {{ block.settings.slide_image | img_url: '1200x' }} 1x,
+                    {{ block.settings.slide_image | img_url: '2400x' }} 2x
+                  "
+                >
+
+                <!-- 默认图片 -->
+                <img
+                  src="{{ block.settings.slide_image | img_url: '1200x' }}"
+                  alt="{{ block.settings.slide_alt | escape }}"
+                  class="grid-image"
+                  loading="lazy"
+                  width="{{ block.settings.slide_image.width }}"
+                  height="{{ block.settings.slide_image.height }}"
+                >
+              </picture>
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+            {% if block.settings.slide_alt != blank %}
+              <div class="caption">{{ block.settings.slide_alt }}</div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- 自定义箭头 -->
+    <div class="carousel-arrows">
+      <button class="prev-arrow">❮</button>
+      <button class="next-arrow">❯</button>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    $('.partial-view-slider').slick({
+      autoplay: false,
+      infinite: false,
+      speed: 500, // 更自然的切换速度
+      autoplaySpeed: 5000,
+      slidesToShow: 1.5, // 实际显示一屏半
+      swipeToSlide: true,
+      draggable: true,
+      arrows: true,
+      prevArrow: $('.carousel-arrows .prev-arrow'),
+      nextArrow: $('.carousel-arrows .next-arrow'),
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 1, // 移动端显示完整一个
+            slidesToScroll: 1,
+          },
+        },
+      ],
+    });
+  });
+</script>
+{% schema %}
+{
+  "name": "section-picture-carousel",
+  "class": "section-picture-carousel",
+  "max_blocks": 10,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Mehr Optionen bei Verwendung"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "幻灯片",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "slide_image",
+          "label": "幻灯片图片"
+        },
+        {
+          "type": "image_picker",
+          "id": "slide_image_h5",
+          "label": "移动端幻灯片图片"
+        },
+        {
+          "type": "text",
+          "id": "slide_alt",
+          "label": "图片替代文本",
+          "default": "产品展示"
+        },
+        {
+          "type": "richtext",
+          "id": "slide_caption",
+          "label": "图片说明文字",
+          "default": "<p>Your description here</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "一屏半轮播",
+      "category": "自定义产品组件",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

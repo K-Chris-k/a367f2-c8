@@ -1,0 +1,136 @@
+{%- liquid
+  assign default_placeholder = 'newsletter.label' | t
+  assign default_button_label = 'newsletter.button_label' | t
+  assign button_label = button_label | default: default_button_label
+  assign design = design | default: 'design-1'
+  assign custom_id = custom_id | default: section.id
+  assign form_id = 'ContactSubscribe-' | append: custom_id
+-%}
+<style>
+  .newsletter-terms .opt-in-checkbox{width: 12px;height: 12px;}
+  .newsletter-terms .opt-in-checkbox:after{inset-inline-start: .3rem;inset-block-start: .1rem;}
+
+    .newssuccess{text-align: center!important;font-weight: 500!important;padding-left:20px!important;}
+
+  @media (max-width: 768px) {
+    .newssuccess{padding-left:0px!important;}
+  }
+</style>
+ 
+<div class="newsletter-form newsletter-form__{{ design }}">
+  {%- form 'customer', id: form_id, is: 'newsletter-form' -%}
+    <input type="hidden" name="contact[tags]" value="newsletter">
+    <div class="newsletter-form__field-wrapper">
+      <div class="form-field relative">
+        <label class="form-label visually-hidden" for="NewsletterForm-{{ custom_id }}">
+          {{ default_placeholder }}
+        </label>
+        <input
+          id="NewsletterForm-{{ custom_id }} footer-subscription-email-opt-in"
+          type="email"
+          name="contact[email]"
+          class="form-control"
+          value="{{ form.email }}"
+          aria-required="true"
+          autocorrect="off"
+          autocapitalize="off"
+          autocomplete="email"
+          {% if form.errors %}
+            autofocus
+            aria-invalid="true"
+            aria-describedby="Newsletter-error--{{ custom_id }}"
+          {% elsif form.posted_successfully? %}
+            aria-describedby="Newsletter-success--{{ custom_id }}"
+          {% endif %}
+          placeholder="{{ default_placeholder }}"
+          required
+        >
+        {%- if design == 'design-2' -%}
+          <button
+            type="submit"
+            class="newsletter-form__button btn w-full {{ button_style | default: 'btn--primary' }}"
+            name="commit"
+            id="Newsletter-submit--{{ custom_id }}"
+          >
+            {{- button_label -}}
+          </button>
+        {%- else -%}
+          <button
+            type="submit"
+            class="newsletter-form__button btn btn--icon {{ button_style | default: 'btn--blank' }}"
+            name="commit"
+            id="Newsletter-submit--{{ custom_id }}"
+            aria-label="{{ button_label }}"
+          >
+            {% render 'icon-email', size: 'medium' %}
+          </button>
+        {%- endif -%}
+        
+        <basic-modal class="drawer modal modal--newsletter-alert" id="NewsletterAlertModal-{{ custom_id }}" hidden>
+          <div
+            class="fixed-overlay"
+            aria-controls="NewsletterAlertModal-{{ custom_id }}"
+          ></div>
+          <div class="drawer__inner v-scrollable">
+            <button
+              class="drawer__close-btn z-1"
+              aria-controls="NewsletterAlertModal-{{ custom_id }}"
+              aria-label="{{ 'accessibility.close' | t }}"
+            >
+              {% render 'icon-close' %}
+            </button>
+            <div class="drawer__body no-empty">
+              <p
+                class="form-message alert blocks-radius h6 hidden"
+                id="Newsletter-error-subscribed--{{ custom_id }}"
+              >
+                {% render 'icon-error' %}
+                {{- 'newsletter.already_subscribed' | t -}}
+              </p>
+              {%- if form.errors -%}
+                <p
+                  class="form-message form-message--main alert alert--error blocks-radius h6"
+                  id="Newsletter-error--{{ custom_id }}"
+                >
+                  {% render 'icon-error' %}
+                  {{- form.errors.translated_fields.email | capitalize }}
+                  {{ form.errors.messages.email -}}
+                </p>
+              {%- endif -%}
+              {%- if form.posted_successfully? -%}
+                <div
+                  class="form-message form-message--main alert  blocks-radius h6"
+                  id="Newsletter-success--{{ custom_id }}"
+                  tabindex="-1"
+                  autofocus
+                >
+                  {% comment %} {% render 'icon-success' -%}d {% endcomment %}
+                  {% comment %} {{- 'newsletter.success' | t }} {% endcomment %}
+                  <p class="newssuccess" style="text-align: center;font-weight: 500;"> Danke für dein Abonnement!<br> Der exklusive Abonnement-Gutschein lautet:<br><span style="font-weight: 700;font-size: 20px;">CODE50</span>
+                   <br><span style="font-weight: 400;font-size: 14px;">(Gültig ab einem Bestellwert von 500€)</span></p>
+                </div>
+              {%- endif -%}
+            </div>
+          </div>
+        </basic-modal>
+      </div>
+       {%- if newsletter_term != blank -%}
+          <div class="rich-text__text rte {{ newsletter_term_size }} check-item newsletter-terms">
+            <input
+              type="checkbox"
+              id="NewsletterTerms-{{ custom_id }}"
+              name="terms_accepted"
+              class="opt-in-checkbox"
+              required
+            >
+            <label for="NewsletterTerms-{{ custom_id }}" class="newsletter-terms__label">
+              {{ newsletter_term }}
+            </label>
+            <div class="newsletter-terms__error hidden" id="Newsletter-terms-error--{{ custom_id }}">
+              {% render 'icon-error' %}
+            </div>
+          </div>
+          {% endif %}
+    </div>
+  {%- endform -%}
+</div>

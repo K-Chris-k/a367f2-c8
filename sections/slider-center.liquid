@@ -1,0 +1,466 @@
+<style>
+   #shopify-section-{{ section.id }}{margin-top:{{section.settings.padding_top  }}px;margin-bottom:{{section.settings.padding_bottom  }}px;}
+   #shopify-section-{{ section.id }} .tab-buttons{position: relative;max-width: fit-content; left: 50%;transform: translateX(-50%);margin-bottom:30px;border-bottom: 1px solid #ddd;}
+   .video-tab{display: flex; align-items: end;line-height:22px;padding-right:40px;font-size: 18px;cursor: pointer;font-weight: 500;}
+   .video-tab:last-child{padding-right:0px}
+   .video-tab span{ display: block;padding:0px 0px 10px 0px;text-align: center;}
+   .video-tab.active span{border-bottom:2px solid #3250C3;color:#3250C3}
+   .scene-main-slider,
+   .slick-track {
+    display: flex;
+    gap: 16px;
+  }
+   #shopify-section-{{ section.id }} .scene-main-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+   #shopify-section-{{ section.id }} .scene-main-slider .slide {
+    width: 900px; /* 固定宽度 */
+    height: 450px;
+    overflow: hidden;
+    position: relative;
+    flex: 0 0 auto;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+   #shopify-section-{{ section.id }} .scene-main-slider .slick-center {
+    transform: scale(1.03);
+    z-index: 2;
+  }
+  .scene-main-slider .slide .detail-bg{position: absolute;top: 0px;height: 100%;width: 100%;left: 0px;
+    background: linear-gradient(180deg, rgba(143, 143, 143, 0.00) 73.67%, rgba(0, 0, 0, 0.26) 87.47%, rgba(0, 0, 0, 0.50) 100%);}
+  .scene-main-slider .slide .detail{ position: absolute;width: 100%;bottom: 20px;padding:0px 100px;line-height:22px;font-size: 18px;text-align: center;color:#fff;}
+  #shopify-section-{{ section.id }} .tip-btn-popup{ display: flex;justify-content: center;align-items: center;   margin-top: 30px;width: 240px;
+    height: 50px; line-height: 50px;border-radius: 30px; background: #D9D9D9;text-align: center;gap: 10px;cursor:pointer;font-size: 18px;font-family: 'Inter';font-weight: 500;}
+  #shopify-section-{{ section.id }} .tip-btn-popup .icon-add {width:30px;height:30px}
+  {% comment %} 进度条样式 {% endcomment %}
+  #shopify-section-{{ section.id }} .video-controls {
+    position: absolute;
+    bottom: 7px;
+    right: 10px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    pointer-events: none;
+  }
+  #shopify-section-{{ section.id }} .video-progress-bar {
+    width: 100%;
+    height: 3px;
+    background: transparent;;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-left: 0%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    pointer-events: all;
+    z-index: 10;
+  }
+  #shopify-section-{{ section.id }} .video-progress {
+    display:block!important;
+    height: 100%;
+    width: 0%;
+    background: #3250C3;
+    border-radius: 3px;
+    transition: width 0.2s linear;
+  }
+  #shopify-section-{{ section.id }} .video-play-pause {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    background: rgba(0, 0, 0, 0.30);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    pointer-events: all;
+    z-index: 10;
+  }
+  #shopify-section-{{ section.id }} .icon-play,#shopify-section-{{ section.id }} .icon-pause {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+  }
+  .modal>.tip-background{background: linear-gradient(180deg, #91AFFA 0%, #3250C3 100%);}
+  .modal>.tip-background .drawer__body {padding:120px 79px;text-align: center;color:#fff}
+  .modal>.tip-background .drawer__body p{color:#fff;line-height:28px;font-size: 22px;font-family: 'Inter'}
+  .modal>.tip-background .drawer__body h5{line-height:58px;font-size: 36px;color:#fff}
+  .modal>.tip-background .drawer__body .content{margin-top:14px;line-height:28px;font-size: 22px;}
+  .modal>.tip-background .drawer__close-btn{width: 30px;height: 30px; color: #3250C3;background: #fff; }
+  
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }}{margin-top:{{section.settings.padding_top | divided_by: 2  }}px;margin-bottom:{{section.settings.padding_bottom | divided_by: 2  }}px;}
+    #shopify-section-{{ section.id }} .tab-buttons{margin-bottom:1.5rem}
+    #shopify-section-{{ section.id }} .video-tab{min-width:auto;padding:0px}
+    #shopify-section-{{ section.id }} .video-tab span{font-size: 14px;line-height: 17px;padding:0px 0.6rem 0.8rem 0.6rem!important;text-align:left}
+    #shopify-section-{{ section.id }} .scene-main-slider .slide {
+    width: 100vw;
+    height: auto;
+    min-height: 220px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    position: relative;
+    flex-flow: column;
+  }
+  #shopify-section-{{ section.id }} .scene-main-slider .video-container {
+    width: 100vw;
+    max-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  #shopify-section-{{ section.id }} .scene-main-slider .video-container video {
+    width: 100vw;
+    height: 100%;
+    max-width: 100vw;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+   #shopify-section-{{ section.id }} .scene-main-slider .slide .detail-bg {
+    position: static !important;
+    width: 100%;
+    height: auto;
+    left: 0;
+    top: 0;
+    background: #F5F5F5;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+   #shopify-section-{{ section.id }} .scene-main-slider .slide .detail {
+    position: static !important;
+    width: 100%;
+    padding: 16px 3rem;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000;
+    background: #F5F5F5;
+    text-shadow: none;
+    min-height: 86px;
+    text-align: center;
+  }
+  {% comment %} 进度条样式 {% endcomment %}
+  #shopify-section-{{ section.id }} .video-controls {
+    bottom: 0px;
+  }
+  #shopify-section-{{ section.id }} .video-progress-bar {
+    height: 3px;
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .video-play-pause {
+    width: 32px;
+    height: 32px;
+    right: 2rem;
+    bottom: 1.6rem;
+  }
+  #shopify-section-{{ section.id }} .icon-play,  #shopify-section-{{ section.id }} .icon-pause {
+    width: 20px;
+    height: 20px;
+  }
+  .modal>.tip-background .drawer__body {padding:74px 19px;}
+  .modal>.tip-background .drawer__body h5{line-height:34px;font-size: 28px;}
+  .modal>.tip-background .drawer__body .content{margin-top:14px;line-height:19px;font-size: 16px;}
+  .modal>.tip-background .drawer__close-btn{width: 30px;height: 30px; color: #3250C3;background: #fff; }
+  
+  }
+</style>
+<div class="section section-full-scene-list">
+  <div class="product-collection product-slider-container">
+    <div class="page-width">
+      <div class="flex justify-center tab-buttons">
+        {% for block in section.blocks %}
+          <div class="video-tab" data-slide="{{ forloop.index0 }}">
+            <span>{{ block.settings.title }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="scene-main-slider">
+      {% for block in section.blocks %}
+        <div class="slide">
+          <div class="video-box">
+            {% if block.settings.video != blank %}
+              <div class="video-container">
+                <video
+                  width="100%"
+                  playsinline
+                  muted
+                  loop
+                  {% if forloop.first %}
+                    autoplay
+                  {% endif %}
+                >
+                  <source src="{{ block.settings.video }}" type="video/mp4">
+                  Your browser does not support HTML5 video.
+                </video>
+                <div class="video-controls">
+                  <div class="video-progress-bar">
+                    <div class="video-progress"></div>
+                  </div>
+                  <button class="video-play-pause" aria-label="播放/暂停">
+                   <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
+                   <svg class="icon-pause" viewBox="0 0 24 24" style="display:none"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+                  </button>
+                </div>
+              </div>
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          <div class="detail-bg">
+             <div class="detail">{{ block.settings.description }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="page-width flex justify-center">
+      <div class="tip-btn-popup"  aria-controls="PopupModal-{{ section.id }}">{{section.settings.tip_title}} {% render 'icon-add' %}
+        <basic-modal id="PopupModal-{{section.id}}" class="drawer modal" style="--modal-width: 77rem;">
+          <div class="fixed-overlay" aria-controls="PopupModal-{{section.id}}"></div>
+          <div class="drawer__inner tip-background">
+            <button
+              class="drawer__close-btn"
+              aria-controls="PopupModal-{{section.id}}"
+              aria-label="{{ 'accessibility.close' | t }}"
+            >
+              {% render 'icon-close' %}
+            </button>
+            <div class="drawer__body v-scrollable h-full">
+                <h5>{{ section.settings.tip_popup_title }}</h5>
+                <div class="content">{{ section.settings.tip_popup_content }}</div>
+            </div>
+          </div>
+        </basic-modal>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    const $slider = $('.scene-main-slider');
+    $('.scene-main-slider video').get(0).play();
+    $('.video-tab').first().addClass('active');
+    $slider.slick({
+      centerMode: true,
+      variableWidth: true,
+      dots: false,
+      arrows: false,
+      autoplay: false,
+      speed: 500,
+      cssEase: 'ease-out',
+      responsive: [
+        {
+          breakpoint: 768, 
+          settings: {
+            slidesToShow: 1,
+            centerMode: true,
+            centerPadding: '0px'
+          }
+        }
+      ]
+    });
+    $('.video-tab').on('click', function () {
+      const index = $(this).data('slide');
+      $('.video-tab').removeClass('active');
+      $(this).addClass('active');
+      $slider.slick('slickGoTo', index);
+    });
+
+    $slider.on('afterChange', function (event, slick, currentSlide) {
+      $('.video-tab').removeClass('active');
+      $('.video-tab[data-slide="' + currentSlide + '"]').addClass('active'); 
+      $('.scene-main-slider video').each(function (index, video) {
+        video.pause();
+        video.currentTime = 0;
+      });
+      const currentSlideEl = $slider.find('.slick-slide[data-slick-index="' + currentSlide + '"]');
+      const currentVideo = currentSlideEl.find('video').get(0);
+      if (currentVideo) {
+        const playPromise = currentVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((error) => {
+            console.warn('Autoplay error:', error);
+          });
+        }
+      }
+   
+    });
+    function updateProgress(video, $progress) {
+        if(video && $progress) {
+          const percent = (video.currentTime / video.duration) * 100;
+          $progress.css('width', percent + '%');
+        }
+      }
+    $('.scene-main-slider .slide').each(function(){
+    const $slide = $(this);
+    const $video = $slide.find('video');
+    const $progress = $slide.find('.video-progress');
+    const $playPause = $slide.find('.video-play-pause');
+    const $iconPlay = $playPause.find('.icon-play');
+    const $iconPause = $playPause.find('.icon-pause');
+    
+    if($video.length) {
+      $video.on('timeupdate', function(){
+        updateProgress(this, $progress);
+      });
+      $playPause.on('click', function(e){
+        e.stopPropagation();
+        if($video[0].paused) {
+          $video[0].play();
+          $iconPlay.hide();
+          $iconPause.show();
+        } else {
+          $video[0].pause();
+          $iconPause.hide();
+          $iconPlay.show();
+        }
+      });
+      $video.on('play', function(){
+        $iconPlay.hide();
+        $iconPause.show();
+      });
+      $video.on('pause', function(){
+        $iconPause.hide();
+        $iconPlay.show();
+      });
+    }
+  });
+  $slider.on('afterChange', function (event, slick, currentSlide) {
+    $('.scene-main-slider .slide').each(function(i){
+      const $video = $(this).find('video');
+      const $playPause = $(this).find('.video-play-pause');
+      const $iconPlay = $playPause.find('.icon-play');
+      const $iconPause = $playPause.find('.icon-pause');
+      if(i === currentSlide) {
+        if($video.length && !$video[0].paused) {
+          $iconPlay.hide();
+          $iconPause.show();
+        } else {
+          $iconPause.hide();
+          $iconPlay.show();
+        }
+      } else {
+        $iconPause.hide();
+        $iconPlay.show();
+      }
+    });
+  });
+  });
+</script>
+{% schema %}
+{
+  "name": "full-scence-list",
+  "tag": "section",
+  "class": "section section-full-scence-list",
+  "max_blocks": 10,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Bekannt aus"
+    },
+    {
+      "type": "text",
+      "id": "tip_title",
+      "label": "提示标题",
+      "default": "Bekannt aus"
+    },
+    {
+      "type": "text",
+      "id": "tip_popup_title",
+      "label": "提示弹框标题",
+      "default": "Was ist der „Fass-Effekt“?"
+    },
+     {
+      "type": "richtext",
+      "id": "tip_popup_content",
+      "label": "提示弹框内容",
+      "default": "<p></div>Der „Fass-Effekt“ tritt auf, wenn die Leistung des schwächsten Akkus die Gesamteffizienz des Systems beeinträchtigt. Sobald ein Akku beim Laden voll ist, stoppt der Ladevorgang, wodurch die anderen Akkus nicht vollständig aufgeladen werden. Wenn dieser erschöpft ist, hören alle Akkus mit der Entladung auf.</p>"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "brand item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "标题",
+          "default": "Null Verlust bei gemischten Akkus"
+        },
+        {
+          "type": "url",
+          "id": "video",
+          "label": "上传MP4视频",
+          "info": "建议尺寸：1920x1080，小于20MB"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "描述"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "品牌列表",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,212 @@
+/* Header Section */
+.section-app .bon-header .content { max-width: 600px; }
+.section-app .bon-header .bon-btn-primary { display: none; }
+.section-app .bon-header { height: 800px !important; }
+.section-app .bon-header > div { padding: 110px 0px !important; }
+.section-app .bon-header .content > p { 
+    line-height: 29px; 
+    font-size: 24px; 
+    margin: 15px 0px 30px; 
+}
+
+/* Content Layout */
+.bon-content .bon-mb-4 { margin-bottom: 1.2rem !important; }
+.bon-content .bon-col-lg-4 { 
+    padding-left: 6px !important; 
+    padding-right: 6px !important; 
+}
+.bon-content .bon-card-custom { 
+    background-color: #FFF4DE !important; 
+    border-radius: 20px; 
+}
+
+/* Earning Section */
+#earning .bon-card-body .bon-btn { 
+    min-width: 118px; 
+    padding: 8px 16px; 
+    background: #fff; 
+    border: 1px solid #FFA411; 
+    color: #FFA411; 
+}
+#earning .bon-card { min-height: 270px; }
+#earning img { width: 89px; }
+
+/* Redeem Section */
+#redeem { background: #F1F1F1; }
+#redeem .bon-card-custom { background-color: #fff !important; }
+#redeem .bon-card { padding-bottom: 23px; }
+
+/* Card Labels */
+.bon-card-custom .bon-card-label { 
+    line-height: 22px; 
+    font-size: 18px !important; 
+    font-weight: 700; 
+    color: #FFA411; 
+}
+#redeem .bon-card-custom .bon-card-label { color: #1C1C1C; }
+
+/* Profile */
+.bon-profile h1 .current-point { color: #FFA411 !important; }
+.section-app .bon-btn-secondary { 
+    padding: 8px 24px !important; 
+    background: #3250C3; 
+    color: #fff; 
+    font-size: 18px; 
+}
+.section-app .bon-btn-secondary:focus { border-color: #3250C3; }
+
+/* Cards */
+.bon-card .bon-body-other-secondary-color { 
+    line-height: 19px; 
+    font-size: 16px; 
+    color: #9B9B9B; 
+}
+.bon-profile-item { 
+    background-color: #F8F8F8 !important; 
+    border-color: #f8f8f8 !important; 
+    box-shadow: none !important; 
+}
+
+/* Specific Blocks */
+#shopify-block-Aa3ZQR2UvemZLem13Y__bon_loyalty_loyalty_page_redeem_block_UqAmcR { 
+    background: #f1f1f1; 
+    border: 1px solid #f8f8f8; 
+}
+.bon-content .bon-desc-btn { flex-flow: column; }
+.bon-card-body .bon-btn, 
+.bon-card .bon-body-other-secondary-color { display: block !important; }
+
+/* Profile Elements */
+#profile .balance_count, 
+#profile #reward_count { 
+    display: none; 
+    margin-bottom: 1rem !important; 
+    text-align: left; 
+}
+#redeem .bon-btn-primary { 
+    padding: 10px 30px; 
+    background: #3250C3; 
+}
+#profile .bon-table-custom { background-color: #F8F8F8; }
+#profile .bon-profile-container { flex-flow: row-reverse; }
+#profile .bon-table-custom thead { display: none; }
+#profile .bon-table-custom .bon-text-success { color: #FFA411 !important; }
+
+/* Dropdown Images */
+#bon-onclick-dropdown-mybalance img, 
+#bon-onclick-dropdown-myreward img { width: 40px; }
+
+/* Buttons */
+.bon-card-custom .bon-btn-primary { margin-top: 12px !important; }
+.bon-card-custom .bon-btn-disable, 
+.bon-card-custom .bon-btn-primary, 
+.bon-card-custom .bon-btn-secondary { 
+    line-height: 19px !important; 
+    font-size: 16px !important; 
+}
+.bon-modal-action .bon-btn-primary { text-transform: none !important; }
+@media (max-width: 1024px) {
+ .section-app .bon-header > div { padding: 80px 60px!important;}
+
+}
+/* Mobile Styles */
+@media (max-width: 767.98px) {
+    .section-app .bon-header > div { 
+        padding: 4.2rem 2rem !important; 
+        text-align: center !important; 
+        align-items: start !important; 
+        justify-content: center !important; 
+    }
+    .section-app .bon-header .content > p { 
+        line-height: 19px; 
+        font-size: 16px; 
+        margin-top: 0.5rem; 
+    }
+    .bon-header .content h1 { 
+        line-height: 34px !important; 
+        font-size: 28px; 
+    }
+    .section-app .bon-btn-secondary { 
+        display: block; 
+        font-size: 16px; 
+    }
+    .bon-header .content div:last-child { justify-content: center; }
+    .section-app .bon-header { height: 62vh !important; }
+    .bon-header .background, 
+    .bon-header .blur { object-fit: contain !important;  background: #0F0F0F;}
+    .bon-profile-container { gap: 1.2rem !important; }
+    .bon-content .bon-card-custom { border-radius: 10px; }
+    .bon-content .bon-col-12 { 
+        flex: 50%; 
+        max-width: 50%; 
+    }
+    /* .container-bon { padding: 0rem !important; } */
+    .bon-content .bon-mb-4 { margin-bottom: 0.5rem !important; }
+    .bon-content .bon-col-lg-4 { 
+        padding-left: 2.5px !important; 
+        padding-right: 2.5px !important; 
+    }
+    .bon-content .bon-item .bon-item-title { width: 100%; }
+    .bon-item .bon-item-title h1 { 
+        line-height: 34px; 
+        font-size: 28px; 
+    }
+    .bon-card-custom .bon-card-label { 
+        line-height: 15px; 
+        font-size: 13px !important; 
+    }
+    .bon-card .bon-body-other-secondary-color { 
+        line-height: 15px; 
+        font-size: 12px; 
+    }
+    #earning .bon-card { 
+        min-height: 21rem; 
+        padding-top: 1.2rem; 
+        padding-bottom: 0.8rem; 
+    }
+    #earning img { width: 65px; }
+    #redeem .bon-text-center img { 
+        width: 115px; 
+        height: 115px; 
+    }
+    #profile .bon-profile-item { padding: 1.2rem 1.2rem; }
+    #profile .bon-profile-item .title { 
+        line-height: 19px; 
+        font-size: 16px !important; 
+    }
+    #profile .bon-profile-item svg:first-child { margin-right: 6px !important; }
+    #profile .bon-table-custom tbody td, 
+    #profile th.bon-body-other-primary-color { 
+        line-height: 17px; 
+        font-size: 14px !important; 
+    }
+    #reward_count, 
+    #balance_count, 
+    #profile .bon-body-other-primary-color { 
+        line-height: 11px; 
+        font-size: 9px !important; 
+        text-align: left; 
+    }
+    .bon-profile .bon-dropdown#profile-reward-list { 
+        margin-left: inherit !important; 
+        margin-right: inherit !important; 
+    }
+    #bon-onclick-dropdown-mybalance img, 
+    #bon-onclick-dropdown-myreward img { width: 20px; }
+    .bon-card-custom .bon-btn-disable, 
+    .bon-card-custom .bon-btn-primary, 
+    .bon-card-custom .bon-btn-secondary { 
+        line-height: 15px !important; 
+        font-size: 12px !important; 
+    }
+    .row-bon { justify-content: start !important; }
+    .section-app #bon-onclick-scrollto-redeem { display: none !important; }
+     #profile .bon-item{ padding-bottom: 0px; }
+}
+
+/* Small Mobile Devices */
+@media (max-width: 380px) {
+    .section-app .bon-header { height: 86vh !important; }
+    .bon-header .content h1 { line-height: 30px !important; font-size: 22px!important;}
+    #earning .bon-card-body .bon-btn{ padding: 0px 16px; min-height: 38px; white-space: normal;}
+}

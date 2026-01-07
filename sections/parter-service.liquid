@@ -1,0 +1,160 @@
+<style>
+.section-parter-servicemain { padding-top:100px;background: #F3F3F3;}
+.section-parter-servicemain h2{ line-height:58px;font-size:46px;font-weight: 700;text-align:center}
+.section-parter-servicemain .service-box {margin-top:28px}
+.section-parter-servicemain .service-box ul{ display: grid;grid-template-columns: 1fr 1fr;grid-template-rows: 1fr 1fr;gap: 10px;}
+.section-parter-servicemain .service-box li{
+  position: relative;
+  aspect-ratio: unset; /* 去掉宽高比限制，用网格自动控制 */
+  min-height: 220px;
+  background: #eaeaea;
+  height: 100%;
+}
+.section-parter-servicemain .service-box li .image-wapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.section-parter-servicemain .service-box li .image-wapper img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.section-parter-servicemain .service-box li .content{ position:absolute;top:25px;left:32px}
+.section-parter-servicemain .service-box li .content h2{ text-align:left;line-height:41px;font-size:34px;font-weight: 600;color:#fff}
+.section-parter-servicemain .service-box li .content h2 p{margin:0px;font-size: inherit;font-family:"Inter";color: #fff;}
+.section-parter-servicemain .service-box li:nth-child(1){grid-row: 1 / span 2;grid-column: 1 / 2; height: 100%;}
+.section-parter-servicemain .service-box li:nth-child(2){  grid-row: 1 / 2;grid-column: 2 / 3;}
+.section-parter-servicemain .service-box li:nth-child(3){ grid-row: 2 / 3;grid-column: 2 / 3;}
+/* .banner-box .content h4{ margin-top:10px;line-height:38px;font-size:32px;font-weight: 400;}
+.banner-box .decribe{ position: relative;top: -120px;padding:70px 110px;border-radius: 25px;background: #FFF;line-height:38px;font-size:24px;}
+.banner-box .decribe p{margin:0px} */
+  @media (max-width: 768px) {
+  .section-parter-servicemain{padding-top:50px}
+  .section-parter-servicemain h2{ line-height:29px;font-size:24px;}
+  .section-parter-servicemain .service-box {margin-top:1.5rem}
+  .section-parter-servicemain .service-box li .content{ position:absolute;top:1.6rem;left:2rem}
+  .section-parter-servicemain .service-box li .content h2{ line-height:24px;font-size:20px;}
+  .section-parter-servicemain .service-box ul{
+    display: block;
+  }
+  .section-parter-servicemain .service-box li{
+    aspect-ratio: unset;
+    min-height: 160px;
+    padding-bottom: 1.6rem;
+  }
+}
+</style>
+{% liquid
+    assign motion_delay = 50
+%}
+<div class="section page-width section--padding section-parter-servicemain">
+   <h2 class="titie"> {{ section.settings.title }}</h2>
+    <div class="service-box">
+       <ul>
+        {% for block in section.blocks %}
+         <li>
+           {% if block.settings.image != blank %}
+             <div class="image-wapper">
+              <picture>
+                <source
+                  media="(max-width: 749px)"
+                  srcset="
+                    {{ block.settings.image_mobile | img_url: '800x' }} 1x,
+                    {{ block.settings.image_mobile | img_url: '1600x' }} 2x
+                  "
+                >
+                <source
+                  media="(min-width: 750px)"
+                  srcset="
+                    {{ block.settings.image | img_url: '1200x' }} 1x,
+                    {{ block.settings.image | img_url: '2400x' }} 2x
+                  "
+                >
+                <img
+                  src="{{ block.settings.image | img_url: '1200x' }}"
+                  alt="{{ block.settings.image | escape }}"
+                  loading="lazy"
+                  width="{{ block.settings.image.width }}"
+                  height="{{ block.settings.image.height }}"
+                >
+              </picture>
+             </div>
+             <div class="content">
+                <h2>{{ block.settings.title }}</h2>
+                <!-- <h4>{{ block.settings.subtitle }}</h4> -->
+             </div>
+
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+         </li>
+         {% endfor %}
+       </ul>
+       
+    </div>
+</div>
+<script>
+ 
+</script>
+{% schema %}
+{
+  "name": "parter-service",
+  "tag": "section",
+  "class": "section section-parter-service",
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Unsere Unterstützung"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "brand item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "h5 image"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "标题"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "合作伙伴-服务",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

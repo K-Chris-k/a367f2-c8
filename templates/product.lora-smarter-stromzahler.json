@@ -1,0 +1,538 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badges": {
+          "type": "badges",
+          "disabled": true,
+          "settings": {
+            "show_soldout_badge": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "judge_me_reviews_preview_badge_PUqcG8": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "taxs_6PAPYY": {
+          "type": "taxs",
+          "settings": {
+            "title": "0% MwSt. auf PV-Sets in Deutschland",
+            "content": "Hiermit bestätigen Sie, das Sie die Voraussetzungen für eine umsatzsteuerfreie Lieferung gemäß § 12 Abs. 3 von Deutschland erfüllen.",
+            "taxs_title": "Erfahren Sie mehr.",
+            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie hier um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
+            "heading_1": "Hinweis: Bestellungen werden in mehreren Pakets versendet.",
+            "heading_2": "<strong>Sofort ab Lager verfügbar, Versand innerhalb von 24 Stunden.</strong>"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 40,
+            "size_title": "Size",
+            "size_chart_from_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "selleasy_lb_upsell_widget_pal_NTPwBw": {
+          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-pal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+          "settings": {}
+        },
+        "logistics_pN3qrf": {
+          "type": "logistics",
+          "settings": {
+            "enable_sticky_info": true
+          }
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "name": "支付信息",
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "certificate",
+            "image_1": "shopify://shop_images/brand-icon1.svg",
+            "heading_1": "Bequem bezahlen",
+            "content_image_1": "shopify://shop_images/card.png",
+            "icon_2": "truck",
+            "image_2": "shopify://shop_images/brand-icon2.svg",
+            "content_image_2": "shopify://shop_images/track.png",
+            "heading_2": "Zuverlässige Lieferung",
+            "icon_3": "star-four",
+            "heading_3": ""
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "tag",
+            "product_list_limit": 4,
+            "products_per_page": 1,
+            "image_ratio": "adapt",
+            "enable_quick_add": true
+          }
+        }
+      },
+      "block_order": [
+        "badges",
+        "title",
+        "judge_me_reviews_preview_badge_PUqcG8",
+        "price",
+        "taxs_6PAPYY",
+        "description",
+        "variant_picker",
+        "buy_buttons",
+        "selleasy_lb_upsell_widget_pal_NTPwBw",
+        "logistics_pN3qrf",
+        "icon_with_text",
+        "complementary"
+      ],
+      "custom_css": [
+        ".loox-rating {margin-top: -1rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": true,
+        "enable_product_sticky_bar": false,
+        "media_size": "medium",
+        "gallery_layout": "carousel",
+        "mobile_thumbnails": "show",
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "image_with_text_TdUHat": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_FGLAWK": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Voorkom Energieverspilling door Real-time Monitoring</strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_qGJAAQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>De intelligente slimme meter beschikt over een geïntegreerde chip die het energieverbruik in real-time registreert en binnen 5 seconden reageert op uw aanpassingen.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_FGLAWK",
+        "text_qGJAAQ"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#ffffff",
+        "image_height": "adapt",
+        "layout": "text_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": false,
+        "mobile_content_alignment": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_with_text_eHCzCx": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_iEcwt8": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Eenvoudige Installatie</strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_zJC4Pp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Bevestig de meter eenvoudig aan de rail en u bent klaar om te gaan! Geschikt voor de meeste toepassingen.<br/><br/></p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_iEcwt8",
+        "text_zJC4Pp"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#ffffff",
+        "image_height": "adapt",
+        "layout": "image_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": false,
+        "mobile_content_alignment": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_with_text_43dyVe": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_FagBHP": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Wi-Fi en Bluetooth Connectiviteit</strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_Jem7Qj": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Kies tussen twee verbindingsopties en verbeter het signaal met de antenne-extensie.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_FagBHP",
+        "text_Jem7Qj"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#ffffff",
+        "image_height": "adapt",
+        "layout": "text_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": false,
+        "mobile_content_alignment": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_with_text_yc6aVx": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_jMcpUG": {
+          "type": "heading",
+          "settings": {
+            "heading": "Beheer Energie met de Smart App",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_nAXGHR": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Volg uw energieverbruik in real-time via de Energy Ease-app en activeer alleen de stroomvoorziening die u nodig heeft.<br/><br/></p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_jMcpUG",
+        "text_nAXGHR"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#ffffff",
+        "image_height": "adapt",
+        "layout": "image_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": false,
+        "mobile_content_alignment": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "multicolumn_Mxt4d3": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_ppme79": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/lora-1.jpg",
+            "image_link": "",
+            "image_width": "extra-large",
+            "title": "",
+            "heading_size": "h4",
+            "text": "<h5>Solarman LoRa 1-Phasen-Stromzähler</h5>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_6eYcFq": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/lora-2.jpg",
+            "image_link": "",
+            "image_width": "extra-large",
+            "title": "",
+            "heading_size": "h4",
+            "text": "<h5>Gebruikershandleiding</h5>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_6mMR7m": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/lora-3.jpg",
+            "image_link": "",
+            "image_width": "extra-large",
+            "title": "",
+            "heading_size": "h4",
+            "text": "<h5>Gebruikershandleiding</h5>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "column_ppme79",
+        "column_6eYcFq",
+        "column_6mMR7m"
+      ],
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "",
+        "heading": "Lieferumfang",
+        "heading_size": "hd2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "column_alignment": "center",
+        "columns_desktop": 3,
+        "column_gap": "large",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "parameter_gkgTje": {
+      "type": "parameter",
+      "blocks": {
+        "card_nAKkKd": {
+          "type": "card",
+          "settings": {
+            "title": "Productmodel",
+            "content": "SMD3",
+            "note": ""
+          }
+        },
+        "card_c8XKAL": {
+          "type": "card",
+          "settings": {
+            "title": "Connectiviteit",
+            "content": "Bluetooth en Wi-Fi",
+            "note": ""
+          }
+        },
+        "card_zi4fW9": {
+          "type": "card",
+          "settings": {
+            "title": "Technische parameters",
+            "content": "3x230/400V, 50/60Hz",
+            "note": ""
+          }
+        },
+        "card_xDEwTq": {
+          "type": "card",
+          "settings": {
+            "title": "Bedrijfstemperatuur",
+            "content": "-40℃ tot 70℃",
+            "note": ""
+          }
+        },
+        "card_4kqzc8": {
+          "type": "card",
+          "settings": {
+            "title": "Meetnauwkeurigheid",
+            "content": "Actief ±1%, Reactief ±2%",
+            "note": ""
+          }
+        },
+        "card_gpcA3a": {
+          "type": "card",
+          "settings": {
+            "title": "Compatibiliteit",
+            "content": "Indevolt BK1600",
+            "note": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_nAKkKd",
+        "card_c8XKAL",
+        "card_zi4fW9",
+        "card_xDEwTq",
+        "card_4kqzc8",
+        "card_gpcA3a"
+      ],
+      "disabled": true,
+      "name": "参数列表",
+      "settings": {
+        "title": "Technische Gegevens",
+        "ids": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "download_iTycjN": {
+      "type": "download",
+      "blocks": {
+        "card_Mn8GWF": {
+          "type": "card",
+          "settings": {
+            "title": "Indevolt Smart Meter(SMD1)",
+            "content": "Instructiehandleiding",
+            "date": "2024-01-21",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SMD1_20241212173533.pdf?v=1733996174"
+          }
+        },
+        "card_pibFU9": {
+          "type": "card",
+          "settings": {
+            "title": "Indevolt Smart Meter(SMD3)",
+            "content": "Instructiehandleiding",
+            "date": "2024-01-21",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SMD3_20241212173854.pdf?v=1733996358"
+          }
+        }
+      },
+      "block_order": [
+        "card_Mn8GWF",
+        "card_pibFU9"
+      ],
+      "disabled": true,
+      "name": "下载列表",
+      "settings": {
+        "title": "Downloads"
+      }
+    },
+    "17636190155fdf9c03": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_eGx7XJ": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_eGx7XJ"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "image_with_text_TdUHat",
+    "image_with_text_eHCzCx",
+    "image_with_text_43dyVe",
+    "image_with_text_yc6aVx",
+    "multicolumn_Mxt4d3",
+    "parameter_gkgTje",
+    "download_iTycjN",
+    "17636190155fdf9c03"
+  ]
+}

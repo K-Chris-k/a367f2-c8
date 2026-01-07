@@ -1,0 +1,127 @@
+<style>
+    #shopify-section-{{ section.id }}{margin-top:{{section.settings.padding_top  }}px;margin-bottom:{{section.settings.padding_bottom  }}px;}
+   .section-parameter h2{line-height:56px;font-size:46px;text-align:center}
+   .section-parameter .parameter-box{margin-top:40px;font-size: 16px;line-height: 21px;}
+   .section-parameter .parameter-box ul {display:flex;flex-wrap:wrap;justify-content: space-between;}
+   .section-parameter .parameter-box li { width: 46%;padding:34px 0px 30px;font-size: 18px; border-bottom:1px solid #B1B1B1}
+   .section-parameter .parameter-box li span{display: block;line-height:26px;}
+   .section-parameter .parameter-box li .title{font-weight:600}
+   .section-parameter .parameter-box li .note{margin-top:30px}
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }}{margin-top:{{section.settings.padding_top | divided_by: 2  }}px;margin-bottom:{{section.settings.padding_bottom | divided_by: 2  }}px;}
+    .section-parameter h2{line-height:34px;font-size:28px;text-align:center}
+    .section-parameter .parameter-box{margin-top:5px}
+    .section-parameter .parameter-box li { width: 100%;padding:25px 0px 15px;font-size: 14px;}
+     
+  }
+</style>
+<div class="section section--padding page-width section-parameter" id="{{section.settings.ids}}">
+  <div class="product-collection product-slider-container">
+    <h2>
+       <span>{{ section.settings.title }}</span>
+    </h2>
+    <div class="parameter-box">
+      <ul>
+         {% for block in section.blocks %}
+        <li><span class="title">{{ block.settings.title }}</span><span class="content">{{ block.settings.content }}</span>
+        {% if block.settings.note!=blank %}<span class="note">{{ block.settings.note }}</span>{% endif %}</li>
+         {% endfor %}
+      </ul>
+     
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "parameter",
+  "tag": "section",
+  "class": "section section-parameter",
+  "max_blocks": 25,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Technische Gegevens"
+    },
+    {
+      "type": "text",
+      "id": "ids",
+      "label": "设置ID",
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "parameter item",
+      "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "标题",
+        "default": "Afmetingen"
+      },
+      {
+        "type": "text",
+        "id": "content",
+        "label": "描述",
+        "default": "Veiligheid EMC/Normen: IEC62619, UN38.3, IEC/EN 62109-1, IEC/EN 62109-2, IEC/EN 61000-6-1, IEC/EN 61000-6-2"
+      },
+      {
+        "type": "text",
+        "id": "note",
+        "label": "备注",
+        "default": "Netcode: Netinvoeding VDE4105"
+      }
+     ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "参数列表",
+      "category": "自定义产品组件",
+      "blocks": [
+        {
+          "type": "card"
+        },
+         {
+          "type": "card"
+        },
+         {
+          "type": "card"
+        }, {
+          "type": "card"
+        },
+         {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

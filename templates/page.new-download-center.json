@@ -1,0 +1,243 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_overlay_7NqLRV": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_e97FBN": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Download-Center",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_e97FBN"
+      ],
+      "custom_css": [
+        "@media (max-width: 768px) {.media--adapt, .media-wrapper {height: 390px; } .content-overlay--middle-center {justify-content: start; }}"
+      ],
+      "name": "t:sections.image-with-text-overlay.name",
+      "settings": {
+        "container": "full",
+        "bg_color": "#ffffff",
+        "title_color": "#000000",
+        "text_color": "#666",
+        "btn_wrapper_alignment": "start",
+        "image": "shopify://shop_images/helpCenter.png",
+        "desktop_height": "adapt",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 720,
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "image_mobile": "shopify://shop_images/helpCenter-mob.png",
+        "mobile_height": "auto",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "help_center_sticky_kGTjwr": {
+      "type": "help-center-sticky",
+      "name": "帮助中心锚点",
+      "settings": {}
+    },
+    "download_video_JELQ4g": {
+      "type": "download-video",
+      "blocks": {
+        "card_ptyBPi": {
+          "type": "card",
+          "settings": {
+            "video_url": "https://youtu.be/Dmnzcr9VCFY",
+            "title": "Indevolt-App installieren und aktivieren"
+          }
+        },
+        "card_ibm9aX": {
+          "type": "card",
+          "settings": {
+            "video_url": "https://www.youtube.com/watch?v=136Co7Ux2IU",
+            "title": "BK1600 Balkonkraftwerk-Speicher installieren"
+          }
+        },
+        "card_GcUgQz": {
+          "type": "card",
+          "settings": {
+            "video_url": "https://youtu.be/tdw_6bjopt0",
+            "title": "Indevolt Smarter Stromzähler installieren und App konfigurieren"
+          }
+        },
+        "card_fjx8ci": {
+          "type": "card",
+          "settings": {
+            "video_url": "https://youtu.be/OzhS3qHSZBc",
+            "title": "Betriebsanleitung für den Energiemodus"
+          }
+        },
+        "card_xLQRE9": {
+          "type": "card",
+          "settings": {
+            "video_url": "https://youtu.be/O5N3gzEYu-M",
+            "title": "Indevolt Anleitung für Parallelbetrieb"
+          }
+        },
+        "card_aA8CtJ": {
+          "type": "card",
+          "settings": {
+            "video_url": "https://www.youtube.com/watch?v=EX_HlRUSflo",
+            "title": "Indevolt APP: Die SolidFlex 2000 Verbindung"
+          }
+        }
+      },
+      "block_order": [
+        "card_ptyBPi",
+        "card_ibm9aX",
+        "card_GcUgQz",
+        "card_fjx8ci",
+        "card_xLQRE9",
+        "card_aA8CtJ"
+      ],
+      "name": "Download-video",
+      "settings": {
+        "title": "Anleitungsvideos",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
+    },
+    "download_app_eJQ7n8": {
+      "type": "download-app",
+      "name": "Download App",
+      "settings": {
+        "logo": "shopify://shop_images/download-logo.svg",
+        "title": "Indevolt-APP",
+        "descrition": "Download für iOS/Android",
+        "package_url": "<p><a href=\"https://dl.indevolt.de/indevolt/INDEVOLT_googleplay_oversea_release_last.apk\" target=\"_blank\" title=\"https://dl.indevolt.de/indevolt/INDEVOLT_googleplay_oversea_release_last.apk\">Die Apk-Datei der App </a><a href=\"https://dl.indevolt.de/indevolt/INDEVOLT_googleplay_oversea_release_last.apk\" title=\"https://dl.indevolt.de/indevolt/INDEVOLT_googleplay_oversea_release_last.apk\">herunterladen</a></p>",
+        "app_store_link": "https://apps.apple.com/us/app/indevolt/id6740477657",
+        "app_store_img": "shopify://shop_images/download-app-store.png",
+        "google_play_link": "https://play.google.com/store/apps/details?id=com.indevolt.smarthome",
+        "google_play_img": "shopify://shop_images/download-google-play.png",
+        "code_img": "shopify://shop_images/download-code.png",
+        "right_img": "shopify://shop_images/download-right.png",
+        "right_mobile_img": "shopify://shop_images/download-mobile-right.png",
+        "padding_top": 120,
+        "padding_bottom": 60
+      }
+    },
+    "download_faq_xPxM3N": {
+      "type": "download-pdf",
+      "blocks": {
+        "category_HEBCHd": {
+          "type": "category",
+          "settings": {
+            "category_name": "Balkonkraftwerk mit Speicher",
+            "pdf_list": "SolidFlex 2000|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_Bedienungsanleitung.pdf?v=1750645951\nPowerFlex 2000 Serie|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/PowerFlex_2000_Serie.pdf?v=1765961072\nBK1600 Ultra|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Bedienungsanleitung_BK1600_Ultra.pdf?v=1749526304\nBK1600|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Indevolt_BK1600.pdf?v=1737610402"
+          }
+        },
+        "category_jEXBRN": {
+          "type": "category",
+          "settings": {
+            "category_name": "Mikro-Wechselrichter",
+            "pdf_list": "800W Mikrowechselrichter - Deye M80G4|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Bedienungsanleitung_SUN-M80G4.pdf?v=1735897093\n2000W Mikrowechselrichter - Deye M200G4|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Indevolt_2000W_Balkonkraftwerk_mit_Mikrowechselrichter_-_Deye_M200G4.pdf?v=1739415597"
+          }
+        },
+        "category_aJygeA": {
+          "type": "category",
+          "settings": {
+            "category_name": "Solarmodul",
+            "pdf_list": "Bifaziale Monokristalline Solarmodule |https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Bedienungsanleitung_Solarpanel_Glass_JA_M54D41-445LB.pdf?v=1735894726\n860W TOPCon Solarmodule|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Indevolt_430W_Solarpanels.pdf?v=1739413438\nFlexible Solarpanels|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Bedienungsanleitung_Flexibles_Solarmodul_225W.pdf?v=1735892012"
+          }
+        },
+        "category_PLRLGD": {
+          "type": "category",
+          "settings": {
+            "category_name": "Zubehör",
+            "pdf_list": "Indevolt Smart Plug | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Indevolt_Smart_Plug_SP16.pdf?v=1736134981\nIndevolt Smart Meter (SMD1) | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SMD1_20241212173533.pdf?v=1733996174\nIndevolt Smart Meter (SMD3) | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SMD3_20241212173854.pdf?v=1733996358\nSolarmodul-Balkonhalterungen - black | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Indevolt_Solarmodul-Balkonhalterungen_1_Paar_-_black.pdf?v=1739244521\nSolarmodul-Balkonhalterungen - sliver | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Indevolt_Solarmodul-Balkonhalterungen_1_Paar_-_sliver.pdf?v=1739244572\nSolarmodul-Dachhalterungen | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Indevolt_Solarmodul-Dachhalterungen_1_Paar.pdf?v=1739243135\nBalkongeländer-Halterung Rundhaken | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Balkongelander-Halterung_Rundhaken.pdf?v=1749022853\nHalterung für Flachdach und Garten | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Halterung_fur_Flachdach_und_Garten.pdf?v=1749017261\nHalterung für Dachziegel | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Halterung_fur_Dachziegel.pdf?v=1749023990"
+          }
+        }
+      },
+      "block_order": [
+        "category_HEBCHd",
+        "category_jEXBRN",
+        "category_aJygeA",
+        "category_PLRLGD"
+      ],
+      "name": "Download Pdf",
+      "settings": {
+        "title": "Benutzerhandbuch",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
+    },
+    "rich_text_DniyDK": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_AqLLYg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Kannst du nicht finden, was du suchst?",
+            "heading_mobile": "",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "button_DPnAyg": {
+          "type": "button",
+          "settings": {
+            "button_label": "Kontaktiere uns",
+            "button_link": "shopify://pages/contact-us",
+            "button_style": "btn--primary",
+            "button_target": "_self"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AqLLYg",
+        "button_DPnAyg"
+      ],
+      "custom_css": [
+        "@media (max-width: 768px) {.a_underline {padding-bottom: 1.2rem !important; }}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "scheme-2",
+        "content_alignment": "center",
+        "padding_top_inner": 120,
+        "padding_bottom_inner": 120,
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_7NqLRV",
+    "help_center_sticky_kGTjwr",
+    "download_video_JELQ4g",
+    "download_app_eJQ7n8",
+    "download_faq_xPxM3N",
+    "rich_text_DniyDK"
+  ]
+}

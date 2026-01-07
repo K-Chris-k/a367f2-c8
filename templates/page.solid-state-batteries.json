@@ -1,0 +1,459 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "video_hero_old_H7LYeq": {
+      "type": "video-hero",
+      "blocks": {
+        "heading_FHra79": {
+          "type": "heading",
+          "settings": {
+            "heading": "Indevolt halbfestes LiFePO₄ Balkonkraftwerk mit Speicher",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_tc3Miy": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Eine Speicherlösung für Zuhause – sicherer, langlebiger, leichter</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "button_mMj4yf": {
+          "type": "button",
+          "settings": {
+            "button_label_first": "Jetzt kaufen",
+            "button_link_first": "https://de.indevolt.com/products/solidflex-2000-balkonkraftwerk-mit-speicher",
+            "button_style_first": "btn--primary",
+            "button_label_second": "Zum Video",
+            "popup_video_url": "https://youtu.be/uHKYQs7z5wo",
+            "button_style_second": "white--btn--secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_FHra79",
+        "text_tc3Miy",
+        "button_mMj4yf"
+      ],
+      "name": "t:sections.video-hero.name",
+      "settings": {
+        "container": "full",
+        "video": "shopify://files/videos/batteries_pc.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "video_height": "adapt",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 720,
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "video_mobile": "shopify://files/videos/batteries_mobile.mp4",
+        "video_mobile_url": "",
+        "video_mobile_height": "extra-large",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_with_text_overlay_36XcTz": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_YVtmkW": {
+          "type": "heading",
+          "settings": {
+            "heading": "Indevolt halbfestes LiFePO4 Balkonkraftwerk mit Speicher",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_jiixeK": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Eine Speicherlösung für Zuhause – sicherer, langlebiger, leichter</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "button_pBydMA": {
+          "type": "button",
+          "settings": {
+            "button_label_first": "Button label",
+            "button_link_first": "",
+            "button_style_first": "btn--primary",
+            "button_label_second": "Button label",
+            "button_link_second": "",
+            "button_style_second": "white--btn--secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_YVtmkW",
+        "text_jiixeK",
+        "button_pBydMA"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-with-text-overlay.name",
+      "settings": {
+        "container": "full",
+        "bg_color": "#ffffff",
+        "title_color": "#000000",
+        "text_color": "#666",
+        "btn_wrapper_alignment": "start",
+        "image": "shopify://shop_images/solid-state-batteries-banner.jpg",
+        "desktop_height": "extra-medium",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 720,
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "image_mobile": "shopify://shop_images/solid-state-batteries-mbanner.jpg",
+        "mobile_height": "auto",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_overlay_BjtgnF": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_LnwyDK": {
+          "type": "heading",
+          "settings": {
+            "heading": "Indevolt – Branchenpionier",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_jQc69r": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Ganzheitlich auf Effizienz, Sicherheit und Umweltfreundlichkeit ausgelegt</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "icon_list_3XRcaW": {
+          "type": "icon_list",
+          "settings": {
+            "title1": "Höhere Energiedichte",
+            "image1": "shopify://shop_images/solid-state-batteries-icon1.png",
+            "title2": "Längere Lebensdauer",
+            "image2": "shopify://shop_images/solid-state-batteries-icon2.png",
+            "title3": "Verbesserte Thermostabilität",
+            "image3": "shopify://shop_images/solid-state-batteries-icon3.png",
+            "title4": "Gesteigerte Stoßfestigkeit",
+            "image4": "shopify://shop_images/solid-state-batteries-icon4.png",
+            "title5": "Umweltfreundlich",
+            "image5": "shopify://shop_images/solid-state-batteries-icon5.png",
+            "title6": "Rauch- und feuerfrei",
+            "image6": "shopify://shop_images/solid-state-batteries-icon6.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_LnwyDK",
+        "text_jQc69r",
+        "icon_list_3XRcaW"
+      ],
+      "name": "t:sections.image-with-text-overlay.name",
+      "settings": {
+        "container": "full",
+        "bg_color": "#000000",
+        "title_color": "#ffffff",
+        "text_color": "rgba(255, 255, 255, 0.7)",
+        "btn_wrapper_alignment": "start",
+        "image": "shopify://shop_images/solid-state-batteries-bigimg.jpg",
+        "desktop_height": "adapt",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 1200,
+        "content_position": "top-center",
+        "content_alignment": "center",
+        "image_mobile": "shopify://shop_images/solid-state-batteries-mbigimg.png",
+        "mobile_height": "adapt",
+        "padding_top": 100,
+        "padding_bottom": 80
+      }
+    },
+    "rich_text_image_list_nMYt9h": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_XtEmma": {
+          "type": "heading",
+          "settings": {
+            "heading": "Zukunftsweisende <strong>Lithium-Batterietechnologie</strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "image_C7ThDF": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/solid-state-batteries-product.png",
+            "mobile_image": "shopify://shop_images/solid-state-batteries-mproduct.png"
+          }
+        },
+        "image_zmYwFk": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/solid-state-batteries-chart.png",
+            "mobile_image": "shopify://shop_images/solid-state-batteries-mchart.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_XtEmma",
+        "image_C7ThDF",
+        "image_zmYwFk"
+      ],
+      "name": "富文本+图片+视频",
+      "settings": {
+        "color_scheme": "scheme-inverse",
+        "bg_color": "#000000",
+        "content_alignment": "center",
+        "ids": "",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "image_top": 60,
+        "video_radius": 0,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "left"
+      }
+    },
+    "sf2000_scence_tabs_dNKLme": {
+      "type": "sf2000-scence-tabs",
+      "blocks": {
+        "tab_xfNeVw": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "",
+            "navigation_title": "Höchste Sicherheit",
+            "image": "shopify://shop_images/solid-state-batteries-tab1.png",
+            "mobile_image": "shopify://shop_images/solid-state-batteries-mtab1.jpg",
+            "heading": "Collage tab heading",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Von Grund auf sicherer, jetzt mit halbfestem LiFePO₄. Stabile Leistung bei Hitze, Kurzschluss und Überladung.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_Bj63Xr": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "",
+            "navigation_title": "Hohe Leistungsfähigkeit",
+            "image": "shopify://shop_images/solid-state-batteries-tab2.jpg",
+            "mobile_image": "shopify://shop_images/solid-state-batteries-mtab2.jpg",
+            "heading": "Collage tab heading",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Selbst bei einer Entladungstiefe von 100% bleiben nach 8000 Zyklen noch 70% Kapazität erhalten, was eine längere tatsächliche Nutzungsdauer und eine deutlich bessere Kapitalrendite bedeutet.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_ezBdx7": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "scheme-2",
+            "navigation_title": "Hohe Energiedichte",
+            "image": "shopify://shop_images/solid-state-batteries-tab3.jpg",
+            "mobile_image": "shopify://shop_images/solid-state-batteries-mtab3.jpg",
+            "heading": "Collapsible tabs",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Die Halbfeststoffe bieten eine hohe Energiedichte. Mit großen Zellen und reduzierten Wärmeberührungspunkten erhöht sich die Systemenergiedichte deutlich und das Risiko Wärmesammeln wird minimiert. Ergebnis: Leichtbauweise trifft auf höchste Sicherheit.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_RYVVHi": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "scheme-2",
+            "navigation_title": "Umweltfreundliche Akkus",
+            "image": "shopify://shop_images/solid-state-batteries-tab4.png",
+            "mobile_image": "shopify://shop_images/solid-state-batteries-mtab4.jpg",
+            "heading": "Collapsible tabs",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Ohne schwere Metalle, keine toxischen Rückstände und durchgehend emissionsfrei – Indevolt als wertvolle Kernlösung für eine nachhaltige Umweltentwicklung.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "tab_xfNeVw",
+        "tab_Bj63Xr",
+        "tab_ezBdx7",
+        "tab_RYVVHi"
+      ],
+      "name": "sf2000-scence-tabs",
+      "settings": {
+        "bg_color": "#000000",
+        "tab_title_color": "#ffffff",
+        "tab_content_color": "rgba(255, 255, 255, 0.7)",
+        "title": "",
+        "heading_size": "hd2",
+        "desktop_navigation_alignment": "center",
+        "desktop_image_position": "left",
+        "desktop_image_width": 100,
+        "image_aspect_ratio": "adapt",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_gallery_RMtatM": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_a4ppTn": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/solid-state-batteries-imgs1.jpg",
+            "title": "Stichprobentest",
+            "link": ""
+          }
+        },
+        "image_DxXTRw": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/solid-state-batteries-imgs2.jpg",
+            "title": "Hochtemperaturtest bei 160°C",
+            "link": ""
+          }
+        },
+        "image_6UdtY9": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/solid-state-batteries-imgs3.jpg",
+            "title": "Kurzschluss-Test",
+            "link": ""
+          }
+        },
+        "image_thxzb8": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/solid-state-batteries-imgs4.jpg",
+            "title": "Kollisions- und Quetschtest",
+            "link": ""
+          }
+        },
+        "image_T6QEyM": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/solid-state-batteries-imgs5.jpg",
+            "title": "Überlade-Test",
+            "link": ""
+          }
+        },
+        "image_KtbxGa": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/solid-state-batteries-imgs6.jpg",
+            "title": "Modulüberladeschutz-Test",
+            "link": ""
+          }
+        },
+        "image_Rrpd4K": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/solid-state-batteries-imgs7.jpg",
+            "title": "Auslösung eines Wärme-Runaway-Tests",
+            "link": ""
+          }
+        },
+        "image_EB6eP4": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/solid-state-batteries-imgs8.jpg",
+            "title": "Hochtemperatur- und Kurzschlusstest",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_a4ppTn",
+        "image_DxXTRw",
+        "image_6UdtY9",
+        "image_thxzb8",
+        "image_T6QEyM",
+        "image_KtbxGa",
+        "image_Rrpd4K",
+        "image_EB6eP4"
+      ],
+      "name": "t:sections.image-gallery.name",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#000000",
+        "title_color": "#ffffff",
+        "text_color": "rgba(255, 255, 255, 0.7)",
+        "header_layout": "vertical",
+        "heading": "Sicherheit, die man messen kann",
+        "heading_size": "hd2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "<p>Umfangreiche Extremszenario-Tests belegen, dass halbfeste Akkus selbst bei hohen Temperaturen, Stößen, Quetschungen und Überladung sicher bleiben - kein Feuer, kein Rauch, keine Explosion.</p>",
+        "text_size": "text-lg",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "social_media": "none",
+        "columns": 4,
+        "column_gap": "small",
+        "row_gap": "inherit",
+        "image_ratio": "adapt",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 80,
+        "padding_bottom": 160,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    }
+  },
+  "order": [
+    "video_hero_old_H7LYeq",
+    "image_with_text_overlay_36XcTz",
+    "image_with_text_overlay_BjtgnF",
+    "rich_text_image_list_nMYt9h",
+    "sf2000_scence_tabs_dNKLme",
+    "image_gallery_RMtatM"
+  ]
+}

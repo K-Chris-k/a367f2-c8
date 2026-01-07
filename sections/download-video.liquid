@@ -1,0 +1,352 @@
+<style>
+    #shopify-section-{{ section.id }}{margin-top:{{ section.settings.padding_top }}px;margin-bottom:{{ section.settings.padding_bottom }}px;}
+    .section-download-video h2{padding-bottom:30px; line-height:46px;font-size:38px}
+    .section-download-video h2 span{margin-left:14px}
+    .section-video-list .slick-track {
+      display: flex !important;
+      gap: 1.6rem;
+    }
+
+    .iframe-carousel-container, .iframe-carousel {
+      position: relative;
+      width: 100%;
+    }
+
+    .iframe-carousel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px; /* 项目之间的间距 */
+    }
+
+    .iframe-carousel .carousel-slide {
+      flex: 0 0 calc(33.333% - 13.333px);
+
+    }
+    .carousel-slide .title{ margin-top:20px;line-height:22px;font-size:18px;}
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      height: 0;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);
+      cursor: pointer;
+    }
+
+    .iframe-carousel iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .carousel-arrows {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      z-index: 10;
+      pointer-events: none; /* 防止挡住轮播内容，按钮本身 pointer-events: all */
+    }
+    .carousel-arrows button {
+      position: relative;
+      background: rgba(118, 118, 118, 0.2);
+      border: none;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      padding: 0;
+      font-size: 0; /* 隐藏文本 */
+      cursor: pointer;
+      color: #fff;
+      transition: background 0.3s;
+      pointer-events: all;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .carousel-arrows button:hover {
+      background: rgba(118, 118, 118, 0.5);
+    }
+    .carousel-arrows button.prev-arrow,
+    .carousel-arrows button.next-arrow {
+      left: unset;
+      right: unset;
+    }
+
+    .carousel-arrows button.prev-arrow::after,
+    .carousel-arrows button.next-arrow::after {
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-left: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+    }
+
+    .carousel-arrows button.prev-arrow::after {
+      transform: rotate(45deg);
+    }
+
+    .carousel-arrows button.next-arrow::after {
+      transform: rotate(-135deg);
+    }
+    /* 按钮位置 */
+    .carousel-arrows button.prev-arrow { margin-left: 60px; }
+    .carousel-arrows button.next-arrow { margin-right: 60px; }
+    .video-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%;
+        height: 0;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.23);
+      }
+    .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        display: block;
+        pointer-events: none;}
+      /* 弹窗样式 */
+      .video-modal {
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.9);
+        justify-content: center;
+        align-items: center;
+        transition: opacity 0.3s ease;
+      }
+      .video-modal.active{display: flex; opacity: 1;}
+      .video-modal-content {position: relative;width: 90vw; max-width: 1000px}
+      .video-modal-close {
+        position: absolute;
+        top: -50px;
+        right: 0px;
+        font-size: 40px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 10001;
+        transition: color 0.3s;
+      }
+      .video-modal-iframe {
+          width: 100%;
+          aspect-ratio: 16 / 9;
+          background: #000;
+          border-radius: 10px;
+          overflow: hidden;
+      }
+
+      .video-modal-iframe iframe {
+          width: 100%;
+          height: 100%;
+          border: none;
+          display: block;
+      }
+    @media (max-width: 767.98px) {
+       #shopify-section-{{ section.id }}{margin-top:{{ section.settings.padding_top | divided_by: 2 }}px;margin-bottom:{{ section.settings.padding_bottom | divided_by: 2 }}px;}
+      .section-download-video h2{line-height:34px;font-size: 28px;}
+      .section-download-video h2 span{margin-left:14px}
+      .section-video-list .slick-track { gap:0px }
+      .iframe-carousel .carousel-slide { flex: 0 0 100%;}
+      .section-video-list .slick-dotted .slick-dots{margin-top:0px}
+      .carousel-arrows button { width: 38px; height: 38px; }
+      .carousel-arrows button.prev-arrow { margin-left: 10px; }
+      .carousel-arrows button.next-arrow { margin-right: 10px; }
+    }
+</style>
+{% liquid
+  assign motion_delay = 50
+%}
+<div class="section page-width section--padding section-download-video" id="Anleitungsvideos">
+  <div class="product-collection product-slider-container">
+    <h2>
+      <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+        {%- render 'icon-download-video', size: 'small' -%}
+        <span>{{ section.settings.title }}</span></motion-element
+      >
+    </h2>
+    <div class="iframe-carousel-container">
+      <div class="iframe-carousel">
+        {% for block in section.blocks %}
+          {%- liquid
+            assign video_url = block.settings.video_url
+            assign video_id = ''
+            if video_url contains 'youtube.com/watch?v='
+              assign video_id = video_url | split: '?v=' | last | split: '&' | first
+            elsif video_url contains 'youtu.be/'
+              assign video_id = video_url | split: '.be/' | last | split: '?' | first
+            elsif video_url contains 'youtube.com/embed/'
+              assign video_id = video_url | split: '/embed/' | last | split: '?' | first
+            endif
+          -%}
+
+          {% if video_id != '' %}
+            <div class="carousel-slide" data-video-id="{{video_id}}">
+              <div class="video-container">
+                <iframe
+                  src="https://www.youtube.com/embed/{{ video_id }}?rel=0&amp;controls=1&amp;showinfo=0&amp;autoplay=0&amp;loop=0&amp;mute=1&enablejsapi=1"
+                  allow="autoplay; encrypted-media"
+                  allowfullscreen
+                  class="embed-responsive-item"
+                  loading="lazy"
+                  data-video-id="{{ video_id }}"
+                ></iframe>
+              </div>
+              <div class="title">{{ block.settings.title }}</div>
+            </div>
+          {% else %}
+            <div class="carousel-slide error-slide">
+              <p>无效的视频URL: {{ video_url }}</p>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+<div id="video-modal" class="video-modal">
+  <div class="video-modal-content">
+    <span class="video-modal-close">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>
+      </svg>
+    </span>
+    <div class="video-modal-iframe"></div>
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    const $modal = $('#video-modal');
+    const $modalIframe = $modal.find('.video-modal-iframe');
+    $(document).on('click', '.carousel-slide', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const videoId = $(this).data('video-id');
+      if (videoId) {
+        const ytSrc = `https://www.youtube.com/embed/${videoId}?rel=0&controls=1&showinfo=0&autoplay=1&loop=0&mute=0&enablejsapi=1`;
+        $modalIframe.html(
+          `<iframe src="${ytSrc}" allow="autoplay; encrypted-media" allowfullscreen loading="lazy"></iframe>`
+        );
+        $modal.addClass('active');
+        $('body').css('overflow', 'hidden');
+      }
+    });
+    $modal.on('click', '.video-modal-close', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('Closing modal');
+      $modal.removeClass('active');
+      $modalIframe.html(''); 
+      $('body').css('overflow', '');
+    });
+    $modal.on('click', function (e) {
+      if (e.target === this) {
+        console.log('Click on modal background - closing');
+        $modal.removeClass('active');
+        $modalIframe.html('');
+        $('body').css('overflow', '');
+      }
+    });
+    $(document).on('keydown', function (e) {
+      if (e.key === 'Escape' && $modal.is(':visible')) {
+        console.log('ESC pressed - closing modal');
+        $modal.fadeOut(120);
+        $modalIframe.html('');
+        $('body').css('overflow', '');
+      }
+    });
+  });
+</script>
+{% schema %}
+{
+  "name": "download-video",
+  "tag": "section",
+  "class": "section section-download-video",
+  "max_blocks": 10,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Kundenbewertungen"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 120
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "video item",
+      "settings": [
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "accept": ["vimeo", "youtube"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+          "label": "视频"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Indevolt-App installieren und aktivieren",
+          "label": "标题"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Download-video",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

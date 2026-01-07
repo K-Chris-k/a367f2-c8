@@ -1,0 +1,81 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "rich_text_image_list_bfCtqM": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_xrkMcm": {
+          "type": "heading",
+          "settings": {
+            "heading": "Jetzt Verdienen",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_PDnxwi": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Werde Partner und erhalte jetzt mindestens 10% Provision.<\/p>",
+            "text_size": "text-lg"
+          }
+        },
+        "text_zKWHUj": {
+          "type": "text",
+          "settings": {
+            "text": "<p><a href=\"https:\/\/ui.awin.com\/awin\/merchant\/110350\/profile\" target=\"_blank\">Jetzt beitreten auf AWIN →<\/a><\/p>",
+            "text_size": "text-base"
+          }
+        },
+        "image_A9NEnK": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify:\/\/shop_images\/affiliate-program-img1.png",
+            "mobile_image": "shopify:\/\/shop_images\/affiliate-program-mobile-img1.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_xrkMcm",
+        "text_PDnxwi",
+        "text_zKWHUj",
+        "image_A9NEnK"
+      ],
+      "custom_css": [
+        "a{color: #3250C3;}"
+      ],
+      "name": "富文本+图片+视频",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 120,
+        "padding_bottom": 120,
+        "video_radius": 18,
+        "video_aspect_ratio": "16\/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "rich_text_image_list_bfCtqM"
+  ]
+}

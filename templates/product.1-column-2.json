@@ -1,0 +1,242 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badges": {
+          "type": "badges",
+          "disabled": true,
+          "settings": {
+            "show_soldout_badge": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "taxs_GrQ8nR": {
+          "type": "taxs",
+          "settings": {
+            "title": "0% MwSt. auf PV-Sets in Deutschland",
+            "content": "Hiermit bestätigen Sie, das Sie die Voraussetzungen für eine umsatzsteuerfreie Lieferung gemäß § 12 Abs. 3 von Deutschland erfüllen.",
+            "taxs_title": "Erfahren Sie mehr.",
+            "taxs_popup_content": "<p><strong>0 % MwSt. bei Lieferungen nach <\/strong>Deutschland<\/p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie hier um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.<\/p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿<\/p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,<\/li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und<\/li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.<\/li><\/ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.<\/p>",
+            "heading_1": "Hinweis: Bestellungen werden in mehreren Pakets versendet.",
+            "heading_2": "<strong>Sofort ab Lager verfügbar, Versand innerhalb von 24 Stunden.<\/strong>"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 40,
+            "size_title": "Size",
+            "size_chart_from_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "logistics_pN3qrf": {
+          "type": "logistics",
+          "settings": {
+            "enable_sticky_info": true
+          }
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "name": "支付信息",
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "certificate",
+            "image_1": "shopify:\/\/shop_images\/brand-icon1.svg",
+            "heading_1": "Bequem bezahlen",
+            "content_image_1": "shopify:\/\/shop_images\/card.png",
+            "icon_2": "truck",
+            "image_2": "shopify:\/\/shop_images\/brand-icon2.svg",
+            "content_image_2": "shopify:\/\/shop_images\/track.png",
+            "heading_2": "Zuverlässige Lieferung",
+            "icon_3": "star-four",
+            "heading_3": ""
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "tag",
+            "product_list_limit": 4,
+            "products_per_page": 1,
+            "image_ratio": "adapt",
+            "enable_quick_add": true
+          }
+        }
+      },
+      "block_order": [
+        "badges",
+        "title",
+        "price",
+        "taxs_GrQ8nR",
+        "description",
+        "variant_picker",
+        "buy_buttons",
+        "logistics_pN3qrf",
+        "icon_with_text",
+        "complementary"
+      ],
+      "custom_css": [
+        ".loox-rating {margin-top: -1rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": true,
+        "media_size": "medium",
+        "gallery_layout": "carousel",
+        "mobile_thumbnails": "show",
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "parameter_rRUWTr": {
+      "type": "parameter",
+      "blocks": {
+        "card_C3m9af": {
+          "type": "card",
+          "settings": {
+            "title": "Abmessungen",
+            "content": "1340x90x70 mm",
+            "note": ""
+          }
+        },
+        "card_7aKHWx": {
+          "type": "card",
+          "settings": {
+            "title": "Gewicht",
+            "content": "3,6 kg",
+            "note": ""
+          }
+        },
+        "card_H8VKpN": {
+          "type": "card",
+          "settings": {
+            "title": "Material",
+            "content": "Aluminium-Legierung",
+            "note": ""
+          }
+        },
+        "card_bwhVB8": {
+          "type": "card",
+          "settings": {
+            "title": "Menge",
+            "content": "2(Set)",
+            "note": ""
+          }
+        },
+        "card_d9rNf9": {
+          "type": "card",
+          "settings": {
+            "title": "Afmetingen",
+            "content": "Veiligheid EMC\/Normen: IEC62619, UN38.3, IEC\/EN 62109-1, IEC\/EN 62109-2, IEC\/EN 61000-6-1, IEC\/EN 61000-6-2",
+            "note": "Netcode: Netinvoeding VDE4105"
+          }
+        },
+        "card_dYdrGM": {
+          "type": "card",
+          "settings": {
+            "title": "Afmetingen",
+            "content": "Veiligheid EMC\/Normen: IEC62619, UN38.3, IEC\/EN 62109-1, IEC\/EN 62109-2, IEC\/EN 61000-6-1, IEC\/EN 61000-6-2",
+            "note": "Netcode: Netinvoeding VDE4105"
+          }
+        }
+      },
+      "block_order": [
+        "card_C3m9af",
+        "card_7aKHWx",
+        "card_H8VKpN",
+        "card_bwhVB8",
+        "card_d9rNf9",
+        "card_dYdrGM"
+      ],
+      "name": "参数列表",
+      "settings": {
+        "title": "Technische Daten"
+      }
+    },
+    "download_6Dr9Ym": {
+      "type": "download",
+      "blocks": {
+        "card_gqdzjX": {
+          "type": "card",
+          "settings": {
+            "title": "Indevolt Solarmodul-Balkonhalterungen - black",
+            "content": "Bedienungsanleitung",
+            "date": "2025-02-11",
+            "pdf_file": "https:\/\/cdn.shopify.com\/s\/files\/1\/0596\/6367\/9587\/files\/Indevolt_Solarmodul-Balkonhalterungen_1_Paar_-_black.pdf?v=1739244521"
+          }
+        },
+        "card_eCWNki": {
+          "type": "card",
+          "settings": {
+            "title": "Indevolt Solarmodul-Balkonhalterungen - sliver",
+            "content": "Bedienungsanleitung",
+            "date": "2025-02-11",
+            "pdf_file": "https:\/\/cdn.shopify.com\/s\/files\/1\/0596\/6367\/9587\/files\/Indevolt_Solarmodul-Balkonhalterungen_1_Paar_-_sliver.pdf?v=1739244572"
+          }
+        }
+      },
+      "block_order": [
+        "card_gqdzjX",
+        "card_eCWNki"
+      ],
+      "name": "下载列表",
+      "settings": {
+        "title": "Downloads"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "parameter_rRUWTr",
+    "download_6Dr9Ym"
+  ]
+}

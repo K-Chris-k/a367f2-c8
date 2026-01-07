@@ -1,0 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "custom_liquid_ntXbGm": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>FAQS</title>\n    <!-- <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css\"> -->\n    <link rel=\"stylesheet\" href=\"https://cdn.shopify.com/s/files/1/0596/6367/9587/files/faqs.css?v=1758017741\">\n</head>\n<body>\n    <div class=\"faq-container\">\n \n        <!-- 左侧分类 fa-folder-tree-->\n         \n        <div class=\"faq-categories\">\n            <h2><i class=\"fas\">\n\t\t\t            <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon icon-faqs icon--{{ size | default: 'medium' }}\" width=\"24\" height=\"24\" viewBox=\"0 0 31 30\" fill=\"none\">\n\t\t\t  <g clip-path=\"url(#clip0_739_262)\">\n\t\t\t    <mask id=\"mask0_739_262\" style=\"mask-type:luminance\" maskUnits=\"userSpaceOnUse\" x=\"0\" y=\"0\" width=\"31\" height=\"30\">\n\t\t\t      <path d=\"M0.75 1.90735e-06H30.75V30H0.75V1.90735e-06Z\" fill=\"white\"/>\n\t\t\t    </mask>\n\t\t\t    <g mask=\"url(#mask0_739_262)\">\n\t\t\t      <path d=\"M29.7824 13.4512C29.7378 13.0543 29.2748 12.7557 28.8744 12.7557C27.5805 12.7557 26.4321 11.9962 25.9505 10.8207C25.4589 9.6171 25.7761 8.21361 26.7402 7.32925C27.0438 7.05164 27.0808 6.58675 26.8263 6.26408C26.1638 5.42302 25.4111 4.66324 24.5891 4.00476C24.2676 3.74677 23.795 3.78275 23.5159 4.0916C22.6742 5.02376 21.1623 5.37017 19.9939 4.88267C18.7785 4.37132 18.0113 3.13927 18.0867 1.81693C18.1115 1.40126 17.8077 1.04015 17.3935 0.991869C16.3385 0.86976 15.2744 0.866187 14.2164 0.983551C13.8075 1.02878 13.5038 1.38134 13.5174 1.79173C13.5632 3.10119 12.7873 4.31144 11.5837 4.80451C10.4294 5.27613 8.92789 4.93224 8.08795 4.00828C7.81027 3.70394 7.34604 3.66656 7.02225 3.91904C6.1761 4.58308 5.40647 5.34339 4.73791 6.17759C4.47735 6.50185 4.51584 6.97183 4.82205 7.25044C5.80514 8.14072 6.12207 9.55628 5.61166 10.774C5.12434 11.9349 3.91895 12.6827 2.53912 12.6827C2.09141 12.6684 1.77272 12.9691 1.72326 13.3764C1.59916 14.4369 1.59781 15.518 1.71723 16.5872C1.76188 16.9859 2.23854 17.2819 2.6433 17.2819C3.87324 17.2507 5.05338 18.0117 5.54914 19.2168C6.04244 20.4204 5.72486 21.8233 4.75924 22.7089C4.45719 22.9865 4.41863 23.4503 4.67363 23.7726C5.32942 24.6084 6.08275 25.3687 6.90723 26.0327C7.2309 26.2934 7.70158 26.2569 7.98213 25.9476C8.82711 25.0133 10.3388 24.6675 11.5024 25.1559C12.7214 25.666 13.4882 26.8979 13.4133 28.2206C13.3888 28.6362 13.6934 28.9985 14.1061 29.0457C14.6459 29.1088 15.1886 29.14 15.733 29.14C16.2497 29.14 16.7664 29.1118 17.2832 29.0543C17.6926 29.0091 17.9957 28.6561 17.9819 28.2456C17.9346 26.9368 18.7122 25.7265 19.9144 25.2343C21.0764 24.7597 22.5712 25.1071 23.4116 26.0297C23.6907 26.3334 24.1521 26.3703 24.4773 26.1189C25.322 25.4565 26.0901 24.6966 26.7616 23.8602C27.0224 23.5365 26.9854 23.0659 26.6775 22.7868C25.6946 21.8972 25.376 20.481 25.8864 19.2645C26.3662 18.1192 27.5267 17.3502 28.775 17.3502L28.9496 17.3549C29.3549 17.3877 29.7273 17.0757 29.7763 16.6622C29.9009 15.6008 29.9023 14.5208 29.7824 13.4512Z\" stroke=\"black\" stroke-width=\"2\" stroke-miterlimit=\"10\"/>\n\t\t\t      <path d=\"M23.2139 15.0189C23.2139 19.1411 19.8722 22.4828 15.75 22.4828C11.6278 22.4828 8.28607 19.1411 8.28607 15.0189C8.28607 10.8967 11.6278 7.55498 15.75 7.55498C19.8722 7.55498 23.2139 10.8967 23.2139 15.0189Z\" stroke=\"black\" stroke-width=\"2\" stroke-miterlimit=\"10\"/>\n\t\t\t      <path d=\"M13.6783 12.9743C13.6783 11.7816 14.6863 10.8242 15.8969 10.9077C16.9185 10.9782 17.7462 11.8058 17.8166 12.8274C17.8777 13.7132 17.3815 14.4905 16.6436 14.8439C16.0904 15.1088 15.75 15.6808 15.75 16.2943\" stroke=\"black\" stroke-width=\"2\" stroke-miterlimit=\"10\" stroke-linecap=\"round\"/>\n\t\t\t      <path d=\"M15.75 18.7007V19.2482\" stroke=\"black\" stroke-width=\"2\" stroke-miterlimit=\"10\" stroke-linecap=\"round\"/>\n\t\t\t    </g>\n\t\t\t  </g>\n\t\t\t  <defs>\n\t\t\t    <clipPath id=\"clip0_739_262\">\n\t\t\t      <rect width=\"30\" height=\"30\" fill=\"white\" transform=\"translate(0.75)\"/>\n\t\t\t    </clipPath>\n\t\t\t  </defs>\n\t\t\t</svg></i>\n             Häufig gestellte Fragen</h2>\n            <ul class=\"category-list\" id=\"category-list\">\n          \n            </ul>\n        </div>\n        \n        <!-- 右侧内容 -->\n        <div class=\"faq-content\">\n      \n            \n            <div class=\"current-category\">\n            \t<a href=\"javascript:void(0);\">\n                <i class=\"fas fa-folder\"></i>\n                <span id=\"current-category-path\">Alle anzeigen</span>\n                </a>\n            </div>\n            \n            <div class=\"search-container\">\n                <div class=\"search-box\">\n                    <input type=\"text\" id=\"search-input\" placeholder=\"Suchen\">\n                    <button id=\"search-btn\"><i class=\"fas fa-search\"></i> </button>\n                </div>\n            </div>\n            \n            <div class=\"faq-list\" id=\"faq-list\">\n                <div class=\"no-results\" id=\"no-results\">\n                    <i class=\"fas fa-search fa-3x\"></i>\n                    <h3>Wurden keine Ergebnisse gefunden.</h3>\n                    <p>Überprüfen Sie die Rechtschreibung oder verwenden Sie ein anderes Wort oder eine andere Phrase.</p>\n                </div>\n            </div>\n        </div>\n    </div>\n    <script src=\"https://cdn.shopify.com/s/files/1/0596/6367/9587/files/faqs.js?v=1758017741\"></script>\n</body>\n</html>",
+        "container": "fixed",
+        "color_scheme": "scheme-1",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "main",
+    "custom_liquid_ntXbGm"
+  ]
+}

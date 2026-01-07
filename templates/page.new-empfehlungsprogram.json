@@ -1,0 +1,185 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_overlay_7NqLRV": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_e97FBN": {
+          "type": "heading",
+          "settings": {
+            "heading": "50€ Bargeldsprämie",
+            "heading_size": "hd1",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_nQFq3V": {
+          "type": "text",
+          "settings": {
+            "text": "<p>*Verwende deinen Empfehlungslink, um dir automatisch €50 Rabatt zu sichern, und profitiere zudem von €50 Cashback!</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "subheading_NQUgHG": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "*Nur für Kunden, die bereits eine Bestellung aufgegeben haben"
+          }
+        },
+        "button_qdTn7B": {
+          "type": "button",
+          "settings": {
+            "button_label_first": "Jetzt beitreten",
+            "button_link_first": "/pages/referral",
+            "button_style_first": "btn--primary",
+            "button_label_second": "",
+            "button_link_second": "",
+            "button_style_second": "white--btn--secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_e97FBN",
+        "text_nQFq3V",
+        "subheading_NQUgHG",
+        "button_qdTn7B"
+      ],
+      "custom_css": [
+        ".hd1 {line-height: 84px; font-size: 64px;}",
+        "p {line-height: 48px; font-size: 40px;}",
+        ".btn {font-size: 24px; line-height: 29px; height: inherit; padding: 8px 24px;}",
+        "@media (max-width: 768px) {.image-with-text-overlay, .media-wrapper {height: 552px; } .content-overlay--middle-center {justify-content: center; } .hd1 {line-height: 29px; font-size: 24px; } p {line-height: 19px; font-size: 16px; } .btn {line-height: 22px; font-size: 16px; } motion-element {line-height: 29px; font-size: 24px; } .text-subheading {line-height: 19px; font-size: 14px; }}"
+      ],
+      "name": "t:sections.image-with-text-overlay.name",
+      "settings": {
+        "container": "full",
+        "bg_color": "#ffffff",
+        "title_color": "#ffffff",
+        "text_color": "#fff",
+        "btn_wrapper_alignment": "center",
+        "image": "shopify://shop_images/empfehlungsprogram-img1.jpg",
+        "desktop_height": "large",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 1200,
+        "content_position": "middle-center",
+        "content_alignment": "center",
+        "image_mobile": "shopify://shop_images/empfehlungsprogram-mobile-img1.jpg",
+        "mobile_height": "adapt",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "rich_text_aFqRMD": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Rkerpf": {
+          "type": "heading",
+          "settings": {
+            "heading": "So funktioniert es",
+            "heading_mobile": "",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Rkerpf"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top_inner": 0,
+        "padding_bottom_inner": 0,
+        "padding_top": 120,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "empfehlungsprogram_detail_KkkE6B": {
+      "type": "empfehlungsprogram-detail",
+      "blocks": {
+        "card_7dqR4M": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/empfehlungsprogram-icon1.png",
+            "image_mobile": "shopify://shop_images/empfehlungsprogram-icon1.png",
+            "title": "",
+            "description": "Konto erstellen oder anmelden.",
+            "links": "<a href=\"https://de.indevolt.com/pages/referral\" title=\"https://de.indevolt.com/pages/referral\">Registrieren></a>"
+          }
+        },
+        "card_3UFQbQ": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/empfehlungsprogram-icon2.png",
+            "image_mobile": "shopify://shop_images/empfehlungsprogram-icon2.png",
+            "title": "",
+            "description": "Erhalte deinen persönlichen Link und teile ihn.",
+            "links": "<a href=\"https://de.indevolt.com/pages/referral\" title=\"https://de.indevolt.com/pages/referral\">Empfehlen></a>"
+          }
+        },
+        "card_MaaXWK": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/empfehlungsprogram-icon3.png",
+            "image_mobile": "shopify://shop_images/empfehlungsprogram-icon3.png",
+            "title": "Prämie erhalten",
+            "description": "Wenn ein Freund den Empfehlungslink verwendet und die erste Bestellung bei Indevolt abschließt, ohne innerhalb von 30 Tagen nach dem Versand eine Rückerstattung zu beantragen, erhältst du Erstattung von 50€.",
+            "links": ""
+          }
+        },
+        "card_bhG6VB": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/empfehlungsprogram-icon2.png",
+            "image_mobile": "shopify://shop_images/empfehlungsprogram-icon2.png",
+            "title": "Auszahlung",
+            "description": "Für deine 50€ Erstattung kontaktiere bitte unseren Kundenservice unter <a href=\"/pages/contact-us\">service@indevolt.com</a>.",
+            "links": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_7dqR4M",
+        "card_3UFQbQ",
+        "card_MaaXWK",
+        "card_bhG6VB"
+      ],
+      "name": "推荐计划",
+      "settings": {
+        "title": "Word een partner van Indevolt",
+        "image": "shopify://shop_images/empfehlungsprogram-img2.jpg",
+        "image_mobile": "shopify://shop_images/empfehlungsprogram-mobile-img2.jpg",
+        "padding_top": 60,
+        "padding_bottom": 120
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_7NqLRV",
+    "rich_text_aFqRMD",
+    "empfehlungsprogram_detail_KkkE6B"
+  ]
+}

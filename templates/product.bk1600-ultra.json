@@ -1,0 +1,1396 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badges": {
+          "type": "badges",
+          "disabled": true,
+          "settings": {
+            "show_soldout_badge": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "judge_me_reviews_preview_badge_HnYRaA": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "sleek_social_sharing_share_button_aUgxFm": {
+          "type": "shopify://apps/sleek-social-sharing/blocks/share_button/5db01bc3-c590-40f6-be34-5072c106e3f4",
+          "settings": {}
+        },
+        "taxs_arFc9r": {
+          "type": "taxs",
+          "settings": {
+            "title": "0% MwSt. auf PV-Sets in Deutschland",
+            "content": "Hiermit bestätigen Sie, dass Sie die Voraussetzungen für eine umsatzsteuerfreie Lieferung gemäß § 12 Abs. 3 von Deutschland erfüllen.",
+            "taxs_title": "Erfahren Sie mehr.",
+            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie hier um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
+            "heading_1": "Hinweis: Bestellungen können in mehreren Paketen versendet werden.",
+            "heading_2": "Sofort ab Lager verfügbar, Versand innerhalb von 24 Stunden."
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "reviews_list_LphHcT": {
+          "type": "reviews_list",
+          "settings": {
+            "title": "Trustpilot",
+            "more": "Mehr anzeigen",
+            "more_url": "https://www.trustpilot.com/review/de.indevolt.com"
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 40,
+            "size_title": "Size",
+            "size_chart_from_page": ""
+          }
+        },
+        "bundle_products_6ApqTi": {
+          "type": "bundle_products",
+          "settings": {
+            "bundle_display_mode": "multi_host",
+            "host_product": "",
+            "host_variant_id": "",
+            "battery_product": "",
+            "solar_product": "indevolt-bifaziale-monokristalline-solarmodule-kombination",
+            "mount_flat_roof": "indevolt-halterung",
+            "mount_flat_roof_connect_solar_quantity": true,
+            "mount_sloped_roof": "",
+            "mount_sloped_roof_connect_solar_quantity": true
+          }
+        },
+        "recommend_product_Mnzq6P": {
+          "type": "recommend_product",
+          "settings": {
+            "recommended_product1": "bk1600-ultra-balkonkraftwerk-mit-speicher",
+            "product1_badge_new": false,
+            "product1_badge_discount": "",
+            "show_specific_variant": true,
+            "variant_id1": "43444820050019",
+            "variant_id2": "43685500616803",
+            "variant_id3": "43685505138787",
+            "variant_id4": "",
+            "variant_id5": "",
+            "variant_id6": "",
+            "variant_id7": "",
+            "variant_id8": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "koala_upsells_gifts_product_page_banner_qbqdTh": {
+          "type": "shopify://apps/koala-upsells-gifts/blocks/product-page-banner/baf92dc5-8ffa-40c0-967e-57b74cddc9e3",
+          "settings": {}
+        },
+        "selleasy_lb_upsell_widget_pal_HLwnJd": {
+          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-pal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+          "settings": {}
+        },
+        "logistics_pN3qrf": {
+          "type": "logistics",
+          "settings": {
+            "enable_sticky_info": true
+          }
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "package",
+            "image_1": "shopify://shop_images/brand-icon1.svg",
+            "heading_1": "Bequem bezahlen",
+            "content_image_1": "shopify://shop_images/card.png",
+            "icon_2": "currency-circle-dollar",
+            "image_2": "shopify://shop_images/brand-icon2.svg",
+            "content_image_2": "shopify://shop_images/track.png",
+            "heading_2": "Zuverlässige Lieferung",
+            "icon_3": "star-four",
+            "heading_3": ""
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "tag",
+            "product_list_limit": 4,
+            "products_per_page": 1,
+            "image_ratio": "adapt",
+            "enable_quick_add": true
+          }
+        }
+      },
+      "block_order": [
+        "badges",
+        "title",
+        "judge_me_reviews_preview_badge_HnYRaA",
+        "price",
+        "sleek_social_sharing_share_button_aUgxFm",
+        "taxs_arFc9r",
+        "description",
+        "reviews_list_LphHcT",
+        "variant_picker",
+        "bundle_products_6ApqTi",
+        "recommend_product_Mnzq6P",
+        "buy_buttons",
+        "koala_upsells_gifts_product_page_banner_qbqdTh",
+        "selleasy_lb_upsell_widget_pal_HLwnJd",
+        "logistics_pN3qrf",
+        "icon_with_text",
+        "complementary"
+      ],
+      "custom_css": [
+        ".loox-rating {margin-top: -1rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": true,
+        "enable_product_sticky_bar": true,
+        "media_size": "medium",
+        "gallery_layout": "carousel",
+        "mobile_thumbnails": "show",
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "video_H7qFLK": {
+      "type": "video",
+      "name": "t:sections.video.name",
+      "settings": {
+        "container": "fixed",
+        "ids": "",
+        "video_url": "https://youtu.be/n0Brxdd9kjk",
+        "cover_image": "shopify://shop_images/bk1600-ultra-youtube.jpg",
+        "video_ratio": "adapt",
+        "description": "",
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "enable_parallax": false,
+        "enable_radius": false,
+        "image_container": "fixed",
+        "parallax_direction": "vertical",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "service_info_34yK44": {
+      "type": "service-info",
+      "name": "服务信息",
+      "settings": {
+        "title": "",
+        "container": "fixed",
+        "ids": "uberblick",
+        "image_pc": "shopify://shop_images/ultra-ksp-pc-1223.png",
+        "image_mobile": "shopify://shop_images/ultra-ksp-mob-1223.png",
+        "margin_top": 60,
+        "margin_bottom": 60
+      }
+    },
+    "bk1600ultra_scence_tabs_iUCngh": {
+      "type": "bk1600ultra-scence-tabs",
+      "blocks": {
+        "tab_BwFWJ6": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "",
+            "navigation_title": "Null Verschwendung",
+            "image": "shopify://shop_images/ul-2-1.png",
+            "mobile_image": "shopify://shop_images/bk1600-ultra-mobile-img2.jpg",
+            "heading": "Collage tab heading",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Wenn der Stromzähler überschüssige Energie erkennt, die ins Netz eingespeist werden kann, speichert das BK1600 Ultra Balkonkraftwerk mit Speicher diese Energie im Akku. Diese intelligente Steuerung maximiert die Energieeffizienz und hilft dir, Energieverluste mühelos zu vermeiden.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_k7Hw6L": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "",
+            "navigation_title": "Null Stromkosten",
+            "image": "shopify://shop_images/ul-2-2.png",
+            "mobile_image": "shopify://shop_images/bk1600-ultra-mobile-img3.jpg",
+            "heading": "Collage tab heading",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Durch die Speicherung der erzeugten Solarenergie und den Anschluss von Haushaltsgeräten an die AC-Steckdose des Speichers kann das System die Solarenergie legal und maximal nutzen. Auf diese Weise wird nicht nur die Solarenergie optimal genutzt, sondern auch eine Nullabrechnung der Stromkosten erreicht.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "tab_BwFWJ6",
+        "tab_k7Hw6L"
+      ],
+      "disabled": true,
+      "name": "bk1600ultra-scence-tabs",
+      "settings": {
+        "ids": "eigenschaften",
+        "title": "Die 800W-Grenze durchbrechen, Energieeffizienz maximieren",
+        "description": "",
+        "heading_size": "h4",
+        "desktop_navigation_alignment": "center",
+        "desktop_image_position": "left",
+        "desktop_image_width": 100,
+        "image_aspect_ratio": "adapt",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "bk1600ultra_scence_video_tabs_pTYaDM": {
+      "type": "bk1600ultra-scence-video-tabs",
+      "blocks": {
+        "tab_ECLf38": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "",
+            "navigation_title": "Beschränkungen vermeiden",
+            "video": "shopify://files/videos/ultra_vermeiden_7bc01245-7bc6-4b7f-8ad1-947f12717426.mp4",
+            "video_url": "https://www.youtube.com/watch?v=VIDEO_ID",
+            "autoplay": true,
+            "loop": true,
+            "muted": true,
+            "controls": true,
+            "heading": "Collage tab heading",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Für die 800W-Netzeinspeisungslimitation nutzen wir die legale Stromabnahme über die AC-Steckdose des Geräts. Wir haben eine maßgeschneiderte Lösung entwickelt, mit der wir den normkonformen Energieverbrauch sicherstellen und die Leistungsgrenze effektiv überschreiten.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_BpwtFG": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "",
+            "navigation_title": "Null Verschwendung",
+            "video": "shopify://files/videos/ultra-null-ver-pc_17922eaa-ad62-44d0-b516-1afe917ed8ca.mp4",
+            "video_url": "https://www.youtube.com/watch?v=VIDEO_ID",
+            "autoplay": false,
+            "loop": true,
+            "muted": true,
+            "controls": true,
+            "heading": "Collage tab heading",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Wenn der Stromzähler überschüssige Energie erkennt, die ins Netz eingespeist werden kann, speichert das BK1600 Ultra Balkonkraftwerk mit Speicher diese Energie im Akku. Diese intelligente Steuerung maximiert die Energieeffizienz und hilft dir, Energieverluste mühelos zu vermeiden.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_LaVN8z": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "scheme-2",
+            "navigation_title": "Null Stromkosten",
+            "video": "shopify://files/videos/bk1600-ultra-800w-right.mp4",
+            "video_url": "https://www.youtube.com/watch?v=VIDEO_ID",
+            "autoplay": false,
+            "loop": true,
+            "muted": true,
+            "controls": true,
+            "heading": "Collapsible tabs",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Durch die Speicherung der erzeugten Solarenergie und den Anschluss von Haushaltsgeräten an die AC-Steckdose des Speichers kann das System die Solarenergie legal und maximal nutzen. Auf diese Weise wird nicht nur die Solarenergie optimal genutzt, sondern auch eine Nullabrechnung der Stromkosten erreicht.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "tab_ECLf38",
+        "tab_BpwtFG",
+        "tab_LaVN8z"
+      ],
+      "name": "bk1600ultra-scence-video-tabs",
+      "settings": {
+        "ids": "eigenschaften",
+        "title": "Die 800W-Grenze durchbrechen, Energieeffizienz maximieren",
+        "description": "",
+        "heading_size": "h4",
+        "desktop_navigation_alignment": "center",
+        "desktop_image_position": "left",
+        "desktop_image_width": 100,
+        "image_aspect_ratio": "adapt",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_image_list_UpnwcL": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_QRnfmK": {
+          "type": "heading",
+          "settings": {
+            "heading": "Neue Wege einschlagen, deinen Eigenverbrauch steigern",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_ULhiEU": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Selbst bei einer höheren Kapazität wird es aufgrund der 800W Netzeinspeiseleistung schwierig sein, die tagsüber durch die Photovoltaik gespeicherte Energie vollständig zu nutzen. Wir empfehlen, durch ein dezentrales Netzwerk diese Einschränkung zu umgehen und die gespeicherte Energie optimal zu nutzen.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "image_zYwTtT": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/ultra-406-pc.jpg",
+            "mobile_image": "shopify://shop_images/ultra-406-mob.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_QRnfmK",
+        "text_ULhiEU",
+        "image_zYwTtT"
+      ],
+      "name": "富文本与图片",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "",
+        "show_title_icon": false,
+        "img-href": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "image_top": 28,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "rich_text_LxGbUe": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_CXxaMc": {
+          "type": "heading",
+          "settings": {
+            "heading": "Intelligente Steuerungsstrategie",
+            "heading_mobile": "",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_UdMGQx": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Schließe deine Haushaltsgeräte an die AC-Steckdose des Speichers an und erlebe nahtlose Sicherheit bei Stromausfällen: In nur 10 ms schaltet das System automatisch auf Batteriebetrieb um, damit deine Geräte weiterlaufen. Gleichzeitig ermittelt es intelligent die optimale Lade- und Entlade-Strategie, nutzt Sonnenenergie maximal aus und optimiert deine Energiekosten.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_CXxaMc",
+        "text_UdMGQx"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top_inner": 0,
+        "padding_bottom_inner": 0,
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "video_kx7kgY": {
+      "type": "video",
+      "name": "t:sections.video.name",
+      "settings": {
+        "container": "fixed",
+        "video": "shopify://files/videos/bk1600-ultra-pm_e5812c3d-ca57-461d-a0a7-043fa8d0824b.mp4",
+        "ids": "",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_ratio": "adapt",
+        "description": "",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "enable_parallax": false,
+        "enable_radius": false,
+        "image_container": "fixed",
+        "parallax_direction": "vertical",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_image_list_MQDAxJ": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_AxbnYj": {
+          "type": "heading",
+          "settings": {
+            "heading": "Flexibel platzieren, den Raum zu Hause optimal nutzen",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_dgFLjW": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Die Solareingänge unterstützen <a href=\"https://blog.indevolt.com/drahtlose-balkonkraftwerk-speicher/\" target=\"_blank\" title=\"https://blog.indevolt.com/drahtlose-balkonkraftwerk-speicher/\">flexible Erweiterungen</a>, mit einer Leistung von 1,2 kW, die auf bis zu 3,6 kW maximiert werden kann. Keine Sorge, wenn der Platz auf dem Balkon begrenzt ist – das BK1600 Ultra nutzt ein nahes Montagekonzept, bei dem die Solarmodule direkt neben dem Gerät platziert werden. So entfallen aufwändige Kabelverlegungen, und auch in kleinen Räumen kann mühelos ein Solarpeicher-System eingerichtet werden.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "image_F8j777": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/ultra-flex-pc.jpg",
+            "mobile_image": "shopify://shop_images/ultra-flex-mob.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AxbnYj",
+        "text_dgFLjW",
+        "image_F8j777"
+      ],
+      "custom_css": [
+        "a {text-decoration: none; color: #3250c3;}"
+      ],
+      "name": "富文本与图片",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "",
+        "show_title_icon": false,
+        "img-href": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "image_top": 28,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "bk1600ultra_scence_tabs_Rx4yRR": {
+      "type": "bk1600ultra-scence-tabs",
+      "blocks": {
+        "tab_bhBXii": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "",
+            "navigation_title": "1200W",
+            "image": "shopify://shop_images/ultra-1200w-pc.jpg",
+            "mobile_image": "shopify://shop_images/ultra-1200w-mob.jpg",
+            "heading": "Collage tab heading",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Mit dem BK1600 Ultra profitierst du von stabiler Stromversorgung für deine Haushaltsgeräte über den Insel- oder Netzanschluss – für eine zuverlässige Energieversorgung im Alltag.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_Kj9tar": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "scheme-2",
+            "navigation_title": "2300W",
+            "image": "shopify://shop_images/bk1600-ultra-img7.jpg",
+            "mobile_image": "shopify://shop_images/ultra-2300w-mob.jpg",
+            "heading": "Collapsible tabs",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Mit zwei BK1600 Ultra kannst du die kabelgebundene Verbindung aktivieren und die Leistung auf 2300W erhöhen. So können selbst leistungsstarke Haushaltsgeräte vorrangig mit Solarenergie betrieben werden, ohne auf das Stromnetz angewiesen zu sein – und du nutzt die Sonnenenergie optimal aus. Hinweis: Im Offline-Modus wird diese Funktion nicht unterstützt.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_6yhjqT": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "",
+            "navigation_title": "3600W",
+            "image": "shopify://shop_images/bk1600-ultra-img8.jpg",
+            "mobile_image": "shopify://shop_images/ultra-3600w-mob.jpg",
+            "heading": "Collage tab heading",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Mit drei BK1600 Ultra empfehlen wir dir, einen Mikro-Wechselrichter zu verwenden und den drahtlosen Parallelbetrieb zu aktivieren. So kannst du gängige Haushaltsgeräte über die AC-Steckdose des Speichers anschließen und die Leistung auf 3600W erhöhen. Damit wird deine Stromrechnung auf 0 gesenkt.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "tab_bhBXii",
+        "tab_Kj9tar",
+        "tab_6yhjqT"
+      ],
+      "name": "bk1600ultra-scence-tabs",
+      "settings": {
+        "ids": "",
+        "title": "Flexible Konfiguration",
+        "description": "Eine flexible Lösung, basierend auf der Anzahl der gekauften Geräte, empfiehlt die optimale Einstellung, um den Energieverbrauch im Haushalt maximal zu senken.",
+        "heading_size": "h4",
+        "desktop_navigation_alignment": "center",
+        "desktop_image_position": "left",
+        "desktop_image_width": 100,
+        "image_aspect_ratio": "adapt",
+        "padding_top": 60,
+        "padding_bottom": 120,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "video_with_text_A9tEBz": {
+      "type": "video-with-text",
+      "blocks": {
+        "heading_g7p8Yx": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Bidirektionale Ladetechnologie</strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_RecHd8": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Mit dem BK1600 könnt ihr nicht nur Strom aus Sonnenenergie speichern, sondern auch aus dem Netz beziehen. Selbst wenn das Wetter mal nicht mitspielt, sorgt die Netzeinspeisung dafür, dass ihr jederzeit ausreichend Energie zur Verfügung habt.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_g7p8Yx",
+        "text_RecHd8"
+      ],
+      "disabled": true,
+      "name": "t:sections.video-with-text.name",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "video": "shopify://files/videos/bk1600-ultra-video3.mp4",
+        "video_url": "",
+        "video_ratio": "4/3",
+        "description": "",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "video_placement": "second",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": true,
+        "mobile_content_alignment": "center",
+        "text_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "video_with_text_M8qmGW": {
+      "type": "video-with-text",
+      "blocks": {
+        "heading_dVX8Vt": {
+          "type": "heading",
+          "settings": {
+            "heading": "Leicht und tragbar: Plug-and-Play!",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_hQkJ8A": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Das BK1600 ist nicht nur extrem leicht, sondern auch kinderleicht zu installieren! Ihr könnt es ganz einfach selbst aufstellen, ohne auf professionelle Hilfe angewiesen zu sein. Das bedeutet für euch: Zeit sparen und Geld sparen!</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_dVX8Vt",
+        "text_hQkJ8A"
+      ],
+      "disabled": true,
+      "name": "t:sections.video-with-text.name",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "video": "shopify://files/videos/bk1600-ultra-video4.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_ratio": "4/3",
+        "description": "",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "video_placement": "first",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": true,
+        "mobile_content_alignment": "center",
+        "text_alignment": "left",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_with_text_LE3JdM": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_4AekVF": {
+          "type": "heading",
+          "settings": {
+            "heading": "99% Kompatibilität ",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_6AwGV9": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Im Unterschied zu herkömmlichen DC-gekoppelten Lösungen gewährleistet die BK1600 Ultra dank ihrer AC-gekoppelten Technik eine vollständige Kompatibilität mit allen auf dem Markt verfügbaren Mikro-Wechselrichtern. Schließe die BK1600 Ultra einfach an deinen vorhandenen Mikro-Wechselrichter und die Solarmodule an, um die Energieerzeugung deines Balkonkraftwerks zu maximieren und deine Stromkosten zu reduzieren. Nutze das volle Potenzial deines Balkonkraftwerks mit Speicher!</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_4AekVF",
+        "text_6AwGV9"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#ffffff",
+        "image": "shopify://shop_images/ultra-99-pc.jpg",
+        "image_height": "adapt",
+        "layout": "text_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": true,
+        "mobile_content_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_with_text_RHVXFk": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_h6VNYm": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Kommunikation</strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_pD7kyj": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Lokale Netzwerkverbindung: Der BK1600 Solarstromspeicher überträgt Daten über WLAN oder 4G in die Cloud und ermöglicht lokale Steuerung via Bluetooth, ganz ohne Cloud-Anbindung. APIs unterstützen die Integration in Drittanbieter-Smart-Home-Systeme.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_h6VNYm",
+        "text_pD7kyj"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#ffffff",
+        "image": "shopify://shop_images/ultra-api-pc.jpg",
+        "image_height": "adapt",
+        "layout": "image_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": true,
+        "mobile_content_alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_image_list_ppFNfz": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_pbmNjM": {
+          "type": "heading",
+          "settings": {
+            "heading": "Stromkosten effizienter mit KI sparen",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_9dN6UN": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Indevolt Smart AI entwickelt maßgeschneiderte Energiemanagementlösungen auf Basis präziser Big-Data-Analysen. Mithilfe historischer Stromverbrauchsdaten und unter Berücksichtigung von Wetterfaktoren prognostiziert unsere Technologie deinen stündlichen Stromverbrauch für den Tag. Gleichzeitig schätzen wir die erwartete Sonnenstromerzeugung anhand der Wettervorhersage und der Leistung deiner Photovoltaikanlage. Dank der Integration dynamischer Strompreise und aktueller Batteriestatusinformationen behältst du die Kosten pro Kilowattstunde in Echtzeit im Blick. So bestimmen wir automatisch die optimalen Lade- und Entladestrategien, um deine Energiekosten zu maximieren und die Energieabrechnung zu optimieren.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "image_UjaJR4": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/image_5af30c00-dd22-4b85-95cb-5288d53eab62.png",
+            "mobile_image": "shopify://shop_images/0226bk1600-_1_1_24dc809d-3523-4e18-9ee8-4088ccd6e078.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_pbmNjM",
+        "text_9dN6UN",
+        "image_UjaJR4"
+      ],
+      "disabled": true,
+      "name": "富文本与图片",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "",
+        "show_title_icon": false,
+        "img-href": "",
+        "padding_top": 120,
+        "padding_bottom": 60,
+        "image_top": 28,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "two_products_kbp3NQ": {
+      "type": "two-products",
+      "blocks": {
+        "featured_collection_U7DC6F": {
+          "type": "featured_collection",
+          "settings": {
+            "image": "shopify://shop_images/ultra-vs-bk1600-pc.jpg",
+            "mobile_image": "shopify://shop_images/ultra-vs-bk1600-mob.jpg",
+            "title": "BK1600",
+            "description": "<ul><li>Die beste Einstiegsoption für Balkonkraftwerk mit Speicher</li><li>PV-Anlagen und Speicher in einem Schritt (Ideal für Anfänger ohne Balkonkraftwerke)</li><li>Unterstützt die Kapazitätserweiterung durch einen drahtlosen Parallelbetrieb</li></ul>",
+            "button_title": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher"
+          }
+        },
+        "featured_collection_3RRGhe": {
+          "type": "featured_collection",
+          "settings": {
+            "image": "shopify://shop_images/ultra-vs-ultra-pc.jpg",
+            "mobile_image": "shopify://shop_images/ultra-vs-ultra-mob.jpg",
+            "title": "BK1600 Ultra",
+            "description": "<ul><li>Besitzt alle Funktionen von BK1600</li><li>Unterstützt Kopplung mit Mikro-Wechselrichtern (Aufrüstung bestehender PV-Anlagen mit Energiespeicher)</li><li>Unterstützt die Kapazitätserweiterung durch den Parallelbetrieb des BK1600</li></ul>",
+            "button_title": "Jetzt kaufen",
+            "button_link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_U7DC6F",
+        "featured_collection_3RRGhe"
+      ],
+      "custom_css": [
+        "@media (max-width: 768px) {.two-products-section .product-box .image-containers {height: 165px; }}"
+      ],
+      "name": "两个推荐产品",
+      "settings": {
+        "title": "Was passt besser zu dir?",
+        "ids": "vergleich",
+        "margin_top": 120,
+        "margin_bottom": 60
+      }
+    },
+    "rich_text_image_list_nUgpPV": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_nQkCqG": {
+          "type": "heading",
+          "settings": {
+            "heading": "Lieferumfang",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "image_rqTPPT": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/ultra-package-pc.png",
+            "mobile_image": "shopify://shop_images/ultra-package-mob.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_nQkCqG",
+        "image_rqTPPT"
+      ],
+      "name": "富文本与图片",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "lieferumfang",
+        "show_title_icon": false,
+        "img-href": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "image_top": 28,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "parameter_nq6XYd": {
+      "type": "parameter",
+      "blocks": {
+        "card_8qL4Br": {
+          "type": "card",
+          "settings": {
+            "title": "Maße",
+            "content": "300x215x250 mm",
+            "note": ""
+          }
+        },
+        "card_fTgmNc": {
+          "type": "card",
+          "settings": {
+            "title": "Gewicht",
+            "content": "16kg",
+            "note": ""
+          }
+        },
+        "card_nz6U9J": {
+          "type": "card",
+          "settings": {
+            "title": "Nominale Kapazität",
+            "content": "1636 Wh (erweiterbar bis zu 4908 Wh)",
+            "note": ""
+          }
+        },
+        "card_pmtACd": {
+          "type": "card",
+          "settings": {
+            "title": "Betriebstemperatur",
+            "content": "-20~45℃",
+            "note": ""
+          }
+        },
+        "card_TbpVJb": {
+          "type": "card",
+          "settings": {
+            "title": "Akkutyp",
+            "content": "LiFePO₄",
+            "note": ""
+          }
+        },
+        "card_aFwxfd": {
+          "type": "card",
+          "settings": {
+            "title": "Lebensdauer",
+            "content": "15 Jahre ",
+            "note": ""
+          }
+        },
+        "card_AbHLTF": {
+          "type": "card",
+          "settings": {
+            "title": "Schutzgrad",
+            "content": "IP54 ",
+            "note": ""
+          }
+        },
+        "card_pCLLWE": {
+          "type": "card",
+          "settings": {
+            "title": "Garantie",
+            "content": "10 Jahre",
+            "note": ""
+          }
+        },
+        "card_rppW6K": {
+          "type": "card",
+          "settings": {
+            "title": "Verbindungstyp",
+            "content": "Bluetooth, 2.4GHz Wi-Fi, 4G",
+            "note": ""
+          }
+        },
+        "card_w9XkxN": {
+          "type": "card",
+          "settings": {
+            "title": "Wechselstromsteckdose (Parallel)",
+            "content": "2300W",
+            "note": ""
+          }
+        },
+        "card_Th7EV7": {
+          "type": "card",
+          "settings": {
+            "title": "Wechselstrom-Ladeleistung",
+            "content": "1200W",
+            "note": ""
+          }
+        },
+        "card_HmAgVh": {
+          "type": "card",
+          "settings": {
+            "title": "Wechselstrom-Ausgangsleistung",
+            "content": "1200W",
+            "note": ""
+          }
+        },
+        "card_6H3Nyh": {
+          "type": "card",
+          "settings": {
+            "title": "Geräuschpegel",
+            "content": "< 30dB",
+            "note": ""
+          }
+        },
+        "card_xTLP3f": {
+          "type": "card",
+          "settings": {
+            "title": "Wechselstromausgang (Netzgekoppelt)",
+            "content": "800W",
+            "note": ""
+          }
+        },
+        "card_EPct9F": {
+          "type": "card",
+          "settings": {
+            "title": "Lebenszyklus",
+            "content": "6000",
+            "note": ""
+          }
+        },
+        "card_gw8p7m": {
+          "type": "card",
+          "settings": {
+            "title": "Betriebsspannung",
+            "content": "10 ~ 60V DC",
+            "note": ""
+          }
+        },
+        "card_CY6eRY": {
+          "type": "card",
+          "settings": {
+            "title": "MPPT Eingang",
+            "content": "1200W (2 MPPT, jeweils 600W)",
+            "note": ""
+          }
+        },
+        "card_hYHez8": {
+          "type": "card",
+          "settings": {
+            "title": "Einhaltung der Zertifizierung",
+            "content": "Sicherheit EMC/Standard: IEC62619, UN38.3, IEC/EN 62109-1, IEC/EN 62109-2, IEC/EN 61000-6-1, IEC/EN 61000-6-2",
+            "note": "Netzcode:Netzeinspeisung VDE4105"
+          }
+        },
+        "card_yByrn6": {
+          "type": "card",
+          "settings": {
+            "title": "Drittanbieter-Kompatibilität",
+            "content": "Shelly Pro 3EM<br>Shelly 3EM<br>Shelly Plug S Gen3<br>everHome EcoTracker IR<br>Solarman Meter<br>Solarman IR Reader",
+            "note": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_8qL4Br",
+        "card_fTgmNc",
+        "card_nz6U9J",
+        "card_pmtACd",
+        "card_TbpVJb",
+        "card_aFwxfd",
+        "card_AbHLTF",
+        "card_pCLLWE",
+        "card_rppW6K",
+        "card_w9XkxN",
+        "card_Th7EV7",
+        "card_HmAgVh",
+        "card_6H3Nyh",
+        "card_xTLP3f",
+        "card_EPct9F",
+        "card_gw8p7m",
+        "card_CY6eRY",
+        "card_hYHez8",
+        "card_yByrn6"
+      ],
+      "name": "参数列表",
+      "settings": {
+        "title": "Technische Daten",
+        "ids": "parameter",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "download_mqBhbX": {
+      "type": "download",
+      "blocks": {
+        "card_Fgh4mg": {
+          "type": "card",
+          "settings": {
+            "title": "Indevolt BK1600 Ultra",
+            "content": "Bedienungsanleitung",
+            "date": "2025-06-10",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Bedienungsanleitung_BK1600_Ultra.pdf?v=1749526304"
+          }
+        },
+        "card_6RpfBD": {
+          "type": "card",
+          "settings": {
+            "title": "BK1600 Ultra CE-RED",
+            "content": "RED",
+            "date": "2025-09-11",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/BK1600_Ultra_CE-RED.pdf?v=1757558444"
+          }
+        },
+        "card_hEPgmW": {
+          "type": "card",
+          "settings": {
+            "title": "BK1600 Ultra CE Zertifikat",
+            "content": "CE",
+            "date": "2025-09-11",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/BK1600_Ultra_CE_Zertifikat.pdf?v=1757558465"
+          }
+        },
+        "card_mYaHmg": {
+          "type": "card",
+          "settings": {
+            "title": "BK1600 Ultra Österreich Grid Connection",
+            "content": "",
+            "date": "2025-09-11",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/BK1600_Ultra_Osterreich_Grid_Connection.pdf?v=1757558477"
+          }
+        },
+        "card_aTPCUB": {
+          "type": "card",
+          "settings": {
+            "title": "BK1600 Ultra Deutschland Grid Connection",
+            "content": "VDE",
+            "date": "2025-09-11",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/BK1600_Ultra_Deutschland_Grid_Connection.pdf?v=1757558476"
+          }
+        }
+      },
+      "block_order": [
+        "card_Fgh4mg",
+        "card_6RpfBD",
+        "card_hEPgmW",
+        "card_mYaHmg",
+        "card_aTPCUB"
+      ],
+      "name": "下载列表",
+      "settings": {
+        "title": "Downloads"
+      }
+    },
+    "collapsible_tabs_33mXrc": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "collapsible_item_FQJHNP": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Was ist der Unterschied zwischen dem BK1600 Ultra und dem BK1600?",
+            "content": "<p>Beide Geräte, der BK1600 und der BK1600 Ultra, haben ein All-in-One-Design und enthalten einen bidirektionalen Wechselrichter. Wenn in deinem Zuhause keine Solaranlage installiert ist (also ohne Mikro-Wechselrichter), solltest du den BK1600 wählen. Damit kannst du die Solarange und die Speicherung auf einmal umsetzen und den überschüssigen Strom, den die PV-Anlage tagsüber erzeugt, optimal nutzen, um ihn abends zu verwenden. Das ist die kostengünstigste Wahl. Wenn du jedoch bereits eine Solaranlage installiert hast, dann wähle den BK1600 Ultra, um eine Speicherung zu ermöglichen und zusätzlich 1200W an Solarmodulen anzuschließen.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_Hg99f4": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wie maximiert der BK1600 Ultra die Nutzung von Energie?",
+            "content": "<p>Der BK1600 Ultra überwindet die herkömmliche Begrenzung von 800W für einzelne Speichergeräte, indem er innerhalb der gesetzlichen Vorgaben operiert. Mithilfe eines drahtlosen Netzwerks und intelligenter Leistungsteilungstechnologie verbindet er leistungsstarke Haushaltsgeräte mit dem Off-Grid-Anschluss, um die gespeicherte Energie der PV-Anlage optimal zu nutzen.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_BUUU3p": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann ich meinen BK1600 Ultra mit einem Mikro-Wechselrichter verbinden?",
+            "content": "<p>Ja, der BK1600 Ultra ist mit 99% der auf dem Markt erhältlichen Mikro-Wechselrichter kompatibel. Du musst ihn einfach in den Off-Grid-Anschluss einstecken, um zusätzlich 1200W Eingangsleistung zu erhalten. Bitte beachte, dass der BK1600 Ultra maximal mit Mikro-Wechselrichtern bis 1200W kompatibel ist.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_J9Dbmr": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Hat der BK1600 ultra die EPS (Notstromversorgung)-Funktion?",
+            "content": "<p>Ja, der BK1600 Ultra kann über seine Off-Grid-Steckdose kontinuierlich Strom liefern. Bei einer Stromnetzunterbrechung wechselt das Gerät innerhalb von 10ms schnell in den EPS-Modus und bietet eine maximale Dauerleistung von 1200W. Bei Geräten mit hohem Startstrom kann es sogar eine Spitzenleistung von bis zu 1800W für maximal 15 Sekunden bereitstellen, um sicherzustellen, dass wichtige Geräte wie Kühlschränke, Router und Beleuchtung während eines Stromausfalls weiterhin normal funktionieren.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_4rq3UE": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann der BK1600 Ultra die EPS-Funktion auch im Parallelbetrieb mit Kabeln oder bei Anschluss an einen Mikro-Wechselrichter nutzen?",
+            "content": "<p>Wenn der BK1600 ultra über den AC-Anschluss parallel geschaltet oder an einen Mikro-Wechselrichter angeschlossen wird, ist dieser AC-Anschluss belegt und kann nicht gleichzeitig als Ausgangsanschluss im EPS-Modus verwendet werden.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_jKrUGi": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Welche Vorteile bringt der Parallelbetrieb mit Kabeln für meine Familie?",
+            "content": "<p>Durch die kabelgebundene Verbindung mehrerer BK1600 Ultra können leistungsstarke Haushaltsgeräte betrieben werden. So kann beispielsweise eine 2000-Watt-Waschmaschine, die von einem einzelnen Ultra mit einer Nennleistung von 1200W nicht betrieben werden kann, durch den Parallelbetrieb unterstützt werden. In diesem Fall wird die Leistung der Waschmaschine gleichmäßig auf jedes Gerät verteilt, sodass jedes Ultra nur 1000W benötigt, um die Waschmaschine problemlos zu starten. Dadurch wird die Akkukapazität optimal genutzt, ohne dass Strom aus dem Netz bezogen werden muss.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_38AkN4": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann der BK1600 Ultra drahtlos mit dem BK1600 vernetzt werden?",
+            "content": "<p>Ja, das ist möglich. Beide Geräte sind in Bezug auf die drahtlose Vernetzung vollständig kompatibel. Wenn Sie bereits einen BK1600 besitzen, müssen Sie sich keine Sorgen um mögliche Kompatibilitätsprobleme machen, wenn Sie später den Ultra erwerben. Sie können einfach die drahtlose Verbindung nutzen, um die Zusammenarbeit mehrerer Geräte zu ermöglichen.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_tQUpWd": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Was sind die praktischen Unterschiede zwischen den Off-Grid-Steckdosen des BK1600 und BK1600 Ultra?",
+            "content": "<p>Die Off-Grid-Steckdose des BK1600 Ultra kann im Netzbetrieb direkt aktiviert werden, um deine Haushaltslasten mit Strom zu versorgen. Im Gegensatz dazu musst du bei der Off-Grid-Steckdose des BK1600 zuerst die Verbindung zum Stromnetz trennen, um die Stromversorgung für die Lasten zu starten.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_kUFjek": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wie kannst du feststellen, welches Modell besser zu deinen Haushaltsbedürfnissen passt?",
+            "content": "<p>Wenn deine Haushaltsgeräte eine dauerhafte Verbindung über die Off-Grid-Steckdose benötigen und eine unterbrechungsfreie Stromversorgung erforderlich ist, solltest du den BK1600 Ultra in Betracht ziehen.</p><p>Wenn dein Haushalt hingegen nur Strom durch das Netz abgeben und die Off-Grid-Steckdose hauptsächlich im Außenbereich verwenden möchte, empfehlen wir dir den BK1600.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_NNVnDY": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Haftungsausschluss & Berechnung",
+            "content": "<p><strong>Haftungsausschluss:</strong></p><ol><li>Gemäß den lokalen Vorschriften unterstützt der BK1600 Ultra ausschließlich Mikroinverter mit einer maximalen Leistung von 800 W, um den gesetzlichen Standards zu entsprechen.</li><li>Unter idealen Bedingungen können 2000 Watt Solarpanels jährlich bis zu 2324 kWh Strom erzeugen.</li><li>Eine Analyse der Universität Berlin zeigt, dass die Eigenverbrauchsquote von Balkonkraftwerken mit einer Speicherlösung von 40 % auf 97 % steigt. Diese Analyse berücksichtigt sowohl die Verbrauchsdauer als auch die Umwandlungseffizienz. Das BK1600 Ultra-System liefert etwa 2254 kWh Strom.</li><li>Die jährlichen Einsparungen bei den Stromkosten basieren auf dem offiziellen durchschnittlichen Strompreis von 0,40 Euro pro kWh für das zweite Halbjahr 2022 in Deutschland.</li><li>Der BK1600 Ultra verfügt über eine netzunabhängige Leistung von 1200 W.</li><li>Die schnelle Installation erfolgt in zwei Schritten:</li></ol><ul><li> Schritt 1: Trennen Sie Ihren aktuellen Mikroinverter und verbinden Sie ihn mit dem BK1600 Ultra.</li><li> Schritt 2: Schließen Sie den BK1600 Ultra anschließend an Ihr Zuhause an.</li></ul><p><strong>Berechnung:</strong></p><ol><li>Der jährliche Ertrag bei Nutzung von drei BK1600 Ultra beträgt: 2324 kWh × 97 % × 0,40 Euro/kWh = 902 Euro.</li><li>Der jährliche Ertrag allein aus den Solarmodule ergibt sich zu: 1162 kWh × 40 % × 0,40 Euro/kWh = 186 Euro.</li></ol>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_item_FQJHNP",
+        "collapsible_item_Hg99f4",
+        "collapsible_item_BUUU3p",
+        "collapsible_item_J9Dbmr",
+        "collapsible_item_4rq3UE",
+        "collapsible_item_jKrUGi",
+        "collapsible_item_38AkN4",
+        "collapsible_item_tQUpWd",
+        "collapsible_item_kUFjek",
+        "collapsible_item_NNVnDY"
+      ],
+      "name": "t:sections.collapsible-tabs.presets.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "ids": "faq",
+        "header_layout": "vertical",
+        "heading": "FAQ",
+        "heading_size": "hd2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "item_style": "standard",
+        "item_color_scheme": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h5",
+        "item_icon_size": "extra-small",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "17557649478be78e98": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_NripUU": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_NripUU"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "video_H7qFLK",
+    "service_info_34yK44",
+    "bk1600ultra_scence_tabs_iUCngh",
+    "bk1600ultra_scence_video_tabs_pTYaDM",
+    "rich_text_image_list_UpnwcL",
+    "rich_text_LxGbUe",
+    "video_kx7kgY",
+    "rich_text_image_list_MQDAxJ",
+    "bk1600ultra_scence_tabs_Rx4yRR",
+    "video_with_text_A9tEBz",
+    "video_with_text_M8qmGW",
+    "image_with_text_LE3JdM",
+    "image_with_text_RHVXFk",
+    "rich_text_image_list_ppFNfz",
+    "two_products_kbp3NQ",
+    "rich_text_image_list_nUgpPV",
+    "parameter_nq6XYd",
+    "download_mqBhbX",
+    "collapsible_tabs_33mXrc",
+    "17557649478be78e98"
+  ]
+}

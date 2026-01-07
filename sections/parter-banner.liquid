@@ -1,0 +1,148 @@
+<style>
+.section-parter-main { background: #F3F3F3;}
+.section-parter-main .banner-box{ position: relative;}
+.section-parter-main .banner-box img{width:100%; object-fit: cover;object-position: center center;}
+.banner-box .content { position: absolute; transform: translate(-50%, 0%); top:100px;left: 50%;text-align:center}
+.banner-box .content h2,.banner-box .content h4{white-space: nowrap;color:#fff}
+.banner-box .content h2{ line-height:58px;font-size:48px;font-weight: 700;}
+.banner-box .content h4{ margin-top:10px;line-height:38px;font-size:32px;font-weight: 400;}
+.banner-box .decribe{ position: relative;top: -120px;padding:70px 110px;border-radius: 25px;background: #FFF;line-height:38px;font-size:24px;}
+.banner-box .decribe p{margin:0px;font-size: inherit;}
+  @media (max-width: 768px) {
+     .banner-box .content { width:100%;padding: 0px 1rem; top:8.7rem;text-align:center}
+     .banner-box .content h2{ line-height:29px;font-size:24px;}
+     .banner-box .content h4{ margin-top:0.5rem;line-height:19px;font-size:16px;}
+     .banner-box .decribe {
+        position: relative;
+        top: -4rem;
+        padding: 26px 24px;
+        border-radius: 10px;
+        line-height: 26px;
+        font-size: 16px;
+     }
+  }
+</style>
+{% liquid
+    assign motion_delay = 50
+%}
+<div class="section section-parter-main">
+    <div class="banner-box">
+       {% if section.settings.banner != blank %}
+              <picture>
+                <source
+                  media="(max-width: 749px)"
+                  srcset="
+                    {{ section.settings.banner_mobile | img_url: '800x' }} 1x,
+                    {{ section.settings.banner_mobile | img_url: '1600x' }} 2x
+                  "
+                >
+                <source
+                  media="(min-width: 750px)"
+                  srcset="
+                    {{ section.settings.banner | img_url: '1200x' }} 1x,
+                    {{ section.settings.banner | img_url: '2400x' }} 2x
+                  "
+                >
+                <img
+                  src="{{ section.settings.banner | img_url: '1200x' }}"
+                  alt="{{ section.settings.banner | escape }}"
+                  loading="lazy"
+                  width="{{ section.settings.banner.width }}"
+                  height="{{ section.settings.banner.height }}"
+                >
+              </picture>
+             <div class="content">
+                <h2>{{ section.settings.title }}</h2>
+                <h4>{{ section.settings.subtitle }}</h4>
+             </div>
+             <div class="page-width section--padding ">
+              <div class="decribe">
+                {{ section.settings.decribe }}
+              </div>
+             </div>
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+    </div>
+</div>
+<script>
+ 
+</script>
+{% schema %}
+{
+  "name": "parter-main",
+  "tag": "section",
+  "class": "section section-parter-main",
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Word een partner van Indevolt"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "副标题",
+      "default": "Laten we samen een groene toekomst creëren!"
+    },
+    {
+      "type": "richtext",
+      "id": "decribe",
+      "label": "描述",
+      "default": "<p>Your description here</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner",
+      "label": "PC端banner"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_mobile",
+      "label": "手机端banner"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "brand item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "描述"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "合作伙伴-banner",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

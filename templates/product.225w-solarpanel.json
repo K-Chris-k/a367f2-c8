@@ -1,0 +1,862 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "judge_me_reviews_preview_badge_wNeYVD": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "sleek_social_sharing_share_button_KwkyAh": {
+          "type": "shopify://apps/sleek-social-sharing/blocks/share_button/5db01bc3-c590-40f6-be34-5072c106e3f4",
+          "settings": {}
+        },
+        "taxs_tV84dR": {
+          "type": "taxs",
+          "settings": {
+            "title": "0% MwSt. auf PV-Sets in Deutschland",
+            "content": "Hiermit bestätigen Sie, dass Sie die Voraussetzungen für eine umsatzsteuerfreie Lieferung gemäß § 12 Abs. 3 von Deutschland erfüllen.",
+            "taxs_title": "Erfahren Sie mehr.",
+            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie hier um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
+            "heading_1": "Hinweis: Bestellungen können in mehreren Paketen versendet werden.",
+            "heading_2": "<strong>Sofort ab Lager verfügbar, Versand innerhalb von 24 Stunden.</strong>"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 40,
+            "size_title": "Size",
+            "size_chart_from_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "selleasy_lb_upsell_widget_pal_9kVeBh": {
+          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-pal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+          "settings": {}
+        },
+        "logistics_pN3qrf": {
+          "type": "logistics",
+          "settings": {
+            "enable_sticky_info": true
+          }
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "name": "支付信息",
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "certificate",
+            "image_1": "shopify://shop_images/brand-icon1.svg",
+            "heading_1": "Bequem bezahlen",
+            "content_image_1": "shopify://shop_images/card.png",
+            "icon_2": "truck",
+            "image_2": "shopify://shop_images/brand-icon2.svg",
+            "content_image_2": "shopify://shop_images/track.png",
+            "heading_2": "Zuverlässige Lieferung",
+            "icon_3": "star-four",
+            "heading_3": ""
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "tag",
+            "product_list_limit": 4,
+            "products_per_page": 1,
+            "image_ratio": "adapt",
+            "enable_quick_add": true
+          }
+        }
+      },
+      "block_order": [
+        "title",
+        "judge_me_reviews_preview_badge_wNeYVD",
+        "price",
+        "sleek_social_sharing_share_button_KwkyAh",
+        "taxs_tV84dR",
+        "description",
+        "variant_picker",
+        "buy_buttons",
+        "selleasy_lb_upsell_widget_pal_9kVeBh",
+        "logistics_pN3qrf",
+        "icon_with_text",
+        "complementary"
+      ],
+      "custom_css": [
+        ".loox-rating {margin-top: -1rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": true,
+        "enable_product_sticky_bar": false,
+        "media_size": "medium",
+        "gallery_layout": "carousel",
+        "mobile_thumbnails": "show",
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "service_info_cqwgGJ": {
+      "type": "service-info",
+      "name": "服务信息",
+      "settings": {
+        "title": "",
+        "container": "fixed",
+        "ids": "",
+        "image_pc": "shopify://shop_images/04af0f43849f7ba96f89ef9a92812d7a.png",
+        "image_mobile": "shopify://shop_images/04af0f43849f7ba96f89ef9a92812d7a.png",
+        "margin_top": 60,
+        "margin_bottom": 60
+      }
+    },
+    "rich_text_image_list_BTGngr": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_RcUkFk": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ultraleicht und schnell zu installieren",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_qXhgNC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Leichtes und kompaktes Design：Mit einem ultraleichten Gewicht von 4,3kg, was 70% leichter ist als PV-Paneele aus Glas mit derselben Leistung, sodass es leicht zu transportieren und zu installieren ist.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "image_8zRmVr": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/225-img1-pc.jpg",
+            "mobile_image": "shopify://shop_images/225-img1-mob.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_RcUkFk",
+        "text_qXhgNC",
+        "image_8zRmVr"
+      ],
+      "name": "富文本与图片",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "",
+        "show_title_icon": false,
+        "img-href": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "image_top": 28,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "rich_text_image_list_N7WWcR": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_Brbdff": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Flexibel für unterschiedliche Oberflächen</strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_MmApji": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Flexible Solarmodule, die um 213° gebogen werden können. Du kannst das Solarpanel überall anbringen – auf runden Balkonen, gewölbten Wänden oder sogar auf dem Dach von Wohnmobilen.<br/></p>",
+            "text_size": "text-lg"
+          }
+        },
+        "image_VVkeQK": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/1_6c45cc7b-8b9d-4ccd-b65c-99eda2cd95c5.jpg",
+            "mobile_image": "shopify://shop_images/1_6c45cc7b-8b9d-4ccd-b65c-99eda2cd95c5.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Brbdff",
+        "text_MmApji",
+        "image_VVkeQK"
+      ],
+      "name": "富文本与图片",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "",
+        "show_title_icon": false,
+        "img-href": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "image_top": 28,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "rich_text_image_list_bptTcy": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_HRFyLp": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>25% hohe Solarumwandlungsrate</strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_cdMmBK": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Flexible Solarmodule nutzen den Balkonbereich mit 2 x 225W Solarmodulen voll aus, um Strom zu erzeugen. Die Umwandlungsrate beträgt bis zu 25%, was für das Leben zu Hause und unerwartete Stromausfälle sehr gut geeignet ist.<br/></p>",
+            "text_size": "text-lg"
+          }
+        },
+        "image_mg4tAL": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/2_b6e3113e-a79b-4da7-a7c6-a3c1b75c6b5b.jpg",
+            "mobile_image": "shopify://shop_images/2_b6e3113e-a79b-4da7-a7c6-a3c1b75c6b5b.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_HRFyLp",
+        "text_cdMmBK",
+        "image_mg4tAL"
+      ],
+      "name": "富文本与图片",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "",
+        "show_title_icon": false,
+        "img-href": "",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "image_top": 28,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "rich_text_image_list_jNqtFU": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_tmgGEM": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Super wetterbeständig und wasserdicht</strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_JFXez6": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Wasserdicht gemäß IP68, hält rauen Bedingungen von -20°C bis 65°C stand. Gewährleistet die elektrische Sicherheitsleistung von Photovoltaikmodulen und -systemen.<br/></p>",
+            "text_size": "text-lg"
+          }
+        },
+        "image_tEUbDF": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/3_6d5fa451-6be2-46c6-8cc2-d15f1cc45151.jpg",
+            "mobile_image": "shopify://shop_images/3_6d5fa451-6be2-46c6-8cc2-d15f1cc45151.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_tmgGEM",
+        "text_JFXez6",
+        "image_tEUbDF"
+      ],
+      "name": "富文本与图片",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "",
+        "show_title_icon": false,
+        "img-href": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "image_top": 28,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "multicolumn_UGtUm8": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_CnHc3F": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/225-Lieferumfang-4-1_e9ba3d9d-a2d8-45e5-a2e9-09f3d243a1cc.jpg",
+            "image_link": "",
+            "image_width": "extra-large",
+            "title": "",
+            "heading_size": "h4",
+            "text": "<h5> Flexibles Solarpanel ×4</h5>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_cfN9Af": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/225-Lieferumfang-4-2.jpg",
+            "image_link": "",
+            "image_width": "extra-large",
+            "title": "",
+            "heading_size": "h4",
+            "text": "<h5>Solarkabel ×2</h5>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_THpk6V": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/225-Lieferumfang-4-3.jpg",
+            "image_link": "",
+            "image_width": "extra-large",
+            "title": "",
+            "heading_size": "h4",
+            "text": "<h5>Kabelbinder ×24</h5>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_4RBiAG": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify://shop_images/225-Lieferumfang-4-4.jpg",
+            "image_link": "",
+            "image_width": "extra-large",
+            "title": "",
+            "heading_size": "h4",
+            "text": "<h5>Gebrauchsanleitung ×1</h5>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "column_CnHc3F",
+        "column_cfN9Af",
+        "column_THpk6V",
+        "column_4RBiAG"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "heading": "Lieferumfang",
+        "heading_size": "hd2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "column_alignment": "center",
+        "columns_desktop": 4,
+        "column_gap": "extra-small",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "parameter_jVPXz4": {
+      "type": "parameter",
+      "blocks": {
+        "card_kf86LN": {
+          "type": "card",
+          "settings": {
+            "title": "Nennspitzenleistung (Pmax)",
+            "content": "225W",
+            "note": ""
+          }
+        },
+        "card_LDHHDw": {
+          "type": "card",
+          "settings": {
+            "title": "Leerlaufspannung (Voc)",
+            "content": "36V",
+            "note": ""
+          }
+        },
+        "card_BQhrVX": {
+          "type": "card",
+          "settings": {
+            "title": "Kurzschlussstrom (Isc)",
+            "content": "6,25A",
+            "note": ""
+          }
+        },
+        "card_dcfJ79": {
+          "type": "card",
+          "settings": {
+            "title": "Maximalleistungsspannung (Vmp)",
+            "content": "42V",
+            "note": ""
+          }
+        },
+        "card_yrkHe4": {
+          "type": "card",
+          "settings": {
+            "title": "Maximalstrom (Imp)",
+            "content": "6,51A",
+            "note": ""
+          }
+        },
+        "card_C8NeJK": {
+          "type": "card",
+          "settings": {
+            "title": "Modulleistung",
+            "content": "25%",
+            "note": ""
+          }
+        },
+        "card_rCxHBW": {
+          "type": "card",
+          "settings": {
+            "title": "Leistungstoleranz",
+            "content": "±5%",
+            "note": ""
+          }
+        },
+        "card_WkYDA9": {
+          "type": "card",
+          "settings": {
+            "title": "Betriebstemperatur",
+            "content": "-20°C ~65°C (-4°F~149°F)",
+            "note": ""
+          }
+        },
+        "card_V33CX4": {
+          "type": "card",
+          "settings": {
+            "title": "Abmessungen (LxBxH)",
+            "content": "1159x1009x20 mm",
+            "note": ""
+          }
+        },
+        "card_RfFL8m": {
+          "type": "card",
+          "settings": {
+            "title": "Gewicht",
+            "content": "4,3 kg (1 Stück)",
+            "note": ""
+          }
+        },
+        "card_W4ibkC": {
+          "type": "card",
+          "settings": {
+            "title": "Rückseitenfarbe",
+            "content": "Schwarz",
+            "note": ""
+          }
+        },
+        "card_8w4X3t": {
+          "type": "card",
+          "settings": {
+            "title": "IP-Bewertung",
+            "content": "IP67",
+            "note": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_kf86LN",
+        "card_LDHHDw",
+        "card_BQhrVX",
+        "card_dcfJ79",
+        "card_yrkHe4",
+        "card_C8NeJK",
+        "card_rCxHBW",
+        "card_WkYDA9",
+        "card_V33CX4",
+        "card_RfFL8m",
+        "card_W4ibkC",
+        "card_8w4X3t"
+      ],
+      "name": "参数列表",
+      "settings": {
+        "title": "Technische Daten",
+        "ids": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "download_VfWKJX": {
+      "type": "download",
+      "blocks": {
+        "card_DYc984": {
+          "type": "card",
+          "settings": {
+            "title": "Flexibles Solarpanel 225W",
+            "content": "Bedienungsanleitung",
+            "date": "2025-03-05",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Bedienungsanleitung_Flexibles_Solarmodul_225W.pdf?v=1735892012"
+          }
+        }
+      },
+      "block_order": [
+        "card_DYc984"
+      ],
+      "name": "下载列表",
+      "settings": {
+        "title": "Downloads"
+      }
+    },
+    "collapsible_tabs_tPN7pj": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "collapsible_item_L99V3d": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Was ist der Unterschied zwischen dem BK1600 Ultra und dem BK1600?",
+            "content": "<p>Beide Geräte, der BK1600 und der BK1600 Ultra, haben ein All-in-One-Design und enthalten einen bidirektionalen Wechselrichter. Wenn in deinem Zuhause keine Solaranlage installiert ist (also ohne Mikro-Wechselrichter), solltest du den BK1600 wählen. Damit kannst du die Solaranlage und den Speicher auf einmal umsetzen und den überschüssigen Strom, den die PV-Anlage tagsüber erzeugt, optimal nutzen, um ihn abends zu verwenden. Das ist die kostengünstigste Wahl. Wenn du jedoch bereits eine Solaranlage installiert hast, dann wähle den BK1600 Ultra, um eine Speicherung zu ermöglichen und zusätzlich 1200W an Solarmodulen anzuschließen.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_x8A44E": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann ich den Indevolt BK1600 selbst installieren?",
+            "content": "<p>Natürlich kannst du das! Der Indevolt BK1600 hat ein Plug-and-Play-Design, sodass du die Installation ganz einfach selbst durchführen kannst. Wenn du jedoch eine Netzspeisung mit mehr als 800W benötigst, solltest du einen Fachmann für die Installation hinzuziehen.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_3N8U8p": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann man die Kapazität des Indevolt BK1600 erweitern?",
+            "content": "<p>Ja, das ist möglich! Der Indevolt BK1600 kann durch drahtloses Parallelbetriebverfahren erweitert werden, und du kannst bis zu 3 Einheiten hinzufügen, wodurch die Gesamtkapazität auf 4,9 kWh steigt.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_CpHChU": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann ich nach der Kapazitätserweiterung des Indevolt BK1600 mehr Solarenergie einspeisen?",
+            "content": "<p>Ja, das ist möglich! Durch die Erweiterung im Parallelbetrieb kannst du die Anzahl der MPPTs erhöhen, von den ursprünglichen 2 MPPT auf bis zu 6 MPPT. Das bedeutet, dass du maximal 3600W (600W*6) an PV-Eingang nutzen kannst.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_4FLHaK": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Müssen mehrere BK1600 mit einem Wi-Fi-Netzwerk und einer Anwendung verbunden werden?",
+            "content": "<p>Ja, alle Geräte müssen mit demselben Netzwerk verbunden und in der INDEVOLT-App als dieselben Geräte hinzugefügt werden.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_NqzJ6N": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wie funktioniert der Eigenverbrauchsmodus des BK1600?",
+            "content": "<p>Tagsüber wird bevorzugt Solarenergie zur Stromversorgung verwendet. Wenn die Solarstromproduktion nicht ausreicht, wechselt das Gerät automatisch zur Akkuspeisung, um den Strombedarf aufrechtzuerhalten. Wenn hingegen genügend Solarstrom erzeugt wird, wird überschüssiger Strom genutzt, um den Speicher aufzuladen, was die Energieeffizienz im Haushalt verbessert.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_aFDJT4": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Welche Vorteile bringt dir ein drahtloses Netzwerk für dein Zuhause?",
+            "content": "<p>Das BK1600-Drahtlosnetzwerk benötigt keine Kabelverbindungen und kann flexibel an verschiedenen Orten in deinem Zuhause platziert werden. Wenn du beispielsweise mehrere Bereiche auf deinem Balkon hast und der Platz für die Installation von Solarmodulen auf einem einzelnen Balkon nicht ausreicht, kannst du die Geräte über ein drahtloses Netzwerk in verschiedenen Bereichen verteilen, um den verfügbaren Platz optimal zu nutzen und die Solarmodule zu verbinden.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_63P4Jg": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Unterstützt der BK1600 die serielle Verbindung mehrerer Solarmodule? Welche Bedingungen müssen dafür erfüllt sein?",
+            "content": "<p>Ja, er unterstützt die serielle Verbindung, aber du musst sicherstellen, dass die Gesamtheit der Leerlaufspannung (Voc) des einzelnen MPPT-Eingangs ≤ 60V beträgt. Wenn zum Beispiel ein Modul eine Voc von 18V hat, kannst du maximal 3 Module in Reihe schalten (insgesamt Voc = 54V).</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_UE7V4p": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Was sind die Abmessungen und das Gewicht des Indevolt BK1600?",
+            "content": "<p>er Indevolt BK1600 hat die Abmessungen 300*215*250 mm und wiegt etwa 16 kg. Er ist kompakt und verfügt über einen Tragegriff, was den Transport erleichtert. Er kann nicht nur als Balkonkraftwerk mit Speicher verwendet werden, sondern auch als tragbare Powerstation.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_q3DdGL": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wie viel Lärm erzeugt der Indevolt BK1600?",
+            "content": "<p>Der Indevolt BK1600 ist während des Betriebs sehr leise. Selbst unter langfristigen Spitzenbedingungen liegt der Geräuschpegel maximal unter 45 Dezibel, was ungefähr dem Geräuschpegel eines Kühlschranks entspricht.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_73cYQj": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wie verwaltet BK1600 die Energieverteilung?",
+            "content": "<p>Das System erstellt durch die Analyse historischer Stromverbrauchsdaten und aktueller Wetterparameter ein dynamisches Vorhersagemodell. Gleichzeitig bestimmen wir anhand der dynamischen Strompreise automatisch die beste Lade- und Entlade-Strategie, um deine Energiekosten zu optimieren und die Energiekostenabrechnung zu maximieren.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_R4Erpb": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann beim Kauf des Indevolt BK1600 in Deutschland die Mehrwertsteuer erlassen werden?",
+            "content": "<p>Ja, seit dem 1. Januar 2023 gibt es in Deutschland eine Regelung, die es erlaubt, die Mehrwertsteuer für den Kauf von Balkon-Solaranlagen für Haushalte zu erlassen. Diese Regelung gilt für PV-Anlagen mit einer maximalen Leistung von 800 Watt, die für den Eigenverbrauch installiert werden.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_FtALx3": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wird das Gehäuse des Indevolt BK1600 nach längerer Nutzung warm?",
+            "content": "<p>Ja, es ist normal, dass die Temperatur nach längerem Betrieb leicht ansteigt, was die Lebensdauer des Geräts nicht beeinträchtigt. Darüber hinaus verfügt der Indevolt BK1600 über einen Überhitzungsschutz, der einen sicheren Betrieb des Geräts gewährleistet. Kinder und Haustiere sollten während des Betriebs des Indevolt BK1600 ferngehalten werden.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_zyJGci": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wie versorgt der Indevolt BK1600 Haushaltsgeräte nach einem Stromausfall?",
+            "content": "<p>Der Indevolt BK1600 verfügt über eine unabhängige Stromsteckdose, die 1200W Wechselstrom bereitstellt und eine kurzfristige (15 Sekunden) Off-Grid-Leistung von 1800W hat. Er kann während eines Stromausfalls oder im Inselbetrieb kurzfristig Geräte mit hohem Anlaufstrom, wie Motoren, betreiben, ohne dass das System innerhalb von 15 Sekunden aufgrund einer kurzzeitigen Überlastung den Schutz auslöst.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_wyRiBA": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wie wechselt der Indevolt BK1600 zwischen dem Netzbetrieb und dem tragbaren Modus?",
+            "content": "<p>Du kannst den Drehknopf an der Seite des Geräts verwenden, um umzuschalten: Wähle „On-Grid“ für den Netzbetrieb und „Portable Mode“ für den tragbaren Modus.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_VhCxaq": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Haftungsausschluss & Berechnung",
+            "content": "<p><strong>Haftungsausschluss</strong>1. Die Berechnung basiert auf der folgenden Produktkonfiguration: BK1600 (1,6 kWh) + 4 × 225 W flexibles Panel (insgesamt 900 W) + Smart Meter + 4 × Balkonhalterungen. Produktkonfiguration: BK1600 (1,6 kWh) + 4 × 225 W flexibles Panel (insgesamt 900 W) + Smart Meter + 4 × Balkonhalterung.2. Unter idealen Bedingungen können vier 225 W Solarpanels jährlich bis zu 1046 kWh Strom produzieren.3. Berücksichtigt man die Verbrauchszeiten und die Effizienz der Umwandlung, beträgt der Eigenverbrauchsanteil 97 %. Das Indevolt BK1600-System liefert jährlich 1015 kWh Strom.4. Die Einsparungen bei den Stromkosten basieren auf einem Preis von 0,40 €/kWh, der dem offiziellen durchschnittlichen Strompreis von 40 Cent in Deutschland für das zweite Halbjahr 2022 entnommen wurde. Die jährlichen Einsparungen belaufen sich somit auf insgesamt 406 €.<strong>Berechnung</strong>1. Jährliche Rendite des BK1600-Systems: 1046 kWh × 97 % × 0,40 €/kWh = 406 €.2. Jährliche Rendite des Balkonkraftwerks ohne Speicher: 1046 kWh × 40 % × 0,40 €/kWh = 167 €.<br/><br/></p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_item_L99V3d",
+        "collapsible_item_x8A44E",
+        "collapsible_item_3N8U8p",
+        "collapsible_item_CpHChU",
+        "collapsible_item_4FLHaK",
+        "collapsible_item_NqzJ6N",
+        "collapsible_item_aFDJT4",
+        "collapsible_item_63P4Jg",
+        "collapsible_item_UE7V4p",
+        "collapsible_item_q3DdGL",
+        "collapsible_item_73cYQj",
+        "collapsible_item_R4Erpb",
+        "collapsible_item_FtALx3",
+        "collapsible_item_zyJGci",
+        "collapsible_item_wyRiBA",
+        "collapsible_item_VhCxaq"
+      ],
+      "name": "t:sections.collapsible-tabs.presets.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "ids": "",
+        "header_layout": "vertical",
+        "heading": "FAQ",
+        "heading_size": "hd2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "item_style": "standard",
+        "item_color_scheme": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h5",
+        "item_icon_size": "extra-large",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "17575723189591b26d": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_EYEGzC": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_EYEGzC"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "service_info_cqwgGJ",
+    "rich_text_image_list_BTGngr",
+    "rich_text_image_list_N7WWcR",
+    "rich_text_image_list_bptTcy",
+    "rich_text_image_list_jNqtFU",
+    "multicolumn_UGtUm8",
+    "parameter_jVPXz4",
+    "download_VfWKJX",
+    "collapsible_tabs_tPN7pj",
+    "17575723189591b26d"
+  ]
+}

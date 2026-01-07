@@ -1,0 +1,164 @@
+<style>
+.section-meter-parameter .product-collection{margin-top:120px}
+.section-meter-parameter .product-collection h2{font-size:48px;line-height:58px; text-align:center}
+.section-meter-parameter .grid-container {
+  position: relative;
+  margin-top:24px;
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr; 
+  grid-template-rows: auto auto; 
+  gap: 10px; 
+}
+.parameter-box .item{  padding: 18px 27px;background: #FFF;}
+{% comment %} .parameter-box .item .title{line-height:22px；font-size:18px;} {% endcomment %}
+.parameter-box .item:nth-child(1) {
+  grid-column: 1;
+  grid-row: 1; 
+}
+.parameter-box .item:nth-child(2) {
+  grid-column: 1;
+  grid-row: 2;
+}
+.parameter-box .item:nth-child(3) {
+  grid-column: 2;
+  grid-row: 1;
+}
+.parameter-box .item:nth-child(4) {
+  grid-column: 2; 
+  grid-row: 2;
+}
+.parameter-box .item:nth-child(5) {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  grid-column: 3;
+  grid-row: 1 / span 2; 
+}
+.parameter-box .item .content {margin-top:14px; padding-left: 20px;}
+.parameter-box .item .content li{ margin-bottom:10px;list-style-type: disc;}
+@media (max-width: 768px) {
+  .section-meter-parameter .product-collection{margin-top:60px}
+  .section-meter-parameter .product-collection h2{font-size:28px;line-height:34px; }
+  .section-meter-parameter .grid-container{
+    grid-template-columns: 1fr 1fr;  /* 两列 */
+    grid-template-rows: 1fr 1fr 1fr; /* 三行（右列占满） */
+    min-height:300px;
+    margin-top:10px;
+  }
+  .parameter-box .item{  padding: 13px 10px;font-size:8px}
+  .parameter-box .item h4{font-size:14px;}
+  .parameter-box .item:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .parameter-box .item:nth-child(2) {
+    grid-column: 1;
+    grid-row: 2 / span 2;
+  }
+  .parameter-box .item:nth-child(3) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .parameter-box .item:nth-child(4) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .parameter-box .item:nth-child(5) {
+    grid-column: 2;
+    grid-row: 3;
+    position: relative;
+  }
+} 
+</style>
+{% liquid
+    assign motion_delay = 50
+%}
+<div class="section  section--padding page-width section-meter-parameter">
+  <div class="product-collection product-slider-container">
+    {% if section.settings.title !=blank %}
+    <h2>
+       <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}"><span>{{ section.settings.title }}</span></motion-element>
+    </h2>
+    <div class="grid-container parameter-box">
+      {% for block in section.blocks %}
+         <div class="item">
+            <h4 class="title">{{ block.settings.title }}</h4>
+            <div class="content">{{ block.settings.content }}</div>
+         </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "meter-list",
+  "tag": "section",
+  "class": "section section-meter-list",
+  "max_blocks": 10,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "P1 Meter lezer Kenmerken"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "brand item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "参数标题"
+        },
+        {
+          "type": "richtext",
+          "id": "content1",
+          "label": "描述1"
+        },
+        {
+          "type": "richtext",
+          "id": "content2",
+          "label": "描述2"
+        },
+        {
+          "type": "richtext",
+          "id": "content3",
+          "label": "描述3"
+        },
+        {
+          "type": "richtext",
+          "id": "content4",
+          "label": "描述4"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "meter特色列表",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

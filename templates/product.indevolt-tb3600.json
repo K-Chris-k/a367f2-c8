@@ -1,0 +1,330 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badges": {
+          "type": "badges",
+          "disabled": true,
+          "settings": {
+            "show_soldout_badge": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "klaviyo_reviews_average_rating_crFAif": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/average-rating/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "taxs_GrQ8nR": {
+          "type": "taxs",
+          "settings": {
+            "title": "0% MwSt. auf PV-Sets in Deutschland",
+            "content": "Hiermit bestätigen Sie, das Sie die Voraussetzungen für eine umsatzsteuerfreie Lieferung gemäß § 12 Abs. 3 von Deutschland erfüllen.",
+            "taxs_title": "Erfahren Sie mehr.",
+            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie hier um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
+            "heading_1": "Hinweis: Bestellungen können in mehreren Paketen versendet werden.",
+            "heading_2": "<strong>Sofort ab Lager verfügbar, Versand innerhalb von 24 Stunden.</strong>"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 40,
+            "size_title": "Size",
+            "size_chart_from_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "selleasy_lb_upsell_widget_pal_4mLHkb": {
+          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-pal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+          "settings": {}
+        },
+        "logistics_pN3qrf": {
+          "type": "logistics",
+          "settings": {
+            "enable_sticky_info": true
+          }
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "name": "支付信息",
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "certificate",
+            "image_1": "shopify://shop_images/brand-icon1.svg",
+            "heading_1": "Bequem bezahlen",
+            "content_image_1": "shopify://shop_images/card.png",
+            "icon_2": "truck",
+            "image_2": "shopify://shop_images/brand-icon2.svg",
+            "content_image_2": "shopify://shop_images/track.png",
+            "heading_2": "Zuverlässige Lieferung",
+            "icon_3": "star-four",
+            "heading_3": ""
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "tag",
+            "product_list_limit": 4,
+            "products_per_page": 1,
+            "image_ratio": "adapt",
+            "enable_quick_add": true
+          }
+        }
+      },
+      "block_order": [
+        "badges",
+        "title",
+        "klaviyo_reviews_average_rating_crFAif",
+        "price",
+        "taxs_GrQ8nR",
+        "description",
+        "variant_picker",
+        "buy_buttons",
+        "selleasy_lb_upsell_widget_pal_4mLHkb",
+        "logistics_pN3qrf",
+        "icon_with_text",
+        "complementary"
+      ],
+      "custom_css": [
+        ".loox-rating {margin-top: -1rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": true,
+        "enable_product_sticky_bar": false,
+        "media_size": "medium",
+        "gallery_layout": "carousel",
+        "mobile_thumbnails": "show",
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "parameter_j49AtY": {
+      "type": "parameter",
+      "blocks": {
+        "card_bVWVPz": {
+          "type": "card",
+          "settings": {
+            "title": "Kapazität",
+            "content": "7,05 kWh",
+            "note": ""
+          }
+        },
+        "card_D9Uehr": {
+          "type": "card",
+          "settings": {
+            "title": "Chemie",
+            "content": "Lithium-Eisenphosphat (LFP)",
+            "note": ""
+          }
+        },
+        "card_GUkBCx": {
+          "type": "card",
+          "settings": {
+            "title": "Nennspannung (DC)",
+            "content": "51,2 V",
+            "note": ""
+          }
+        },
+        "card_HF4TDB": {
+          "type": "card",
+          "settings": {
+            "title": "Batteriespannungsbereich (DC)",
+            "content": "44,8 - 57,6 V",
+            "note": ""
+          }
+        },
+        "card_3kqpVc": {
+          "type": "card",
+          "settings": {
+            "title": "Maximale PV-Eingangsleistung",
+            "content": "4,0 kW (2,0 kW für jeden Kanal)",
+            "note": ""
+          }
+        },
+        "card_icNVUa": {
+          "type": "card",
+          "settings": {
+            "title": "Maximale Eingangsspannung",
+            "content": "200 V",
+            "note": ""
+          }
+        },
+        "card_kU9nid": {
+          "type": "card",
+          "settings": {
+            "title": "Betriebsspannungsbereich",
+            "content": "11 - 200 V",
+            "note": ""
+          }
+        },
+        "card_qQXa4i": {
+          "type": "card",
+          "settings": {
+            "title": "Maximaler Eingangsstrom",
+            "content": "15 A",
+            "note": ""
+          }
+        },
+        "card_C9WmFa": {
+          "type": "card",
+          "settings": {
+            "title": "MPPT-Effizienz",
+            "content": "> 99 %",
+            "note": ""
+          }
+        },
+        "card_BEYXz3": {
+          "type": "card",
+          "settings": {
+            "title": "Nennausgangsleistung",
+            "content": "3,6 kW",
+            "note": ""
+          }
+        },
+        "card_XReFW9": {
+          "type": "card",
+          "settings": {
+            "title": "Ausgangsspannung",
+            "content": "230 V",
+            "note": ""
+          }
+        },
+        "card_TTkqwa": {
+          "type": "card",
+          "settings": {
+            "title": "Ausgangsstrom",
+            "content": "15,6 A",
+            "note": ""
+          }
+        },
+        "card_ECEe7P": {
+          "type": "card",
+          "settings": {
+            "title": "Überlastkapazität",
+            "content": "3600 W < Last < 4320 W für 15 Sekunden",
+            "note": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_bVWVPz",
+        "card_D9Uehr",
+        "card_GUkBCx",
+        "card_HF4TDB",
+        "card_3kqpVc",
+        "card_icNVUa",
+        "card_kU9nid",
+        "card_qQXa4i",
+        "card_C9WmFa",
+        "card_BEYXz3",
+        "card_XReFW9",
+        "card_TTkqwa",
+        "card_ECEe7P"
+      ],
+      "name": "参数列表",
+      "settings": {
+        "title": "Technische Daten",
+        "ids": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "download_9JwNak": {
+      "type": "download",
+      "blocks": {
+        "card_JcqWKU": {
+          "type": "card",
+          "settings": {
+            "title": "Indevolt 430W Solarpanels",
+            "content": "Bedienungsanleitung",
+            "date": "2025-02-13",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Indevolt_430W_Solarpanels.pdf?v=1739413438"
+          }
+        }
+      },
+      "block_order": [
+        "card_JcqWKU"
+      ],
+      "disabled": true,
+      "name": "下载列表",
+      "settings": {
+        "title": "Downloads"
+      }
+    },
+    "17557913358ae15877": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_reviews_product_reviews_7gtVxN": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "klaviyo_reviews_product_reviews_7gtVxN"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "parameter_j49AtY",
+    "download_9JwNak",
+    "17557913358ae15877"
+  ]
+}

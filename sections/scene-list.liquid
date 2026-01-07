@@ -1,0 +1,151 @@
+{{ 'component-scene-card.css' | asset_url | stylesheet_tag }}
+<div class="section scene-section" >
+  <div class="page-width fullscreen-grid-section">
+    <div class="section__wrapper grid-container product-box">
+          {% for block in section.blocks %}
+            <div class="grid-item block-{{ forloop.index }}">
+              <div class="image-container">
+               {% if block.settings.image != blank %}
+                  {%- liquid
+                    assign image = block.settings.image
+                    assign mobile_image = block.settings.mobile_image | default: image
+                    assign image_width = image.width | at_most: 3840
+                    assign image_height = image.height | at_most: 3840
+                    assign mobile_width = mobile_image.width | at_most: 3840
+                    assign mobile_height = mobile_image.height | at_most: 3840
+                  -%}
+                  
+                  <picture>
+                    <source
+                      media="(max-width: 749px)"
+                      srcset="
+                        {{ mobile_image | img_url: '800x' }} 800w,
+                        {{ mobile_image | img_url: '1600x' }} 1600w
+                      "
+                      sizes="(max-width: 749px) 100vw"
+                      width="{{ mobile_width }}"
+                      height="{{ mobile_height }}"
+                    >
+
+                    <source
+                      media="(min-width: 750px)"
+                      srcset="
+                        {{ image | img_url: '1200x' }} 1200w,
+                        {{ image | img_url: '2400x' }} 2400w
+                      "
+                      sizes="(min-width: 750px) 100vw"
+                      width="{{ image_width }}"
+                      height="{{ image_height }}"
+                    >
+
+                    <img
+                      src="{{ image | img_url: '1200x' }}"
+                      alt="{{ block.settings.title | escape }}"
+                      class="grid-image"
+                      loading="lazy"
+                      width="{{ image_width }}"
+                      height="{{ image_height }}"
+                    >
+                  </picture>
+                {% else %}
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+              </div>
+              <div class="content-wrapper">
+                <h2 class="grid-title">{{ block.settings.title }}</h2>
+                <h4 class="grid-des">{{ block.settings.description }}</h4>
+                {% if block.settings.button_link != blank %} 
+                  <button
+                    type="button"
+                    class="btn btn--primary links"
+                  >
+                    <a href="{{ block.settings.button_link }}" class="grid-button">
+                      {{ block.settings.button_title }}
+                    </a>
+                  </button>
+                {% endif %} 
+              </div>
+            </div>
+          {% endfor %}
+       
+    </div>
+  </div>
+
+</div>
+{% schema %}
+{
+  "name": "sections.scene-list",
+  "tag": "section",
+  "class": "section section-scene-list",
+  "max_blocks": 10,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "分区标题",
+      "default": "我们的特色分区"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "scene item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image_pc"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "image_mobile"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "大标题"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "描述"
+        },
+        {
+          "type": "text",
+          "id": "button_title",
+          "label": "按钮标题"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "按钮链接"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "场景列表",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

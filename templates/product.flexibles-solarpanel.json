@@ -1,0 +1,563 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badges": {
+          "type": "badges",
+          "settings": {
+            "show_soldout_badge": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 40,
+            "size_title": "Size",
+            "size_chart_from_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "name": "支付信息",
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "certificate",
+            "image_1": "shopify:\/\/shop_images\/brand-icon1.svg",
+            "heading_1": "Bequem bezahlen",
+            "content_image_1": "shopify:\/\/shop_images\/card.png",
+            "icon_2": "truck",
+            "image_2": "shopify:\/\/shop_images\/brand-icon2.svg",
+            "content_image_2": "shopify:\/\/shop_images\/track.png",
+            "heading_2": "Zuverlässige Lieferung",
+            "icon_3": "star-four",
+            "heading_3": ""
+          }
+        },
+        "logistics_pN3qrf": {
+          "type": "logistics",
+          "settings": {
+            "enable_sticky_info": true
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "tag",
+            "product_list_limit": 4,
+            "products_per_page": 1,
+            "image_ratio": "adapt",
+            "enable_quick_add": true
+          }
+        }
+      },
+      "block_order": [
+        "badges",
+        "title",
+        "price",
+        "description",
+        "variant_picker",
+        "buy_buttons",
+        "icon_with_text",
+        "logistics_pN3qrf",
+        "complementary"
+      ],
+      "custom_css": [
+        ".loox-rating {margin-top: -1rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": true,
+        "media_size": "medium",
+        "gallery_layout": "carousel",
+        "mobile_thumbnails": "show",
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "service_info_N7Ca3j": {
+      "type": "service-info",
+      "name": "图片1",
+      "settings": {
+        "title": "",
+        "image_pc": "shopify:\/\/shop_images\/solarpanel-img1.png",
+        "image_mobile": "shopify:\/\/shop_images\/solarpanel-img-mobile1.png",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "rich_text_7jwekD": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_LH8nPE": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ultralicht en Snelle Installatie",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_nnNkAY": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_LH8nPE",
+        "text_nnNkAY"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "service_info_LNffzX": {
+      "type": "service-info",
+      "name": "图片2",
+      "settings": {
+        "title": "",
+        "image_pc": "shopify:\/\/shop_images\/solarpanel-img2_73198137-c7d2-491e-8aa4-68172f9aa445.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/solarpanel-img-mobile2.jpg",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "rich_text_HfjDkE": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_AfaKbG": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Flexibel voor verschillende oppervlakken<\/strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_cUqPqB": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Flexibele zonnepanelen die tot 213° kunnen worden gebogen. U kunt het zonnepaneel overal installeren – op ronde balkons, gebogen muren of zelfs op daken van campers.<br\/><br\/><\/p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_AfaKbG",
+        "text_cUqPqB"
+      ],
+      "name": "标题3",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "service_info_zG69Ej": {
+      "type": "service-info",
+      "name": "图片3",
+      "settings": {
+        "title": "",
+        "image_pc": "shopify:\/\/shop_images\/solarpanel-img3.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/solarpanel-img-mobile3.jpg",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "rich_text_TrYicd": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_bYYnLE": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>25% hogere zonne-omrekeningen<\/strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_KMRje9": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Flexibele zonnepanelen maken optimaal gebruik van de balkonruimte met 2 x 225W zonnepanelen om elektriciteit te genereren. De omrekeningsgraad is tot 25%, wat het zeer geschikt maakt voor thuisgebruik en onverwachte stroomuitval.<\/p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_bYYnLE",
+        "text_KMRje9"
+      ],
+      "name": "标题4",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "service_info_drq68X": {
+      "type": "service-info",
+      "name": "图片4",
+      "settings": {
+        "title": "",
+        "image_pc": "shopify:\/\/shop_images\/solarpanel-img4.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/solarpanel-img-mobile4.jpg",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "rich_text_VJ9AbJ": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_dbqnfF": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Super weerbestendig en waterdicht<\/strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_wxWMqP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Waterdicht volgens IP68, bestand tegen barre omstandigheden van -20°C tot 65°C. Garant voor de elektrische veiligheids prestaties van fotovoltaïsche modules en systemen.<br\/><br\/><\/p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_dbqnfF",
+        "text_wxWMqP"
+      ],
+      "name": "标题5",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "service_info_Q86gwp": {
+      "type": "service-info",
+      "name": "图片5",
+      "settings": {
+        "title": "",
+        "image_pc": "shopify:\/\/shop_images\/solarpanel-img5.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/solarpanel-img-mobile5.jpg",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "multicolumn_Mxt4d3": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_ppme79": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify:\/\/shop_images\/solarpanel1.jpg",
+            "image_width": "extra-large",
+            "title": "",
+            "heading_size": "h4",
+            "text": "<p>Flexibel Zonnepaneel x4<\/p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_6eYcFq": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify:\/\/shop_images\/solarpanel2.jpg",
+            "image_width": "extra-large",
+            "title": "",
+            "heading_size": "h4",
+            "text": "<p>Zonne bekabeling ×2<\/p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_6mMR7m": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify:\/\/shop_images\/solarpanel3.jpg",
+            "image_width": "extra-large",
+            "title": "",
+            "heading_size": "h4",
+            "text": "<p>Kabelbinders ×24<\/p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_kLXYPz": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify:\/\/shop_images\/solarpanel4.jpg",
+            "image_width": "extra-large",
+            "title": "",
+            "heading_size": "h4",
+            "text": "<p>Gebruikershandleiding ×1<\/p>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "column_ppme79",
+        "column_6eYcFq",
+        "column_6mMR7m",
+        "column_kLXYPz"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "heading": "Leveringsomvang",
+        "heading_size": "hd2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "column_alignment": "center",
+        "columns_desktop": 4,
+        "column_gap": "large",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "parameter_MCPY6c": {
+      "type": "parameter",
+      "blocks": {
+        "card_LYWhYC": {
+          "type": "card",
+          "settings": {
+            "title": "Nominale piekvermogen (Pmax)",
+            "content": "225W",
+            "note": ""
+          }
+        },
+        "card_8bwHK3": {
+          "type": "card",
+          "settings": {
+            "title": "Open circuitspanning (Voc)",
+            "content": "36V",
+            "note": ""
+          }
+        },
+        "card_mP8iNt": {
+          "type": "card",
+          "settings": {
+            "title": "Kortsluitstroom (Isc)",
+            "content": "6.25A",
+            "note": ""
+          }
+        },
+        "card_Fhrd9a": {
+          "type": "card",
+          "settings": {
+            "title": "Maximale vermogensspanning (Vmp)",
+            "content": "42V",
+            "note": ""
+          }
+        },
+        "card_jBnG3t": {
+          "type": "card",
+          "settings": {
+            "title": "Maximale stroom (Imp)",
+            "content": "6.51A",
+            "note": ""
+          }
+        },
+        "card_LW3bBH": {
+          "type": "card",
+          "settings": {
+            "title": "Module efficiëntie",
+            "content": "25%",
+            "note": ""
+          }
+        },
+        "card_CpiVMe": {
+          "type": "card",
+          "settings": {
+            "title": "Vermogenstolerantie",
+            "content": "±5%",
+            "note": ""
+          }
+        },
+        "card_LExhr7": {
+          "type": "card",
+          "settings": {
+            "title": "Bedrijfstemperatuur",
+            "content": "-20°C tot 65°C (-4°F tot 149°F)",
+            "note": ""
+          }
+        },
+        "card_AYH7tT": {
+          "type": "card",
+          "settings": {
+            "title": "Afmetingen (LxBxH)",
+            "content": "1159x1009x20 mm",
+            "note": ""
+          }
+        },
+        "card_PccCJd": {
+          "type": "card",
+          "settings": {
+            "title": "Gewicht",
+            "content": "4.3 kg (1 stuk)",
+            "note": ""
+          }
+        },
+        "card_ErUACg": {
+          "type": "card",
+          "settings": {
+            "title": "Achterkant kleur",
+            "content": "Zwart",
+            "note": ""
+          }
+        },
+        "card_gRyxPt": {
+          "type": "card",
+          "settings": {
+            "title": "IP-classificatie",
+            "content": "IP67",
+            "note": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_LYWhYC",
+        "card_8bwHK3",
+        "card_mP8iNt",
+        "card_Fhrd9a",
+        "card_jBnG3t",
+        "card_LW3bBH",
+        "card_CpiVMe",
+        "card_LExhr7",
+        "card_AYH7tT",
+        "card_PccCJd",
+        "card_ErUACg",
+        "card_gRyxPt"
+      ],
+      "name": "参数列表",
+      "settings": {
+        "title": "Technische Gegevens"
+      }
+    },
+    "download_8Pq6Pi": {
+      "type": "download",
+      "blocks": {
+        "card_GJawqL": {
+          "type": "card",
+          "settings": {
+            "title": "Indevolt Flexible Solar Panel (225W, 4-pack)",
+            "content": "Gebruiksaanwijzing",
+            "date": "2024-01-21",
+            "pdf_file": "https:\/\/cdn.shopify.com\/s\/files\/1\/0596\/6367\/9587\/files\/Bedienungsanleitung_Flexibles_Solarmodul_225W.pdf?v=1735892012"
+          }
+        }
+      },
+      "block_order": [
+        "card_GJawqL"
+      ],
+      "name": "下载列表",
+      "settings": {
+        "title": "Downloads"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "service_info_N7Ca3j",
+    "rich_text_7jwekD",
+    "service_info_LNffzX",
+    "rich_text_HfjDkE",
+    "service_info_zG69Ej",
+    "rich_text_TrYicd",
+    "service_info_drq68X",
+    "rich_text_VJ9AbJ",
+    "service_info_Q86gwp",
+    "multicolumn_Mxt4d3",
+    "parameter_MCPY6c",
+    "download_8Pq6Pi"
+  ]
+}

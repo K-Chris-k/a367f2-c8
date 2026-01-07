@@ -1,0 +1,115 @@
+<style>
+.section-parter-ausmain {padding-top:112px; background: #F3F3F3;}
+.section-parter-ausmain h2{ line-height:58px;font-size:46px;font-weight: 700;text-align:center}
+.section-parter-ausmain .note{margin-top:10px; line-height: 22px;font-size: 18px; color: #9C9C9C;}
+.section-parter-ausmain .note p{margin:0px; color: #9C9C9C;}
+.aus-list{margin-top:26px;text-align:center}
+.aus-list ul{display:flex;gap:4px; flex-wrap: nowrap;}
+.aus-list li{ flex: 1;line-height:43px;}
+.aus-list .tit{ background:#3250C3}
+.aus-list li .tit h2{font-size: 22px;color:#fff}
+.aus-list li .decribe1,.aus-list li .decribe3{background:#E2E2E2}
+  @media (max-width: 768px) {
+   .section-parter-ausmain {padding-top:5rem;}
+   .section-parter-ausmain h2{ line-height:29px;font-size:24px;}
+   .section-parter-ausmain .note{margin-top:0.3rem; line-height: 12px;font-size: 10px; }
+   .aus-list li .tit h2{line-height:30px;font-size: 18px;}
+  }
+</style>
+{% liquid
+    assign motion_delay = 50
+%}
+<div class="section page-width section--padding section-parter-ausmain">
+       <h2 class="titie"> {{ section.settings.title }}</h2>
+    <div class="aus-list">
+      <ul>
+        {% for block in section.blocks %}
+        <li>
+              <div class="tit">
+                <h2>{{ block.settings.title }}</h2>
+              </div>
+              <div class="decribe1">
+                {{ block.settings.description1 }}
+              </div>
+               <div class="decribe2">
+                {{ block.settings.description2 }}
+              </div>
+               <div class="decribe3">
+                {{ block.settings.description3 }}
+              </div>
+        </li>
+        {% endfor %}
+      </ul>
+      
+    </div>
+    <div class="note">{{ section.settings.note }}</div>
+</div>
+<script>
+ 
+</script>
+{% schema %}
+{
+  "name": "parter-aus",
+  "tag": "section",
+  "class": "section section-parter-aus",
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Kies Het Juiste Programma Voor U"
+    },
+    {
+      "type": "richtext",
+      "id": "note",
+      "label": "备注",
+      "default": "<p>Your description here</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "aus item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "标题"
+        },
+        {
+          "type": "text",
+          "id": "description1",
+          "label": "描述1"
+        },
+        {
+          "type": "text",
+          "id": "description2",
+          "label": "描述2"
+        },
+        {
+          "type": "text",
+          "id": "description3",
+          "label": "描述3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "合作伙伴-配件",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

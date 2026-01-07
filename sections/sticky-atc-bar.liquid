@@ -1,0 +1,1211 @@
+{%- if section.settings.visibility != 'hide' -%}
+  <link rel="stylesheet" href="{{ 'section-sticky-atc-bar.css' | asset_url }}">
+  <script src="{{ 'sticky-atc-bar.js' | asset_url }}" defer="defer"></script>
+  {%- liquid
+    assign show_dynamic_checkout_buttons = section.settings.show_dynamic_checkout_buttons
+
+    assign wrap_class = ''
+    assign visibility = section.settings.visibility
+
+    case visibility
+      when 'desktop'
+        assign wrap_class = ' hidden md:block'
+      when 'mobile'
+        assign wrap_class = ' block md:hidden'
+    endcase
+  -%}
+  <div class="sticky-atc-bar{{ wrap_class }}{% if show_dynamic_checkout_buttons %} sticky-atc-bar--with-dynamic-buttons{% endif %} page-width">
+    <sticky-atc-bar
+      class="sticky-atc-bar__inner flex items-center justify-between"
+      data-product-id="{{ product.id }}"
+      data-section="{{ section.id }}"
+      data-url="{{ product.url }}"
+    >
+      <div class="sticky-atc-bar__product hidden md:flex items-center gap-5">
+        <div class="sticky-atc-bar__product-image media-wrapper blocks-radius-sm" style="--aspect-ratio: 1">
+          {%- if product.featured_image -%}
+            {{
+              product.featured_media
+              | image_url: width: 180
+              | image_tag:
+                loading: 'lazy',
+                fetchpriority: 'low',
+                class: 'motion-reduce',
+                widths: '90, 180',
+                sizes: '90px',
+                is: 'image-lazy'
+            }}
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </div>
+        <div class="sticky-atc-bar__product-info">
+          <h3 class="sticky-atc-bar__product-title text-pcard-title text-limit-2-lines">
+            {{ product.title }}
+          </h3>
+          {% comment %} {%- render 'price', product: product, use_variant: true -%} {% endcomment %}
+        </div>
+      </div>
+      {%- assign product_form_id = 'product-form-' | append: section.id -%}
+      <div class="btn-wrapper">
+        <div class="product-price-box">
+          {%- render 'price', product: product, use_variant: true -%}
+        </div>
+        <div class="flex items-center justify-center form-box">
+          {%- form 'product',
+            product,
+            id: product_form_id,
+            class: 'sticky-atc-bar__form flex items-center justify-center md:justify-start gap-3',
+            data-type: 'add-to-cart-form',
+            is: 'product-form'
+          -%}
+            <div class="select{% if product.has_only_default_variant %} hidden{% endif %}">
+              <select
+                name="id"
+                class="sticky-atc-bar__variant-select form-control form-control--select"
+              >
+                {%- for variant in product.variants -%}
+                  {%- liquid
+                    assign selected = false
+                    if variant.id == product.selected_or_first_available_variant.id
+                      assign selected = true
+                    endif
+                  -%}
+                  <option
+                    value="{{ variant.id }}"
+                    {% if selected %}
+                      selected="true"
+                    {% endif %}
+                  >
+                    {{ variant.title }}
+                  </option>
+                {%- endfor -%}
+              </select>
+              {%- render 'icon-caret-down' -%}
+            </div>
+            {% comment %}
+              {%- if section.settings.show_quantity -%}
+                <div id="QuantitySticky-{{ section.id }}">
+                  {%- liquid
+                    assign qty_class = ''
+                    unless product.has_only_default_variant
+                      assign qty_class = 'hidden md:flex'
+                    endunless
+
+                    assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id
+                  -%}
+                  <quantity-input
+                    class="quantity {{ qty_class }}"
+                    data-section-id="{{ section.id }}"
+                    data-product-id="{{ product.id }}"
+                  >
+                    <button class="quantity__button" name="minus" type="button">
+                      <span class="visually-hidden">
+                        {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
+                      </span>
+                      {% render 'icon-minus' %}
+                    </button>
+                    <input
+                      class="quantity__input"
+                      type="number"
+                      name="quantity"
+                      id="Quantity-{{ section.id }}"
+                      data-cart-quantity="{{ cart_qty }}"
+                      step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
+                      value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                      data-quantity-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                      data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                      min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
+                      {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
+                        data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                        max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
+                      {% endif %}
+                      inputmode="numeric"
+                      autocomplete="off"
+                      form="{{ product_form_id }}"
+                    >
+                    <button class="quantity__button" name="plus" type="button">
+                      <span class="visually-hidden">
+                        {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
+                      </span>
+                      {% render 'icon-plus' %}
+                    </button>
+                  </quantity-input>
+                </div>
+              {% endif %}
+            {% endcomment %}
+            <div class="product-form__buttons flex items-center">
+              {% comment %} {{ product.price  }} {% endcomment %}
+              {%- if section.settings.show_atc_button -%}
+                <button
+                  type="submit"
+                  name="add"
+                  class="product-form__submit btn {% if show_dynamic_checkout_buttons and product.selling_plan_groups == empty %}btn--white{% else %}btn--secondary{% endif %} w-full"
+                  {% if product.selected_or_first_available_variant.available == false or product.price == 0 or product.tags contains 'Kombination'  %}
+                    disabled
+                  {% endif %}
+                >
+                  <span class="add-to-cart-btn">
+                    {%- if product.selected_or_first_available_variant.available -%}
+                      {{ 'products.product.add_to_cart' | t }}
+                    {%- else -%}
+                      {{ 'products.product.sold_out' | t }}
+                    {%- endif -%}
+                  </span>
+                  {% render 'loading-spinner' %}
+                </button>
+              {% endif %}
+              {%- if product.quantity_price_breaks_configured? != true -%}
+                {%- if show_dynamic_checkout_buttons -%}
+                  <div class="product-form__button-dynamic hidden md:block">
+                    {{ form | payment_button }}
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+            </div>
+          {%- endform -%}
+          <button
+            id="ProductSubmitButton"
+            type="button"
+            class="product-form__submit btn btn--primary w-full"
+            {% if product.selected_or_first_available_variant.available == false or product.price == 0 or product.tags contains 'Kombination'  %}
+              disabled
+            {% endif %}
+          >
+            <span class="buy-now-text">
+              {%- if product.selected_or_first_available_variant.available == false -%}
+                {{ 'products.product.sold_out' | t }}
+              {%- else -%}
+                {{ 'products.product.buy_it_now' | t }}
+              {%- endif -%}
+            </span>
+            {% render 'loading-spinner' %}
+          </button>
+        </div>
+      </div>
+    </sticky-atc-bar>
+    <script type="application/json">
+      {{ product.variants | json }}
+    </script>
+    <script>
+      // 获取赠品变体ID（如果需要）
+      if (typeof window.fetchFreeGiftVariantId === 'undefined') {
+        window.fetchFreeGiftVariantId = async (handle) => {
+          try {
+            const response = await fetch(`/products/${handle}.js`);
+            const product = await response.json();
+            return product.variants[0].id;
+          } catch (error) {
+            console.error('无法获取赠品变体ID:', error);
+            return null;
+          }
+        };
+      }
+      // 收集 Bundle 产品（主机 + 电池包 + 太阳能板）
+      function collectBundleProducts() {
+        const items = [];
+        const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
+
+        if (!bundleConfigEl) return items; // 不是 Bundle 模式
+
+        try {
+          const bundleConfig = JSON.parse(bundleConfigEl.textContent);
+          const displayMode = bundleConfig.display_mode || 'bundle_with_battery';
+
+          // 1. 主机 - 添加 Bundle 标记
+          let hostVariantId = null;
+          if (displayMode === 'multi_host') {
+            // Multi Host 模式：从表单中获取当前选中的主产品变体ID
+            const stickyBar = document.querySelector('sticky-atc-bar');
+            if (stickyBar) {
+              const variantSelect = stickyBar.querySelector('select[name="id"]');
+              const variantInput = stickyBar.querySelector('input[name="id"]');
+              hostVariantId = variantSelect?.value || variantInput?.value;
+            }
+          } else {
+            // Bundle with Battery 模式：使用配置中的固定主机变体ID
+            if (bundleConfig.host && bundleConfig.host.variant_id) {
+              hostVariantId = bundleConfig.host.variant_id;
+            }
+          }
+
+          if (hostVariantId) {
+            items.push({
+              id: parseInt(hostVariantId),
+              quantity: 1,
+              properties: {
+                _bundle_item: 'true',
+                _bundle_role: 'host',
+              },
+            });
+          }
+
+          // 2. 电池包（如果选中且 qty > 0）- 添加 Bundle 标记
+          const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
+          if (selectedBatteryBtn) {
+            const batteryVariantId = selectedBatteryBtn.dataset.variantId;
+            const qty = parseInt(selectedBatteryBtn.dataset.qty) || 0;
+
+            if (batteryVariantId && batteryVariantId.trim() !== '' && qty > 0) {
+              items.push({
+                id: parseInt(batteryVariantId),
+                quantity: 1,
+                properties: {
+                  _bundle_item: 'true',
+                  _bundle_role: 'battery',
+                },
+              });
+            }
+          }
+
+          // 3. 所有 bundle-category-grid 产品（包括太阳能板和其他产品，如果选中且 qty > 0）- 添加 Bundle 标记
+          document.querySelectorAll('.bundle-category-grid-fieldset').forEach((fieldset) => {
+            const selectedBtn = fieldset.querySelector('.bundle-category-btn.selected');
+            if (selectedBtn) {
+              const variantId = selectedBtn.dataset.variantId;
+              const qty = parseInt(selectedBtn.dataset.qty) || 0;
+
+              // 只有当 qty > 0 时才添加（"Keine" 表示不选择）
+              if (variantId && variantId.trim() !== '' && qty > 0) {
+                items.push({
+                  id: parseInt(variantId),
+                  quantity: 1,
+                  properties: {
+                    _bundle_item: 'true',
+                    _bundle_role: 'solar',
+                  },
+                });
+              }
+            }
+          });
+        } catch (e) {
+          console.error('[Bundle] 解析配置失败:', e);
+        }
+
+        return items;
+      }
+      // 排除主机
+      function collectBundleProducts2() {
+        const items = [];
+        const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
+
+        if (!bundleConfigEl) return items; // 不是 Bundle 模式
+
+        try {
+          const bundleConfig = JSON.parse(bundleConfigEl.textContent);
+          // 2. 电池包（如果选中且 qty > 0）- 添加 Bundle 标记
+          const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
+          if (selectedBatteryBtn) {
+            const batteryVariantId = selectedBatteryBtn.dataset.variantId;
+            const qty = parseInt(selectedBatteryBtn.dataset.qty) || 0;
+
+            if (batteryVariantId && batteryVariantId.trim() !== '' && qty > 0) {
+              items.push({
+                id: parseInt(batteryVariantId),
+                quantity: 1,
+                properties: {
+                  _bundle_item: 'true',
+                  _bundle_role: 'battery',
+                },
+              });
+            }
+          }
+
+          // 3. 所有 bundle-category-grid 产品（包括太阳能板和其他产品，如果选中且 qty > 0）- 添加 Bundle 标记
+          document.querySelectorAll('.bundle-category-grid-fieldset').forEach((fieldset) => {
+            const selectedBtn = fieldset.querySelector('.bundle-category-btn.selected');
+            if (selectedBtn) {
+              const variantId = selectedBtn.dataset.variantId;
+              const qty = parseInt(selectedBtn.dataset.qty) || 0;
+              console.log('variantId', variantId);
+              console.log('qty', qty);
+
+              // 只有当 qty > 0 时才添加
+              if (variantId && variantId.trim() !== '' && qty > 0) {
+                items.push({
+                  id: parseInt(variantId),
+                  quantity: 1,
+                  properties: {
+                    _bundle_item: 'true',
+                    _bundle_role: 'solar',
+                  },
+                });
+              }
+            }
+          });
+        } catch (e) {
+          console.error('[Bundle] 解析配置失败:', e);
+        }
+        return items;
+      }
+
+      // 收集Lookbook插件产品
+      function collectRecommendationProducts() {
+        const items = [];
+
+        // Lookbook 推荐商品
+        document.querySelectorAll('.lb-select-on-click[lb-selected]').forEach((card) => {
+          const variantId = card.getAttribute('lb-variant-id');
+          const qtyInput = card.querySelector('input.lb-qty-count');
+          const qty = qtyInput ? parseInt(qtyInput.value || '1', 10) : 1;
+
+          if (variantId && qty > 0) {
+            items.push({ id: parseInt(variantId), quantity: qty });
+          }
+        });
+
+        return items;
+      }
+
+      // 收集所有要添加的产品（Bundle + 推荐产品）
+      function collectAllProducts() {
+        const items = [];
+
+        // 检查是否是 Bundle 模式
+        const bundleItems = collectBundleProducts();
+        console.log('bundleItems============>', bundleItems);
+        
+        if (bundleItems.length > 0) {
+          // Bundle 模式：添加主机 + 电池包 + 太阳能板
+          items.push(...bundleItems);
+        } else {
+          // 非 Bundle 模式：添加主商品
+          const mainVariantId = document.querySelector('input[name="id"]')?.value;
+          if (mainVariantId) {
+            items.push({ id: parseInt(mainVariantId), quantity: 1 });
+          }
+        }
+
+        // 添加推荐商品
+        const recommendationItems = collectRecommendationProducts();
+        items.push(...recommendationItems);
+        return items;
+      }
+      function addToCartCollectAllProducts() {
+        const items = [];
+
+        // 检查是否是 Bundle 模式
+        const bundleItems = collectBundleProducts();
+        if (bundleItems.length > 0) {
+          // Bundle 模式：添加主机 + 电池包 + 太阳能板
+          items.push(...bundleItems);
+        } else {
+          // 非 Bundle 模式：添加主商品
+          const mainVariantId = document.querySelector('input[name="id"]')?.value;
+          if (mainVariantId) {
+            items.push({ id: parseInt(mainVariantId), quantity: 1 });
+          }
+        }
+        return items;
+      }
+      // 显示购物车抽屉并等待结账
+      function showCartDrawerAndWaitCheckout() {
+        const cartDrawer = document.querySelector('cart-drawer');
+        if (cartDrawer && typeof cartDrawer.show === 'function') {
+          cartDrawer.show();
+          const checkoutBtn = cartDrawer.querySelector('.cart-drawer__checkout-btn');
+          if (checkoutBtn) {
+            checkoutBtn.addEventListener(
+              'click',
+              () => {
+                window.location.href = '/checkout';
+              },
+              { once: true }
+            );
+          }
+        } else if (window.CartDrawer && typeof window.CartDrawer.open === 'function') {
+          window.CartDrawer.open();
+          document.addEventListener(
+            'cart-drawer:checkout',
+            () => {
+              window.location.href = '/checkout';
+            },
+            { once: true }
+          );
+        } else {
+          window.location.href = '/checkout';
+        }
+      }
+
+      // 重置所有 Bundle 选项到默认状态
+      function resetBundleSelections() {
+        console.log('[Buy it now] 重置 Bundle 选项到默认状态');
+
+        // 1. 重置电池包选项：选中 0x
+        const batteryFieldsets = document.querySelectorAll('.bundle-extension-fieldset');
+        batteryFieldsets.forEach((fieldset) => {
+          // 找到 0x 按钮并点击
+          const zeroBtn = fieldset.querySelector('.bundle-extension-btn[data-qty="0"]');
+          if (zeroBtn && !zeroBtn.classList.contains('selected')) {
+            zeroBtn.click();
+            console.log('[Buy it now] 重置电池包到 0x');
+          }
+        });
+
+        // 2. 重置太阳能板选项：选中 Keine（支架会自动跟随太阳能板的数量联动）
+        const solarFieldsets = document.querySelectorAll(
+          '.bundle-category-grid-fieldset[data-is-solar-product="true"]'
+        );
+        solarFieldsets.forEach((fieldset) => {
+          // 找到 Keine 按钮并点击
+          const keineBtn = fieldset.querySelector('.bundle-keine-btn');
+          if (keineBtn && !keineBtn.classList.contains('selected')) {
+            keineBtn.click();
+            console.log('[Buy it now] 重置太阳能板到 Keine（支架将自动联动）');
+          }
+        });
+
+        // 3. 恢复主产品原始图片
+        if (window.restoreMainProductImage) {
+          window.restoreMainProductImage();
+        }
+
+        // 4. 移除所有叠加图片（太阳能板和支架）
+        if (window.removeOverlayImageFromMainProduct) {
+          window.removeOverlayImageFromMainProduct('solar');
+          window.removeOverlayImageFromMainProduct('mount');
+        }
+      }
+
+      // 立即购买按钮（Buy it now）- 清空购物车后添加所有产品并跳转结账
+      // TODO: 点击加购只会加上太阳能板，不会加上主机和电池包    Multi Host 模式下  要把住产品也加上
+      async function handleBuyItNow() {
+        console.log('[Buy it now] 点击立即购买');
+        const buyBtnLoading = document.querySelector('#ProductSubmitButton').querySelector('.loading__spinner');
+        const buyBtnText = document.querySelector('#ProductSubmitButton').querySelector('.buy-now-text');
+        buyBtnText.style = 'display : none;';
+        buyBtnLoading.style = 'opacity : 1 ; display : block;';
+        // 设置全局标记，阻止 Add to Cart 监听器执行
+
+        const items = collectAllProducts();
+
+        try {
+          // 清空购物车
+          await fetch('/cart/clear.js', { method: 'POST' });
+
+          // 添加商品
+          const addResponse = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ items }),
+          });
+
+          if (!addResponse.ok) {
+            throw new Error('添加商品失败');
+          }
+
+          // 等待购物车数据更新完成
+          await fetch('/cart.js');
+
+          // 触发购物车刷新事件
+          document.dispatchEvent(new CustomEvent('cart:refresh'));
+
+          // 等待购物车UI渲染完成
+          await new Promise((resolve) => setTimeout(resolve, 300));
+
+          // 检查是否有赠品应用（需要用户选择赠品）
+          const isGiftCheck = document.querySelector('.koala-element--app-block');
+          if (isGiftCheck) {
+            // 有赠品应用，显示购物车让用户选择赠品
+            showCartDrawerAndWaitCheckout();
+          } else {
+            // 没有赠品，直接跳转结账
+            window.location.href = '/checkout';
+          }
+        } catch (error) {
+          console.error('[Buy it now] 操作失败:', error);
+          alert('添加到购物车失败，请重试');
+        } finally {
+          buyBtnText.style = 'display : block;';
+          buyBtnLoading.style = 'opacity : 0 ; display : none;';
+          // 清空选项 恢复默认选项  0x Keine
+          // 重置所有 Bundle 选项到默认状态
+          resetBundleSelections();
+        }
+      }
+      // 监听购物车添加事件，自动添加 Bundle 产品
+      (function initBundleCartHandler() {
+        let isProcessingBundle = false;
+        let previousCartItemCount = 0;
+
+        // 初始化：获取当前购物车数量
+        (async function initCartCount() {
+          try {
+            const cartResponse = await fetch('/cart.js');
+            const cart = await cartResponse.json();
+            previousCartItemCount = cart.item_count;
+            console.log('[Bundle Handler] 初始购物车数量:', previousCartItemCount);
+          } catch (error) {
+            console.error('[Bundle Handler] 初始化失败:', error);
+          }
+        })();
+
+        // 监听购物车更新事件
+        document.addEventListener('cart:updated', handleCartUpdate);
+        document.addEventListener('cart:refresh', handleCartUpdate);
+
+        async function handleCartUpdate(e) {
+          if (isProcessingBundle) {
+            console.log('[Bundle Handler] 正在处理中，跳过');
+            return;
+          }
+
+          // 检查是否是 Bundle 模式
+          const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
+          if (!bundleConfigEl) return;
+
+          try {
+            // 获取当前购物车内容
+            const cartResponse = await fetch('/cart.js');
+            const cart = await cartResponse.json();
+            const currentCartItemCount = cart.item_count;
+
+            console.log('[Bundle Handler] 购物车数量变化:', previousCartItemCount, '->', currentCartItemCount);
+
+            // 只在购物车数量增加时才处理（排除删除和刷新的情况）
+            if (currentCartItemCount <= previousCartItemCount) {
+              console.log('[Bundle Handler] 购物车数量未增加，跳过处理');
+              previousCartItemCount = currentCartItemCount;
+              return;
+            }
+
+            // 检查是否有主机产品在购物车中（判断是否刚添加了主产品）
+            const bundleConfig = JSON.parse(bundleConfigEl.textContent);
+            const displayMode = bundleConfig.display_mode || 'bundle_with_battery';
+            
+            let hasHostProduct = false;
+            if (displayMode === 'multi_host') {
+              // Multi Host 模式：从表单中获取当前选中的主产品变体ID
+              const stickyBar = document.querySelector('sticky-atc-bar');
+              if (stickyBar) {
+                const variantSelect = stickyBar.querySelector('select[name="id"]');
+                const variantInput = stickyBar.querySelector('input[name="id"]');
+                const mainVariantId = variantSelect?.value || variantInput?.value;
+                if (mainVariantId) {
+                  hasHostProduct = cart.items.some(
+                    (item) => item.variant_id === parseInt(mainVariantId)
+                  );
+                }
+              }
+            } else {
+              // Bundle with Battery 模式：使用配置中的固定主机变体ID
+              if (bundleConfig.host && bundleConfig.host.variant_id) {
+                hasHostProduct = cart.items.some(
+                  (item) => item.variant_id === parseInt(bundleConfig.host.variant_id)
+                );
+              }
+            }
+
+            if (!hasHostProduct) {
+              console.log('[Bundle Handler] 购物车中没有主机产品，跳过处理');
+              previousCartItemCount = currentCartItemCount;
+              return;
+            }
+
+            isProcessingBundle = true;
+            console.log('[Bundle Handler] 购物车增加，检查 Bundle 产品');
+
+            // 获取应该添加的 Bundle 产品（排除主机，因为主机已通过表单提交） 
+            const bundleItems = collectBundleProducts2();
+
+            // 找出缺失的产品（不在购物车中的）
+            const missingItems = bundleItems.filter((bundleItem) => {
+              return !cart.items.some(
+                (cartItem) => cartItem.variant_id === bundleItem.id && cartItem.properties?._bundle_item === 'true'
+              );
+            });
+
+            if (missingItems.length > 0) {
+              console.log('[Bundle Handler] 添加缺失的 Bundle 产品:', missingItems);
+
+              await fetch('/cart/add.js', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ items: missingItems }),
+              });
+
+              // 等待购物车更新完成，然后获取最新的购物车数量
+              await new Promise(resolve => setTimeout(resolve, 300));
+              
+              try {
+                const updatedCartResponse = await fetch('/cart.js');
+                const updatedCart = await updatedCartResponse.json();
+                previousCartItemCount = updatedCart.item_count;
+                console.log('[Bundle Handler] 更新后的购物车数量:', previousCartItemCount);
+              } catch (error) {
+                console.error('[Bundle Handler] 获取更新后的购物车失败:', error);
+                previousCartItemCount = currentCartItemCount + missingItems.length;
+              }
+
+              // 触发购物车刷新
+              setTimeout(() => {
+                document.dispatchEvent(new CustomEvent('cart:refresh'));
+              }, 100);
+            } else {
+              // 没有缺失产品，直接更新数量
+              previousCartItemCount = currentCartItemCount;
+            }
+          } catch (error) {
+            console.error('[Bundle Handler] 错误:', error);
+          } finally {
+            setTimeout(() => {
+              isProcessingBundle = false;
+            }, 1000);
+          }
+        }
+
+        console.log('[Bundle Handler] 已初始化购物车事件监听');
+      })();
+
+      // (function initAddToCart() {
+      //   const addToCartBtn = document.querySelector('.sticky-atc-bar__form button[type="submit"][name="add"]');
+      //   const addToCartBtnText = addToCartBtn.querySelector('.add-to-cart-btn');
+      //   if (!addToCartBtn) {
+      //     console.warn('[Sticky Bar] 找不到 Add to Cart 按钮');
+      //     return;
+      //   }
+      //   // addToCartBtn.addEventListener(
+      //   //   'click',
+      //   //   async function (e) {
+      //   //     console.log('=== Add to Cart 点击事件触发 ===');
+      //   //     e.preventDefault();
+      //   //     e.stopPropagation();
+      //   //     e.stopImmediatePropagation();
+      //   //     // 检查是否是 Bundle 模式
+      //   //     const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
+      //   //     if (!bundleConfigEl) {
+      //   //       console.log('[Sticky Bar] 非 Bundle 模式，使用默认提交');
+      //   //       return; // 让表单正常提交
+      //   //     }
+      //   //     console.log('[Sticky Bar] Bundle 模式，开始添加产品');
+
+      //   //     try {
+      //   //       const items = addToCartCollectAllProducts();
+
+      //   //       if (items.length === 0) {
+      //   //         console.warn('[Sticky Bar] 没有产品可添加');
+      //   //         return;
+      //   //       }
+
+      //   //       console.log('[Sticky Bar] 收集到的产品:', items);
+
+      //   //       // 添加商品到购物车
+      //   //       const response = await fetch('/cart/add.js', {
+      //   //         method: 'POST',
+      //   //         headers: { 'Content-Type': 'application/json' },
+      //   //         body: JSON.stringify({ items }),
+      //   //       });
+
+      //   //       if (response.ok) {
+      //   //         console.log('[Sticky Bar] Bundle 产品添加成功');
+
+      //   //         // 触发购物车更新
+      //   //         document.dispatchEvent(new CustomEvent('cart:refresh'));
+
+      //   //         // 显示购物车抽屉
+      //   //         setTimeout(() => {
+      //   //           const cartDrawer = document.querySelector('cart-drawer');
+      //   //           if (cartDrawer && typeof cartDrawer.show === 'function') {
+      //   //             cartDrawer.show();
+      //   //           }
+      //   //         }, 100);
+      //   //       } else {
+      //   //         console.error('[Sticky Bar] 添加失败:', await response.text());
+      //   //       }
+      //   //     } catch (error) {
+      //   //       console.error('[Sticky Bar] 添加出错:', error);
+      //   //     }
+
+      //   //   },
+      //   //   true
+      //   // ); // 使用捕获阶段，优先执行
+
+      //   console.log('[Sticky Bar] Add to Cart 按钮已绑定');
+      // })();
+      // 绑定立即购买按钮（只绑定一次，防止重复）
+      (function initBuyItNowButton() {
+        const buyNowBtn = document.querySelector('#ProductSubmitButton');
+        if (buyNowBtn && !buyNowBtn._buyNowHandlerBound) {
+          buyNowBtn.addEventListener('click', handleBuyItNow);
+          buyNowBtn._buyNowHandlerBound = true;
+          console.log('[Sticky Bar] Buy it now 按钮已绑定');
+        }
+      })();
+    </script>
+  </div>
+
+  <!-- 推荐产品专用的 Sticky ATC Bar -->
+  <div
+    class="sticky-atc-bar sticky-atc-bar-recommendation{{ wrap_class }}{% if show_dynamic_checkout_buttons %} sticky-atc-bar--with-dynamic-buttons{% endif %} page-width"
+    style="display: none;"
+  >
+    <div class="sticky-atc-bar__inner flex items-center justify-between">
+      <div class="sticky-atc-bar__product hidden md:flex items-center gap-5">
+        <div class="sticky-atc-bar__product-image media-wrapper blocks-radius-sm" style="--aspect-ratio: 1">
+          <img src="" alt="" loading="lazy" class="motion-reduce">
+        </div>
+        <div class="sticky-atc-bar__product-info">
+          <h3 class="sticky-atc-bar__product-title text-pcard-title text-limit-2-lines"></h3>
+        </div>
+      </div>
+      <div class="btn-wrapper">
+        <div class="product-price-box">
+          <div class="f-price">
+            <div class="f-price__regular">
+              <span class="visually-hidden visually-hidden--inline">
+                {{- 'products.product.price.regular_price' | t -}}
+              </span>
+              <span class="f-price-item f-price-item--regular"></span>
+            </div>
+            <div class="f-price__sale" style="display: none;">
+              <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.sale_price' | t }}</span>
+              <span class="f-price-item f-price-item--sale"></span>
+              <span class="visually-hidden visually-hidden--inline">
+                {{- 'products.product.price.regular_price' | t -}}
+              </span>
+              <span class="f-price-item f-price-item--regular"><s></s></span>
+            </div>
+          </div>
+        </div>
+        <div class="flex items-center justify-center form-box">
+          {%- assign recommendation_form_id = 'recommendation-product-form-' | append: section.id -%}
+          {%- form 'product',
+            product,
+            id: recommendation_form_id,
+            class: 'sticky-atc-bar__form flex items-center justify-center md:justify-start gap-3',
+            data-type: 'add-to-cart-form',
+            is: 'product-form'
+          -%}
+            <input
+              type="hidden"
+              name="id"
+              class="recommendation-variant-input"
+              value="{{ product.selected_or_first_available_variant.id }}"
+            >
+
+            <div class="product-form__buttons flex items-center">
+              {%- if section.settings.show_atc_button -%}
+                <button
+                  type="submit"
+                  name="add"
+                  class="product-form__submit btn {% if show_dynamic_checkout_buttons and product.selling_plan_groups == empty %}btn--white{% else %}btn--secondary{% endif %} w-full"
+                >
+                  <span>{{ 'products.product.add_to_cart' | t }}</span>
+                  {% render 'loading-spinner' %}
+                </button>
+              {% endif %}
+            </div>
+          {%- endform -%}
+          <button
+            type="button"
+            class="recommendation-buy-now-btn product-form__submit btn btn--primary w-full"
+          >
+            <span>{{ 'products.product.buy_it_now' | t }}</span>
+            {% render 'loading-spinner' %}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const mainStickyBar = document.querySelector('.sticky-atc-bar');
+      const recommendationStickyBar = document.querySelector('.sticky-atc-bar-recommendation');
+      let currentRecommendation = null;
+
+      // 监听标签页切换
+      document.addEventListener('tab:change', (e) => {
+        console.log('[推荐产品 Sticky Bar] 标签页切换到:', e.detail.activeTab);
+
+        if (e.detail.activeTab === 'empfehlung') {
+          // 切换到推荐产品标签页，获取当前选中的推荐产品
+          if (window.getSelectedRecommendation) {
+            currentRecommendation = window.getSelectedRecommendation();
+            if (currentRecommendation) {
+              updateRecommendationStickyBar(currentRecommendation);
+              showRecommendationBar();
+            } else {
+              hideRecommendationBar();
+            }
+          }
+        } else {
+          // 切换到主产品标签页，显示主产品的 sticky bar
+          hideRecommendationBar();
+        }
+      });
+
+      // 监听推荐产品变化
+      document.addEventListener('recommendation:change', (e) => {
+        console.log('[推荐产品 Sticky Bar] 推荐产品变化:', e.detail);
+        currentRecommendation = e.detail.recommendation;
+
+        // 检查当前是否在推荐产品标签页
+        const activeTab = document.querySelector('.variant-picker-tab.active');
+        if (activeTab && activeTab.dataset.tab === 'empfehlung') {
+          if (currentRecommendation) {
+            updateRecommendationStickyBar(currentRecommendation);
+            showRecommendationBar();
+          } else {
+            hideRecommendationBar();
+          }
+        }
+      });
+
+      // 监听所有 bundle-category-grid 产品变化事件（包括太阳能板和其他产品）
+      document.addEventListener('bundle:solar:change', (e) => {
+        console.log('[推荐产品 Sticky Bar] Bundle category grid 产品变化:', e.detail);
+
+        // 检查当前是否在推荐产品标签页
+        const activeTab = document.querySelector('.variant-picker-tab.active');
+        if (activeTab && activeTab.dataset.tab === 'empfehlung' && currentRecommendation) {
+          // 延迟更新，确保 DOM 已更新
+          setTimeout(() => {
+            updateRecommendationStickyBar(currentRecommendation);
+          }, 50);
+        }
+      });
+
+      // 监听 Lookbook 产品选择变化
+      function initLookbookListener() {
+        const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
+        if (!productInfo) return;
+
+        // 使用 MutationObserver 监听 Lookbook 卡片选中状态的变化
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'lb-selected') {
+              // 检查当前是否在推荐产品标签页
+              const activeTab = document.querySelector('.variant-picker-tab.active');
+              if (activeTab && activeTab.dataset.tab === 'empfehlung' && currentRecommendation) {
+                // 延迟更新，确保 DOM 已更新
+                setTimeout(() => {
+                  updateRecommendationStickyBar(currentRecommendation);
+                }, 50);
+              }
+            }
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+              const target = mutation.target;
+              if (target.classList.contains('lb-select-on-click')) {
+                const wasSelected = mutation.oldValue?.includes('selected');
+                const isSelected = target.classList.contains('selected');
+                if (wasSelected !== isSelected) {
+                  // 检查当前是否在推荐产品标签页
+                  const activeTab = document.querySelector('.variant-picker-tab.active');
+                  if (activeTab && activeTab.dataset.tab === 'empfehlung' && currentRecommendation) {
+                    setTimeout(() => {
+                      updateRecommendationStickyBar(currentRecommendation);
+                    }, 50);
+                  }
+                }
+              }
+            }
+          });
+        });
+
+        // 观察所有 Lookbook 卡片
+        const observeLookbookCards = () => {
+          document.querySelectorAll('.lb-select-on-click').forEach((card) => {
+            observer.observe(card, {
+              attributes: true,
+              attributeOldValue: true,
+              attributeFilter: ['lb-selected', 'class'],
+            });
+          });
+        };
+
+        // 初始观察
+        observeLookbookCards();
+
+        // 当 DOM 变化时重新观察（处理动态添加的卡片）
+        const contentObserver = new MutationObserver(() => {
+          observeLookbookCards();
+        });
+        contentObserver.observe(productInfo, {
+          childList: true,
+          subtree: true,
+        });
+
+        // 监听 Lookbook 数量变化
+        productInfo.addEventListener('input', (e) => {
+          if (e.target.classList.contains('lb-qty-count')) {
+            const activeTab = document.querySelector('.variant-picker-tab.active');
+            if (activeTab && activeTab.dataset.tab === 'empfehlung' && currentRecommendation) {
+              setTimeout(() => {
+                updateRecommendationStickyBar(currentRecommendation);
+              }, 50);
+            }
+          }
+        });
+
+        productInfo.addEventListener('click', (e) => {
+          if (e.target.closest('.lb-qty-add, .lb-qty-remove')) {
+            const activeTab = document.querySelector('.variant-picker-tab.active');
+            if (activeTab && activeTab.dataset.tab === 'empfehlung' && currentRecommendation) {
+              setTimeout(() => {
+                updateRecommendationStickyBar(currentRecommendation);
+              }, 100);
+            }
+          }
+        });
+      }
+
+      // 初始化 Lookbook 监听器
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLookbookListener);
+      } else {
+        initLookbookListener();
+      }
+
+      function updateRecommendationStickyBar(recommendation) {
+        if (!recommendation) return;
+
+        console.log('[推荐产品 Sticky Bar] 更新显示:', recommendation);
+
+        // 更新图片
+        const img = recommendationStickyBar.querySelector('.sticky-atc-bar__product-image img');
+        if (img && recommendation.imageUrl) {
+          img.src = recommendation.imageUrl;
+          img.alt = recommendation.title;
+        }
+
+        // 更新标题
+        const title = recommendationStickyBar.querySelector('.sticky-atc-bar__product-title');
+        if (title && recommendation.title) {
+          title.textContent = recommendation.title;
+        }
+
+        // 计算总价格：原价格 + Lookbook 选中产品价格
+        let totalPriceInCents = recommendation.priceInCents || 0;
+        let totalCompareAtPriceInCents = recommendation.compareAtPriceInCents || 0;
+
+        // 解析欧元价格（支持 "1.234,56 €" 格式）
+        function parseEuroPrice(priceStr) {
+          if (!priceStr) return 0;
+          return (
+            parseFloat(
+              priceStr
+                .toString()
+                .replace(/[^\d,]/g, '')
+                .replace(',', '.')
+            ) || 0
+          );
+        }
+
+        // 累加 Lookbook 选中产品价格
+        document.querySelectorAll('.lb-select-on-click[lb-selected]').forEach((card) => {
+          const priceEl = card.querySelector('.lb-price-sale-price');
+          if (priceEl) {
+            const priceInEuros = parseEuroPrice(priceEl.textContent.trim());
+            const priceInCents = Math.round(priceInEuros * 100);
+            const qtyInput = card.querySelector('input.lb-qty-count');
+            const qty = qtyInput ? parseInt(qtyInput.value || '1', 10) : 1;
+            totalPriceInCents += priceInCents * qty;
+          }
+
+          // 累加对比价格
+          const comparePriceEl = card.querySelector('.lb-price-regular-price');
+          if (comparePriceEl) {
+            const priceInEuros = parseEuroPrice(comparePriceEl.textContent.trim());
+            const priceInCents = Math.round(priceInEuros * 100);
+            const qtyInput = card.querySelector('input.lb-qty-count');
+            const qty = qtyInput ? parseInt(qtyInput.value || '1', 10) : 1;
+            totalCompareAtPriceInCents += priceInCents * qty;
+          } else if (priceEl) {
+            // 如果没有对比价格，使用销售价格作为对比价格
+            const priceInEuros = parseEuroPrice(priceEl.textContent.trim());
+            const priceInCents = Math.round(priceInEuros * 100);
+            const qtyInput = card.querySelector('input.lb-qty-count');
+            const qty = qtyInput ? parseInt(qtyInput.value || '1', 10) : 1;
+            totalCompareAtPriceInCents += priceInCents * qty;
+          }
+        });
+
+        // 累加所有 bundle-category-grid 产品的价格（包括太阳能板和其他产品）
+        document.querySelectorAll('.bundle-category-grid-fieldset').forEach((fieldset) => {
+          const selectedBtn = fieldset.querySelector('.bundle-category-btn.selected');
+          if (selectedBtn) {
+            const price = selectedBtn.dataset.price;
+            const qty = parseInt(selectedBtn.dataset.qty) || 0;
+
+            // 只有当 qty > 0 时才累加价格（"Keine" 表示不选择，价格为 0）
+            if (price && qty > 0) {
+              const priceInCents = parseInt(price) || 0;
+              totalPriceInCents += priceInCents;
+              // Bundle category grid 产品通常没有对比价格，使用相同价格
+              totalCompareAtPriceInCents += priceInCents;
+            }
+          }
+        });
+
+        const moneyFormat = FoxTheme.settings.moneyFormat;
+
+        const priceWrapper = recommendationStickyBar.querySelector('.f-price');
+        const regularWrapper = recommendationStickyBar.querySelector('.f-price__regular');
+        const saleWrapper = recommendationStickyBar.querySelector('.f-price__sale');
+        const regularPrice = regularWrapper.querySelector('.f-price-item--regular');
+        const salePrice = saleWrapper.querySelector('.f-price-item--sale');
+        const comparePriceInSale = saleWrapper.querySelectorAll('.f-price-item--regular s')[0];
+
+        if (totalCompareAtPriceInCents && totalCompareAtPriceInCents > totalPriceInCents) {
+          // 有折扣
+          priceWrapper.classList.add('f-price--on-sale');
+          regularWrapper.style.display = 'none';
+          saleWrapper.style.display = 'flex';
+
+          if (salePrice) {
+            salePrice.textContent = FoxTheme.Currency.formatMoney(totalPriceInCents, moneyFormat);
+          }
+          if (comparePriceInSale) {
+            comparePriceInSale.textContent = FoxTheme.Currency.formatMoney(totalCompareAtPriceInCents, moneyFormat);
+          }
+        } else {
+          // 无折扣
+          priceWrapper.classList.remove('f-price--on-sale');
+          regularWrapper.style.display = 'flex';
+          saleWrapper.style.display = 'none';
+
+          if (regularPrice) {
+            regularPrice.textContent = FoxTheme.Currency.formatMoney(totalPriceInCents, moneyFormat);
+          }
+        }
+
+        // 更新表单中的变体 ID
+        const variantInput = recommendationStickyBar.querySelector('.recommendation-variant-input');
+        if (variantInput) {
+          variantInput.value = recommendation.variantId;
+        }
+
+        // 保存当前推荐产品数据到立即购买按钮
+        const buyNowBtn = recommendationStickyBar.querySelector('.recommendation-buy-now-btn');
+        if (buyNowBtn) {
+          buyNowBtn.dataset.variantId = recommendation.variantId;
+          buyNowBtn.dataset.productId = recommendation.productId;
+        }
+      }
+
+      function showRecommendationBar() {
+        if (mainStickyBar) {
+          mainStickyBar.style.display = 'none';
+          mainStickyBar.classList.remove('sticky-atc-bar--show');
+        }
+        if (recommendationStickyBar) {
+          recommendationStickyBar.style.display = 'block';
+          // 添加显示类，让它能正确显示
+          setTimeout(() => {
+            recommendationStickyBar.classList.add('sticky-atc-bar--show');
+          }, 10);
+        }
+        console.log('[推荐产品 Sticky Bar] 显示推荐产品栏');
+      }
+      function hideRecommendationBar() {
+        if (recommendationStickyBar) {
+          recommendationStickyBar.style.display = 'none';
+          recommendationStickyBar.classList.remove('sticky-atc-bar--show');
+        }
+
+        // 获取当前激活的 tab
+        const activeTab = document.querySelector('.variant-picker-tab.active');
+        const isEmpfehlungTab = activeTab && activeTab.dataset.tab === 'empfehlung';
+
+        // 只有当主 sticky bar 存在，并且当前不是 Empfehlung 标签页时，才恢复显示
+        if (mainStickyBar && !isEmpfehlungTab) {
+          mainStickyBar.style.display = 'block';
+          // 恢复主产品栏的显示状态
+          setTimeout(() => {
+            mainStickyBar.classList.add('sticky-atc-bar--show');
+          }, 10);
+        }
+        console.log('[推荐产品 Sticky Bar] 隐藏推荐产品栏');
+      }
+
+      // 立即购买按钮点击事件
+      const buyNowBtn = recommendationStickyBar.querySelector('.recommendation-buy-now-btn');
+      if (buyNowBtn) {
+        buyNowBtn.addEventListener('click', function (event) {
+          event.preventDefault();
+
+          const variantId = this.dataset.variantId;
+          if (!variantId) return;
+
+          console.log('[推荐产品 Sticky Bar] 立即购买:', variantId);
+
+          // 使用和主产品相同的逻辑：直接跳转到购物车页面
+          const baseUrl = '/cart/';
+          const cartQuery = variantId + ':1'; // variantId:quantity
+          window.location.href = baseUrl + cartQuery;
+        });
+      }
+    })();
+  </script>
+{%- endif -%}
+{% schema %}
+{
+  "name": "t:sections.sticky-atc-bar.name",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "[Read How-to](https://foxecom.link/MdDIC1D)"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "options": [
+        {
+          "value": "fixed",
+          "label": "t:sections.all.container.options__fixed.label"
+        },
+        {
+          "value": "full",
+          "label": "t:sections.all.container.options__full.label"
+        }
+      ],
+      "default": "full",
+      "label": "t:sections.all.container.label"
+    },
+    {
+      "type": "select",
+      "id": "visibility",
+      "label": "t:sections.sticky-atc-bar.settings.visibility.label",
+      "options": [
+        {
+          "value": "all",
+          "label": "t:sections.sticky-atc-bar.settings.visibility.options__1.label"
+        },
+        {
+          "value": "desktop",
+          "label": "t:sections.sticky-atc-bar.settings.visibility.options__2.label"
+        },
+        {
+          "value": "mobile",
+          "label": "t:sections.sticky-atc-bar.settings.visibility.options__3.label"
+        },
+        {
+          "value": "hide",
+          "label": "t:sections.sticky-atc-bar.settings.visibility.options__4.label"
+        }
+      ],
+      "default": "all"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_atc_button",
+      "label": "t:sections.sticky-atc-bar.settings.show_atc_button.label",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_dynamic_checkout_buttons",
+      "label": "t:sections.sticky-atc-bar.settings.show_dynamic_checkout_buttons.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_quantity",
+      "label": "t:sections.sticky-atc-bar.settings.show_quantity.label",
+      "default": true
+    }
+  ]
+}
+{% endschema %}

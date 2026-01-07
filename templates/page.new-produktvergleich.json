@@ -1,0 +1,433 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "compare_product_F9rCxH": {
+      "type": "compare-product",
+      "blocks": {
+        "products_N3tHXm": {
+          "type": "products",
+          "settings": {
+            "image": "shopify://shop_images/Produktvergleich-1600.png",
+            "title": "BK1600",
+            "link_title": "<p>Mehr erfahren</p>",
+            "link_url": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher"
+          }
+        },
+        "products_y9cQNb": {
+          "type": "products",
+          "settings": {
+            "image": "shopify://shop_images/Produktvergleich-Ultra.png",
+            "title": "BK1600 Ultra",
+            "link_title": "<p>Mehr erfahren</p>",
+            "link_url": "https://de.indevolt.com/products/indevolt-bk1600-ultra"
+          }
+        },
+        "products_GAwMCc": {
+          "type": "products",
+          "settings": {
+            "image": "shopify://shop_images/Produktvergleich-SF2000.png",
+            "title": "SolidFlex 2000",
+            "link_title": "<p>Mehr erfahren</p>",
+            "link_url": "https://de.indevolt.com/products/indevolt-sf2000"
+          }
+        },
+        "products_hNUQmh": {
+          "type": "products",
+          "settings": {
+            "image": "shopify://shop_images/Produktvergleich-PF2000.png",
+            "title": "PowerFlex 2000",
+            "link_title": "<p>Mehr erfahren</p>",
+            "link_url": "https://de.indevolt.com/products/powerflex-2000-balkonkraftwerk-mit-speicher"
+          }
+        },
+        "product_details_awm8GW": {
+          "type": "product_details",
+          "settings": {
+            "title": "Kapazität",
+            "content1": "<p>1636 Wh</p>",
+            "content2": "<p>1636 Wh<br/>(erweiterbar auf 4,9 kWh)</p>",
+            "content3": "<p>1,8 kWh<br/>(erweiterbar auf 10,8 kWh)</p>",
+            "content4": "<p>2 kWh<br/>(erweiterbar auf 12 kWh)</p>"
+          }
+        },
+        "product_details_xiWtCX": {
+          "type": "product_details",
+          "settings": {
+            "title": "Anzahl der parallelen Erweiterungen",
+            "content1": "<p>3 Gruppen</p>",
+            "content2": "<p>3 Gruppen</p>",
+            "content3": "<p>3 Gruppen</p>",
+            "content4": "<p>3 Gruppen</p>"
+          }
+        },
+        "product_details_Qpa6Cd": {
+          "type": "product_details",
+          "settings": {
+            "title": "Kapazität der parallelen Erweiterungen",
+            "content1": "<p>4908 Wh</p>",
+            "content2": "<p>4908 Wh</p>",
+            "content3": "<p>32,4 kWh</p>",
+            "content4": "<p>36 kWh </p>"
+          }
+        },
+        "product_details_UFxQwb": {
+          "type": "product_details",
+          "settings": {
+            "title": "Akkutyp",
+            "content1": "<p>LiFePO₄</p>",
+            "content2": "<p>LiFePO₄</p>",
+            "content3": "<p>Halbfeste LiFePO₄</p>",
+            "content4": "<p>LiFePO₄</p>"
+          }
+        },
+        "product_details_qpxxEc": {
+          "type": "product_details",
+          "settings": {
+            "title": "Lebenszyklen",
+            "content1": "<p>6000</p>",
+            "content2": "<p>6000</p>",
+            "content3": "<p>8000</p>",
+            "content4": "<p>7000</p>"
+          }
+        },
+        "product_details_WEhCHW": {
+          "type": "product_details",
+          "settings": {
+            "title": "Maximaler Ladestrom",
+            "content1": "<p>32A</p>",
+            "content2": "<p>32A</p>",
+            "content3": "<p>140A</p>",
+            "content4": "<p>140A</p>"
+          }
+        },
+        "product_details_MPr4Qg": {
+          "type": "product_details",
+          "settings": {
+            "title": "Maximaler Entladestrom",
+            "content1": "<p>46A</p>",
+            "content2": "<p>46A</p>",
+            "content3": "<p>154A</p>",
+            "content4": "<p>154A</p>"
+          }
+        },
+        "product_details_H9EHkg": {
+          "type": "product_details",
+          "settings": {
+            "title": "Eingangsleistung",
+            "content1": "<p>1200W (je 600W)</p>",
+            "content2": "<p>1200W (je 600W)</p>",
+            "content3": "<p>2400W（je 600w）</p>",
+            "content4": "<p>2400W（je 600w）</p>"
+          }
+        },
+        "product_details_QJHhBK": {
+          "type": "product_details",
+          "settings": {
+            "title": "MPPT Spannungsbereich",
+            "content1": "<p>10-60V DC</p>",
+            "content2": "<p>10-60V DC</p>",
+            "content3": "<p>10-60V DC</p>",
+            "content4": "<p>10-60V DC</p>"
+          }
+        },
+        "product_details_Gw34UQ": {
+          "type": "product_details",
+          "settings": {
+            "title": "Anzahl der MPPTS",
+            "content1": "<p>2</p>",
+            "content2": "<p>2</p>",
+            "content3": "<p>4</p>",
+            "content4": "<p>4</p>"
+          }
+        },
+        "product_details_7dYKpe": {
+          "type": "product_details",
+          "settings": {
+            "title": "AC-Eingangs-/Ausgangsleistung",
+            "content1": "<p>1200W / 800W</p>",
+            "content2": "<p>1200W / 800W</p>",
+            "content3": "<p>2400W(mit Erweiterungsakkus)</p>",
+            "content4": "<p>2400W(mit Erweiterungsakkus)</p>"
+          }
+        },
+        "product_details_4xJkQA": {
+          "type": "product_details",
+          "settings": {
+            "title": "Maximaler AC-Strom",
+            "content1": "<p>5,3A</p>",
+            "content2": "<p>5,3A</p>",
+            "content3": "<p>10,4A</p>",
+            "content4": "<p>10,4A</p>"
+          }
+        },
+        "product_details_ppMXTb": {
+          "type": "product_details",
+          "settings": {
+            "title": "AC-Eingangs-/Ausgangsleistung",
+            "content1": "<p>1200W</p>",
+            "content2": "<p>1200W</p>",
+            "content3": "<p>2400W(mit Erweiterungsakkus)</p>",
+            "content4": "<p>2400W(mit Erweiterungsakkus)</p>"
+          }
+        },
+        "product_details_JQAjhT": {
+          "type": "product_details",
+          "settings": {
+            "title": "Maximaler AC-Ausgangsstrom",
+            "content1": "<p>5,3A</p>",
+            "content2": "<p>5,3A</p>",
+            "content3": "<p>10,4A</p>",
+            "content4": "<p>10,4A</p>"
+          }
+        },
+        "product_details_yB6jfe": {
+          "type": "product_details",
+          "settings": {
+            "title": "Kabellose Verbindung",
+            "content1": "<p>Bluetooth, 2.4GHz Wi-Fi, 4G </p>",
+            "content2": "<p>Bluetooth, 2.4GHz Wi-Fi, 4G </p>",
+            "content3": "<p>Bluetooth, 2.4GHz Wi-Fi, 4G </p>",
+            "content4": "<p>Bluetooth, 2.4GHz Wi-Fi, 4G </p>"
+          }
+        },
+        "product_details_DF9D7x": {
+          "type": "product_details",
+          "settings": {
+            "title": "Gewicht",
+            "content1": "<p>16 KG</p>",
+            "content2": "<p>16 KG</p>",
+            "content3": "<p>21,5 KG</p>",
+            "content4": "<p>22 KG</p>"
+          }
+        },
+        "product_details_BX94z8": {
+          "type": "product_details",
+          "settings": {
+            "title": "Abmessungen",
+            "content1": "<p>300×215×250 mm</p>",
+            "content2": "<p>300×215×250 mm</p>",
+            "content3": "<p>425×195×260 mm</p>",
+            "content4": "<p>425×195×260 mm</p>"
+          }
+        },
+        "product_details_kWLwJK": {
+          "type": "product_details",
+          "settings": {
+            "title": "Betriebstemperatur",
+            "content1": "<p>-20℃~45℃</p>",
+            "content2": "<p>-20℃~45℃</p>",
+            "content3": "<p>-20℃~55℃</p>",
+            "content4": "<p>-20℃~55℃</p>"
+          }
+        },
+        "product_details_BHxHKy": {
+          "type": "product_details",
+          "settings": {
+            "title": "Wasserdichte Bewertung",
+            "content1": "<p>IP54</p>",
+            "content2": "<p>IP54</p>",
+            "content3": "<p>IP65</p>",
+            "content4": "<p>IP65</p>"
+          }
+        },
+        "product_details_eYyVAY": {
+          "type": "product_details",
+          "settings": {
+            "title": "Zertifikat",
+            "content1": "<p>VDE-AR-N 4105IEC 62619EN 62109IEC 61000-6-2/4EN 50549UN38.3+MSDSRoHS 2.0</p>",
+            "content2": "<p>VDE-AR-N 4105IEC 62619EN 62109IEC 61000-6-2/4EN 50549UN38.3+MSDSRoHS 2.0</p>",
+            "content3": "<p>VDE-AR-N 4105IEC 62619EN 62109IEC 61000-6-2/4EN 50549UN38.3+MSDSRoHS 2.0</p>",
+            "content4": "<p>VDE-AR-N 4105IEC 62619EN 62109IEC 61000-6-2/4EN 50549UN38.3+MSDSRoHS 2.0</p>"
+          }
+        },
+        "product_details_FVF87b": {
+          "type": "product_details",
+          "settings": {
+            "title": "Einfacher Aufbau (Plug & Play)",
+            "content1": "<p>✓</p>",
+            "content2": "<p>✓</p>",
+            "content3": "<p>✓</p>",
+            "content4": "<p>✓</p>"
+          }
+        },
+        "product_details_YCjEPP": {
+          "type": "product_details",
+          "settings": {
+            "title": "Akkuheizfunktion",
+            "content1": "<p>✓</p>",
+            "content2": "<p>✓</p>",
+            "content3": "<p>✓</p>",
+            "content4": "<p>✓</p>"
+          }
+        },
+        "product_details_wTcXCk": {
+          "type": "product_details",
+          "settings": {
+            "title": "App Steuerung",
+            "content1": "<p>✓</p>",
+            "content2": "<p>✓</p>",
+            "content3": "<p>✓</p>",
+            "content4": "<p>✓</p>"
+          }
+        },
+        "product_details_wAwKLj": {
+          "type": "product_details",
+          "settings": {
+            "title": "Open API zur Integration von Drittsystemen",
+            "content1": "<p>✓</p>",
+            "content2": "<p>✓</p>",
+            "content3": "<p>✓</p>",
+            "content4": "<p>✓</p>"
+          }
+        },
+        "product_details_CwCAP4": {
+          "type": "product_details",
+          "settings": {
+            "title": "Bidirektionales Laden",
+            "content1": "<p>✓</p>",
+            "content2": "<p>✓</p>",
+            "content3": "<p>✓</p>",
+            "content4": "<p>✓</p>"
+          }
+        },
+        "product_details_qmpgqN": {
+          "type": "product_details",
+          "settings": {
+            "title": "Dynamische Stromtarife",
+            "content1": "<p>✓</p>",
+            "content2": "<p>✓</p>",
+            "content3": "<p>✓</p>",
+            "content4": "<p>✓</p>"
+          }
+        },
+        "product_details_G44gFc": {
+          "type": "product_details",
+          "settings": {
+            "title": "EPS",
+            "content1": "<p>/</p>",
+            "content2": "<p><em>✓</em></p>",
+            "content3": "<p><em>✓</em></p>",
+            "content4": "<p><em>✓</em></p>"
+          }
+        },
+        "product_details_EnmLzF": {
+          "type": "product_details",
+          "settings": {
+            "title": "Batterieoptimierer",
+            "content1": "<p>/</p>",
+            "content2": "<p>/</p>",
+            "content3": "<p><em>✓</em></p>",
+            "content4": "<p><em>✓</em></p>"
+          }
+        },
+        "product_details_HYBcQ4": {
+          "type": "product_details",
+          "settings": {
+            "title": "99% kompatibel mit dem aktuellen Mikroinverter",
+            "content1": "<p>/</p>",
+            "content2": "<p>✓</p>",
+            "content3": "<p>✓</p>",
+            "content4": "<p><em>✓</em></p>"
+          }
+        },
+        "product_details_UyaGee": {
+          "type": "product_details",
+          "settings": {
+            "title": "Verteilter Modus zur Kapazitätserweiterung",
+            "content1": "<p>✓</p>",
+            "content2": "<p>✓</p>",
+            "content3": "<p>✓</p>",
+            "content4": "<p>✓</p>"
+          }
+        },
+        "product_details_qjzBwr": {
+          "type": "product_details",
+          "settings": {
+            "title": "Erweiterung mit Parallelkabel",
+            "content1": "<p>/</p>",
+            "content2": "<p><em>✓</em></p>",
+            "content3": "<p><em>✓</em></p>",
+            "content4": "<p><em>✓</em></p>"
+          }
+        },
+        "product_details_zBqF9x": {
+          "type": "product_details",
+          "settings": {
+            "title": "Intelligente Phasenerkennung",
+            "content1": "<p>✓</p>",
+            "content2": "<p>✓</p>",
+            "content3": "<p>✓</p>",
+            "content4": "<p>✓</p>"
+          }
+        }
+      },
+      "block_order": [
+        "products_N3tHXm",
+        "products_y9cQNb",
+        "products_GAwMCc",
+        "products_hNUQmh",
+        "product_details_awm8GW",
+        "product_details_xiWtCX",
+        "product_details_Qpa6Cd",
+        "product_details_UFxQwb",
+        "product_details_qpxxEc",
+        "product_details_WEhCHW",
+        "product_details_MPr4Qg",
+        "product_details_H9EHkg",
+        "product_details_QJHhBK",
+        "product_details_Gw34UQ",
+        "product_details_7dYKpe",
+        "product_details_4xJkQA",
+        "product_details_ppMXTb",
+        "product_details_JQAjhT",
+        "product_details_yB6jfe",
+        "product_details_DF9D7x",
+        "product_details_BX94z8",
+        "product_details_kWLwJK",
+        "product_details_BHxHKy",
+        "product_details_eYyVAY",
+        "product_details_FVF87b",
+        "product_details_YCjEPP",
+        "product_details_wTcXCk",
+        "product_details_wAwKLj",
+        "product_details_CwCAP4",
+        "product_details_qmpgqN",
+        "product_details_G44gFc",
+        "product_details_EnmLzF",
+        "product_details_HYBcQ4",
+        "product_details_UyaGee",
+        "product_details_qjzBwr",
+        "product_details_zBqF9x"
+      ],
+      "custom_css": [
+        "a {margin-left: 30px; margin-right: 30px;}",
+        ".product-compare-box > .detail-row:first-child .detail-content p {min-height: 51px;}"
+      ],
+      "name": "compare products",
+      "settings": {
+        "title": "Indevolt Produktvergleich",
+        "padding_top": 60,
+        "padding_bottom": 120
+      }
+    }
+  },
+  "order": [
+    "main",
+    "compare_product_F9rCxH"
+  ]
+}

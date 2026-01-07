@@ -1,0 +1,114 @@
+<style>
+  .select-area-svg{width:4rem}
+  .select-area .drawer__inner .tit {
+    padding: 2rem;
+  }
+  .select-area-svg,.select-area .drawer__inner .drawer__close-btn {
+    cursor: pointer;
+  }
+  .select-area .drawer__inner .darwer-top {
+    border-bottom: 1px solid #e6e6e6;
+  }
+  .select-area .content h2{display:none;font-size: 16px; text-align: center;}
+  .select-area .country-box {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 24px -24px 24px 0px;
+    font-size: 14px;
+    gap: 16px;
+  }
+  .select-area .country-item {
+    width: calc(50% - 20px);
+    height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    line-height: 26px;
+    text-decoration: none;
+    color: rgb(20, 20, 20);
+    background: rgb(247, 248, 249);
+    border-radius: 4px;
+  }
+   .select-area .country-item img{margin-right:10px}
+   .select-area .country-item .country-language{color:#aaa}
+   @media (max-width: 767.98px) {
+    .select-area .country-box{margin:1.6rem 0rem}
+     .select-area .country-item{width: 100%;}
+  }
+</style>
+<div
+  class="flex items-center justify-center relative select-area-svg"
+  aria-controls="PopupModal-area"
+>
+  {%- render 'icon-earth', size: 'large' -%}
+</div>
+<basic-modal id="PopupModal-area" class="drawer modal select-area" style="--modal-width: 77rem;">
+  <div class="fixed-overlay" aria-controls="PopupModal-area"></div>
+  <div class="drawer__inner">
+    <div class="flex darwer-top">
+      <strong class="tit">{{ 'select_area_form.area_title' | t }}</strong>
+      <span
+        class="drawer__close-btn"
+        aria-controls="PopupModal-area"
+        aria-label="{{ 'accessibility.close' | t }}"
+      >
+        {% render 'icon-close' %}
+      </span>
+    </div>
+    <div class="drawer__body v-scrollable h-full content">
+      <h2>Europa</h2>
+      <div class="country-box">
+        <a class="country-item" href="http://de.indevolt.com/">
+          <span class="country-name">
+            <img
+              src="{{ 'germany-union.png' | file_url  }}"
+              alt="germany"
+              width="24"
+              height="24"
+              loading="lazy"
+
+            >Deutschland</span
+          ><span class="country-language">Deutsch</span></a
+        >
+        <a class="country-item" href="https://www.indevolt.com/?country=BE">
+          <span class="country-name"
+            ><img
+              src="{{ 'european-union.png' | file_url  }}"
+              alt="european"
+              width="24"
+              height="24"
+              loading="lazy"
+
+            >Europe</span
+          ><span class="country-language">English</span></a
+        >
+
+        <a class="country-item" href="http://fr.indevolt.com/">
+          <span class="country-name"
+            ><img
+              src="{{ 'france-union.png' | file_url  }}"
+              alt="france"
+              width="24"
+              height="24"
+              loading="lazy"
+            >
+            France</span
+          ><span class="country-language">Français</span></a
+        >
+        <a class="country-item" href="http://nl.indevolt.com/"
+          ><span class="country-name"
+            ><img
+              src="{{ 'nederland-union.png' | file_url  }}"
+              alt="nederland"
+              width="24"
+              height="24"
+              loading="lazy"
+
+            >Nederland</span
+          ><span class="country-language">Nederlands</span></a
+        >
+      </div>
+    </div>
+  </div>
+</basic-modal>

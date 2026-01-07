@@ -1,0 +1,170 @@
+{{ 'component-scene-card.css' | asset_url | stylesheet_tag }}
+<style>
+   .section-product-two-bimage{margin-top: {{ section.settings.padding_top }}px;margin-bottom: {{ section.settings.padding_bottom }}px;}
+   .section-product-two-bimage .grid-container{position:relative; grid-template-rows: auto;}
+   .section-product-two-bimage .content-wrapper{top: {% if section.settings.content_top != 'auto' %}{{ section.settings.content_top }}px{% else %}auto{% endif %};bottom:30px}
+   .section-product-two-bimage .grid-item{height: 600px;}
+   .section-product-two-bimage .image-container{position: relative;max-height: 600px;}
+   .section-product-two-bimage .grid-image{position: absolute; width: 100%;height: 100%;object-fit: cover;}
+   @media screen and (max-width: 749px){
+    .section-product-two-bimage{margin-top: 3rem;margin-bottom: 3rem;}
+    .section-product-two-bimage .grid-item{ height: 380px;} 
+    .section-product-two-bimage .grid-container{height:auto;grid-template-rows: repeat(2, 1fr);grid-template-columns: auto;}
+    .section-product-two-bimage .content-wrapper{top:{% if section.settings.content_top != 'auto' %}{{ section.settings.content_top | divided_by: 2 }}px{% else %}auto{% endif %};bottom:30px}
+  }
+</style>
+<div class="section section--padding  page-width scene-section section-product-two-bimage" >
+    <div class="section__wrapper grid-container product-box">
+          {% for block in section.blocks %}
+            <div class="grid-item block-{{ forloop.index }}">
+              <div class="image-container">
+                {% if block.settings.image != blank %}
+                  <picture>
+                    <!-- 移动端图片 -->
+                    <source
+                      media="(max-width: 749px)"
+                      srcset="
+                        {{ block.settings.mobile_image | img_url: '800x' }} 1x,
+                        {{ block.settings.mobile_image | img_url: '1600x' }} 2x
+                      "
+                    >
+
+                    <!-- 桌面端图片 -->
+                    <source
+                      media="(min-width: 750px)"
+                      srcset="
+                        {{ block.settings.image | img_url: '1200x' }} 1x,
+                        {{ block.settings.image | img_url: '2400x' }} 2x
+                      "
+                    >
+
+                    <!-- 默认图片 -->
+                    <img
+                      src="{{ block.settings.image | img_url: '1200x' }}"
+                      alt="{{ block.settings.title | escape }}"
+                      class="grid-image"
+                      loading="lazy"
+                      width="{{ block.settings.image.width }}"
+                      height="{{ block.settings.image.height }}"
+                    >
+                  </picture>
+                {% else %}
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+              </div>
+              <div class="content-wrapper">
+                <h2 class="grid-title">{{ block.settings.title }}</h2>
+                <h4 class="grid-des">{{ block.settings.description }}</h4>
+                {% if block.settings.button_link != blank %} 
+                  <button
+                    type="button"
+                    class="btn btn--primary links"
+                  >
+                    <a href="{{ block.settings.button_link }}" class="grid-button">
+                      {{ block.settings.button_title }}
+                    </a>
+                  </button>
+                {% endif %} 
+              </div>
+            </div>
+          {% endfor %}
+       
+    </div>
+</div>
+{% schema %}
+{
+  "name": "product-two-bimage",
+  "tag": "section",
+  "class": "section section-product-two-bimage",
+  "max_blocks": 10,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "分区标题",
+      "default": "我们的特色分区"
+    },
+    {
+      "type": "text",
+      "id": "content_top",
+      "label": "内容Top(不带px单位)",
+      "default": "auto"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+  ],
+  "blocks": [
+    {
+      "type": "featured_collection",
+      "name": "scene item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image_pc"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "image_mobile"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "大标题"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "描述"
+        },
+        {
+          "type": "text",
+          "id": "button_title",
+          "label": "按钮标题"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "按钮链接"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "产品两个放大图片",
+      "category": "自定义产品组件",
+      "blocks": [
+        {
+          "type": "featured_collection"
+        },
+        {
+          "type": "featured_collection"
+        },
+      ]
+    }
+  ]
+}
+{% endschema %}

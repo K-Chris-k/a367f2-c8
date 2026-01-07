@@ -1,0 +1,2508 @@
+{%- liquid
+  # Bundle 产品配置（从 block 获取）
+  assign bundle_display_mode = 'bundle_with_battery'
+
+  if bundle_config_block
+    # 获取显示模式
+    assign bundle_display_mode = bundle_config_block.settings.bundle_display_mode | default: 'bundle_with_battery'
+
+    assign host_product = bundle_config_block.settings.host_product
+    assign battery_product = bundle_config_block.settings.battery_product
+    assign solar_product = bundle_config_block.settings.solar_product
+
+    # 其他产品（构建字符串数组用于循环）
+    assign other_product_handles_str = ''
+    if bundle_config_block.settings.mount_flat_roof != blank
+      assign other_product_handles_str = other_product_handles_str | append: bundle_config_block.settings.mount_flat_roof | append: ','
+    endif
+    if bundle_config_block.settings.mount_sloped_roof != blank
+      assign other_product_handles_str = other_product_handles_str | append: bundle_config_block.settings.mount_sloped_roof | append: ','
+    endif
+    if bundle_config_block.settings.mount_metal != blank
+      assign other_product_handles_str = other_product_handles_str | append: bundle_config_block.settings.mount_metal | append: ','
+    endif
+    if bundle_config_block.settings.mount_other != blank
+      assign other_product_handles_str = other_product_handles_str | append: bundle_config_block.settings.mount_other | append: ','
+    endif
+    assign other_product_handles = other_product_handles_str | split: ','
+
+    # 固定的主机 variant ID（仅 bundle_with_battery 模式使用）
+    assign host_variant_id = bundle_config_block.settings.host_variant_id
+
+    # 获取主机 variant 价格
+    assign host_price = 0
+    if host_product
+      assign host_product_obj = all_products[host_product.handle]
+      if host_product_obj
+        assign host_variant_id_num = host_variant_id | plus: 0
+        for v in host_product_obj.variants
+          if v.id == host_variant_id_num
+            assign host_price = v.price
+            break
+          endif
+        endfor
+      endif
+    endif
+
+    # 从电池包产品获取 metafields 配置（仅 bundle_with_battery 模式使用）
+    if battery_product
+      assign battery_variant_config = battery_product.metafields.custom.variant_display_config.value
+    endif
+
+    # 从太阳能板产品获取 metafields 配置（仅 bundle_with_battery 模式使用）
+    if solar_product
+      assign solar_variant_config = solar_product.metafields.custom.variant_display_config.value
+    endif
+  endif
+
+  # 获取主产品（当前产品）的元字段配置（multi_host 模式使用）
+  assign main_product_variant_config = product.metafields.custom.variant_display_config.value
+-%}
+{%- comment -%} 输出 Bundle 产品配置为 JSON {%- endcomment -%}
+<script type="application/json" id="BundleProductsConfig-{{ section.id }}">
+  {
+    "display_mode": {{ bundle_display_mode | json }},
+    "host": {
+      "product_id": {% if host_product %}{{ host_product.id | json }}{% else %}null{% endif %},
+      "variant_id": {{ host_variant_id | json }},
+      "handle": {% if host_product %}{{ host_product.handle | json }}{% else %}null{% endif %},
+      "price": {{ host_price | json }}
+    },
+    "battery": {
+      {%- if battery_product -%}
+      "product_id": {{ battery_product.id | json }},
+      "handle": {{ battery_product.handle | json }},
+      "metafield_config": {{ battery_variant_config | json }}
+      {%- else -%}
+      "product_id": null,
+      "handle": null,
+      "metafield_config": null
+      {%- endif -%}
+    },
+    "main_product": {
+      "product_id": {{ product.id | json }},
+      "handle": {{ product.handle | json }},
+      "metafield_config": {{ main_product_variant_config | json }}
+    }
+  }
+</script>
+
+<style>
+  /* Cascading Variant Picker Styles */
+  .cascading-variant-picker {
+    width: 100%;
+  }
+
+  /* Tabs */
+  .variant-picker-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 24px;
+    position: relative;
+  }
+
+  .variant-picker-tab {
+    flex: 1;
+    padding: 12px 20px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+    background: transparent;
+    border: none;
+    border-bottom: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .variant-picker-tab.active {
+    color: #3250c3;
+    font-weight: 400;
+  }
+
+  .variant-picker-tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% + 20px);
+    height: 2px;
+    background-color: #3250c3;
+  }
+
+  .variant-picker-tab-content {
+    display: none;
+  }
+
+  .variant-picker-tab-content.active {
+    display: block;
+  }
+
+  /* Extension Pattern Styles */
+  .variant-extension-card {
+    width: 100%;
+    border: 2px solid #3250c3;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+    background: #fff;
+    position: relative;
+  }
+  [data-multi-host-mode='true'] .variant-extension-card .variant-extension-base {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 6px;
+  }
+
+  .variant-extension-base {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e5e5e5;
+    margin-bottom: 16px;
+  }
+
+  .variant-extension-base-image {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    overflow: hidden;
+    /* background: #f5f5f5; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .variant-extension-base-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .variant-extension-base-content {
+    flex: 1;
+  }
+
+  .variant-extension-base-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin: 0 0 8px 0;
+  }
+
+  .variant-extension-title-separator {
+    margin: 0 8px;
+    color: #666;
+    font-weight: 400;
+  }
+
+  .variant-extension-base-price {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .variant-extension-base-price .current-price {
+    color: #3250c3;
+    font-weight: 600;
+    font-size: 18px;
+  }
+
+  .variant-extension-base-price .original-price {
+    text-decoration: line-through;
+    color: #999;
+    margin-left: 8px;
+  }
+
+  .variant-extension-badges {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+  }
+
+  .variant-extension-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .variant-extension-badge.new,
+  .variant-extension-badge-new {
+    background: #3250c3;
+    color: #fff;
+  }
+
+  .variant-extension-badge.best,
+  .variant-extension-badge-best {
+    background: #ff6b35;
+    color: #fff;
+  }
+
+  .variant-extension-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    flex-direction: column;
+  }
+
+  .variant-extension-section-image {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    overflow: hidden;
+    /* background: #f5f5f5; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .variant-extension-section-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .variant-extension-section-content {
+    flex: 1;
+  }
+
+  .variant-extension-section-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin: 0 0 8px 0;
+  }
+
+  .variant-extension-section-desc {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 12px;
+  }
+
+  .variant-extension-qty-buttons {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  [data-multi-host-mode='true'] .variant-extension-qty-buttons .multi-host-btn{
+    flex: 1;
+  }
+  @media screen and (max-width: 749px) {
+    .variant-extension-qty-buttons {
+      justify-content: center;
+      gap: 8px;
+    }
+  }
+
+  .variant-extension-qty-btn {
+    padding: 8px 16px;
+    /* border: 1px solid #e5e5e5; */
+    border: none !important;
+    border-radius: 8px !important;
+    background: #f5f5f5 !important;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 40px !important;
+    min-width: 48px;
+  }
+
+  .variant-extension-qty-btn:hover:not(.selected):not(.disabled) {
+    border-color: #3250c3;
+  }
+
+  .variant-extension-qty-btn.selected {
+    background: #3250c3 !important;
+    color: #fff !important;
+    border-color: #3250c3 !important;
+    font-weight: 500;
+    border: 1px solid #e5e5e5 !important;
+  }
+
+  .variant-extension-qty-btn.disabled,
+  .variant-extension-qty-btn[disabled],
+  label.variant-extension-qty-btn.disabled,
+  label.variant-extension-qty-btn[disabled] {
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    color: var(--color-foreground-lighten-19) !important;
+    border-color: var(--color-foreground-lighten-19) !important;
+    background: #fff !important;
+    position: relative !important;
+  }
+
+  .variant-extension-qty-btn.disabled::before,
+  .variant-extension-qty-btn[disabled]::before,
+  label.variant-extension-qty-btn.disabled::before,
+  label.variant-extension-qty-btn[disabled]::before {
+    content: '' !important;
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    background: linear-gradient(
+        to bottom left,
+        transparent calc(50% - 1px),
+        var(--color-foreground-lighten-19) 50%,
+        transparent calc(50% + 1px)
+      )
+      no-repeat !important;
+    border-radius: inherit !important;
+    z-index: 1 !important;
+  }
+
+  .variant-capacity-display {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 16px;
+  }
+
+  .variant-capacity-display .value {
+    color: #3250c3;
+    font-weight: 500;
+  }
+
+  /* Category Group Pattern Styles (Type 2) */
+  .variant-category-cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 6px;
+    width: 100%;
+  }
+
+  .variant-category-card {
+    width: 100%;
+    max-width: 100%;
+    border: 2px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 16px 16px 2px 16px;
+    background: #fff;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  .variant-category-card.selected {
+    border-color: #3250c3;
+  }
+
+  .variant-category-card-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 0px;
+    flex-shrink: 0;
+    align-items: center;
+  }
+  @media (max-width: 749px) {
+    .variant-category-card {
+      padding: 16px 16px 0 16px;
+    }
+    .variant-category-card-header {
+      gap: 10px;
+    }
+  }
+  .variant-category-card-header.is_connected_solar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .variant-category-card.selected .variant-category-card-subtitle {
+    color: #5d75d0;
+  }
+  .variant-category-card-image {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .variant-category-card-image.is_connected_solar {
+    width: 100% !important;
+    background: #ffffff !important;
+  }
+
+  .variant-category-card-image img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .variant-category-card.selected .variant-category-card-title {
+    color: #3250c3;
+  }
+
+  .variant-category-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+    line-height: 1.6;
+  }
+
+  .variant-category-qty-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 16px;
+    flex: 1;
+  }
+  [data-connect-solar-quantity='true'] .variant-category-qty-buttons,
+  .variant-category-qty-buttons[data-connect-solar-quantity='true'] {
+    grid-template-columns: 1fr;
+  }
+
+  .variant-category-qty-btn {
+    padding: 10px 16px;
+    border: none !important;
+    border-radius: 6px;
+    background: #f5f5f5 !important;
+    color: #000 !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 30px !important;
+    height: 30px !important;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .variant-category-qty-btn:hover:not(.selected):not(.disabled) {
+    border-color: #3250c3;
+  }
+
+  .variant-category-qty-btn.selected {
+    background: #3250c3 !important;
+    color: #fff !important;
+    border-color: #3250c3 !important;
+    /* font-weight: 500; */
+  }
+
+  .variant-category-qty-btn.disabled,
+  .variant-category-qty-btn[disabled],
+  label.variant-category-qty-btn.disabled,
+  label.variant-category-qty-btn[disabled] {
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    color: var(--color-foreground-lighten-19) !important;
+    border-color: var(--color-foreground-lighten-19) !important;
+    background: #fff !important;
+    position: relative !important;
+  }
+
+  .variant-category-qty-btn.disabled::before,
+  .variant-category-qty-btn[disabled]::before,
+  label.variant-category-qty-btn.disabled::before,
+  label.variant-category-qty-btn[disabled]::before {
+    content: '' !important;
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    background: linear-gradient(
+        to bottom left,
+        transparent calc(50% - 1px),
+        var(--color-foreground-lighten-19) 50%,
+        transparent calc(50% + 1px)
+      )
+      no-repeat !important;
+    border-radius: inherit !important;
+    z-index: 1 !important;
+  }
+
+  .variant-category-wattage {
+    font-size: 16px;
+    color: #666;
+    /* margin-top: 12px; */
+    padding-top: 12px;
+    padding-bottom: 12px;
+    flex-shrink: 0;
+    border-top: 1px solid #cccccc;
+  }
+
+  .variant-category-wattage .value {
+    color: #3250c3;
+    font-weight: 500;
+  }
+
+  .variant-none-btn {
+    width: 100%;
+    padding: 12px 20px;
+    border: 2px solid #e5e5e5 !important;
+    border-radius: 12px !important;
+    background: #fff;
+    color: #333;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    margin-top: 16px;
+    height: 50px;
+  }
+
+  .variant-none-btn:hover:not(.selected):not(.disabled) {
+    border-color: #3250c3;
+  }
+
+  .variant-none-btn.selected {
+    {% comment %} background: #3250c3 !important; {% endcomment %}
+    color: #3250c3 !important;
+    border-color: #3250c3 !important;
+    font-weight: 600 !important;
+  }
+
+  .variant-none-btn.disabled,
+  .variant-none-btn[disabled],
+  label.variant-none-btn.disabled,
+  label.variant-none-btn[disabled] {
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+    color: var(--color-foreground-lighten-19) !important;
+    border-color: var(--color-foreground-lighten-19) !important;
+    background: #fff !important;
+    position: relative !important;
+  }
+
+  .variant-none-btn.disabled::before,
+  .variant-none-btn[disabled]::before,
+  label.variant-none-btn.disabled::before,
+  label.variant-none-btn[disabled]::before {
+    content: '' !important;
+    position: absolute !important;
+    width: 100% !important;
+    height: 100% !important;
+    top: 0 !important;
+    left: 0 !important;
+    background: linear-gradient(
+        to bottom left,
+        transparent calc(50% - 1px),
+        var(--color-foreground-lighten-19) 50%,
+        transparent calc(50% + 1px)
+      )
+      no-repeat !important;
+    border-radius: inherit !important;
+    z-index: 1 !important;
+  }
+
+  @media (max-width: 768px) {
+    .variant-picker-tab {
+      padding: 10px 12px;
+      font-size: 14px;
+    }
+
+    .variant-extension-base-image,
+    .variant-extension-section-image {
+      width: 60px;
+      height: 60px;
+    }
+
+    .variant-extension-qty-btn {
+      padding: 6px 12px;
+      font-size: 14px !important;
+      min-height: 30px !important;
+      min-width: 94px !important;
+    }
+
+    .variant-category-cards-wrapper {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .variant-category-card-image {
+      width: 80px;
+      height: auto;
+    }
+
+    .variant-category-qty-btn {
+      padding: 6px 12px;
+      font-size: 12px;
+      min-height: 32px;
+    }
+
+    .variant-none-btn {
+      font-size: 14px;
+    }
+  }
+  /* 选中Label 填充 */
+  .product-form__input--button input[type='radio']:checked + label.is_connected_solar {
+    background-color: #3250c3 !important;
+    color: #ffffff !important;
+    border: none !important;
+  }
+  .variant-extension-section-info {
+    display: flex;
+    gap: 12px;
+  }
+</style>
+
+{%- liquid
+  # 收集推荐产品（用于判断是否显示标签页）
+  assign has_recommendations = false
+
+  if section.blocks
+    for block_item in section.blocks
+      if block_item.type == 'recommend_product' and has_recommendations == false
+        assign recommended_product = all_products[block_item.settings.recommended_product1]
+        if recommended_product != blank
+          assign has_recommendations = true
+        endif
+      endif
+    endfor
+  endif
+-%}
+
+{%- liquid
+  # 收集推荐产品（用于判断是否显示标签页）
+  assign has_recommendations = false
+
+  if section.blocks
+    for block_item in section.blocks
+      if block_item.type == 'recommend_product' and has_recommendations == false
+        assign recommended_product = all_products[block_item.settings.recommended_product1]
+        if recommended_product != blank
+          assign has_recommendations = true
+        endif
+      endif
+    endfor
+  endif
+-%}
+
+<script src="{{ 'variant-selects.js' | asset_url }}" defer="defer"></script>
+<variant-selects
+  id="variant-selects-{{ section.id }}"
+  data-section="{{ section.id }}"
+  data-url="{{ product.url }}"
+  data-update-url="{% if update_url == false %}false{% else %}true{% endif %}"
+  class="cascading-variant-picker"
+>
+  <!-- Tabs -->
+   {%- if has_recommendations -%}
+      <div class="variant-picker-tabs">
+        <button type="button" class="variant-picker-tab active" data-tab="set-kombination">Set-Kombination</button>
+        {% comment %} {%- if has_recommendations -%} {% endcomment %}
+          <button type="button" class="variant-picker-tab" data-tab="empfehlung">Empfehlung</button>
+        {% comment %} {%- endif -%} {% endcomment %}
+      </div>
+    {%- endif -%}
+  <!-- Tab Content: Set-Kombination -->
+  <div class="variant-picker-tab-content active" data-tab-content="set-kombination">
+    {%- if bundle_display_mode == 'multi_host' -%}
+      {%- comment -%} ========== Multi Host 模式：只渲染主产品变体，不渲染下面的太阳能板和支架 ========== {%- endcomment -%}
+      {%- if main_product_variant_config and main_product_variant_config.options -%}
+        {%- liquid
+          # 获取第一个选项配置
+          assign first_option_config = null
+          for opt_cfg in main_product_variant_config.options
+            assign first_option_config = opt_cfg
+            break
+          endfor
+
+          # 获取主产品的第一个选项
+          assign main_option_1 = product.options_with_values[0]
+        -%}
+        {%- if first_option_config -%}
+          {%- render 'variant-picker-bundle-extension',
+            option: main_option_1,
+            option_config: first_option_config,
+            variant_config: main_product_variant_config,
+            product: product,
+            main_product: product,
+            product_form_id: product_form_id,
+            section: section,
+            option_index: 0,
+            bundle_mode: false,
+            bundle_display_mode: bundle_display_mode
+          -%}
+        {%- endif -%}
+      {%- else -%}
+        <div
+          class="error-state"
+          style="padding: 20px; background: #fff3cd; border: 1px solid #ffc107; border-radius: 4px;"
+        >
+          <p>⚠️ Multi Host 模式需要在主产品中配置 <strong>variant_display_config</strong> 元字段</p>
+        </div>
+      {%- endif -%}
+    {%- else -%}
+      {%- comment -%} ========== Bundle with Battery 模式：渲染电池包 + 太阳能板 + 支架 ========== {%- endcomment -%}
+      {%- comment -%} 渲染电池包选项 {%- endcomment -%}
+      {%- if battery_product and battery_variant_config and battery_variant_config.options -%}
+        {%- liquid
+          # 从电池包产品的 metafields 配置中查找第一个选项配置
+          assign battery_option_name = 'Erweiterungsakku'
+          assign option_1_config = null
+
+          for opt_cfg in battery_variant_config.options
+            if opt_cfg.name == battery_option_name or forloop.index0 == 0
+              assign option_1_config = opt_cfg
+              break
+            endif
+          endfor
+
+          # 获取电池产品的第一个选项
+          assign bundle_option_1 = battery_product.options_with_values[0]
+        -%}
+        {%- if option_1_config and option_1_config.display_type == 'bundle_extension' -%}
+          {%- render 'variant-picker-bundle-extension',
+            option: bundle_option_1,
+            option_config: option_1_config,
+            variant_config: battery_variant_config,
+            product: battery_product,
+            main_product: product,
+            product_form_id: product_form_id,
+            section: section,
+            option_index: 0,
+            bundle_mode: true,
+            bundle_product: battery_product,
+            bundle_display_mode: bundle_display_mode,
+            host_variant_id: host_variant_id,
+            host_product_handle: host_product.handle,
+            badge_new: bundle_config_block.settings.battery_badge_new,
+            badge_new_text: bundle_config_block.settings.battery_badge_new_text,
+            badge_best: bundle_config_block.settings.battery_badge_best,
+            badge_best_text: bundle_config_block.settings.battery_badge_best_text
+          -%}
+        {%- endif -%}
+      {%- else -%}
+        {%- comment -%} 未配置电池包产品 {%- endcomment -%}
+        <div
+          class="error-state"
+          style="padding: 20px; background: #fff3cd; border: 1px solid #ffc107; border-radius: 4px;"
+        >
+          <p>⚠️ 请在 Block 设置中通过 <strong>Battery Product</strong> 选择产品</p>
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+    {%- comment -%} 渲染太阳能板选项 {%- endcomment -%}
+    {%- if solar_product and solar_variant_config -%}
+      {%- liquid
+        # solar_variant_config 本身就是配置对象，直接使用
+        # 获取太阳能板产品的第一个选项
+        assign solar_option_1 = solar_product.options_with_values[0]
+      -%}
+      {%- comment -%} 根据配置类型渲染太阳能板 {%- endcomment -%}
+      {%- if solar_variant_config.display_type == 'bundle_category_grid' -%}
+        {%- render 'variant-picker-bundle-category-grid',
+          option: solar_option_1,
+          option_config: solar_variant_config,
+          variant_config: solar_variant_config,
+          product: solar_product,
+          product_form_id: product_form_id,
+          section: section,
+          option_index: 0,
+          bundle_mode: true,
+          bundle_product: solar_product,
+          host_variant_id: host_variant_id,
+          is_solar_product: true
+        -%}
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- comment -%} 渲染其他产品选项（循环渲染） {%- endcomment -%}
+    {%- if other_product_handles.size > 0 -%}
+      {%- for product_handle in other_product_handles -%}
+        {%- if product_handle != blank and product_handle != '' -%}
+          {%- liquid
+            assign current_other_product = all_products[product_handle]
+            if current_other_product
+              assign current_other_variant_config = current_other_product.metafields.custom.variant_display_config.value
+              if current_other_variant_config
+                assign current_other_option_1 = current_other_product.options_with_values[0]
+              endif
+            endif
+          -%}
+          {%- if current_other_product
+            and current_other_variant_config
+            and current_other_option_1
+            and current_other_variant_config.display_type == 'bundle_category_grid'
+          -%}
+            {%- liquid
+              # 检查是否需要连接太阳能板数量
+              assign connect_solar_quantity = false
+
+              # 检查对应的设置（通过比较 handle）
+              if bundle_config_block.settings.mount_flat_roof != blank and product_handle == bundle_config_block.settings.mount_flat_roof.handle
+                assign connect_solar_quantity = bundle_config_block.settings.mount_flat_roof_connect_solar_quantity
+              elsif bundle_config_block.settings.mount_sloped_roof != blank and product_handle == bundle_config_block.settings.mount_sloped_roof.handle
+                assign connect_solar_quantity = bundle_config_block.settings.mount_sloped_roof_connect_solar_quantity
+              elsif bundle_config_block.settings.mount_metal != blank and product_handle == bundle_config_block.settings.mount_metal.handle
+                assign connect_solar_quantity = bundle_config_block.settings.mount_metal_connect_solar_quantity
+              elsif bundle_config_block.settings.mount_other != blank and product_handle == bundle_config_block.settings.mount_other.handle
+                assign connect_solar_quantity = bundle_config_block.settings.mount_other_connect_solar_quantity
+              endif
+            -%}
+            {%- render 'variant-picker-bundle-category-grid',
+              option: current_other_option_1,
+              option_config: current_other_variant_config,
+              variant_config: current_other_variant_config,
+              product: current_other_product,
+              product_form_id: product_form_id,
+              section: section,
+              option_index: 0,
+              bundle_mode: true,
+              bundle_product: current_other_product,
+              host_variant_id: host_variant_id,
+              is_solar_product: false,
+              connect_solar_quantity: connect_solar_quantity,
+              solar_product_id: solar_product.id
+            -%}
+          {%- endif -%}
+        {%- endif -%}
+      {%- endfor -%}
+    {%- endif -%}
+  </div>
+
+  <!-- Tab Content: Empfehlung -->
+  {%- if has_recommendations -%}
+    <div class="variant-picker-tab-content" data-tab-content="empfehlung">
+      {%- render 'recommendation-products', section: section -%}
+    </div>
+  {%- endif -%}
+
+  <script type="application/json" data-selected-variant>
+    {{ product.selected_or_first_available_variant | json }}
+  </script>
+
+  {%- comment -%} 添加所有 variants 数据用于 JavaScript 验证 {%- endcomment -%}
+  {%- if bundle_config_block and battery_product -%}
+    {%- comment -%} Bundle 模式：输出电池包产品的 variants 数据 {%- endcomment -%}
+    <script type="application/json" data-product-variants data-bundle-mode="true">
+      {
+        "bundle_mode": true,
+        "battery_variants": {{ battery_product.variants | json }}
+      }
+    </script>
+  {%- else -%}
+    <script type="application/json" data-product-variants>
+      {{ product.variants | json }}
+    </script>
+  {%- endif -%}
+</variant-selects>
+
+{%- comment -%} Bundle 产品动态价格和购物车逻辑 {%- endcomment -%}
+<script>
+  (function () {
+    // 保存当前目标 tab（用于在 DOM 更新后恢复）
+    let currentTargetTab = 'set-kombination';
+
+    // 标签页切换功能
+    function handleTabSwitch(e) {
+      // 检查点击的是否是标签页按钮
+      const tab = e.target.closest('.variant-picker-tab');
+      if (!tab) return;
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const targetTab = tab.dataset.tab;
+      if (!targetTab) return;
+
+      // 保存目标 tab（在 DOM 更新前保存，确保后续恢复时使用最新的值）
+      currentTargetTab = targetTab;
+
+      // 找到variant-selects元素（可能在product-info内部）
+      const picker = tab.closest('variant-selects');
+      if (!picker) return;
+
+      // 获取所有标签页和内容
+      const tabs = picker.querySelectorAll('.variant-picker-tab');
+      const tabContents = picker.querySelectorAll('.variant-picker-tab-content');
+
+      // 更新标签页状态
+      tabs.forEach((t) => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      // 更新内容显示
+      tabContents.forEach((content) => {
+        if (content.dataset.tabContent === targetTab) {
+          content.classList.add('active');
+        } else {
+          content.classList.remove('active');
+        }
+      });
+
+      // 如果切换到 Set-Kombination 标签页，立即重置到第一个选项并清空推荐产品选择
+      if (targetTab === 'set-kombination') {
+        // 先清空推荐产品选择，这样价格会回到主产品价格
+        clearAllRecommendationSelections();
+        // 然后重置到第一个选项（resetToFirstOption 完成后会显示主产品 sticky-atc-bar）
+        resetToFirstOption();
+      }
+
+      // 如果切换到 Empfehlung 标签页，隐藏主产品 sticky-atc-bar，清空所有选择
+      // 等用户选中推荐产品后，推荐产品专用的 bar 会自动显示
+      if (targetTab === 'empfehlung') {
+        clearAllRecommendationSelections();
+        // 清除所有叠加图片
+        if (window.removeOverlayImageFromMainProduct) {
+          window.removeOverlayImageFromMainProduct('solar');
+          window.removeOverlayImageFromMainProduct('solar-product');
+        }
+      }
+
+      // 触发标签页切换事件
+      document.dispatchEvent(
+        new CustomEvent('tab:change', {
+          detail: { activeTab: targetTab },
+        })
+      );
+    }
+
+    // 重置到第一个选项（用于Set-Kombination tab）
+    function resetToFirstOption() {
+      const variantSelects = document.querySelector('variant-selects');
+      if (!variantSelects) return;
+
+      // 尝试找到第一个可用的变体，直接选中它
+      const variantsDataEl = variantSelects.querySelector('[data-product-variants]');
+      let firstAvailableVariant = null;
+
+      if (variantsDataEl) {
+        try {
+          const allVariants = JSON.parse(variantsDataEl.textContent);
+          firstAvailableVariant = allVariants.find((v) => v.available);
+        } catch (e) {
+          console.error('[Variant Picker] 解析 variants 数据失败:', e);
+        }
+      }
+
+      // 延迟一点执行，确保 DOM 准备好
+      setTimeout(() => {
+        if (firstAvailableVariant) {
+          console.log('[Variant Picker] 重置到第一个可用变体:', firstAvailableVariant);
+
+          const fieldsets = variantSelects.querySelectorAll(
+            'fieldset.product-form__input:not(.bundle-extension-fieldset)'
+          );
+
+          firstAvailableVariant.options.forEach((optionValue, index) => {
+            if (fieldsets[index]) {
+              const fieldset = fieldsets[index];
+              // 跳过 Bundle 模式的 fieldset
+              if (fieldset.classList.contains('bundle-extension-fieldset')) {
+                return;
+              }
+
+              // 在这个 fieldset 里找 value 匹配的 radio
+              // 注意：我们需要精确匹配 value
+              const targetRadio = Array.from(fieldset.querySelectorAll('input[type="radio"]')).find(
+                (r) => r.value === optionValue
+              );
+
+              if (targetRadio) {
+                // 取消同名 radio
+                const radioName = targetRadio.name;
+                fieldset
+                  .querySelectorAll(`input[type="radio"][name="${radioName}"]`)
+                  .forEach((r) => (r.checked = false));
+
+                // 选中目标 radio
+                targetRadio.checked = true;
+
+                // 触发 change 事件
+                const changeEvent = new Event('change', { bubbles: true, cancelable: true });
+                targetRadio.dispatchEvent(changeEvent);
+                fieldset.dispatchEvent(changeEvent);
+              }
+            }
+          });
+
+          // 触发 variantSelects 的 change
+          const changeEvent = new Event('change', { bubbles: true, cancelable: true });
+          variantSelects.dispatchEvent(changeEvent);
+        } else {
+          // 回退逻辑：每个 fieldset 选第一个未禁用的（跳过 Bundle 模式的 fieldset）
+          console.warn('[Variant Picker] 未找到可用变体，执行默认重置');
+          const fieldsets = variantSelects.querySelectorAll('fieldset.product-form__input');
+
+          fieldsets.forEach((fieldset) => {
+            // 跳过 Bundle 模式的 fieldset，避免重置 Bundle 选项
+            if (fieldset.classList.contains('bundle-extension-fieldset')) {
+              return;
+            }
+
+            let firstEnabledRadio = fieldset.querySelector('input[type="radio"]:not([disabled]):not(.disabled)');
+            if (!firstEnabledRadio) {
+              firstEnabledRadio = fieldset.querySelector('input[type="radio"]');
+            }
+
+            if (firstEnabledRadio) {
+              const radioName = firstEnabledRadio.name;
+              fieldset.querySelectorAll(`input[type="radio"][name="${radioName}"]`).forEach((r) => {
+                r.checked = false;
+              });
+
+              firstEnabledRadio.checked = true;
+              const changeEvent = new Event('change', { bubbles: true, cancelable: true });
+              firstEnabledRadio.dispatchEvent(changeEvent);
+              fieldset.dispatchEvent(changeEvent);
+            }
+          });
+
+          const changeEvent = new Event('change', { bubbles: true, cancelable: true });
+          variantSelects.dispatchEvent(changeEvent);
+        }
+
+        // 强制验证一次可用性
+        if (typeof validateAndUpdateOptionAvailability === 'function') {
+          validateAndUpdateOptionAvailability();
+        }
+      }, 10);
+
+      // 等待 DOM 更新后恢复 tab 状态（使用最新的 currentTargetTab）
+      setTimeout(() => {
+        restoreTabState(currentTargetTab);
+      }, 150);
+    }
+
+    // 恢复 tab 状态
+    function restoreTabState(targetTab) {
+      const variantSelects = document.querySelector('variant-selects');
+      if (!variantSelects) return;
+
+      const tabs = variantSelects.querySelectorAll('.variant-picker-tab');
+      const tabContents = variantSelects.querySelectorAll('.variant-picker-tab-content');
+
+      // 更新标签页状态
+      tabs.forEach((t) => {
+        if (t.dataset.tab === targetTab) {
+          t.classList.add('active');
+        } else {
+          t.classList.remove('active');
+        }
+      });
+
+      // 更新内容显示
+      tabContents.forEach((content) => {
+        if (content.dataset.tabContent === targetTab) {
+          content.classList.add('active');
+        } else {
+          content.classList.remove('active');
+        }
+      });
+    }
+
+    // 清空所有推荐产品选择（用于Empfehlung tab）
+    function clearAllRecommendationSelections() {
+      // 清除所有选中状态
+      document.querySelectorAll('.recommendation-select-on-click[recommendation-selected]').forEach((card) => {
+        card.classList.remove('selected');
+        card.removeAttribute('recommendation-selected');
+      });
+
+      // 清除所有 bundle-category-grid 产品的选择（选中 "Keine"）
+      document.querySelectorAll('.bundle-category-grid-fieldset').forEach((fieldset) => {
+        // 清除所有类别按钮的选中状态
+        const selectedBtn = fieldset.querySelector('.bundle-category-btn.selected');
+        if (selectedBtn) {
+          selectedBtn.classList.remove('selected');
+        }
+
+        // 清除所有类别卡片的选中状态
+        fieldset.querySelectorAll('.variant-category-card').forEach((card) => {
+          card.classList.remove('selected');
+        });
+
+        // 选中 "Keine" 按钮
+        const keineBtn = fieldset.querySelector('.bundle-keine-btn');
+        if (keineBtn) {
+          keineBtn.classList.add('selected');
+
+          // 更新对应的 radio 选中状态
+          const inputId = keineBtn.getAttribute('for');
+          if (inputId) {
+            const radio = document.getElementById(inputId);
+            if (radio) {
+              // 取消同名 radio 的选中状态
+              const radioName = radio.name;
+              document.querySelectorAll(`input[type="radio"][name="${radioName}"]`).forEach((r) => {
+                r.checked = false;
+              });
+              radio.checked = true;
+            }
+          }
+
+          // 清除功率显示（如果有）
+          fieldset.querySelectorAll('[data-wattage-display]').forEach((display) => {
+            display.textContent = '0Wp';
+          });
+        }
+      });
+
+      // 触发 bundle-category-grid 的变化事件，确保价格更新
+      document.querySelectorAll('.bundle-category-grid-fieldset').forEach((fieldset) => {
+        const keineBtn = fieldset.querySelector('.bundle-keine-btn.selected');
+        if (keineBtn) {
+          document.dispatchEvent(
+            new CustomEvent('bundle:solar:change', {
+              detail: {
+                category: '',
+                variantId: '',
+                price: '0',
+                quantity: '0',
+                wattage: '0Wp',
+                isKeine: true,
+              },
+            })
+          );
+        }
+      });
+
+      // 清除sessionStorage
+      sessionStorage.removeItem('recommendation_selection');
+
+      // 恢复主产品图片（如果之前被推荐产品图片覆盖了）
+      if (window.restoreMainProductImage) {
+        window.restoreMainProductImage();
+      }
+
+      // 触发推荐产品变化事件，确保价格更新
+      document.dispatchEvent(
+        new CustomEvent('recommendation:change', {
+          detail: { recommendation: null },
+        })
+      );
+
+      // 更新价格（如果是 Bundle 模式，使用 Bundle 价格更新；否则使用默认价格更新）
+      const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
+      if (bundleConfigEl) {
+        // Bundle 模式：更新 Bundle 价格
+        if (typeof updateBundlePrice === 'function') {
+          updateBundlePrice();
+        }
+      } else {
+        // 非 Bundle 模式：使用默认价格更新
+        if (window.updateStickyBarPrice) {
+          window.updateStickyBarPrice();
+        }
+      }
+    }
+
+    // 初始化函数
+    function initTabSwitching() {
+      // 找到product-info元素（它不会被替换）
+      const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
+      if (!productInfo) return;
+
+      // 移除旧的事件监听器（如果存在）
+      if (productInfo._tabSwitchHandler) {
+        productInfo.removeEventListener('click', productInfo._tabSwitchHandler);
+      }
+
+      // 添加新的事件监听器（事件委托）
+      productInfo._tabSwitchHandler = handleTabSwitch;
+      productInfo.addEventListener('click', productInfo._tabSwitchHandler);
+    }
+
+    // 检查选项是否与当前其他选项兼容
+    function checkOptionCompatibility(radio, optionValue, variantSelects) {
+      if (!variantSelects) return false;
+
+      const variantsDataEl = variantSelects.querySelector('[data-product-variants]');
+      if (!variantsDataEl) return false;
+
+      try {
+        const allVariants = JSON.parse(variantsDataEl.textContent);
+
+        // 获取当前所有选中的选项值（除了当前选项）
+        const checkedRadios = variantSelects.querySelectorAll('input[type="radio"]:checked');
+        const selectedValues = Array.from(checkedRadios)
+          .filter((r) => r.name !== radio.name)
+          .map((r) => r.value);
+
+        // 添加当前要选择的选项值
+        selectedValues.push(optionValue);
+
+        // 检查是否有 variant 匹配这个选择组合
+        return allVariants.some((variant) => {
+          if (!variant.available) return false;
+          return (
+            variant.options &&
+            selectedValues.length === variant.options.length &&
+            selectedValues.every((val) => variant.options.includes(val))
+          );
+        });
+      } catch (e) {
+        console.error('[Variant Picker] 解析 variants 数据失败:', e);
+        return false;
+      }
+    }
+
+    // 隐藏主产品的 sticky-atc-bar（不兼容时），不影响推荐产品的 bar
+    function hideStickyAtcBar() {
+      // 只选择主产品的 sticky bar，不选择推荐产品的 bar
+      const mainStickyBar = document.querySelector(
+        '#shopify-section-sticky-atc-bar .sticky-atc-bar:not(.sticky-atc-bar-recommendation)'
+      );
+      if (mainStickyBar) {
+        mainStickyBar.style.display = 'none';
+        console.log('[Variant Picker] 隐藏主产品 sticky-atc-bar（选项不兼容）');
+      }
+    }
+
+    // 显示主产品的 sticky-atc-bar（兼容时）
+    function showStickyAtcBar() {
+      // 只选择主产品的 sticky bar
+      const mainStickyBar = document.querySelector(
+        '#shopify-section-sticky-atc-bar .sticky-atc-bar:not(.sticky-atc-bar-recommendation)'
+      );
+      if (mainStickyBar) {
+        mainStickyBar.style.display = '';
+        console.log('[Variant Picker] 显示主产品 sticky-atc-bar');
+      }
+    }
+
+    // 清除当前选项之后的所有选项的选中状态，并自动选中"Keine"
+    function clearSubsequentOptions(currentRadio, variantSelects) {
+      if (!variantSelects) return;
+
+      // 隐藏 sticky-atc-bar
+      hideStickyAtcBar();
+      // 从 radio name 中提取 position（格式：OptionName-Position）
+      const currentRadioName = currentRadio.name;
+      const currentPosition = parseInt(currentRadioName.split('-').pop()) || 0;
+
+      // 收集所有后续的 fieldsets
+      const subsequentFieldsets = new Set();
+
+      // 找到所有 position > 当前 position 的选项
+      const allRadios = variantSelects.querySelectorAll('input[type="radio"]:checked');
+
+      allRadios.forEach((r) => {
+        const radioName = r.name;
+        const radioPosition = parseInt(radioName.split('-').pop()) || 0;
+
+        // 如果这个选项在当前选项之后，清除它的选中状态
+        if (radioPosition > currentPosition) {
+          const fieldset = r.closest('fieldset');
+          if (fieldset) {
+            subsequentFieldsets.add(fieldset);
+          }
+
+          r.checked = false;
+
+          // 清除对应的 label 选中状态
+          const label = document.querySelector(`label[for="${r.id}"]`);
+          if (label && label.classList) {
+            label.classList.remove('selected');
+          }
+
+          // 如果是类别按钮，清除类别卡片的选中状态
+          const categoryCard = r.closest('.variant-category-card');
+          if (categoryCard && categoryCard.classList) {
+            categoryCard.classList.remove('selected');
+            const categoryButtons = categoryCard.querySelectorAll('.variant-category-qty-btn');
+            if (categoryButtons) {
+              categoryButtons.forEach((btn) => {
+                if (btn && btn.classList) {
+                  btn.classList.remove('selected');
+                }
+              });
+            }
+          }
+
+          // 如果是扩展按钮，清除扩展按钮的选中状态
+          const extensionCard = r.closest('.variant-extension-card');
+          if (extensionCard) {
+            const extensionButtons = extensionCard.querySelectorAll('.variant-extension-qty-btn');
+            if (extensionButtons) {
+              extensionButtons.forEach((btn) => {
+                if (btn && btn.classList) {
+                  btn.classList.remove('selected');
+                }
+              });
+            }
+          }
+        }
+      });
+
+      // 对于每个后续的 fieldset，尝试选中"Keine"选项
+      subsequentFieldsets.forEach((fieldset) => {
+        // 先清除该 fieldset 内所有选项的选中状态
+        fieldset.querySelectorAll('input[type="radio"]').forEach((r) => {
+          r.checked = false;
+          const label = document.querySelector(`label[for="${r.id}"]`);
+          if (label && label.classList) {
+            label.classList.remove('selected');
+          }
+        });
+
+        // 清除类别按钮和卡片的选中状态
+        fieldset.querySelectorAll('.variant-category-qty-btn').forEach((btn) => {
+          if (btn && btn.classList) {
+            btn.classList.remove('selected');
+          }
+        });
+        fieldset.querySelectorAll('.variant-category-card').forEach((card) => {
+          if (card && card.classList) {
+            card.classList.remove('selected');
+          }
+        });
+
+        // 清除扩展按钮的选中状态
+        fieldset.querySelectorAll('.variant-extension-qty-btn').forEach((btn) => {
+          if (btn && btn.classList) {
+            btn.classList.remove('selected');
+          }
+        });
+
+        // 查找"Keine"按钮的 label 并选中
+        const noneLabel = fieldset.querySelector('label.variant-none-btn');
+        if (noneLabel && !noneLabel.classList.contains('disabled')) {
+          const noneInputId = noneLabel.getAttribute('for');
+          if (noneInputId) {
+            const noneRadio = document.getElementById(noneInputId);
+            if (noneRadio && !noneRadio.classList.contains('disabled')) {
+              // 选中"Keine"选项
+              noneRadio.checked = true;
+              noneLabel.classList.add('selected');
+              console.log('[Variant Picker] 自动选中后续选项的"Keine":', noneRadio.value);
+            }
+          }
+        }
+      });
+
+      console.log('[Variant Picker] 清除后续选项并选中"Keine"');
+    }
+
+    // 处理扩展数量按钮点击（Bundle 模式 - 简化版）
+    function handleExtensionQtyClick(e) {
+      const label = e.target.closest('.bundle-extension-btn');
+      // Bundle 模式下，按钮点击由 variant-picker-bundle-extension.liquid 处理
+      // 这里只处理非 Bundle 模式的扩展按钮（如果有的话）
+      if (!label || label.classList.contains('bundle-extension-btn')) {
+        return; // Bundle 模式按钮由 variant-picker-bundle-extension.liquid 处理
+      }
+
+      // 以下代码保留用于非 Bundle 模式的扩展按钮（如果有）
+      const variantExtensionLabel = e.target.closest('.variant-extension-qty-btn');
+      if (!variantExtensionLabel) return;
+
+      if (variantExtensionLabel.classList.contains('disabled')) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      const inputId = variantExtensionLabel.getAttribute('for');
+      if (!inputId) return;
+
+      const radio = document.getElementById(inputId);
+      if (!radio || radio.classList.contains('disabled')) return;
+
+      const card = variantExtensionLabel.closest('.variant-extension-card');
+      if (!card) return;
+
+      // 更新 label 状态
+      const extensionButtons = card.querySelectorAll('.variant-extension-qty-btn');
+      extensionButtons.forEach((l) => {
+        if (l && l.classList) {
+          l.classList.remove('selected');
+        }
+      });
+      variantExtensionLabel.classList.add('selected');
+
+      // 取消所有同名的radio
+      const radioName = radio.name;
+      document.querySelectorAll(`input[type="radio"][name="${radioName}"]`).forEach((r) => {
+        r.checked = false;
+      });
+
+      radio.checked = true;
+
+      // 显示 sticky-atc-bar
+      showStickyAtcBar();
+
+      // 触发 change 事件
+      const changeEvent = new Event('change', { bubbles: true, cancelable: true });
+      radio.dispatchEvent(changeEvent);
+
+      const fieldset = radio.closest('fieldset');
+      if (fieldset) {
+        fieldset.dispatchEvent(changeEvent);
+      }
+
+      const variantSelects = radio.closest('variant-selects');
+      if (variantSelects) {
+        variantSelects.dispatchEvent(changeEvent);
+      }
+    }
+
+    // 更新 Bundle 价格（支持 Multi Host 和 Bundle with Battery 两种模式）
+    function updateBundlePrice() {
+      // 检查是否是 Multi Host 模式
+      const isMultiHostMode = document.querySelector('[data-multi-host-mode="true"]') !== null;
+
+      let hostPriceInCents = 0;
+      let batteryPriceInCents = 0;
+
+      if (isMultiHostMode) {
+        // Multi Host 模式：从选中的 multi-host-btn 获取主产品价格
+        const selectedMultiHostBtn = document.querySelector('.multi-host-btn.selected');
+        if (selectedMultiHostBtn) {
+          hostPriceInCents = parseInt(selectedMultiHostBtn.dataset.price) || 0;
+        }
+        // Multi Host 模式下没有电池包
+        batteryPriceInCents = 0;
+      } else {
+        // Bundle with Battery 模式：从配置中获取主机价格
+        const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
+        if (bundleConfigEl) {
+          try {
+            const bundleConfig = JSON.parse(bundleConfigEl.textContent);
+            if (bundleConfig.host && bundleConfig.host.price) {
+              hostPriceInCents = parseInt(bundleConfig.host.price) || 0;
+            } else if (bundleConfig.host && bundleConfig.host.handle && bundleConfig.host.variant_id) {
+              // 如果配置中没有价格，尝试从 API 获取（后备方案）
+              fetch(`/products/${bundleConfig.host.handle}.js`)
+                .then((response) => response.json())
+                .then((product) => {
+                  const hostVariant = product.variants.find((v) => v.id === parseInt(bundleConfig.host.variant_id));
+                  if (hostVariant) {
+                    hostPriceInCents = hostVariant.price;
+                    const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
+                    const batteryPrice = selectedBatteryBtn ? parseInt(selectedBatteryBtn.dataset.price) || 0 : 0;
+                    const bundleCategoryGridPrice = getBundleCategoryGridPrice();
+                    updateStickyBarPriceWithBundle(hostPriceInCents, batteryPrice, bundleCategoryGridPrice);
+                  } else {
+                    updateStickyBarPriceWithBundle(0, 0, getBundleCategoryGridPrice());
+                  }
+                })
+                .catch((error) => {
+                  console.error('[Bundle] 获取主机价格失败:', error);
+                  updateStickyBarPriceWithBundle(0, 0, getBundleCategoryGridPrice());
+                });
+              return; // 异步获取，直接返回
+            }
+          } catch (e) {
+            console.error('[Bundle] 解析配置失败:', e);
+          }
+        }
+
+        // Bundle 模式：获取选中的电池包价格
+        const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
+        batteryPriceInCents = selectedBatteryBtn ? parseInt(selectedBatteryBtn.dataset.price) || 0 : 0;
+      }
+
+      // 获取所有 bundle-category-grid 产品的价格（两种模式都支持太阳能板、支架等）
+      const bundleCategoryGridPriceInCents = getBundleCategoryGridPrice();
+
+      // 同步更新价格
+      updateStickyBarPriceWithBundle(hostPriceInCents, batteryPriceInCents, bundleCategoryGridPriceInCents);
+    }
+
+    // 提取获取 bundle-category-grid 产品价格的逻辑
+    function getBundleCategoryGridPrice() {
+      let bundleCategoryGridPriceInCents = 0;
+      document.querySelectorAll('.bundle-category-grid-fieldset').forEach((fieldset) => {
+        const selectedBtn = fieldset.querySelector('.bundle-category-btn.selected');
+        if (selectedBtn) {
+          const price = selectedBtn.dataset.price;
+          const qty = parseInt(selectedBtn.dataset.qty) || 0;
+
+          // 只有当 qty > 0 时才累加价格（"Keine" 表示不选择，价格为 0）
+          if (price && qty > 0) {
+            bundleCategoryGridPriceInCents += parseInt(price) || 0;
+          }
+        }
+      });
+      return bundleCategoryGridPriceInCents;
+    }
+
+    // 更新 Sticky Bar 价格（主机价格 + 电池包价格 + 所有 bundle-category-grid 产品价格 + Lookbook 推荐商品价格）
+    function updateStickyBarPriceWithBundle(hostPriceInCents, batteryPriceInCents, bundleCategoryGridPriceInCents) {
+      let totalPriceInCents = hostPriceInCents + batteryPriceInCents + (bundleCategoryGridPriceInCents || 0);
+
+      // 累加 Lookbook 选中产品价格
+      function parseEuroPrice(priceStr) {
+        if (!priceStr) return 0;
+        return (
+          parseFloat(
+            priceStr
+              .toString()
+              .replace(/[^\d,]/g, '')
+              .replace(',', '.')
+          ) || 0
+        );
+      }
+
+      document.querySelectorAll('.lb-select-on-click[lb-selected]').forEach((card) => {
+        const priceEl = card.querySelector('.lb-price-sale-price');
+        if (priceEl) {
+          const priceInEuros = parseEuroPrice(priceEl.textContent.trim());
+          const priceInCents = Math.round(priceInEuros * 100);
+          const qtyInput = card.querySelector('input.lb-qty-count');
+          const qty = qtyInput ? parseInt(qtyInput.value || '1', 10) : 1;
+          totalPriceInCents += priceInCents * qty;
+        }
+      });
+
+      // 获取 sticky-atc-bar 价格元素
+      // 注意：使用与 Multi Host 模式一致的选择器
+      const stickyContainer = document.querySelector('.sticky-atc-bar .product-price-box');
+      if (!stickyContainer) {
+        console.warn('[Bundle] 未找到价格容器，选择器: .sticky-atc-bar .product-price-box');
+        return;
+      }
+
+      const salePrice = stickyContainer.querySelector('.f-price-item--sale'); 
+      const regularPrice = stickyContainer.querySelector('.f-price-item--regular');
+
+      // 格式化价格（欧元格式：1.234,56 €）
+      const priceInEuros = totalPriceInCents / 100;
+      const parts = priceInEuros.toFixed(2).split('.');
+      const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+      const formattedPrice = integerPart + ',' + parts[1] + '€';
+
+      // 更新价格显示
+      if (salePrice) {
+        salePrice.textContent = formattedPrice;
+      } else if (regularPrice) {
+        regularPrice.textContent = formattedPrice;
+      }
+
+      console.log('[Bundle] 更新价格:', {
+        hostPrice: hostPriceInCents / 100,
+        batteryPrice: batteryPriceInCents / 100,
+        bundleCategoryGridPrice: (bundleCategoryGridPriceInCents || 0) / 100,
+        lookbookPrice:
+          (totalPriceInCents - hostPriceInCents - batteryPriceInCents - (bundleCategoryGridPriceInCents || 0)) / 100,
+        totalPrice: totalPriceInCents / 100,
+      });
+    }
+
+    // 将 updateBundlePrice 暴露为全局函数，供 Bundle renderer 调用
+    if (!window.bundleProducts) {
+      window.bundleProducts = {};
+    }
+    window.bundleProducts.updatePrice = updateBundlePrice;
+
+    // 处理类别数量按钮点击(第二种类型)
+    function handleCategoryQtyClick(e) {
+      const label = e.target.closest('.variant-category-qty-btn');
+      if (!label) return;
+
+      // 跳过 Bundle 模式的按钮（由各自的 renderer 处理）
+      if (label.classList.contains('bundle-category-btn')) {
+        return;
+      }
+
+      // 立即返回如果按钮被禁用
+      if (label.classList.contains('disabled')) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      // 从 label 的 for 属性找到对应的 input
+      const inputId = label.getAttribute('for');
+      if (!inputId) return;
+
+      const radio = document.getElementById(inputId);
+      if (!radio || radio.classList.contains('disabled')) return;
+
+      const optionValue = radio.value;
+      const variantId = radio.dataset.variantId;
+      const wattage = radio.dataset.wattage;
+      const category = label.closest('.variant-category-card');
+
+      const variantSelects = radio.closest('variant-selects');
+      if (!variantSelects) {
+        console.warn('[Variant Picker] handleCategoryQtyClick: variantSelects not found');
+        return;
+      }
+
+      // 检查兼容性
+      const isCompatible = checkOptionCompatibility(radio, optionValue, variantSelects);
+
+      // 更新 label 状态
+      if (category) {
+        const categoryButtons = category.querySelectorAll('.variant-category-qty-btn');
+        if (categoryButtons) {
+          categoryButtons.forEach((l) => {
+            if (l && l.classList) {
+              l.classList.remove('selected');
+            }
+          });
+        }
+        label.classList.add('selected');
+
+        // 更新卡片选中状态
+        const allCategoryCards = document.querySelectorAll('.variant-category-card');
+        if (allCategoryCards) {
+          allCategoryCards.forEach((card) => {
+            if (card && card.classList) {
+              card.classList.remove('selected');
+            }
+          });
+        }
+        category.classList.add('selected');
+      }
+
+      // 取消所有同名的radio
+      const radioName = radio.name;
+      document.querySelectorAll(`input[type="radio"][name="${radioName}"]`).forEach((r) => {
+        r.checked = false;
+      });
+
+      // 选中对应的radio
+      radio.checked = true;
+
+      // 如果不兼容，清除后续选项的选中状态，不触发 change 事件
+      if (!isCompatible) {
+        console.warn('[Variant Picker] handleCategoryQtyClick: 选项不兼容，清除后续选项', {
+          optionValue,
+          variantId,
+        });
+        clearSubsequentOptions(radio, variantSelects);
+
+        // 更新瓦数显示
+        if (category && wattage) {
+          const wattageDisplay = category.querySelector('[data-wattage-display]');
+          if (wattageDisplay) {
+            wattageDisplay.textContent = wattage;
+          }
+        }
+
+        // 更新类别图片
+        if (category) {
+          const imageEl = category.querySelector('.variant-category-card-image img');
+          if (imageEl) {
+            const imageUrl = radio.dataset.imageUrl;
+            if (imageUrl) {
+              imageEl.src = imageUrl;
+            } else {
+              const defaultImageUrl = category.dataset.defaultImageUrl;
+              if (defaultImageUrl) {
+                imageEl.src = defaultImageUrl;
+              }
+            }
+          }
+        }
+
+        // 验证并更新所有选项的可用性
+        setTimeout(() => validateAndUpdateOptionAvailability(), 50);
+        return;
+      }
+
+      // 如果兼容，正常触发 change 事件，并显示 sticky-atc-bar
+      showStickyAtcBar();
+
+      const changeEvent = new Event('change', { bubbles: true, cancelable: true });
+      radio.dispatchEvent(changeEvent);
+
+      const fieldset = radio.closest('fieldset');
+      if (fieldset) {
+        fieldset.dispatchEvent(changeEvent);
+      }
+
+      if (variantSelects) {
+        variantSelects.dispatchEvent(changeEvent);
+      }
+
+      // 更新瓦数显示
+      if (category) {
+        if (wattage) {
+          const wattageDisplay = category.querySelector('[data-wattage-display]');
+          if (wattageDisplay) {
+            wattageDisplay.textContent = wattage;
+          }
+        }
+
+        // 更新类别图片
+        const imageEl = category.querySelector('.variant-category-card-image img');
+        if (imageEl) {
+          const imageUrl = radio.dataset.imageUrl;
+          if (imageUrl) {
+            imageEl.src = imageUrl;
+          } else {
+            const defaultImageUrl = category.dataset.defaultImageUrl;
+            if (defaultImageUrl) {
+              imageEl.src = defaultImageUrl;
+            }
+          }
+        }
+      }
+
+      // 验证并更新所有选项的可用性
+      setTimeout(() => validateAndUpdateOptionAvailability(), 50);
+    }
+
+    // 处理"Keine"按钮点击
+    function handleNoneButtonClick(e) {
+      const label = e.target.closest('.variant-none-btn');
+      if (!label) return;
+
+      // 立即返回如果按钮被禁用
+      if (label.classList.contains('disabled')) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+
+      e.preventDefault();
+      e.stopPropagation();
+
+      // 从 label 的 for 属性找到对应的 input
+      const inputId = label.getAttribute('for');
+      if (!inputId) {
+        console.warn('[Variant Picker] handleNoneButtonClick: label 没有 for 属性', label);
+        return;
+      }
+
+      const radio = document.getElementById(inputId);
+      if (!radio) {
+        console.warn('[Variant Picker] handleNoneButtonClick: 找不到对应的 input，inputId:', inputId);
+        return;
+      }
+
+      if (radio.classList.contains('disabled')) {
+        console.log('[Variant Picker] handleNoneButtonClick: input 被禁用');
+        return;
+      }
+
+      const optionValue = radio.value;
+      const variantId = radio.dataset.variantId;
+
+      console.log('[Variant Picker] handleNoneButtonClick:', {
+        inputId,
+        optionValue,
+        variantId,
+        radio: radio,
+        label: label,
+      });
+
+      if (!optionValue) {
+        console.error('[Variant Picker] handleNoneButtonClick: optionValue 为空', {
+          inputId,
+          radioValue: radio.value,
+          radio: radio,
+        });
+        return;
+      }
+
+      // 检查是否有对应的 variant ID，以及这个 variant 是否与当前其他选项兼容
+      const hasVariantId = variantId && variantId !== 'null' && variantId !== 'undefined' && variantId.trim() !== '';
+      const noneVariantSelects = radio.closest('variant-selects');
+
+      // 检查兼容性
+      const isCompatible = hasVariantId && checkOptionCompatibility(radio, optionValue, noneVariantSelects);
+
+      console.log('[Variant Picker] handleNoneButtonClick 兼容性检查:', {
+        variantId,
+        hasVariantId,
+        isCompatible,
+      });
+
+      // 如果没有 variant ID 或者 variant 不兼容，只更新 UI 状态，不触发 change 事件
+      if (!hasVariantId || !isCompatible) {
+        console.warn('[Variant Picker] handleNoneButtonClick: 选项不兼容，清除后续选项', {
+          optionValue,
+          variantId,
+          hasVariantId,
+          isCompatible,
+        });
+
+        // 只更新当前选项的 UI 状态
+        const currentFieldset = radio.closest('fieldset');
+        if (currentFieldset) {
+          // 更新当前 fieldset 内的 label 状态
+          currentFieldset.querySelectorAll('.variant-none-btn').forEach((l) => {
+            l.classList.remove('selected');
+          });
+          label.classList.add('selected');
+
+          // 取消当前 fieldset 内的类别按钮选中状态
+          currentFieldset.querySelectorAll('.variant-category-qty-btn').forEach((b) => {
+            b.classList.remove('selected');
+          });
+          currentFieldset.querySelectorAll('.variant-category-card').forEach((card) => {
+            card.classList.remove('selected');
+          });
+
+          // 清除当前 fieldset 内的瓦数显示
+          currentFieldset.querySelectorAll('[data-wattage-display]').forEach((display) => {
+            display.textContent = '0Wp';
+          });
+
+          // 恢复当前 fieldset 内的类别图片为默认
+          currentFieldset.querySelectorAll('.variant-category-card').forEach((card) => {
+            const imageEl = card.querySelector('.variant-category-card-image img');
+            if (imageEl) {
+              const defaultImageUrl = card.dataset.defaultImageUrl;
+              if (defaultImageUrl) {
+                imageEl.src = defaultImageUrl;
+              }
+            }
+          });
+
+          // 取消所有同名的radio
+          const radioName = radio.name;
+          document.querySelectorAll(`input[type="radio"][name="${radioName}"]`).forEach((r) => {
+            r.checked = false;
+          });
+
+          // 选中对应的radio（但不触发 change 事件）
+          radio.dataset.skipChangeEvent = 'true';
+          radio.checked = true;
+          setTimeout(() => {
+            delete radio.dataset.skipChangeEvent;
+          }, 0);
+        }
+
+        // 清除后续选项的选中状态
+        clearSubsequentOptions(radio, noneVariantSelects);
+
+        // 验证并更新所有选项的可用性
+        setTimeout(() => validateAndUpdateOptionAvailability(), 50);
+
+        // 不触发 change 事件，避免清空其他选项
+        return;
+      }
+
+      // 如果有 variant ID 且兼容，正常处理，并显示 sticky-atc-bar
+      showStickyAtcBar();
+
+      // 更新 label 状态
+      document.querySelectorAll('.variant-none-btn').forEach((l) => {
+        l.classList.remove('selected');
+      });
+      label.classList.add('selected');
+
+      // 取消所有类别按钮的选中状态
+      document.querySelectorAll('.variant-category-qty-btn').forEach((b) => {
+        b.classList.remove('selected');
+      });
+      document.querySelectorAll('.variant-category-card').forEach((card) => {
+        card.classList.remove('selected');
+      });
+
+      // 清除所有瓦数显示
+      document.querySelectorAll('[data-wattage-display]').forEach((display) => {
+        display.textContent = '0Wp';
+      });
+
+      // 恢复类别图片为默认
+      document.querySelectorAll('.variant-category-card').forEach((card) => {
+        const imageEl = card.querySelector('.variant-category-card-image img');
+        if (imageEl) {
+          const defaultImageUrl = card.dataset.defaultImageUrl;
+          if (defaultImageUrl) {
+            imageEl.src = defaultImageUrl;
+          }
+        }
+      });
+
+      // 取消所有同名的radio
+      const radioName = radio.name;
+      document.querySelectorAll(`input[type="radio"][name="${radioName}"]`).forEach((r) => {
+        r.checked = false;
+      });
+
+      // 选中对应的radio
+      radio.checked = true;
+
+      // 触发change事件
+      const changeEvent = new Event('change', { bubbles: true, cancelable: true });
+      radio.dispatchEvent(changeEvent);
+
+      const fieldset = radio.closest('fieldset');
+      if (fieldset) {
+        fieldset.dispatchEvent(changeEvent);
+      }
+
+      const variantSelects = radio.closest('variant-selects');
+      if (variantSelects) {
+        variantSelects.dispatchEvent(changeEvent);
+      }
+
+      // 验证并更新所有选项的可用性
+      setTimeout(() => validateAndUpdateOptionAvailability(), 50);
+    }
+
+    // 初始化扩展数量按钮
+    function initExtensionButtons() {
+      const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
+      if (!productInfo) return;
+
+      // 移除旧的事件监听器（如果存在）
+      if (productInfo._extensionQtyHandler) {
+        productInfo.removeEventListener('click', productInfo._extensionQtyHandler);
+      }
+      if (productInfo._categoryQtyHandler) {
+        productInfo.removeEventListener('click', productInfo._categoryQtyHandler);
+      }
+      if (productInfo._noneButtonHandler) {
+        productInfo.removeEventListener('click', productInfo._noneButtonHandler);
+      }
+
+      // 添加新的事件监听器（事件委托）
+      productInfo._extensionQtyHandler = handleExtensionQtyClick;
+      productInfo._categoryQtyHandler = handleCategoryQtyClick;
+      productInfo._noneButtonHandler = handleNoneButtonClick;
+
+      productInfo.addEventListener('click', productInfo._extensionQtyHandler);
+      productInfo.addEventListener('click', productInfo._categoryQtyHandler);
+      productInfo.addEventListener('click', productInfo._noneButtonHandler);
+    }
+
+    // 初始化瓦数显示
+    function initWattageDisplay() {
+      // 找到所有选中的类别按钮，更新对应的瓦数显示
+      document.querySelectorAll('.variant-category-qty-btn.selected').forEach((btn) => {
+        const wattage = btn.dataset.wattage;
+        const category = btn.closest('.variant-category-card');
+        if (category && wattage) {
+          const wattageDisplay = category.querySelector('[data-wattage-display]');
+          if (wattageDisplay) {
+            wattageDisplay.textContent = wattage;
+          }
+
+          const imageEl = category.querySelector('.variant-category-card-image img');
+          if (imageEl) {
+            const imageUrl = btn.dataset.imageUrl;
+            if (imageUrl) {
+              imageEl.src = imageUrl;
+            }
+          }
+        }
+      });
+    }
+
+    // 验证并更新所有选项按钮的可用性
+    // Bundle 模式下跳过验证，因为每个产品都是独立的
+    function validateAndUpdateOptionAvailability() {
+      const variantSelects = document.querySelector('variant-selects');
+      if (!variantSelects) return;
+
+      // 检查是否为 Bundle 模式
+      const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
+      if (bundleConfigEl) {
+        // Bundle 模式：跳过验证，每个产品独立处理
+        console.log('[Variant Picker] Bundle 模式：跳过选项可用性验证');
+        return;
+      }
+
+      // 非 Bundle 模式：执行原有的验证逻辑
+      const variantsDataEl = variantSelects.querySelector('[data-product-variants]');
+      if (!variantsDataEl) return;
+
+      let allVariants;
+      try {
+        allVariants = JSON.parse(variantsDataEl.textContent);
+      } catch (e) {
+        console.error('Failed to parse variants data:', e);
+        return;
+      }
+
+      // 获取当前所有选中的 radio inputs，并按 position 排序
+      const checkedRadios = variantSelects.querySelectorAll('input[type="radio"]:checked');
+      const selectedRadiosByPosition = {};
+      checkedRadios.forEach((radio) => {
+        const position = parseInt(radio.name.split('-').pop()) || 0;
+        selectedRadiosByPosition[position] = radio.value;
+      });
+
+      // 只验证非 Bundle 模式的按钮（排除 .bundle-extension-btn）
+      const buttonSelectors = ['.variant-category-qty-btn', '.variant-none-btn'];
+
+      buttonSelectors.forEach((selector) => {
+        const buttons = variantSelects.querySelectorAll(selector);
+
+        buttons.forEach((btn) => {
+          // 跳过 Bundle 模式的按钮
+          if (btn.classList.contains('bundle-extension-btn')) return;
+
+          const inputId = btn.getAttribute('for');
+          if (!inputId) return;
+
+          const radio = document.getElementById(inputId);
+          if (!radio) return;
+
+          const optionValue = radio.dataset.optionValue || radio.value;
+          if (!optionValue) return;
+
+          const radioName = radio.name;
+          const currentPosition = parseInt(radioName.split('-').pop()) || 0;
+
+          const testValues = [];
+          Object.keys(selectedRadiosByPosition).forEach((pos) => {
+            const position = parseInt(pos);
+            if (position < currentPosition) {
+              testValues.push(selectedRadiosByPosition[pos]);
+            }
+          });
+          testValues.push(optionValue);
+
+          const hasMatchingVariant = allVariants.some((variant) => {
+            if (!variant.available) return false;
+            return testValues.every((testValue) => {
+              return variant.options && variant.options.includes(testValue);
+            });
+          });
+
+          if (!hasMatchingVariant) {
+            btn.classList.add('disabled');
+            btn.setAttribute('disabled', 'disabled');
+          } else {
+            if (!radio.classList.contains('disabled')) {
+              btn.classList.remove('disabled');
+              btn.removeAttribute('disabled');
+            }
+          }
+        });
+      });
+    }
+
+    // 初始化 Bundle 价格更新监听
+    function initBundlePriceUpdate() {
+      // 注意：Multi Host 模式的价格更新由 sticky-atc-bar.liquid 中的监听器处理
+      // 这里不需要重复监听，因为 sticky-atc-bar 的监听器会：
+      // 1. 更新 currentVariant 状态
+      // 2. 调用 updatePrice() 方法（处理折扣、对比价格、单位价格等）
+      // 3. 更新按钮状态
+
+      // 监听电池包选择变化事件
+      document.addEventListener('bundle:battery:change', function (e) {
+        console.log('[Bundle] 电池包选择变化:', e.detail);
+        // 更新价格
+        updateBundlePrice();
+      });
+
+      // 监听所有 bundle-category-grid 产品选择变化事件（包括太阳能板和其他产品）
+      document.addEventListener('bundle:solar:change', function (e) {
+        console.log('[Bundle] Bundle category grid 产品选择变化:', e.detail);
+        // 更新价格
+        updateBundlePrice();
+      });
+
+      // 监听 Lookbook 产品选择变化（用于更新 Bundle 价格中的 Lookbook 部分）
+      function initLookbookListenerForBundle() {
+        const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
+        if (!productInfo) return;
+
+        // 使用 MutationObserver 监听 Lookbook 卡片选中状态的变化
+        const observer = new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'lb-selected') {
+              // 检查是否是 Bundle 模式
+              const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
+              if (bundleConfigEl) {
+                // Bundle 模式：更新价格
+                setTimeout(() => {
+                  updateBundlePrice();
+                }, 50);
+              }
+            }
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+              const target = mutation.target;
+              if (target.classList.contains('lb-select-on-click')) {
+                const wasSelected = mutation.oldValue?.includes('selected');
+                const isSelected = target.classList.contains('selected');
+                if (wasSelected !== isSelected) {
+                  // 检查是否是 Bundle 模式
+                  const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
+                  if (bundleConfigEl) {
+                    setTimeout(() => {
+                      updateBundlePrice();
+                    }, 50);
+                  }
+                }
+              }
+            }
+          });
+        });
+
+        // 观察所有 Lookbook 卡片
+        const observeLookbookCards = () => {
+          document.querySelectorAll('.lb-select-on-click').forEach((card) => {
+            observer.observe(card, {
+              attributes: true,
+              attributeOldValue: true,
+              attributeFilter: ['lb-selected', 'class'],
+            });
+          });
+        };
+
+        // 初始观察
+        observeLookbookCards();
+
+        // 当 DOM 变化时重新观察（处理动态添加的卡片）
+        const contentObserver = new MutationObserver(() => {
+          observeLookbookCards();
+        });
+        contentObserver.observe(productInfo, {
+          childList: true,
+          subtree: true,
+        });
+
+        // 监听 Lookbook 数量变化
+        productInfo.addEventListener('input', (e) => {
+          if (e.target.classList.contains('lb-qty-count')) {
+            const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
+            if (bundleConfigEl) {
+              setTimeout(() => {
+                updateBundlePrice();
+              }, 50);
+            }
+          }
+        });
+
+        productInfo.addEventListener('click', (e) => {
+          if (e.target.closest('.lb-qty-add, .lb-qty-remove')) {
+            const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
+            if (bundleConfigEl) {
+              setTimeout(() => {
+                updateBundlePrice();
+              }, 100);
+            }
+          }
+        });
+      }
+
+      // 初始化 Lookbook 监听器
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLookbookListenerForBundle);
+      } else {
+        initLookbookListenerForBundle();
+      }
+
+      // 初始化时更新一次价格（延迟执行，确保 DOM 和事件监听器都已准备好）
+      setTimeout(() => {
+        // 注意：Multi Host 模式的初始化价格更新由 sticky-atc-bar.liquid 中的监听器处理
+        // 这里只处理 Bundle with Battery 模式
+
+        // Bundle with Battery 模式：检查是否有选中的电池包或任何 bundle-category-grid 产品按钮
+        const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
+        let hasSelectedCategoryGrid = false;
+        document.querySelectorAll('.bundle-category-grid-fieldset').forEach((fieldset) => {
+          const selectedBtn = fieldset.querySelector('.bundle-category-btn.selected');
+          const selectedKeineBtn = fieldset.querySelector('.bundle-keine-btn.selected');
+          if (selectedBtn || selectedKeineBtn) {
+            hasSelectedCategoryGrid = true;
+          }
+        });
+
+        if (selectedBatteryBtn || hasSelectedCategoryGrid) {
+          // 如果有选中的按钮，触发一次价格更新
+          updateBundlePrice();
+        }
+      }, 600);
+    }
+
+    // 初始化太阳能板数量连接功能
+    function initSolarQuantityConnection() {
+      // 监听太阳能板选择变化
+      document.addEventListener('bundle:solar:change', function (e) {
+        const detail = e.detail;
+        const solarQty = detail.isKeine ? 0 : parseInt(detail.quantity) || 0;
+        const solarProductId = detail.productId || null;
+
+        // 只处理太阳能板产品的事件（通过 data-is-solar-product 判断）
+        const isSolarProductEvent =
+          solarProductId &&
+          document.querySelector(
+            `.bundle-category-grid-fieldset[data-is-solar-product="true"][data-product-id="${solarProductId}"]`
+          );
+        if (!isSolarProductEvent) {
+          return; // 不是太阳能板产品的事件，跳过
+        }
+
+        console.log('[Solar Quantity Connection] 太阳能板选择变化:', {
+          quantity: solarQty,
+          isKeine: detail.isKeine,
+          solarProductId: solarProductId,
+        });
+
+        // 找到所有需要连接太阳能板数量的支架（只在 connect_solar_quantity 为 true 时生效）
+        document
+          .querySelectorAll('.bundle-category-grid-fieldset[data-connect-solar-quantity="true"]')
+          .forEach((mountFieldset) => {
+            const mountSolarProductId = mountFieldset.dataset.solarProductId;
+
+            // 检查是否是同一个太阳能板产品（如果指定了 solarProductId）
+            if (solarProductId && mountSolarProductId && mountSolarProductId !== solarProductId.toString()) {
+              return; // 不是同一个太阳能板产品，跳过
+            }
+
+            // 找到太阳能板产品（通过 data-is-solar-product 属性）
+            let solarFieldset = null;
+            if (mountSolarProductId) {
+              solarFieldset = document.querySelector(
+                `.bundle-category-grid-fieldset[data-is-solar-product="true"][data-product-id="${mountSolarProductId}"]`
+              );
+            } else {
+              // 如果没有指定 solarProductId，找第一个太阳能板产品
+              solarFieldset = document.querySelector('.bundle-category-grid-fieldset[data-is-solar-product="true"]');
+            }
+
+            if (!solarFieldset) {
+              console.warn('[Solar Quantity Connection] 未找到太阳能板产品');
+              return;
+            }
+
+            // 获取当前选中的太阳能板数量
+            let currentSolarQty = 0;
+            const selectedSolarBtn = solarFieldset.querySelector('.bundle-category-btn.selected');
+            const selectedSolarKeineBtn = solarFieldset.querySelector('.bundle-keine-btn.selected');
+
+            if (selectedSolarBtn && !selectedSolarKeineBtn) {
+              currentSolarQty = parseInt(selectedSolarBtn.dataset.qty) || 0;
+            }
+
+            // 更新支架的数量选项可用性
+            const mountButtons = mountFieldset.querySelectorAll('.bundle-category-btn');
+            const mountKeineBtn = mountFieldset.querySelector('.bundle-keine-btn');
+
+            mountButtons.forEach((btn) => {
+              const mountQty = parseInt(btn.dataset.qty) || 0;
+              const radio = document.getElementById(btn.getAttribute('for'));
+
+              if (currentSolarQty === 0) {
+                // 如果太阳能板未选择（"Keine"），禁用所有支架选项（除了 "Keine"）
+                btn.classList.add('disabled');
+                btn.setAttribute('disabled', 'disabled');
+                if (radio) {
+                  radio.disabled = true;
+                  radio.classList.add('disabled');
+                }
+
+                // 如果当前选中的选项被禁用，自动选中 "Keine"
+                if (btn.classList.contains('selected')) {
+                  btn.classList.remove('selected');
+                  if (radio) {
+                    radio.checked = false;
+                  }
+
+                  // 选中 "Keine" 按钮
+                  if (mountKeineBtn) {
+                    mountKeineBtn.classList.add('selected');
+                    const keineRadio = document.getElementById(mountKeineBtn.getAttribute('for'));
+                    if (keineRadio) {
+                      keineRadio.checked = true;
+                    }
+
+                    // 触发 "Keine" 事件
+                    document.dispatchEvent(
+                      new CustomEvent('bundle:solar:change', {
+                        detail: {
+                          category: '',
+                          variantId: '',
+                          price: '0',
+                          quantity: '0',
+                          wattage: '0Wp',
+                          isKeine: true,
+                          productId: mountFieldset.dataset.productId,
+                        },
+                      })
+                    );
+                  }
+                }
+              } else {
+                // 如果太阳能板选择了数量，只启用匹配的支架选项
+                if (mountQty === currentSolarQty) {
+                  // 匹配：启用
+                  btn.classList.remove('disabled');
+                  btn.removeAttribute('disabled');
+                  if (radio) {
+                    radio.disabled = false;
+                    radio.classList.remove('disabled');
+                  }
+                } else {
+                  // 不匹配：禁用
+                  btn.classList.add('disabled');
+                  btn.setAttribute('disabled', 'disabled');
+                  if (radio) {
+                    radio.disabled = true;
+                    radio.classList.add('disabled');
+                  }
+
+                  // 如果当前选中的选项被禁用，自动选中 "Keine"
+                  if (btn.classList.contains('selected')) {
+                    btn.classList.remove('selected');
+                    if (radio) {
+                      radio.checked = false;
+                    }
+
+                    // 选中 "Keine" 按钮
+                    if (mountKeineBtn) {
+                      mountKeineBtn.classList.add('selected');
+                      const keineRadio = document.getElementById(mountKeineBtn.getAttribute('for'));
+                      if (keineRadio) {
+                        keineRadio.checked = true;
+                      }
+
+                      // 触发 "Keine" 事件
+                      document.dispatchEvent(
+                        new CustomEvent('bundle:solar:change', {
+                          detail: {
+                            category: '',
+                            variantId: '',
+                            price: '0',
+                            quantity: '0',
+                            wattage: '0Wp',
+                            isKeine: true,
+                            productId: mountFieldset.dataset.productId,
+                          },
+                        })
+                      );
+                    }
+                  }
+                }
+              }
+            });
+
+            // 确保 "Keine" 按钮始终可用（当太阳能板未选择时，这是唯一可选的选项）
+            if (mountKeineBtn) {
+              const keineRadio = document.getElementById(mountKeineBtn.getAttribute('for'));
+              if (keineRadio) {
+                mountKeineBtn.classList.remove('disabled');
+                mountKeineBtn.removeAttribute('disabled');
+                keineRadio.disabled = false;
+                keineRadio.classList.remove('disabled');
+              }
+            }
+          });
+      });
+
+      // 初始化时执行一次（延迟执行，确保 DOM 已准备好）
+      setTimeout(() => {
+        // 找到太阳能板产品
+        const solarFieldset = document.querySelector('.bundle-category-grid-fieldset[data-is-solar-product="true"]');
+        if (solarFieldset) {
+          const selectedSolarBtn = solarFieldset.querySelector('.bundle-category-btn.selected');
+          const selectedSolarKeineBtn = solarFieldset.querySelector('.bundle-keine-btn.selected');
+
+          if (selectedSolarBtn && !selectedSolarKeineBtn) {
+            // 触发一次事件来初始化支架选项状态
+            const solarQty = parseInt(selectedSolarBtn.dataset.qty) || 0;
+            document.dispatchEvent(
+              new CustomEvent('bundle:solar:change', {
+                detail: {
+                  category: selectedSolarBtn.dataset.category,
+                  variantId: selectedSolarBtn.dataset.variantId,
+                  price: selectedSolarBtn.dataset.price,
+                  quantity: selectedSolarBtn.dataset.qty,
+                  wattage: selectedSolarBtn.dataset.wattage,
+                  isKeine: false,
+                  productId: solarFieldset.dataset.productId,
+                },
+              })
+            );
+          } else {
+            // 如果没有选中或选中了 "Keine"，触发 "Keine" 事件
+            document.dispatchEvent(
+              new CustomEvent('bundle:solar:change', {
+                detail: {
+                  category: '',
+                  variantId: '',
+                  price: '0',
+                  quantity: '0',
+                  wattage: '0Wp',
+                  isKeine: true,
+                  productId: solarFieldset.dataset.productId,
+                },
+              })
+            );
+          }
+        }
+      }, 800);
+    }
+
+    // DOM加载完成后初始化
+    function initAll() {
+      initTabSwitching();
+      initExtensionButtons();
+      initWattageDisplay();
+      initBundlePriceUpdate();
+      initSolarQuantityConnection();
+      // 初始化时验证一次选项可用性
+      setTimeout(() => validateAndUpdateOptionAvailability(), 100);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAll);
+    } else {
+      initAll();
+    }
+
+    // 使用MutationObserver监听variant-selects的变化
+    // 当variant-selects被替换后，重新初始化
+    const observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        if (mutation.type === 'childList') {
+          // 检查是否有新的variant-selects被添加
+          mutation.addedNodes.forEach(function (node) {
+            if (node.nodeType === 1 && node.tagName === 'VARIANT-SELECTS') {
+              // 新的variant-selects被添加，确保标签页和扩展按钮功能正常
+              setTimeout(function () {
+                initTabSwitching();
+                initExtensionButtons();
+                initWattageDisplay();
+                // 重新验证选项可用性
+                validateAndUpdateOptionAvailability();
+                // 恢复 tab 状态（使用最新的 currentTargetTab，而不是旧的 DOM 状态）
+                restoreTabState(currentTargetTab);
+              }, 100);
+            }
+          });
+        }
+      });
+    });
+
+    // 开始观察product-info元素的变化
+    function startObserving() {
+      const pi = document.querySelector('product-info[id^="MainProduct-"]');
+      if (pi) {
+        observer.observe(pi, {
+          childList: true,
+          subtree: true,
+        });
+        return true;
+      }
+      return false;
+    }
+
+    // 尝试开始观察
+    if (!startObserving()) {
+      // 如果product-info还没加载，等待它加载
+      const checkProductInfo = setInterval(function () {
+        if (startObserving()) {
+          clearInterval(checkProductInfo);
+        }
+      }, 100);
+    }
+  })();
+</script>

@@ -1,0 +1,366 @@
+<style>
+  #shopify-section-{{ section.id }} {margin-top:{{section.settings.padding_top}}px;margin-bottom:{{section.settings.padding_bottom}}px;}
+  .download-app-container {
+    display: flex;
+    align-items: center;
+    gap: 54px;
+    background-color: #F5F5F5;
+    border-radius: 20px;
+  }
+  
+  .download-app-content {
+    display: inline-flex;
+    align-items: center;
+    flex-flow: column;
+    flex: 1;
+    margin-top:47px
+  }
+  .download-app-content .logo-wrapper{ gap: 18px;}
+  
+  .download-app-title {
+    line-height:54px;
+    font-size: 45px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .download-app-description {
+    margin-top: 6px;
+    margin-bottom:0px;
+    line-height:24px;
+    font-size: 20px !important;
+    color: #333;
+  }
+
+  .package-download p{
+    font-size: 18px !important;
+  }
+  
+  .download-links {
+    display: flex;
+    gap: 38px;
+    margin-top: 70px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+ .download-links .left-img{
+    display: flex;
+    flex-flow: column;
+    gap: 40px
+}
+  .download-link {
+    display: block;
+    max-width: 160px;
+    transition: transform 0.3s ease;
+  }
+  
+  .download-link img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .package-download {
+    margin-top: 99px;
+    gap:9px;
+    align-items: center;
+    line-height:22px;
+    font-size:18px;
+    color: #3250C3;
+  }
+  
+  .package-download a {
+    color: #3250C3;
+    text-decoration: none;
+  }
+  
+  .download-app-image {
+    flex: 1;
+    text-align: center;
+  }
+  
+  .download-app-image img {
+    max-width: 100%;
+    height: 580px;
+    border-radius: 12px;
+  }
+  
+  .qr-code-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .qr-code {
+    position:relative;
+    width: 173px;
+    height: 173px;
+  }
+  
+  .qr-code img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .qr-code-text {
+    font-size: 14px;
+    color: #666;
+    max-width: 160px;
+  }
+  
+  @media (max-width: 768px) {
+     #shopify-section-{{ section.id }}{margin-top:{{ section.settings.padding_top | divided_by: 2 }}px;margin-bottom:{{ section.settings.padding_bottom | divided_by: 2 }}px;}
+    .download-app-container {
+      margin-top:0px;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      flex-direction: column-reverse;
+      background:#fff
+    }
+    
+    .download-app-content {
+      margin-top:0px;
+      order: 2;
+      text-align: center;
+    }
+    .download-app-content .logo-wrapper{ position: relative; gap: 7px;height: 40px;}
+    .download-app-content .logo-wrapper img{object-fit: cover;height: 100%;}
+    .download-app-image {
+      order: 1;
+    }
+    .download-app-image img{
+      height:24.6rem
+    }
+    
+    .download-links {
+      margin-top:2.7rem;
+      flex-flow: column;
+      justify-content: center;
+    }
+    .download-links .left-img{flex-flow: row; gap:2rem}
+    .qr-code-container {
+      justify-content: center;
+    }
+    .package-download{margin-top:2.7rem;padding: 0px 16px;line-height: 17px;font-size: 14px;border-radius: 8px;background: #3250C3;}
+    .package-download .icon-download-blue{display:none}
+    .package-download a{color:#fff}
+    .download-app-title {
+      line-height:34px;
+      font-size: 28px;
+    }
+    
+    .download-app-description {
+        display:none
+    }
+    
+    /* Show mobile image instead of desktop */
+    .download-app-image .desktop-img {
+      display: none;
+    }
+    
+    .download-app-image .mobile-img {
+      display: none;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .download-app-image .mobile-img,.package-download .icon-download-white {
+      display: none;
+    }
+  }
+</style>
+
+<div class="section page-width section--padding section-download-app" id="App-Download">
+  <div class="download-app-container">
+    <div class="download-app-content">
+      <div class="flex logo-wrapper">
+        {% if section.settings.logo != blank %}
+          <img src="{{ section.settings.logo | img_url: '400x' }}" 
+               alt="{{ section.settings.title | escape }}" 
+               class="download-app-logo"
+               loading="lazy">
+        {% endif %}
+        <div class="download-tit">
+          <h2 class="download-app-title">{{ section.settings.title }}</h2>
+          <p class="download-app-description">{{ section.settings.descrition }}</p>
+        </div>
+      </div>
+      
+      <div class="flex download-links">
+        <div class="left-img">
+          {% if section.settings.app_store_link != blank and section.settings.app_store_img != blank %}
+            <a href="{{ section.settings.app_store_link }}" 
+               target="_blank" 
+               class="download-link">
+              <img src="{{ section.settings.app_store_img | img_url: '400x' }}" 
+                   alt="Download on App Store"
+                   loading="lazy">
+            </a>
+          {% endif %}
+          
+          {% if section.settings.google_play_link != blank and section.settings.google_play_img != blank %}
+            <a href="{{ section.settings.google_play_link }}" 
+               target="_blank" 
+               class="download-link">
+              <img src="{{ section.settings.google_play_img | img_url: '400x' }}" 
+                   alt="Get it on Google Play"
+                   loading="lazy">
+            </a>
+          {% endif %}
+        </div>
+        
+        <div class="right-img">
+          {% if section.settings.code_img != blank %}
+            <div class="qr-code-container">
+              <div class="qr-code">
+                <img src="{{ section.settings.code_img | img_url: '300x' }}" 
+                     alt="App QR Code"
+                     loading="lazy">
+              </div>
+            </div>
+          {% endif %}
+        </div>
+      </div>
+      
+      {% if section.settings.package_url != blank %}
+        <div class="flex package-download">
+          {% render 'icon-download-blue', size: 'small' %}
+          {% render 'icon-download-white', size: 'small' %}
+          {{ section.settings.package_url }}
+        </div>
+      {% endif %}
+    </div>
+    
+    <div class="download-app-image">
+      {% if section.settings.right_img != blank %}
+        <img src="{{ section.settings.right_img | img_url: '800x' }}" 
+             alt="{{ section.settings.title | escape }}"
+             class="desktop-img"
+             loading="lazy">
+      {% endif %}
+      
+      {% if section.settings.right_mobile_img != blank %}
+        <img src="{{ section.settings.right_mobile_img | img_url: '600x' }}" 
+             alt="{{ section.settings.title | escape }}"
+             class="mobile-img"
+             loading="lazy">
+      {% endif %}
+      
+      {% if section.settings.right_img == blank and section.settings.right_mobile_img == blank %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "download-app",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo",
+      "info": "Recommended size: 400x200px"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Indevolt App"
+    },
+    {
+      "type": "text",
+      "id": "descrition",
+      "label": "Description",
+      "default": "Download for iOS/Android"
+    },
+    {
+      "type": "richtext",
+      "id": "package_url",
+      "label": "APK Download Text",
+      "default": "<p>Download the APK file</p>"
+    },
+    {
+      "type": "url",
+      "id": "app_store_link",
+      "label": "App Store Link",
+      "default": "/"
+    },
+    {
+      "type": "image_picker",
+      "id": "app_store_img",
+      "label": "App Store Badge",
+      "info": "Recommended size: 160x50px"
+    },
+    {
+      "type": "url",
+      "id": "google_play_link",
+      "label": "Google Play Link",
+      "default": "/"
+    },
+    {
+      "type": "image_picker",
+      "id": "google_play_img",
+      "label": "Google Play Badge",
+      "info": "Recommended size: 160x50px"
+    },
+    {
+      "type": "image_picker",
+      "id": "code_img",
+      "label": "QR Code Image",
+      "info": "Recommended size: 200x200px"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_img",
+      "label": "Right Side Image (Desktop)",
+      "info": "Recommended size: 600x600px"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_mobile_img",
+      "label": "Right Side Image (Mobile)",
+      "info": "Recommended size: 400x400px"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Download App",
+      "category": "自定义组件",
+      "settings": {
+        "title": "Indevolt-APP",
+        "descrition": "Download für iOS/Android",
+        "package_url": "<p>Die Apk-Datei der App herunterladen</p>",
+        "app_store_link": "https://apps.apple.com/us/app/indevolt/id6740477657 ",
+        "google_play_link": "https://play.google.com/store/apps/details?id=com.indevolt.smarthome "
+      }
+    }
+  ]
+}
+{% endschema %}

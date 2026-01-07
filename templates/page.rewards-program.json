@@ -1,0 +1,303 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "17615553877bca188b": {
+      "type": "apps",
+      "blocks": {
+        "bon_loyalty_loyalty_page_header_block_bQcz9D": {
+          "type": "shopify://apps/bon-loyalty/blocks/loyalty-page-header-block/63496a04-c097-48d1-8c11-475aec24b12e",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "bon_loyalty_loyalty_page_header_block_bQcz9D"
+      ],
+      "settings": {
+        "include_margins": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "rewards_program_sticky_CXXELr": {
+      "type": "rewards-program-sticky",
+      "name": "Rewards Program Sticky",
+      "settings": {}
+    },
+    "17615554032cf0305e": {
+      "type": "apps",
+      "blocks": {
+        "bon_loyalty_loyalty_page_profile_block_tGW7KT": {
+          "type": "shopify://apps/bon-loyalty/blocks/loyalty-page-profile-block/63496a04-c097-48d1-8c11-475aec24b12e",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "bon_loyalty_loyalty_page_profile_block_tGW7KT"
+      ],
+      "settings": {
+        "include_margins": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "17615554315ca41097": {
+      "type": "apps",
+      "blocks": {
+        "bon_loyalty_loyalty_page_earning_block_8AH7ay": {
+          "type": "shopify://apps/bon-loyalty/blocks/loyalty-page-earning-block/63496a04-c097-48d1-8c11-475aec24b12e",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "bon_loyalty_loyalty_page_earning_block_8AH7ay"
+      ],
+      "settings": {
+        "include_margins": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "17615554575126bc49": {
+      "type": "apps",
+      "blocks": {
+        "bon_loyalty_loyalty_page_redeem_block_CLHDjg": {
+          "type": "shopify://apps/bon-loyalty/blocks/loyalty-page-redeem-block/63496a04-c097-48d1-8c11-475aec24b12e",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "bon_loyalty_loyalty_page_redeem_block_CLHDjg"
+      ],
+      "settings": {
+        "include_margins": false,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "rewards_program_benefit_bYiNER": {
+      "type": "rewards-program-benefit",
+      "blocks": {
+        "list_PTeKga": {
+          "type": "list",
+          "settings": {
+            "list_name": "Points zur Zahlung verwenden",
+            "list_image": "shopify://shop_images/benefit1.png"
+          }
+        },
+        "list_M8iUHL": {
+          "type": "list",
+          "settings": {
+            "list_name": "Produkt gegen Points einlösen",
+            "list_image": "shopify://shop_images/benefit2.png"
+          }
+        },
+        "list_3QHGaF": {
+          "type": "list",
+          "settings": {
+            "list_name": "Schnelle Lieferung",
+            "list_image": "shopify://shop_images/benefit3.png"
+          }
+        },
+        "list_kcCfE7": {
+          "type": "list",
+          "settings": {
+            "list_name": "Points zur Zahlung verwenden",
+            "list_image": "shopify://shop_images/benefit4.png"
+          }
+        },
+        "list_r4cmaN": {
+          "type": "list",
+          "settings": {
+            "list_name": "Lebenslanger Support und Wartung",
+            "list_image": "shopify://shop_images/benefit5.png"
+          }
+        },
+        "list_KibHLd": {
+          "type": "list",
+          "settings": {
+            "list_name": "45 Tage Rückgaberecht",
+            "list_image": "shopify://shop_images/benefit6.png"
+          }
+        },
+        "list_ifGhcX": {
+          "type": "list",
+          "settings": {
+            "list_name": "45 Tage Preisgarantie",
+            "list_image": "shopify://shop_images/benefit7.png"
+          }
+        },
+        "list_gETRH4": {
+          "type": "list",
+          "settings": {
+            "list_name": "Neuheit testen",
+            "list_image": "shopify://shop_images/benefit8.png"
+          }
+        }
+      },
+      "block_order": [
+        "list_PTeKga",
+        "list_M8iUHL",
+        "list_3QHGaF",
+        "list_kcCfE7",
+        "list_r4cmaN",
+        "list_KibHLd",
+        "list_ifGhcX",
+        "list_gETRH4"
+      ],
+      "name": "Rewards Program Benefit",
+      "settings": {
+        "ids": "benefit",
+        "title": "Mitglieder-Vorteile",
+        "padding_top": 120,
+        "padding_bottom": 120
+      }
+    },
+    "collapsible_tabs_r8Rf6a": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "collapsible_item_xfmHCQ": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wie wird man Indevolt-Mitglied?",
+            "content": "<p> Klicke oben auf dieser Seite auf die Schaltfläche „Mitglied werden“, um sich zu registrieren.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_YxhfpY": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Verfallen IndePoints?",
+            "content": "<p>Ja, sie verfallen. Die Gültigkeit beträgt ein Jahr.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_TXU4yd": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Was passiert mit meinen IndePoints, wenn ich ein Produkt zurückschicke oder eine Bestellung storniere?",
+            "content": "<p>In diesem Fall werden die während dieses Kaufs verdienten IndePoints entsprechend abgezogen oder storniert.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_cHmeBD": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Welche Gebühren qualifizieren sich nicht für IndePoints?",
+            "content": "<p> 1. Steuern gemäß Landesrecht (Österreich)</p><p>2. Versandkosten, die von Kurier-/Logistikunternehmen erhoben werden<br/><br/></p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_cM7yHE": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann ich IndePoints verdienen, wenn ich auf anderen Plattformen einkaufe?",
+            "content": "<p>Ja, aber nur beim Kauf auf der offiziellen Indevolt-Plattform. Bitte kontaktiere uns zeitnah und teile uns die bei deinem Kauf verwendete E-Mail-Adresse mit. Du musst zudem in <a href=\"http://de.indevolt.com\" target=\"_blank\">de.indevolt.com</a> ein Mitgliederkonto neu registrieren; wir unterstützen dich bei der Aktualisierung deiner IndePoints-Historie.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_Q6PPpf": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Muss ich beim Bezahlen Versandkosten für die eingelösten Produkte zahlen?",
+            "content": "<p>Nein, die versandkostenfreien Lieferungen gelten für die eingelösten Produkte.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_g9D3ye": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann ich beim Bezahlen gleichzeitig einen normalen Gutschein und meinen Mitgliederrabatt verwenden?",
+            "content": "<p>Nein, während des Zahlungsvorgangs kann nur ein Gutschein verwendet werden.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_xWXRfk": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann ich beim Bezahlen gleichzeitig Prämienartikel einlösen?",
+            "content": "<p>Ja, die eingelösten Produkte werden mit deiner Bestellung versandt.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_item_xfmHCQ",
+        "collapsible_item_YxhfpY",
+        "collapsible_item_TXU4yd",
+        "collapsible_item_cHmeBD",
+        "collapsible_item_cM7yHE",
+        "collapsible_item_Q6PPpf",
+        "collapsible_item_g9D3ye",
+        "collapsible_item_xWXRfk"
+      ],
+      "name": "t:sections.collapsible-tabs.presets.name",
+      "settings": {
+        "container": "fixed",
+        "color_scheme": "",
+        "ids": "faqs",
+        "header_layout": "vertical",
+        "heading": "FAQ",
+        "heading_size": "hd2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "item_style": "standard",
+        "item_color_scheme": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h4",
+        "item_icon_size": "extra-large",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    }
+  },
+  "order": [
+    "17615553877bca188b",
+    "rewards_program_sticky_CXXELr",
+    "17615554032cf0305e",
+    "17615554315ca41097",
+    "17615554575126bc49",
+    "rewards_program_benefit_bYiNER",
+    "collapsible_tabs_r8Rf6a"
+  ]
+}

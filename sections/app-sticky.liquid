@@ -1,0 +1,517 @@
+<style scoped>
+  .black-friday-nav {
+    position: relative;
+    width: 100%;
+    background: #3250C3;
+    z-index: 10;
+    box-shadow: none;
+    transition: box-shadow 0.2s ease;
+  }
+
+  .black-friday-nav.sticky {
+    position: fixed;
+    top: 0;
+  }
+  .black-friday-nav .nav-list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: 0;
+    padding: 0 12px;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* 平滑滚动体验 iOS */
+    white-space: nowrap;
+  }
+  .black-friday-nav .nav-item {
+    line-height: 48px;
+  }
+  .black-friday-nav .nav-list::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .black-friday-nav .nav-link {
+    display:block;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    padding: 0px 30px;
+    transition: all 0.2s ease;
+    position: relative;
+    white-space: nowrap;
+  }
+
+   /* hover */
+  .black-friday-nav .nav-link:hover {
+    background: #91AFFA;
+  }
+
+  .black-friday-nav .nav-link.active,
+  .black-friday-nav .nav-link[aria-current="true"]  {
+    background: #91AFFA;
+    color:#3250C3
+  }
+  @media (max-width: 768px) {
+    .black-friday-nav { background: #3250C3}
+    .black-friday-nav .nav-item{ margin:0px 15px;}
+    .black-friday-nav .nav-list {
+      justify-content: flex-start;
+    }
+    .black-friday-nav .nav-link {
+      min-width: 92px;
+      padding: 0px 10px;
+      text-align: center;
+      font-size: 14px;
+      color:#ffffff;
+    }
+    
+  }
+</style>
+<div class="black-friday-nav page-width" id="fridayNav">
+  <ul class="nav-list">
+    {% comment %} <li class="nav-item">
+      <a href="#flashsale" class="nav-link active">Flash Sale</a>
+    </li> {% endcomment %}
+    {% comment %} <li class="nav-item">
+      <a href="#abonnieren" class="nav-link">Abonnieren </a>
+    </li> {% endcomment %}
+    <li class="nav-item">
+      <a href="#ExklusiveVorteile" class="nav-link active">Exklusive Vorteile</a>
+    </li>
+    <li class="nav-item">
+      <a href="#einstiegsoption" class="nav-link">Neujahr-Angebote</a>
+    </li> 
+    <li class="nav-item">
+      <a href="#CommunityVorteile" class="nav-link">Community-Vorteile</a>
+    </li>
+    <li class="nav-item">
+      <a href="#indepointssammeln" class="nav-link">Belohnungen sichern</a>
+    </li>
+  </ul>
+</div>
+
+<script>
+(function() {
+  'use strict';
+  
+  let scrollTimeout;
+  let isScrolling = false;
+  let isProgrammaticScroll = false;
+  let isNavAutoScrolling = false;
+  let isInitialized = false;
+  let initializationAttempts = 0;
+  const MAX_INIT_ATTEMPTS = 10;
+  
+  // 节流函数
+  function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+      const args = arguments;
+      const context = this;
+      if (!inThrottle) {
+        func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    }
+  }
+  
+  // 获取导航高度
+  function getNavHeight() {
+    const nav = document.getElementById('fridayNav');
+    return nav ? nav.offsetHeight : 0;
+  }
+  
+  // 修复的 ensureActiveNavVisible 函数
+  function ensureActiveNavVisible() {
+    if (isNavAutoScrolling) {
+      console.log('Navigation auto-scrolling in progress, skipping...');
+      return;
+    }
+    
+    const activeNav = document.querySelector('.nav-link.active');
+    const navList = document.querySelector('.nav-list');
+    
+    console.log('ensureActiveNavVisible called', {
+      activeNav: !!activeNav,
+      navList: !!navList,
+      isInitialized: isInitialized
+    });
+    
+    if (!activeNav || !navList) {
+      console.log('Missing required elements for ensureActiveNavVisible');
+      return;
+    }
+    
+    // 强制重排以确保正确的布局计算
+    void activeNav.offsetHeight;
+    void navList.offsetHeight;
+    
+    const navRect = activeNav.getBoundingClientRect();
+    const listRect = navList.getBoundingClientRect();
+    
+    console.log('Layout measurements:', {
+      navLeft: navRect.left,
+      navRight: navRect.right,
+      listLeft: listRect.left,
+      listRight: listRect.right,
+      navOffsetLeft: activeNav.offsetLeft,
+      navWidth: activeNav.offsetWidth,
+      listWidth: navList.offsetWidth,
+      listScrollLeft: navList.scrollLeft
+    });
+    
+    // 检查活动项是否在可视区域内
+    const isFullyVisible = navRect.left >= listRect.left && navRect.right <= listRect.right;
+    const isPartiallyVisible = navRect.right > listRect.left && navRect.left < listRect.right;
+    
+    console.log('Visibility check:', {
+      isFullyVisible,
+      isPartiallyVisible
+    });
+    
+    if (!isFullyVisible) {
+      isNavAutoScrolling = true;
+      
+      // 计算滚动位置，使活动项居中
+      const scrollPosition = activeNav.offsetLeft - (navList.offsetWidth / 2) + (activeNav.offsetWidth / 2);
+      const maxScroll = navList.scrollWidth - navList.offsetWidth;
+      const finalScrollPosition = Math.max(0, Math.min(scrollPosition, maxScroll));
+      
+      console.log('Scrolling to position:', {
+        scrollPosition,
+        finalScrollPosition,
+        maxScroll
+      });
+      
+      // 使用 requestAnimationFrame 确保在下一帧执行
+      requestAnimationFrame(() => {
+        navList.scrollTo({
+          left: finalScrollPosition,
+          behavior: 'smooth'
+        });
+        
+        // 验证滚动是否成功
+        setTimeout(() => {
+          console.log('Final scroll position:', navList.scrollLeft);
+          isNavAutoScrolling = false;
+        }, 600);
+      });
+    } else {
+      console.log('Active nav is already visible, no scroll needed');
+    }
+  }
+  
+  // 强化的 ensureActiveNavVisible 初始化版本
+  function ensureActiveNavVisibleOnInit() {
+    console.log('ensureActiveNavVisibleOnInit called, attempt:', initializationAttempts + 1);
+    
+    if (initializationAttempts >= MAX_INIT_ATTEMPTS) {
+      console.log('Max initialization attempts reached');
+      return;
+    }
+    
+    initializationAttempts++;
+    
+    // 多次尝试确保成功
+    const attempts = [
+      { delay: 0, desc: 'immediate' },
+      { delay: 100, desc: 'after 100ms' },
+      { delay: 300, desc: 'after 300ms' },
+      { delay: 500, desc: 'after 500ms' },
+      { delay: 1000, desc: 'after 1s' }
+    ];
+    
+    attempts.forEach(attempt => {
+      setTimeout(() => {
+        if (isInitialized) {
+          console.log(`Attempting ensureActiveNavVisible ${attempt.desc}`);
+          ensureActiveNavVisible();
+        }
+      }, attempt.delay);
+    });
+  }
+  
+  // 初始化粘性导航
+  function initStickyNav() {
+    const nav = document.getElementById('fridayNav');
+    if (!nav) return;
+    
+    const announcementBar = document.querySelector('.announcement-bar-section');
+    const headerSection = document.querySelector('.header-section');
+    //const loyaltyBlock = document.querySelector('#shopify-section-template--17877653127267__image_with_text_overlay_new_atxzwY');
+    const loyaltyBlock = document.querySelector('#shopify-section-template--18148277518435__image_with_text_overlay_new_9UKtD3');
+    
+    let headerHeight = 0;
+    if (announcementBar) headerHeight += announcementBar.offsetHeight;
+    if (headerSection) headerHeight += headerSection.offsetHeight;
+    if (loyaltyBlock) headerHeight += loyaltyBlock.offsetHeight;
+    
+    if (window.scrollY > headerHeight) {
+      nav.classList.add('sticky');
+    } else {
+      nav.classList.remove('sticky');
+    }
+  }
+  
+  // 滚动处理函数
+  const handleScroll = throttle(function() {
+    initStickyNav();
+    
+    if (!isScrolling && !isProgrammaticScroll) {
+      updateActiveNavLink();
+    }
+  }, 50);
+  
+  // 优化高亮功能
+  function updateActiveNavLink() {
+    if (scrollTimeout) {
+      clearTimeout(scrollTimeout);
+    }
+    
+    scrollTimeout = setTimeout(() => {
+      const sections = document.querySelectorAll('[id]');
+      const navLinks = document.querySelectorAll('.nav-link');
+      
+      const viewportMiddle = window.innerHeight / 3;
+      
+      let currentSectionId = '';
+      let closestDistance = Infinity;
+      
+      sections.forEach((section) => {
+        const sectionId = section.getAttribute('id');
+        const isNavTarget = Array.from(navLinks).some(link => 
+          link.getAttribute('href') === `#${sectionId}`
+        );
+        
+        if (isNavTarget && sectionId) {
+          const rect = section.getBoundingClientRect();
+          const distance = Math.abs(rect.top - viewportMiddle);
+          
+          if (rect.top <= viewportMiddle && rect.bottom >= viewportMiddle) {
+            if (distance < closestDistance) {
+              closestDistance = distance;
+              currentSectionId = sectionId;
+            }
+          }
+        }
+      });
+      
+      if (!currentSectionId) {
+        sections.forEach((section) => {
+          const sectionId = section.getAttribute('id');
+          const isNavTarget = Array.from(navLinks).some(link => 
+            link.getAttribute('href') === `#${sectionId}`
+          );
+          
+          if (isNavTarget && sectionId) {
+            const rect = section.getBoundingClientRect();
+            const distance = Math.abs(rect.top - viewportMiddle);
+            
+            if (distance < closestDistance) {
+              closestDistance = distance;
+              currentSectionId = sectionId;
+            }
+          }
+        });
+      }
+      
+      if (currentSectionId) {
+        let hasChanged = false;
+        navLinks.forEach((link) => {
+          const isActive = link.getAttribute('href') === `#${currentSectionId}`;
+          if (isActive && !link.classList.contains('active')) {
+            hasChanged = true;
+          }
+          link.classList.toggle('active', isActive);
+        });
+        
+        if (hasChanged) {
+          console.log('Active nav changed, ensuring visibility');
+          ensureActiveNavVisible();
+        }
+      }
+    }, 150);
+  }
+  
+  // 初始化函数
+  function init() {
+    if (isInitialized) {
+      console.log('Already initialized, skipping...');
+      return;
+    }
+    
+    console.log('=== Initializing rewards navigation ===');
+    
+    // 检查必要元素是否存在
+    const nav = document.getElementById('fridayNav');
+    const navList = document.querySelector('.nav-list');
+    const activeNav = document.querySelector('.nav-link.active');
+    
+    console.log('Required elements check:', {
+      nav: !!nav,
+      navList: !!navList,
+      activeNav: !!activeNav
+    });
+    
+    if (!nav || !navList || !activeNav) {
+      console.log('Missing required elements, retrying in 100ms...');
+      setTimeout(init, 100);
+      return;
+    }
+    
+    // 初始化核心功能
+    initStickyNav();
+    updateActiveNavLink();
+    
+    // 添加事件监听
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // 导航点击事件
+    document.querySelectorAll('.nav-link').forEach((link) => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        
+        if (isProgrammaticScroll) return;
+        
+        isScrolling = true;
+        isProgrammaticScroll = true;
+        
+        document.querySelectorAll('.nav-link').forEach((item) => {
+          item.classList.remove('active');
+        });
+        this.classList.add('active');
+        
+        console.log('Nav link clicked, ensuring visibility');
+        ensureActiveNavVisible();
+        
+        const targetId = this.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement) {
+          const navHeight = getNavHeight();
+          const extraOffset = 20;
+          const targetPosition = targetElement.offsetTop - navHeight - extraOffset;
+          
+          window.scrollTo({
+            top: Math.max(0, targetPosition),
+            behavior: 'smooth'
+          });
+          
+          setTimeout(() => {
+            isScrolling = false;
+            isProgrammaticScroll = false;
+          }, 1000);
+        }
+      });
+    });
+    
+    // 触摸事件
+    let startX, scrollLeft, isHorizontalScroll = false;
+    
+    navList.addEventListener('touchstart', function(e) {
+      startX = e.touches[0].pageX - navList.offsetLeft;
+      scrollLeft = navList.scrollLeft;
+      isScrolling = true;
+      isHorizontalScroll = false;
+    }, { passive: true });
+    
+    navList.addEventListener('touchmove', function(e) {
+      if (!isScrolling) return;
+      
+      const x = e.touches[0].pageX - navList.offsetLeft;
+      const walk = (x - startX);
+      
+      if (Math.abs(walk) > 5) {
+        isHorizontalScroll = true;
+      }
+      
+      if (isHorizontalScroll) {
+        navList.scrollLeft = scrollLeft - walk;
+        e.preventDefault();
+      }
+    }, { passive: false });
+    
+    navList.addEventListener('touchend', function() {
+      isScrolling = false;
+      isHorizontalScroll = false;
+    }, { passive: true });
+    
+    // Resize 事件
+    window.addEventListener('resize', throttle(function() {
+      initStickyNav();
+      updateActiveNavLink();
+      ensureActiveNavVisible();
+    }, 250));
+    
+    // 标记为已初始化
+    isInitialized = true;
+    console.log('=== Rewards navigation initialized successfully ===');
+    
+    // 立即尝试确保活动导航可见
+    ensureActiveNavVisibleOnInit();
+  }
+  
+  // 多重初始化保障
+  function startInitialization() {
+    console.log('Starting initialization process...');
+    
+    // 立即尝试
+    init();
+    
+    // DOMContentLoaded 后尝试
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function() {
+        console.log('DOMContentLoaded fired, initializing...');
+        setTimeout(init, 50);
+      });
+    }
+    
+    // window.load 后尝试
+    window.addEventListener('load', function() {
+      console.log('Window load fired, final initialization...');
+      setTimeout(() => {
+        if (!isInitialized) {
+          console.log('Not initialized after load, forcing initialization...');
+          init();
+        }
+        ensureActiveNavVisibleOnInit();
+      }, 300);
+    });
+    
+    // 处理移动端后退/前进
+    window.addEventListener('pageshow', function(e) {
+      if (e.persisted) {
+        console.log('Page show (possibly from cache), reinitializing...');
+        setTimeout(() => {
+          init();
+          ensureActiveNavVisibleOnInit();
+        }, 100);
+      }
+    });
+  }
+  
+  // 启动初始化
+  startInitialization();
+  
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Black Friday Sticky",
+  "tag": "section",
+  "class": "section black-friday-sticky",
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [],
+  "presets": [
+    {
+      "name": "自定义锚点导航",
+      "category": "自定义组件"
+    }
+  ]
+}
+{% endschema %}

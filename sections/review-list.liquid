@@ -1,0 +1,500 @@
+<style>
+  .section-review-list .product-collection{padding-top: {{ section.settings.padding_top }}px;padding-bottom: {{ section.settings.padding_bottom }}px;
+    position: relative;
+    {% comment %} margin-top:40px; {% endcomment %}
+    width: 100%;
+
+}
+  .section-review-list .product-collection .title{ font-size: 46px;font-weight: 700;text-align:center;color:#000}
+  .review-main-slider {
+    position: relative;
+    margin-top: 40px;
+    width: 100%;
+    overflow: hidden;
+
+  }
+
+  
+  .iframe-carousel-container, .iframe-carousel {
+    position: relative;
+    margin-top:40px;
+    width: 100%;
+  }
+
+  .review-main-slider .slick-slide {
+    margin: 0 8px;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.8s ease;
+    cursor: pointer;
+  }
+  .square-container{
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; 
+    border-radius: 12px;
+    overflow: hidden;
+    background: #f5f5f5;
+  }
+  .review-main-slider img.grid-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    transform-origin: center center;
+    border-radius: 12px;
+    -webkit-transform: translateZ(0);
+  }
+
+  .review-main-slider .slick-slide:hover img.grid-image {
+    transform: scale(1.05);
+  }
+
+  .review-main-slider .slick-track {
+    display: flex !important;
+    align-items: center;
+  }
+
+  .review-main-slider .review-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px 30px 40px;
+    border-radius: 0 0 12px 12px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    text-align: center;
+    color: #fff;
+    transform: translateY(100%);
+    transition: transform 0.8s ease;
+    opacity: 0;
+  }
+
+  .review-main-slider .slick-slide:hover .review-content {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .review-main-slider .review-content img.start-image {
+    height: 12px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto;
+  }
+
+  .review-main-slider .review-content .details {
+    margin-top: 15px;
+    line-height: 19px;
+    font-size: 16px;
+  }
+
+  .review-main-slider .review-content .user {
+    margin-top: 20px;
+    line-height: 28px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  #shopify-section-{{ section.id }} .section-custom-carousel{ position:relative}
+  {% comment %} #shopify-section-{{ section.id }} .section-review-list .carousel-arrows {
+    position: relative;
+    width: 268px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 40px;
+  }
+  #shopify-section-{{ section.id }} .section-review-list .carousel-arrows button{ background: rgba(50, 80, 195, 1);}
+  #shopify-section-{{ section.id }} .section-review-list .carousel-arrows button.slick-disabled { background: rgba(50, 80, 195, 0.2);} {% endcomment %}
+  {% comment %} #shopify-section-{{ section.id }} .section-review-list .carousel-arrows button.prev-arrow {
+    left: 60px;
+  }
+  #shopify-section-{{ section.id }} .section-review-list  .carousel-arrows button.next-arrow {
+    right: 60px;
+  } {% endcomment %}
+
+  .carousel-arrows {
+    position: absolute;
+    top: 44%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    z-index: 10;
+    pointer-events: none; /* 防止挡住轮播内容，按钮本身 pointer-events: all */
+  }
+  .carousel-arrows button {
+    position: relative;
+    {% comment %} background: rgba(118, 118, 118, 0.2); {% endcomment %}
+     background: #3250C3;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 0; /* 隐藏文本 */
+    cursor: pointer;
+    color: #fff;
+    transition: background 0.3s;
+    pointer-events: all;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .carousel-arrows button:hover {
+    {% comment %} background: rgba(118, 118, 118, 0.5); {% endcomment %}
+     background: #3D60E4;
+  }
+  .carousel-arrows button.slick-disabled {
+    background: rgba(50, 80, 195, 0.2);
+  }
+  .carousel-arrows button.prev-arrow,
+  .carousel-arrows button.next-arrow {
+    left: unset;
+    right: unset;
+  }
+  
+  .carousel-arrows button.prev-arrow::after,
+  .carousel-arrows button.next-arrow::after {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+  }
+  
+  .carousel-arrows button.prev-arrow::after {
+    transform: rotate(45deg);
+  }
+  
+  .carousel-arrows button.next-arrow::after {
+    transform: rotate(-135deg);
+  }
+  
+  /* 按钮位置 */
+   #shopify-section-{{ section.id }} .carousel-arrows button.prev-arrow { margin-left: 60px; }
+   #shopify-section-{{ section.id }} .carousel-arrows button.next-arrow { margin-right: 60px; }
+
+   #shopify-section-{{ section.id }} .links{ display: block;margin-top: 18px;line-height: 19px; font-size: 16px;  font-weight: normal;color: #3250C3; }
+   {% comment %} #shopify-section-{{ section.id }} .links a{position:relative;} {% endcomment %}
+   {% comment %} .icon-fb{padding-top:10px;} {% endcomment %}
+
+  .links-icon-div{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+    }
+.links-icon-div svg  {
+display: inline-block;
+}
+
+.links-icon-div a {
+    text-decoration: underline;
+  margin: 0 10px; /* 控制a标签与svg之间的间距 */
+}
+ 
+ 
+.eTrusted-widget{
+  padding-top:80px;
+}
+
+  @media (max-width: 767px) {
+    .section-review-list .product-collection{padding-top: {{ section.settings.padding_top | divided_by: 2  }}px;padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;}
+    .section-review-list .product-collection .title{ font-size: 28px;}
+    .review-main-slider {
+      margin-top: 2rem;
+    }
+    .review-main-slider .slick-track {
+      gap:16px
+    }
+    .review-main-slider .slick-slide{
+      margin:0px
+    }
+    .review-main-slider .review-content {
+      transform: initial;
+      opacity: 1;
+      padding: 15px 20px 30px;
+    }
+
+    .review-main-slider .review-content .details {
+      font-size: 14px;
+    }
+
+    .review-main-slider .review-content .user {
+      font-size: 16px;
+      margin-top: 15px;
+    }
+    #shopify-section-{{ section.id }} .section-review-list .carousel-arrows {display:none}
+    #shopify-section-{{ section.id }} .links{ margin-top: 10px; line-height: 17px; font-size: 14px;}
+
+    .eTrusted-widget{
+      padding-top:40px;
+    }
+  }
+</style>
+{% liquid
+  assign motion_delay = 50
+%}
+<div class="section section-review-list">
+  <div class="product-collection">
+     <h2 class="title">
+      <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+        <span>{{ section.settings.title }}</span>
+
+        
+        {% if section.settings.more_title != blank and section.settings.more_url != blank%}
+          
+            <span class="links"><div class="links-icon-div">{% if section.settings.logo_position == true %}{% render 'icon-facebook1224' -%}{% endif %}  <a class="a_underline" href="{{ section.settings.more_url }}" target="_blank">{{ section.settings.more_title }}</a></div></span>
+        {% endif %}  
+        </motion-element>
+    </h2> 
+ 
+    <div class="review-main-slider">
+          {% for block in section.blocks %}
+            <div class="item block-{{ forloop.index }}">
+              <div class="square-container">
+                {% if block.settings.image_pc != blank %}
+                  <picture>
+                    <source
+                      media="(max-width: 749px)"
+                      srcset="
+                        {{ block.settings.image_mobile | img_url: '800x' }} 1x,
+                        {{ block.settings.image_mobile | img_url: '1600x' }} 2x
+                      "
+                    >
+                    <source
+                      media="(min-width: 750px)"
+                      srcset="
+                        {{ block.settings.image_pc | img_url: '1200x' }} 1x,
+                        {{ block.settings.image_pc | img_url: '2400x' }} 2x
+                      "
+                    >
+                    <img
+                      src="{{ block.settings.image_pc | img_url: '1200x' }}"
+                      alt="{{ block.settings.title | escape }}"
+                      class="grid-image"
+                      loading="lazy"
+                      width="{{ block.settings.image_pc.width }}"
+                      height="{{ block.settings.image_pc.height }}"
+                    >
+                  </picture>
+                {% else %}
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+          
+              <div class="review-content">
+                {% if block.settings.image_pc != blank %}
+                  <picture>
+                    <source
+                      media="(max-width: 749px)"
+                      srcset="
+                        {{ block.settings.start | img_url: '800x' }} 1x,
+                        {{ block.settings.start | img_url: '1600x' }} 2x
+                      "
+                    >
+                    <source
+                      media="(min-width: 750px)"
+                      srcset="
+                        {{ block.settings.start | img_url: '1200x' }} 1x,
+                        {{ block.settings.start | img_url: '2400x' }} 2x
+                      "
+                    >
+                    <img
+                      src="{{ block.settings.start | img_url: '1200x' }}"
+                      alt="{{ block.settings.title | escape }}"
+                      class="start-image"
+                      loading="lazy"
+                      width="{{ block.settings.start.width }}"
+                      height="{{ block.settings.start.height }}"
+                    >
+                  </picture>
+                {% else %}
+                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                {% endif %}
+                <div class="details">{{ block.settings.content }}</div>
+                <div class="user">{{ block.settings.name }}</div>
+              </div>
+             </div>
+            </div>
+          {% endfor %}
+
+       
+    </div>
+    {% comment %} <div class="page-width section-custom-carousel"> {% endcomment %}
+      <div class="carousel-arrows">
+        <button class="prev-arrow">❮</button>
+        <button class="next-arrow">❯</button>
+      </div>
+    {% comment %} </div> {% endcomment %}
+
+                <!-- Begin eTrusted widget tag -->
+<div class="page-width eTrusted-widget" >
+<etrusted-widget data-etrusted-widget-id="wdg-6e18218c-e3a9-46b7-8f4d-19bc26274c42"></etrusted-widget>
+</div>
+<!-- End eTrusted widget tag -->
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    const isMobile = window.innerWidth <= 767;
+    $('.section-review-list .review-main-slider').slick({
+      autoplay: false,
+      slidesToShow: 4.5,
+      slidesToScroll: 1,
+      infinite: false, 
+      variableWidth: false,
+      dots: false,
+      arrows: true,
+        prevArrow: $('#shopify-section-{{ section.id }} .prev-arrow'),
+        nextArrow: $('#shopify-section-{{ section.id }} .next-arrow'),
+      responsive: [
+        {
+          breakpoint: 1200,
+          settings: {
+            autoplay: false,
+            slidesToShow: 3,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            autoplay: false,
+            slidesToShow: 2,
+          },
+        },
+        {
+          breakpoint: 480,
+          settings: {
+              dots: false,
+              arrows: false,
+              slidesToShow: 1.2,
+              centerMode: false,
+              adaptiveHeight: true,
+              mobileFirst: true
+          },
+        },
+      ],
+    });
+
+     {% comment %} $('.review-main-slider').on('mouseenter', function() {
+        $(this).slick('slickPause');
+     }).on('mouseleave', function() {
+        $(this).slick('slickPlay');
+     }); {% endcomment %}
+  });
+  
+</script>
+{% schema %}
+{
+  "name": "review-list",
+  "tag": "section",
+  "class": "section section-review-list",
+  "max_blocks": 10,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Kundenbewertungen"
+    },
+    
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+   {
+      "type": "text",
+      "id": "more_title",
+      "label": "更多",
+    },
+    {
+      "type": "url",
+      "id": "more_url",
+      "label": "链接",
+    },
+    {
+      "type": "checkbox",
+      "id": "logo_position",
+      "label": "是否需要Logo",
+      "default": false
+    },
+
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "review item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_pc",
+          "label": "PC端图片"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "手机端图片"
+        },
+        {
+          "type": "image_picker",
+          "id": "start",
+          "label": "星级"
+        },
+        {
+          "type": "text",
+          "id": "content",
+          "label": "内容"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "用户"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "评价列表",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

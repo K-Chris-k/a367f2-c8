@@ -1,0 +1,374 @@
+{%- liquid
+  assign blocks = section.blocks | where: "type", "category"
+-%}
+<style>
+   #shopify-section-{{ section.id }}{margin-top:{{ section.settings.padding_top }}px;margin-bottom:{{ section.settings.padding_bottom }}px;}
+  .pdf-catalog-container h2{padding-bottom:30px; line-height:46px;font-size:38px}
+  .pdf-catalog-container h2 span{margin-left:14px}
+  .pdf-catalog-wrapper {
+    display: flex;
+    gap: 30px;
+    border-top: 1px solid #BEBEBE;
+  }
+  .category-sidebar {
+    width: 298px;
+    padding-top: 40px;
+    padding-right: 46px;
+    flex-shrink: 0;
+    border-right: 1px solid #BEBEBE;
+  }
+.pdf-category-inline{display:none}
+  .category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .category-item {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 42px;
+    line-height:22px;
+    font-size: 18px;
+    cursor: pointer;
+    color:#000;
+    transition: all .2s ease;
+  }
+  .category-item svg{ transform: rotate(90deg) translateZ(0);}
+  .category-item:hover {
+    color: #3250C3;
+  }
+  .category-item.active {
+    color: #3250C3;
+  }
+  .category-item.active svg{ 
+    transform: rotate(-90deg) translateZ(0);
+    transition: transform .15s linear;
+  }
+  .category-item .btn--secondary:hover {color:#fff}
+  .pdf-content {
+    padding-top: 20px;
+    flex-grow: 1;
+  }
+  .pdf-category:first-child,
+  .pdf-category.active {
+    display: block;
+  }
+  .pdf-list {
+    display: flex;
+    flex-flow: column;
+    gap: 15px;
+  }
+  .pdf-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #BEBEBE;
+    border-radius: 4px;
+  }
+  .pdf-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+  }
+  .pdf-icon {
+    font-size: 20px;
+  }
+  .pdf-content .hidden {
+    display: none !important;
+  }
+  @media (max-width: 767.98px) {
+    #shopify-section-{{ section.id }}{margin-top:{{ section.settings.padding_top | divided_by: 2 }}px;margin-bottom:{{ section.settings.padding_bottom | divided_by: 2 }}px;}
+    .pdf-catalog-container h2{padding-bottom:2rem;line-height:34px;font-size: 28px;}
+    .pdf-catalog-wrapper {
+      flex-direction: column;
+      gap: 0;
+      border-top: none;
+    }
+    .category-sidebar {
+      width: 100%;
+      padding: 0;
+      border-right: none;
+      border-bottom: none;
+    }
+    .category-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .category-item {
+      margin-bottom: 0;
+      padding: 20px 0;
+      border-bottom: 1px solid #eee;
+      position: relative;
+      background: #fff;
+      font-size: 16px;
+      transition: background .2s;
+    }
+    .category-item svg {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg) translateZ(0);
+      transition: transform .2s;
+    }
+    .category-item.active svg {
+      transform: translateY(-50%) rotate(-90deg) translateZ(0);
+    }
+    .pdf-content {
+      padding-top: 0;
+      flex-grow: unset;
+    }
+    .pdf-category {
+      display: none;
+      padding: 0 10px 10px 10px;
+      background: #F4F7FF;
+    }
+    .pdf-category.active,
+    .pdf-category.open { /* .open will be toggled by JS for mobile */
+      display: block !important;
+      animation: fadeInDown .3s;
+    }
+    .pdf-list {
+      gap: 10px;
+    }
+    .pdf-item {
+      padding: 12px 0;
+      border-bottom: 1px solid #E4E4E4;
+      font-size: 15px;
+    }
+     .pdf-catalog-wrapper { flex-direction: column; }
+    .category-sidebar { width: 100%; border-right: none; }
+    .category-list { flex-direction: column; }
+    .category-item { position: relative; }
+    .pdf-content { display: none !important; }
+    .pdf-category-inline {
+      display: none;
+      padding: 10px 16px;
+      animation: fadeInDown .3s;
+    }
+    .pdf-category-inline.open { display: block !important; }
+  }
+  @keyframes fadeInDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1;}
+  }
+</style>
+<div class="page-width section-padding pdf-catalog-container" data-section-id="{{ section.id }}" id="Gebrauchsanweisungen">
+    <h2>
+      <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">  {%- render 'icon-note', size: 'small' -%} <span>{{ section.settings.title }}</span></motion-element>
+    </h2>
+  <div class="pdf-catalog-wrapper">
+    <!-- 左边栏目列表 -->
+    <div class="category-sidebar">
+      <ul class="category-list">
+        {% for block in blocks %}
+          <li class="category-item {% if forloop.first %}active{% endif %}" 
+              data-category="{{ block.settings.category_name | handleize }}"
+              data-index="{{ forloop.index0 }}">
+            {{ block.settings.category_name }}
+            {%- render 'icon-slider-next', size: 'small' -%}
+          </li>
+           <div class="pdf-category-inline" data-category="{{ block.settings.category_name | handleize }}">
+            <div class="pdf-list">
+              {% if block.settings.pdf_list != blank %}
+                {% assign pdfs = block.settings.pdf_list | newline_to_br | split: '<br />' %}
+                {% for pdf in pdfs %}
+                  {% if pdf != blank %}
+                    {% assign pdf_parts = pdf | split: '|' %}
+                    {% assign pdf_name = pdf_parts[0] | strip %}
+                    {% assign pdf_url = pdf_parts[1] | strip %}
+                    {% if  pdf_name != blank %}
+                    <div class="pdf-item">
+                      <div class="pdf-name">   
+                        <span class="pdf-icon">📄</span>
+                        <span class="pdf-name">{{ pdf_name }}</span>
+                      </div>
+                      <a href="{{ pdf_url }}" target="_blank" class="pdf-link">             
+                        <span class="btn btn--secondary">{% render 'icon-download-blue', size: 'small' %} PDF</span>
+                      </a>
+                    </div>
+                    {% endif %}
+                  {% endif %}
+                {% endfor %}
+              {% else %}
+                <p>暂无PDF文件</p>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </ul>
+    </div>
+    
+    <!-- 右边PDF列表 -->
+    <div class="pdf-content">
+      {% for block in blocks %}
+        <div class="pdf-category {% if forloop.first %}active{% else %}hidden{% endif %}" 
+             data-category="{{ block.settings.category_name | handleize }}">
+          <div class="pdf-list">
+            {% if block.settings.pdf_list != blank %}
+              {% assign pdfs = block.settings.pdf_list | newline_to_br | split: '<br />' %}
+              {% for pdf in pdfs %}
+                {% if pdf != blank %}
+                  {% assign pdf_parts = pdf | split: '|' %}
+                  {% assign pdf_name = pdf_parts[0] | strip %}
+                  {% assign pdf_url = pdf_parts[1] | strip %}
+                  {% if  pdf_name != blank %}
+                  <div class="pdf-item">
+                   <div class="pdf-name">   
+                      <span class="pdf-icon">📄</span>
+                      <span class="pdf-name">{{ pdf_name }}</span>
+                    </div>
+                  <a href="{{ pdf_url }}" target="_blank" class="pdf-link">             
+                    <span class="btn btn--secondary"> {% render 'icon-download-blue', size: 'small' %} PDF</span>
+                    </a>
+                  </div>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              <p>暂无PDF文件</p>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script>
+ document.addEventListener('DOMContentLoaded', function() {
+  function isMobile() {
+    return window.matchMedia("(max-width: 767.98px)").matches;
+  }
+  const categoryItems = document.querySelectorAll('.category-item[data-category]');
+  const pdfCategories = document.querySelectorAll('.pdf-category[data-category]');
+  const pdfCategoriesInline = document.querySelectorAll('.pdf-category-inline[data-category]');
+
+  // PC端行为
+  function handleDesktopClick(clicked) {
+    categoryItems.forEach(i => i.classList.remove('active'));
+    pdfCategories.forEach(c => c.classList.remove('active', 'hidden'));
+    clicked.classList.add('active');
+    const category = clicked.getAttribute('data-category');
+    pdfCategories.forEach(pdfCat => {
+      if (pdfCat.getAttribute('data-category') === category) {
+        pdfCat.classList.add('active');
+        pdfCat.classList.remove('hidden');
+      } else {
+        pdfCat.classList.remove('active');
+        pdfCat.classList.add('hidden');
+      }
+    });
+  }
+  // 移动端行为
+  function handleMobileClick(clicked) {
+    const category = clicked.getAttribute('data-category');
+    const inlineCats = document.querySelectorAll('.pdf-category-inline');
+    const inlineCat = document.querySelector(`.pdf-category-inline[data-category="${category}"]`);
+    // 收起其它
+    categoryItems.forEach(i => i.classList.remove('active'));
+    inlineCats.forEach(cat => cat.classList.remove('open'));
+    // 展开当前
+    if (inlineCat) {
+      clicked.classList.add('active');
+      inlineCat.classList.add('open');
+    }
+  }
+  // 点击事件
+  categoryItems.forEach(item => {
+    item.addEventListener('click', function() {
+      if (isMobile()) {
+        handleMobileClick(this);
+      } else {
+        handleDesktopClick(this);
+      }
+    });
+  });
+
+  // 初始化
+  function init() {
+    if (isMobile()) {
+      // 只展开第一个
+      categoryItems.forEach((item, i) => { item.classList.toggle('active', i == 0); });
+      pdfCategoriesInline.forEach((cat, i) => cat.classList.toggle('open', i == 0));
+    } else {
+      // PC端只显示第一个
+      categoryItems.forEach((item, i) => { item.classList.toggle('active', i == 0); });
+      pdfCategories.forEach((cat, i) => {
+        cat.classList.toggle('active', i == 0);
+        cat.classList.toggle('hidden', i != 0);
+      });
+      pdfCategoriesInline.forEach(cat => cat.classList.remove('open'));
+    }
+  }
+  init();
+  window.addEventListener('resize', init);
+});
+</script>
+{% schema %}
+{
+  "name": "Download Pdf",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Benutzerhandbuch"
+    },
+     {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 120
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "PDF分类",
+      "settings": [
+        {
+          "type": "text",
+          "id": "category_name",
+          "label": "分类名称",
+          "default": "产品手册"
+        },
+        {
+          "type": "textarea",
+          "id": "pdf_list",
+          "label": "PDF列表",
+          "info": "每行一个PDF，格式为: PDF名称|PDF链接。例如: 用户手册|https://example.com/manual.pdf",
+          "default": "用户手册|https://example.com/manual.pdf\n安装指南|https://example.com/install.pdf"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Downlaod pdf",
+      "category": "自定义组件"
+    }
+  ]
+}
+{% endschema %}

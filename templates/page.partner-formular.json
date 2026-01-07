@@ -1,0 +1,202 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs_xYaBHj": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "center"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "partner_form_KQQVnq": {
+      "type": "partner-form",
+      "blocks": {
+        "custom_field_RMqCjh": {
+          "type": "custom_field",
+          "settings": {
+            "field_type": "text",
+            "heading": "Vorname",
+            "placeholder": "Vorname",
+            "required": false,
+            "full_width": false,
+            "select_options": "Option 1, Option 2, Option 3",
+            "checkbox_checked_value": "Yes",
+            "checkbox_uncheck_value": "No",
+            "radio_options": "Option 1, Option 2, Option 3"
+          }
+        },
+        "custom_field_ayiMqk": {
+          "type": "custom_field",
+          "settings": {
+            "field_type": "text",
+            "heading": "Land",
+            "placeholder": "Land",
+            "required": true,
+            "full_width": false,
+            "select_options": "Option 1, Option 2, Option 3",
+            "checkbox_checked_value": "Yes",
+            "checkbox_uncheck_value": "No",
+            "radio_options": "Option 1, Option 2, Option 3"
+          }
+        },
+        "custom_field_y7Lxwa": {
+          "type": "custom_field",
+          "settings": {
+            "field_type": "text",
+            "heading": "Stadt",
+            "placeholder": "Stadt",
+            "required": false,
+            "full_width": false,
+            "select_options": "Option 1, Option 2, Option 3",
+            "checkbox_checked_value": "Yes",
+            "checkbox_uncheck_value": "No",
+            "radio_options": "Option 1, Option 2, Option 3"
+          }
+        },
+        "custom_field_w7RUGY": {
+          "type": "custom_field",
+          "settings": {
+            "field_type": "text",
+            "heading": "Adresse",
+            "placeholder": "Adresse",
+            "required": false,
+            "full_width": false,
+            "select_options": "Option 1, Option 2, Option 3",
+            "checkbox_checked_value": "Yes",
+            "checkbox_uncheck_value": "No",
+            "radio_options": "Option 1, Option 2, Option 3"
+          }
+        },
+        "custom_field_UjpPka": {
+          "type": "custom_field",
+          "settings": {
+            "field_type": "text",
+            "heading": "Postleitzahl",
+            "placeholder": "Postleitzahl",
+            "required": false,
+            "full_width": false,
+            "select_options": "Option 1, Option 2, Option 3",
+            "checkbox_checked_value": "Yes",
+            "checkbox_uncheck_value": "No",
+            "radio_options": "Option 1, Option 2, Option 3"
+          }
+        },
+        "custom_field_GHKmT9": {
+          "type": "custom_field",
+          "settings": {
+            "field_type": "phone",
+            "heading": "Telefonnummer",
+            "placeholder": "Telefonnummer",
+            "required": true,
+            "full_width": false,
+            "select_options": "Option 1, Option 2, Option 3",
+            "checkbox_checked_value": "Yes",
+            "checkbox_uncheck_value": "No",
+            "radio_options": "Option 1, Option 2, Option 3"
+          }
+        },
+        "custom_field_aNzhPE": {
+          "type": "custom_field",
+          "settings": {
+            "field_type": "text",
+            "heading": "Firmenname",
+            "placeholder": "Firmenname",
+            "required": true,
+            "full_width": false,
+            "select_options": "Option 1, Option 2, Option 3",
+            "checkbox_checked_value": "Yes",
+            "checkbox_uncheck_value": "No",
+            "radio_options": "Option 1, Option 2, Option 3"
+          }
+        },
+        "custom_field_883rKy": {
+          "type": "custom_field",
+          "settings": {
+            "field_type": "text",
+            "heading": "Gewünschte Produkte",
+            "placeholder": "Gewünschte Produkte",
+            "required": false,
+            "full_width": false,
+            "select_options": "Option 1, Option 2, Option 3",
+            "checkbox_checked_value": "Yes",
+            "checkbox_uncheck_value": "No",
+            "radio_options": "Option 1, Option 2, Option 3"
+          }
+        },
+        "custom_field_NfrDMb": {
+          "type": "custom_field",
+          "settings": {
+            "field_type": "text",
+            "heading": "Welche Art von Unternehmen vertreten Sie?",
+            "placeholder": "Welche Art von Unternehmen vertreten Sie?",
+            "required": false,
+            "full_width": true,
+            "select_options": "Option 1, Option 2, Option 3",
+            "checkbox_checked_value": "Yes",
+            "checkbox_uncheck_value": "No",
+            "radio_options": "Option 1, Option 2, Option 3"
+          }
+        },
+        "custom_field_QHDJxV": {
+          "type": "custom_field",
+          "settings": {
+            "field_type": "text",
+            "heading": "Unternehmenswebsite",
+            "placeholder": "Unternehmenswebsite",
+            "required": false,
+            "full_width": true,
+            "select_options": "Option 1, Option 2, Option 3",
+            "checkbox_checked_value": "Yes",
+            "checkbox_uncheck_value": "No",
+            "radio_options": "Option 1, Option 2, Option 3"
+          }
+        }
+      },
+      "block_order": [
+        "custom_field_RMqCjh",
+        "custom_field_ayiMqk",
+        "custom_field_y7Lxwa",
+        "custom_field_w7RUGY",
+        "custom_field_UjpPka",
+        "custom_field_GHKmT9",
+        "custom_field_aNzhPE",
+        "custom_field_883rKy",
+        "custom_field_NfrDMb",
+        "custom_field_QHDJxV"
+      ],
+      "name": "合作伙伴表单",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "scheme-1",
+        "heading": "Kontaktieren Sie uns per E-Mail",
+        "heading_size": "h1",
+        "describe": "Bitte füllen Sie das folgende Formular aus. Wir werden uns schnellstmöglich bei Ihnen melden.",
+        "heading_highlight_style": "none",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs_xYaBHj",
+    "main",
+    "partner_form_KQQVnq"
+  ]
+}

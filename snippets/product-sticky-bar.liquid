@@ -1,0 +1,357 @@
+<style>
+  .product-sticky-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    background: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+    line-height: 54px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  }
+
+  .product-sticky-bar.active {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  .sticky-product-info-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    color: #666;
+  }
+
+  .product-info-item {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    padding: 0 10px;
+    transition: color 0.3s ease;
+    font-weight: 500;
+  }
+
+  .product-info-item:hover {
+    color: #000;
+  }
+
+  .product-info-item.active {
+    color: #3250c3;
+    font-weight: 500;
+  }
+
+  .product-info-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #3250c3;
+    border-radius: 2px 2px 0 0;
+  }
+  .sticky-nav-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-arrow {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 46px;
+    padding: 0px;
+    background: #f5f5f5;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  .nav-arrow-left {
+    left: 0;
+    justify-content: flex-start;
+    padding-left: 10px;
+    transform: rotate(-180deg);
+  }
+
+  .nav-arrow-right {
+    right: 0;
+    justify-content: flex-end;
+  }
+  .sticky-product-info-bar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+
+  .sticky-product-info-bar.no-scroll {
+    overflow-x: hidden;
+  }
+  @media (max-width: 768px) {
+    .sticky-product-info-bar {
+      gap: 20px;
+      overflow-x: auto;
+      justify-content: flex-start;
+      height: 48px;
+      line-height: 48px;
+    }
+
+    .product-info-item {
+      white-space: nowrap;
+      font-size: 14px;
+    }
+    .nav-arrow {
+      display: flex;
+      align-items: center;
+      opacity:0
+    }
+
+    header h1 {
+      font-size: 2rem;
+    }
+
+    header p {
+      font-size: 1rem;
+    }
+  }
+</style>
+<product-sticky-bar class="block product-sticky-bar">
+  <div class="page-width">
+    <div class="sticky-nav-container">
+      <span class="nav-arrow nav-arrow-left" aria-label="Vorherige Navigationselemente">
+        {%- render 'icon-slider-next', size: 'small' -%}
+      </span>
+      <div class="sticky-product-info-bar">
+        <div class="product-info-item" data-target="uberblick">Überblick</div>
+        <div class="product-info-item" data-target="eigenschaften">Eigenschaften</div>
+        <div class="product-info-item" data-target="vergleich">Vergleich</div>
+        <div class="product-info-item" data-target="lieferumfang">Lieferumfang</div>
+        <div class="product-info-item" data-target="parameter">Parameter</div>
+        <div class="product-info-item" data-target="faq">FAQ</div>
+      </div>
+      <span class="nav-arrow nav-arrow-right" aria-label="Nächste Navigationselemente">
+        {%- render 'icon-slider-next', size: 'small' -%}
+      </span>
+    </div>
+  </div>
+</product-sticky-bar>
+
+<script>
+  class ProductStickyBar extends HTMLElement {
+   constructor() {
+                super();
+                this.sections = {};
+                this.isInitialized = false;
+            }
+            connectedCallback() {
+                if (document.readyState === 'loading') {
+                    document.addEventListener('DOMContentLoaded', () => this.initialize());
+                } else {
+                    this.initialize();
+                }
+            }
+
+            initialize() {
+                if (this.isInitialized) return;
+                this.navItems = this.querySelectorAll('.product-info-item');
+                this.navBar = this.querySelector('.sticky-product-info-bar');
+                this.leftArrow = this.querySelector('.nav-arrow-left');
+                this.rightArrow = this.querySelector('.nav-arrow-right');
+                this.navItems.forEach(item => {
+                    const target = item.dataset.target;
+                    const sectionElement = document.getElementById(target);
+                    
+                    if (sectionElement) {
+                        this.sections[target] = sectionElement;
+                        
+                        item.addEventListener('click', () => {
+                            this.scrollToSection(target);
+                            this.setActiveItem(item);
+                        });
+                    } else {
+                        console.warn(`Element mit ID "${target}" nicht gefunden`);
+                        item.style.opacity = '0.5';
+                        item.style.cursor = 'not-allowed';
+                    }
+                });
+                if (this.leftArrow && this.rightArrow) {
+                    this.leftArrow.addEventListener('click', () => this.scrollNav('left'));
+                    this.rightArrow.addEventListener('click', () => this.scrollNav('right'));
+                }
+                
+                this.setupTouchEvents();
+                this.updateArrowVisibility();
+                window.addEventListener('resize', () => {
+                    this.updateArrowVisibility();
+                });
+              
+                window.addEventListener('scroll', this.debounce(() => {
+                    this.toggleVisibility();
+                    this.updateActiveSection();
+                }, 10));
+                
+                this.isInitialized = true;
+            }
+
+            toggleVisibility() {
+                {% comment %} if (window.scrollY > 200) {
+                    this.classList.add('active');
+                } else {
+                    this.classList.remove('active');
+                } {% endcomment %}
+                  const triggerEl = document.querySelector("#MainProduct-{{section_id}}");
+                  if (!triggerEl) return;
+                  const triggerTop = triggerEl.getBoundingClientRect().bottom + window.scrollY;
+                  if (window.scrollY >= triggerTop) {
+                    this.classList.add("active");
+                  } else {
+                    this.classList.remove("active");
+                  }
+            }
+            
+            updateActiveSection() {
+                let currentSection = '';
+                const scrollPosition = window.scrollY + 100;
+                for (const [id, section] of Object.entries(this.sections)) {
+                    if (section && section.offsetTop <= scrollPosition) {
+                        currentSection = id;
+                    }
+                }
+                if (currentSection) {
+                    this.setActiveItemBySection(currentSection);
+                }
+            }
+            
+            setActiveItem(item) {
+                this.navItems.forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+                item.classList.add('active');
+            }
+            
+            setActiveItemBySection(sectionId) {
+                this.navItems.forEach(item => {
+                    if (item.dataset.target === sectionId) {
+                        this.setActiveItem(item);
+                        if (window.innerWidth <= 768) {
+                            this.scrollToActiveItem(item);
+                        }
+                    }
+                });
+            }
+            
+            scrollToActiveItem(activeItem) {
+                if (!this.navBar || !activeItem) return;
+                const itemOffset = activeItem.offsetLeft;
+                const itemWidth = activeItem.offsetWidth;
+                const navWidth = this.navBar.offsetWidth;
+                this.navBar.scrollTo({
+                    left: itemOffset - (navWidth / 2) + (itemWidth / 2),
+                    behavior: 'smooth'
+                });
+            }
+            
+            scrollToSection(sectionId) {
+                const section = this.sections[sectionId];
+                if (section) {
+                    const headerOffset = 70;
+                    const elementPosition = section.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+            
+            scrollNav(direction) {
+                if (!this.navBar) return;
+                
+                const scrollAmount = 200;
+                const currentScroll = this.navBar.scrollLeft;
+                
+                if (direction === 'left') {
+                    this.navBar.scrollTo({
+                        left: currentScroll - scrollAmount,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    this.navBar.scrollTo({
+                        left: currentScroll + scrollAmount,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+            
+            updateArrowVisibility() {
+                if (!this.navBar || !this.leftArrow || !this.rightArrow) return;
+                if (window.innerWidth <= 768) {
+                    this.leftArrow.style.display = 'flex';
+                    this.rightArrow.style.display = 'flex';
+                    
+                    this.navBar.addEventListener('scroll', this.debounce(() => {
+                        this.toggleArrowsBasedOnScroll();
+                    }, 50));
+                  
+                    this.toggleArrowsBasedOnScroll();
+                } else {
+                    this.leftArrow.style.display = 'none';
+                    this.rightArrow.style.display = 'none';
+                }
+            }
+            
+            toggleArrowsBasedOnScroll() {
+                if (!this.navBar || !this.leftArrow || !this.rightArrow) return;
+                
+                const scrollLeft = this.navBar.scrollLeft;
+                const scrollWidth = this.navBar.scrollWidth;
+                const clientWidth = this.navBar.clientWidth;
+
+                this.leftArrow.style.visibility = scrollLeft > 10 ? 'visible' : 'hidden';
+                this.rightArrow.style.visibility = scrollLeft < (scrollWidth - clientWidth - 10) ? 'visible' : 'hidden';
+            }
+            
+            setupTouchEvents() {
+                if (!this.navBar) return;
+                let startX;
+                let scrollLeft;
+                this.navBar.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].pageX;
+                    scrollLeft = this.navBar.scrollLeft;
+                    this.navBar.classList.add('no-scroll');
+                });
+                this.navBar.addEventListener('touchmove', (e) => {
+                    if (!startX) return;
+                    const x = e.touches[0].pageX;
+                    const walk = (x - startX) * 2;
+                    this.navBar.scrollLeft = scrollLeft - walk;
+                });
+                this.navBar.addEventListener('touchend', () => {
+                    startX = null;
+                    this.navBar.classList.remove('no-scroll');
+                });
+            }
+            
+            debounce(func, wait) {
+                let timeout;
+                return function executedFunction(...args) {
+                    const later = () => {
+                        clearTimeout(timeout);
+                        func(...args);
+                    };
+                    clearTimeout(timeout);
+                    timeout = setTimeout(later, wait);
+                };
+            }
+        }
+
+  customElements.define('product-sticky-bar', ProductStickyBar);
+</script>

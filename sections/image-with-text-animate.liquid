@@ -1,0 +1,1143 @@
+{% render 'divider',
+  show_divider: section.settings.show_section_divider,
+  divider_width: section.settings.divider_width
+%}
+<style>
+    #shopify-section-{{ section.id }} .rich-text-list-section{padding-top: {{ section.settings.padding_top }}px;padding-bottom: {{ section.settings.padding_bottom }}px;}
+    #shopify-section-{{ section.id }} .rich-text{flex-flow: column;}
+    #shopify-section-{{ section.id }} .rich-text a{text-decoration: none;color: #3250c3;}
+    #shopify-section-{{ section.id }} p{ font-family: 'Inter';line-height:22px; font-size:18px;color: #666;}
+    #shopify-section-{{ section.id }} .image-wrapper-container{margin-top:{{ section.settings.image_top }}px;margin-bottom:0px; width: 1280px;height:100vh;overflow: hidden;}
+    #shopify-section-{{ section.id }} .image-wrapper-container .image-wrapper{height:100vh}
+    #shopify-section-{{ section.id }} .image-wrapper-container .image-wrapper .grid-image{ width: 100%;height: 100%;object-fit: cover; object-position: center;}
+    #shopify-section-{{ section.id }} .image-list-box{gap:5px;margin-top:40px;}
+    #shopify-section-{{ section.id }} .image-list-item{position: relative; overflow: hidden; cursor: pointer;}
+    #shopify-section-{{ section.id }} .image-list-item .image-wrapper{height:600px;width: 240px; transition: width 0.5s cubic-bezier(0.4,0,0.2,1);}
+    #shopify-section-{{ section.id }} .image-list-item .image-wrapper .grid-image{ width: 100%;height: 100%;object-fit: cover; object-position: center;}
+    #shopify-section-{{ section.id }} .content-wrapper{position: absolute;bottom: 56px; text-align:center;}
+    #shopify-section-{{ section.id }} .content-wrapper img{border-radius:0px;}
+    #shopify-section-{{ section.id }} .content-wrapper h3{margin-top:24px;margin-bottom:0px;font-size: 18px;line-height: 22px;font-weight: 700;color:#fff}
+    #shopify-section-{{ section.id }} .rich-text__heading.subheading{margin-top:0px;}
+    #shopify-section-{{ section.id }} .content-wrapper .text-desc{margin-top:8px;max-height: 0;max-width:90%; opacity: 0;line-height: 19px;font-size: 16px;color:#fff}
+    #shopify-section-{{ section.id }} .image-list-item.active .image-wrapper{width: 560px;}
+    #shopify-section-{{ section.id }} .image-list-item.active .content-wrapper{ left:60px;text-align:left;}
+    #shopify-section-{{ section.id }} .image-list-item.active .content-wrapper .text-desc{  margin: 8px 0px 0px 0px; max-height: 90px;  opacity: 1;}
+    #shopify-section-{{ section.id }} .hd2 { line-height: 56px;font-size: 46px;}
+    #shopify-section-{{ section.id }} .img-text{ position: absolute;top: 48%;left: 50%;transform: translate(-50%, -50%);line-height:87px;font-size: 72px;font-weight:700;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.20);white-space: nowrap;color:#fff;}
+    #shopify-section-{{ section.id }} #bottomGradient{position:absolute;bottom: 80px;height: 80px;left: 50%;transform: translateX(-50%);}
+    #shopify-section-{{ section.id }} #bottomGradient .btn--primary{ display: inline-flex;padding: 8px 20px;gap:20px; border-radius: 30px;background: rgba(0, 0, 0, 0.30);color:#fff}
+    #shopify-section-{{ section.id }} #bottomGradient .btn--primary .icon{width:3rem;height:3rem}
+  @media (max-width: 1024px) {
+    #shopify-section-{{ section.id }} .image-wrapper-container{margin-top:{{ section.settings.image_top }}px; width: 980px; height: auto !important;overflow: hidden;}
+    #shopify-section-{{ section.id }} .image-wrapper-container .image-wrapper{ height: auto !important;}
+    #shopify-section-{{ section.id }} .img-text{font-size:48px}
+    #shopify-section-{{ section.id }} .image-list-item .image-wrapper{width:180px;}
+    #shopify-section-{{ section.id }} .image-list-item.active .image-wrapper{width:435px}
+    #shopify-section-{{ section.id }} .image-list-item.active .content-wrapper{left:40px}
+  }
+  @media (max-width: 820px) {
+     #shopify-section-{{ section.id }} .image-list-item .image-wrapper{width:175px;}
+    #shopify-section-{{ section.id }} .image-list-item.active .image-wrapper{width:240px}
+    #shopify-section-{{ section.id }} .image-list-item.active .content-wrapper{left:30px}
+  }
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }} .image-list-item .image-wrapper{width:160px;}
+  }
+  @media (max-width: 767.98px) {
+      #shopify-section-{{ section.id }} .rich-text-list-section{padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;padding-bottom: {{ section.settings.padding_bottom | divided_by: 2}}px;}
+      #shopify-section-{{ section.id }} .image-wrapper-container {width:100%;margin-top:{{ section.settings.image_top | divided_by: 2 }}px}
+      #shopify-section-{{ section.id }} .image-wrapper-container .image-wrapper{height:100%}
+      #shopify-section-{{ section.id }} .image-list-box{margin-top:20px;}
+      #shopify-section-{{ section.id }} .image-with-text__inner{padding:0px}
+      #shopify-section-{{ section.id }} .rich-text__heading{ line-height:34px;font-size:28px}
+      #shopify-section-{{ section.id }} p{ line-height:19px;font-size:16px;}
+      #shopify-section-{{ section.id }} .rich-text__heading.subheading {padding-top: {{ section.settings.padding_top }}px !important;}
+      #shopify-section-{{ section.id }} .h3{font-size: 28px;line-height: 30px;}
+      #shopify-section-{{ section.id }} .img-text{white-space: pre-wrap;top:40%;line-height:65px;font-size:40px;}
+      #shopify-section-{{ section.id }} #bottomGradient{bottom: 27px;height:4rem;;opacity:1;}
+      #shopify-section-{{ section.id }} #bottomGradient .btn--primary{padding:8px 20px;border-radius: 24px;background: rgba(255, 255, 255, 0.30)}
+      #shopify-section-{{ section.id }} .image-list-item.active .image-wrapper, #shopify-section-{{ section.id }} .image-list-item .image-wrapper{height:240px;width: 100%;}
+      #shopify-section-{{ section.id }} .image-list-item.active .content-wrapper, #shopify-section-{{ section.id }} .image-list-item .content-wrapper{ position:relative;
+        left:0px;bottom:0px;width:100%;padding:30px;max-height: 308px; min-height: 308px;text-align:left;background: #F5F5F5}
+      #shopify-section-{{ section.id }} .image-list-item .content-wrapper .text-desc,#shopify-section-{{ section.id }} .image-list-item.active .content-wrapper .text-desc{ max-height:fit-content;  opacity: 1;}
+      #shopify-section-{{ section.id }} .image-list-item .image-wrapper .grid-image{border-radius:0px}
+      #shopify-section-{{ section.id }} .slick-track{gap:0px}
+      #shopify-section-{{ section.id }} .image-list-item{ margin-right:10px;}
+      #shopify-section-{{ section.id }} .content-wrapper h3{margin-top:18px;}
+      #shopify-section-{{ section.id }} .content-wrapper h3,#shopify-section-{{ section.id }} .content-wrapper .text-desc{color: #000;}
+      #shopify-section-{{ section.id }} .content-wrapper img{width:40px;height:40px}
+      #shopify-section-{{ section.id }} .image-list-item.active .content-wrapper h3, #shopify-section-{{ section.id }} .image-list-item .content-wrapper h3{margin-top:18px;font-size: 16px;line-height: 19px;}
+      #shopify-section-{{ section.id }} .image-list-item.active .content-wrapper .text-desc, #shopify-section-{{ section.id }} .image-list-item .content-wrapper .text-desc{line-height:17px;font-size:14px}
+  }
+</style>
+{%- assign motion_delay = 50 -%}
+<div
+  class="section section--padding rich-text-list-section color-{{ section.settings.color_scheme }}"
+  id="{{section.settings.ids}}"
+>
+  <div class="rich-text-list">
+    <div class="rich-text  md:flex items-{{ section.settings.content_alignment }} text-{{ section.settings.mobile_content_alignment }} md:text-{{ section.settings.content_alignment }}">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'subheading' %}
+            <h2
+              class="page-width rich-text__heading {{ block.settings.heading_size }} subheading {% if block.settings.padding_top  %}subtitle_top{% endif %}"
+              {{ block.shopify_attributes }}
+              style="padding-top: {{ block.settings.padding_top }}px;"
+            >
+              <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+                {{ block.settings.subheading }}
+              </motion-element>
+            </h2>
+            {%- assign motion_delay = motion_delay | plus: 50 -%}
+          {% when 'heading' %}
+            <h2
+              class="page-width rich-text__heading {{ block.settings.heading_size }}"
+              {{ block.shopify_attributes }}
+            >
+              <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+                {% render 'highlight-text',
+                  text: block.settings.heading,
+                  style: block.settings.heading_highlight_style
+                %}
+              </motion-element>
+            </h2>
+            {%- assign motion_delay = motion_delay | plus: 50 -%}
+          {% when 'text' %}
+            <motion-element
+              data-motion="fade-up"
+              data-motion-delay="{{ motion_delay }}"
+              class="block page-width rich-text__text rte {{ block.settings.text_size }}"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.text }}
+            </motion-element>
+            {%- assign motion_delay = motion_delay | plus: 50 -%}
+          {% when 'image_list' %}
+            <motion-element
+              data-motion="fade-up"
+              data-motion-delay="{{ motion_delay }}"
+              class="block page-width rich-text__list rte {{ block.settings.list_size }}"
+              {{ block.shopify_attributes }}
+            >
+              <div class="flex image-list-box image-list-slick" id="imageListAccordion">
+                {% for i in (1..4) %}
+                  {% assign image_key = 'image_' | append: i %}
+                  {% assign mobile_image_key = 'mobile_image_' | append: i %}
+                  {% assign title_key = 'title_' | append: i %}
+                  {% assign desc_key = 'desc_' | append: i %}
+                  {% assign icon_key = 'icon_' | append: i %}
+                  {% assign mobile_icon_key = 'mobile_icon_' | append: i %}
+                  {% assign image = block.settings[image_key] %}
+                  {% assign mobile_image = block.settings[mobile_image_key] %}
+                  {% assign title = block.settings[title_key] %}
+                  {% assign desc = block.settings[desc_key] %}
+                  {% assign icon = block.settings[icon_key] %}
+                  {% assign mobile_icon =  block.settings[mobile_icon_key] %}
+                  {% if image != blank %}
+                    <div class="image-list-item{% if forloop.first %} active{% endif %}">
+                      <div class="image-wrapper">
+                        <picture>
+                          <!-- 移动端图片 -->
+                          <source
+                            media="(max-width: 749px)"
+                            srcset="
+                              {{ mobile_image | img_url: '800x' }} 1x,
+                              {{ mobile_image | img_url: '1600x' }} 2x
+                            "
+                          >
+
+                          <!-- 桌面端图片 -->
+                          <source
+                            media="(min-width: 750px)"
+                            srcset="
+                              {{ image | img_url: '1200x' }} 1x,
+                              {{ image| img_url: '2400x' }} 2x
+                            "
+                          >
+
+                          <!-- 默认图片 -->
+                          <img
+                            src="{{ image | img_url: '1200x' }}"
+                            alt="{{ image | escape }}"
+                            class="grid-image"
+                            loading="lazy"
+                            width="{{ image.width }}"
+                            height="{{ image.height }}"
+                          >
+                        </picture>
+                      </div>
+                      <div class="content-wrapper">
+                        {% if icon != blank %}
+                         <picture>
+                          <!-- 移动端图片 -->
+                          <source
+                            media="(max-width: 749px)"
+                            srcset="
+                              {{ mobile_icon | img_url: '800x' }} 1x,
+                              {{ mobile_icon | img_url: '1600x' }} 2x
+                            "
+                          >
+
+                          <!-- 桌面端图片 -->
+                          <source
+                            media="(min-width: 750px)"
+                            srcset="
+                              {{ icon | img_url: '1200x' }} 1x,
+                              {{ icon| img_url: '2400x' }} 2x
+                            "
+                          >
+
+                          <!-- 默认图片 -->
+                          <img
+                            src="{{ icon | img_url: '1200x' }}"
+                            alt="{{ icon | escape }}"
+                            class="icon-img"
+                            loading="lazy"
+                            width="{{ icon.width }}"
+                            height="{{ icon.height }}"
+                          >
+                        </picture>
+                        {% endif %}
+                        {% if title != blank %}
+                          <h3 class="h3">{{ title }}</h3>
+                        {% endif %}
+                        {% if desc != blank %}
+                          <div class="text-desc">
+                            {{ desc }}
+                          </div>
+                        {% endif %}
+                      </div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </motion-element>
+            {%- assign motion_delay = motion_delay | plus: 50 -%}
+          {% when 'big_image' %}
+            {% if block.settings.image != blank %}
+              <div class="relative image-wrapper-container" id="animated-image-container">
+                <div class="relative image-wrapper">
+                  <picture>
+                    <!-- 移动端图片 -->
+                    <source
+                      media="(max-width: 749px)"
+                      srcset="
+                        {{ block.settings.mobile_image | img_url: '800x' }} 1x,
+                        {{ block.settings.mobile_image | img_url: '1600x' }} 2x
+                      "
+                    >
+
+                    <!-- 桌面端图片 -->
+                    <source
+                      media="(min-width: 750px)"
+                      srcset="
+                        {{ block.settings.image | img_url: '1200x' }} 1x,
+                        {{ block.settings.image | img_url: '2400x' }} 2x
+                      "
+                    >
+
+                    <!-- 默认图片 -->
+                    <img
+                      src="{{ block.settings.image | img_url: '1200x' }}"
+                      alt="{{ block.settings.title | escape }}"
+                      class="grid-image"
+                      loading="lazy"
+                      width="{{ block.settings.image.width }}"
+                      height="{{ block.settings.image.height }}"
+                    >
+                  </picture>
+                  <div class="img-text">
+                    {{ block.settings.image_text }}
+                  </div>
+                  <div class="bottom-gradient" id="bottomGradient">
+    
+                      {% if block.settings.button_label != blank %}
+                        <a
+                          {% if block.settings.button_link != blank %}
+                            href="{{ block.settings.button_link }}"
+                          {% else %}
+                            role="link" aria-disabled="true"
+                          {% endif %}
+                          class="btn {{ block.settings.button_style }}"
+                          {{ block.shopify_attributes }}
+                        >
+                          {{- block.settings.button_label -}}
+                          {% render 'icon-add' %}
+                        </a>
+                      {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const videoModal = document.querySelector('.video-modal');
+    const videoPlayer = document.querySelector('.video-player');
+    const closeBtn = document.querySelector('.close-button');
+    const listBox = document.getElementById('imageListAccordion');
+    if (listBox) {
+      const items = listBox.querySelectorAll('.image-list-item');
+      items.forEach((item, idx) => {
+        item.addEventListener('mouseenter', function () {
+          if (window.innerWidth > 767.98) {
+            items.forEach(i => i.classList.remove('active'));
+            item.classList.add('active');
+          }
+        });
+        item.addEventListener('mouseleave', function () {
+          if (window.innerWidth > 767.98) {
+            items.forEach(i => i.classList.remove('active'));
+            items[0].classList.add('active');
+          }
+        });
+      });
+    }
+    // Slick-移动端
+    function initSlickOnMobile() {
+      const $slickBox = $('.image-list-slick');
+      if (window.innerWidth <= 767.98) {
+        if (!$slickBox.hasClass('slick-initialized')) {
+          $slickBox.slick({
+            slidesToShow: 1.2,
+            slidesToScroll: 1,
+            infinite: false,
+            arrows: false,
+            dots: false,
+            centerMode: false,
+            variableWidth: false,
+            adaptiveHeight: true
+          });
+        }
+        // 关闭手风琴展开动画
+        $slickBox.find('.image-list-item').removeClass('active');
+      } else {
+        if ($slickBox.hasClass('slick-initialized')) {
+          $slickBox.slick('unslick');
+          // 恢复第一个为 active
+          $slickBox.find('.image-list-item').removeClass('active').first().addClass('active');
+        }
+      }
+    }
+    initSlickOnMobile();
+    window.addEventListener('resize', initSlickOnMobile);
+
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+      const img = document.querySelector('#animated-image-container');
+      const btn = document.querySelector('#bottomGradient');
+      const text =  document.querySelector('.img-text');
+      const header = document.querySelector('.header');
+      const headerHeight = header.offsetHeight;
+      const originWidth = img.offsetWidth;
+      const originHeight = img.offsetHeight;
+
+      gsap.to(img, {
+        scrollTrigger: {
+          trigger: img,
+          start: `top 80%`,
+          end: `top ${headerHeight}px`,
+          scrub: true,
+          onUpdate: (self) => {
+            const curWidth = originWidth + (window.innerWidth - originWidth) * self.progress;
+            img.style.width = `${curWidth}px`;
+            if (self.progress >= 0.99) {
+              img.style.height = `${window.innerHeight - headerHeight}px`;
+            } else {
+              img.style.height = `auto`;
+            }
+          },
+        },
+      });
+      let tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: img,
+          start: `top ${headerHeight + 40}px`,
+          end: `top ${headerHeight}px`,
+          scrub: true,
+          // markers: true
+        }
+      });
+      tl.fromTo(text, 
+          {
+          opacity: 0,
+          y:100,
+          scale: 0.98,
+        },
+        {
+          scale: 1,
+          y:0,
+          keyframes: [
+            { opacity: 0.5, duration: 1, ease: 'power2.out' },
+            { opacity: 1, duration: 1.2, ease: 'power3.out' },
+          ],
+          ease: 'expo.out',
+          duration: 2.2,
+        }
+      );
+      tl.fromTo(btn, 
+        {
+          opacity: 0,
+          scale: 0.6,
+        },
+        {
+          opacity: 1,
+          scale: 1,
+          ease: 'power2.out',
+          duration:1,
+        }
+      );
+      {% comment %} 
+      gsap.to(btn, {
+        opacity: 1,
+        scale: 1,
+        scrollTrigger: {
+          trigger: text,
+          start: `top ${headerHeight + 40}px`,
+          end: `top ${headerHeight}px`,
+          scrub: true,
+          onUpdate: (self) => {
+            gsap.set(btn, {
+              opacity: self.progress,
+              scale: 0.6 + 0.4 * self.progress,
+              delay: 3,
+            });
+          },
+        },
+      }); {% endcomment %}
+    }
+  
+  });
+</script>
+{% schema %}
+{
+  "name": "image-with-text-animate",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "[Read How-to](https://foxecom.link/E1POXzl)"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.general.name"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.content.name"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.all.text_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.all.text_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.all.text_alignment.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.all.text_alignment.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "text",
+      "id": "ids",
+      "label": "设置ID"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "image_top",
+      "default": 60,
+      "min": 0,
+      "max": 280,
+      "step": 4,
+      "unit": "px",
+      "label": "设置图片顶部距离"
+    },
+    {
+      "type": "range",
+      "id": "video_radius",
+      "label": "视频圆角",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "video_aspect_ratio",
+      "label": "视频比例",
+      "options": [
+        { "value": "16/9", "label": "16:9 (横屏)" },
+        { "value": "9/16", "label": "9:16 (竖屏)" },
+        { "value": "1/1", "label": "1:1 (方形)" },
+        { "value": "4/3", "label": "4:3 (标准)" }
+      ],
+      "default": "16/9"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.divider.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider",
+      "default": false,
+      "label": "t:sections.all.divider.settings.show_divider.label"
+    },
+    {
+      "type": "select",
+      "id": "divider_width",
+      "options": [
+        {
+          "value": "fixed",
+          "label": "t:sections.all.container.options__fixed.label"
+        },
+        {
+          "value": "full",
+          "label": "t:sections.all.container.options__full.label"
+        }
+      ],
+      "default": "fixed",
+      "label": "t:sections.all.divider.settings.divider_width.label"
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "select",
+      "id": "mobile_content_alignment",
+      "label": "t:sections.all.text_alignment.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.all.text_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.all.text_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.all.text_alignment.options__3.label"
+        }
+      ],
+      "default": "center"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subheading",
+      "name": "t:sections.all.subheading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "subheading",
+          "default": "Add a tagline",
+          "label": "t:sections.all.subheading.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "t:sections.all.text_size.heading.label",
+          "default": "hd1",
+          "options": [
+            {
+              "value": "h6",
+              "label": "t:sections.all.text_size.options__h6.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:sections.all.text_size.options__h5.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:sections.all.text_size.options__h4.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:sections.all.text_size.options__h3.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:sections.all.text_size.options__h2.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.text_size.options__h1.label"
+            },
+            {
+              "value": "hd3",
+              "label": "t:sections.all.text_size.options__hd3.label"
+            },
+            {
+              "value": "hd2",
+              "label": "t:sections.all.text_size.options__hd2.label"
+            },
+            {
+              "value": "hd1",
+              "label": "t:sections.all.text_size.options__hd1.label"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "min": 0,
+          "max": 320,
+          "step": 8,
+          "unit": "px",
+          "label": "t:sections.all.padding.padding_top",
+          "default": 160
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "t:sections.all.heading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Talk about your brand",
+          "label": "t:sections.all.heading.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "t:sections.all.text_size.heading.label",
+          "default": "hd1",
+          "options": [
+            {
+              "value": "h6",
+              "label": "t:sections.all.text_size.options__h6.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:sections.all.text_size.options__h5.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:sections.all.text_size.options__h4.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:sections.all.text_size.options__h3.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:sections.all.text_size.options__h2.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.text_size.options__h1.label"
+            },
+            {
+              "value": "hd3",
+              "label": "t:sections.all.text_size.options__hd3.label"
+            },
+            {
+              "value": "hd2",
+              "label": "t:sections.all.text_size.options__hd2.label"
+            },
+            {
+              "value": "hd1",
+              "label": "t:sections.all.text_size.options__hd1.label"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.highlight_text.header.content"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.all.highlight_text.paragraph.content"
+        },
+        {
+          "type": "select",
+          "id": "heading_highlight_style",
+          "label": "t:sections.all.highlight_text.settings.highlight_style.label",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.all.highlight_text.settings.highlight_style.options__1.label"
+            },
+            {
+              "value": "underline",
+              "label": "t:sections.all.highlight_text.settings.highlight_style.options__2.label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.all.text.name",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+          "label": "t:sections.all.text.label"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "label": "t:sections.all.text_size.text.label",
+          "default": "text-base",
+          "options": [
+            {
+              "value": "text-sm",
+              "label": "t:sections.all.text_size.options__small.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:sections.all.text_size.options__base.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:sections.all.text_size.options__large.label"
+            },
+            {
+              "value": "text-inherit",
+              "label": "t:sections.all.text_size.options__inherit.label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "image_list",
+      "name": "图片列表",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "图片1"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image_1",
+          "label": "Mobile 图片1"
+        },
+        {
+          "type": "text",
+          "id": "title_1",
+          "label": "标题1"
+        },
+        {
+          "type": "text",
+          "id": "desc_1",
+          "label": "描述1"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_1",
+          "label": "Icon1"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_icon_1",
+          "label": "Icon1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "图片2"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image_2",
+          "label": "Mobile 图片2"
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "标题2"
+        },
+        {
+          "type": "text",
+          "id": "desc_2",
+          "label": "描述2"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_2",
+          "label": "Icon2"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_icon_2",
+          "label": "Icon2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "图片3"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image_3",
+          "label": "Mobile 图片3"
+        },
+        {
+          "type": "text",
+          "id": "title_3",
+          "label": "标题3"
+        },
+        {
+          "type": "text",
+          "id": "desc_3",
+          "label": "描述3"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_3",
+          "label": "Icon3"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_icon_3",
+          "label": "Icon3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_4",
+          "label": "图片4"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image_4",
+          "label": "Mobile 图片4"
+        },
+        {
+          "type": "text",
+          "id": "title_4",
+          "label": "标题4"
+        },
+        {
+          "type": "text",
+          "id": "desc_4",
+          "label": "描述4"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_4",
+          "label": "Icon4"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_icon_4",
+          "label": "Icon4"
+        },
+      ]
+    },
+    {
+      "type": "big_image",
+      "name": "图片",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "select",
+          "id": "container",
+          "options": [
+            {
+              "value": "full",
+              "label": "t:sections.all.container.options__full.label"
+            },
+            {
+              "value": "fixed",
+              "label": "t:sections.all.container.options__fixed.label"
+            }
+          ],
+          "default": "fixed",
+          "label": "t:sections.all.container.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image_pc"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "image_mobile"
+        },
+        {
+          "type": "text",
+          "id": "image_text",
+          "label": "图片标题",
+          "default": "Sicherer  /  langlebiger  /  Dichter"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.all.button.button_label.label",
+          "default": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.all.button.button_link.label"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:sections.all.button.button_style.label",
+          "options": [
+            {
+              "value": "btn--primary",
+              "label": "t:sections.all.button.button_style.options__1.label"
+            },
+            {
+              "value": "btn--secondary",
+              "label": "t:sections.all.button.button_style.options__2.label"
+            },
+            {
+              "value": "btn--underline",
+              "label": "t:sections.all.button.button_style.options__4.label"
+            }
+          ],
+          "default": "btn--primary"
+        },
+        {
+          "type": "select",
+          "id": "button_target",
+          "label": "链接打开方式",
+          "options": [
+            {
+              "value": "_blank",
+              "label": "新窗口打开"
+            },
+            {
+              "value": "_self",
+              "label": "默认"
+            }
+          ],
+          "default": "_self"
+        }
+      ]
+    },
+    {
+      "type": "video_popup",
+      "name": "视频弹窗",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "select",
+          "id": "video_alignment",
+          "label": "Video Mobile Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "select",
+          "id": "video_type",
+          "label": "视频类型",
+          "options": [
+            {
+              "value": "youtube",
+              "label": "YouTube"
+            },
+            {
+              "value": "shopify",
+              "label": "Shopify 视频"
+            }
+          ],
+          "default": "youtube"
+        },
+        {
+          "type": "video_url",
+          "id": "youtube_url",
+          "label": "YouTube 视频链接",
+          "accept": ["youtube"],
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        },
+        {
+          "type": "text",
+          "id": "shopify_video",
+          "label": "Shopify 视频链接",
+          "info": "在设置 > 文件中上传视频并粘贴链接"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_thumbnail",
+          "label": "youtube自定义缩略图",
+          "info": "覆盖默认缩略图"
+        },
+        {
+          "type": "image_picker",
+          "id": "cover_image",
+          "label": "封面图片",
+          "info": "仅用于Shopify视频"
+        },
+        {
+          "type": "range",
+          "id": "video_width",
+          "default": 200,
+          "min": 100,
+          "max": 500,
+          "step": 10,
+          "unit": "px",
+          "label": "Container Width"
+        },
+        {
+          "type": "range",
+          "id": "video_height",
+          "default": 64,
+          "min": 64,
+          "max": 324,
+          "step": 10,
+          "unit": "px",
+          "label": "Container Height"
+        },
+        {
+          "type": "text",
+          "id": "alt_text",
+          "label": "替代文本",
+          "default": "产品展示视频"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "视频",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "上传视频",
+          "info": "上传MP4格式视频文件（推荐最大尺寸：1920x1080）"
+        },
+        {
+          "type": "checkbox",
+          "id": "autoplay",
+          "label": "自动播放",
+          "default": false,
+          "info": "注意：移动设备可能限制自动播放"
+        },
+        {
+          "type": "checkbox",
+          "id": "loop",
+          "label": "循环播放",
+          "default": true
+        },
+        {
+          "type": "checkbox",
+          "id": "muted",
+          "label": "静音播放",
+          "default": true,
+          "info": "自动播放需要静音"
+        },
+        {
+          "type": "video_url",
+          "id": "video_url",
+          "accept": ["youtube", "vimeo"],
+          "label": "或使用外部视频链接",
+          "info": "支持YouTube或Vimeo链接",
+          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "视频描述",
+          "info": "用于SEO和无障碍访问",
+          "default": "产品展示视频"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "image-with-text-animate",
+      "category": "自定义产品组件",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "big_image"
+        },
+        {
+          "type": "subheading"
+        },
+        {
+          "type": "image_list"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

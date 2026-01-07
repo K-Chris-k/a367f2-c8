@@ -1,0 +1,861 @@
+{%- comment -%}
+  推荐产品展示组件
+  用于在 Empfehlung 标签页中显示推荐产品列表
+
+  参数：
+  - section: section对象
+  - product: 当前产品对象
+{%- endcomment -%}
+
+<style>
+  /* Recommendation Products Styles */
+  .recommendation-products {
+    width: 100%;
+  }
+
+  .recommendation-product-card {
+    position: relative;
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+    border: 2px solid #e5e5e5;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    background: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  .recommendation-product-card:hover {
+    border-color: #3250c3;
+    background: #f0f4ff;
+  }
+
+  @media screen and (max-width: 768px) {
+    .recommendation-product-card:hover {
+      border-color: transparent;
+      background: #fff;
+    }
+  }
+
+  .recommendation-product-card.selected {
+    border-color: #3250c3;
+    background: #f0f4ff;
+  }
+
+  .recommendation-product-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .recommendation-product-header-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  /* 取消选择按钮样式 */
+  .recommendation-remove-btn {
+    width: 30px;
+    height: 30px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #3250c3;
+    border-radius: 50%;
+    color: #3250c3;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+    padding: 0 !important;
+  }
+
+  .recommendation-product-card.selected .recommendation-remove-btn {
+    display: flex;
+  }
+
+  .recommendation-remove-icon {
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  .recommendation-remove-btn:hover {
+    background: #3250c3;
+    color: #fff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(50, 80, 195, 0.3);
+  }
+
+  .recommendation-remove-btn:active {
+    transform: scale(0.95);
+  }
+
+  /* 移动端优化 */
+  @media (max-width: 768px) {
+    .recommendation-product-card {
+      flex-direction: column;
+    }
+
+    .recommendation-product-image {
+      width: 100%;
+      height: 200px;
+    }
+
+    .recommendation-product-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .recommendation-remove-btn {
+      width: 44px;
+      height: 44px;
+      align-self: flex-end;
+    }
+  }
+
+  .recommendation-product-image {
+    flex-shrink: 0;
+    width: 120px;
+    height: 120px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .recommendation-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .recommendation-product-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .recommendation-product-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .recommendation-product-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .recommendation-product-badges {
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .recommendation-badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .recommendation-badge.new {
+    background: #3250c3;
+    color: #fff;
+  }
+
+  .recommendation-badge.discount {
+    background: #ff6b35;
+    color: #fff;
+  }
+
+  .recommendation-product-description {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+  }
+
+  .recommendation-product-price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+  }
+
+  .recommendation-product-price .current-price {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+  }
+
+  .recommendation-product-price .original-price {
+    font-size: 14px;
+    color: #999;
+    text-decoration: line-through;
+  }
+</style>
+
+{%- liquid
+  # 获取推荐产品
+  assign recommended_product = blank
+  assign has_recommendations = false
+  assign current_block = blank
+
+  if section.blocks
+    for block_item in section.blocks
+      if block_item.type == 'recommend_product' and recommended_product == blank
+        assign recommended_product = all_products[block_item.settings.recommended_product1]
+        if recommended_product != blank
+          assign current_block = block_item
+          assign has_recommendations = true
+        endif
+      endif
+    endfor
+  endif
+-%}
+
+{%- if has_recommendations and recommended_product != blank -%}
+  <div class="recommendation-products">
+    {%- liquid
+      # 检查是否只显示指定的变体
+      assign show_specific_variant = current_block.settings.show_specific_variant
+      assign specific_variant_ids = blank
+
+      # 如果启用了显示指定变体，收集所有配置的 variant_id
+      if show_specific_variant
+        assign variant_ids_array = blank
+        for i in (1..8)
+          assign variant_id_key = 'variant_id' | append: i
+          assign variant_id_value = current_block.settings[variant_id_key]
+          if variant_id_value != blank
+            assign variant_id_num = variant_id_value | plus: 0
+            if variant_ids_array == blank
+              assign variant_ids_array = variant_id_num
+            else
+              assign variant_ids_array = variant_ids_array | append: ',' | append: variant_id_num
+            endif
+          endif
+        endfor
+        assign specific_variant_ids = variant_ids_array
+      endif
+    -%}
+    {%- for variant in recommended_product.variants -%}
+      {%- liquid
+        # 如果启用了显示指定变体，检查当前变体是否在指定列表中
+        assign should_render = true
+        if show_specific_variant and specific_variant_ids != blank
+          assign should_render = false
+          assign variant_ids_list = specific_variant_ids | split: ','
+          for variant_id_str in variant_ids_list
+            assign variant_id_num = variant_id_str | plus: 0
+            if variant_id_num == variant.id
+              assign should_render = true
+              break
+            endif
+          endfor
+        endif
+      -%}
+      {%- if variant.available and should_render -%}
+        {%- liquid
+          assign compare_at_price = variant.compare_at_price
+          assign price = variant.price
+          assign on_sale = false
+          if compare_at_price > price
+            assign on_sale = true
+          endif
+
+          # 获取配置的标签（使用第一个产品的配置）
+          assign badge_new_key = 'product1_badge_new'
+          assign badge_discount_key = 'product1_badge_discount'
+          assign is_new = current_block.settings[badge_new_key]
+          assign discount_badge_text = current_block.settings[badge_discount_key]
+
+          # 折扣标签自动计算
+          assign discount_amount = 0
+          assign show_discount_badge = false
+          assign auto_discount_text = blank
+
+          if on_sale
+            assign discount_amount = compare_at_price | minus: price
+            if discount_amount > 0
+              assign show_discount_badge = true
+              assign auto_discount_text = discount_amount | money | append: ' Rabatt'
+            endif
+          endif
+
+          # 获取变体图片，如果没有则使用产品默认图片
+          assign variant_image = variant.featured_image
+          if variant_image == blank
+            assign variant_image = recommended_product.featured_image
+          endif
+
+          # 构建变体标题（包含选项值）
+          assign variant_title = recommended_product.title
+          if variant.title != 'Default Title'
+            assign variant_title = recommended_product.title | append: ' - ' | append: variant.title
+          endif
+        -%}
+        <div
+          class="recommendation-product-card recommendation-select-on-click"
+          data-product-id="{{ recommended_product.id }}"
+          data-variant-id="{{ variant.id }}"
+          data-price="{{ price }}"
+          data-compare-price="{{ compare_at_price }}"
+          role="button"
+          tabindex="0"
+          aria-label="Select {{ variant_title }}"
+        >
+          <div class="recommendation-product-image">
+            {%- if variant_image -%}
+              <img
+                src="{{ variant_image | image_url: width: 1500 }}"
+                alt="{{ variant_title | escape }}"
+                loading="lazy"
+                width="100%"
+                height="auto"
+              >
+            {%- else -%}
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </div>
+
+          <div class="recommendation-product-content">
+            <div class="recommendation-product-header">
+              <div class="recommendation-product-header-info">
+                <h3 class="recommendation-product-title">
+                  {{ recommended_product.title }}
+                  {%- if variant.title != 'Default Title' -%}
+                    <span style="font-weight: 400; color: #666;">- {{ variant.title }}</span>
+                  {%- endif -%}
+                </h3>
+                <div class="recommendation-product-badges">
+                  {%- if is_new and discount_badge_text != blank -%}
+                    <span class="recommendation-badge new">{{ discount_badge_text }}</span>
+                  {%- endif -%}
+                  {%- if show_discount_badge and auto_discount_text != blank -%}
+                    <span class="recommendation-badge discount">{{ auto_discount_text }}</span>
+                  {%- endif -%}
+                </div>
+              </div>
+              {%- comment -%} 取消选择按钮（已注释，暂时不使用） {%- endcomment -%}
+              {%- comment -%}
+                <button
+                  type="button"
+                  class="recommendation-remove-btn"
+                  aria-label="Remove {{ variant_title }}"
+                  title="取消选择"
+                >
+                  <span class="recommendation-remove-icon">&times;</span>
+                </button>
+              {%- endcomment -%}
+            </div>
+
+            {%- if recommended_product.description != blank -%}
+              <div class="recommendation-product-description">
+                {{ recommended_product.description | strip_html | truncate: 150 }}
+              </div>
+            {%- endif -%}
+
+            <div class="recommendation-product-price">
+              <span class="current-price">{{ price | money }}</span>
+              {%- if on_sale -%}
+                <span class="original-price">{{ compare_at_price | money }}</span>
+              {%- endif -%}
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <script>
+    (function () {
+      // 解析价格（支持欧元格式）
+      function parseEuroPrice(priceStr) {
+        if (!priceStr) return 0;
+        return (
+          parseFloat(
+            priceStr
+              .toString()
+              .replace(/[^\d,]/g, '')
+              .replace(',', '.')
+          ) || 0
+        );
+      }
+
+      // 获取选中的推荐产品信息
+      function getSelectedRecommendation() {
+        const selectedCard = document.querySelector('.recommendation-select-on-click[recommendation-selected]');
+        if (!selectedCard) return null;
+
+        const priceInCents = parseFloat(selectedCard.dataset.price) || 0;
+        const compareAtPriceInCents = parseFloat(selectedCard.dataset.comparePrice) || 0;
+        const variantId = selectedCard.dataset.variantId;
+        const productId = selectedCard.dataset.productId;
+        const title = selectedCard.querySelector('.recommendation-product-title')?.textContent?.trim() || '';
+        const imageUrl = selectedCard.querySelector('.recommendation-product-image img')?.src || '';
+        const imageElement = selectedCard.querySelector('.recommendation-product-image img');
+
+        return {
+          variantId,
+          productId,
+          title,
+          imageUrl,
+          imageElement,
+          priceInCents, // 以分为单位
+          compareAtPriceInCents, // 以分为单位
+          price: priceInCents / 100, // 欧元单位（仅供显示）
+          compareAtPrice: compareAtPriceInCents / 100, // 欧元单位（仅供显示）
+          priceFormatted: (priceInCents / 100).toFixed(2).replace('.', ',') + ' €',
+        };
+      }
+
+      // 更新主产品图片为推荐产品图片
+      function updateMainProductImage(recommendation) {
+        if (!recommendation || !recommendation.imageUrl) {
+          console.warn('[推荐产品] 没有推荐产品或图片URL');
+          return;
+        }
+
+        console.log('[推荐产品] 开始更新主产品图片:', recommendation.imageUrl);
+
+        // 找到主产品的 media gallery
+        const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
+        if (!productInfo) {
+          console.warn('[推荐产品] 找不到 product-info 元素');
+          return;
+        }
+
+        const sectionId = productInfo.dataset.section;
+        const mediaGallery = productInfo.querySelector(`[id^="MediaGallery-${sectionId}"]`);
+        if (!mediaGallery) {
+          console.warn('[推荐产品] 找不到 MediaGallery 元素');
+          return;
+        }
+
+        // 找到第一个产品媒体项（主图通常是第一个，position=0）
+        // 优先查找 swiper-slide-active，如果没有则查找第一个 product__media-item
+        let activeSlide = mediaGallery.querySelector('.swiper-slide-active');
+        if (!activeSlide) {
+          // 查找第一个 media-item（通常是主图）
+          activeSlide = mediaGallery.querySelector('.product__media-item[data-media-index="0"]');
+        }
+        if (!activeSlide) {
+          activeSlide = mediaGallery.querySelector('.product__media-item:first-child');
+        }
+        if (!activeSlide) {
+          console.warn('[推荐产品] 找不到激活的幻灯片');
+          return;
+        }
+
+        console.log('[推荐产品] 找到幻灯片:', activeSlide);
+
+        // 查找图片元素：优先查找 .product-big-image 中的图片
+        let mainImage = activeSlide.querySelector('.product-big-image img');
+        if (!mainImage) {
+          mainImage = activeSlide.querySelector('.product__media img');
+        }
+        if (!mainImage) {
+          mainImage = activeSlide.querySelector('img');
+        }
+        if (!mainImage) {
+          console.warn('[推荐产品] 找不到图片元素');
+          return;
+        }
+
+        console.log('[推荐产品] 找到图片元素:', mainImage, '当前src:', mainImage.src);
+
+        // 保存原始图片（用于取消选择时恢复）
+        if (!mainImage.dataset.originalSrc) {
+          const currentSrc = mainImage.src || mainImage.getAttribute('src') || mainImage.getAttribute('data-src') || '';
+          const currentSrcset =
+            mainImage.srcset || mainImage.getAttribute('srcset') || mainImage.getAttribute('data-srcset') || '';
+          mainImage.dataset.originalSrc = currentSrc;
+          mainImage.dataset.originalSrcset = currentSrcset;
+          console.log('[推荐产品] 保存原始图片:', currentSrc);
+        }
+
+        // 更新图片 URL
+        const imageUrl = recommendation.imageUrl;
+        console.log('[推荐产品] 更新图片为:', imageUrl);
+
+        // 更新图片属性 - 直接设置 src 和 srcset
+        if (mainImage.tagName === 'IMG') {
+          // 普通 img 元素
+          mainImage.src = imageUrl;
+          mainImage.srcset = imageUrl;
+          mainImage.setAttribute('src', imageUrl);
+          mainImage.setAttribute('srcset', imageUrl);
+        } else {
+          // 可能是自定义元素，使用 setAttribute
+          mainImage.setAttribute('src', imageUrl);
+          mainImage.setAttribute('srcset', imageUrl);
+        }
+
+        // 也更新 data-src 和 data-srcset（用于 lazy loading）
+        mainImage.setAttribute('data-src', imageUrl);
+        mainImage.setAttribute('data-srcset', imageUrl);
+
+        // 更新 alt 文本
+        if (recommendation.title) {
+          mainImage.alt = recommendation.title;
+          mainImage.setAttribute('alt', recommendation.title);
+        }
+
+        // 如果使用的是 picture 元素，也需要更新 source
+        const pictureElement = mainImage.closest('picture');
+        if (pictureElement) {
+          const sources = pictureElement.querySelectorAll('source');
+          sources.forEach((source) => {
+            if (!source.dataset.originalSrcset) {
+              source.dataset.originalSrcset = source.srcset || source.getAttribute('srcset') || '';
+            }
+            source.srcset = imageUrl;
+            source.setAttribute('srcset', imageUrl);
+            if (source.src) {
+              source.src = imageUrl;
+              source.setAttribute('src', imageUrl);
+            }
+          });
+        }
+
+        // 如果图片使用了 image-lazy 自定义元素，需要特殊处理
+        if (mainImage.tagName === 'IMG-LAZY' || mainImage.hasAttribute('is')) {
+          // 触发图片加载事件
+          const loadEvent = new Event('load', { bubbles: true });
+          mainImage.dispatchEvent(loadEvent);
+
+          // 如果 image-lazy 有 load 或 updateImage 方法，调用它
+          if (typeof mainImage.load === 'function') {
+            mainImage.load();
+          }
+          if (typeof mainImage.updateImage === 'function') {
+            mainImage.updateImage(imageUrl);
+          }
+        }
+
+        // 强制图片重新加载
+        if (mainImage.tagName === 'IMG') {
+          mainImage.loading = 'eager';
+          mainImage.removeAttribute('loading');
+
+          // 触发 load 事件以确保图片加载
+          const img = new Image();
+          img.onload = () => {
+            console.log('[推荐产品] 图片加载成功');
+          };
+          img.src = imageUrl;
+        }
+
+        console.log('[推荐产品] 图片更新完成，新src:', mainImage.src || mainImage.getAttribute('src'));
+      }
+
+      // 恢复主产品原始图片
+      function restoreMainProductImage() {
+        console.log('[推荐产品] 开始恢复主产品原始图片');
+
+        const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
+        if (!productInfo) return;
+
+        const sectionId = productInfo.dataset.section;
+        const mediaGallery = productInfo.querySelector(`[id^="MediaGallery-${sectionId}"]`);
+        if (!mediaGallery) return;
+
+        // 找到第一个产品媒体项
+        let activeSlide = mediaGallery.querySelector('.swiper-slide-active');
+        if (!activeSlide) {
+          activeSlide = mediaGallery.querySelector('.product__media-item:first-child');
+        }
+        if (!activeSlide) return;
+
+        // 查找图片元素
+        let mainImage = activeSlide.querySelector('.product-big-image img[data-original-src]');
+        if (!mainImage) {
+          mainImage = activeSlide.querySelector('.product__media img[data-original-src]');
+        }
+        if (!mainImage) {
+          mainImage = activeSlide.querySelector('img[data-original-src]');
+        }
+
+        if (mainImage && mainImage.dataset.originalSrc) {
+          // 恢复图片
+          const originalSrc = mainImage.dataset.originalSrc;
+          const originalSrcset = mainImage.dataset.originalSrcset || '';
+
+          mainImage.src = originalSrc;
+          mainImage.setAttribute('src', originalSrc);
+          mainImage.setAttribute('data-src', originalSrc);
+
+          if (originalSrcset) {
+            mainImage.srcset = originalSrcset;
+            mainImage.setAttribute('srcset', originalSrcset);
+            mainImage.setAttribute('data-srcset', originalSrcset);
+          }
+
+          // 清除保存的原始值
+          delete mainImage.dataset.originalSrc;
+          delete mainImage.dataset.originalSrcset;
+
+          console.log('[推荐产品] 图片恢复完成:', originalSrc);
+        }
+
+        // 恢复所有 source
+        const pictureElement = activeSlide.querySelector('picture');
+        if (pictureElement) {
+          const sources = pictureElement.querySelectorAll('source[data-original-srcset]');
+          sources.forEach((source) => {
+            if (source.dataset.originalSrcset) {
+              source.srcset = source.dataset.originalSrcset;
+              source.setAttribute('srcset', source.dataset.originalSrcset);
+              if (source.src) {
+                source.src = source.dataset.originalSrcset;
+                source.setAttribute('src', source.dataset.originalSrcset);
+              }
+              delete source.dataset.originalSrcset;
+            }
+          });
+        }
+      }
+
+      // 触发推荐产品选择变化事件
+      function notifyRecommendationChange() {
+        const recommendation = getSelectedRecommendation();
+        document.dispatchEvent(
+          new CustomEvent('recommendation:change', {
+            detail: { recommendation },
+          })
+        );
+        console.log('[推荐产品] 触发 recommendation:change 事件:', recommendation);
+
+        // 只有在 Empfehlung 标签页时才更新主产品图片
+        const activeTab = document.querySelector('.variant-picker-tab.active');
+        const isEmpfehlungTab = activeTab && activeTab.dataset.tab === 'empfehlung';
+
+        if (isEmpfehlungTab) {
+          // 更新主产品图片
+          if (recommendation) {
+            updateMainProductImage(recommendation);
+          } else {
+            restoreMainProductImage();
+          }
+        }
+      }
+
+      // 保存选中状态到 sessionStorage
+      function saveRecommendationSelection() {
+        const selected = [];
+        document.querySelectorAll('.recommendation-select-on-click[recommendation-selected]').forEach((card) => {
+          selected.push({
+            variantId: card.dataset.variantId,
+            productId: card.dataset.productId,
+          });
+        });
+        sessionStorage.setItem('recommendation_selection', JSON.stringify(selected));
+      }
+
+      // 恢复选中状态
+      function restoreRecommendationSelection(silent = false) {
+        try {
+          const saved = sessionStorage.getItem('recommendation_selection');
+          if (!saved) return;
+
+          const selected = JSON.parse(saved);
+          selected.forEach((item) => {
+            const card = document.querySelector(`.recommendation-select-on-click[data-variant-id="${item.variantId}"]`);
+            if (card) {
+              card.classList.add('selected');
+              card.setAttribute('recommendation-selected', 'true');
+            }
+          });
+          // 只有在非静默模式下才触发通知（避免标签页切换时触发）
+          if (!silent) {
+            setTimeout(notifyRecommendationChange, 100);
+          }
+        } catch (e) {
+          console.error('Error restoring recommendation selection:', e);
+        }
+      }
+
+      // 处理取消选择按钮的点击
+      function handleRemoveButtonClick(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const card = e.target.closest('.recommendation-product-card');
+        if (!card) return;
+
+        // 取消选中
+        card.classList.remove('selected');
+        card.removeAttribute('recommendation-selected');
+
+        // 保存选中状态并触发通知
+        saveRecommendationSelection();
+        notifyRecommendationChange();
+      }
+
+      // 处理推荐产品的点击选择
+      function handleRecommendationCardClick(e) {
+        // 如果点击的是取消按钮，使用专门的处理器（已注释，暂时不使用）
+        // if (e.target.closest('.recommendation-remove-btn')) {
+        //   handleRemoveButtonClick(e);
+        //   return;
+        // }
+
+        const card = e.target.closest('.recommendation-select-on-click');
+        if (!card) return;
+
+        // 如果已经选中，不允许再次点击取消选中
+        const isSelected = card.classList.contains('selected');
+        if (isSelected) {
+          return; // 已选中的卡片点击无效
+        }
+
+        // 支持键盘事件（Enter 或 Space）
+        if (e.type === 'keydown') {
+          if (e.key !== 'Enter' && e.key !== ' ') {
+            return;
+          }
+          e.preventDefault();
+        } else {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+
+        // 单选逻辑：先取消所有其他已选中的变体
+        const variantId = card.getAttribute('data-variant-id');
+        console.log('[推荐产品] 卡片点击 - variantId:', variantId);
+
+        // 如果当前未选中，先取消所有其他已选中的变体
+        document.querySelectorAll('.recommendation-select-on-click[recommendation-selected]').forEach((otherCard) => {
+          if (otherCard !== card) {
+            otherCard.classList.remove('selected');
+            otherCard.removeAttribute('recommendation-selected');
+          }
+        });
+
+        // 选中当前变体
+        card.classList.add('selected');
+        card.setAttribute('recommendation-selected', 'true');
+        console.log('[推荐产品] 选中 - variantId:', variantId);
+
+        // 保存选中状态并触发通知
+        saveRecommendationSelection();
+
+        // 立即触发通知，更新图片和价格
+        notifyRecommendationChange();
+      }
+
+      // 初始化推荐产品选择器
+      function initRecommendationProducts() {
+        const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
+        if (!productInfo) return;
+
+        // 移除旧的事件监听器（如果存在）
+        if (productInfo._recommendationCardHandler) {
+          productInfo.removeEventListener('click', productInfo._recommendationCardHandler);
+          productInfo.removeEventListener('keydown', productInfo._recommendationCardHandler);
+        }
+
+        // 添加卡片点击事件监听器（事件委托）
+        productInfo._recommendationCardHandler = handleRecommendationCardClick;
+        productInfo.addEventListener('click', productInfo._recommendationCardHandler);
+        productInfo.addEventListener('keydown', productInfo._recommendationCardHandler);
+
+        // 恢复选中状态（静默模式，避免初始化时触发事件）
+        restoreRecommendationSelection(true);
+
+        // 初始化时只有在 Empfehlung 标签页且有选中产品时才更新图片
+        setTimeout(() => {
+          const activeTab = document.querySelector('.variant-picker-tab.active');
+          const isEmpfehlungTab = activeTab && activeTab.dataset.tab === 'empfehlung';
+          const hasSelected =
+            document.querySelectorAll('.recommendation-select-on-click[recommendation-selected]').length > 0;
+
+          if (isEmpfehlungTab && hasSelected) {
+            const recommendation = getSelectedRecommendation();
+            if (recommendation) {
+              updateMainProductImage(recommendation);
+            }
+          }
+        }, 200);
+      }
+
+      // 将函数暴露到全局作用域，供其他组件使用
+      window.getSelectedRecommendation = getSelectedRecommendation;
+      window.restoreRecommendationSelection = restoreRecommendationSelection;
+
+      // DOM加载完成后初始化
+      function initAll() {
+        initRecommendationProducts();
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initAll);
+      } else {
+        initAll();
+      }
+
+      // 使用MutationObserver监听变化
+      const observer = new MutationObserver(function (mutations) {
+        mutations.forEach(function (mutation) {
+          if (mutation.type === 'childList') {
+            mutation.addedNodes.forEach(function (node) {
+              if (node.nodeType === 1) {
+                // 检查是否有推荐产品容器被添加
+                if (node.classList && node.classList.contains('recommendation-products')) {
+                  setTimeout(initRecommendationProducts, 100);
+                }
+                // 检查子节点中是否有推荐产品容器
+                if (node.querySelector && node.querySelector('.recommendation-products')) {
+                  setTimeout(initRecommendationProducts, 100);
+                }
+              }
+            });
+          }
+        });
+      });
+
+      // 开始观察
+      function startObserving() {
+        const pi = document.querySelector('product-info[id^="MainProduct-"]');
+        if (pi) {
+          observer.observe(pi, {
+            childList: true,
+            subtree: true,
+          });
+          return true;
+        }
+        return false;
+      }
+
+      // 尝试开始观察
+      if (!startObserving()) {
+        const checkProductInfo = setInterval(function () {
+          if (startObserving()) {
+            clearInterval(checkProductInfo);
+          }
+        }, 100);
+      }
+
+      // 导出函数供外部调用
+      window.restoreRecommendationSelection = restoreRecommendationSelection;
+      window.getSelectedRecommendation = getSelectedRecommendation;
+      window.restoreMainProductImage = restoreMainProductImage;
+    })();
+  </script>
+{%- endif -%}

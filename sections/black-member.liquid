@@ -1,0 +1,292 @@
+<style>
+  #shopify-section-{{ section.id }}  {
+    background:{{ section.settings.bg_color }};padding-top:{{ section.settings.padding_top }}px;padding-bottom:{{ section.settings.padding_bottom }}px;
+  }
+  .section-black-member .product-coupon-wrapper .title {
+    line-height: normal;
+    color: #000;
+    text-align: center;
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 700;
+    padding: 0 4.8rem;
+  }
+   .section-black-member .product-coupon-wrapper .coupon-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap:0px 1.6rem;
+    margin-top: 40px;
+    color: #fff;
+  }
+   .section-black-member .coupon-list .grid-item {
+    cursor: pointer;
+    min-height: 309px;
+    height: 309px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+   .section-black-member .coupon-list .coupon-content-wrapper {
+    position: relative;
+    text-align: left;
+    color: #fff;
+    max-width:430px;
+    padding: 0 24px 24px 0px;
+  }
+   .section-black-member .coupon-list .coupon-content-wrapper h2,
+   .section-black-member .coupon-list .coupon-content-wrapper h4 {
+    color: #1A1A1A;
+    margin: 0;
+  }
+   .section-black-member .coupon-list .coupon-content-wrapper h2{line-height:44px;font-size:36px;}
+   .section-black-member .coupon-list .coupon-content-wrapper h4 {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+   .section-black-member .coupon-list .coupon-content-wrapper a.grid-button {
+   display: inline-flex;
+   line-height:19px;
+   margin-top: 30px;
+   padding: 0px 24px;
+   color:#fff
+  }
+   .section-black-member .grid-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+   .section-black-member .coupon-list .grid-item:nth-child(1) {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+   .section-black-member .coupon-list .grid-item:nth-child(1) .coupon-content-wrapper {
+    margin-top: 30px;
+    margin-left: 45px;
+    padding:0px
+  }
+   .section-black-member .coupon-list .grid-item:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .section-black-member  .coupon-list .grid-item:nth-child(2) .coupon-content-wrapper {
+    margin-top: 30px;
+    margin-left: 28px;
+  }
+
+   .section-black-member .product-coupon-wrapper .slick-slide {
+    display: block;
+  }
+
+  @media (max-width: 767px) {
+     #shopify-section-{{ section.id }} { background:{{ section.settings.bg_color }};padding-top:{{ section.settings.padding_top | divided_by: 2  }}px;padding-bottom:{{ section.settings.padding_bottom | divided_by: 2  }}px;}
+    .section-black-member .coupon-list .grid-item .coupon-content-wrapper {margin-top:24px!important; max-width: 280px;padding:0px 24px!important; text-align: left}
+    .section-black-member .coupon-list .grid-item:nth-child(1) .coupon-content-wrapper,
+    .section-black-member .coupon-list .grid-item:nth-child(2) .coupon-content-wrapper{margin-left:0px!important}
+    .section-black-member .product-coupon-wrapper .title{ padding: 0px 4.8rem;font-size:28px}
+    .section-black-member .coupon-list .coupon-content-wrapper a.grid-button{margin-top:16px; height: 3rem;padding: 0.8rem 1.4rem;line-height:15px; font-size: 12px;}
+    .section-black-member .coupon-list .slick-track{ display: flex;gap: 1.6rem;}
+    .section-black-member .coupon-list .grid-item:nth-child(1){ height:auto}
+    .section-black-member .product-coupon-wrapper .coupon-list { grid-template-columns: 1fr;gap:1rem;margin-top:2rem;color: #fff;}
+    .section-black-member .coupon-list .grid-item:nth-child(1),
+    .section-black-member .coupon-list .grid-item:nth-child(2){ grid-column: auto; grid-row: auto; height: auto }
+    .section-black-member .coupon-list .grid-item { min-height: 141px }
+    .section-black-member .coupon-list .coupon-content-wrapper h2{line-height:22px; font-size: 18px;}
+    .section-black-member .coupon-list .coupon-content-wrapper h4{ margin-top:10px;font-size: 12px;}
+  }
+
+
+  </style>
+  
+  <div class="section section--padding page-width section-black-member" id="{{section.settings.ids}}">
+    <div class="product-coupon-wrapper">
+      <h2 class="title" style="color:{{ section.settings.title_color }}">
+        <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+          <span>{{ section.settings.title }}</span>
+        </motion-element>
+      </h2>
+      <div class="coupon-list">
+        {% for block in section.blocks %}
+          <div class="grid-item block-{{ forloop.index }}">
+            <div class="image-container">
+              {% if block.settings.image != blank %}
+                <picture>
+                  <source
+                    media="(max-width: 749px)"
+                    srcset="
+                      {{ block.settings.mobile_image | default: block.settings.image | img_url: '800x' }} 1x,
+                      {{ block.settings.mobile_image | default: block.settings.image | img_url: '1600x' }} 2x
+                    "
+                  >
+                  <source
+                    media="(min-width: 750px)"
+                    srcset="
+                      {{ block.settings.image | img_url: '1200x' }} 1x,
+                      {{ block.settings.image | img_url: '2400x' }} 2x
+                    "
+                  >
+                  <img
+                    src="{{ block.settings.image | img_url: '1200x' }}"
+                    alt="{{ block.settings.title | escape }}"
+                    class="grid-image"
+                    loading="lazy"
+                    width="100%"
+                    height="100%"
+                  >
+                </picture>
+              {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+            </div>
+            <div class="coupon-content-wrapper">
+              <h2 class="grid-title">{{ block.settings.title }}</h2>
+              <h4 class="grid-des">{{ block.settings.description }}</h4>
+              {% if block.settings.button_link != blank %}
+                <a href="{{ block.settings.button_link }}" class="btn btn--primary grid-button">
+                  {{ block.settings.button_title }}
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <script>
+  {% comment %} document.addEventListener('DOMContentLoaded', function() {
+    var $couponList = $('.coupon-list');
+    var mql = window.matchMedia('(max-width: 767px)');
+    function slickInit() {
+      if (!$couponList.hasClass('slick-initialized')) {
+        $couponList.slick({
+          infinite: false, 
+          variableWidth: false,
+          dots: true,
+          arrows: false,
+          slidesToShow: 1.2,
+          centerMode: false,
+          adaptiveHeight: true,
+          mobileFirst: true
+        });
+      }
+    }
+    function slickDestroy() {
+      if ($couponList.hasClass('slick-initialized')) {
+        $couponList.slick('unslick');
+      }
+    }
+    function checkSlick() {
+      if (mql.matches) {
+        slickInit();
+      } else {
+        slickDestroy();
+      }
+    }
+    checkSlick();
+    mql.addEventListener('change', checkSlick);
+  }); {% endcomment %}
+  </script>
+{% schema %}
+{
+  "name": "black-member",
+  "tag": "section",
+  "class": "section section-black-member",
+  "max_blocks": 3,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "ids",
+      "label": "设置ID",
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title",
+      "default": "Empfehlungen für den Einstieg"
+    },
+   {
+      "type": "color",
+      "id": "title_color",
+      "label": "标题颜色",
+      "default": "#000"
+     },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "背景颜色",
+      "default": "#ffffff"
+     },
+     {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Top Padding",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom Padding",
+      "default": 120
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "scene item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image_pc"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "image_mobile"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "大标题"
+        },
+         {
+          "type": "text",
+          "id": "button_title",
+          "label": "链接标题"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "链接地址"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "黑五会员推荐",
+      "category": "自定义产品组件",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,143 @@
+<style>
+  #shopify-section-{{ section.id }} { padding-top:{{section.settings.margin_top}}px;padding-bottom:{{section.settings.margin_bottom}}px;}
+  {% comment %} #shopify-section-{{ section.id }} .product-collection{margin-top:118px} {% endcomment %}
+  #shopify-section-{{ section.id }} .product-collection .title{ font-size: 46px;font-weight: 700;text-align:center;color:#000}
+  .section-service-info h2{ padding-bottom:40px;}
+  #shopify-section-{{ section.id }} .section-service-info .container-full .image-wrapper {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+  }
+  .section-service-info .image-wrapper .service-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  @media (max-width: 768px) {
+     #shopify-section-{{ section.id }} {padding-top:{{ section.settings.margin_top | divided_by: 2 }}px;padding-bottom:{{ section.settings.margin_bottom | divided_by: 2 }}px;}
+     {% comment %} #shopify-section-{{ section.id }} .product-collection{margin-top:60px} {% endcomment %}
+     #shopify-section-{{ section.id }} .product-collection .title{ font-size: 28px}
+    .section-service-info h2{padding-bottom: 2rem;}
+  }
+</style>
+{% liquid
+    assign motion_delay = 50
+%}
+<div class="section section--padding section-service-info" id="{{section.settings.ids}}">
+  <div class="product-collection {% if section.settings.container == 'fixed' %} page-width{% else %} container-full{% endif %}  product-slider-container">
+    {% if section.settings.title != blank %}
+    <h2 class="title">
+      <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}"> <span>{{ section.settings.title }}</span></motion-element>
+    </h2>
+    {% endif %}
+    {% if section.settings.image_pc != blank %}
+      <div class="image-wrapper">
+        <picture>
+          <!-- 移动端图片 -->
+          <source
+            media="(max-width: 749px)"
+            srcset="
+              {{ section.settings.image_mobile | img_url: '800x' }} 1x,
+              {{ section.settings.image_mobile | img_url: '1600x' }} 2x
+            "
+          >
+
+          <!-- 桌面端图片 -->
+          <source
+            media="(min-width: 750px)"
+            srcset="
+              {{ section.settings.image_pc | img_url: '1200x' }} 1x,
+              {{ section.settings.image_pc | img_url: '2400x' }} 2x
+            "
+          >
+
+          <!-- 默认图片 -->
+          <img
+            src="{{ section.settings.image_pc | img_url: '1200x' }}"
+            alt="{{ section.settings.title | escape }}"
+            class="service-image"
+            loading="lazy"
+            width="{{ section.settings.image_pc.width }}"
+            height="{{ section.settings.image_pc.height }}"
+          >
+        </picture>
+        </div>
+      {% else %}
+        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+  </div>
+</div>
+{% schema %}
+{
+  "name": "service-info",
+  "tag": "section",
+  "class": "section section-service-info",
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Kundenbewertungen"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "options": [
+        {
+          "value": "full",
+          "label": "t:sections.all.container.options__full.label"
+        },
+        {
+          "value": "fixed",
+          "label": "t:sections.all.container.options__fixed.label"
+        }
+      ],
+      "default": "fixed",
+      "label": "t:sections.all.container.label"
+    },
+    {
+      "type": "text",
+      "id": "ids",
+      "label": "设置ID",
+    },
+    {
+    "type": "image_picker",
+    "id": "image_pc",
+      "label": "PC端图片"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "手机端图片"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "顶部填充",
+      "default": 60,
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "底部填充",
+      "default": 60,
+      "min": 0,
+      "max": 160,
+      "step": 2,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "单张图片",
+      "category": "自定义组件"
+    }
+  ]
+}
+{% endschema %}

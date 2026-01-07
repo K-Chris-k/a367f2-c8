@@ -1,0 +1,622 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_email_overlay_f9CJUH": {
+      "type": "image-with-text-email-overlay",
+      "blocks": {
+        "logo_img_text_yQUeM6": {
+          "type": "logo_img_text",
+          "settings": {
+            "logo_title": "Indevolt SolidFlex 2000",
+            "logo_img": "shopify://shop_images/indevolt-logo.png",
+            "mobile_logo_img": "shopify://shop_images/SF2000-logo-white-mob.png"
+          }
+        },
+        "subheading_H7pej4": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "subheading": "Add a tagline"
+          }
+        },
+        "heading_ewwyjy": {
+          "type": "heading",
+          "settings": {
+            "heading": "Der weltweit erste Balkonkraftwerk-Speicher mit halbfesten Akkus",
+            "heading_size": "hd3",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_MzAyr9": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Jetzt abonnieren und bis zu <strong>60%</strong> im Herbst-Sale sparen! </p>",
+            "text_size": "text-lg"
+          }
+        },
+        "email_area_qLQ7Kw": {
+          "type": "email_area",
+          "settings": {
+            "email_id": "<div id=\"mc_embed_shell\">\n      <link href=\"//cdn-images.mailchimp.com/embedcode/classic-061523.css\" rel=\"stylesheet\" type=\"text/css\">\n  <style type=\"text/css\">\n        #mc_embed_signup{  clear: left;\n            font: 18px Helvetica, Arial, sans-serif;\n            width: 556px;\n        }\n        .auto-dismiss {\n            animation: dismiss 0.8s ease-in-out 5s forwards;\n        }\n        @keyframes dismiss {\n            0% { opacity: 1; max-height: 200px; transform: translateX(0);}\n            50% { opacity: 0.5; transform: translateX(30px);}\n            100% { opacity: 0; max-height: 0; padding-top: 0; padding-bottom: 0; margin: 0; transform: translateX(100px); display: none;}\n        }\n</style>\n<div id=\"mc_embed_signup\">\n    <form action=\"https://indevolt.us14.list-manage.com/subscribe/post?u=52bbcd83f6b565b5cb282e608&amp;id=d5f63f3175&amp;f_id=002e81e0f0\" method=\"post\" id=\"mc-embedded-subscribe-form\" name=\"mc-embedded-subscribe-form\" class=\"validate\" target=\"_blank\">\n       <div id=\"mc_embed_signup_scroll\">\n                <div class=\"input-box\">\n                <div class=\"mc-field-group\"><input type=\"email\" name=\"EMAIL\" placeholder=\"E-Mail\" class=\"required email\" id=\"mce-EMAIL\"\n                        required=\"\" value=\"\"></div>\n                <div id=\"mce-responses\" class=\"clear\">\n                    <div class=\"response\" id=\"mce-error-response\" style=\"display: none;\"></div>\n                    <div class=\"response auto-dismiss\" id=\"mce-success-response\" style=\"display: none;\"></div>\n                </div>\n                <div aria-hidden=\"true\" style=\"position: absolute; left: -5000px;\"><input type=\"text\"\n                        name=\"b_52bbcd83f6b565b5cb282e608_d5f63f3175\" tabindex=\"-1\" value=\"\"></div>\n                </div>\n                <div class=\"clear\"><input type=\"submit\" name=\"subscribe\" id=\"mc-embedded-subscribe\" class=\"button btn\"\n                        value=\"Jetzt Rabatt sichern\"></div>\n            </div>\n</form>\n</div>\n<script type=\"text/javascript\" src=\"//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js\"></script><script type=\"text/javascript\">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>"
+          }
+        }
+      },
+      "block_order": [
+        "logo_img_text_yQUeM6",
+        "subheading_H7pej4",
+        "heading_ewwyjy",
+        "text_MzAyr9",
+        "email_area_qLQ7Kw"
+      ],
+      "custom_css": [
+        "@media (max-width: 760px) {.content-overlay--middle-left {justify-content: flex-start; padding-top: 80px; }}"
+      ],
+      "name": "image-with-text-email",
+      "settings": {
+        "container": "full",
+        "image": "shopify://shop_images/kv-sp.png",
+        "desktop_height": "extra-medium",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "enable_background": false,
+        "enable_background_bottom": 80,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "image_mobile": "shopify://shop_images/KV-sp-mob.jpg",
+        "mobile_height": "auto",
+        "padding_top": 0,
+        "padding_bottom": 50
+      }
+    },
+    "slideshow_CcFTHB": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_LH6yTN": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "background": "shopify://shop_images/kv-sp.png",
+            "background_mobile": "shopify://shop_images/KV-sp-mob.jpg",
+            "brand_logo_image1": "shopify://shop_images/indevolt-logo.png",
+            "logo_title": "",
+            "image_overlay_opacity": 0,
+            "show_content_in_container": true,
+            "content_position": "top-left",
+            "content_position_mobile": "middle-center",
+            "text_alignment": "center",
+            "title": "Der weltweit erste Balkonkraftwerk-Speicher mit halbfesten Akkus",
+            "heading_size": "hd1",
+            "subheading": "",
+            "description": "<p>Frühbucher-Rabatt: Bis zu 60 % auf SolidFlex 2000 Solarsysteme</p>",
+            "description_size": "text-base",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "slide_LH6yTN"
+      ],
+      "disabled": true,
+      "name": "t:sections.slideshow.name",
+      "settings": {
+        "container": "full",
+        "layout": "standard",
+        "slide_height": "large",
+        "show_dots": true,
+        "autoplay": false,
+        "autoplay_delay": 3,
+        "controls_position": "bottom",
+        "show_text_below": false,
+        "text_alignment_mobile": "center",
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "service_info_Yftejq": {
+      "type": "service-info",
+      "name": "单张图片",
+      "settings": {
+        "title": "",
+        "container": "fixed",
+        "ids": "",
+        "image_pc": "shopify://shop_images/SF2000-KSP.png",
+        "image_mobile": "shopify://shop_images/SF2000-ksp-sp-mob_351893c6-290c-460f-8e35-8b7dbb0d0a21.png",
+        "margin_top": 60,
+        "margin_bottom": 120
+      }
+    },
+    "blank_T6wHH7": {
+      "type": "blank",
+      "name": "blank",
+      "settings": {
+        "container": "full",
+        "section_color": "#fdf3e7",
+        "height": 60
+      }
+    },
+    "video_with_text_xVUPPg": {
+      "type": "video-with-text",
+      "blocks": {
+        "heading_keqcAt": {
+          "type": "heading",
+          "settings": {
+            "heading": "<span>Halbfeste</span> LiFePO₄-Akkus: Langlebig, sicher und effizient",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_UGjW6p": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Unsere neue Generation halbfester LiFePO₄-Akkus bieten verbesserte thermische Stabilität, was das Kurzschlussrisiko minimiert. Die gelartige Konsistenz verhindert ein Auslaufen und garantiert, dass die Akkus selbst nach 8000 Zyklen noch bis zu 70% ihrer Kapazität behalten.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_keqcAt",
+        "text_UGjW6p"
+      ],
+      "custom_css": [
+        "* {background-color: #fdf3e7;}",
+        "span {color: #7c2f05;}"
+      ],
+      "name": "t:sections.video-with-text.name",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "video": "shopify://files/videos/sf2000-Halbfeste.mp4",
+        "video_url": "",
+        "video_ratio": "4/3",
+        "description": "",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "video_placement": "second",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": true,
+        "mobile_content_alignment": "center",
+        "text_alignment": "center",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "blank_B8icVA": {
+      "type": "blank",
+      "name": "blank",
+      "settings": {
+        "container": "full",
+        "section_color": "#fdf3e7",
+        "height": 60
+      }
+    },
+    "rich_text_image_list_HhXATk": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_zWcMG8": {
+          "type": "heading",
+          "settings": {
+            "heading": "Intelligente <span>CycBoost</span>-Technologie: Maximale Leistung, längere Lebensdauer",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_zhMybA": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Die innovative 3-in-1 CycBoost-Technologie mit Großzellen, Ausgleichsschaltung und Batterieoptimierer löst das Problem des Akku-Ungleichgewichts. So maximieren wir die nutzbare Speicherkapazität und verlängern die Lebensdauer der Akkus, was deine Rendite spürbar steigert.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "image_VgCeGP": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/sf2000-cycboost-img.png",
+            "mobile_image": "shopify://shop_images/sf2000-cycboost-img-mob.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_zWcMG8",
+        "text_zhMybA",
+        "image_VgCeGP"
+      ],
+      "custom_css": [
+        "* {background-color: #fdf3e7 !important;}",
+        "span {color: #7c2f05;}"
+      ],
+      "name": "富文本+图片+视频",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "",
+        "show_title_icon": false,
+        "img-href": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "image_top": 60,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "rich_text_image_list_nRCVdQ": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_3b8GJx": {
+          "type": "heading",
+          "settings": {
+            "heading": "Automatische Notstromversorgung: Bis zu 2400W in <span>10ms</span>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_t4dJyN": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Mit einer automatischen Umschaltzeit von nur 10 Millisekunden versorgt das SolidFlex 2000 deine wichtigsten Geräte sofort bei Stromausfall. Die Leistung beträgt 1000W und kann mit zusätzlichen Erweiterungsakkus auf bis zu 2400W erhöht werden.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "image_RKKt9W": {
+          "type": "image",
+          "settings": {
+            "container": "full",
+            "image": "shopify://shop_images/sf2000-sp-10ms.png",
+            "mobile_image": "shopify://shop_images/sf2000-sp-10ms-mob.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_3b8GJx",
+        "text_t4dJyN",
+        "image_RKKt9W"
+      ],
+      "custom_css": [
+        "* {background-color: #fdf3e7 !important;}",
+        "span {color: #7c2f05;}"
+      ],
+      "name": "富文本+图片+视频",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "",
+        "show_title_icon": false,
+        "img-href": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "image_top": 60,
+        "video_radius": 18,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "blank_BEdTNg": {
+      "type": "blank",
+      "name": "blank",
+      "settings": {
+        "container": "full",
+        "section_color": "#fdf3e7",
+        "height": 60
+      }
+    },
+    "video_with_text_qxpjNc": {
+      "type": "video-with-text",
+      "blocks": {
+        "heading_QQdBHd": {
+          "type": "heading",
+          "settings": {
+            "heading": "Plug & Play: <span>Einfach</span>, schnell, effizient",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_NhHXHF": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Das SolidFlex 2000 lässt sich mit 99% aller Mikrowechselrichter-Systeme verbinden, sodass du es ohne teure Installation oder lange Wartezeiten sofort nutzen kannst. Einfach einstecken und die maximale Leistung von bis zu 2400W genießen.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_QQdBHd",
+        "text_NhHXHF"
+      ],
+      "custom_css": [
+        "* {background-color: #fdf3e7;}",
+        "span {color: #7c2f05;}"
+      ],
+      "name": "t:sections.video-with-text.name",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "video": "shopify://files/videos/sf2000-Einfach.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_ratio": "4/3",
+        "description": "",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "video_placement": "second",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "enable_reserve": true,
+        "mobile_content_alignment": "center",
+        "text_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 60,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_gallery_MXJHpz": {
+      "type": "image-gallery",
+      "blocks": {
+        "image_CLizKx": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SF2000-Stimmen-img1_092a3e0e-73af-4463-875f-e9726bb768a8.png",
+            "title": "",
+            "link": ""
+          }
+        },
+        "image_kC6gnA": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SF2000-Stimmen-img2.png",
+            "title": "",
+            "link": ""
+          }
+        },
+        "image_Jpwyhz": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SF2000-Stimmen-img3.png",
+            "title": "",
+            "link": ""
+          }
+        },
+        "image_LNCtat": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/SF2000-Stimmen-img4.png",
+            "title": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "image_CLizKx",
+        "image_kC6gnA",
+        "image_Jpwyhz",
+        "image_LNCtat"
+      ],
+      "custom_css": [
+        "* {background-color: #ffffff !important; color: #000000;}"
+      ],
+      "name": "t:sections.image-gallery.name",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#000000",
+        "title_color": "#ffffff",
+        "text_color": "rgba(255, 255, 255, 0.7)",
+        "header_layout": "vertical",
+        "heading": "Stimmen und Bilder aus der Community",
+        "heading_size": "hd2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "social_media": "none",
+        "columns": 4,
+        "column_gap": "extra-small",
+        "row_gap": "inherit",
+        "image_ratio": "adapt",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "brand_list_PfqMPp": {
+      "type": "brand-list",
+      "blocks": {
+        "card_HDYfaP": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/inFranken_7152f0bb-f3c5-4493-a510-6586e459a700.png",
+            "description": "„Der SolidFlex 2000 bietet innovative Technologie, die auf modernster halbfester Lithium-Eisen-Phosphat-Batterie basiert und überzeugt durch hohe Sicherheit, lange Lebensdauer und flexible Erweiterungsmöglichkeiten. Profitiere von der zukunftssicheren Technologie von INDEVOLT und mache dein Zuhause unabhängiger, sicherer und intelligenter – mit dem SolidFlex 2000!\""
+          }
+        },
+        "card_pCxTNb": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo8.png",
+            "description": "„Der Indevolt SolidFlex 2000 Speicher für Balkonkraftwerke oder kleine PV-Anlagen punktet durch einfache Plug-and-Play installation und unterbrechungsfreier Notstromversorgung. Außerdem lässt er sich auf bis zu 10,8 kWh erweitern und sogar ins Smart Home einbinden.\""
+          }
+        },
+        "card_cgKHf8": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo4.jpg",
+            "description": "„Die erfolgreiche Kombination von leistungsstarker PV-Technologie und effizienter Speicherlösung in einem kompakten, benutzerfreundlichen Paket überzeugt. Dieses Konzept macht das System zur idealen Wahl für Stadtbewohner und Mieter, die ohne bauliche Veränderungen in die Solarenergie einsteigen.\""
+          }
+        },
+        "card_U9U7jK": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo7.png",
+            "description": "„Die Kombination aus Balkonkraftwerk und integriertem Speicher in einer kompakten Einheit differenziert Indevolt von zahlreichen Wettbewerbern.\""
+          }
+        },
+        "card_K7QBDf": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo2.jpg",
+            "description": "„Ein echtes Highlight war für mich die intelligente Energieverteilung: An einem durchschnittlichen Sonnentag konnte ich problemlos mehrere energieintensive Geräte gleichzeitig betreiben, ohne das Stromnetz zu belasten.\""
+          }
+        }
+      },
+      "block_order": [
+        "card_HDYfaP",
+        "card_pCxTNb",
+        "card_cgKHf8",
+        "card_U9U7jK",
+        "card_K7QBDf"
+      ],
+      "custom_css": [
+        ".logo-box {display: flex; justify-content: center; align-items: center;}",
+        ".logo-box img {max-width: 550px;}",
+        "@media (max-width: 760px) {.logo-box img {max-width: 300px; }}"
+      ],
+      "name": "品牌列表",
+      "settings": {
+        "title": "Medien & Auszeichnungen",
+        "padding_top": 50,
+        "padding_bottom": 0,
+        "custom_mobile_padding_top": 80,
+        "logo_title": "",
+        "logo_position": true,
+        "logo_pc_image": "shopify://shop_images/sf2000-sp-medien-img.png",
+        "logo_mobile_image": "shopify://shop_images/sf2000-sp-medien-img-mob.png"
+      }
+    },
+    "service_info_8Y8F4Y": {
+      "type": "service-info",
+      "disabled": true,
+      "custom_css": [
+        "@media (max-width: 768px) {img {width: 100% !important; }}"
+      ],
+      "name": "单张图片",
+      "settings": {
+        "title": "",
+        "container": "full",
+        "ids": "",
+        "image_pc": "shopify://shop_images/sf2000-sp-bottom-img.png",
+        "image_mobile": "shopify://shop_images/sf2000-sp-bottom-img-mob.png",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "image_with_text_email_overlay_AJj6aY": {
+      "type": "image-with-text-email-overlay",
+      "blocks": {
+        "logo_img_text_afaGzj": {
+          "type": "logo_img_text",
+          "settings": {
+            "logo_title": "SolidFlex 2000",
+            "logo_img": "shopify://shop_images/indevolt-logo.png",
+            "mobile_logo_img": "shopify://shop_images/indevolt-logo.png"
+          }
+        },
+        "heading_ABeAMw": {
+          "type": "heading",
+          "settings": {
+            "heading": "Jetzt abonnieren - immer topaktuell informiert!",
+            "heading_size": "hd3",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_a6xVh9": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Jetzt abonnieren, um sich Ihren exklusiven Rabatt für den Herbst-Sale und den niedrigsten Preis des Jahres zu sichern!</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "button_YqfUQc": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Jetzt anmelden",
+            "button_link": "https://de.indevolt.com/account/register",
+            "button_style": "btn--primary"
+          }
+        },
+        "email_area_RPPm3d": {
+          "type": "email_area",
+          "settings": {
+            "email_id": "<div id=\"mc_embed_shell1\">\n      <link href=\"//cdn-images.mailchimp.com/embedcode/classic-061523.css\" rel=\"stylesheet\" type=\"text/css\">\n  <style type=\"text/css\">\n        #mc_embed_signup{  clear: left;\n            font: 18px Helvetica, Arial, sans-serif;\n            width: 556px;\n        }\n        .auto-dismiss {\n            animation: dismiss 0.8s ease-in-out 5s forwards;\n        }\n        @keyframes dismiss {\n            0% { opacity: 1; max-height: 200px; transform: translateX(0);}\n            50% { opacity: 0.5; transform: translateX(30px);}\n            100% { opacity: 0; max-height: 0; padding-top: 0; padding-bottom: 0; margin: 0; transform: translateX(100px); display: none;}\n        }\n</style>\n<div id=\"mc_embed_signup\">\n    <form action=\"https://indevolt.us14.list-manage.com/subscribe/post?u=52bbcd83f6b565b5cb282e608&amp;id=d5f63f3175&amp;f_id=002e81e0f0\" method=\"post\" id=\"mc-embedded-subscribe-form\" name=\"mc-embedded-subscribe-form\" class=\"validate\" target=\"_blank\">\n       <div id=\"mc_embed_signup_scroll\">\n                <div class=\"input-box\">\n                <div class=\"mc-field-group\"><input type=\"email\" name=\"EMAIL\" placeholder=\"E-Mail\" class=\"required email\" id=\"mce-EMAIL\"\n                        required=\"\" value=\"\"></div>\n                <div id=\"mce-responses\" class=\"clear\">\n                    <div class=\"response\" id=\"mce-error-response\" style=\"display: none;\"></div>\n                    <div class=\"response auto-dismiss\" id=\"mce-success-response\" style=\"display: none;\"></div>\n                </div>\n                <div aria-hidden=\"true\" style=\"position: absolute; left: -5000px;\"><input type=\"text\"\n                        name=\"b_52bbcd83f6b565b5cb282e608_d5f63f3175\" tabindex=\"-1\" value=\"\"></div>\n                </div>\n                <div class=\"clear\"><input type=\"submit\" name=\"subscribe\" id=\"mc-embedded-subscribe\" class=\"button btn\"\n                        value=\"Jetzt Rabatt sichern\"></div>\n            </div>\n</form>\n</div>\n<script type=\"text/javascript\" src=\"//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js\"></script><script type=\"text/javascript\">(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';}(jQuery));var $mcj = jQuery.noConflict(true);</script></div>"
+          }
+        }
+      },
+      "block_order": [
+        "logo_img_text_afaGzj",
+        "heading_ABeAMw",
+        "text_a6xVh9",
+        "button_YqfUQc",
+        "email_area_RPPm3d"
+      ],
+      "name": "image-with-text-email",
+      "settings": {
+        "container": "full",
+        "image": "shopify://shop_images/SF2000-sp-bottom-bg.png",
+        "desktop_height": "extra-medium",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "enable_background": true,
+        "enable_background_bottom": 120,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "image_mobile": "shopify://shop_images/SF2000-sp-bottom-bg-mob.jpg",
+        "mobile_height": "auto",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_email_overlay_f9CJUH",
+    "slideshow_CcFTHB",
+    "service_info_Yftejq",
+    "blank_T6wHH7",
+    "video_with_text_xVUPPg",
+    "blank_B8icVA",
+    "rich_text_image_list_HhXATk",
+    "rich_text_image_list_nRCVdQ",
+    "blank_BEdTNg",
+    "video_with_text_qxpjNc",
+    "image_gallery_MXJHpz",
+    "brand_list_PfqMPp",
+    "service_info_8Y8F4Y",
+    "image_with_text_email_overlay_AJj6aY"
+  ]
+}

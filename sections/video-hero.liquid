@@ -1,0 +1,1084 @@
+{%- liquid
+  assign is_mobile_video = false
+  assign poster = section.settings.video.preview_image
+  assign video_height = section.settings.video_height
+  assign video_mobile_height = section.settings.video_mobile_height
+  
+-%}
+<style>
+  
+  #shopify-section-{{ section.id }} {
+    --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    {%- if section.settings.container == 'full' -%}
+      --padding-x: var(--page-padding);
+    {%- endif -%}
+    {%- if video_height == 'adapt' and poster != null %}
+      {%- if poster != null -%}
+        --media-ratio: {{ poster.aspect_ratio }};
+      {%- else -%}
+        --media-ratio: 16/9;
+      {%- endif -%}
+    {%- endif -%}
+  }
+  #shopify-section-{{ section.id }} .content-overlay--middle-left{ background: linear-gradient(180deg, rgba(143, 143, 143, 0.00) 73.67%, rgba(0, 0, 0, 0.26) 87.47%, rgba(0, 0, 0, 0.50) 100%);}
+  .video-desktop { display: block; }
+  .video-mobile { display: none; }
+  .video-modal { pointer-events: none; }
+  .video-modal.active { pointer-events: auto; }
+  .close-button{padding:0px}
+  .video-hero__content-wrapper{ will-change: transform, opacity;}
+  .video-hero__content-wrapper.content-hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .video-hero__content-wrapper.content-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  /* 为内容内部的子元素添加从上往下交错动画效果 */
+  .video-hero__content-wrapper .rich-text__subheading,
+  .video-hero__content-wrapper .rich-text__heading,
+  .video-hero__content-wrapper .rich-text__text,
+  .video-hero__content-wrapper .btn-wrapper {
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: all 0.6s ease-out;
+  }
+  .video-hero__content-wrapper.content-visible .rich-text__subheading,
+  .video-hero__content-wrapper.content-visible .rich-text__heading,
+  .video-hero__content-wrapper.content-visible .rich-text__text,
+  .video-hero__content-wrapper.content-visible .btn-wrapper {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .video-hero__content-wrapper.content-visible .rich-text__subheading {
+    transition-delay: 0.1s;
+  }
+  .video-hero__content-wrapper.content-visible .rich-text__heading {
+    transition-delay: 0.3s;
+  }
+  .video-hero__content-wrapper.content-visible .rich-text__text,
+  .video-hero__content-wrapper.content-visible .btn-wrapper {
+    transition-delay: 0.5s; 
+  }
+  #shopify-section-{{ section.id }} .hd2 { line-height: 56px;font-size: 46px;}
+  #shopify-section-{{ section.id }} .rich-text__text { margin-top:14px; line-height: 22px;font-size: 18px;}
+  #shopify-section-{{ section.id }} .rich-text__text p { margin:0px; color:inherit}
+  #shopify-section-{{ section.id }} .btn-wrapper{display:flex; gap:30px; flex-wrap:wrap}
+  #shopify-section-{{ section.id }} .white--btn--secondary,#shopify-section-{{ section.id }} .white--btn--secondary:before, 
+  #shopify-section-{{ section.id }} .white--btn--secondary:hover:before{ transition: none;background:none;border:2px solid #fff;cursor:pointer}
+  
+  @media (max-width: 767px){
+    .video-hero__content-wrapper .rich-text__subheading,
+    .video-hero__content-wrapper .rich-text__heading,
+    .video-hero__content-wrapper .rich-text__text,
+    .video-hero__content-wrapper .btn-wrapper {
+      transform: translateY(-20px);
+      transition-duration: 0.5s;
+    }
+    .video-hero__content-wrapper.content-visible .rich-text__heading {
+      transition-delay: 0.2s;
+    }
+    .video-hero__content-wrapper.content-visible .rich-text__text,
+    .video-hero__content-wrapper.content-visible .btn-wrapper {
+      transition-delay: 0.3s;
+    }
+    .video-desktop { display: none !important; }
+    .video-mobile { display: block !important; }
+     .modal-content {
+      width: 95%;
+      margin: 20px;
+    }
+    
+    .close-button {
+      top: 5px;
+      right: 5px;
+      width: 35px;
+      height: 35px;
+    }
+    #shopify-section-{{ section.id }} .content-overlay--middle-left { justify-content: start; top: 2.2rem; }
+    #shopify-section-{{ section.id }} .content-overlay--middle-left .z-1{ max-width: 100%; text-align: center; }
+    #shopify-section-{{ section.id }} .hd2 { line-height: 30px;font-size: 25px;}
+    #shopify-section-{{ section.id }} .rich-text__text { margin-top:10px; line-height: 19px;font-size: 16px;}
+    #shopify-section-{{ section.id }} .btn-wrapper{ margin-top:3rem;justify-content: center; gap:16px; }
+    #shopify-section-{{ section.id }} .white--btn--secondary .icon{ width:1rem}
+    
+  }
+
+</style>
+
+{% render 'divider',
+  show_divider: section.settings.show_section_divider,
+  divider_width: section.settings.divider_width
+%}
+
+<div class="video-hero section--padding">
+  <div class="{% if section.settings.container == 'full' %} w-full{% else %} page-width{% endif %}">
+    <div class="relative overflow-hidden{% unless section.settings.container == 'full' %} blocks-radius{% endunless %}  custom-width">
+      <parallax-element
+        class="block overflow-hidden"
+        {% if section.settings.enable_parallax %}
+          data-parallax="{% if section.settings.parallax_direction == 'vertical' %}0.8{% else %}0.3{% endif %}"
+          data-parallax-direction="{{ section.settings.parallax_direction }}"
+        {% endif %}
+      >
+        <motion-element
+          data-motion="fade-in"
+          class="block media mb:media--{{ video_mobile_height }}{% if video_height == 'adapt' %} media--adapt{% else %} media--height media--{{ video_height }}{% endif %}"
+          hold
+        >
+          <div class="video-desktop">
+            {%- render 'video',
+              sizes: '100vw',
+              video: section.settings.video,
+              video_url: section.settings.video_url,
+              muted: true,
+              autoplay: true,
+              loop: false,
+              description: section.settings.description,
+              show_play_button: false,
+              poster: section.settings.video_url.preview_image | image_url,
+            -%}
+          </div>
+          <div class="video-mobile">
+            {%- render 'video',
+              sizes: '100vw',
+              video: section.settings.video_mobile,
+              video_url: section.settings.video_mobile_url,
+              muted: true,
+              autoplay: true,
+              loop: false,
+              description: section.settings.description,
+              show_play_button: false,
+              poster: section.settings.video_mobile_url.preview_image | image_url,
+            -%}
+          </div>
+        </motion-element>
+      </parallax-element>
+       <div class="content-area page-width">
+          <div class="video-hero__content absolute inset-0">
+            <div class="content-overlay content-overlay--{{ section.settings.content_position }} color-{{ section.settings.color_scheme }}{% if section.settings.container == 'full' %} page-width{% endif %}">
+              <div class="video-hero__content-wrapper relative z-1 rich-text text-{{ section.settings.content_alignment }} " style="max-width: {{ section.settings.max_width }}px;">
+                {%- assign motion_delay = 50 -%}
+                {% for block in section.blocks %}
+                  {% case block.type %}
+                    {% when 'subheading' %}
+                      <motion-element
+                        data-motion="fade-up"
+                        data-motion-delay="{{ motion_delay }}"
+                        class="block rich-text__subheading text-subheading"
+                        {{ block.shopify_attributes }}
+                      >
+                        {{ block.settings.subheading }}
+                      </motion-element>
+                      {%- assign motion_delay = motion_delay | plus: 50 -%}
+                    {% when 'heading' %}
+                      <h2 class="rich-text__heading {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
+                        <motion-element data-motion="fade-up" data-motion-delay="{{ motion_delay }}" class="block">
+                          {% render 'highlight-text',
+                            text: block.settings.heading,
+                            style: block.settings.heading_highlight_style
+                          %}
+                        </motion-element>
+                      </h2>
+                      {%- assign motion_delay = motion_delay | plus: 50 -%}
+                    {% when 'text' %}
+                      <motion-element
+                        data-motion="fade-up"
+                        data-motion-delay="{{ motion_delay }}"
+                        class="block rich-text__text rte {{ block.settings.text_size }}"
+                        {{ block.shopify_attributes }}
+                      >
+                        {{- block.settings.text -}}
+                      </motion-element>
+                      {%- assign motion_delay = motion_delay | plus: 50 -%}
+                    {% when 'button' %}
+                      <motion-element class="block flex btn-wrapper" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+                        {% if block.settings.button_label_first != blank %}
+                          <a
+                            {% if block.settings.button_link_first != blank %}
+                              href="{{ block.settings.button_link_first }}"
+                            {% else %}
+                              role="link" aria-disabled="true"
+                            {% endif %}
+                            class="btn {{ block.settings.button_style_first }}"
+                            {{ block.shopify_attributes }}
+                          >
+                            {{- block.settings.button_label_first -}}
+                          </a>
+                        {% endif %}
+                        {% if block.settings.button_label_second != blank %}
+                          <a
+                            {% if block.settings.button_link_second != blank %}
+                            href="javascript:void(0);"
+                            {% else %}
+                              role="link" aria-disabled="true"
+                            {% endif %}
+                            class="btn {{ block.settings.button_style_second }} video-modal-trigger"
+                            data-video-url="{{ block.settings.popup_video_url }}"
+                            {{ block.shopify_attributes }} 
+                          >
+                            {{- block.settings.button_label_second -}}{% render 'icon-white-play'%}
+                          </a>
+                          {% endif %}
+                          
+                      </motion-element>
+                      {%- assign motion_delay = motion_delay | plus: 50 -%}
+                  {% endcase %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+       </div>
+      <div
+        class="video-hero__overlay bg-overlay absolute inset-0"
+        style="--color-overlay-alpha: {{ section.settings.overlay_opacity }};"
+      ></div>
+    </div>
+  </div>
+</div>
+<!-- 弹窗容器 -->
+<div id="custom-video-modal" class="video-modal">
+  <div class="modal-content">
+    <button class="close-button" aria-label="Close video">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="24px" height="24px">
+        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+      </svg>
+    </button>
+    <div class="video-player">
+      <iframe
+        class="youtube-iframe"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+        style="width:100%;height:100%;border:none;"
+        title="YouTube video player"
+      ></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // 内容动画初始化
+  const initContentAnimation = () => {
+    const desktopVideo = document.querySelector('.video-desktop video');
+    const mobileVideo = document.querySelector('.video-mobile video');
+    const content = document.querySelector('.video-hero__content-wrapper');
+    
+    if (!content) {
+      return;
+    }
+    
+    // 初始隐藏内容
+    content.classList.add('content-hidden');
+    
+    // 防止视频重新播放的标记
+    let videoPlayed = false;
+    let contentShown = false;
+    
+    const setupVideoEndListener = (videoElement, contentElement, deviceType) => {
+      if (videoElement) {
+        // 防止视频自动重新播放
+        videoElement.setAttribute('playsinline', '');
+        videoElement.setAttribute('webkit-playsinline', '');
+        
+        // 禁用视频的自动暂停和重新播放
+        const handleVisibilityChange = () => {
+          if (document.hidden) {
+            // 页面隐藏时暂停视频
+            if (!videoElement.paused && videoPlayed) {
+              videoElement.pause();
+            }
+          } else {
+            // 页面显示时不要自动播放，除非视频之前就在播放
+            if (videoPlayed && videoElement.paused) {
+              // 如果视频已经播放过但被暂停了，不自动重新播放
+              // 保持暂停状态
+            }
+          }
+        };
+
+        document.addEventListener('visibilitychange', handleVisibilityChange);
+
+        // 监听视频开始播放
+        videoElement.addEventListener('play', () => {
+          videoPlayed = true;
+          console.log('视频开始播放');
+        });
+
+        // 监听视频暂停
+        videoElement.addEventListener('pause', () => {
+          console.log('视频暂停');
+        });
+
+        // 获取视频时长
+        const getVideoDuration = () => {
+          return new Promise((resolve) => {
+            if (videoElement.duration && videoElement.duration > 0) {
+              resolve(videoElement.duration);
+            } else {
+              videoElement.addEventListener('loadedmetadata', () => {
+                resolve(videoElement.duration);
+              });
+              // 如果无法获取时长，默认5秒
+              setTimeout(() => resolve(5), 1000);
+            }
+          });
+        };
+
+        // 在视频结束前1秒显示内容
+        const showContentBeforeEnd = async () => {
+          if (contentShown) return;
+          
+          try {
+            const duration = await getVideoDuration();
+            const showTime = Math.max(duration - 1, 0); // 结束前1秒，但不小于0
+            
+            console.log(`视频时长: ${duration}秒, 将在 ${showTime} 秒后显示内容`);
+            
+            setTimeout(() => {
+              if (!contentShown) {
+                showContentAnimation(contentElement);
+                contentShown = true;
+              }
+            }, showTime * 1000);
+          } catch (error) {
+            console.log('获取视频时长失败，3秒后显示内容');
+            setTimeout(() => {
+              if (!contentShown) {
+                showContentAnimation(contentElement);
+                contentShown = true;
+              }
+            }, 3000);
+          }
+        };
+
+        // 监听视频开始播放
+        videoElement.addEventListener('playing', () => {
+          console.log('视频开始播放，计算显示内容时间');
+          showContentBeforeEnd();
+        });
+
+        // 如果视频已经在播放
+        if (!videoElement.paused && videoElement.currentTime > 0) {
+          showContentBeforeEnd();
+        }
+        
+        // 备用：如果视频结束事件触发，确保内容显示
+        videoElement.addEventListener('ended', () => {
+          console.log('视频结束，确保内容显示');
+          if (!contentShown) {
+            showContentAnimation(contentElement);
+            contentShown = true;
+          }
+        });
+        
+        // 处理视频错误
+        videoElement.addEventListener('error', () => {
+          console.log('视频加载错误，立即显示内容');
+          if (!contentShown) {
+            showContentAnimation(contentElement);
+            contentShown = true;
+          }
+        });
+
+        // 如果视频已经结束
+        if (videoElement.ended) {
+          showContentAnimation(contentElement);
+          contentShown = true;
+        }
+
+        // 使用 Intersection Observer 防止视频重新播放
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              // 视频进入视口
+              if (videoPlayed && videoElement.paused) {
+                // 如果视频已经播放过但暂停了，不要自动重新播放
+                console.log('视频进入视口，保持暂停状态');
+              }
+            } else {
+              // 视频离开视口
+              if (!videoElement.paused && videoPlayed) {
+                // 暂停视频但不要重置
+                videoElement.pause();
+                console.log('视频离开视口，暂停播放');
+              }
+            }
+          });
+        }, {
+          threshold: 0.5 // 当50%的视频在视口中时触发
+        });
+
+        observer.observe(videoElement);
+      }
+    };
+    
+    // 根据当前设备选择视频
+    const currentVideo = window.innerWidth >= 768 ? desktopVideo : mobileVideo;
+    const deviceType = window.innerWidth >= 768 ? '桌面' : '移动端';
+    
+    if (currentVideo) {
+      setupVideoEndListener(currentVideo, content, deviceType);
+    } else {
+      // 如果找不到视频，3秒后显示内容
+      console.log('未找到视频，3秒后显示内容');
+      setTimeout(() => {
+        showContentAnimation(content);
+      }, 3000);
+    }
+    
+    // 安全保护：如果8秒后内容仍未显示，强制显示
+    setTimeout(() => {
+      if (content && content.classList.contains('content-hidden')) {
+        console.log('安全保护：强制显示内容');
+        showContentAnimation(content);
+      }
+    }, 8000);
+  };
+  
+  // 显示内容动画函数
+  const showContentAnimation = (contentElement) => {
+    if (!contentElement || contentElement.classList.contains('content-visible')) return;
+    contentElement.classList.remove('content-hidden');
+    void contentElement.offsetWidth;
+    contentElement.classList.add('content-visible');
+    console.log('内容动画已显示');
+  };
+
+  // 弹窗功能
+  const initVideoModal = () => {
+    const modal = document.getElementById('custom-video-modal');
+    const videoPlayer = modal.querySelector('.video-player');
+    const closeBtn = modal.querySelector('.close-button');
+    let isModalOpen = false;
+    
+    const openModal = (videoUrl) => {
+      const videoId = extractVideoId(videoUrl);
+      if (videoId) {
+        const embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1&playlist=${videoId}`;
+        const newIframe = document.createElement('iframe');
+        newIframe.className = 'youtube-iframe';
+        newIframe.src = embedUrl;
+        newIframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        newIframe.allowFullscreen = true;
+        newIframe.style.width = '100%';
+        newIframe.style.height = '100%';
+        newIframe.style.border = 'none';
+        
+        videoPlayer.innerHTML = '';
+        videoPlayer.appendChild(newIframe);
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        isModalOpen = true;
+        document.addEventListener('keydown', handleKeyPress);
+      }
+    };
+
+    const closeModal = () => {
+      if (!isModalOpen) return;
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+      isModalOpen = false;
+      document.removeEventListener('keydown', handleKeyPress);
+    };
+
+    const extractVideoId = (url) => {
+      if (!url) {
+        console.error('No video URL provided');
+        return '';
+      }
+      
+      let videoId = '';
+      try {
+        if (url.includes('v=')) {
+          videoId = url.split('v=')[1].split('&')[0];
+        } else if (url.includes('youtu.be/')) {
+          videoId = url.split('youtu.be/')[1].split('?')[0];
+        } else if (url.includes('/embed/')) {
+          videoId = url.split('/embed/')[1].split('?')[0];
+        }
+        
+        return videoId;
+      } catch (error) {
+        console.error('Error extracting video ID:', error);
+        return '';
+      }
+    };
+
+    const handleKeyPress = (event) => {
+      if (event.key === 'Escape' && isModalOpen) {
+        closeModal();
+      }
+    };
+    
+    document.addEventListener('click', (event) => {
+      const trigger = event.target.closest('.video-modal-trigger');
+      if (trigger) {
+        event.preventDefault();
+        const url = trigger.getAttribute('data-video-url');
+        openModal(url);
+      }
+    });
+    
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+  };
+
+  // 响应式处理
+  const initResponsiveHandler = () => {
+    let currentDevice = window.innerWidth >= 768 ? 'desktop' : 'mobile';
+    
+    window.addEventListener('resize', () => {
+      const newDevice = window.innerWidth >= 768 ? 'desktop' : 'mobile';
+      if (newDevice !== currentDevice) {
+        currentDevice = newDevice;
+      }
+    });
+  };
+
+  // 初始化所有功能
+  const initAll = () => {
+    initContentAnimation();
+    initVideoModal();
+    initResponsiveHandler();
+  };
+  
+  initAll();
+});
+</script>
+{% schema %}
+{
+  "name": "t:sections.video-hero.name",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "[Read How-to](https://foxecom.link/BcVDokn)"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.general.name"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "options": [
+        {
+          "value": "full",
+          "label": "t:sections.all.container.options__full.label"
+        },
+        {
+          "value": "fixed",
+          "label": "t:sections.all.container.options__fixed.label"
+        }
+      ],
+      "default": "full",
+      "label": "t:sections.all.container.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.video.settings.header__1.content"
+    },
+    {
+      "type": "video",
+      "label": "t:sections.video.settings.video.label",
+      "id": "video"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.video.settings.header__2.content",
+      "info": "t:sections.video.settings.paragraph.content"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "accept": ["vimeo", "youtube"],
+      "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+      "label": "t:sections.video.settings.video_url.label",
+      "info": "t:sections.video.settings.video_url.info"
+    },
+    {
+      "type": "text",
+      "id": "description",
+      "label": "t:sections.video.settings.description.label",
+      "info": "t:sections.video.settings.description.info"
+    },
+    {
+      "type": "select",
+      "id": "video_height",
+      "label": "t:sections.video.settings.video_height.label",
+      "options": [
+        {
+          "label": "t:sections.all.height.options__1.label",
+          "value": "adapt"
+        },
+        {
+          "label": "t:sections.all.height.options__2.label",
+          "value": "extra-small"
+        },
+        {
+          "label": "t:sections.all.height.options__3.label",
+          "value": "small"
+        },
+        {
+          "label": "t:sections.all.height.options__4.label",
+          "value": "medium"
+        },
+        {
+          "label": "t:sections.all.height.options__5.label",
+          "value": "extra-medium"
+        },
+        {
+          "label": "t:sections.all.height.options__6.label",
+          "value": "large"
+        },
+        {
+          "label": "t:sections.all.height.options__7.label",
+          "value": "extra-large"
+        }
+      ],
+      "default": "adapt"
+    },
+    {
+      "type": "range",
+      "label": "t:sections.all.overlay_opacity.label",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 70
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax",
+      "label": "t:sections.all.enable_parallax_effect.label"
+    },
+    {
+      "type": "select",
+      "id": "parallax_direction",
+      "label": "t:sections.all.parallax_direction.label",
+      "options": [
+        {
+          "value": "vertical",
+          "label": "t:sections.all.parallax_direction.options__1.label"
+        },
+        {
+          "value": "horizontal",
+          "label": "t:sections.all.parallax_direction.options__2.label"
+        },
+        {
+          "value": "zoom",
+          "label": "t:sections.all.parallax_direction.options__3.label"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.content_settings.content"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-inverse"
+    },
+     {
+      "type": "range",
+      "id": "max_width",
+      "label": "最大宽度（px）",
+      "min": 400,
+      "max": 1920,
+      "step": 20,
+      "default": 720
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "t:settings_schema.global.settings.content_position.label",
+      "default": "middle-center",
+      "options": [
+        {
+          "label": "t:settings_schema.global.settings.content_position.options__1.label",
+          "value": "top-left"
+        },
+        {
+          "label": "t:settings_schema.global.settings.content_position.options__2.label",
+          "value": "top-center"
+        },
+        {
+          "label": "t:settings_schema.global.settings.content_position.options__3.label",
+          "value": "top-right"
+        },
+        {
+          "label": "t:settings_schema.global.settings.content_position.options__4.label",
+          "value": "middle-left"
+        },
+        {
+          "label": "t:settings_schema.global.settings.content_position.options__5.label",
+          "value": "middle-center"
+        },
+        {
+          "label": "t:settings_schema.global.settings.content_position.options__6.label",
+          "value": "middle-right"
+        },
+        {
+          "label": "t:settings_schema.global.settings.content_position.options__7.label",
+          "value": "bottom-left"
+        },
+        {
+          "label": "t:settings_schema.global.settings.content_position.options__8.label",
+          "value": "bottom-center"
+        },
+        {
+          "label": "t:settings_schema.global.settings.content_position.options__9.label",
+          "value": "bottom-right"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "label": "t:settings_schema.global.settings.content_alignment.label",
+      "default": "center",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:settings_schema.global.settings.content_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:settings_schema.global.settings.content_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:settings_schema.global.settings.content_alignment.options__3.label"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.mobile_settings.content"
+    },
+    {
+      "type": "video",
+      "label": "移动端视频",
+      "id": "video_mobile"
+    },
+    {
+      "type": "video_url",
+      "id": "video_mobile_url",
+      "accept": ["vimeo", "youtube"],
+      "label": "移动端视频链接"
+    },
+    {
+      "type": "select",
+      "label": "t:sections.video.settings.video_height.label",
+      "id": "video_mobile_height",
+      "options": [
+        {
+          "value": "auto",
+          "label": "t:sections.all.height.options__8.label"
+        },
+        {
+          "value": "small",
+          "label": "t:sections.all.height.options__3.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.all.height.options__4.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.all.height.options__6.label"
+        },
+        {
+          "value": "extra-large",
+          "label": "t:sections.all.height.options__7.label"
+        },
+        {
+          "label": "t:sections.all.height.options__1.label",
+          "value": "adapt"
+        }
+      ],
+      "default": "adapt"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.divider.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider",
+      "default": false,
+      "label": "t:sections.all.divider.settings.show_divider.label"
+    },
+    {
+      "type": "select",
+      "id": "divider_width",
+      "options": [
+        {
+          "value": "fixed",
+          "label": "t:sections.all.container.options__fixed.label"
+        },
+        {
+          "value": "full",
+          "label": "t:sections.all.container.options__full.label"
+        }
+      ],
+      "default": "fixed",
+      "label": "t:sections.all.divider.settings.divider_width.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subheading",
+      "name": "t:sections.all.subheading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "subheading",
+          "default": "Add a tagline",
+          "label": "t:sections.all.subheading.label"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "t:sections.all.heading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Video hero",
+          "label": "t:sections.all.heading.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "t:sections.all.text_size.heading.label",
+          "default": "hd1",
+          "options": [
+            {
+              "value": "h6",
+              "label": "t:sections.all.text_size.options__h6.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:sections.all.text_size.options__h5.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:sections.all.text_size.options__h4.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:sections.all.text_size.options__h3.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:sections.all.text_size.options__h2.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.text_size.options__h1.label"
+            },
+            {
+              "value": "hd3",
+              "label": "t:sections.all.text_size.options__hd3.label"
+            },
+            {
+              "value": "hd2",
+              "label": "t:sections.all.text_size.options__hd2.label"
+            },
+            {
+              "value": "hd1",
+              "label": "t:sections.all.text_size.options__hd1.label"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.highlight_text.header.content"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.all.highlight_text.paragraph.content"
+        },
+        {
+          "type": "select",
+          "id": "heading_highlight_style",
+          "label": "t:sections.all.highlight_text.settings.highlight_style.label",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.all.highlight_text.settings.highlight_style.options__1.label"
+            },
+            {
+              "value": "underline",
+              "label": "t:sections.all.highlight_text.settings.highlight_style.options__2.label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.all.text.label",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "t:sections.all.text.label",
+          "default": "<p>Use this text to share information about your brand with your customers. <br>Describe a product, share announcements, or welcome customers to your store.</p>"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "label": "t:sections.all.text_size.text.label",
+          "default": "text-base",
+          "options": [
+            {
+              "value": "text-sm",
+              "label": "t:sections.all.text_size.options__small.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:sections.all.text_size.options__base.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:sections.all.text_size.options__large.label"
+            },
+            {
+              "value": "text-inherit",
+              "label": "t:sections.all.text_size.options__inherit.label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "t:sections.all.button.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label_first",
+          "label": "t:sections.all.button.button_label.label",
+          "default": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link_first",
+          "label": "t:sections.all.button.button_link.label"
+        },
+        {
+          "type": "select",
+          "id": "button_style_first",
+          "label": "t:sections.all.button.button_style.label",
+          "options": [
+            {
+              "value": "btn--primary",
+              "label": "t:sections.all.button.button_style.options__1.label"
+            },
+            {
+              "value": "btn--secondary",
+              "label": "t:sections.all.button.button_style.options__2.label"
+            },
+            {
+              "value": "btn--underline",
+              "label": "t:sections.all.button.button_style.options__4.label"
+            }
+          ],
+          "default": "btn--primary"
+        },
+        {
+          "type": "text",
+          "id": "button_label_second",
+          "label": "t:sections.all.button.button_label.label",
+          "default": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "popup_video_url",
+          "label": "t:sections.all.button.button_link.label"
+        },
+        {
+          "type": "select",
+          "id": "button_style_second",
+          "label": "t:sections.all.button.button_style.label",
+          "options": [
+            {
+              "value": "btn--primary",
+              "label": "t:sections.all.button.button_style.options__1.label"
+            },
+            {
+              "value": "btn--secondary",
+              "label": "t:sections.all.button.button_style.options__2.label"
+            },
+            {
+              "value": "white--btn--secondary",
+              "label": "白色按钮"
+            },
+            {
+              "value": "btn--underline",
+              "label": "t:sections.all.button.button_style.options__4.label"
+            }
+          ],
+          "default": "white--btn--secondary"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "t:sections.video-hero.name",
+      "blocks": [
+        {
+          "type": "subheading"
+        },
+        {
+          "type": "heading"
+        }
+      ]
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.overlay"]
+  }
+}
+{% endschema %}

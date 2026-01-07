@@ -1,0 +1,67 @@
+<style>
+  #shopify-section-{{ section.id }} {height:{{ section.settings.height }}px; background:{{ section.settings.section_color }}}
+  @media (max-width: 767.98px) {
+  #shopify-section-{{ section.id }} {height:{{ section.settings.height | divided_by: 2 }}px;}
+
+  }
+</style>
+<div
+  class="section section--padding  {% if section.settings.container == 'full' %}w-full{% else %}page-width{% endif %} section-blank"
+  style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;"
+>
+
+</div>
+{% schema %}
+{
+  "name": "sections-blank",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["footer", "header"]
+  },
+  "settings": [
+     {
+      "type": "header",
+      "content": "空白区块"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "options": [
+        {
+          "value": "full",
+          "label": "t:sections.all.container.options__full.label"
+        },
+        {
+          "value": "fixed",
+          "label": "t:sections.all.container.options__fixed.label"
+        }
+      ],
+      "default": "full",
+      "label": "t:sections.all.container.label"
+    },
+    {
+      "type": "color",
+      "id": "section_color",
+      "label": "t:sections.all.colors.label",
+      "default": "#000"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "高度",
+      "default": 60
+    },
+  ],
+  "presets": [
+    {
+      "name": "blank",
+      "category": "自定义组件"
+    }
+  ]
+}
+{% endschema %}

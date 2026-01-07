@@ -1,0 +1,895 @@
+{%- liquid
+  # Bundle 模式：默认选中 "Keine"，不选中任何 variant
+  assign selected_variant = product.selected_or_first_available_variant
+  assign selected_option_value = selected_variant.options[option_index]
+
+  # 默认不选中太阳能板（选中 "Keine"）
+  assign has_selected_solar = false
+  # 只有在 URL 参数中明确指定了 variant 时才检查是否选中了太阳能板
+  if request.page_type == 'product' and product.selected_variant.id != blank
+    if selected_option_value != blank
+      assign sel_value_config = option_config.value_mapping[selected_option_value]
+      if sel_value_config
+        assign has_selected_solar = true
+      endif
+    endif
+  endif
+-%}
+
+{%- comment -%} Fieldset 包装 {%- endcomment -%}
+{%- liquid
+  # 检查是否是太阳能板产品
+  assign is_solar = is_solar_product | default: false
+  # 检查是否需要连接太阳能板数量
+  assign connect_solar = connect_solar_quantity | default: false
+  assign solar_id = solar_product_id | default: ''
+-%}
+<fieldset
+  class="product-form__input product-form__input--button js flex flex-wrap gap-3 product-form__input--button-standard bundle-category-grid-fieldset"
+  data-product-id="{{ product.id }}"
+  {% if is_solar %}
+    data-is-solar-product="true"
+  {% endif %}
+  {% if connect_solar %}
+    data-connect-solar-quantity="true" data-solar-product-id="{{ solar_id }}"
+  {% endif %}
+>
+  <legend class="form__label">
+    <div class="flex flex-wrap gap-2">
+      <span class="font-body-bold">{{ option.name }}:</span>
+    </div>
+  </legend>
+
+  {%- comment -%} 类别网格卡片 {%- endcomment -%}
+  <div class="variant-category-cards-wrapper">
+    {%- for category in option_config.categories -%}
+      {%- liquid
+        # 找到该类别的第一个 variant（用于显示图片和判断是否选中）
+        assign category_variant = null
+        assign category_image = null
+        assign is_category_selected = false
+
+        for variant in product.variants
+          assign variant_option_value = variant.options[option_index]
+          assign value_config = option_config.value_mapping[variant_option_value]
+
+          if value_config and value_config.category == category.key
+            if category_variant == null
+              assign category_variant = variant
+
+              # 获取图片
+              # connect_solar 模式下，拼接主图图片使用display_image ， 主图图片不变
+              if value_config.image_url and value_config.image_url != blank
+                assign category_image = value_config.image_url
+              elsif variant.image
+                assign category_image = variant.image
+              elsif product.featured_image
+                assign category_image = product.featured_image
+              endif
+
+              # 检查是否选中（只有在 has_selected_solar 为 true 时才检查）
+              if has_selected_solar and selected_option_value == variant_option_value
+                assign is_category_selected = true
+              endif
+            endif
+          endif
+        endfor
+      -%}
+
+      {%- if category_variant -%}
+        {%- liquid
+          # 检查该 category 是否有 wattage 字段
+          assign category_has_wattage = false
+          for variant in product.variants
+            assign variant_option_value = variant.options[option_index]
+            assign value_config = option_config.value_mapping[variant_option_value]
+            if value_config and value_config.category == category.key and value_config.wattage != blank
+              assign category_has_wattage = true
+              break
+            endif
+          endfor
+        -%}
+
+
+        {% assign hide_content = false %}
+
+        {% if request.path contains 'solidflex' and category.key contains '225w' %}
+          {% assign hide_content = true %}
+        {% endif %}
+
+        {% if request.path contains 'powerflex' and category.key contains '225w' %}
+          {% assign hide_content = true %}
+        {% endif %}
+
+        {% unless hide_content %}
+          
+       
+ 
+        <div
+          class="variant-category-card {% if is_category_selected %}selected{% endif %}"
+          data-category="{{ category.key }}"
+          {% if category_has_wattage %}
+            data-has-wattage="true"
+          {% endif %}
+        >
+          <div class="variant-category-card-header {% if connect_solar %}is_connected_solar{% endif %}">
+            {%- if category_image -%}
+              <div class="variant-category-card-image {% if connect_solar %}is_connected_solar{% endif %}">
+                {%- if category_image contains 'http' -%}
+                  <img
+                    src="{{ category_image }}"
+                    alt="{{ category.display_name }}"
+                    loading="lazy"
+                    width="100%"
+                    height="auto"
+                  >
+                {%- else -%}
+                  <img
+                    src="{{ category_image | image_url: width: 800 }}"
+                    alt="{{ category.display_name }}"
+                    loading="lazy"
+                    width="100%"
+                    height="auto"
+                  >
+                {%- endif -%}
+              </div>
+            {%- else -%}
+              <div class="variant-category-card-image"></div>
+            {%- endif -%}
+
+            <h3 class="variant-category-card-title">
+              {{ category.display_name }}
+            </h3>
+
+            <span class="variant-category-card-subtitle">
+              {{ category.display__sub_text }}
+            </span>
+          </div>
+
+          {%- comment -%} 数量选择按钮 {%- endcomment -%}
+          <div class="variant-category-qty-buttons">
+            {%- for qty in category.quantities -%}
+              {%- liquid
+                # 找到对应的 variant
+                assign qty_variant = null
+                assign qty_value_config = null
+                assign qty_selected = false
+
+                for variant in product.variants
+                  assign variant_option_value = variant.options[option_index]
+                  assign value_config = option_config.value_mapping[variant_option_value]
+
+                  if value_config and value_config.category == category.key and value_config.quantity == qty
+                    assign qty_variant = variant
+                    assign qty_value_config = value_config
+
+                    # 只有在 has_selected_solar 为 true 时才检查是否选中
+                    if has_selected_solar and selected_option_value == variant_option_value
+                      assign qty_selected = true
+                    endif
+
+                    break
+                  endif
+                endfor
+              -%}
+
+              {%- if qty_variant and qty_value_config -%}
+                {%- liquid
+                  # 生成唯一的 ID（包含 product.id 以确保多个产品渲染时不会冲突）
+                  assign input_name = 'bundle-solar-option-' | append: option.position | append: '-' | append: product.id
+                  assign input_id = 'bundle-solar-' | append: section.id | append: '-' | append: category.key | append: '-' | append: qty | append: '-' | append: product.id
+
+                  # 检查可用性
+                  assign is_available = qty_variant.available
+                  assign is_disabled = false
+                  unless is_available
+                    assign is_disabled = true
+                  endunless
+
+                  # 获取变体图片 URL（优先从配置获取，然后从变体，最后使用产品主图）
+                  # 支架从display_image获取图片
+                  assign variant_image_url = ''
+                  if connect_solar and qty_value_config.display_image and qty_value_config.display_image != blank
+                    assign variant_image_url = qty_value_config.display_image
+                  elsif qty_value_config.image_url and qty_value_config.image_url != blank
+                    assign variant_image_url = qty_value_config.image_url
+                  elsif qty_variant.image
+                    assign variant_image_url = qty_variant.image | image_url: width: 800
+                  elsif product.featured_image
+                    assign variant_image_url = product.featured_image | image_url: width: 800
+                  endif
+                -%}
+
+                {%- comment -%} Radio Input（Bundle 专用） {%- endcomment -%}
+                <input
+                  type="radio"
+                  id="{{ input_id }}"
+                  name="{{ input_name }}"
+                  value="{{ variant_option_value | escape }}"
+                  class="bundle-category-radio"
+                  data-bundle-mode="true"
+                  data-solar-variant-id="{{ qty_variant.id }}"
+                  data-solar-price="{{ qty_variant.price }}"
+                  data-solar-option-value="{{ variant_option_value | escape }}"
+                  data-category="{{ category.key }}"
+                  data-qty="{{ qty }}"
+                  data-wattage="{{ qty_value_config.wattage }}"
+                  {% if qty_selected %}
+                    checked
+                  {% endif %}
+                  {% if is_disabled %}
+                    disabled
+                  {% endif %}
+                  style="position: absolute; opacity: 0; pointer-events: none;"
+                >
+
+                {%- comment -%} Label 按钮 {%- endcomment -%}
+                <label
+                  for="{{ input_id }}"
+                  class="variant-category-qty-btn bundle-category-btn {% if qty_selected %}selected{% endif %} {% if is_disabled %}disabled{% endif %} {% if connect_solar %}is_connected_solar{% endif %}"
+                  data-category="{{ category.key }}"
+                  data-qty="{{ qty }}"
+                  data-variant-id="{{ qty_variant.id }}"
+                  data-price="{{ qty_variant.price }}"
+                  data-wattage="{{ qty_value_config.wattage }}"
+                  data-image-url="{{ variant_image_url }}"
+                  {% if qty_value_config.other_display_text %}
+                    data-other-text="{{ qty_value_config.other_display_text | escape }}"
+                  {% endif %}
+                >
+                  {{ qty_value_config.display_text | default: qty }}
+                </label>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          {%- comment -%} 总功率显示（只有当 category 有 wattage 字段时才显示）{%- endcomment -%}
+          {%- if category_has_wattage -%}
+            <div class="variant-category-wattage">
+              Gesamtwattzahl:
+              <span class="value" data-wattage-display="{{ category.key }}" ">
+                {%- if is_category_selected -%}
+                  {%- for variant in product.variants -%}
+                    {%- if variant.options[option_index] == selected_option_value -%}
+                      {%- assign sel_value_config = option_config.value_mapping[selected_option_value] -%}
+                      {{ sel_value_config.wattage | default: '0W' }}
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- else -%}
+                  0W
+                {%- endif -%}
+              </span>
+            </div>
+               <div class="pop_more_div" aria-controls="PopupModal-{{ section.id }}-{{ category.key }}">
+            <a  href="void(0);">Mehr Details</a>
+          </div>
+          {%- endif -%}
+
+       
+
+        </div>
+
+
+    {%- comment -%} 组件弹窗具体参数 {%- endcomment -%}
+        <basic-modal id="PopupModal-{{section.id}}-{{ category.key }}" class="drawer modal popupmodal-pro" style="--modal-width: 77rem;">
+          <div class="fixed-overlay"   aria-controls="PopupModal-{{section.id}}-{{ category.key }}"></div>
+          <div class="drawer__inner tip-background" style="background:#ffffff">
+            <button
+              class="drawer__close-btn"
+              aria-controls="PopupModal-{{section.id}}-{{ category.key }}"
+              aria-label="{{ 'accessibility.close' | t }}"
+            >
+              {% render 'icon-close' %}
+            </button>
+            <div class="drawer__body__pro v-scrollable h-full" data-param="{{ category.key }}">
+                <h5>Technische Daten</h5>
+                <ul class="spec-scrollable">
+                  {%- for param in category.param -%}
+                    <li><span class="title">{{ param.name }}</span><span class="content">{{ param.val }}</span></li>  
+                  {%- endfor -%}
+                </ul>
+            </div>
+          </div>
+        </basic-modal>
+
+
+
+
+          {% endunless %}
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  {%- comment -%} "Keine" 按钮：不选择太阳能板 {%- endcomment -%}
+  {%- liquid
+    assign keine_selected = false
+    unless has_selected_solar
+      assign keine_selected = true
+    endunless
+    assign input_name_keine = 'bundle-solar-option-' | append: option.position | append: '-' | append: product.id
+    assign input_id_keine = 'bundle-solar-keine-' | append: section.id | append: '-' | append: option.position | append: '-' | append: product.id
+  -%}
+  <input
+    type="radio"
+    id="{{ input_id_keine }}"
+    name="{{ input_name_keine }}"
+    value="Keine"
+    class="bundle-category-radio bundle-keine-radio"
+    data-bundle-mode="true"
+    data-solar-variant-id=""
+    data-solar-price="0"
+    data-solar-option-value="Keine"
+    data-category=""
+    data-qty="0"
+    data-wattage="0Wp"
+    {% if keine_selected %}
+      checked
+    {% endif %}
+    style="position: absolute; opacity: 0; pointer-events: none;"
+  >
+  <label
+    for="{{ input_id_keine }}"
+    class="variant-none-btn bundle-keine-btn {% if keine_selected %}selected{% endif %}"
+    data-category=""
+    data-qty="0"
+    data-variant-id=""
+    data-price="0"
+    data-wattage="0Wp"
+    data-proid="{{ product.id }}"
+  >
+     {% if product.id==7930508017763 %}
+      Ohne Solarmodule
+     {% else %}  
+      Ohne Halterungen
+    {% endif %}
+    
+    {% comment %} Keine {% endcomment %}
+  </label>
+</fieldset>
+
+<style>
+  .bundle-category-grid-fieldset[data-connect-solar-quantity='true']
+    .variant-category-card:not(.selected)
+    .variant-category-qty-buttons {
+    display: none;
+  }
+  
+  /* 支架卡片默认显示禁止光标 */
+  .bundle-category-grid-fieldset[data-connect-solar-quantity='true']
+    .variant-category-card {
+    cursor: no-drop;
+  }
+  
+  /* 有可用按钮的支架卡片显示可点击光标 */
+  .bundle-category-grid-fieldset[data-connect-solar-quantity='true']
+    .variant-category-card.has-available-buttons {
+    cursor: pointer;
+  }
+  
+  .bundle-category-btn.quantity-mismatch {
+    display: none !important;
+  }
+
+
+ .v-scrollable ul {display:flex;flex-wrap:wrap;justify-content: space-between;}
+ .v-scrollable li { width: 46%;padding:20px 0px 20px;font-size: 18px; border-bottom:1px solid #B1B1B1}
+ .v-scrollable li span{display: block;line-height:26px;}
+ .v-scrollable li .title{font-weight:600}
+ .v-scrollable li .content{font-weight:400}
+ .v-scrollable li .note{margin-top:20px}
+  .drawer__body__pro {padding:60px 40px;text-align: left;color:#000}
+  .drawer__body__pro h5{font-size:30px;font-weight:700}
+  .popupmodal-pro .fixed-overlay{background-color: rgba(0, 0, 0, 0.1) !important; /* 深色半透明 */
+
+}
+
+a:not([href]) {
+    cursor:default; 
+}
+.pop_more_div{
+  padding-bottom: 14px;
+}
+
+.pop_more_div a{
+  color:#000000;
+  text-decoration: underline;
+  font-size:16px;
+  line-height:19px;
+}
+
+.selected .pop_more_div a{
+  color:#3250C3;
+}
+
+.spec-scrollable {
+  max-height: 400px; /* 根据实际需要调整 */
+  overflow-y: auto;
+  padding-right: 8px; /* 给滚动条留出空间 */
+}
+
+/* 自定义滚动条样式 */
+.spec-scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.spec-scrollable::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.spec-scrollable::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.spec-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+@media (max-width: 768px) {
+  .drawer__body__pro h5{font-size:24px;font-weight:700}
+ .v-scrollable li { width: 100%;padding:20px 0px 20px;font-size: 14px; border-bottom:1px solid #B1B1B1}
+  .drawer__body__pro {padding:40px 20px;}
+}
+
+</style>
+
+<script type="application/json" class="bundle-category-grid-data" data-section-id="{{ section.id }}">
+  {
+    "solar_product_id": {{ product.id | json }},
+    "solar_product_handle": {{ product.handle | json }},
+    "option_config": {{ option_config | json }}
+  }
+</script>
+
+<script>
+(function() {
+  const sectionId = '{{ section.id }}';
+  const productId = {{ product.id }};
+  const currentFieldset = document.querySelector(`.bundle-category-grid-fieldset[data-product-id="${productId}"]`);
+  
+  if (!currentFieldset) {
+    console.warn('[Bundle Category Grid] Fieldset not found for product', productId);
+    return;
+  }
+  
+  const categoryButtons = currentFieldset.querySelectorAll('.bundle-category-btn');
+  const categoryCards = currentFieldset.querySelectorAll('.variant-category-card');
+  
+  // Connect Solar Logic
+  const isConnectSolar = currentFieldset.dataset.connectSolarQuantity === 'true';
+  const targetSolarProductId = currentFieldset.dataset.solarProductId;
+
+  if (isConnectSolar) {
+    console.log('[Bundle Category Grid] Connect Solar Mode Active for product', productId, 'Target Solar:', targetSolarProductId);
+    
+    // 卡片的可点击状态
+    function updateCardAvailability() {
+      categoryCards.forEach(card => {
+        const cardButtons = card.querySelectorAll('.bundle-category-btn');
+        // 检查是否至少有一个按钮是可用的（既不是 disabled 也不是 quantity-mismatch）
+        const hasAvailableButton = Array.from(cardButtons).some(btn => 
+          !btn.classList.contains('disabled') && !btn.classList.contains('quantity-mismatch')
+        );
+        
+        if (hasAvailableButton) {
+          card.classList.add('has-available-buttons');
+        } else {
+          card.classList.remove('has-available-buttons');
+        }
+      });
+    }
+    
+    function handleSolarChange(quantity) {
+      console.log('[Bundle Category Grid] Solar quantity changed to:', quantity);
+      
+      const normalizeQty = (val) => {
+        if (!val) return 0;
+        const match = String(val).match(/(\d+)/);
+        return match ? parseInt(match[1], 10) : 0;
+      };
+
+      const targetQty = normalizeQty(quantity);
+      
+      // 如果太阳能板数量为 0（选择了 Keine），自动选择支架的 Keine 并禁用所有支架按钮
+      if (targetQty === 0) {
+        console.log('[Bundle Category Grid] Solar is Keine, selecting mount Keine and disabling all buttons');
+        
+        // 禁用所有支架按钮
+        categoryButtons.forEach(btn => {
+          btn.classList.remove('selected');
+          btn.classList.add('quantity-mismatch', 'disabled');
+          // 禁用对应的 radio input
+          const inputId = btn.getAttribute('for');
+          const radio = document.getElementById(inputId);
+          if (radio) {
+            radio.disabled = true;
+          }
+        });
+        
+        // 清除所有卡片的选中状态和可用按钮标记
+        categoryCards.forEach(card => {
+          card.classList.remove('selected', 'has-available-buttons');
+        });
+        
+        // 点击 Keine 按钮
+        const keineBtn = currentFieldset.querySelector('.bundle-keine-btn');
+        if (keineBtn && !keineBtn.classList.contains('selected')) {
+          keineBtn.click();
+        }
+        return;
+      }
+      
+      let hasMatch = false;
+      
+      if (targetQty > 0) {
+         categoryButtons.forEach(btn => {
+           if (normalizeQty(btn.dataset.qty) === targetQty) hasMatch = true;
+         });
+      }
+      
+      console.log('[Bundle Category Grid] Has matching buttons:', hasMatch, 'Target Qty:', targetQty);
+
+      categoryButtons.forEach(btn => {
+        const btnQty = normalizeQty(btn.dataset.qty);
+        
+        if (targetQty > 0 && hasMatch) {
+          // 太阳能板选中了具体数量，并且有匹配的按钮
+          if (btnQty === targetQty) {
+            // 匹配的按钮：移除 disabled 和 quantity-mismatch
+            btn.classList.remove('quantity-mismatch', 'disabled');
+            // 启用对应的 radio input
+            const inputId = btn.getAttribute('for');
+            const radio = document.getElementById(inputId);
+            if (radio) {
+              radio.disabled = false;
+            }
+          } else {
+            // 不匹配的按钮：添加 disabled 和 quantity-mismatch
+            btn.classList.add('quantity-mismatch', 'disabled');
+            // 禁用对应的 radio input
+            const inputId = btn.getAttribute('for');
+            const radio = document.getElementById(inputId);
+            if (radio) {
+              radio.disabled = true;
+            }
+          }
+        } else {
+          // targetQty = 0（Keine）或没有匹配的按钮：禁用所有按钮
+          btn.classList.add('quantity-mismatch', 'disabled');
+          const inputId = btn.getAttribute('for');
+          const radio = document.getElementById(inputId);
+          if (radio) {
+            radio.disabled = true;
+          }
+        }
+      });
+
+      // 更新卡片的可点击状态
+      updateCardAvailability();
+
+      const selectedBtn = currentFieldset.querySelector('.bundle-category-btn.selected');
+      const selectedCard = selectedBtn ? selectedBtn.closest('.variant-category-card') : null;
+      
+      if (selectedBtn && selectedBtn.classList.contains('quantity-mismatch')) {
+        // 当前选中的按钮不匹配，需要找到匹配的按钮
+        const category = selectedBtn.dataset.category;
+        
+        // 首先尝试在当前卡片内找匹配的按钮
+        let newBtn = null;
+        if (selectedCard) {
+          newBtn = selectedCard.querySelector(`.bundle-category-btn:not(.quantity-mismatch):not(.disabled)`);
+        }
+        
+        // 如果当前卡片内没有匹配的按钮，找任意匹配的按钮
+        if (!newBtn) {
+          newBtn = currentFieldset.querySelector(`.bundle-category-btn:not(.quantity-mismatch):not(.disabled)`);
+        }
+        
+        if (newBtn) {
+          // 清除当前按钮和卡片的选中状态
+          selectedBtn.classList.remove('selected');
+          if (selectedCard) {
+            selectedCard.classList.remove('selected');
+          }
+          
+          // 点击新的匹配按钮（这会自动更新卡片状态）
+          newBtn.click();
+          console.log('[Bundle Category Grid] Switched to matching button:', newBtn.dataset.qty, 'in category:', newBtn.dataset.category);
+        } else {
+          // 如果没有匹配的按钮，选择 Keine
+          selectedBtn.classList.remove('selected');
+          if (selectedCard) {
+            selectedCard.classList.remove('selected');
+          }
+          const keineBtn = currentFieldset.querySelector('.bundle-keine-btn');
+          if (keineBtn) keineBtn.click();
+        }
+      } else if (targetQty > 0) {
+        // 如果当前选中的按钮已经匹配，确保卡片也选中了
+        if (selectedBtn && !selectedBtn.classList.contains('quantity-mismatch')) {
+          if (selectedCard && !selectedCard.classList.contains('selected')) {
+            selectedCard.classList.add('selected');
+          }
+        }
+        // 注意：不自动选择支架按钮，只禁用不匹配的按钮
+        // 用户需要手动选择支架，然后系统会根据太阳能板数量匹配正确的数量
+      }
+    }
+
+    document.addEventListener('bundle:solar:change', (e) => {
+      if (String(e.detail.productId) === String(targetSolarProductId)) {
+        handleSolarChange(e.detail.quantity);
+      }
+    });
+
+    const initialSolarInput = document.querySelector(`input[name$="-${targetSolarProductId}"]:checked`);
+    if (initialSolarInput) {
+      const qty = initialSolarInput.dataset.qty || '0'; // Usually qty is on label/button, but maybe passed in event. 
+      const solarFieldset = document.querySelector(`.bundle-category-grid-fieldset[data-product-id="${targetSolarProductId}"]`);
+      if (solarFieldset) {
+        const selectedSolarBtn = solarFieldset.querySelector('.bundle-category-btn.selected');
+        if (selectedSolarBtn) {
+           handleSolarChange(selectedSolarBtn.dataset.qty);
+        }
+      }
+    }
+
+    categoryCards.forEach(card => {
+      card.addEventListener('click', (e) => {
+        if (e.target.closest('.bundle-category-btn')) return;
+        const validBtn = card.querySelector('.bundle-category-btn:not(.quantity-mismatch):not(.disabled)');
+        if (validBtn) {
+          validBtn.click();
+        }
+      });
+    });
+  }
+
+  // 按钮点击事件
+  categoryButtons.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      // 如果按钮被禁用，阻止操作
+      if (this.classList.contains('disabled')) {
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+      }
+      
+      const category = this.dataset.category;
+      const wattage = this.dataset.wattage;
+      
+      // 清除当前 fieldset 内的 "Keine" 按钮的选中状态
+      const keineBtn = currentFieldset.querySelector('.bundle-keine-btn');
+      if (keineBtn) {
+        keineBtn.classList.remove('selected');
+        const keineRadio = document.getElementById(keineBtn.getAttribute('for'));
+        if (keineRadio) {
+          keineRadio.checked = false;
+        }
+      }
+      
+      // 更新当前类别内的按钮选中状态
+      const parentCard = this.closest('.variant-category-card');
+      if (parentCard) {
+        const siblingButtons = parentCard.querySelectorAll('.bundle-category-btn');
+        siblingButtons.forEach(b => b.classList.remove('selected'));
+      }
+      this.classList.add('selected');
+      
+      // 更新类别卡片选中状态，并清除其他类别的功率显示
+      categoryCards.forEach(card => {
+        if (card.dataset.category === category) {
+          card.classList.add('selected');
+        } else {
+          card.classList.remove('selected');
+          // 清除其他类别的按钮选中状态
+          const otherButtons = card.querySelectorAll('.bundle-category-btn');
+          otherButtons.forEach(b => b.classList.remove('selected'));
+          // 清除其他类别的功率显示（只有当该类别有 wattage 字段时才清除）
+          if (card.dataset.hasWattage === 'true') {
+            const otherWattageDisplay = card.querySelector('[data-wattage-display]');
+            if (otherWattageDisplay) {
+              otherWattageDisplay.textContent = '0Wp';
+            }
+          }
+        }
+      });
+      
+      // 更新当前类别的功率显示（只有当该类别有 wattage 字段且有 wattage 值时才更新）
+      if (wattage) {
+        const currentCard = currentFieldset.querySelector(`[data-category="${category}"]`);
+        if (currentCard && currentCard.dataset.hasWattage === 'true') {
+          const wattageDisplay = currentFieldset.querySelector(`[data-wattage-display="${category}"]`);
+          if (wattageDisplay) {
+            wattageDisplay.textContent = wattage;
+          }
+        }
+      }
+      
+      // 更新 radio 选中状态（但不触发 change 事件）
+      const inputId = this.getAttribute('for');
+      const radio = document.getElementById(inputId);
+      if (radio) {
+        // 取消同名 radio 的选中状态
+        const radioName = radio.name;
+        document.querySelectorAll(`input[type="radio"][name="${radioName}"]`).forEach(r => {
+          r.checked = false;
+        });
+        
+        // 选中当前 radio（不触发 change 事件）
+        radio.checked = true;
+      }
+      
+      // 获取选中产品的图片（从按钮的 data-image-url 属性获取）
+      const solarImageUrl = this.dataset.imageUrl || '';
+      const otherText = this.dataset.otherText || '';
+      
+      // 触发 Bundle 专用事件
+      const variantId = this.dataset.variantId;
+      const price = this.dataset.price;
+      const qty = this.dataset.qty;
+      
+      document.dispatchEvent(new CustomEvent('bundle:solar:change', {
+        detail: {
+          category: category,
+          variantId: variantId,
+          price: price,
+          quantity: qty,
+          wattage: wattage,
+          isKeine: false,
+          productId: productId,
+          imageUrl: solarImageUrl
+        }
+      }));
+      
+      // 叠加显示太阳能板图片到主产品图片上
+      if (solarImageUrl && window.addOverlayImageToMainProduct) {
+        // 检查是否是关联产品（如支架），如果是，使用不同的类型以支持叠加
+        const isConnectSolar = currentFieldset.dataset.connectSolarQuantity === 'true';
+        const overlayType = isConnectSolar ? 'mount' : 'solar';
+        window.addOverlayImageToMainProduct(solarImageUrl, overlayType, otherText);
+      }
+      
+      // 调用全局价格更新
+      if (window.bundleProducts && window.bundleProducts.updatePrice) {
+        window.bundleProducts.updatePrice();
+      } else {
+        // 如果没有全局函数，直接触发价格更新事件
+        setTimeout(() => {
+          const event = new CustomEvent('bundle:price:update');
+          document.dispatchEvent(event);
+        }, 100);
+      }
+    });
+  });
+
+  // "Keine" 按钮点击事件（限定在当前 fieldset 内）
+  const keineBtn = currentFieldset.querySelector('.bundle-keine-btn');
+  if (keineBtn) {
+    keineBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // 清除当前 fieldset 内所有类别按钮的选中状态
+      categoryButtons.forEach(b => b.classList.remove('selected'));
+      
+      // 清除当前 fieldset 内所有类别卡片的选中状态
+      categoryCards.forEach(card => {
+        card.classList.remove('selected');
+        // 清除所有类别的功率显示（只有当该类别有 wattage 字段时才清除）
+        if (card.dataset.hasWattage === 'true') {
+          const wattageDisplay = card.querySelector('[data-wattage-display]');
+          if (wattageDisplay) {
+            wattageDisplay.textContent = '0Wp';
+          }
+        }
+      });
+      
+      // 更新 "Keine" 按钮的选中状态
+      this.classList.add('selected');
+      
+      // 更新 radio 选中状态
+      const inputId = this.getAttribute('for');
+      const radio = document.getElementById(inputId);
+      if (radio) {
+        // 取消同名 radio 的选中状态
+        const radioName = radio.name;
+        document.querySelectorAll(`input[type="radio"][name="${radioName}"]`).forEach(r => {
+          r.checked = false;
+        });
+        radio.checked = true;
+      }
+      
+      // 触发 Bundle 专用事件
+      console.log('[Bundle Category Grid] Keine selected (no solar panel)');
+      
+      document.dispatchEvent(new CustomEvent('bundle:solar:change', {
+        detail: {
+          category: '',
+          variantId: '',
+          price: '0',
+          quantity: '0',
+          wattage: '0Wp',
+          isKeine: true,
+          productId: productId,
+          imageUrl: ''
+        }
+      }));
+      
+      // 移除太阳能板叠加图片
+      if (window.removeOverlayImageFromMainProduct) {
+        // 检查是否是关联产品（如支架），如果是，移除对应的类型
+        const isConnectSolar = currentFieldset.dataset.connectSolarQuantity === 'true';
+        const overlayType = isConnectSolar ? 'mount' : 'solar';
+        window.removeOverlayImageFromMainProduct(overlayType);
+      }
+      
+      // 调用全局价格更新
+      if (window.bundleProducts && window.bundleProducts.updatePrice) {
+        window.bundleProducts.updatePrice();
+      } else {
+        // 如果没有全局函数，直接触发价格更新事件
+        setTimeout(() => {
+          const event = new CustomEvent('bundle:price:update');
+          document.dispatchEvent(event);
+        }, 100);
+      }
+    });
+  }
+  
+  // 初始化时触发一次事件（如果有选中的按钮或 "Keine"）（限定在当前 fieldset 内）
+  const selectedBtn = currentFieldset.querySelector('.bundle-category-btn.selected');
+  const selectedKeineBtn = currentFieldset.querySelector('.bundle-keine-btn.selected');
+  
+  if (selectedBtn) {
+    // 如果有选中的太阳能板按钮，触发事件
+    const category = selectedBtn.dataset.category;
+    const variantId = selectedBtn.dataset.variantId;
+    const price = selectedBtn.dataset.price;
+    const qty = selectedBtn.dataset.qty;
+    const wattage = selectedBtn.dataset.wattage;
+    
+    document.dispatchEvent(new CustomEvent('bundle:solar:change', {
+      detail: {
+        category: category,
+        variantId: variantId,
+        price: price,
+        quantity: qty,
+        wattage: wattage,
+        isKeine: false,
+        productId: productId
+      }
+    }));
+    
+    // 初始化时触发价格更新
+    setTimeout(() => {
+      if (window.bundleProducts && window.bundleProducts.updatePrice) {
+        window.bundleProducts.updatePrice();
+      }
+    }, 200);
+  } else if (selectedKeineBtn) {
+    // 如果默认选中 "Keine"，触发事件
+    document.dispatchEvent(new CustomEvent('bundle:solar:change', {
+      detail: {
+        category: '',
+        variantId: '',
+        price: '0',
+        quantity: '0',
+        wattage: '0Wp',
+        isKeine: true,
+        productId: productId
+      }
+    }));
+    
+    // 初始化时触发价格更新
+    setTimeout(() => {
+      if (window.bundleProducts && window.bundleProducts.updatePrice) {
+        window.bundleProducts.updatePrice();
+      }
+    }, 200);
+  }
+  
+  console.log('[Bundle Category Grid] Initialized with', categoryButtons.length, 'solar panel options');
+})();
+</script>

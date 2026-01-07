@@ -1,0 +1,10 @@
+{% comment %} <script>
+  let initialized = false;
+  document.addEventListener("gpoRenderCompleted", function() {
+    if (initialized) return; // đã chạy thì thoát
+    initialized = true;
+    GPOConfigs.theme.product.image = "[data-gpo-product-image],.product .product__media-gallery .product__media-list .product__media-item.swiper-slide-active .product__media img";
+    GPOConfigs.theme.product.imageButton = "[data-gpo-product-image-button],.slider-controls--group .btn,.product__media-gallery-thumbails .product__thumbs-item"
+    GPOConfigs.initialize();
+  });
+</script> {% endcomment %}

@@ -1,0 +1,463 @@
+{%- comment -%}
+  Multi Host 模式渲染 - 基于主产品的元字段配置
+  用于显示多个主产品变体选项，用户选择其中一个购买（不组合）
+
+  参数：
+  - option: 当前选项对象
+  - option_config: 选项配置（从元字段获取）
+  - variant_config: 完整的变体配置
+  - product: 主产品对象
+  - product_form_id: 表单ID
+  - section: section对象
+  - option_index: 选项索引
+{%- endcomment -%}
+
+{%- liquid
+  assign selected_variant = product.selected_or_first_available_variant
+  assign selected_option_value = selected_variant.options[option_index]
+
+  # 查找基础 variant
+  assign base_variant = null
+  assign selected_qty = 0
+
+  # 从value_mapping中查找对应关系
+  for value in option.values
+    assign value_mapping = option_config.value_mapping[value]
+
+    # 找基础variant（quantity为0或null）
+    if value_mapping and value_mapping.display_text contains option_config.base_display_name
+      if value_mapping.quantity == 0 or value_mapping.quantity == null or value_mapping.quantity == blank
+        for variant in product.variants
+          if variant.options[option_index] == value
+            assign base_variant = variant
+            break
+          endif
+        endfor
+      endif
+    endif
+
+    # 检查当前选中的值
+    if value == selected_option_value and value_mapping
+      assign selected_qty = value_mapping.quantity | plus: 0
+    endif
+  endfor
+
+  # 如果没找到基础variant，使用第一个variant
+  if base_variant == null
+    assign base_variant = product.variants[0]
+  endif
+
+  # 获取基础图片
+  assign base_image = null
+  if base_variant and base_variant.image
+    assign base_image = base_variant.image
+  elsif product.featured_image
+    assign base_image = product.featured_image
+  endif
+
+  # 计算当前容量/规格
+  assign current_capacity = base_variant.title
+  if selected_option_value != blank
+    assign sel_value_mapping = option_config.value_mapping[selected_option_value]
+    if sel_value_mapping and sel_value_mapping.capacity
+      assign current_capacity = sel_value_mapping.capacity
+    endif
+  endif
+-%}
+
+{%- comment -%} Fieldset包装 {%- endcomment -%}
+<fieldset class="product-form__input product-form__input--button js flex flex-wrap gap-3 product-form__input--button-standard multi-host-fieldset" data-multi-host-mode="true">
+  {%- comment -%} 容量/规格显示 {%- endcomment -%}
+  {%- if option_config.capacity_label -%}
+    <div class="variant-capacity-display">
+      {{ option_config.capacity_label }}:
+      <span class="value" data-capacity-display>{{ current_capacity }}</span>
+    </div>
+  {%- endif -%}
+
+  <legend class="form__label">
+    <div class="flex flex-wrap gap-2">
+      <span class="font-body-bold">{{ option.name }}:</span>
+    </div>
+  </legend>
+
+  <div class="variant-extension-card">
+    {%- comment -%} 基础产品部分 {%- endcomment -%}
+    <div class="variant-extension-base">
+      {%- if base_image -%}
+        <div class="variant-extension-base-image">
+          <img
+            src="{{ base_image | image_url: width: 160 }}"
+            alt="{{ option_config.base_display_name | default: product.title }}"
+            loading="lazy"
+            width="80"
+            height="80"
+          >
+        </div>
+      {%- else -%}
+        <div class="variant-extension-base-image"></div>
+      {%- endif -%}
+
+      <div class="variant-extension-base-content">
+        <h3 class="variant-extension-base-title">
+          {{ option_config.base_display_name | default: product.title }}
+          {%- if option_config.base_capacity -%}
+            <span class="variant-extension-title-separator">|</span>{{ option_config.base_capacity }}
+          {%- endif -%}
+        </h3>
+        <div class="variant-extension-base-price">
+          <span class="current-price">{{ base_variant.price | money }}</span>
+          {%- if base_variant.compare_at_price > base_variant.price -%}
+            <span class="original-price">{{ base_variant.compare_at_price | money }}</span>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+    {%- comment -%} 变体选项按钮 {%- endcomment -%}
+    <div class="variant-extension-section">
+      <div class="variant-extension-qty-buttons">
+        {%- for value in option.values -%}
+          {%- liquid
+            # 从 value_mapping 中查找匹配的配置
+            assign value_mapping = option_config.value_mapping[value]
+
+            # 如果有配置，渲染按钮
+            if value_mapping
+              # 查找对应的 variant
+              assign qty_variant = null
+              for variant in product.variants
+                if variant.options[option_index] == value
+                  assign qty_variant = variant
+                  break
+                endif
+              endfor
+            endif
+          -%}
+
+          {%- if value_mapping and qty_variant -%}
+            {%- liquid
+              # 判断当前按钮是否被选中
+              assign is_selected = false
+              if value == selected_option_value
+                assign is_selected = true
+              endif
+
+              # 获取图片 URL
+              assign image_url = ''
+              if value_mapping.image_url != blank
+                assign image_url = value_mapping.image_url
+              elsif qty_variant.image
+                assign image_url = qty_variant.image | image_url: width: 1600
+              elsif product.featured_image
+                assign image_url = product.featured_image | image_url: width: 1600
+              endif
+
+              # 获取 other_display_text
+              assign other_text = value_mapping.other_display_text | default: ''
+
+              # 获取容量/规格信息
+              assign capacity = value_mapping.capacity | default: value_mapping.display_text
+            -%}
+
+            {%- comment -%} Radio Input（Multi Host 专用） {%- endcomment -%}
+            <input
+              type="radio"
+              id="multi-host-{{ section.id }}-{{ option.position }}-{{ forloop.index }}"
+              name="id"
+              value="{{ qty_variant.id }}"
+              class="multi-host-radio"
+              data-multi-host-mode="true"
+              data-variant-id="{{ qty_variant.id }}"
+              data-price="{{ qty_variant.price }}"
+              data-capacity="{{ capacity }}"
+              data-display-text="{{ value_mapping.display_text }}"
+              {% if is_selected %}
+                checked
+              {% endif %}
+              form="{{ product_form_id }}"
+              style="position: absolute; opacity: 0; pointer-events: none;"
+            >
+
+            {%- comment -%} Label 按钮 {%- endcomment -%}
+            <label
+              for="multi-host-{{ section.id }}-{{ option.position }}-{{ forloop.index }}"
+              class="variant-extension-qty-btn multi-host-btn {% if is_selected %}selected{% endif %}"
+              data-variant-id="{{ qty_variant.id }}"
+              data-price="{{ qty_variant.price }}"
+              data-capacity="{{ capacity }}"
+              data-display-text="{{ value_mapping.display_text }}"
+              {% if image_url != blank %}
+                data-image-url="{{ image_url }}"
+              {% endif %}
+              {% if other_text != blank %}
+                data-other-text="{{ other_text }}"
+              {% endif %}
+            >
+              {{ value_mapping.display_text }}
+            </label>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</fieldset>
+
+{%- comment -%} JavaScript 处理 Multi Host 模式的交互 {%- endcomment -%}
+<script>
+  (function () {
+    const sectionId = '{{ section.id }}';
+    const multiHostButtons = document.querySelectorAll('.multi-host-btn');
+    const capacityDisplay = document.querySelector('[data-capacity-display]');
+
+    // 更新主产品图片
+    function updateMainProductImage(imageUrl, otherDisplayText = '') {
+      if (!imageUrl) {
+        console.warn('[Multi Host] 没有图片URL');
+        return;
+      }
+
+      const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
+      if (!productInfo) {
+        console.warn('[Multi Host] 找不到 product-info 元素');
+        return;
+      }
+
+      const mainSectionId = productInfo.dataset.section;
+      const mediaGallery = productInfo.querySelector(`[id^="MediaGallery-${mainSectionId}"]`);
+      if (!mediaGallery) {
+        console.warn('[Multi Host] 找不到 MediaGallery 元素');
+        return;
+      }
+
+      let activeSlide = mediaGallery.querySelector('.swiper-slide-active');
+      if (!activeSlide) {
+        activeSlide = mediaGallery.querySelector('.product__media-item[data-media-index="0"]');
+      }
+      if (!activeSlide) {
+        activeSlide = mediaGallery.querySelector('.product__media-item:first-child');
+      }
+      if (!activeSlide) {
+        console.warn('[Multi Host] 找不到激活的幻灯片');
+        return;
+      }
+
+      let mainImage = activeSlide.querySelector('.product-big-image img');
+      if (!mainImage) {
+        mainImage = activeSlide.querySelector('.product__media img');
+      }
+      if (!mainImage) {
+        mainImage = activeSlide.querySelector('img');
+      }
+      if (!mainImage) {
+        console.warn('[Multi Host] 找不到图片元素');
+        return;
+      }
+
+      // 保存原始图片
+      if (!mainImage.dataset.originalSrc) {
+        const currentSrc = mainImage.src || mainImage.getAttribute('src') || mainImage.getAttribute('data-src') || '';
+        const currentSrcset =
+          mainImage.srcset || mainImage.getAttribute('srcset') || mainImage.getAttribute('data-srcset') || '';
+        mainImage.dataset.originalSrc = currentSrc;
+        mainImage.dataset.originalSrcset = currentSrcset;
+      }
+
+      // 更新图片
+      console.log('[Multi Host] 更新图片为:', imageUrl);
+      if (mainImage.tagName === 'IMG') {
+        mainImage.src = imageUrl;
+        mainImage.srcset = imageUrl;
+        mainImage.setAttribute('src', imageUrl);
+        mainImage.setAttribute('srcset', imageUrl);
+      } else {
+        mainImage.setAttribute('src', imageUrl);
+        mainImage.setAttribute('srcset', imageUrl);
+      }
+
+      mainImage.setAttribute('data-src', imageUrl);
+      mainImage.setAttribute('data-srcset', imageUrl);
+
+      // 更新 picture 元素的 source
+      const pictureElement = mainImage.closest('picture');
+      if (pictureElement) {
+        const sources = pictureElement.querySelectorAll('source');
+        sources.forEach((source) => {
+          if (!source.dataset.originalSrcset) {
+            source.dataset.originalSrcset = source.srcset || source.getAttribute('srcset') || '';
+          }
+          source.srcset = imageUrl;
+          source.setAttribute('srcset', imageUrl);
+          if (source.src) {
+            source.src = imageUrl;
+            source.setAttribute('src', imageUrl);
+          }
+        });
+      }
+
+      // 如果使用了 image-lazy 自定义元素
+      if (mainImage.tagName === 'IMG-LAZY' || mainImage.hasAttribute('is')) {
+        const loadEvent = new Event('load', { bubbles: true });
+        mainImage.dispatchEvent(loadEvent);
+
+        if (typeof mainImage.load === 'function') {
+          mainImage.load();
+        }
+        if (typeof mainImage.updateImage === 'function') {
+          mainImage.updateImage(imageUrl);
+        }
+      }
+
+      // 强制图片重新加载
+      if (mainImage.tagName === 'IMG') {
+        mainImage.loading = 'eager';
+        mainImage.removeAttribute('loading');
+
+        const img = new Image();
+        img.onload = () => {
+          console.log('[Multi Host] 图片加载成功');
+        };
+        img.src = imageUrl;
+      }
+
+      // 显示 other_display_text（如果提供）
+      if (otherDisplayText) {
+        showOtherDisplayText(activeSlide, otherDisplayText);
+      } else {
+        hideOtherDisplayText(activeSlide);
+      }
+    }
+
+    // 显示 other_display_text 在图片上
+    function showOtherDisplayText(slideElement, text) {
+      if (!slideElement || !text) return;
+
+      let textOverlay = slideElement.querySelector('.multi-host-display-text');
+      if (!textOverlay) {
+        textOverlay = document.createElement('div');
+        textOverlay.className = 'multi-host-display-text';
+        textOverlay.style.cssText = `
+          position: absolute;
+          bottom: 26%;
+          left: 4%;
+          color: #000;
+          padding: 8px 16px;
+          border-radius: 4px;
+          font-size: 14px;
+          font-weight: 500;
+          z-index: 10;
+          pointer-events: none;
+          white-space: nowrap;
+        `;
+
+        let imageContainer = slideElement.querySelector('.product-big-image');
+        if (!imageContainer) {
+          imageContainer = slideElement.querySelector('.product__media');
+        }
+        if (imageContainer) {
+          if (getComputedStyle(imageContainer).position === 'static') {
+            imageContainer.style.position = 'relative';
+          }
+          imageContainer.appendChild(textOverlay);
+        }
+      }
+
+      textOverlay.textContent = text;
+      textOverlay.style.display = 'block';
+      console.log('[Multi Host] 显示 other_display_text:', text);
+    }
+
+    // 隐藏 other_display_text
+    function hideOtherDisplayText(slideElement) {
+      if (!slideElement) return;
+
+      const textOverlay = slideElement.querySelector('.multi-host-display-text');
+      if (textOverlay) {
+        textOverlay.style.display = 'none';
+        console.log('[Multi Host] 隐藏 other_display_text');
+      }
+    }
+
+    // 按钮点击事件
+    multiHostButtons.forEach((btn) => {
+      btn.addEventListener('click', function (e) {
+        if (this.classList.contains('disabled')) {
+          e.preventDefault();
+          e.stopPropagation();
+          return;
+        }
+
+        // 更新选中状态
+        multiHostButtons.forEach((b) => b.classList.remove('selected'));
+        this.classList.add('selected');
+
+        // 获取按钮数据
+        const variantId = this.dataset.variantId || '';
+        const price = this.dataset.price || '0';
+        const capacity = this.dataset.capacity || '';
+        const displayText = this.dataset.displayText || '';
+        const imageUrl = this.dataset.imageUrl || '';
+        const otherText = this.dataset.otherText || '';
+
+        // 更新容量显示
+        if (capacityDisplay && capacity) {
+          capacityDisplay.textContent = capacity;
+        }
+
+        // 更新主产品图片
+        if (imageUrl && imageUrl !== '') {
+          updateMainProductImage(imageUrl, otherText);
+        }
+
+        // 标记对应的 radio input 为选中
+        const inputId = this.getAttribute('for');
+        const radio = document.getElementById(inputId);
+        if (radio) {
+          radio.checked = true;
+          // 触发 change 事件以更新价格等
+          radio.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+
+        console.log('[Multi Host] Product selected:', {
+          variantId: variantId,
+          price: price,
+          capacity: capacity,
+          displayText: displayText,
+        });
+
+        // 触发 Multi Host 专用事件
+        document.dispatchEvent(
+          new CustomEvent('multi-host:variant:change', {
+            detail: {
+              variantId: variantId,
+              price: price,
+              capacity: capacity,
+              displayText: displayText,
+            },
+          })
+        );
+      });
+    });
+
+    // 初始化时更新图片
+    const selectedBtn = document.querySelector('.multi-host-btn.selected');
+    if (selectedBtn) {
+      const imageUrl = selectedBtn.dataset.imageUrl || '';
+      const otherText = selectedBtn.dataset.otherText || '';
+
+      setTimeout(() => {
+        if (imageUrl && imageUrl !== '') {
+          updateMainProductImage(imageUrl, otherText);
+        }
+      }, 200);
+
+      console.log('[Multi Host] Initialized with selected variant:', {
+        variantId: selectedBtn.dataset.variantId,
+        price: selectedBtn.dataset.price,
+        capacity: selectedBtn.dataset.capacity,
+      });
+    }
+
+    console.log('[Multi Host] Initialized with', multiHostButtons.length, 'variant options');
+  })();
+</script>

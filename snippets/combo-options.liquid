@@ -1,0 +1,79 @@
+<div class="select-tabs">
+  <div class="select-items-box">
+    <div class="select-item active" data-index="0">Kombinationsset</div>
+    <div class="select-item" data-index="1">Empfehlung</div>
+  </div>
+  <div class="tab-panel">
+    <div class="tab-content" data-index="0"></div>
+    <div class="tab-content" data-index="1" style="display:none;"></div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('.select-item').on('click', function () {
+      var idx = $(this).data('index');
+      $('.select-item').removeClass('active');
+      $(this).addClass('active');
+      $('.tab-content').hide();
+      $('.tab-content[data-index="' + idx + '"]').show();
+    });
+    // 选中 group-1 并插入到 gpo-app 的最前面
+    function moveGroup1() {
+      var $group1 = $('.gpo-group[data-element-id="group-1"]');
+      var $gpoApp = $('.gpo-app');
+      // 确保都存在
+      if ($group1.length && $gpoApp.length) {
+        $gpoApp.prepend($group1);
+        // 移动一次后可停止
+        return true;
+      }
+      return false;
+    }
+
+    // 尝试移动，最多检测 50 次，每次间隔 200ms
+    let tryCount = 0;
+    let maxTries = 50;
+    let interval = setInterval(function () {
+      tryCount++;
+      if (moveGroup1() || tryCount >= maxTries) {
+        clearInterval(interval);
+      }
+    }, 200);
+  });
+</script>
+
+<style scoped>
+  .select-tabs {
+    display: flex;
+    flex-direction: column;
+  }
+  .select-items-box {
+    display: flex; /* 横向排列tabs */
+    border-bottom: 1px solid #eee;
+  }
+  .select-item {
+    padding: 10px 20px;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .select-item.active {
+    border-bottom: 2px solid #007bff;
+    color: #007bff;
+    font-weight: bold;
+  }
+  .tab-panel {
+    padding: 20px 0;
+  }
+  @media (max-width: 1024px) {
+    .select-tabs {
+      font-size: 14px;
+    }
+    .select-items {
+      flex-wrap: wrap;
+    }
+  }
+</style>

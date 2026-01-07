@@ -1,0 +1,508 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_overlay_kikcBP": {
+      "type": "image-with-text-overlay",
+      "blocks": {
+        "heading_PWnbPN": {
+          "type": "heading",
+          "settings": {
+            "heading": "Black Friday <strong>Mega-Savings </strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_TjWQET": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Die besten Deals des Jahres nicht verpassen</p>",
+            "text_size": "text-sm"
+          }
+        },
+        "subheading_AcNMf6": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "6. - 28. November"
+          }
+        },
+        "button_z9eBxy": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label_first": "Mehr erfahren",
+            "button_link_first": "",
+            "button_style_first": "btn--primary",
+            "button_label_second": "",
+            "button_link_second": "",
+            "button_style_second": "white--btn--secondary"
+          }
+        },
+        "countdown_CGKM3t": {
+          "type": "countdown",
+          "disabled": true,
+          "settings": {
+            "countdown_title": "",
+            "end_date": "2025-11-12 00:00:00",
+            "countdown_text_color": "#ffffff",
+            "countdown_style": "standard",
+            "show_days": true,
+            "show_hours": true,
+            "show_minutes": true,
+            "show_seconds": true
+          }
+        }
+      },
+      "block_order": [
+        "heading_PWnbPN",
+        "text_TjWQET",
+        "subheading_AcNMf6",
+        "button_z9eBxy",
+        "countdown_CGKM3t"
+      ],
+      "custom_css": [],
+      "name": "t:sections.image-with-text-overlay.name",
+      "settings": {
+        "container": "full",
+        "bg_color": "#ffffff",
+        "title_color": "#ffffff",
+        "text_color": "#fff",
+        "btn_wrapper_alignment": "start",
+        "image": "shopify://shop_images/bf-kv-pc.png",
+        "desktop_height": "extra-medium",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 720,
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "image_mobile": "shopify://shop_images/bf-kv-mobile.png",
+        "mobile_height": "auto",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    // "black_friday_sticky_WMyTMR": {
+    //   "type": "black-friday-sticky",
+    //   "name": "Black Friday Sticky",
+    //   "settings": {}
+    // },
+    "rich_text_image_list_KrEJBJ": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_jP9HGc": {
+          "type": "heading",
+          "settings": {
+            "heading": "Das Datum für maximale Einsparungen speichern",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "image_JpYFYn": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/bf-time-pc.png",
+            "mobile_image": "shopify://shop_images/bf-time-mob.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_jP9HGc",
+        "image_JpYFYn"
+      ],
+      "custom_css": [
+        "h2 {color: #ffffff;}"
+      ],
+      "name": "富文本+图片+视频",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#050d3b",
+        "content_alignment": "center",
+        "ids": "flashsale",
+        "show_title_icon": false,
+        "img-href": "",
+        "padding_top": 100,
+        "padding_bottom": 80,
+        "image_top": 40,
+        "video_radius": 0,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "rich_text_titimg_pWUk4x": {
+      "type": "rich-text-titimg",
+      "blocks": {
+        "heading_fpjQKE": {
+          "type": "heading",
+          "settings": {
+            "heading": "Exklusive Black Friday-Vorteile",
+            "heading_mobile": "",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none",
+            "show_images_with_heading": true,
+            "left_image": "shopify://shop_images/bf-gift-left.png",
+            "right_image": "shopify://shop_images/bf-gift-right.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_fpjQKE"
+      ],
+      "custom_css": [
+        "h2 {color: #ffffff;}"
+      ],
+      "name": "标题带图片",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#050d3b",
+        "content_alignment": "center",
+        "padding_top_inner": 80,
+        "padding_bottom_inner": 60,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "rich_text_diy_XCW8xN": {
+      "type": "rich-text-diy",
+      "blocks": {
+        "heading_zpdmWa": {
+          "type": "heading",
+          "settings": {
+            "heading": "Tägliches Glücksrad",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "custom_liquid_3Pier4": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"ea-spin-wheel-container\"></div>",
+            "container": "fixed",
+            "alignment": "center"
+          }
+        }
+      },
+      "block_order": [
+        "heading_zpdmWa",
+        "custom_liquid_3Pier4"
+      ],
+      "custom_css": [
+        "h2 {color: #ffffff;}",
+        ".easw-border-light p {color: #000000 !important;}"
+      ],
+      "name": "富文本+定制液体",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#050d3b",
+        "content_alignment": "center",
+        "ids": "taglichesglucksrad",
+        "padding_top": 60,
+        "padding_bottom": 80,
+        "image_top": 60,
+        "video_radius": 0,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "black_member_bPHcAn": {
+      "type": "black-member",
+      "blocks": {
+        "card_Kb9ryM": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/friday-member.png",
+            "mobile_image": "shopify://shop_images/friday-member-mobile.png",
+            "title": "Mitglied werden und Vorteile sichern",
+            "button_title": "Mehr erfahren",
+            "button_link": "shopify://pages/rewards-program"
+          }
+        },
+        "card_ANngjE": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/friday-invite.png",
+            "mobile_image": "shopify://shop_images/friday-invite-mobile.png",
+            "title": "50€ Prämie für deine Empfehlung",
+            "button_title": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/pages/empfehlungsprogram"
+          }
+        }
+      },
+      "block_order": [
+        "card_Kb9ryM",
+        "card_ANngjE"
+      ],
+      "name": "黑五会员推荐",
+      "settings": {
+        "ids": "indepointssammeln",
+        "title": "Belohnungen sichern",
+        "title_color": "#ffffff",
+        "bg_color": "#050d3b",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "rich_text_image_list_6XDBRY": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_iVWhf3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Limitierte Geschenke",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "image_Eqihin": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/bf-ges-pc-new.png",
+            "mobile_image": "shopify://shop_images/bf-ges-mobile-new.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_iVWhf3",
+        "image_Eqihin"
+      ],
+      "custom_css": [
+        ".color-scheme-1 {background-image: linear-gradient(#050d3b, #050d3b);}",
+        "h2 {color: #ffffff;}"
+      ],
+      "name": "富文本+图片+视频",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "limitiertegeschenke",
+        "show_title_icon": false,
+        "img-href": "",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "image_top": 40,
+        "video_radius": 0,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "rabatt_list_CQa7Mc": {
+      "type": "rabatt-list",
+      "blocks": {
+        "featured_collection_TXXfW7": {
+          "type": "featured_collection",
+          "settings": {
+            "image": "shopify://shop_images/bf-rabatt-pc.png",
+            "mobile_image": "shopify://shop_images/bf-rabatt-mob.png",
+            "title": "30€ Rabatt",
+            "description": "ab einem Einkaufswert von 500€",
+            "button_title": "Jetzt kaufen",
+            "button_link": "shopify://products/solidflex-2000-balkonkraftwerk-mit-speicher",
+            "button_title_copy": "Jetzt erhalten",
+            "rabatt": "CODE30"
+          }
+        },
+        "featured_collection_fWEgVA": {
+          "type": "featured_collection",
+          "settings": {
+            "image": "shopify://shop_images/bf-rabatt-pc.png",
+            "mobile_image": "shopify://shop_images/bf-rabatt-mob.png",
+            "title": "150€ Rabatt",
+            "description": "ab einem Einkaufswert von 1800€",
+            "button_title": "Jetzt kaufen",
+            "button_link": "shopify://products/solidflex-2000-balkonkraftwerk-mit-speicher",
+            "button_title_copy": "Jetzt erhalten",
+            "rabatt": "CODE150"
+          }
+        },
+        "text_BCQDFC": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>*Kopiere den Rabattcode vor dem Kauf. Gültig: 6.–28. November.</p>",
+            "text_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "featured_collection_TXXfW7",
+        "featured_collection_fWEgVA",
+        "text_BCQDFC"
+      ],
+      "custom_css": [
+        ".color-scheme-1 {background-image: linear-gradient(#050d3b, #050d3b);}",
+        "h2 {color: #ffffff;}"
+      ],
+      "name": "优惠券列表",
+      "settings": {
+        "ids": "limitiertegutscheine",
+        "section_title": "Limitierte Gutscheine",
+        "padding_top_inner": 80,
+        "padding_bottom_inner": 80,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "product_collection_EM9Fzb": {
+      "type": "product-collection",
+      "blocks": {
+        "card_4mxHd3": {
+          "type": "card",
+          "settings": {
+            "product_item": "indevolt-wewrwe2000-balkonkraftwer-mit-halbfesten-akkus-test222",
+            "custom_image": "shopify://shop_images/new-black-product-img1.jpg",
+            "mobile_image": "shopify://shop_images/new-black-product-img1.jpg",
+            "hotsale": "Hot sale",
+            "custom_title": "BK1600 + 440W Bifaziale Solarpanels*2",
+            "custom_describe": "In nur 1,82 Jahren amortisiert\\nProduziert ca. 3,5 kWh täglich\\nErzeugt rund 1028 kWh pro Jahr\\nSpart bis zu 411€ im Jahr",
+            "price": "599,00€",
+            "original": "1.328,00€",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher?variant=43351637491811"
+          }
+        },
+        "card_nzJPJJ": {
+          "type": "card",
+          "settings": {
+            "product_item": "bk1600-balkonkraftwerk-mit-speicher",
+            "custom_image": "shopify://shop_images/new-black-product-img2.jpg",
+            "mobile_image": "shopify://shop_images/new-black-product-img2.jpg",
+            "hotsale": "Hot sale",
+            "custom_title": "SolidFlex 2000 + SFA1800*1",
+            "custom_describe": "2400W AC-Kopplung\\nDas sicherste System\\nExklusive CycBoost‑Technologie",
+            "price": "1.078,00€",
+            "original": "1.898,00€",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/solidflex-2000-balkonkraftwerk-mit-speicher?variant=43629441089635"
+          }
+        },
+        "card_wNrFrK": {
+          "type": "card",
+          "settings": {
+            "product_item": "bk1600-ultra-balkonkraftwerk-mit-speicher",
+            "custom_image": "shopify://shop_images/new-black-product-img3.jpg",
+            "mobile_image": "shopify://shop_images/new-black-product-img3.jpg",
+            "hotsale": "Hot sale",
+            "custom_title": "SolidFlex 2000 + SFA1800*1 + 500W Bifaziale Solarpanels*4",
+            "custom_describe": "In nur 1,84 Jahren amortisiert \\nProduziert ca. 7 kWh täglich \\nErzeugt rund 2056 kWh pro Jahr \\nSpart bis zu 822€ im Jahr",
+            "price": "1.578,00€",
+            "original": "2.597,00€",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/solidflex-2000-balkonkraftwerk-mit-speicher?variant=43685621923939"
+          }
+        },
+        "card_rUzapm": {
+          "type": "card",
+          "settings": {
+            "product_item": "solidflex-2000-balkonkraftwerk-mit-speicher",
+            "custom_image": "shopify://shop_images/new-black-product-img4.jpg",
+            "mobile_image": "shopify://shop_images/new-black-product-img4.jpg",
+            "hotsale": "Hot sale",
+            "custom_title": "SolidFlex 2000 ECO + SFA1800*2",
+            "custom_describe": "2400W AC-Kopplung\\nDas sicherste System\\nExklusive CycBoost‑Technologie",
+            "price": "1.347,00€",
+            "original": "2.397,00€",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus?variant=43817399255139"
+          }
+        }
+      },
+      "block_order": [
+        "card_4mxHd3",
+        "card_nzJPJJ",
+        "card_wNrFrK",
+        "card_rUzapm"
+      ],
+      "custom_css": [
+        ".slick-dots li button:before {display: none;}",
+        ".product-collection-box .custom-product-title,.product-collection-box .custom-product-price {margin-top: 8px;}",
+        "@media (max-width: 768px) {.btn {font-size: 14px; }}"
+      ],
+      "name": "产品推荐",
+      "settings": {
+        "id": "produktempfehlung",
+        "title": "Produktempfehlung",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "bg_color": "#050d3b",
+        "content_color": "#ffffff",
+        "title_color": "#ffffff",
+        "product_onsale": "kv-size",
+        "list_style": "kv-list",
+        "button_alignment": "center"
+      }
+    },
+    "rich_text_9hxcEy": {
+      "type": "rich-text",
+      "blocks": {
+        "text_bGjyc3": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Aktionshinweise:</strong><br/>1. Gewinne vom Glücksrad gelten nur für Bestellungen, die während der Aktion aufgegeben werden (6. bis 28. November).<br/>2. Die gesammelten IndePoints können gegen Gutscheine oder Prämien eingetauscht werden. <a href=\"https://de.indevolt.com/pages/rewards-program\" title=\"https://de.indevolt.com/pages/rewards-program\">Mehr erfahren</a><br/>3. Gutscheine sind nur während der Aktionsdauer erhältlich: gültig vom 6. bis zum 28. November.<br/>4. Sachgeschenke werden bis zum 10. Dezember 2025 versandt.</p>",
+            "text_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "text_bGjyc3"
+      ],
+      "custom_css": [
+        ".color-scheme-1 {background-image: linear-gradient(#050d3b, #050d3b);}",
+        "a {color: #ffa81d;}",
+        "p {color: #ffffff;}",
+        "@media (max-width: 767.98px) {p {line-height: 15px; font-size: 12px; }}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top_inner": 0,
+        "padding_bottom_inner": 120,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_overlay_kikcBP",
+    // "black_friday_sticky_WMyTMR",
+    "rich_text_image_list_KrEJBJ",
+    "rich_text_titimg_pWUk4x",
+    "rich_text_diy_XCW8xN",
+    "black_member_bPHcAn",
+    "rich_text_image_list_6XDBRY",
+    "rabatt_list_CQa7Mc",
+    "product_collection_EM9Fzb",
+    "rich_text_9hxcEy"
+  ]
+}

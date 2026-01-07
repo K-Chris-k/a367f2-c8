@@ -1,0 +1,41 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "176121011769b2cbdf": {
+      "type": "apps",
+      "blocks": {
+        "wheelify_spin_wheel_email_pop_wheelify_app_section_8gTUB4": {
+          "type": "shopify://apps/wheelify-spin-wheel-email-pop/blocks/wheelify-app-section/505ff42c-abce-4466-9558-7e1d3b2cfcd7",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "wheelify_spin_wheel_email_pop_wheelify_app_section_8gTUB4"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "176121011769b2cbdf"
+  ]
+}

@@ -1,0 +1,451 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badges": {
+          "type": "badges",
+          "settings": {
+            "show_soldout_badge": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 40,
+            "size_title": "Size",
+            "size_chart_from_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "name": "支付信息",
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "certificate",
+            "image_1": "shopify:\/\/shop_images\/brand-icon1.svg",
+            "heading_1": "Bequem bezahlen",
+            "content_image_1": "shopify:\/\/shop_images\/card.png",
+            "icon_2": "truck",
+            "image_2": "shopify:\/\/shop_images\/brand-icon2.svg",
+            "content_image_2": "shopify:\/\/shop_images\/track.png",
+            "heading_2": "Zuverlässige Lieferung",
+            "icon_3": "star-four",
+            "heading_3": ""
+          }
+        },
+        "logistics_pN3qrf": {
+          "type": "logistics",
+          "settings": {
+            "enable_sticky_info": true
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "tag",
+            "product_list_limit": 4,
+            "products_per_page": 1,
+            "image_ratio": "adapt",
+            "enable_quick_add": true
+          }
+        }
+      },
+      "block_order": [
+        "badges",
+        "title",
+        "price",
+        "description",
+        "variant_picker",
+        "buy_buttons",
+        "icon_with_text",
+        "logistics_pN3qrf",
+        "complementary"
+      ],
+      "custom_css": [
+        ".loox-rating {margin-top: -1rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": true,
+        "media_size": "medium",
+        "gallery_layout": "carousel",
+        "mobile_thumbnails": "show",
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "image_with_text_kPUheB": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_cndngj": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Energie op aanvraag<\/strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_wk6n73": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Monitoring en controle met de slimme stekker.<br\/><br\/><\/p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cndngj",
+        "text_wk6n73"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image": "shopify:\/\/shop_images\/smartplug-img1.jpg",
+        "image_height": "adapt",
+        "layout": "text_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "mobile_content_alignment": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_with_text_3MQzPU": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_ENp7Ew": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Plug & Play<\/strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_bHb4UC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Bespaar op dure elektricien kosten. Terwijl slimme meters installatie op een rail vereisen, is de slimme stekker binnen slechts 3 seconden gebruiksklaar.<\/p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_ENp7Ew",
+        "text_bHb4UC"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image": "shopify:\/\/shop_images\/smartplug-img2.jpg",
+        "image_height": "adapt",
+        "layout": "image_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "mobile_content_alignment": "left",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_CqTqgF": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_6d3En4": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Intelligente afstandsbediening & energiebewaking<\/strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_R3yQHa": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Stel een Wi-Fi-verbinding in en pas uw energie gemakkelijk vanaf elke locatie aan. De slimme stekker registreert automatisch het realtime energieverbruik en helpt energieverspilling te voorkomen.<\/p>",
+            "text_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "heading_6d3En4",
+        "text_R3yQHa"
+      ],
+      "name": "标题1",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "service_info_Fhqx97": {
+      "type": "service-info",
+      "name": "图片1",
+      "settings": {
+        "title": "",
+        "image_pc": "shopify:\/\/shop_images\/smartplug-img3.jpg",
+        "image_mobile": "shopify:\/\/shop_images\/smartplug-img3.jpg",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
+    "image_with_text_L67EDY": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_gUm6AL": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Krachtige functies in een compact ontwerp<\/strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_wRteTP": {
+          "type": "text",
+          "settings": {
+            "text": "<p>De brandwerende PC-behuizing is bestand tegen vet, zuur en alkali. Met een maximaal ingangsvermogen van 3680 W zorgt deze voor uw veiligheid.<\/p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_gUm6AL",
+        "text_wRteTP"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "image": "shopify:\/\/shop_images\/smartplug-img4.jpg",
+        "image_height": "adapt",
+        "layout": "text_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "left",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "multicolumn_Mxt4d3": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_ppme79": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify:\/\/shop_images\/smarplug-simg1.png",
+            "image_width": "extra-large",
+            "title": "",
+            "heading_size": "h4",
+            "text": "<h5>Slimme Stekker<\/h5>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        },
+        "column_6eYcFq": {
+          "type": "column",
+          "settings": {
+            "show_image": true,
+            "image": "shopify:\/\/shop_images\/smartplug-simg2.jpg",
+            "image_width": "extra-large",
+            "title": "",
+            "heading_size": "h4",
+            "text": "<h5>Gebruikershandleiding<\/h5>",
+            "text_size": "text-base",
+            "button_label": "",
+            "button_style": "btn--underline",
+            "button_link": "",
+            "mobile_layout": "inherit"
+          }
+        }
+      },
+      "block_order": [
+        "column_ppme79",
+        "column_6eYcFq"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "heading": "Leveringsomvang",
+        "heading_size": "hd2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "column_alignment": "center",
+        "columns_desktop": 4,
+        "column_gap": "large",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "padding_top": 50,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "parameter_MCPY6c": {
+      "type": "parameter",
+      "blocks": {
+        "card_LYWhYC": {
+          "type": "card",
+          "settings": {
+            "title": "Productmodel",
+            "content": "SP16",
+            "note": ""
+          }
+        },
+        "card_8bwHK3": {
+          "type": "card",
+          "settings": {
+            "title": "TechnicTechnische parameters",
+            "content": "110-250V 50\/60Hz 16A, MAX 3680Wal parameters",
+            "note": ""
+          }
+        },
+        "card_mP8iNt": {
+          "type": "card",
+          "settings": {
+            "title": "Bedrijfstemperatuur",
+            "content": "-20℃ tot 50℃",
+            "note": ""
+          }
+        },
+        "card_Fhrd9a": {
+          "type": "card",
+          "settings": {
+            "title": "Connectiviteit",
+            "content": "Bluetooth en Wi-Fi",
+            "note": ""
+          }
+        },
+        "card_jBnG3t": {
+          "type": "card",
+          "settings": {
+            "title": "Installatie",
+            "content": "Plug & Play",
+            "note": ""
+          }
+        },
+        "card_LW3bBH": {
+          "type": "card",
+          "settings": {
+            "title": "Compatibiliteit",
+            "content": "Indevolt BK1600",
+            "note": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_LYWhYC",
+        "card_8bwHK3",
+        "card_mP8iNt",
+        "card_Fhrd9a",
+        "card_jBnG3t",
+        "card_LW3bBH"
+      ],
+      "name": "参数列表",
+      "settings": {
+        "title": "Technische Gegevens"
+      }
+    },
+    "download_KmMViJ": {
+      "type": "download",
+      "blocks": {
+        "card_g9kb84": {
+          "type": "card",
+          "settings": {
+            "title": "Indevolt Smart Plug SP16",
+            "content": "Instructiehandleiding",
+            "date": "2024-01-21",
+            "pdf_file": "https:\/\/cdn.shopify.com\/s\/files\/1\/0596\/6367\/9587\/files\/Indevolt_Smart_Plug_SP16.pdf?v=1736134981"
+          }
+        }
+      },
+      "block_order": [
+        "card_g9kb84"
+      ],
+      "name": "下载列表",
+      "settings": {
+        "title": "Downloads"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "image_with_text_kPUheB",
+    "image_with_text_3MQzPU",
+    "rich_text_CqTqgF",
+    "service_info_Fhqx97",
+    "image_with_text_L67EDY",
+    "multicolumn_Mxt4d3",
+    "parameter_MCPY6c",
+    "download_KmMViJ"
+  ]
+}

@@ -1,0 +1,440 @@
+{% liquid
+  assign motion_delay = 50
+%}
+<style>
+  #shopify-section-{{ section.id }} {
+    margin-top: {{ section.settings.padding_top }}px;
+    margin-bottom: {{ section.settings.padding_bottom }}px;
+  }
+  
+  .product-comparison {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .product-comparison h2 {font-size:48px;line-height:58px; text-align:center}
+  .product-compare-header {
+    display: grid;
+    grid-template-columns: 1fr repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .product-compare-box {
+    display: grid;
+    grid-template-columns: 1fr repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .comparison-products {
+    display: contents;
+  }
+  
+  .product-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+    padding:0px 20px;
+  }
+ 
+  .product-card .image-box{ margin:0px 10px}
+  .product-card .product-card__image {
+    aspect-ratio: 1/1;
+    object-fit: contain;
+  }
+  .product-card .product-card__title{line-height:22px;font-size:18px}
+  .comparison-details {
+    display: contents;
+  }
+  .product-card p{color:#fff}
+  .detail-row {
+    grid-column: 1 / span 4;
+    display: grid;
+    grid-template-columns: 1fr repeat(3, 1fr);
+    gap: 20px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    text-align:center
+  }
+  
+  .detail-title,.detail-content {
+    word-wrap: break-word;
+    font-weight: bold;
+  }
+  .detail-content em{font-style:normal; font-weight: 900;color:#32bc2e}
+   .detail-title{font-weight:normal}
+ .product-compare-header .slick-track{ display:flex;width:100%}
+ .product-cpmapre-wrapper{position:relative}
+ .product-cpmapre-wrapper .carousel-arrows{display:none} 
+ .product-cpmapre-wrapper .carousel-arrows button {
+        position: relative;
+        background: rgba(118, 118, 118, 0.2);
+        border: none;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        padding: 0;
+        font-size: 0; /* 隐藏文本 */
+        cursor: pointer;
+        color: #fff;
+        transition: background 0.3s;
+        pointer-events: all;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+  }
+  .product-cpmapre-wrapper .carousel-arrows button:hover {
+    background: rgba(118, 118, 118, 0.5);
+  }
+  .product-cpmapre-wrapper .carousel-arrows button.prev-arrow,
+  .product-cpmapre-wrapper .carousel-arrows button.next-arrow {
+    left: unset;
+    right: unset;
+  }
+  
+  .product-cpmapre-wrapper .carousel-arrows button.prev-arrow::after,
+  .product-cpmapre-wrapper .carousel-arrows button.next-arrow::after {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+  }
+  
+ .product-cpmapre-wrapper  .carousel-arrows button.prev-arrow::after {
+    transform: rotate(45deg);
+    margin-left: 4px;
+  }
+  
+  .product-cpmapre-wrapper .carousel-arrows button.next-arrow::after {
+    transform: rotate(-135deg);
+    margin-right: 4px;
+  }
+  
+  /* 按钮位置 */
+ .product-cpmapre-wrapper .carousel-arrows button.prev-arrow { left: 60px; }
+ .product-cpmapre-wrapper .carousel-arrows button.next-arrow { right: 60px; }
+  @media (max-width: 768px) {
+    .product-cpmapre-wrapper .carousel-arrows button{ width:38px;height:38px}
+    .product-cpmapre-wrapper .carousel-arrows button.prev-arrow { left: 5px; }
+    .product-cpmapre-wrapper .carousel-arrows button.next-arrow { right: 5px; }
+  }
+  @media (max-width: 1023px) {
+    #shopify-section-{{ section.id }} {
+      margin-top: {{ section.settings.padding_top | divided_by: 2 }}px;
+      margin-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
+    }
+    .product-comparison h2{ font-size:28px;line-height:34px; }
+    .product-compare-header,
+    .product-compare-box {
+      gap: 15px;
+      padding-bottom: 15px;
+    }
+    
+    .product-compare-header > *,
+    .product-card,
+    .detail-row > * {
+      min-width: 180px;
+      scroll-snap-align: start;
+    }
+    .product-compare-header,.specs-slide{ display: flex;}
+    .product-card .product-card__title,.slick-initialized .slick-slide{line-height:22px;font-size:14px}
+    .products-slider .slick-slide{display: flex;align-items: center;}
+    .detail-row,.specs-slide .slick-slider .slick-track,.detail-row,.specs-slide .slick-slider .slick-list,
+    .specs-slider .slick-track{
+      display: flex;
+      align-items: end;
+    }
+    .product-cpmapre-wrapper .carousel-arrows {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        z-index: 10;
+        pointer-events: none;
+    }
+  }
+
+</style>
+
+<div class="section page-width section-padding product-comparison">
+  {% if section.settings.title != blank %}
+    <h2>
+      <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}"><span>{{ section.settings.title }}</span></motion-element>
+    </h2>
+  {% endif %}
+       <div class="product-cpmapre-wrapper">
+        <!-- 产品卡片区域 -->
+        <div class="product-compare-header products-slider">
+            {%- for block in section.blocks -%}
+            {%- if block.type == 'products' -%}
+                <div class="product-card">
+                {% if block.settings.image != blank %}
+                    <div class="image-box">
+                    <img class="product-card__image" 
+                        src="{{ block.settings.image | img_url: '300x' }}" 
+                        alt="{{ block.settings.title | escape }}" 
+                        loading="lazy">
+                </div>
+                {% endif %}
+                <h3 class="product-card__title">{{ block.settings.title }}</h3>
+                {% if block.settings.link_url != blank %}
+                    <a href="{{ block.settings.link_url }}" class="btn btn--primary links">
+                    {{ block.settings.link_title | default: '查看详情' }}
+                    </a>
+                {% endif %}
+                </div>
+            {%- endif -%}
+            {%- endfor -%}
+        </div>
+          <div class="carousel-arrows">
+            <button class="prev-arrow">❮</button>
+            <button class="next-arrow">❯</button>
+        </div>
+        </div>
+        <!-- 参数对比区域 -->
+        <div class="product-compare-box ">
+            {%- for block in section.blocks -%}
+            {%- if block.type == 'product_details' -%}
+                <div class="detail-row specs-slider">
+                
+                {% for i in (1..4) %}
+                    {% assign content_key = 'content' | append: i %}
+                    <div class="detail-content">
+                    {{ block.settings[content_key] }}
+                    <div class="detail-title">{{ block.settings.title }}</div>
+                    </div>
+                {% endfor %}
+                </div>
+            {%- endif -%}
+            {%- endfor -%}
+        </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  function initSliders() {
+    if (window.innerWidth <= 1023) {
+      $('.products-slider').slick({
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        arrows: true,
+        infinite: false,
+        dots: false,
+        mobileFirst: true,
+        prevArrow: $('.prev-arrow'),
+        nextArrow: $('.next-arrow'),
+        responsive: [
+         {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 2,
+            }
+          }
+        ]
+      });
+
+      $('.specs-slider').slick({
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        arrows: false,
+        infinite: false,
+        dots: false,
+        mobileFirst: true,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 2,
+            }
+          }
+        ]
+      });
+      $('.products-slider').on('afterChange', function(event, slick, currentSlide) {
+        $('.specs-slider').slick('slickGoTo', currentSlide);
+      });
+    }
+  }
+
+  function destroySliders() {
+    if ($('.products-slider').hasClass('slick-initialized')) {
+      $('.products-slider').slick('unslick');
+    }
+    if ($('.specs-slider').hasClass('slick-initialized')) {
+      $('.specs-slider').slick('unslick');
+    }
+  }
+
+  if (window.innerWidth <= 1023) {
+    initSliders();
+  }
+
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      if (window.innerWidth <= 1023 && !$('.products-slider').hasClass('slick-initialized')) {
+        initSliders();
+      } else if (window.innerWidth > 1023) {
+        destroySliders();
+      }
+    }, 250);
+  });
+});
+</script>
+{% schema %}
+{
+  "name": "产品对比表",
+  "tag": "section",
+  "class": "section section-compare-products",
+  "max_blocks": 50,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "产品详细对比"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "顶部间距",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "底部间距",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "products",
+      "name": "对比产品",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "产品图片"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "产品名称",
+          "default": "产品名称"
+        },
+        {
+          "type": "richtext",
+          "id": "link_title",
+          "label": "按钮文字",
+          "default": "<p>查看详情</p>"
+        },
+        {
+          "type": "url",
+          "id": "link_url",
+          "label": "产品链接"
+        }
+      ]
+    },
+    {
+      "type": "product_details",
+      "name": "产品参数",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "参数名称",
+          "default": "产品参数"
+        },
+        {
+          "type": "richtext",
+          "id": "content1",
+          "label": "产品1参数值"
+        },
+        {
+          "type": "richtext",
+          "id": "content2",
+          "label": "产品2参数值"
+        },
+        {
+          "type": "richtext",
+          "id": "content3",
+          "label": "产品3参数值"
+        },
+        {
+          "type": "richtext",
+          "id": "content4",
+          "label": "产品4参数值"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "产品对比表",
+      "category": "产品展示",
+      "blocks": [
+        {
+          "type": "products",
+          "settings": {
+            "title": "产品1"
+          }
+        },
+        {
+          "type": "products",
+          "settings": {
+            "title": "产品2"
+          }
+        },
+        {
+          "type": "products",
+          "settings": {
+            "title": "产品3"
+          }
+        },
+        {
+          "type": "products",
+          "settings": {
+            "title": "产品4"
+          }
+        },
+        {
+          "type": "product_details",
+          "settings": {
+            "title": "材质",
+            "content1": "<p>铝合金</p>",
+            "content2": "<p>不锈钢</p>",
+            "content3": "<p>塑料</p>",
+            "content4": "<p>碳纤维</p>"
+          }
+        },
+        {
+          "type": "product_details",
+          "settings": {
+            "title": "重量",
+            "content1": "<p>1.2kg</p>",
+            "content2": "<p>2.5kg</p>",
+            "content3": "<p>0.8kg</p>",
+            "content4": "<p>1.5kg</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

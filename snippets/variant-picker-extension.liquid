@@ -1,0 +1,424 @@
+{%- comment -%}
+  扩展模式渲染 - 基于元字段配置
+  用于渲染 BaseName + Extension*Quantity 类型的变体选择器
+
+  参数：
+  - option: 当前选项对象
+  - option_config: 选项配置（从元字段获取）
+  - variant_config: 完整的变体配置
+  - product: 产品对象
+  - product_form_id: 表单ID
+  - section: section对象
+  - option_index: 选项索引
+{%- endcomment -%}
+
+{%- liquid
+  assign selected_variant = product.selected_or_first_available_variant
+  assign selected_option_value = selected_variant.options[option_index]
+
+  # 查找基础 variant 和当前选中的数量
+  assign base_variant = null
+  assign selected_qty = 0
+
+  # 从value_mapping中查找对应关系
+  for value in option.values
+    assign value_mapping = option_config.value_mapping[value]
+
+    # 找基础variant（quantity为0或null）
+    if value_mapping and value_mapping.display_text contains option_config.base_display_name
+      if value_mapping.quantity == 0 or value_mapping.quantity == null or value_mapping.quantity == blank
+        for variant in product.variants
+          if variant.options[option_index] == value
+            assign base_variant = variant
+            break
+          endif
+        endfor
+      endif
+    endif
+
+    # 检查当前选中的值
+    if value == selected_option_value and value_mapping
+      assign selected_qty = value_mapping.quantity | plus: 0
+    endif
+  endfor
+
+  # 如果没找到基础variant，使用配置中的base_value
+  if base_variant == null and option_config.base_value
+    for variant in product.variants
+      if variant.options[option_index] == option_config.base_value
+        assign base_variant = variant
+        break
+      endif
+    endfor
+  endif
+
+  # 获取图片
+  assign base_image = null
+  if base_variant and base_variant.image
+    assign base_image = base_variant.image
+  elsif product.featured_image
+    assign base_image = product.featured_image
+  endif
+
+  # 计算当前容量
+  assign current_capacity = base_variant.title
+  if selected_option_value != blank
+    assign sel_value_mapping = option_config.value_mapping[selected_option_value]
+    if sel_value_mapping and sel_value_mapping.capacity
+      assign current_capacity = sel_value_mapping.capacity
+    endif
+  endif
+-%}
+
+{%- comment -%} Fieldset包装 {%- endcomment -%}
+<fieldset class="product-form__input product-form__input--button js flex flex-wrap gap-3 product-form__input--button-standard">
+  {%- comment -%} 容量显示 {%- endcomment -%}
+  {%- if option_config.capacity_label -%}
+    <div class="variant-capacity-display">
+      {{ option_config.capacity_label }}:
+      <span class="value" data-capacity-display>{{ current_capacity }}</span>
+    </div>
+  {%- endif -%}
+
+  <legend class="form__label">
+    <div class="flex flex-wrap gap-2">
+      <span class="font-body-bold">{{ option.name }}:</span>
+    </div>
+  </legend>
+
+  <div class="variant-extension-card">
+    {%- comment -%} 基础产品部分 {%- endcomment -%}
+    <div class="variant-extension-base">
+      {%- if base_image -%}
+        <div class="variant-extension-base-image">
+          <img
+            src="{{ base_image | image_url: width: 160 }}"
+            alt="{{ option_config.base_display_name }}"
+            loading="lazy"
+            width="80"
+            height="80"
+          >
+        </div>
+      {%- else -%}
+        <div class="variant-extension-base-image"></div>
+      {%- endif -%}
+
+      <div class="variant-extension-base-content">
+        <h3 class="variant-extension-base-title">
+          {{ option_config.base_display_name }}
+          {%- if option_config.base_capacity %} ({{ option_config.base_capacity }}){% endif %}
+        </h3>
+        {%- if base_variant -%}
+          <div class="variant-extension-base-price">
+            <span class="current-price">{{ base_variant.price | money }}</span>
+            {%- if base_variant.compare_at_price > base_variant.price -%}
+              <span class="original-price">{{ base_variant.compare_at_price | money }}</span>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- comment -%} 扩展产品部分 {%- endcomment -%}
+    <div class="variant-extension-section">
+      {%- if base_image -%}
+        <div class="variant-extension-section-image">
+          <img
+            src="{{ base_image | image_url: width: 160 }}"
+            alt="{{ option_config.extension_unit }}"
+            loading="lazy"
+            width="80"
+            height="80"
+          >
+        </div>
+      {%- else -%}
+        <div class="variant-extension-section-image"></div>
+      {%- endif -%}
+
+      <div class="variant-extension-section-content">
+        <h3 class="variant-extension-section-title">
+          {{ option_config.extension_unit }}
+          {%- if option_config.base_capacity %} ({{ option_config.base_capacity }}){% endif %}
+        </h3>
+        {%- if option_config.extension_price_per_unit -%}
+          <div class="variant-extension-section-desc">
+            Erweiterungsakku ({{ option_config.extension_price_per_unit }}€ pro Akku)
+          </div>
+        {%- endif -%}
+
+        {%- comment -%} 数量选择按钮 {%- endcomment -%}
+        <div class="variant-extension-qty-buttons">
+          {%- for qty in option_config.quantities -%}
+            {%- liquid
+              # 根据配置查找对应的variant value
+              assign target_value = null
+              assign qty_variant = null
+              assign qty_selected = false
+              assign value_mapping = null
+
+              # 首先遍历 option.values，查找匹配的数量（优先查找有 variant 的）
+              # 使用包含匹配，而不是精确匹配，以处理属性值名称可能包含 emoji 或其他前缀的情况
+              for value in option.values
+                # 方法1: 精确匹配
+                assign value_mapping_item = option_config.value_mapping[value]
+                if value_mapping_item == blank
+                  # 方法2: 包含匹配 - 遍历 value_mapping 的键，检查 value 是否包含该键
+                  # 由于 Liquid 不能直接遍历对象键，我们需要构建预期的键名并检查
+                  if option_config.base_value and option_config.extension_unit
+                    assign base_name = option_config.base_value
+                    assign base_name_parts = base_name | split: ' ('
+                    if base_name_parts.size > 1
+                      assign base_name = base_name_parts[0]
+                    endif
+                    assign base_capacity_num = option_config.base_capacity | replace: 'Wh', '' | plus: 0
+                    assign extension_total = base_capacity_num | times: qty
+                    assign total_capacity_num = base_capacity_num | plus: extension_total
+                    assign total_capacity = total_capacity_num | append: 'Wh'
+                    assign expected_key = base_name | append: '+' | append: option_config.extension_unit | append: '*' | append: qty | append: ' (' | append: total_capacity | append: ')'
+                    # 检查 value 是否包含预期的键名（去除可能的 emoji 或特殊字符）
+                    assign value_cleaned = value | strip
+                    assign expected_key_cleaned = expected_key | strip
+                    if value_cleaned contains expected_key_cleaned
+                      assign value_mapping_item = option_config.value_mapping[expected_key]
+                    endif
+                  endif
+                endif
+
+                if value_mapping_item
+                  # 匹配数量
+                  assign mapped_qty = value_mapping_item.quantity | plus: 0
+                  if mapped_qty == qty
+                    assign target_value = value
+                    assign value_mapping = value_mapping_item
+                    # 检查选项值的可用性（级联关系）
+                    assign value_available = value.available
+                    # 找到对应的variant
+                    for variant in product.variants
+                      if variant.options[option_index] == value
+                        assign qty_variant = variant
+                        if selected_option_value == value
+                          assign qty_selected = true
+                        endif
+                        break
+                      endif
+                    endfor
+                    break
+                  endif
+                endif
+              endfor
+
+              # 如果没找到，尝试从 value_mapping 中构建键名查找（即使没有 variant 也要显示）
+              # 由于 Liquid 不能直接遍历对象的键，我们需要根据配置构建可能的键名
+              if target_value == blank and option_config.value_mapping and option_config.base_value and option_config.extension_unit
+                # 从 base_value 中提取基础名称（去掉容量部分）
+                # base_value 格式可能是 "SolidFlex2000 (1792Wh)" 或 "SolidFlex2000"
+                assign base_name = option_config.base_value
+                assign base_name_parts = base_name | split: ' ('
+                if base_name_parts.size > 1
+                  assign base_name = base_name_parts[0]
+                endif
+
+                # 计算 capacity（基于 base_capacity 和 qty）
+                assign base_capacity_num = option_config.base_capacity | replace: 'Wh', '' | plus: 0
+                assign extension_capacity_num = base_capacity_num
+                # 总容量 = 基础容量 + (扩展容量 * 数量)
+                assign extension_total = extension_capacity_num | times: qty
+                assign total_capacity_num = base_capacity_num | plus: extension_total
+                assign total_capacity = total_capacity_num | append: 'Wh'
+
+                # 尝试多种键名格式，并使用包含匹配查找 option.values
+                # 格式1: base_name+extension_unit*qty (total_capacity) - 这是标准格式
+                assign possible_key1 = base_name | append: '+' | append: option_config.extension_unit | append: '*' | append: qty | append: ' (' | append: total_capacity | append: ')'
+                assign mapping_found = false
+
+                # 首先尝试精确匹配 value_mapping
+                if option_config.value_mapping[possible_key1]
+                  assign value_mapping = option_config.value_mapping[possible_key1]
+                  # 然后在 option.values 中查找包含该键名的值
+                  for value in option.values
+                    assign value_cleaned = value | strip
+                    assign key_cleaned = possible_key1 | strip
+                    if value_cleaned contains key_cleaned
+                      assign target_value = value
+                      assign mapping_found = true
+                      # 找到对应的variant
+                      for variant in product.variants
+                        if variant.options[option_index] == value
+                          assign qty_variant = variant
+                          if selected_option_value == value
+                            assign qty_selected = true
+                          endif
+                          break
+                        endif
+                      endfor
+                      break
+                    endif
+                  endfor
+                endif
+
+                # 如果格式1没找到，尝试格式2
+                if mapping_found == false
+                  assign possible_key2 = option_config.base_value | append: '+' | append: option_config.extension_unit | append: '*' | append: qty | append: ' (' | append: total_capacity | append: ')'
+                  if option_config.value_mapping[possible_key2]
+                    assign value_mapping = option_config.value_mapping[possible_key2]
+                    for value in option.values
+                      assign value_cleaned = value | strip
+                      assign key_cleaned = possible_key2 | strip
+                      if value_cleaned contains key_cleaned
+                        assign target_value = value
+                        assign mapping_found = true
+                        for variant in product.variants
+                          if variant.options[option_index] == value
+                            assign qty_variant = variant
+                            if selected_option_value == value
+                              assign qty_selected = true
+                            endif
+                            break
+                          endif
+                        endfor
+                        break
+                      endif
+                    endfor
+                  endif
+                endif
+
+                # 如果格式2也没找到，尝试格式3（不带容量）
+                if mapping_found == false
+                  assign possible_key3 = base_name | append: '+' | append: option_config.extension_unit | append: '*' | append: qty
+                  if option_config.value_mapping[possible_key3]
+                    assign value_mapping = option_config.value_mapping[possible_key3]
+                    for value in option.values
+                      assign value_cleaned = value | strip
+                      assign key_cleaned = possible_key3 | strip
+                      if value_cleaned contains key_cleaned
+                        assign target_value = value
+                        assign mapping_found = true
+                        for variant in product.variants
+                          if variant.options[option_index] == value
+                            assign qty_variant = variant
+                            if selected_option_value == value
+                              assign qty_selected = true
+                            endif
+                            break
+                          endif
+                        endfor
+                        break
+                      endif
+                    endfor
+                  endif
+                endif
+              endif
+
+              # 如果没找到，检查是否是base_value (qty=0的情况)
+              if target_value == blank and qty == 0 and option_config.base_value
+                assign target_value = option_config.base_value
+                assign qty_variant = base_variant
+                # 检查base_value的可用性（级联关系）
+                for value in option.values
+                  if value == option_config.base_value
+                    assign value_available = value.available
+                    break
+                  endif
+                endfor
+                if selected_option_value == option_config.base_value
+                  assign qty_selected = true
+                endif
+                # 获取 base_value 的 mapping
+                if option_config.value_mapping[option_config.base_value]
+                  assign value_mapping = option_config.value_mapping[option_config.base_value]
+                endif
+              endif
+            -%}
+
+            {%- comment -%} 如果找到了 target_value，或者需要显示所有 quantities 中的数量，就显示按钮 {%- endcomment -%}
+            {%- liquid
+              # 如果没有 target_value，但 quantities 中包含这个数量，创建一个临时的 target_value
+              if target_value == blank
+                # 构建一个临时的 target_value 用于显示按钮
+                if option_config.base_value and option_config.extension_unit
+                  assign base_name = option_config.base_value
+                  assign base_name_parts = base_name | split: ' ('
+                  if base_name_parts.size > 1
+                    assign base_name = base_name_parts[0]
+                  endif
+                  assign base_capacity_num = option_config.base_capacity | replace: 'Wh', '' | plus: 0
+                  assign extension_total = base_capacity_num | times: qty
+                  assign total_capacity_num = base_capacity_num | plus: extension_total
+                  assign total_capacity = total_capacity_num | append: 'Wh'
+                  assign target_value = base_name | append: '+' | append: option_config.extension_unit | append: '*' | append: qty | append: ' (' | append: total_capacity | append: ')'
+                  # 尝试从 value_mapping 中获取信息
+                  if option_config.value_mapping[target_value]
+                    assign value_mapping = option_config.value_mapping[target_value]
+                  endif
+                endif
+              endif
+            -%}
+            {%- if target_value -%}
+              {%- liquid
+                # 检查选项值的可用性（级联关系）
+                assign value_available = false
+                for value in option.values
+                  if value == target_value
+                    assign value_available = value.available
+                    break
+                  endif
+                endfor
+                # 如果没有找到 variant，或者选项值不可用，按钮和input都应该禁用
+                assign is_disabled = false
+                if qty_variant == blank
+                  assign is_disabled = true
+                elsif value_available == false
+                  assign is_disabled = true
+                endif
+              -%}
+              {%- comment -%} Radio input {%- endcomment -%}
+              {%- liquid
+                assign input_name = option.name | append: '-' | append: option.position
+                assign input_id = section.id | append: '-' | append: option.position | append: '-' | append: qty
+
+                assign option_value_id = blank
+                for value in option.values
+                  if value == target_value
+                    assign option_value_id = value.id
+                    break
+                  endif
+                endfor
+              -%}
+              {%- if qty_variant -%}
+                <input
+                  type="radio"
+                  id="{{ input_id }}"
+                  name="{{ input_name }}"
+                  value="{{ target_value | escape }}"
+                  form="{{ product_form_id }}"
+                  {% if qty_selected %}
+                    checked
+                  {% endif %}
+                  {% if is_disabled %}
+                    class="disabled"
+                  {% endif %}
+                  data-product-url="{{ qty_variant.url | default: product.url }}"
+                  {% if option_value_id %}
+                    data-option-value-id="{{ option_value_id }}"
+                  {% endif %}
+                  data-capacity="{{ value_mapping.capacity | default: option_config.base_capacity }}"
+                  data-qty="{{ qty }}"
+                  data-option-value="{{ target_value | escape }}"
+                  {% if qty_variant %}
+                    data-variant-id="{{ qty_variant.id }}"
+                  {% endif %}
+                >
+                <label
+                  for="{{ input_id }}"
+                  class="variant-extension-qty-btn {% if qty_selected %}selected{% endif %} {% if is_disabled %}disabled{% endif %}"
+                >
+                  {{ qty }}x
+                </label>
+              {%- endif -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</fieldset>

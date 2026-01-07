@@ -1,0 +1,84 @@
+{% comment %}
+  Renders a text with highlight words.
+
+  Accepts:
+  - text: {String} Text to render
+  - style: {String} Highlight text style
+
+  Usage:
+  {% render 'highlight-text', text: "This is <em>highlight text</em>", style: 'underline' %}
+{% endcomment %}
+{% comment %}
+  {%- liquid
+    assign text = text | default: ''
+    assign style = style | default: 'none'
+    assign mobile_text = mobile_text | default: ''
+
+    if style == 'none'
+
+      echo text
+    else
+      assign base_css_class = 'highlight-text'
+      assign svg = ''
+
+      case style
+        when 'underline'
+          assign css_class = base_css_class | append: ' highlight-text--underline'
+      endcase
+
+      assign em_open_tag = '<em is="highlight-text" class="' | append: css_class | append: '">'
+      assign em_close_tag = svg | append: '</em>'
+
+      assign highlight_text = text | replace: '<em>', em_open_tag
+      assign highlight_text = highlight_text | replace: '</em>', em_close_tag
+
+      echo highlight_text
+    endif
+  -%}
+{% endcomment %}
+{%- liquid
+  assign text = text | default: ''
+  assign style = style | default: 'none'
+  assign mobile_text = mobile_text | default: ''
+
+  if mobile_text != blank
+    assign base_css_class = 'highlight-text'
+    assign svg = ''
+    case style
+      when 'underline'
+        assign css_class = base_css_class | append: ' highlight-text--underline'
+    endcase
+
+    assign em_open_tag = '<em is="highlight-text" class="' | append: css_class | append: '">'
+    assign em_close_tag = svg | append: '</em>'
+
+    assign pc_text = text | replace: '<em>', em_open_tag
+    assign pc_text = pc_text | replace: '</em>', em_close_tag
+
+    assign mobile_text_processed = mobile_text | replace: '<em>', em_open_tag
+    assign mobile_text_processed = mobile_text_processed | replace: '</em>', em_close_tag
+
+    echo '<span class="pc-text">' | append: pc_text | append: '</span>'
+    echo '<span class="mobile-text">' | append: mobile_text_processed | append: '</span>'
+  else
+    if style == 'none'
+      echo text
+    else
+      assign base_css_class = 'highlight-text'
+      assign svg = ''
+
+      case style
+        when 'underline'
+          assign css_class = base_css_class | append: ' highlight-text--underline'
+      endcase
+
+      assign em_open_tag = '<em is="highlight-text" class="' | append: css_class | append: '">'
+      assign em_close_tag = svg | append: '</em>'
+
+      assign highlight_text = text | replace: '<em>', em_open_tag
+      assign highlight_text = highlight_text | replace: '</em>', em_close_tag
+
+      echo highlight_text
+    endif
+  endif
+-%}

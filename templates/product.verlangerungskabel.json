@@ -1,0 +1,330 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badges": {
+          "type": "badges",
+          "disabled": true,
+          "settings": {
+            "show_soldout_badge": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "judge_me_reviews_preview_badge_TyHTKU": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "sleek_social_sharing_share_button_PzzPbA": {
+          "type": "shopify://apps/sleek-social-sharing/blocks/share_button/5db01bc3-c590-40f6-be34-5072c106e3f4",
+          "settings": {}
+        },
+        "taxs_jYC8DE": {
+          "type": "taxs",
+          "settings": {
+            "title": "0% MwSt. auf PV-Sets in Deutschland",
+            "content": "Hiermit bestätigen Sie, dass Sie die Voraussetzungen für eine umsatzsteuerfreie Lieferung gemäß § 12 Abs. 3 von Deutschland erfüllen.",
+            "taxs_title": "Erfahren Sie mehr.",
+            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie hier um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
+            "heading_1": "Hinweis: Bestellungen können in mehreren Paketen versendet werden.",
+            "heading_2": "<strong>Sofort ab Lager verfügbar, Versand innerhalb von 24 Stunden.</strong>"
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 40,
+            "size_title": "Size",
+            "size_chart_from_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "selleasy_lb_upsell_widget_pal_DBqFVr": {
+          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-pal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
+          "settings": {}
+        },
+        "logistics_pN3qrf": {
+          "type": "logistics",
+          "settings": {
+            "enable_sticky_info": true
+          }
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "name": "支付信息",
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "certificate",
+            "image_1": "shopify://shop_images/brand-icon1.svg",
+            "heading_1": "Bequem bezahlen",
+            "content_image_1": "shopify://shop_images/card.png",
+            "icon_2": "truck",
+            "image_2": "shopify://shop_images/brand-icon2.svg",
+            "content_image_2": "shopify://shop_images/track.png",
+            "heading_2": "Zuverlässige Lieferung",
+            "icon_3": "star-four",
+            "heading_3": ""
+          }
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "tag",
+            "product_list_limit": 4,
+            "products_per_page": 1,
+            "image_ratio": "adapt",
+            "enable_quick_add": true
+          }
+        }
+      },
+      "block_order": [
+        "badges",
+        "title",
+        "judge_me_reviews_preview_badge_TyHTKU",
+        "price",
+        "sleek_social_sharing_share_button_PzzPbA",
+        "taxs_jYC8DE",
+        "description",
+        "variant_picker",
+        "buy_buttons",
+        "selleasy_lb_upsell_widget_pal_DBqFVr",
+        "logistics_pN3qrf",
+        "icon_with_text",
+        "complementary"
+      ],
+      "custom_css": [
+        ".loox-rating {margin-top: -1rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": true,
+        "enable_product_sticky_bar": false,
+        "media_size": "medium",
+        "gallery_layout": "carousel",
+        "mobile_thumbnails": "show",
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "parameter_MCPY6c": {
+      "type": "parameter",
+      "blocks": {
+        "card_LYWhYC": {
+          "type": "card",
+          "settings": {
+            "title": "Material",
+            "content": "AL6005-T5, AL5052, SUS304",
+            "note": ""
+          }
+        },
+        "card_gkNmQ3": {
+          "type": "card",
+          "settings": {
+            "title": "Garantie",
+            "content": "10 Jahre",
+            "note": ""
+          }
+        },
+        "card_8bwHK3": {
+          "type": "card",
+          "settings": {
+            "title": "Zertifikat",
+            "content": "ISO9001, CE",
+            "note": ""
+          }
+        },
+        "card_mP8iNt": {
+          "type": "card",
+          "settings": {
+            "title": "Anwendung",
+            "content": "Balkon, Geländer, Wand",
+            "note": ""
+          }
+        },
+        "card_Fhrd9a": {
+          "type": "card",
+          "settings": {
+            "title": "Packungsgrösse (Pro Set)",
+            "content": "370*150*80 mm",
+            "note": ""
+          }
+        },
+        "card_jBnG3t": {
+          "type": "card",
+          "settings": {
+            "title": "Gewicht",
+            "content": "2.5kg",
+            "note": ""
+          }
+        },
+        "card_LW3bBH": {
+          "type": "card",
+          "settings": {
+            "title": "Länge des Solarmoduls (mm)",
+            "content": "≤2200 mm",
+            "note": ""
+          }
+        },
+        "card_g6XjUm": {
+          "type": "card",
+          "settings": {
+            "title": "Breite des Solarmoduls (mm)",
+            "content": "751≤A≤1313mm",
+            "note": ""
+          }
+        },
+        "card_txRkpK": {
+          "type": "card",
+          "settings": {
+            "title": "Dicke des Solarmoduls (mm)",
+            "content": "30&35 mm",
+            "note": ""
+          }
+        },
+        "card_XQbdqw": {
+          "type": "card",
+          "settings": {
+            "title": "Winkel",
+            "content": "0&15-30 Grad",
+            "note": ""
+          }
+        },
+        "card_9jrTJF": {
+          "type": "card",
+          "settings": {
+            "title": "Maximale Windgeschwindigkeit",
+            "content": "40m/S",
+            "note": ""
+          }
+        },
+        "card_fTHEhL": {
+          "type": "card",
+          "settings": {
+            "title": "Palettengröße",
+            "content": "115x112x105cm",
+            "note": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_LYWhYC",
+        "card_gkNmQ3",
+        "card_8bwHK3",
+        "card_mP8iNt",
+        "card_Fhrd9a",
+        "card_jBnG3t",
+        "card_LW3bBH",
+        "card_g6XjUm",
+        "card_txRkpK",
+        "card_XQbdqw",
+        "card_9jrTJF",
+        "card_fTHEhL"
+      ],
+      "disabled": true,
+      "name": "参数列表",
+      "settings": {
+        "title": "Technische Daten",
+        "ids": "",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "download_KmMViJ": {
+      "type": "download",
+      "blocks": {
+        "card_g9kb84": {
+          "type": "card",
+          "settings": {
+            "title": "Balkongeländer-Halterung Rundhaken",
+            "content": "Bedienungsanleitung",
+            "date": "2025-06-04",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Balkongelander-Halterung_Rundhaken.pdf?v=1749022853"
+          }
+        }
+      },
+      "block_order": [
+        "card_g9kb84"
+      ],
+      "disabled": true,
+      "name": "下载列表",
+      "settings": {
+        "title": "Downloads"
+      }
+    },
+    "175757195712da5abe": {
+      "type": "apps",
+      "blocks": {
+        "judge_me_reviews_review_widget_PakNMD": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_PakNMD"
+      ],
+      "settings": {
+        "include_margins": true,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "parameter_MCPY6c",
+    "download_KmMViJ",
+    "175757195712da5abe"
+  ]
+}

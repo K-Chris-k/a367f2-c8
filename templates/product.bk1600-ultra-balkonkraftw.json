@@ -1,0 +1,454 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "breadcrumbs": {
+      "type": "breadcrumbs",
+      "settings": {
+        "text_alignment": "start"
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badges": {
+          "type": "badges",
+          "disabled": true,
+          "settings": {
+            "show_soldout_badge": true,
+            "show_sale_badge": true,
+            "sale_badge_type": "percentage"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h1"
+          }
+        },
+        "klaviyo_reviews_average_rating_rpKRhh": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/average-rating/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "taxs_93qCBN": {
+          "type": "taxs",
+          "settings": {
+            "title": "0 % MwSt. auf PV-Sets in Deutschland",
+            "content": "Hiermit bestätigen Sie, das Sie die Voraussetzungen für eine umsatzsteuerfreie Lieferung gemäß § 12 Abs. 3 von Deutschland erfüllen.",
+            "taxs_title": "Erfahren Sie mehr.",
+            "taxs_popup_content": "Erfahren Sie mehr.",
+            "heading_1": "Sofort ab Lager lieferbar, Versand in durchschnittlich 6 Stunden.",
+            "heading_2": "Hinweis: Bestellungen werden in mehreren Sendungen verschickt."
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "inventory": {
+          "type": "inventory",
+          "disabled": true,
+          "settings": {
+            "text_style": "body",
+            "inventory_threshold": 10,
+            "show_inventory_quantity": true
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_type": "color_swatch",
+            "button_style": "circle",
+            "button_size": 40,
+            "size_title": "Size",
+            "size_chart_from_page": ""
+          }
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_quantity_selector": true,
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "icon_with_text_3zTWzn": {
+          "type": "icon-with-text",
+          "name": "物流信息",
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "heading",
+            "title_size": "h5",
+            "icon_1": "heart",
+            "heading_1": "30 Tage Rückgaberecht",
+            "icon_2": "gift",
+            "heading_2": "10 Jahre Garantie",
+            "icon_3": "package",
+            "heading_3": "Kostenlose und schnelle Lieferung"
+          }
+        },
+        "icon_with_text": {
+          "type": "icon-with-text",
+          "name": "支付信息",
+          "settings": {
+            "layout": "horizontal",
+            "title_font": "body",
+            "title_size": "text-base",
+            "icon_1": "certificate",
+            "heading_1": "Bequem bezahlen",
+            "icon_2": "truck",
+            "heading_2": "Zuverlässige Lieferung",
+            "icon_3": "truck",
+            "heading_3": ""
+          }
+        },
+        "pickup_availability": {
+          "type": "pickup_availability",
+          "settings": {}
+        },
+        "complementary": {
+          "type": "complementary",
+          "settings": {
+            "block_heading": "Pairs well with",
+            "make_collapsible_row": false,
+            "icon": "tag",
+            "product_list_limit": 4,
+            "products_per_page": 1,
+            "image_ratio": "adapt",
+            "enable_quick_add": true
+          }
+        }
+      },
+      "block_order": [
+        "badges",
+        "title",
+        "klaviyo_reviews_average_rating_rpKRhh",
+        "price",
+        "taxs_93qCBN",
+        "description",
+        "inventory",
+        "variant_picker",
+        "buy_buttons",
+        "icon_with_text_3zTWzn",
+        "icon_with_text",
+        "pickup_availability",
+        "complementary"
+      ],
+      "custom_css": [
+        ".loox-rating {margin-top: -1rem;}"
+      ],
+      "settings": {
+        "color_scheme": "scheme-1",
+        "enable_sticky_info": true,
+        "media_size": "large",
+        "gallery_layout": "carousel",
+        "mobile_thumbnails": "show",
+        "enable_image_zoom": true,
+        "enable_video_looping": true,
+        "padding_top": 0,
+        "padding_bottom": 100
+      }
+    },
+    "video_aKTtWe": {
+      "type": "video",
+      "name": "视频介绍",
+      "settings": {
+        "container": "fixed",
+        "video": "shopify://files/videos/PC (2).mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "cover_image": "shopify://shop_images/mob4-3_1c90a7a9-0e1f-4dae-b673-3ce3bd63dc79.png",
+        "video_ratio": "adapt",
+        "description": "",
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "service_info_3WBMzF": {
+      "type": "service-info",
+      "name": "服务信息",
+      "settings": {
+        "title": "产品功能",
+        "image_pc": "shopify://shop_images/9095c418edab3eb1070530f4b11900bb_ec61eca3-3003-440b-b170-0d37936f870c.png"
+      }
+    },
+    "video_mnPyqD": {
+      "type": "video",
+      "name": "全屏视频",
+      "settings": {
+        "container": "full",
+        "video": "shopify://files/videos/飞书20250626-151201.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_ratio": "adapt",
+        "description": "",
+        "enable_video_autoplay": false,
+        "enable_video_looping": false,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_7rBwdd": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_cUbnWW": {
+          "type": "heading",
+          "settings": {
+            "heading": "Because you need time for yourself. Blend beauty in you",
+            "heading_size": "h1",
+            "heading_highlight_style": "none"
+          }
+        }
+      },
+      "block_order": [
+        "heading_cUbnWW"
+      ],
+      "custom_css": [
+        ".rich-text__heading {max-width: 65rem; margin: 0 auto;}"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "padding_top": 60,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "image_with_text_MgddA8": {
+      "type": "image-with-text",
+      "blocks": {
+        "subheading_XLgqVJ": {
+          "type": "subheading",
+          "settings": {
+            "subheading": ""
+          }
+        },
+        "heading_J7mctK": {
+          "type": "heading",
+          "settings": {
+            "heading": "A fruit enzyme that helps exfoliate and soften skin",
+            "heading_size": "h1",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_A3Dahr": {
+          "type": "text",
+          "settings": {
+            "text": "<p>A fruit enzyme, such as bromelain from pineapple or papain from papaya, helps exfoliate and soften skin by breaking down and dissolving dead skin cells. This gentle exfoliation process reveals a smoother, brighter complexion and promotes cell turnover. Suitable for all skin types, it offers a natural and less abrasive alternative to traditional chemical exfoliants.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_XLgqVJ",
+        "heading_J7mctK",
+        "text_A3Dahr"
+      ],
+      "custom_css": [
+        ".image-with-text__content {max-width: 57rem; margin: 0 auto;}"
+      ],
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "scheme-2",
+        "image_height": "adapt",
+        "layout": "text_first",
+        "desktop_content_position": "center",
+        "desktop_content_alignment": "center",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "mobile_content_alignment": "left",
+        "padding_top": 100,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "video_with_text_rRVqrq": {
+      "type": "video-with-text",
+      "blocks": {
+        "subheading_MCECPj": {
+          "type": "subheading",
+          "settings": {
+            "subheading": ""
+          }
+        },
+        "heading_kpxn8L": {
+          "type": "heading",
+          "settings": {
+            "heading": "Why we stand behind it",
+            "heading_size": "h1",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_UVPHCm": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We stand behind our products because we believe in their efficacy and quality. Our formulations are meticulously crafted using clinically proven ingredients to deliver visible results. From research to production, every step is guided by our commitment to excellence. We prioritize transparency, integrity, and customer satisfaction, ensuring you can trust and love the products you use.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "subheading_MCECPj",
+        "heading_kpxn8L",
+        "text_UVPHCm"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "video": "shopify://files/videos/WeChat_20240903172427.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_ratio": "1/1",
+        "description": "",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "video_placement": "first",
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "text_alignment": "center",
+        "padding_top": 100,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "collapsible_tabs_phAkEE": {
+      "type": "collapsible-tabs",
+      "blocks": {
+        "collapsible_item_eFemDY": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Was ist der Unterschied zwischen dem BK1600 Ultra und dem BK1600?",
+            "content": "<p>Beide Geräte, der BK1600 und der BK1600 Ultra, haben ein All-in-One-Design und enthalten einen bidirektionalen Wechselrichter. Wenn in deinem Zuhause keine Solaranlage installiert ist (also ohne Mikro-Wechselrichter), solltest du den BK1600 wählen. Damit kannst du die Solarange und die Speicherung auf einmal umsetzen und den überschüssigen Strom, den die PV-Anlage tagsüber erzeugt, optimal nutzen, um ihn abends zu verwenden. Das ist die kostengünstigste Wahl. Wenn du jedoch bereits eine Solaranlage installiert hast, dann wähle den BK1600 Ultra, um eine Speicherung zu ermöglichen und zusätzlich 1200W an Solarmodulen anzuschließen.<br/><br/></p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": true
+          }
+        },
+        "collapsible_item_RQ3WzW": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wie maximiert der BK1600 Ultra die Nutzung von Energie?",
+            "content": "<p>Der BK1600 Ultra überwindet die herkömmliche Begrenzung von 800W für einzelne Speichergeräte, indem er innerhalb der gesetzlichen Vorgaben operiert. Mithilfe eines drahtlosen Netzwerks und intelligenter Leistungsteilungstechnologie verbindet er leistungsstarke Haushaltsgeräte mit dem Off-Grid-Anschluss, um die gespeicherte Energie der PV-Anlage optimal zu nutzen.<br/><br/></p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_aKpRFm": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Kann ich meinen BK1600 Ultra mit einem Mikro-Wechselrichter verbinden?",
+            "content": "<p>Ja, der BK1600 Ultra ist mit 99% der auf dem Markt erhältlichen Mikro-Wechselrichter kompatibel. Du musst ihn einfach in den Off-Grid-Anschluss einstecken, um zusätzlich 1200W Eingangsleistung zu erhalten. Bitte beachte, dass der BK1600 Ultra maximal mit Mikro-Wechselrichtern bis 1200W kompatibel ist.<br/><br/></p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_3c4PkF": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Hat der BK1600 ultra die EPS (Notstromversorgung)-Funktion?",
+            "content": "<p>Ja, der BK1600 Ultra kann über seine Off-Grid-Steckdose kontinuierlich Strom liefern. Bei einer Stromnetzunterbrechung wechselt das Gerät innerhalb von 10ms schnell in den EPS-Modus und bietet eine maximale Dauerleistung von 1200W. Bei Geräten mit hohem Startstrom kann es sogar eine Spitzenleistung von bis zu 1800W für maximal 15 Sekunden bereitstellen, um sicherzustellen, dass wichtige Geräte wie Kühlschränke, Router und Beleuchtung während eines Stromausfalls weiterhin normal funktionieren.<br/><br/></p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "collapsible_item_eFemDY",
+        "collapsible_item_RQ3WzW",
+        "collapsible_item_aKpRFm",
+        "collapsible_item_3c4PkF"
+      ],
+      "settings": {
+        "container": "narrow",
+        "color_scheme": "",
+        "header_layout": "vertical",
+        "heading": "FAQ",
+        "heading_size": "h1",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "text_size": "text-base",
+        "button_label": "",
+        "button_link": "",
+        "button_style": "btn--primary",
+        "column_gap": "large",
+        "row_gap": "inherit",
+        "item_style": "standard",
+        "item_color_scheme": "",
+        "item_heading_font": "heading",
+        "item_heading_size": "h4",
+        "item_icon_size": "extra-large",
+        "padding_top": 96,
+        "padding_bottom": 100,
+        "show_section_divider": true,
+        "divider_width": "fixed"
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "heading_highlight_style": "none",
+        "subheading": "",
+        "description": "",
+        "limit": 6,
+        "columns": 4,
+        "column_gap": "extra-small",
+        "row_gap": "inherit",
+        "enable_slider": true,
+        "controls_position": "inside",
+        "pcard_image_ratio": "",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 100,
+        "padding_bottom": 100,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    }
+  },
+  "order": [
+    "breadcrumbs",
+    "main",
+    "video_aKTtWe",
+    "service_info_3WBMzF",
+    "video_mnPyqD",
+    "rich_text_7rBwdd",
+    "image_with_text_MgddA8",
+    "video_with_text_rRVqrq",
+    "collapsible_tabs_phAkEE",
+    "related-products"
+  ]
+}

@@ -1,0 +1,140 @@
+<style>
+.section-parter-contactus {padding-top:112px;padding-bottom:112px;background:#f3f3f3}
+.section-parter-contactus .contact-box{ padding:40px 64px;border-radius: 20px;text-align: center;background: #FFF;}
+.section-parter-contactus .contact-box .title{ line-height:58px;font-size:48px;font-weight: 700;}
+.section-parter-contactus .contact-box .desc{margin-top:14px; line-height: 30px;font-size: 25px;font-weight: 400;color: #262626;}
+.section-parter-contactus .contact-box .desc p{margin:0px}
+.contact-list{margin-top:50px;text-align:center}
+.contact-list ul{display:flex;gap:4px; flex-wrap: nowrap;}
+.contact-list li{ flex: 1;}
+.contact-list li:nth-child(1) img{max-width:72px}
+.contact-list li:nth-child(2) img{max-width:66px}
+.contact-list li .decribe{margin-top:12px;line-height:19px;font-size: 16px;font-weight: 400;color: #909090;}
+.contact-list li .decribe a{ text-decoration: underline;color: #3250C3}
+  @media (max-width: 768px) {
+   .section-parter-contactus {padding-top:5rem;padding-bottom:5rem}
+   .section-parter-contactus .contact-box{padding:24px 19px;}
+   .section-parter-contactus .contact-box .title{ line-height:29px;font-size:24px;}
+   .section-parter-contactus .contact-box .desc p{margin-top:12px; line-height: 22px;font-size: 14px;}
+   .contact-list{margin-top:29px;}
+   .contact-list ul{ gap:4.8rem; flex-wrap: wrap;}
+   .contact-list li{flex:auto;width:100%}
+   .contact-list li:nth-child(1) img{max-width: 52px;}
+   .contact-list li:nth-child(2) img{max-width: 47px;}
+   .contact-list li .decribe{line-height: 0px;font-size: 14px;}
+  }
+</style>
+{% liquid
+    assign motion_delay = 50
+%}
+<div class="section page-width section--padding section-parter-contactus">
+  <div class="contact-box">
+       <h2 class="title"> {{ section.settings.title }}</h2>
+       <h4 class="desc">{{ section.settings.description }}</h4>
+    <div class="contact-list">
+      <ul>
+        {% for block in section.blocks %}
+        <li>
+           {% if block.settings.image != blank %}
+            <div class="image-wrapper">
+              <picture>
+                <source
+                  media="(max-width: 749px)"
+                  srcset="
+                    {{ block.settings.image_mobile | img_url: '800x' }} 1x,
+                    {{ block.settings.image_mobile | img_url: '1600x' }} 2x
+                  "
+                >
+                <source
+                  media="(min-width: 750px)"
+                  srcset="
+                    {{ block.settings.image | img_url: '1200x' }} 1x,
+                    {{ block.settings.image | img_url: '2400x' }} 2x
+                  "
+                >
+                <img
+                  src="{{ block.settings.image | img_url: '1200x' }}"
+                  alt="{{ block.settings.image | escape }}"
+                  loading="lazy"
+                  width="{{ block.settings.image.width }}"
+                  height="{{ block.settings.image.height }}"
+                >
+              </picture>
+             </div>
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+              <h6 class="decribe">
+                {{ block.settings.description }}
+              </h6>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    </div>
+</div>
+<script>
+ 
+</script>
+{% schema %}
+{
+  "name": "parter-contact",
+  "tag": "section",
+  "class": "section section-parter-contact",
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Neem Contact Met Ons Op"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "描述",
+      "default":"<p>Your description here</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "aus item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "h5 image"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "描述",
+          "default":"<p>Your description here</p>"
+        },
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "合作伙伴-联系我们",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

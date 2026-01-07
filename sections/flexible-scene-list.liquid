@@ -1,0 +1,397 @@
+ <style>
+    #shopify-section-{{ section.id }} .section-flexible-scene-list .product-collection{padding-top: {{ section.settings.padding_top }}px;padding-bottom: {{ section.settings.padding_bottom }}px;}
+    #shopify-section-{{ section.id }} .section-flexible-scene-list .product-collection .title{ font-size: 46px;font-weight: 700;text-align:center;color:#000}
+    #shopify-section-{{ section.id }} .section-flexible-scene-list .product-tip .title{text-align:left;}
+    .section-flexible-scene-list .flex-title-box{ position: absolute;max-width:394px;bottom: 40px;left:48px;font-size: 16px;color: #fff;}
+    .section-flexible-scene-list .flex-title-box .flex-title{font-size: 36px;color: #fff;}
+     .section-flexible-scene-list .flex-title-box .flex-des{margin-top:8px;line-height:19px;font-size: 16px;}
+    .section-flexible-scene-list .thumbnail-slider .flex-title-box h4{line-height:34px;font-size: 30px;}
+    .section-flexible-scene-list .product-tip{ display: flex;padding:25px 20px 17px 20px;align-items: center;position: absolute; top:40px;right:48px;
+    border-radius: 8px;background: #fff;}
+    .section-flexible-scene-list .main-slider .product-tip .img-box{position: relative;width: 110px;height:110px;}
+    .section-flexible-scene-list .product-tip .img-box img{position:absolute;object-fit: contain;width: 100%;height:100%}
+    .section-flexible-scene-list .product-tip .title{margin-left:20px;max-width:220px;min-width:220px;}
+    .section-flexible-scene-list .product-tip .title h4{line-height:19px;font-size: 16px;}
+    .section-flexible-scene-list .product-tip p {font-family: "Inter";margin:0px 0px 10px;line-height:17px;font-size: 14px;}
+    .section-flexible-scene-list .product-tip .price {margin-top:16px;line-height:22px;font-size: 18px;font-weight: 600;color: #3250C3;}
+    .section-flexible-scene-list .product-tip .links{width: 30px; height: 30px;line-height: 30px;display: flex;justify-content: center;align-items: center;
+    float: right;background: #3250C3;color: #fff;border-radius: 15px;
+    }
+    .section-flexible-scene-list .main-slider { margin-top:40px; margin-bottom: 15px;}
+    .section-flexible-scene-list .main-slider .slide {
+      position: relative;
+      padding: 0px;
+    }
+    
+    .section-flexible-scene-list .main-slider img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      border-radius: 20px;
+      display: block;
+    }
+    .section-flexible-scene-list .thumbnail-slider .slick-list{padding:0px!important}
+    .section-flexible-scene-list .thumbnail-slider .slick-track{
+      display: flex;
+      width:100%!important
+    }
+  
+   .section-flexible-scene-list  .thumbnail-slider .slide {
+      padding: 0 5px;
+      cursor: pointer;
+    }
+    .section-flexible-scene-list .thumbnail-slider img {
+      width: 100%;
+      height: 158px!important;
+      border-radius: 20px;
+      object-fit: cover;
+      display: block;
+    }
+    .section-flexible-scene-list .thumbnail-slider .image-wrapper{ position: relative; border-radius: 20px;overflow: hidden;}
+    .section-flexible-scene-list .thumbnail-slider .image-wrapper::after{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      opacity: 1;
+      transition: opacity 0.3s ease; 
+      transform: translateZ(0);
+    }
+    .section-flexible-scene-list .thumbnail-slider .slide.slick-current .image-wrapper::after{
+     opacity: 0;
+    }
+    
+ 
+    .section-flexible-scene-list .thumbnail-slider .slide{position: relative;}
+    .section-flexible-scene-list .thumbnail-slider .slide .flex-title-box{top: 50%;left: 50%; transform: translate(-50%, -50%);bottom: auto;max-width: 100%;
+    white-space: nowrap;opacity: 1;font-size: 30px;transition: opacity 0.3s ease;}
+    .section-flexible-scene-list .thumbnail-slider .slide.slick-current .flex-title-box{opacity: 0;}
+    @media (max-width: 767.98px) {
+      #shopify-section-{{ section.id }} .section-flexible-scene-list .product-collection{padding-top: {% if section.settings.custom_mobile_padding_top != blank %}{{section.settings.custom_mobile_padding_top | divided_by: 2 }}px{% else %}{{ section.settings.padding_top | divided_by: 2  }}px{% endif %};padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;}
+      .section-flexible-scene-list .product-collection .title{ font-size: 28px;}
+       #shopify-section-{{ section.id }} .section-flexible-scene-list .product-collection .title{ font-size: 28px;font-weight: 700;text-align:center;color:#000}
+      .section-flexible-scene-list .flex-title-box .flex-title{line-height:34px;font-size: 20px;}
+      .section-flexible-scene-list .main-slider .slick-dots{display: flex;justify-content: center;gap: 0px;}
+      .section-flexible-scene-list .main-slider{margin-top:2rem}
+      .section-flexible-scene-list .main-slider img{border-radius:8px;height: 27rem}
+      .section-flexible-scene-list .thumbnail-slider {display:none}
+      .section-flexible-scene-list .product-tip{padding:15px 15px 15px 15px;top:20px;right:20px}
+      .section-flexible-scene-list .main-slider .product-tip .img-box{width: 86px;height:86px;}
+      .section-flexible-scene-list .flex-title-box {left:20px;bottom:20px;padding-right:20px}
+      .section-flexible-scene-list .product-tip .title{margin-left:15px;max-width:130px;min-width:120px;}
+      .section-flexible-scene-list .flex-title-box .flex-des{margin-top:0px}
+      .section-flexible-scene-list .product-tip .title h4,.section-flexible-scene-list .flex-title-box .flex-des,.section-flexible-scene-list .product-tip .price{line-height:15px;font-size: 12px;}
+      .section-flexible-scene-list .product-tip p{  white-space: normal; overflow: hidden; text-overflow: ellipsis; width: 100%;
+          line-height: 15px;
+    font-size: 12px;}
+      .section-flexible-scene-list .product-tip .price{ margin-top:1rem}
+      .section-flexible-scene-list .product-tip .links{width:15px;height:15px}
+      .section-flexible-scene-list .product-tip .links .icon--small{ width: 1.2rem;height:1.2rem}
+      
+    }
+  </style>
+{% liquid
+    assign motion_delay = 50
+%}
+<div class="section section-flexible-scene-list section--padding page-width" >
+  <div class="product-collection product-slider-container">
+    <h2 class="title"> <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}"><span>{{ section.settings.title }}</span></motion-element></h2>
+    <div class="main-slider">
+         {% for block in section.blocks %}
+          <div class="slide">
+          {% if block.settings.image != blank %}
+                <picture>
+                  <source
+                    media="(max-width: 749px)"
+                    srcset="
+                      {{ block.settings.mobile_image | img_url: '800x' }} 1x,
+                      {{ block.settings.mobile_image | img_url: '1600x' }} 2x
+                    "
+                  >
+                  <source
+                    media="(min-width: 750px)"
+                    srcset="
+                      {{ block.settings.image | img_url: '1200x' }} 1x,
+                      {{ block.settings.image | img_url: '2400x' }} 2x
+                    "
+                  >
+                  <img
+                    src="{{ block.settings.image | img_url: '1200x' }}"
+                    alt="{{ block.settings.title | escape }}"
+                    class="grid-image"
+                    loading="lazy"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.height }}"
+                  >
+                </picture>
+              {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+              
+            {% if block.settings.title != blank or  block.settings.description != blank %}
+                <div class="flex-title-box">
+                    <h4 class="flex-title"> 
+                        {{ block.settings.title }} 
+                    </h4> 
+                    <div class="flex-des"> 
+                        {{ block.settings.description }} 
+                    </div> 
+               </div>
+            {% endif %}
+            {% if block.settings.product_img != blank%}
+              <div class="product-tip">
+                <div class="img-box">
+                    <picture>
+                      <source
+                        media="(max-width: 749px)"
+                        srcset="
+                          {{ block.settings.product_img | img_url: '800x' }} 1x,
+                          {{ block.settings.product_img | img_url: '1600x' }} 2x
+                        "
+                      >
+                      <source
+                        media="(min-width: 750px)"
+                        srcset="
+                          {{ block.settings.product_img | img_url: '1200x' }} 1x,
+                          {{ block.settings.product_img | img_url: '2400x' }} 2x
+                        "
+                      >
+                      <img
+                        src="{{ block.settings.product_img | img_url: '1200x' }}"
+                        alt="{{ block.settings.title | escape }}"
+                        class="grid-image"
+                        loading="lazy"
+                        width="{{ block.settings.image.width }}"
+                        height="{{ block.settings.image.height }}"
+                      >
+                    </picture>
+                    </div>
+                    <div class="title">
+                      <a href="{{ block.settings.product_link  }}" alt="block.settings.product_title">
+                        <h4>{{ block.settings.product_title}}</h4>
+                        <p>{{ block.settings.product_des }}</p>
+                        <div class="price">{{ block.settings.product_price }}</div>
+                        <div class="links"> {%- render 'icon-slider-next', size: 'small' -%} </div>
+                      </a>
+                    </div>
+                    
+              </div>
+              {% endif %}
+          </div>
+      {% endfor %}
+    
+    </div>
+    
+    <!-- 缩略图导航 -->
+    <div class="thumbnail-slider">
+       {% for block in section.blocks %}
+      <div class="slide">
+        {% if block.settings.image != blank %}
+          <div class="image-wrapper">
+                <picture>
+                  <source
+                    media="(max-width: 749px)"
+                    srcset="
+                      {{ block.settings.image | img_url: '800x' }} 1x,
+                      {{ block.settings.image | img_url: '1600x' }} 2x
+                    "
+                  >
+                  <source
+                    media="(min-width: 750px)"
+                    srcset="
+                      {{ block.settings.image | img_url: '1200x' }} 1x,
+                      {{ block.settings.image | img_url: '2400x' }} 2x
+                    "
+                  >
+                  <img
+                    src="{{ block.settings.image | img_url: '1200x' }}"
+                    alt="{{ block.settings.title | escape }}"
+                    class="grid-image"
+                    loading="lazy"
+                    width="{{ block.settings.image.width }}"
+                    height="{{ block.settings.image.height }}"
+                  >
+                </picture>
+                </div>
+              {% else %}
+                {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+              {% endif %}
+               {% if block.settings.title != blank%}
+                <div class="flex-title-box">
+                    <h4 class="flex-title"> 
+                        {{ block.settings.title }} 
+                    </h4> 
+               </div>
+            {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+</div>
+ <script>
+    $(document).ready(function(){
+      const $mainSlider = $('.main-slider').slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        arrows: false,
+        fade: false,
+        speed: 300,
+        draggable: true,
+        swipe: true,
+        responsive: [
+          { breakpoint: 768, settings: { slidesToShow: 3 } },
+          { breakpoint: 767, settings: { slidesToShow: 1, dots: true } }
+        ]
+      });
+      const $thumbnailSlider = $('.thumbnail-slider').slick({
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        dots: false,
+        arrows: false,
+        centerMode: false, 
+        focusOnSelect: true,
+        draggable: false,
+        swipe: false,
+        responsive: [
+          { breakpoint: 768, settings: { slidesToShow: 3 } },
+          { breakpoint: 480, settings: { slidesToShow: 2 } }
+        ]
+      });
+
+      $mainSlider.on('afterChange', function(event, slick, currentSlide) {
+        $thumbnailSlider.find('.slide').removeClass('slick-current');
+        $thumbnailSlider.find('.slide[data-slick-index="' + currentSlide + '"]').addClass('slick-current');
+      });
+      $thumbnailSlider.on('click', '.slide', function(e) {
+        e.preventDefault();
+        const index = $(this).data('slick-index');
+        $mainSlider.slick('slickGoTo', index);
+      });
+    });
+  </script>
+{% schema %}
+{
+  "name": "flexible-scene-list",
+  "tag": "section",
+  "class": "section section-flexible-scene-list",
+  "max_blocks": 10,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Flexibler Installationsort"
+    },
+     {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 50,
+      "min": 0,
+      "max": 180,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 50,
+      "min": 0,
+      "max": 180,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "custom_mobile_padding_top",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 80
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "scene item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image_pc"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "image_mobile"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "大标题"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "描述"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_img",
+          "label": "产品图片"
+        },
+         {
+          "type": "text",
+          "id": "product_title",
+          "label": "产品标题"
+        },
+         {
+          "type": "text",
+          "id": "product_des",
+          "label": "产品描述"
+        },
+           {
+          "type": "text",
+          "id": "product_price",
+          "label": "产品价格"
+        },
+        {
+          "type": "url",
+          "id": "product_link",
+          "label": "产品链接"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "自定义场景列表",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
