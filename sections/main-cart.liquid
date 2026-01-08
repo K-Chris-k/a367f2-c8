@@ -11,7 +11,6 @@
 {%- if linklists['gift-wrapping'].links != blank and linklists['gift-wrapping'].links.first.type == 'product_link' -%}
   <script src="{{ 'gift-wrapping.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
-
     <script>
       (function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"343220475", disableAutoPageView: true, enableAutoSpaTracking: false};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
         window.uetq = window.uetq || [];
@@ -948,3 +947,203 @@
   ]
 }
 {% endschema %}
+
+<script>
+  // 购物车页面免费赠品监控 - 当主产品被删除时自动删除免费赠品
+  (function initCartPageFreeGiftMonitor() {
+    // 防止重复初始化（如果cart-drawer已初始化则跳过）
+    if (window._freeGiftMonitorInitialized) {
+      console.log('[Cart Page] 免费赠品监控已由全局处理');
+      return;
+    }
+    window._freeGiftMonitorInitialized = true;
+    
+    let isMonitoring = false;
+    let isUpdatingCart = false;
+    
+    // 获取存储的产品-免费赠品关系映射
+    function getFreeGiftMappings() {
+      try {
+        const data = localStorage.getItem('free_gift_mappings');
+        return data ? JSON.parse(data) : {};
+      } catch (e) {
+        return {};
+      }
+    }
+    
+    // 保存产品-免费赠品关系映射
+    function saveFreeGiftMappings(mappings) {
+      try {
+        localStorage.setItem('free_gift_mappings', JSON.stringify(mappings));
+      } catch (e) {
+        console.error('[Cart Page Monitor] 保存映射失败:', e);
+      }
+    }
+    
+    // 检查购物车并移除孤立的免费赠品
+    async function checkAndRemoveOrphanedFreeGifts() {
+      if (isMonitoring || isUpdatingCart) return;
+      isMonitoring = true;
+      
+      try {
+        const cartResponse = await fetch('/cart.js');
+        const cart = await cartResponse.json();
+        
+        if (!cart.items || cart.items.length === 0) {
+          saveFreeGiftMappings({});
+          isMonitoring = false;
+          return;
+        }
+        
+        console.log('[Cart Page Monitor] 检查购物车...', cart.items.length, '个商品');
+        
+        // 获取映射关系
+        const mappings = getFreeGiftMappings();
+        
+        // 收集购物车中所有非免费赠品的产品ID
+        const mainProductIdsInCart = new Set();
+        cart.items.forEach(item => {
+          const isFreeGift = item.properties && item.properties._free_gift === 'true';
+          if (!isFreeGift) {
+            mainProductIdsInCart.add(String(item.product_id));
+          }
+        });
+        
+        // 查找需要删除的免费赠品
+        const keysToRemove = [];
+        
+        // 检查每个免费赠品
+        cart.items.forEach(item => {
+          if (item.properties && item.properties._free_gift === 'true') {
+            const linkedMainProductId = String(item.properties._main_product_id || '');
+            if (linkedMainProductId && !mainProductIdsInCart.has(linkedMainProductId)) {
+              keysToRemove.push(item.key);
+              console.log('[Cart Page Monitor] 主产品已删除，将删除免费赠品:', item.title);
+            }
+          }
+        });
+        
+        // 同时检查映射关系中的孤立赠品
+        Object.keys(mappings).forEach(mainProductId => {
+          if (!mainProductIdsInCart.has(mainProductId)) {
+            const freeGiftVariantIds = mappings[mainProductId] || [];
+            cart.items.forEach(item => {
+              const variantIdStr = String(item.variant_id);
+              if (freeGiftVariantIds.includes(variantIdStr) && !keysToRemove.includes(item.key)) {
+                keysToRemove.push(item.key);
+                console.log('[Cart Page Monitor] 通过映射检测到孤立赠品:', item.title);
+              }
+            });
+            delete mappings[mainProductId];
+          }
+        });
+        
+        saveFreeGiftMappings(mappings);
+        
+        // 删除孤立的免费赠品
+        if (keysToRemove.length > 0) {
+          isUpdatingCart = true;
+          
+          console.log('[Cart Page Monitor] 正在删除免费赠品...', keysToRemove);
+          
+          // 收集需要重新渲染的sections
+          let sectionsToUpdate = [];
+          const sectionEvent = new CustomEvent('cart-get-sections-to-bundle', {
+            bubbles: true,
+            detail: { sections: sectionsToUpdate }
+          });
+          document.documentElement.dispatchEvent(sectionEvent);
+          
+          // 逐个删除免费赠品
+          for (const key of keysToRemove) {
+            try {
+              const itemIndex = cart.items.findIndex(item => item.key === key);
+              if (itemIndex !== -1) {
+                const line = itemIndex + 1;
+                
+                const cartChangeUrl = window.FoxTheme?.routes?.cart_change_url || '/cart/change.js';
+                const body = JSON.stringify({
+                  line: line,
+                  quantity: 0,
+                  sections: sectionsToUpdate.join(',')
+                });
+                
+                const response = await fetch(cartChangeUrl, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                  },
+                  body: body
+                });
+                
+                const updatedCart = await response.json();
+                
+                console.log('[Cart Page Monitor] 已删除免费赠品 line:', line);
+                
+                // 发布购物车更新事件
+                if (window.FoxTheme && window.FoxTheme.pubsub) {
+                  FoxTheme.pubsub.publish(FoxTheme.pubsub.PUB_SUB_EVENTS.cartUpdate, {
+                    sources: 'free-gift-monitor-auto',
+                    cart: updatedCart,
+                    line: line
+                  });
+                }
+              }
+            } catch (e) {
+              console.error('[Cart Page Monitor] 删除失败:', e);
+            }
+            
+            await new Promise(resolve => setTimeout(resolve, 200));
+          }
+          
+          console.log('[Cart Page Monitor] 所有孤立的免费赠品已删除');
+          
+          isUpdatingCart = false;
+        }
+      } catch (error) {
+        console.error('[Cart Page Monitor] 检查购物车失败:', error);
+      } finally {
+        isMonitoring = false;
+        isUpdatingCart = false;
+      }
+    }
+    
+    // 订阅 FoxTheme 购物车更新事件
+    if (window.FoxTheme && window.FoxTheme.pubsub) {
+      FoxTheme.pubsub.subscribe(FoxTheme.pubsub.PUB_SUB_EVENTS.cartUpdate, (event) => {
+        if (event.sources !== 'free-gift-monitor' && event.sources !== 'free-gift-monitor-auto') {
+          setTimeout(checkAndRemoveOrphanedFreeGifts, 1000);
+        }
+      });
+      console.log('[Cart Page Monitor] 已订阅 FoxTheme pubsub');
+    }
+    
+    // 监听购物车数量变化 - 直接监控删除操作
+    let lastCartItemCount = 0;
+    
+    function observeCartChanges() {
+      fetch('/cart.js')
+        .then(r => r.json())
+        .then(cart => {
+          const currentCount = cart.items ? cart.items.length : 0;
+          
+          if (lastCartItemCount > 0 && currentCount < lastCartItemCount) {
+            console.log('[Cart Page Monitor] 检测到购物车商品减少:', lastCartItemCount, '->', currentCount);
+            setTimeout(checkAndRemoveOrphanedFreeGifts, 500);
+          }
+          
+          lastCartItemCount = currentCount;
+        })
+        .catch(e => console.error('[Cart Page Monitor] 获取购物车失败:', e));
+    }
+    
+    // 每2秒检查一次
+    setInterval(observeCartChanges, 2000);
+    
+    // 页面加载时检查一次
+    setTimeout(checkAndRemoveOrphanedFreeGifts, 2000);
+    
+    console.log('[Cart Page Monitor] 购物车页面免费赠品监控已初始化');
+  })();
+</script>

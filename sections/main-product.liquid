@@ -163,7 +163,7 @@
       );
     }
 
-    // 统一计算所有推荐产品的总价（包括 Lookbook 和 Empfehlung）
+    // 统一计算所有推荐产品的总价（包括 Lookbook、Empfehlung 和 Cross Sell）
     function getSelectedBundleTotal() {
       let total = 0;
 
@@ -184,6 +184,19 @@
         const qtyInput = card.querySelector('input.recommendation-qty-count');
         const qty = qtyInput ? parseInt(qtyInput.value || '1', 10) : 1;
         total += price * qty;
+      });
+
+      // Cross Sell 产品
+      document.querySelectorAll('.cross-sell-product-card').forEach((card) => {
+        const checkbox = card.querySelector('.cross-sell-checkbox');
+        if (checkbox && checkbox.checked) {
+          // Shopify 价格以分为单位，需要转换为元
+          const priceInCents = parseFloat(card.dataset.price) || 0;
+          const price = priceInCents / 100;
+          const qtyInput = card.querySelector('.cross-sell-qty-input');
+          const qty = qtyInput ? parseInt(qtyInput.value || '1', 10) : 1;
+          total += price * qty;
+        }
       });
 
       return total;
@@ -220,6 +233,15 @@
     function bindCardClickEvents() {
       // Lookbook 卡片点击事件
       document.querySelectorAll('.lb-product-card').forEach((card) => {
+        card.addEventListener('click', () => {
+          setTimeout(() => {
+            updateBottomBarPrice();
+          }, 50);
+        });
+      });
+
+      // Cross Sell 卡片点击事件
+      document.querySelectorAll('.cross-sell-product-card').forEach((card) => {
         card.addEventListener('click', () => {
           setTimeout(() => {
             updateBottomBarPrice();
@@ -320,6 +342,23 @@
           }
         });
       }
+
+      // Cross Sell 产品事件监听
+      document.querySelectorAll('.cross-sell-product-card').forEach((card) => {
+        const checkbox = card.querySelector('.cross-sell-checkbox');
+        const qtyInput = card.querySelector('.cross-sell-qty-input');
+        
+        if (checkbox) {
+          checkbox.addEventListener('change', () => setTimeout(updateBottomBarPrice, 50));
+        }
+        if (qtyInput) {
+          qtyInput.addEventListener('input', updateBottomBarPrice);
+          qtyInput.addEventListener('change', updateBottomBarPrice);
+        }
+      });
+      document.querySelectorAll('.cross-sell-qty-btn').forEach((btn) => {
+        btn.addEventListener('click', () => setTimeout(updateBottomBarPrice, 100));
+      });
     }
 
     window.addEventListener('load', () => {
@@ -914,6 +953,176 @@
           "label": "Variant ID (optional)",
           "info": "Enter the variant ID to show a specific variant",
           "visible_if": "{{block.settings.show_specific_variant == true}}"
+        }
+      ]
+    },
+    {
+      "type": "cross_sell_products",
+      "name": "Cross Sell Products",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Vielleicht brauchst du auch"
+        },
+        {
+          "type": "header",
+          "content": "Product 1"
+        },
+        {
+          "type": "product",
+          "id": "cross_sell_product_1",
+          "label": "Product 1"
+        },
+        {
+          "type": "checkbox",
+          "id": "cross_sell_product_1_default",
+          "label": "Default Selected",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Product 2"
+        },
+        {
+          "type": "product",
+          "id": "cross_sell_product_2",
+          "label": "Product 2"
+        },
+        {
+          "type": "checkbox",
+          "id": "cross_sell_product_2_default",
+          "label": "Default Selected",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Product 3"
+        },
+        {
+          "type": "product",
+          "id": "cross_sell_product_3",
+          "label": "Product 3"
+        },
+        {
+          "type": "checkbox",
+          "id": "cross_sell_product_3_default",
+          "label": "Default Selected",
+          "default": false
+        },
+        {
+          "type": "header",
+          "content": "Product 4"
+        },
+        {
+          "type": "product",
+          "id": "cross_sell_product_4",
+          "label": "Product 4"
+        },
+        {
+          "type": "checkbox",
+          "id": "cross_sell_product_4_default",
+          "label": "Default Selected",
+          "default": false
+        }
+      ]
+    },
+    {
+      "type": "free_gift_products",
+      "name": "Gratisgeschenk",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Gratisgeschenk"
+        },
+        {
+          "type": "header",
+          "content": "Free Product 1"
+        },
+        {
+          "type": "product",
+          "id": "free_product_1",
+          "label": "Free Product 1"
+        },
+        {
+          "type": "checkbox",
+          "id": "free_product_1_default",
+          "label": "Default Selected",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "free_product_1_variant",
+          "label": "Free Variant ID (0€)",
+          "info": "Enter the variant ID with price 0€. Leave empty to use default variant."
+        },
+        {
+          "type": "header",
+          "content": "Free Product 2"
+        },
+        {
+          "type": "product",
+          "id": "free_product_2",
+          "label": "Free Product 2"
+        },
+        {
+          "type": "checkbox",
+          "id": "free_product_2_default",
+          "label": "Default Selected",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "free_product_2_variant",
+          "label": "Free Variant ID (0€)",
+          "info": "Enter the variant ID with price 0€. Leave empty to use default variant."
+        },
+        {
+          "type": "header",
+          "content": "Free Product 3"
+        },
+        {
+          "type": "product",
+          "id": "free_product_3",
+          "label": "Free Product 3"
+        },
+        {
+          "type": "checkbox",
+          "id": "free_product_3_default",
+          "label": "Default Selected",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "free_product_3_variant",
+          "label": "Free Variant ID (0€)",
+          "info": "Enter the variant ID with price 0€. Leave empty to use default variant."
+        },
+        {
+          "type": "header",
+          "content": "Free Product 4"
+        },
+        {
+          "type": "product",
+          "id": "free_product_4",
+          "label": "Free Product 4"
+        },
+        {
+          "type": "checkbox",
+          "id": "free_product_4_default",
+          "label": "Default Selected",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "free_product_4_variant",
+          "label": "Free Variant ID (0€)",
+          "info": "Enter the variant ID with price 0€. Leave empty to use default variant."
         }
       ]
     },

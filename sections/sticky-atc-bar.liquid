@@ -357,7 +357,50 @@
         return items;
       }
 
-      // 收集所有要添加的产品（Bundle + 推荐产品）
+      // 收集 Cross Sell 产品
+      function collectCrossSellProducts() {
+        if (typeof window.getCrossSellSelectedProducts === 'function') {
+          return window.getCrossSellSelectedProducts();
+        }
+        return [];
+      }
+
+      // 收集 Free Gift 产品（免费赠品）- 单选模式
+      function collectFreeGiftProducts() {
+        const items = [];
+        
+        // 获取当前主产品ID
+        const mainProductIdEl = document.querySelector('.free-gift-products-block');
+        const currentMainProductId = mainProductIdEl ? mainProductIdEl.dataset.mainProductId : null;
+        
+        // 使用单选函数
+        if (typeof window.getSelectedFreeGift === 'function') {
+          const freeGift = window.getSelectedFreeGift();
+          if (freeGift && freeGift.variantId) {
+            const mainProdId = freeGift.mainProductId || currentMainProductId;
+            
+            items.push({
+              id: freeGift.variantId,
+              quantity: 1,
+              properties: {
+                _free_gift: 'true',
+                _main_product_id: String(mainProdId),
+                _gift_type: 'gratisgeschenk'
+              }
+            });
+            
+            // 保存映射关系到 localStorage
+            if (typeof window.addFreeGiftMapping === 'function' && mainProdId) {
+              window.addFreeGiftMapping(mainProdId, freeGift.variantId);
+              console.log('[Sticky Bar] 保存免费赠品映射:', mainProdId, '->', freeGift.variantId);
+            }
+          }
+        }
+        
+        return items;
+      }
+
+      // 收集所有要添加的产品（Bundle + 推荐产品 + Cross Sell 产品 + Free Gift 产品）
       function collectAllProducts() {
         const items = [];
 
@@ -379,6 +422,15 @@
         // 添加推荐商品
         const recommendationItems = collectRecommendationProducts();
         items.push(...recommendationItems);
+
+        // 添加 Cross Sell 产品
+        const crossSellItems = collectCrossSellProducts();
+        items.push(...crossSellItems);
+
+        // 添加 Free Gift 产品（免费赠品）
+        const freeGiftItems = collectFreeGiftProducts();
+        items.push(...freeGiftItems);
+
         return items;
       }
       function addToCartCollectAllProducts() {
@@ -396,6 +448,15 @@
             items.push({ id: parseInt(mainVariantId), quantity: 1 });
           }
         }
+
+        // 添加 Cross Sell 产品
+        const crossSellItems = collectCrossSellProducts();
+        items.push(...crossSellItems);
+
+        // 添加 Free Gift 产品（免费赠品）
+        const freeGiftItems = collectFreeGiftProducts();
+        items.push(...freeGiftItems);
+
         return items;
       }
       // 显示购物车抽屉并等待结账
@@ -731,6 +792,10 @@
           console.log('[Sticky Bar] Buy it now 按钮已绑定');
         }
       })();
+
+      // 监控购物车变化已移至 cart-drawer.liquid 全局处理
+      // 这里仅记录产品页面的初始化状态
+      console.log('[Sticky Bar] 产品页面已加载，免费赠品监控由全局处理');
     </script>
   </div>
 
@@ -809,6 +874,161 @@
   </div>
 
   <script>
+    // 在ProductForm初始化前拦截表单提交
+    (function initEarlyFormInterceptor() {
+      
+      // 收集Cross-sell产品
+      function collectCrossSellItems() {
+        const items = [];
+        document.querySelectorAll('.cross-sell-product-card.selected').forEach(card => {
+          const variantId = card.dataset.variantId;
+          const qtyInput = card.querySelector('.cross-sell-qty-input');
+          const qty = parseInt(qtyInput?.value || '1', 10);
+          
+          if (variantId && qty > 0) {
+            items.push({
+              id: parseInt(variantId),
+              quantity: qty,
+              properties: { _cross_sell_item: 'true' }
+            });
+          }
+        });
+        return items;
+      }
+      
+      // 收集免费赠品
+      function collectFreeGiftItems() {
+        const items = [];
+        const mainProductIdEl = document.querySelector('.free-gift-products-block');
+        const currentMainProductId = mainProductIdEl ? mainProductIdEl.dataset.mainProductId : null;
+        
+        if (typeof window.getSelectedFreeGift === 'function') {
+          const freeGift = window.getSelectedFreeGift();
+          
+          if (freeGift && freeGift.variantId) {
+            const mainProdId = freeGift.mainProductId || currentMainProductId;
+            
+            items.push({
+              id: freeGift.variantId,
+              quantity: 1,
+              properties: {
+                _free_gift: 'true',
+                _main_product_id: String(mainProdId),
+                _gift_type: 'gratisgeschenk'
+              }
+            });
+            
+            if (typeof window.addFreeGiftMapping === 'function' && mainProdId) {
+              window.addFreeGiftMapping(mainProdId, freeGift.variantId);
+            }
+          }
+        }
+        return items;
+      }
+      
+      // 拦截表单提交，添加额外选中的产品
+      document.addEventListener('submit', async function(e) {
+        const form = e.target;
+        if (!form.matches('[is="product-form"]')) return;
+        
+        const crossSellItems = collectCrossSellItems();
+        const freeGiftItems = collectFreeGiftItems();
+        
+        if (crossSellItems.length === 0 && freeGiftItems.length === 0) {
+          return;
+        }
+        
+        e.preventDefault();
+        e.stopPropagation();
+        e.stopImmediatePropagation();
+        
+        if (document.body.classList.contains('cart-template') || window.FoxTheme?.settings?.cartType === 'page') {
+          return;
+        }
+        
+        const submitBtn = e.submitter || form.querySelector('button[type="submit"]');
+        if (submitBtn?.hasAttribute('aria-disabled')) return;
+        
+        const mainVariantId = form.querySelector('[name="id"]')?.value;
+        if (!mainVariantId) return;
+        
+        const allItems = [
+          { id: parseInt(mainVariantId), quantity: 1 },
+          ...crossSellItems,
+          ...freeGiftItems
+        ];
+        
+        console.log('[添加购物车]', allItems.length, '个产品');
+        
+        if (submitBtn) {
+          submitBtn.setAttribute('aria-disabled', 'true');
+          submitBtn.classList.add('btn--loading');
+        }
+        
+        try {
+          const response = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({ items: allItems })
+          });
+          
+          if (!response.ok) {
+            throw new Error('添加失败');
+          }
+          
+          const result = await response.json();
+          const cartResponse = await fetch('/cart.js');
+          const cart = await cartResponse.json();
+          
+          // 更新购物车数量显示
+          document.querySelectorAll('cart-count').forEach(countEl => {
+            if (cart.item_count > 99) {
+              countEl.innerHTML = `<span class="text-sm">99+</span>`;
+              countEl.classList.add('cart-count--small-medium');
+            } else {
+              countEl.innerText = cart.item_count;
+              countEl.classList.remove('cart-count--small-medium');
+            }
+            countEl.hidden = cart.item_count === 0;
+          });
+          
+          document.documentElement.classList[cart.item_count === 0 ? 'remove' : 'add']('cart-has-items');
+          
+          document.dispatchEvent(new CustomEvent('cart:updated', { detail: { cart: cart } }));
+          document.dispatchEvent(new CustomEvent('cart:refresh'));
+          
+          const cartDrawer = document.querySelector('cart-drawer');
+          if (cartDrawer && typeof cartDrawer.show === 'function') {
+            setTimeout(() => cartDrawer.show(submitBtn), 500);
+          }
+          
+        } catch (error) {
+          console.error('[添加购物车失败]', error);
+          
+          // 如果添加失败，尝试使用表单原生提交
+          const formElement = form;
+          if (formElement && typeof formElement.submit === 'function') {
+            setTimeout(() => {
+              if (submitBtn) {
+                submitBtn.removeAttribute('aria-disabled');
+                submitBtn.classList.remove('btn--loading');
+              }
+              formElement.submit();
+            }, 100);
+          }
+        } finally {
+          if (submitBtn) {
+            submitBtn.removeAttribute('aria-disabled');
+            submitBtn.classList.remove('btn--loading');
+          }
+        }
+        
+      }, true);
+    })();
+  
     (function () {
       const mainStickyBar = document.querySelector('.sticky-atc-bar');
       const recommendationStickyBar = document.querySelector('.sticky-atc-bar-recommendation');

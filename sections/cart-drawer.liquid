@@ -166,7 +166,7 @@
                       endif
                     endfor
                   -%}
-                  <li id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item flex flex-col gap-4" data-variant-id="{{ item.variant_id }}" data-handle="{{ item.product.handle }}" data-quantity="{{ item.quantity }}" data-price="{{ item.original_price }}">
+                  <li id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item flex flex-col gap-4" data-variant-id="{{ item.variant_id }}" data-product-id="{{ item.product_id }}" data-handle="{{ item.product.handle }}" data-quantity="{{ item.quantity }}" data-price="{{ item.original_price }}" {% if item.properties._free_gift == 'true' %}data-free-gift="true"{% endif %}>
                     <div class="cart-item__product flex items-start gap-3">
                       {%- if item.image -%}
                         <a class="cart-item__media blocks-radius-sm media-wrapper" href="{{ item.url }}" tabindex="-1" aria-label="{{ item.title }}">
@@ -835,3 +835,80 @@
     display: none;
   }
 </style>
+
+<script>
+  // 简单方法：拦截删除按钮点击，自动删除关联的免费赠品
+  (function initFreeGiftAutoRemove() {
+    if (window._freeGiftAutoRemoveInitialized) return;
+    window._freeGiftAutoRemoveInitialized = true;
+    
+    // 保存主产品与免费赠品的映射关系
+    window.addFreeGiftMapping = function(mainProductId, freeGiftVariantId) {
+      try {
+        const mappings = JSON.parse(localStorage.getItem('free_gift_mappings') || '{}');
+        const key = String(mainProductId);
+        if (!mappings[key]) mappings[key] = [];
+        const variantIdStr = String(freeGiftVariantId);
+        if (!mappings[key].includes(variantIdStr)) {
+          mappings[key].push(variantIdStr);
+        }
+        localStorage.setItem('free_gift_mappings', JSON.stringify(mappings));
+      } catch (e) {
+      }
+    };
+    
+    // 监听删除按钮点击，自动删除关联的免费赠品
+    function attachRemoveListeners() {
+      document.querySelectorAll('.cart-item__remove').forEach(removeBtn => {
+        if (removeBtn._freeGiftListenerAttached) return;
+        removeBtn._freeGiftListenerAttached = true;
+        
+        removeBtn.addEventListener('click', function(e) {
+          const cartItem = this.closest('.cart-item');
+          if (!cartItem) return;
+          
+          const isFreeGift = cartItem.dataset.freeGift === 'true';
+          if (isFreeGift) return;
+          
+          const productId = cartItem.dataset.productId;
+          if (!productId) return;
+          
+          const mappings = JSON.parse(localStorage.getItem('free_gift_mappings') || '{}');
+          const freeGiftVariantIds = mappings[String(productId)] || [];
+          
+          if (freeGiftVariantIds.length === 0) return;
+          
+          
+          // 查找并点击免费赠品的删除按钮
+          setTimeout(() => {
+            document.querySelectorAll('.cart-item').forEach(item => {
+              const itemVariantId = item.dataset.variantId;
+              
+              if (itemVariantId && freeGiftVariantIds.includes(String(itemVariantId))) {
+                const freeGiftRemoveBtn = item.querySelector('.cart-item__remove');
+                if (freeGiftRemoveBtn && !freeGiftRemoveBtn._autoClicked) {
+                  freeGiftRemoveBtn._autoClicked = true;
+                  freeGiftRemoveBtn.click();
+                  setTimeout(() => { freeGiftRemoveBtn._autoClicked = false; }, 1500);
+                }
+              }
+            });
+            
+            delete mappings[String(productId)];
+            localStorage.setItem('free_gift_mappings', JSON.stringify(mappings));
+          }, 500);
+        });
+      });
+    }
+    
+    // 初始化并监听DOM变化
+    attachRemoveListeners();
+    
+    const observer = new MutationObserver(() => attachRemoveListeners());
+    const cartDrawer = document.querySelector('cart-drawer');
+    const cartPage = document.querySelector('.cart');
+    
+    if (cartDrawer) observer.observe(cartDrawer, { childList: true, subtree: true });
+    if (cartPage) observer.observe(cartPage, { childList: true, subtree: true });
+  })();
+</script>

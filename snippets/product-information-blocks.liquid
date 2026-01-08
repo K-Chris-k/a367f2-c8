@@ -849,6 +849,789 @@
               %}
             </div>
           {%- endif -%}
+        {%- when 'cross_sell_products' -%}
+          <div
+            class="product__block product__block--{{ block.type }} cross-sell-products-block"
+            {{ block.shopify_attributes }}
+          >
+            {%- if block.settings.title != blank -%}
+              <h3 class="cross-sell-title">{{ block.settings.title }}</h3>
+            {%- endif -%}
+            <div class="cross-sell-products-list">
+              {%- assign cross_sell_products = '' | split: ',' -%}
+              {%- if block.settings.cross_sell_product_1 != blank -%}
+                {%- assign cross_sell_products = cross_sell_products | concat: block.settings.cross_sell_product_1 | split: '|||' -%}
+              {%- endif -%}
+              {%- if block.settings.cross_sell_product_2 != blank -%}
+                {%- assign cross_sell_products = cross_sell_products | concat: block.settings.cross_sell_product_2 | split: '|||' -%}
+              {%- endif -%}
+              {%- if block.settings.cross_sell_product_3 != blank -%}
+                {%- assign cross_sell_products = cross_sell_products | concat: block.settings.cross_sell_product_3 | split: '|||' -%}
+              {%- endif -%}
+              {%- if block.settings.cross_sell_product_4 != blank -%}
+                {%- assign cross_sell_products = cross_sell_products | concat: block.settings.cross_sell_product_4 | split: '|||' -%}
+              {%- endif -%}
+              
+              {%- for i in (1..4) -%}
+                {%- assign product_setting_key = 'cross_sell_product_' | append: i -%}
+                {%- assign default_setting_key = 'cross_sell_product_' | append: i | append: '_default' -%}
+                {%- assign cross_product = block.settings[product_setting_key] -%}
+                {%- assign is_default_selected = block.settings[default_setting_key] -%}
+                {%- if cross_product != blank -%}
+                  {%- assign variant = cross_product.selected_or_first_available_variant -%}
+                  <div 
+                    class="cross-sell-product-card{% if is_default_selected %} selected{% endif %}"
+                    data-variant-id="{{ variant.id }}"
+                    data-product-id="{{ cross_product.id }}"
+                    data-price="{{ variant.price }}"
+                    data-compare-price="{{ variant.compare_at_price | default: variant.price }}"
+                  >
+                    <div class="cross-sell-checkbox-wrapper">
+                      <input 
+                        type="checkbox" 
+                        class="cross-sell-checkbox" 
+                        id="cross-sell-{{ block.id }}-{{ i }}"
+                        data-variant-id="{{ variant.id }}"
+                        {% if is_default_selected %}checked{% endif %}
+                      >
+                      <label for="cross-sell-{{ block.id }}-{{ i }}" class="cross-sell-checkbox-label">
+                        <span class="cross-sell-checkbox-custom"></span>
+                      </label>
+                    </div>
+                    <div class="cross-sell-product-image">
+                      {%- if cross_product.featured_image != blank -%}
+                        <img 
+                          src="{{ cross_product.featured_image | image_url: width: 120 }}" 
+                          alt="{{ cross_product.title | escape }}"
+                          width="60"
+                          height="60"
+                          loading="lazy"
+                        >
+                      {%- else -%}
+                        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                      {%- endif -%}
+                    </div>
+                    <div class="cross-sell-product-content">
+                      <h4 class="cross-sell-product-title">{{ cross_product.title }}</h4>
+                      <div class="cross-sell-product-bottom">
+                        <div class="cross-sell-quantity-wrapper">
+                          <button type="button" class="cross-sell-qty-btn cross-sell-qty-minus" aria-label="Decrease quantity">
+                            <span>−</span>
+                          </button>
+                          <input 
+                            type="number" 
+                            class="cross-sell-qty-input" 
+                            value="1" 
+                            min="1" 
+                            max="99"
+                            data-variant-id="{{ variant.id }}"
+                          >
+                          <button type="button" class="cross-sell-qty-btn cross-sell-qty-plus" aria-label="Increase quantity">
+                            <span>+</span>
+                          </button>
+                        </div>
+                        <div class="cross-sell-product-price">
+                          <span class="cross-sell-price">{{ variant.price | money }}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+          <style>
+            .cross-sell-products-block {
+              margin-top: 20px;
+            }
+            .cross-sell-title {
+              font-size: 20px;
+              font-weight: 600;
+              margin-bottom: 16px;
+              color: #000;
+            }
+
+            .cross-sell-products-list {
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+            }
+            .cross-sell-product-card {
+              display: flex;
+              align-items: flex-start;
+              gap: 12px;
+              padding: 16px;
+              border: 1.5px solid #e5e5e5;
+              border-radius: 12px;
+              background: #fff;
+              transition: border-color 0.2s ease, box-shadow 0.2s ease;
+              cursor: pointer;
+            }
+            .cross-sell-product-card.selected {
+              border-color: #3250c3 !important;
+              box-shadow: 0 0 0 .5px #2164ff80, inset 0 0 0 .3px #3250c3;
+            }
+            .cross-sell-checkbox-wrapper {
+              position: relative;
+              flex-shrink: 0;
+              padding-top: 4px;
+            }
+            .cross-sell-checkbox {
+              position: absolute;
+              opacity: 0;
+              width: 0;
+              height: 0;
+            }
+            .cross-sell-checkbox-label {
+              display: block;
+              cursor: pointer;
+            }
+            .cross-sell-checkbox-custom {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 18px;
+              height: 18px;
+              border: 1px solid #ccc;
+              border-radius: 4px;
+              background: #fff;
+              transition: all 0.2s ease;
+            }
+            .cross-sell-checkbox:checked + .cross-sell-checkbox-label .cross-sell-checkbox-custom {
+              background: #3250c3;
+              border-color: #3250c3;
+            }
+            .cross-sell-checkbox:checked + .cross-sell-checkbox-label .cross-sell-checkbox-custom::after {
+              content: '';
+              display: block;
+              width: 6px;
+              height: 10px;
+              border: solid #fff;
+              border-width: 0 2px 2px 0;
+              transform: rotate(45deg);
+              margin-bottom: 2px;
+            }
+            .cross-sell-product-image {
+              flex-shrink: 0;
+              width: 65px;
+              height: 65px;
+              overflow: hidden;
+            }
+            .cross-sell-product-image img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+            .cross-sell-product-content {
+              flex: 1;
+              min-width: 0;
+              display: flex;
+              flex-direction: column;
+              gap: 8px;
+            }
+            .cross-sell-product-title {
+              font-size: 14px;
+              font-weight: 500;
+              color: #1a1a1a;
+              margin: 0;
+              line-height: 1.4;
+            }
+            .cross-sell-product-bottom {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              gap: 12px;
+            }
+            .cross-sell-quantity-wrapper {
+              display: inline-flex;
+              align-items: center;
+              border: 1px solid #e5e5e5;
+              border-radius: 6px;
+              overflow: hidden;
+            }
+            .cross-sell-qty-btn {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 28px;
+              height: 28px;
+              border: none;
+              background: #fff;
+              color: #666;
+              font-size: 16px;
+              cursor: pointer;
+              transition: background 0.2s ease;
+            }
+            .cross-sell-qty-btn:hover {
+              background: #f5f5f5;
+            }
+            .cross-sell-qty-input {
+              width: 32px;
+              height: 28px;
+              border: none;
+              border-left: 1px solid #e5e5e5;
+              border-right: 1px solid #e5e5e5;
+              text-align: center;
+              font-size: 14px;
+              -moz-appearance: textfield;
+            }
+            .cross-sell-qty-input::-webkit-outer-spin-button,
+            .cross-sell-qty-input::-webkit-inner-spin-button {
+              -webkit-appearance: none;
+              margin: 0;
+            }
+            .cross-sell-product-price {
+              flex-shrink: 0;
+              text-align: right;
+            }
+            .cross-sell-price {
+              font-size: 16px;
+              font-weight: 600;
+              color: #1a1a1a;
+            }
+            @media screen and (max-width: 749px) {
+              .cross-sell-product-card {
+                padding: 12px;
+              }
+              .cross-sell-product-title {
+                font-size: 13px;
+              }
+              .cross-sell-product-image {
+                width: 50px;
+                height: 50px;
+              }
+            }
+          </style>
+          <script>
+            (function() {
+              // Cross Sell Products functionality
+              function initCrossSellProducts() {
+                const cards = document.querySelectorAll('.cross-sell-product-card');
+                
+                cards.forEach(card => {
+                  const checkbox = card.querySelector('.cross-sell-checkbox');
+                  const minusBtn = card.querySelector('.cross-sell-qty-minus');
+                  const plusBtn = card.querySelector('.cross-sell-qty-plus');
+                  const qtyInput = card.querySelector('.cross-sell-qty-input');
+                  
+                  // Checkbox change handler
+                  checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                      card.classList.add('selected');
+                    } else {
+                      card.classList.remove('selected');
+                    }
+                    triggerCrossSellPriceUpdate();
+                  });
+                  
+                  // Quantity minus button
+                  minusBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    let qty = parseInt(qtyInput.value) || 1;
+                    if (qty > 1) {
+                      qtyInput.value = qty - 1;
+                      triggerCrossSellPriceUpdate();
+                    }
+                  });
+                  
+                  // Quantity plus button
+                  plusBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    let qty = parseInt(qtyInput.value) || 1;
+                    if (qty < 99) {
+                      qtyInput.value = qty + 1;
+                      triggerCrossSellPriceUpdate();
+                    }
+                  });
+                  
+                  // Quantity input change
+                  qtyInput.addEventListener('change', function() {
+                    let qty = parseInt(this.value) || 1;
+                    if (qty < 1) qty = 1;
+                    if (qty > 99) qty = 99;
+                    this.value = qty;
+                    triggerCrossSellPriceUpdate();
+                  });
+                  
+                  // Click on card to toggle checkbox
+                  card.addEventListener('click', function(e) {
+                    // Don't toggle if clicking on quantity controls
+                    if (e.target.closest('.cross-sell-quantity-wrapper') || 
+                        e.target.closest('.cross-sell-checkbox-wrapper')) {
+                      return;
+                    }
+                    checkbox.checked = !checkbox.checked;
+                    checkbox.dispatchEvent(new Event('change'));
+                  });
+                });
+                
+                // Initialize price on load if there are default selected items
+                setTimeout(() => {
+                  triggerCrossSellPriceUpdate();
+                }, 100);
+              }
+              
+              // Get cross sell total price in cents
+              function getCrossSellTotalInCents() {
+                let crossSellTotal = 0;
+                
+                document.querySelectorAll('.cross-sell-product-card').forEach(card => {
+                  const checkbox = card.querySelector('.cross-sell-checkbox');
+                  if (checkbox && checkbox.checked) {
+                    const price = parseFloat(card.dataset.price) || 0;
+                    const qtyInput = card.querySelector('.cross-sell-qty-input');
+                    const qty = parseInt(qtyInput?.value || '1', 10);
+                    crossSellTotal += price * qty;
+                  }
+                });
+                
+                return crossSellTotal;
+              }
+              
+              // Trigger price update - handles both Bundle and non-Bundle modes
+              function triggerCrossSellPriceUpdate() {
+                const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
+                
+                if (bundleConfigEl) {
+                  // Bundle mode: dispatch event to trigger Bundle price update
+                  document.dispatchEvent(new CustomEvent('crosssell:change', {
+                    detail: { totalInCents: getCrossSellTotalInCents() }
+                  }));
+                  
+                  // Also call Bundle price update if available
+                  if (window.bundleProducts && typeof window.bundleProducts.updatePrice === 'function') {
+                    window.bundleProducts.updatePrice();
+                  }
+                } else {
+                  // Non-Bundle mode: update price directly
+                  updateStickyBarWithCrossSell(getCrossSellTotalInCents());
+                }
+              }
+              
+              // Update sticky bar price and main product price (non-Bundle mode)
+              function updateStickyBarWithCrossSell(crossSellTotalInCents) {
+                // Get main product original price (stored in data attribute or from initial load)
+                const priceContainer = document.querySelector('.product__info-container');
+                let originalPrice = 0;
+                
+                // Try to get original price from data attribute first
+                if (priceContainer && priceContainer.dataset.originalPrice) {
+                  originalPrice = parseFloat(priceContainer.dataset.originalPrice);
+                } else {
+                  // Get price from DOM and store it
+                  const salePriceEl = priceContainer?.querySelector('.f-price-item--sale');
+                  const regularPriceEl = priceContainer?.querySelector('.f-price-item--regular');
+                  const mainPriceText = salePriceEl?.textContent || regularPriceEl?.textContent || '0';
+                  
+                  originalPrice = parseFloat(
+                    mainPriceText
+                      .replace(/[^\d,]/g, '')
+                      .replace(',', '.')
+                  ) || 0;
+                  
+                  // Store original price for future updates
+                  if (priceContainer) {
+                    priceContainer.dataset.originalPrice = originalPrice;
+                  }
+                }
+                
+                // Add Lookbook/Empfehlung products if any
+                let lookbookTotal = 0;
+                document.querySelectorAll('.lb-select-on-click[lb-selected]').forEach(card => {
+                  const priceEl = card.querySelector('.lb-price-sale-price');
+                  const price = priceEl ? parseFloat(
+                    priceEl.textContent.trim()
+                      .replace(/[^\d,]/g, '')
+                      .replace(',', '.')
+                  ) || 0 : 0;
+                  const qtyInput = card.querySelector('input.lb-qty-count');
+                  const qty = qtyInput ? parseInt(qtyInput.value || '1', 10) : 1;
+                  lookbookTotal += price * qty;
+                });
+                
+                // Calculate final total (crossSellTotalInCents is in cents, convert to euros)
+                const finalTotal = originalPrice + (crossSellTotalInCents / 100) + lookbookTotal;
+                
+                // Format price in German euro format
+                const parts = finalTotal.toFixed(2).split('.');
+                const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+                const formattedPrice = integerPart + ',' + parts[1] + ' €';
+                
+                // Update main product price display
+                const mainSalePrice = priceContainer?.querySelector('.f-price-item--sale');
+                if (mainSalePrice) {
+                  mainSalePrice.textContent = formattedPrice;
+                }
+                
+                // Update sticky bar price
+                const stickyContainer = document.querySelector('.sticky-atc-bar__inner .product-price-box');
+                const stickyPrice = stickyContainer?.querySelector('.f-price-item--sale') ||
+                                    stickyContainer?.querySelector('.f-price-item--regular');
+                
+                if (stickyPrice) {
+                  stickyPrice.textContent = formattedPrice;
+                }
+              }
+              
+              // Expose function globally for other scripts
+              window.getCrossSellSelectedProducts = function() {
+                const items = [];
+                document.querySelectorAll('.cross-sell-product-card').forEach(card => {
+                  const checkbox = card.querySelector('.cross-sell-checkbox');
+                  if (checkbox && checkbox.checked) {
+                    const variantId = card.dataset.variantId;
+                    const qtyInput = card.querySelector('.cross-sell-qty-input');
+                    const qty = parseInt(qtyInput?.value || '1', 10);
+                    if (variantId && qty > 0) {
+                      items.push({ id: parseInt(variantId), quantity: qty });
+                    }
+                  }
+                });
+                return items;
+              };
+              
+              // Expose get total function for Bundle mode
+              window.getCrossSellTotalInCents = getCrossSellTotalInCents;
+              
+              // Expose price update function
+              window.updateCrossSellTotalPrice = triggerCrossSellPriceUpdate;
+              
+              // Initialize on DOM ready
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initCrossSellProducts);
+              } else {
+                initCrossSellProducts();
+              }
+            })();
+          </script>
+        {%- when 'free_gift_products' -%}
+          <div
+            class="product__block product__block--{{ block.type }} free-gift-products-block"
+            {{ block.shopify_attributes }}
+            data-main-product-id="{{ product.id }}"
+            data-main-variant-id="{{ product.selected_or_first_available_variant.id }}"
+          >
+            {%- if block.settings.title != blank -%}
+              <h3 class="free-gift-title">{{ block.settings.title }}</h3>
+            {%- endif -%}
+            <div class="free-gift-products-list">
+              {%- for i in (1..4) -%}
+                {%- assign product_setting_key = 'free_product_' | append: i -%}
+                {%- assign default_setting_key = 'free_product_' | append: i | append: '_default' -%}
+                {%- assign free_variant_key = 'free_product_' | append: i | append: '_variant' -%}
+                {%- assign free_product = block.settings[product_setting_key] -%}
+                {%- assign is_default_selected = block.settings[default_setting_key] -%}
+                {%- assign free_variant_id = block.settings[free_variant_key] -%}
+                {%- if free_product != blank -%}
+                  {%- assign variant = free_product.selected_or_first_available_variant -%}
+                  {%- comment -%} 使用指定的免费变体ID，或默认变体 {%- endcomment -%}
+                  {%- assign cart_variant_id = free_variant_id | default: variant.id -%}
+                  <div 
+                    class="free-gift-product-card{% if is_default_selected %} selected{% endif %}"
+                    data-variant-id="{{ cart_variant_id }}"
+                    data-display-variant-id="{{ variant.id }}"
+                    data-product-id="{{ free_product.id }}"
+                    data-product-handle="{{ free_product.handle }}"
+                    data-original-price="{{ variant.price }}"
+                  >
+                    <div class="free-gift-checkbox-wrapper">
+                      <input 
+                        type="checkbox" 
+                        class="free-gift-checkbox" 
+                        id="free-gift-{{ block.id }}-{{ i }}"
+                        data-variant-id="{{ cart_variant_id }}"
+                        {% if is_default_selected %}checked{% endif %}
+                      >
+                      <label for="free-gift-{{ block.id }}-{{ i }}" class="free-gift-checkbox-label">
+                        <span class="free-gift-checkbox-custom"></span>
+                      </label>
+                    </div>
+                    <div class="free-gift-product-image">
+                      {%- if free_product.featured_image != blank -%}
+                        <img 
+                          src="{{ free_product.featured_image | image_url: width: 120 }}" 
+                          alt="{{ free_product.title | escape }}"
+                          width="60"
+                          height="60"
+                          loading="lazy"
+                        >
+                      {%- else -%}
+                        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                      {%- endif -%}
+                    </div>
+                    <div class="free-gift-product-content">
+                      <h4 class="free-gift-product-title">{{ free_product.title }}</h4>
+                    </div>
+                    <div class="free-gift-product-price">
+                      <span class="free-gift-price-free">GRATIS</span>
+                      <span class="free-gift-price-original">{{ variant.price | money }}</span>
+                    </div>
+                  </div>
+                {%- endif -%}
+              {%- endfor -%}
+            </div>
+          </div>
+          <style>
+            .free-gift-products-block {
+              margin-top: 20px;
+            }
+            .free-gift-title {
+              font-size: 20px;
+              font-weight: 600;
+              margin-bottom: 16px;
+              color: #000;
+            }
+            .free-gift-products-list {
+              display: flex;
+              flex-direction: column;
+              gap: 12px;
+            }
+            .free-gift-product-card {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              gap: 12px;
+              padding: 16px;
+              border: 1.5px solid #e5e5e5;
+              border-radius: 12px;
+              background: #fff;
+              transition: border-color 0.2s ease, box-shadow 0.2s ease;
+              cursor: pointer;
+            }
+            .free-gift-product-card.selected {
+              border-color: #3250c3 !important;
+              box-shadow: 0 0 0 .5px #2164ff80, inset 0 0 0 .3px #3250c3;
+            }
+            .free-gift-checkbox-wrapper {
+              position: relative;
+              flex-shrink: 0;
+            }
+            .free-gift-checkbox {
+              position: absolute;
+              opacity: 0;
+              width: 0;
+              height: 0;
+            }
+            .free-gift-checkbox-label {
+              display: block;
+              cursor: pointer;
+            }
+            .free-gift-checkbox-custom {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              width: 22px;
+              height: 22px;
+              border: 2px solid #ccc;
+              border-radius: 9999px;
+              background: #fff;
+              transition: all 0.2s ease;
+            }
+            .free-gift-checkbox:checked + .free-gift-checkbox-label .free-gift-checkbox-custom {
+              background: #3250c3;
+              border-color: #3250c3;
+            }
+            .free-gift-checkbox:checked + .free-gift-checkbox-label .free-gift-checkbox-custom::after {
+              content: '';
+              display: block;
+              width: 6px;
+              height: 10px;
+              border: solid #fff;
+              border-width: 0 2px 2px 0;
+              transform: rotate(45deg);
+              margin-bottom: 2px;
+            }
+            .free-gift-product-image {
+              flex-shrink: 0;
+              width: 65px;
+              height: 65px;
+              overflow: hidden;
+            }
+            .free-gift-product-image img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+            .free-gift-product-content {
+              flex: 1;
+              min-width: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            }
+            .free-gift-product-title {
+              font-size: 14px;
+              font-weight: 500;
+              color: #1a1a1a;
+              margin: 0;
+              line-height: 1.4;
+            }
+            .free-gift-product-price {
+              flex-shrink: 0;
+              text-align: right;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              gap: 8px;
+            }
+            .free-gift-price-free {
+              font-size: 20px;
+              font-weight: 600;
+              color: #000;
+            }
+            .free-gift-price-original {
+              font-size: 18px;
+              color: #999;
+              text-decoration: line-through;
+            }
+            .free-gift-checkbox {
+    display: none !important;
+
+}
+            @media screen and (max-width: 749px) {
+              .free-gift-product-card {
+                padding: 12px;
+              }
+              .free-gift-product-title {
+                font-size: 13px;
+              }
+              .free-gift-product-image {
+                width: 50px;
+                height: 50px;
+              }
+              .free-gift-price-free {
+              font-size: 16px;
+              font-weight: 600;
+              color: #000;
+            }
+            .free-gift-price-original {
+              font-size: 14px;
+              color: #999;
+              text-decoration: line-through;
+            }
+            }
+          </style>
+          <script>
+            (function() {
+                // Free Gift Products functionality - 单选模式
+              const mainProductId = '{{ product.id }}';
+              const mainVariantId = '{{ product.selected_or_first_available_variant.id }}';
+              
+              function initFreeGiftProducts() {
+                const cards = document.querySelectorAll('.free-gift-product-card');
+                const allCheckboxes = document.querySelectorAll('.free-gift-checkbox');
+                
+                cards.forEach(card => {
+                  const checkbox = card.querySelector('.free-gift-checkbox');
+                  
+                  checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                      allCheckboxes.forEach(cb => {
+                        if (cb !== this) {
+                          cb.checked = false;
+                          cb.closest('.free-gift-product-card').classList.remove('selected');
+                        }
+                      });
+                      card.classList.add('selected');
+                    } else {
+                      card.classList.remove('selected');
+                    }
+                    
+                    saveFreeGiftSelection();
+                  });
+                  
+                  card.addEventListener('click', function(e) {
+                    if (e.target.closest('.free-gift-checkbox-wrapper')) {
+                      return;
+                    }
+                    // 如果已选中，则取消选中；否则选中当前项
+                    if (checkbox.checked) {
+                      checkbox.checked = false;
+                    } else {
+                      checkbox.checked = true;
+                    }
+                    checkbox.dispatchEvent(new Event('change'));
+                  });
+                });
+                
+                restoreFreeGiftSelection();
+              }
+              
+              // 保存选中的免费赠品到sessionStorage
+              function saveFreeGiftSelection() {
+                const selectedCheckbox = document.querySelector('.free-gift-checkbox:checked');
+                
+                if (selectedCheckbox) {
+                  const card = selectedCheckbox.closest('.free-gift-product-card');
+                  const selection = {
+                    variantId: card.dataset.variantId,
+                    productId: card.dataset.productId,
+                    productHandle: card.dataset.productHandle,
+                    mainProductId: mainProductId
+                  };
+                  sessionStorage.setItem('free_gift_selection_' + mainProductId, JSON.stringify(selection));
+                } else {
+                  sessionStorage.removeItem('free_gift_selection_' + mainProductId);
+                }
+              }
+              
+              // 从sessionStorage恢复免费赠品选择
+              function restoreFreeGiftSelection() {
+                const saved = sessionStorage.getItem('free_gift_selection_' + mainProductId);
+                if (saved) {
+                  try {
+                    const selection = JSON.parse(saved);
+                    const variantId = selection.variantId || (selection.selections && selection.selections[0]?.variantId);
+                    
+                    if (variantId) {
+                      const checkbox = document.querySelector(`.free-gift-checkbox[data-variant-id="${variantId}"]`);
+                      if (checkbox) {
+                        checkbox.checked = true;
+                        checkbox.closest('.free-gift-product-card')?.classList.add('selected');
+                      }
+                    }
+                  } catch (e) {
+                    console.error('[免费赠品恢复失败]', e);
+                  }
+                }
+              }
+              
+
+              window.getSelectedFreeGift = function() {
+                const selectedCheckbox = document.querySelector('.free-gift-checkbox:checked');
+                if (!selectedCheckbox) return null;
+                
+                const card = selectedCheckbox.closest('.free-gift-product-card');
+                return {
+                  variantId: parseInt(card.dataset.variantId),
+                  productId: card.dataset.productId,
+                  productHandle: card.dataset.productHandle,
+                  mainProductId: mainProductId
+                };
+              };
+              
+              window.getSelectedFreeGifts = function() {
+                const gift = window.getSelectedFreeGift();
+                return gift ? [gift] : [];
+              };
+              // 清除免费赠品选择
+              window.clearFreeGiftSelection = function() {
+                document.querySelectorAll('.free-gift-checkbox').forEach(checkbox => {
+                  checkbox.checked = false;
+                });
+                document.querySelectorAll('.free-gift-product-card').forEach(card => {
+                  card.classList.remove('selected');
+                });
+                sessionStorage.removeItem('free_gift_selection_' + mainProductId);
+              };
+              
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initFreeGiftProducts);
+              } else {
+                initFreeGiftProducts();
+              }
+            })();
+          </script>
         {%- when 'buy_buttons' -%}
           <div
             class="product__block product__block--{{ block.type }}"

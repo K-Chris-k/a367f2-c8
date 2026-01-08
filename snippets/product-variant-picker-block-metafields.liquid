@@ -1538,7 +1538,7 @@
       return bundleCategoryGridPriceInCents;
     }
 
-    // 更新 Sticky Bar 价格（主机价格 + 电池包价格 + 所有 bundle-category-grid 产品价格 + Lookbook 推荐商品价格）
+    // 更新 Sticky Bar 价格（主机价格 + 电池包价格 + 所有 bundle-category-grid 产品价格 + Lookbook 推荐商品价格 + Cross Sell 产品价格）
     function updateStickyBarPriceWithBundle(hostPriceInCents, batteryPriceInCents, bundleCategoryGridPriceInCents) {
       let totalPriceInCents = hostPriceInCents + batteryPriceInCents + (bundleCategoryGridPriceInCents || 0);
 
@@ -1566,6 +1566,13 @@
         }
       });
 
+      // 累加 Cross Sell 选中产品价格
+      let crossSellPriceInCents = 0;
+      if (typeof window.getCrossSellTotalInCents === 'function') {
+        crossSellPriceInCents = window.getCrossSellTotalInCents();
+        totalPriceInCents += crossSellPriceInCents;
+      }
+
       // 获取 sticky-atc-bar 价格元素
       // 注意：使用与 Multi Host 模式一致的选择器
       const stickyContainer = document.querySelector('.sticky-atc-bar .product-price-box');
@@ -1583,19 +1590,29 @@
       const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
       const formattedPrice = integerPart + ',' + parts[1] + '€';
 
-      // 更新价格显示
+      // 更新价格显示 - Sticky Bar
       if (salePrice) {
         salePrice.textContent = formattedPrice;
       } else if (regularPrice) {
         regularPrice.textContent = formattedPrice;
       }
 
+      // 更新主产品价格显示
+      const mainPriceContainer = document.querySelector('.product__info-container');
+      if (mainPriceContainer) {
+        const mainSalePrice = mainPriceContainer.querySelector('.f-price-item--sale');
+        if (mainSalePrice) {
+          mainSalePrice.textContent = formattedPrice;
+        }
+      }
+
       console.log('[Bundle] 更新价格:', {
         hostPrice: hostPriceInCents / 100,
         batteryPrice: batteryPriceInCents / 100,
         bundleCategoryGridPrice: (bundleCategoryGridPriceInCents || 0) / 100,
+        crossSellPrice: crossSellPriceInCents / 100,
         lookbookPrice:
-          (totalPriceInCents - hostPriceInCents - batteryPriceInCents - (bundleCategoryGridPriceInCents || 0)) / 100,
+          (totalPriceInCents - hostPriceInCents - batteryPriceInCents - (bundleCategoryGridPriceInCents || 0) - crossSellPriceInCents) / 100,
         totalPrice: totalPriceInCents / 100,
       });
     }
@@ -2104,6 +2121,13 @@
       // 监听所有 bundle-category-grid 产品选择变化事件（包括太阳能板和其他产品）
       document.addEventListener('bundle:solar:change', function (e) {
         console.log('[Bundle] Bundle category grid 产品选择变化:', e.detail);
+        // 更新价格
+        updateBundlePrice();
+      });
+
+      // 监听 Cross Sell 产品选择变化事件
+      document.addEventListener('crosssell:change', function (e) {
+        console.log('[Bundle] Cross Sell 产品选择变化:', e.detail);
         // 更新价格
         updateBundlePrice();
       });
