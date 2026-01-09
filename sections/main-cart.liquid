@@ -951,11 +951,8 @@
 <script>
   // 购物车页面免费赠品监控 - 当主产品被删除时自动删除免费赠品
   (function initCartPageFreeGiftMonitor() {
-    // 防止重复初始化（如果cart-drawer已初始化则跳过）
-    if (window._freeGiftMonitorInitialized) {
-      console.log('[Cart Page] 免费赠品监控已由全局处理');
-      return;
-    }
+    // 防止重复初始化
+    if (window._freeGiftMonitorInitialized) return;
     window._freeGiftMonitorInitialized = true;
     
     let isMonitoring = false;
@@ -995,7 +992,6 @@
           return;
         }
         
-        console.log('[Cart Page Monitor] 检查购物车...', cart.items.length, '个商品');
         
         // 获取映射关系
         const mappings = getFreeGiftMappings();
@@ -1018,7 +1014,6 @@
             const linkedMainProductId = String(item.properties._main_product_id || '');
             if (linkedMainProductId && !mainProductIdsInCart.has(linkedMainProductId)) {
               keysToRemove.push(item.key);
-              console.log('[Cart Page Monitor] 主产品已删除，将删除免费赠品:', item.title);
             }
           }
         });
@@ -1031,7 +1026,6 @@
               const variantIdStr = String(item.variant_id);
               if (freeGiftVariantIds.includes(variantIdStr) && !keysToRemove.includes(item.key)) {
                 keysToRemove.push(item.key);
-                console.log('[Cart Page Monitor] 通过映射检测到孤立赠品:', item.title);
               }
             });
             delete mappings[mainProductId];
@@ -1040,64 +1034,48 @@
         
         saveFreeGiftMappings(mappings);
         
-        // 删除孤立的免费赠品
+        // 批量删除孤立的免费赠品
         if (keysToRemove.length > 0) {
           isUpdatingCart = true;
           
-          console.log('[Cart Page Monitor] 正在删除免费赠品...', keysToRemove);
           
-          // 收集需要重新渲染的sections
-          let sectionsToUpdate = [];
-          const sectionEvent = new CustomEvent('cart-get-sections-to-bundle', {
-            bubbles: true,
-            detail: { sections: sectionsToUpdate }
+          // 构建updates对象
+          const updates = {};
+          keysToRemove.forEach(key => {
+            updates[key] = 0;
           });
-          document.documentElement.dispatchEvent(sectionEvent);
           
-          // 逐个删除免费赠品
-          for (const key of keysToRemove) {
-            try {
-              const itemIndex = cart.items.findIndex(item => item.key === key);
-              if (itemIndex !== -1) {
-                const line = itemIndex + 1;
-                
-                const cartChangeUrl = window.FoxTheme?.routes?.cart_change_url || '/cart/change.js';
-                const body = JSON.stringify({
-                  line: line,
-                  quantity: 0,
-                  sections: sectionsToUpdate.join(',')
-                });
-                
-                const response = await fetch(cartChangeUrl, {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                    'X-Requested-With': 'XMLHttpRequest'
-                  },
-                  body: body
-                });
-                
-                const updatedCart = await response.json();
-                
-                console.log('[Cart Page Monitor] 已删除免费赠品 line:', line);
-                
-                // 发布购物车更新事件
-                if (window.FoxTheme && window.FoxTheme.pubsub) {
-                  FoxTheme.pubsub.publish(FoxTheme.pubsub.PUB_SUB_EVENTS.cartUpdate, {
-                    sources: 'free-gift-monitor-auto',
-                    cart: updatedCart,
-                    line: line
-                  });
-                }
-              }
-            } catch (e) {
-              console.error('[Cart Page Monitor] 删除失败:', e);
-            }
+          try {
+            // 批量删除
+            const updateResponse = await fetch('/cart/update.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ updates: updates })
+            });
             
-            await new Promise(resolve => setTimeout(resolve, 200));
+            if (updateResponse.ok) {
+              const updatedCart = await updateResponse.json();
+              
+              // 更新购物车数量显示
+              document.querySelectorAll('cart-count').forEach(countEl => {
+                if (updatedCart.item_count > 99) {
+                  countEl.innerHTML = `<span class="text-sm">99+</span>`;
+                  countEl.classList.add('cart-count--small-medium');
+                } else {
+                  countEl.innerText = updatedCart.item_count;
+                  countEl.classList.remove('cart-count--small-medium');
+                }
+                countEl.hidden = updatedCart.item_count === 0;
+              });
+              
+              document.documentElement.classList[updatedCart.item_count === 0 ? 'remove' : 'add']('cart-has-items');
+              
+              // 刷新页面显示更新后的购物车
+              setTimeout(() => location.reload(), 100);
+            }
+          } catch (e) {
+            console.error('[Cart Page Monitor] 删除失败:', e);
           }
-          
-          console.log('[Cart Page Monitor] 所有孤立的免费赠品已删除');
           
           isUpdatingCart = false;
         }
@@ -1116,7 +1094,6 @@
           setTimeout(checkAndRemoveOrphanedFreeGifts, 1000);
         }
       });
-      console.log('[Cart Page Monitor] 已订阅 FoxTheme pubsub');
     }
     
     // 监听购物车数量变化 - 直接监控删除操作
@@ -1129,13 +1106,12 @@
           const currentCount = cart.items ? cart.items.length : 0;
           
           if (lastCartItemCount > 0 && currentCount < lastCartItemCount) {
-            console.log('[Cart Page Monitor] 检测到购物车商品减少:', lastCartItemCount, '->', currentCount);
             setTimeout(checkAndRemoveOrphanedFreeGifts, 500);
           }
           
           lastCartItemCount = currentCount;
         })
-        .catch(e => console.error('[Cart Page Monitor] 获取购物车失败:', e));
+        .catch(e => console.error('[购物车获取失败]', e));
     }
     
     // 每2秒检查一次
@@ -1143,7 +1119,5 @@
     
     // 页面加载时检查一次
     setTimeout(checkAndRemoveOrphanedFreeGifts, 2000);
-    
-    console.log('[Cart Page Monitor] 购物车页面免费赠品监控已初始化');
   })();
 </script>

@@ -879,24 +879,71 @@
           if (freeGiftVariantIds.length === 0) return;
           
           
-          // 查找并点击免费赠品的删除按钮
-          setTimeout(() => {
-            document.querySelectorAll('.cart-item').forEach(item => {
-              const itemVariantId = item.dataset.variantId;
+          // 查找并依次点击所有免费赠品的删除按钮
+          // 使用Shopify API批量删除所有免费赠品
+          setTimeout(async () => {
+            try {
+              // 获取当前购物车
+              const cartResponse = await fetch('/cart.js');
+              const cart = await cartResponse.json();
               
-              if (itemVariantId && freeGiftVariantIds.includes(String(itemVariantId))) {
-                const freeGiftRemoveBtn = item.querySelector('.cart-item__remove');
-                if (freeGiftRemoveBtn && !freeGiftRemoveBtn._autoClicked) {
-                  freeGiftRemoveBtn._autoClicked = true;
-                  freeGiftRemoveBtn.click();
-                  setTimeout(() => { freeGiftRemoveBtn._autoClicked = false; }, 1500);
+              // 找到所有需要删除的免费赠品的key
+              const keysToRemove = [];
+              cart.items.forEach(item => {
+                const itemVariantId = String(item.variant_id);
+                if (freeGiftVariantIds.includes(itemVariantId)) {
+                  keysToRemove.push(item.key);
                 }
+              });
+              
+              if (keysToRemove.length === 0) return;
+              
+              console.log('[删除免费赠品] 批量删除', keysToRemove.length, '个免费赠品');
+              
+              // 构建updates对象：{ key: 0, key: 0, ... }
+              const updates = {};
+              keysToRemove.forEach(key => {
+                updates[key] = 0;
+              });
+              
+              // 批量删除
+              const updateResponse = await fetch('/cart/update.js', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ updates: updates })
+              });
+              
+              if (updateResponse.ok) {
+                const updatedCart = await updateResponse.json();
+                
+                // 更新购物车数量显示
+                document.querySelectorAll('cart-count').forEach(countEl => {
+                  if (updatedCart.item_count > 99) {
+                    countEl.innerHTML = `<span class="text-sm">99+</span>`;
+                    countEl.classList.add('cart-count--small-medium');
+                  } else {
+                    countEl.innerText = updatedCart.item_count;
+                    countEl.classList.remove('cart-count--small-medium');
+                  }
+                  countEl.hidden = updatedCart.item_count === 0;
+                });
+                
+                document.documentElement.classList[updatedCart.item_count === 0 ? 'remove' : 'add']('cart-has-items');
+                
+                // 触发购物车刷新
+                setTimeout(() => {
+                  document.dispatchEvent(new CustomEvent('cart:refresh'));
+                }, 100);
               }
-            });
-            
-            delete mappings[String(productId)];
-            localStorage.setItem('free_gift_mappings', JSON.stringify(mappings));
-          }, 500);
+              
+              // 删除映射
+              delete mappings[String(productId)];
+              localStorage.setItem('free_gift_mappings', JSON.stringify(mappings));
+              
+            } catch (error) {
+              console.error('[删除免费赠品失败]', error);
+            }
+          }, 600);
         });
       });
     }

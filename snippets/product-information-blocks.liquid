@@ -1319,12 +1319,14 @@
                 {%- assign product_setting_key = 'free_product_' | append: i -%}
                 {%- assign default_setting_key = 'free_product_' | append: i | append: '_default' -%}
                 {%- assign free_variant_key = 'free_product_' | append: i | append: '_variant' -%}
+                {%- assign custom_price_key = 'free_product_' | append: i | append: '_custom_price' -%}
                 {%- assign free_product = block.settings[product_setting_key] -%}
                 {%- assign is_default_selected = block.settings[default_setting_key] -%}
                 {%- assign free_variant_id = block.settings[free_variant_key] -%}
+                {%- assign custom_price = block.settings[custom_price_key] -%}
+                {%- assign free_label_text = block.settings.free_label_text | default: "GRATIS" -%}
                 {%- if free_product != blank -%}
                   {%- assign variant = free_product.selected_or_first_available_variant -%}
-                  {%- comment -%} 使用指定的免费变体ID，或默认变体 {%- endcomment -%}
                   {%- assign cart_variant_id = free_variant_id | default: variant.id -%}
                   <div 
                     class="free-gift-product-card{% if is_default_selected %} selected{% endif %}"
@@ -1363,8 +1365,14 @@
                       <h4 class="free-gift-product-title">{{ free_product.title }}</h4>
                     </div>
                     <div class="free-gift-product-price">
-                      <span class="free-gift-price-free">GRATIS</span>
-                      <span class="free-gift-price-original">{{ variant.price | money }}</span>
+                      <span class="free-gift-price-free">{{ free_label_text }}</span>
+                      <span class="free-gift-price-original">
+                        {%- if custom_price != blank -%}
+                          {{ custom_price }}
+                        {%- else -%}
+                          {{ variant.price | money }}
+                        {%- endif -%}
+                      </span>
                     </div>
                   </div>
                 {%- endif -%}
@@ -1519,37 +1527,18 @@
               
               function initFreeGiftProducts() {
                 const cards = document.querySelectorAll('.free-gift-product-card');
-                const allCheckboxes = document.querySelectorAll('.free-gift-checkbox');
                 
                 cards.forEach(card => {
                   const checkbox = card.querySelector('.free-gift-checkbox');
                   
                   checkbox.addEventListener('change', function() {
-                    if (this.checked) {
-                      allCheckboxes.forEach(cb => {
-                        if (cb !== this) {
-                          cb.checked = false;
-                          cb.closest('.free-gift-product-card').classList.remove('selected');
-                        }
-                      });
-                      card.classList.add('selected');
-                    } else {
-                      card.classList.remove('selected');
-                    }
-                    
+                    card.classList.toggle('selected', this.checked);
                     saveFreeGiftSelection();
                   });
                   
                   card.addEventListener('click', function(e) {
-                    if (e.target.closest('.free-gift-checkbox-wrapper')) {
-                      return;
-                    }
-                    // 如果已选中，则取消选中；否则选中当前项
-                    if (checkbox.checked) {
-                      checkbox.checked = false;
-                    } else {
-                      checkbox.checked = true;
-                    }
+                    if (e.target.closest('.free-gift-checkbox-wrapper')) return;
+                    checkbox.checked = !checkbox.checked;
                     checkbox.dispatchEvent(new Event('change'));
                   });
                 });
@@ -1557,39 +1546,45 @@
                 restoreFreeGiftSelection();
               }
               
-              // 保存选中的免费赠品到sessionStorage
+              // 保存选中的免费赠品（支持多选）
               function saveFreeGiftSelection() {
-                const selectedCheckbox = document.querySelector('.free-gift-checkbox:checked');
+                const selectedCheckboxes = document.querySelectorAll('.free-gift-checkbox:checked');
+                const selections = [];
                 
-                if (selectedCheckbox) {
-                  const card = selectedCheckbox.closest('.free-gift-product-card');
-                  const selection = {
+                selectedCheckboxes.forEach(checkbox => {
+                  const card = checkbox.closest('.free-gift-product-card');
+                  selections.push({
                     variantId: card.dataset.variantId,
                     productId: card.dataset.productId,
-                    productHandle: card.dataset.productHandle,
+                    productHandle: card.dataset.productHandle
+                  });
+                });
+                
+                if (selections.length > 0) {
+                  sessionStorage.setItem('free_gift_selection_' + mainProductId, JSON.stringify({
+                    selections: selections,
                     mainProductId: mainProductId
-                  };
-                  sessionStorage.setItem('free_gift_selection_' + mainProductId, JSON.stringify(selection));
+                  }));
                 } else {
                   sessionStorage.removeItem('free_gift_selection_' + mainProductId);
                 }
               }
               
-              // 从sessionStorage恢复免费赠品选择
+              // 从sessionStorage恢复免费赠品选择（支持多选）
               function restoreFreeGiftSelection() {
                 const saved = sessionStorage.getItem('free_gift_selection_' + mainProductId);
                 if (saved) {
                   try {
-                    const selection = JSON.parse(saved);
-                    const variantId = selection.variantId || (selection.selections && selection.selections[0]?.variantId);
+                    const data = JSON.parse(saved);
+                    const selections = data.selections || [];
                     
-                    if (variantId) {
-                      const checkbox = document.querySelector(`.free-gift-checkbox[data-variant-id="${variantId}"]`);
+                    selections.forEach(selection => {
+                      const checkbox = document.querySelector(`.free-gift-checkbox[data-variant-id="${selection.variantId}"]`);
                       if (checkbox) {
                         checkbox.checked = true;
                         checkbox.closest('.free-gift-product-card')?.classList.add('selected');
                       }
-                    }
+                    });
                   } catch (e) {
                     console.error('[免费赠品恢复失败]', e);
                   }
@@ -1597,22 +1592,25 @@
               }
               
 
-              window.getSelectedFreeGift = function() {
-                const selectedCheckbox = document.querySelector('.free-gift-checkbox:checked');
-                if (!selectedCheckbox) return null;
-                
-                const card = selectedCheckbox.closest('.free-gift-product-card');
-                return {
-                  variantId: parseInt(card.dataset.variantId),
-                  productId: card.dataset.productId,
-                  productHandle: card.dataset.productHandle,
-                  mainProductId: mainProductId
-                };
+              // 获取所有选中的免费赠品（多选）
+              window.getSelectedFreeGifts = function() {
+                const items = [];
+                document.querySelectorAll('.free-gift-checkbox:checked').forEach(checkbox => {
+                  const card = checkbox.closest('.free-gift-product-card');
+                  items.push({
+                    variantId: parseInt(card.dataset.variantId),
+                    productId: card.dataset.productId,
+                    productHandle: card.dataset.productHandle,
+                    mainProductId: mainProductId
+                  });
+                });
+                return items;
               };
               
-              window.getSelectedFreeGifts = function() {
-                const gift = window.getSelectedFreeGift();
-                return gift ? [gift] : [];
+              // 向后兼容：返回第一个选中的
+              window.getSelectedFreeGift = function() {
+                const gifts = window.getSelectedFreeGifts();
+                return gifts.length > 0 ? gifts[0] : null;
               };
               // 清除免费赠品选择
               window.clearFreeGiftSelection = function() {
