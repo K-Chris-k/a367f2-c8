@@ -1048,6 +1048,23 @@
           "info": "Text to display for free products (e.g. GRATIS, FREE, KOSTENLOS)"
         },
         {
+          "type": "range",
+          "id": "max_selections",
+          "label": "Maximum Selections",
+          "min": 1,
+          "max": 4,
+          "step": 1,
+          "default": 1,
+          "info": "Maximum number of free gifts that can be selected (1=single, 2=up to 2, etc.)"
+        },
+        {
+          "type": "text",
+          "id": "max_selection_message",
+          "label": "Max Selection Message",
+          "default": "Sie können maximal {count} Gratisgeschenk(e) auswählen.",
+          "info": "Message shown when limit is exceeded. Use {count} for the number. Leave empty to disable."
+        },
+        {
           "type": "header",
           "content": "Free Product 1"
         },

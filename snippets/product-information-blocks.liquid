@@ -1310,9 +1310,16 @@
             {{ block.shopify_attributes }}
             data-main-product-id="{{ product.id }}"
             data-main-variant-id="{{ product.selected_or_first_available_variant.id }}"
+            data-max-selections="{{ block.settings.max_selections | default: 1 }}"
           >
             {%- if block.settings.title != blank -%}
               <h3 class="free-gift-title">{{ block.settings.title }}</h3>
+            {%- endif -%}
+            {%- if block.settings.max_selection_message != blank -%}
+              <div class="free-gift-max-message" style="display: none;" 
+                   data-message-template="{{ block.settings.max_selection_message | escape }}" 
+                   data-max-count="{{ block.settings.max_selections | default: 1 }}">
+              </div>
             {%- endif -%}
             <div class="free-gift-products-list">
               {%- for i in (1..4) -%}
@@ -1388,6 +1395,16 @@
               font-weight: 600;
               margin-bottom: 16px;
               color: #000;
+            }
+            .free-gift-max-message {
+              padding: 12px 16px;
+              margin-bottom: 12px;
+              background: #fff3cd;
+              border: 1px solid #ffc107;
+              border-radius: 8px;
+              color: #856404;
+              font-size: 14px;
+              line-height: 1.4;
             }
             .free-gift-products-list {
               display: flex;
@@ -1527,11 +1544,45 @@
               
               function initFreeGiftProducts() {
                 const cards = document.querySelectorAll('.free-gift-product-card');
+                const blockEl = document.querySelector('.free-gift-products-block');
+                const maxSelections = parseInt(blockEl?.dataset.maxSelections || '1', 10);
+                const messageEl = document.querySelector('.free-gift-max-message');
+                let messageTimeout;
+                
+                // 显示超出限制提示
+                function showMaxMessage() {
+                  if (!messageEl) return;
+                  
+                  const template = messageEl.dataset.messageTemplate || '';
+                  const maxCount = messageEl.dataset.maxCount || maxSelections;
+                  const message = template.replace(/\{count\}/g, maxCount);
+                  
+                  messageEl.textContent = message;
+                  messageEl.style.display = 'block';
+                  
+                  if (messageTimeout) clearTimeout(messageTimeout);
+                  
+                  messageTimeout = setTimeout(() => {
+                    messageEl.style.display = 'none';
+                  }, 3000);
+                }
                 
                 cards.forEach(card => {
                   const checkbox = card.querySelector('.free-gift-checkbox');
                   
                   checkbox.addEventListener('change', function() {
+                    // 检查是否超过最大选择数量
+                    if (this.checked) {
+                      const selectedCount = document.querySelectorAll('.free-gift-checkbox:checked').length;
+                      
+                      if (selectedCount > maxSelections) {
+                        // 超过最大数量，取消选择并显示提示
+                        this.checked = false;
+                        showMaxMessage();
+                        return;
+                      }
+                    }
+                    
                     card.classList.toggle('selected', this.checked);
                     saveFreeGiftSelection();
                   });
