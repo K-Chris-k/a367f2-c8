@@ -840,6 +840,14 @@
   (function initFreeGiftAutoRemove() {
     if (window._freeGiftAutoRemoveInitialized) return;
     window._freeGiftAutoRemoveInitialized = true;
+    
+    // 清理抽屉/模态状态，防止页面卡死
+    function resetBodyScrollState() {
+      document.documentElement.classList.remove('drawer-open');
+      document.body.classList.remove('modal-show', 'nodal-show', 'body--no-scrollbar');
+      document.body.style.removeProperty('overflow');
+      document.body.style.removeProperty('padding-right');
+    }
     window.addFreeGiftMapping = function(mainProductId, freeGiftVariantId) {
       try {
         const mappings = JSON.parse(localStorage.getItem('free_gift_mappings') || '{}');
@@ -927,6 +935,16 @@
                 });
                 
                 document.documentElement.classList[updatedCart.item_count === 0 ? 'remove' : 'add']('cart-has-items');
+                
+                // 若购物车已空，确保抽屉关闭并恢复页面滚动（防止卡死）
+                if (updatedCart.item_count === 0) {
+                  const cartDrawerEl = document.querySelector('cart-drawer');
+                  if (cartDrawerEl) {
+                    cartDrawerEl.removeAttribute('open');
+                    cartDrawerEl.setAttribute('hidden', 'hidden');
+                  }
+                  resetBodyScrollState();
+                }
                 
                 // 触发购物车刷新
                 setTimeout(() => {
@@ -1099,7 +1117,15 @@
                       }
                     }
                   })
-                  .catch(() => {});
+                  .catch(() => {})
+                  .finally(() => {
+                    // 确保抽屉关闭时恢复页面滚动状态
+                    if (updatedCart.item_count === 0) {
+                      resetBodyScrollState();
+                    }
+                  });
+              } else if (updatedCart.item_count === 0) {
+                resetBodyScrollState();
               }
             }
             
