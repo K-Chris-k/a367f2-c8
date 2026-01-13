@@ -1104,17 +1104,14 @@
           </style>
           <script>
             (function() {
-              // Cross Sell Products functionality
               function initCrossSellProducts() {
                 const cards = document.querySelectorAll('.cross-sell-product-card');
-                
                 cards.forEach(card => {
                   const checkbox = card.querySelector('.cross-sell-checkbox');
                   const minusBtn = card.querySelector('.cross-sell-qty-minus');
                   const plusBtn = card.querySelector('.cross-sell-qty-plus');
                   const qtyInput = card.querySelector('.cross-sell-qty-input');
                   
-                  // Checkbox change handler
                   checkbox.addEventListener('change', function() {
                     if (this.checked) {
                       card.classList.add('selected');
@@ -1124,7 +1121,6 @@
                     triggerCrossSellPriceUpdate();
                   });
                   
-                  // Quantity minus button
                   minusBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     let qty = parseInt(qtyInput.value) || 1;
@@ -1134,7 +1130,6 @@
                     }
                   });
                   
-                  // Quantity plus button
                   plusBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     let qty = parseInt(qtyInput.value) || 1;
@@ -1144,7 +1139,6 @@
                     }
                   });
                   
-                  // Quantity input change
                   qtyInput.addEventListener('change', function() {
                     let qty = parseInt(this.value) || 1;
                     if (qty < 1) qty = 1;
@@ -1153,9 +1147,7 @@
                     triggerCrossSellPriceUpdate();
                   });
                   
-                  // Click on card to toggle checkbox
                   card.addEventListener('click', function(e) {
-                    // Don't toggle if clicking on quantity controls
                     if (e.target.closest('.cross-sell-quantity-wrapper') || 
                         e.target.closest('.cross-sell-checkbox-wrapper')) {
                       return;
@@ -1165,16 +1157,13 @@
                   });
                 });
                 
-                // Initialize price on load if there are default selected items
                 setTimeout(() => {
                   triggerCrossSellPriceUpdate();
                 }, 100);
               }
               
-              // Get cross sell total price in cents
               function getCrossSellTotalInCents() {
                 let crossSellTotal = 0;
-                
                 document.querySelectorAll('.cross-sell-product-card').forEach(card => {
                   const checkbox = card.querySelector('.cross-sell-checkbox');
                   if (checkbox && checkbox.checked) {
@@ -1188,54 +1177,41 @@
                 return crossSellTotal;
               }
               
-              // Trigger price update - handles both Bundle and non-Bundle modes
               function triggerCrossSellPriceUpdate() {
                 const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
-                
                 if (bundleConfigEl) {
-                  // Bundle mode: dispatch event to trigger Bundle price update
                   document.dispatchEvent(new CustomEvent('crosssell:change', {
                     detail: { totalInCents: getCrossSellTotalInCents() }
                   }));
                   
-                  // Also call Bundle price update if available
                   if (window.bundleProducts && typeof window.bundleProducts.updatePrice === 'function') {
                     window.bundleProducts.updatePrice();
                   }
                 } else {
-                  // Non-Bundle mode: update price directly
                   updateStickyBarWithCrossSell(getCrossSellTotalInCents());
                 }
               }
               
-              // Update sticky bar price and main product price (non-Bundle mode)
               function updateStickyBarWithCrossSell(crossSellTotalInCents) {
-                // Get main product original price (stored in data attribute or from initial load)
                 const priceContainer = document.querySelector('.product__info-container');
                 let originalPrice = 0;
-                
-                // Try to get original price from data attribute first
                 if (priceContainer && priceContainer.dataset.originalPrice) {
                   originalPrice = parseFloat(priceContainer.dataset.originalPrice);
                 } else {
-                  // Get price from DOM and store it
                   const salePriceEl = priceContainer?.querySelector('.f-price-item--sale');
                   const regularPriceEl = priceContainer?.querySelector('.f-price-item--regular');
                   const mainPriceText = salePriceEl?.textContent || regularPriceEl?.textContent || '0';
-                  
                   originalPrice = parseFloat(
                     mainPriceText
                       .replace(/[^\d,]/g, '')
                       .replace(',', '.')
                   ) || 0;
                   
-                  // Store original price for future updates
                   if (priceContainer) {
                     priceContainer.dataset.originalPrice = originalPrice;
                   }
                 }
                 
-                // Add Lookbook/Empfehlung products if any
                 let lookbookTotal = 0;
                 document.querySelectorAll('.lb-select-on-click[lb-selected]').forEach(card => {
                   const priceEl = card.querySelector('.lb-price-sale-price');
@@ -1249,21 +1225,15 @@
                   lookbookTotal += price * qty;
                 });
                 
-                // Calculate final total (crossSellTotalInCents is in cents, convert to euros)
                 const finalTotal = originalPrice + (crossSellTotalInCents / 100) + lookbookTotal;
-                
-                // Format price in German euro format
                 const parts = finalTotal.toFixed(2).split('.');
                 const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
                 const formattedPrice = integerPart + ',' + parts[1] + ' €';
-                
-                // Update main product price display
                 const mainSalePrice = priceContainer?.querySelector('.f-price-item--sale');
                 if (mainSalePrice) {
                   mainSalePrice.textContent = formattedPrice;
                 }
                 
-                // Update sticky bar price
                 const stickyContainer = document.querySelector('.sticky-atc-bar__inner .product-price-box');
                 const stickyPrice = stickyContainer?.querySelector('.f-price-item--sale') ||
                                     stickyContainer?.querySelector('.f-price-item--regular');
@@ -1273,7 +1243,6 @@
                 }
               }
               
-              // Expose function globally for other scripts
               window.getCrossSellSelectedProducts = function() {
                 const items = [];
                 document.querySelectorAll('.cross-sell-product-card').forEach(card => {
@@ -1290,13 +1259,8 @@
                 return items;
               };
               
-              // Expose get total function for Bundle mode
               window.getCrossSellTotalInCents = getCrossSellTotalInCents;
-              
-              // Expose price update function
               window.updateCrossSellTotalPrice = triggerCrossSellPriceUpdate;
-              
-              // Initialize on DOM ready
               if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', initCrossSellProducts);
               } else {
@@ -1510,9 +1474,9 @@
               text-decoration: line-through;
             }
             .free-gift-checkbox {
-    display: none !important;
+            display: none !important;
 
-}
+              }
             @media screen and (max-width: 749px) {
               .free-gift-product-card {
                 padding: 12px;
@@ -1571,15 +1535,24 @@
                   const checkbox = card.querySelector('.free-gift-checkbox');
                   
                   checkbox.addEventListener('change', function() {
-                    // 检查是否超过最大选择数量
                     if (this.checked) {
-                      const selectedCount = document.querySelectorAll('.free-gift-checkbox:checked').length;
-                      
-                      if (selectedCount > maxSelections) {
-                        // 超过最大数量，取消选择并显示提示
-                        this.checked = false;
-                        showMaxMessage();
-                        return;
+                      // 如果是单选模式（maxSelections=1），取消其他所有选择
+                      if (maxSelections === 1) {
+                        document.querySelectorAll('.free-gift-checkbox').forEach(cb => {
+                          if (cb !== this) {
+                            cb.checked = false;
+                            cb.closest('.free-gift-product-card').classList.remove('selected');
+                          }
+                        });
+                      } else {
+                        // 多选模式：检查是否超过最大数量
+                        const selectedCount = document.querySelectorAll('.free-gift-checkbox:checked').length;
+                        
+                        if (selectedCount > maxSelections) {
+                          this.checked = false;
+                          showMaxMessage();
+                          return;
+                        }
                       }
                     }
                     

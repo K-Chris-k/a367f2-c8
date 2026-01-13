@@ -56,7 +56,7 @@ class CartDrawer extends DrawerComponent {
       const newCartContent = parsedHTML.getElementById(cartId).innerHTML;
       cartElement.innerHTML = newCartContent;
 
-      if (event.detail.open === true) {
+      if (event && event.detail && event.detail.open === true) {
         this.show();
       }
     } catch (error) {

@@ -837,12 +837,9 @@
 </style>
 
 <script>
-  // 简单方法：拦截删除按钮点击，自动删除关联的免费赠品
   (function initFreeGiftAutoRemove() {
     if (window._freeGiftAutoRemoveInitialized) return;
     window._freeGiftAutoRemoveInitialized = true;
-    
-    // 保存主产品与免费赠品的映射关系
     window.addFreeGiftMapping = function(mainProductId, freeGiftVariantId) {
       try {
         const mappings = JSON.parse(localStorage.getItem('free_gift_mappings') || '{}');
@@ -868,7 +865,13 @@
           if (!cartItem) return;
           
           const isFreeGift = cartItem.dataset.freeGift === 'true';
-          if (isFreeGift) return;
+          if (isFreeGift) {
+            // 免费礼物被删除，快速触发恢复检查（延迟等待Shopify完成删除）
+            setTimeout(() => {
+              document.dispatchEvent(new CustomEvent('free-gift:check'));
+            }, 350);
+            return;
+          }
           
           const productId = cartItem.dataset.productId;
           if (!productId) return;
@@ -878,9 +881,6 @@
           
           if (freeGiftVariantIds.length === 0) return;
           
-          
-          // 查找并依次点击所有免费赠品的删除按钮
-          // 使用Shopify API批量删除所有免费赠品
           setTimeout(async () => {
             try {
               // 获取当前购物车
@@ -897,8 +897,6 @@
               });
               
               if (keysToRemove.length === 0) return;
-              
-              console.log('[删除免费赠品] 批量删除', keysToRemove.length, '个免费赠品');
               
               // 构建updates对象：{ key: 0, key: 0, ... }
               const updates = {};
@@ -941,7 +939,6 @@
               localStorage.setItem('free_gift_mappings', JSON.stringify(mappings));
               
             } catch (error) {
-              console.error('[删除免费赠品失败]', error);
             }
           }, 600);
         });
@@ -954,8 +951,178 @@
     const observer = new MutationObserver(() => attachRemoveListeners());
     const cartDrawer = document.querySelector('cart-drawer');
     const cartPage = document.querySelector('.cart');
-    
     if (cartDrawer) observer.observe(cartDrawer, { childList: true, subtree: true });
     if (cartPage) observer.observe(cartPage, { childList: true, subtree: true });
+    (function monitorFreeGiftDeletion() {
+      if (window._freeGiftMonitorInitialized) return;
+      window._freeGiftMonitorInitialized = true;
+      let isRestoring = false;
+      let pendingQuickCheck = false;
+      function scheduleRestoreCheck(delay = 200) {
+        if (pendingQuickCheck) return;
+        pendingQuickCheck = true;
+        setTimeout(() => {
+          pendingQuickCheck = false;
+          if (!isRestoring) {
+            checkAndRestoreFreeGifts();
+          }
+        }, delay);
+      }
+      
+      // 检查并恢复被删除的免费礼物
+      async function checkAndRestoreFreeGifts() {
+        if (isRestoring) return;
+        
+        try {
+          const cartResponse = await fetch('/cart.js');
+          const cart = await cartResponse.json();
+          
+          if (!cart.items || cart.items.length === 0) {
+            return;
+          }
+          
+          const mappings = JSON.parse(localStorage.getItem('free_gift_mappings') || '{}');
+          
+          // 先清理映射：移除不在购物车中的主产品
+          const mainProductsInCart = new Set();
+          cart.items.forEach(item => {
+            const isFreeGift = item.properties && item.properties._free_gift === 'true';
+            if (!isFreeGift) {
+              mainProductsInCart.add(String(item.product_id));
+            }
+          });
+          
+          // 清除不存在的主产品映射
+          let mappingsCleaned = false;
+          Object.keys(mappings).forEach(mainProductId => {
+            if (!mainProductsInCart.has(mainProductId)) {
+              delete mappings[mainProductId];
+              mappingsCleaned = true;
+            }
+          });
+          
+          if (mappingsCleaned) {
+            localStorage.setItem('free_gift_mappings', JSON.stringify(mappings));
+          }
+          
+          const itemsToAdd = [];
+          
+          // 检查每个主产品的免费礼物
+          for (const mainProductId of Object.keys(mappings)) {
+            // 再次确认主产品在购物车中
+            if (!mainProductsInCart.has(mainProductId)) continue;
+            
+            const expectedFreeGiftIds = mappings[mainProductId] || [];
+            const currentFreeGiftIds = [];
+            
+            // 收集当前购物车中的免费礼物
+            cart.items.forEach(item => {
+              if (item.properties && item.properties._free_gift === 'true' && 
+                  item.properties._main_product_id === mainProductId) {
+                currentFreeGiftIds.push(String(item.variant_id));
+              }
+            });
+            
+            // 找出被删除的免费礼物
+            expectedFreeGiftIds.forEach(variantId => {
+              if (!currentFreeGiftIds.includes(variantId)) {
+                itemsToAdd.push({
+                  id: parseInt(variantId),
+                  quantity: 1,
+                  properties: {
+                    _free_gift: 'true',
+                    _main_product_id: String(mainProductId),
+                    _gift_type: 'gratisgeschenk'
+                  }
+                });
+              }
+            });
+          }
+          
+          // 批量重新添加被删除的免费礼物
+          if (itemsToAdd.length > 0) {
+            isRestoring = true;
+            
+            const response = await fetch('/cart/add.js', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ items: itemsToAdd })
+            });
+            
+            if (response.ok) {
+              const updatedCartResponse = await fetch('/cart.js');
+              const updatedCart = await updatedCartResponse.json();
+              
+              // 更新cart-count显示
+              document.querySelectorAll('cart-count').forEach(countEl => {
+                if (updatedCart.item_count > 99) {
+                  countEl.innerHTML = `<span class="text-sm">99+</span>`;
+                  countEl.classList.add('cart-count--small-medium');
+                } else {
+                  countEl.innerText = updatedCart.item_count;
+                  countEl.classList.remove('cart-count--small-medium');
+                }
+                countEl.hidden = updatedCart.item_count === 0;
+              });
+              
+              document.documentElement.classList[updatedCart.item_count === 0 ? 'remove' : 'add']('cart-has-items');
+              
+              // 获取drawer section ID
+              const cartDrawerEl = document.querySelector('cart-drawer');
+              const sectionId = cartDrawerEl ? cartDrawerEl.getAttribute('data-section-id') : null;
+              
+              if (sectionId) {
+                fetch(`/?sections=${sectionId}`)
+                  .then(res => res.json())
+                  .then(data => {
+                    const sectionHTML = data[sectionId];
+                    
+                    if (sectionHTML) {
+                      // 解析HTML
+                      const parser = new DOMParser();
+                      const doc = parser.parseFromString(sectionHTML, 'text/html');
+                      
+                      // 找到drawer内容
+                      const newDrawerContent = doc.querySelector(`#CartDrawer-${sectionId}`);
+                      const currentDrawerContent = document.querySelector(`#CartDrawer-${sectionId}`);
+                      
+                      if (newDrawerContent && currentDrawerContent) {
+                        // 替换内容
+                        currentDrawerContent.innerHTML = newDrawerContent.innerHTML;
+                        
+                        // 重新绑定删除按钮监听器
+                        setTimeout(() => {
+                          if (typeof attachRemoveListeners === 'function') {
+                            attachRemoveListeners();
+                          }
+                        }, 100);
+                      }
+                    }
+                  })
+                  .catch(() => {});
+              }
+            }
+            
+            setTimeout(() => {
+              isRestoring = false;
+            }, 1200);
+          }
+        } catch (error) {
+          isRestoring = false;
+        }
+      }
+      
+      document.addEventListener('free-gift:check', () => scheduleRestoreCheck(120));
+      setInterval(() => {
+        if (!isRestoring) {
+          checkAndRestoreFreeGifts();
+        }
+      }, 3000);
+      
+      // 页面加载时立即检查
+      setTimeout(() => {
+        if (!isRestoring) checkAndRestoreFreeGifts();
+      }, 1000);
+    })();
   })();
 </script>

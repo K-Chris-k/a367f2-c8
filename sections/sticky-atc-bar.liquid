@@ -395,13 +395,11 @@
         return items;
       }
 
-      // 收集所有要添加的产品（Bundle + 推荐产品 + Cross Sell 产品 + Free Gift 产品）
       function collectAllProducts() {
         const items = [];
 
         // 检查是否是 Bundle 模式
         const bundleItems = collectBundleProducts();
-        console.log('bundleItems============>', bundleItems);
         
         if (bundleItems.length > 0) {
           // Bundle 模式：添加主机 + 电池包 + 太阳能板
@@ -417,12 +415,8 @@
         // 添加推荐商品
         const recommendationItems = collectRecommendationProducts();
         items.push(...recommendationItems);
-
-        // 添加 Cross Sell 产品
         const crossSellItems = collectCrossSellProducts();
         items.push(...crossSellItems);
-
-        // 添加 Free Gift 产品（免费赠品）
         const freeGiftItems = collectFreeGiftProducts();
         items.push(...freeGiftItems);
 
@@ -931,8 +925,6 @@
           ...crossSellItems,
           ...freeGiftItems
         ];
-        
-        console.log('[添加购物车]', allItems.length, '个产品');
         
         if (submitBtn) {
           submitBtn.setAttribute('aria-disabled', 'true');
