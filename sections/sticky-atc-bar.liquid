@@ -385,10 +385,6 @@
                   _gift_type: 'gratisgeschenk'
                 }
               });
-              
-              if (typeof window.addFreeGiftMapping === 'function' && mainProdId) {
-                window.addFreeGiftMapping(mainProdId, freeGift.variantId);
-              }
             }
           });
         }
@@ -514,19 +510,23 @@
       }
 
       // 立即购买按钮（Buy it now）- 清空购物车后添加所有产品并跳转结账
-      // TODO: 点击加购只会加上太阳能板，不会加上主机和电池包    Multi Host 模式下  要把住产品也加上
       async function handleBuyItNow() {
         const buyBtnLoading = document.querySelector('#ProductSubmitButton').querySelector('.loading__spinner');
         const buyBtnText = document.querySelector('#ProductSubmitButton').querySelector('.buy-now-text');
         buyBtnText.style = 'display : none;';
         buyBtnLoading.style = 'opacity : 1 ; display : block;';
-        // 设置全局标记，阻止 Add to Cart 监听器执行
 
         const items = collectAllProducts();
 
         try {
-          // 清空购物车
+          // 设置标记：表示是从产品页主动操作（不应该自动恢复）
+          sessionStorage.setItem('_replacing_free_gifts', 'true');
+          
+          // 清空购物车（包括所有旧的免费礼物）
           await fetch('/cart/clear.js', { method: 'POST' });
+          
+          // 清空免费礼物映射关系
+          localStorage.removeItem('free_gift_mappings');
 
           // 添加商品
           const addResponse = await fetch('/cart/add.js', {
@@ -539,6 +539,23 @@
             throw new Error('添加商品失败');
           }
 
+          // 添加成功后，更新免费礼物映射
+          const freeGiftItems = collectFreeGiftProducts();
+          if (freeGiftItems.length > 0) {
+            const mainProductIdEl = document.querySelector('.free-gift-products-block');
+            const currentMainProductId = mainProductIdEl ? mainProductIdEl.dataset.mainProductId : null;
+            
+            if (currentMainProductId && typeof window.getSelectedFreeGifts === 'function') {
+              const freeGifts = window.getSelectedFreeGifts();
+              const mappings = JSON.parse(localStorage.getItem('free_gift_mappings') || '{}');
+              const key = String(currentMainProductId);
+              
+              // 替换整个数组（以最后一次为准）
+              mappings[key] = freeGifts.map(gift => String(gift.variantId));
+              localStorage.setItem('free_gift_mappings', JSON.stringify(mappings));
+            }
+          }
+
           // 等待购物车数据更新完成
           await fetch('/cart.js');
 
@@ -547,6 +564,11 @@
 
           // 等待购物车UI渲染完成
           await new Promise((resolve) => setTimeout(resolve, 300));
+          
+          // 清除标记
+          setTimeout(() => {
+            sessionStorage.removeItem('_replacing_free_gifts');
+          }, 1000);
 
           // 检查是否有赠品应用（需要用户选择赠品）
           const isGiftCheck = document.querySelector('.koala-element--app-block');
@@ -559,6 +581,7 @@
           }
         } catch (error) {
           console.error('[Buy it now] 操作失败:', error);
+          sessionStorage.removeItem('_replacing_free_gifts');
         } finally {
           buyBtnText.style = 'display : block;';
           buyBtnLoading.style = 'opacity : 0 ; display : none;';
@@ -920,18 +943,55 @@
         const mainVariantId = form.querySelector('[name="id"]')?.value;
         if (!mainVariantId) return;
         
-        const allItems = [
-          { id: parseInt(mainVariantId), quantity: 1 },
-          ...crossSellItems,
-          ...freeGiftItems
-        ];
-        
         if (submitBtn) {
           submitBtn.setAttribute('aria-disabled', 'true');
           submitBtn.classList.add('btn--loading');
         }
         
         try {
+          // 如果有免费礼物，先删除购物车中所有旧的免费礼物
+          if (freeGiftItems.length > 0) {
+            // 设置标记：表示是从产品页主动替换礼物（不应该自动恢复）
+            sessionStorage.setItem('_replacing_free_gifts', 'true');
+            
+            const cartResponse = await fetch('/cart.js');
+            const cart = await cartResponse.json();
+            
+            // 找到所有免费礼物的 key
+            const freeGiftKeys = cart.items
+              .filter(item => item.properties && item.properties._free_gift === 'true')
+              .map(item => item.key);
+            
+            // 如果有旧的免费礼物，删除它们
+            if (freeGiftKeys.length > 0) {
+              const updates = {};
+              freeGiftKeys.forEach(key => {
+                updates[key] = 0;
+              });
+              
+              await fetch('/cart/update.js', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ updates: updates })
+              });
+            }
+            
+            // 清空旧的映射关系，准备添加新的
+            localStorage.removeItem('free_gift_mappings');
+            
+            // 等待一下再清除标记
+            setTimeout(() => {
+              sessionStorage.removeItem('_replacing_free_gifts');
+            }, 2000);
+          }
+          
+          // 添加新产品和新的免费礼物
+          const allItems = [
+            { id: parseInt(mainVariantId), quantity: 1 },
+            ...crossSellItems,
+            ...freeGiftItems
+          ];
+          
           const response = await fetch('/cart/add.js', {
             method: 'POST',
             headers: { 
@@ -943,6 +1003,22 @@
           
           if (!response.ok) {
             throw new Error('添加失败');
+          }
+          
+          // 添加成功后，更新免费礼物映射
+          if (freeGiftItems.length > 0) {
+            const mainProductIdEl = document.querySelector('.free-gift-products-block');
+            const currentMainProductId = mainProductIdEl ? mainProductIdEl.dataset.mainProductId : null;
+            
+            if (currentMainProductId && typeof window.getSelectedFreeGifts === 'function') {
+              const freeGifts = window.getSelectedFreeGifts();
+              const mappings = JSON.parse(localStorage.getItem('free_gift_mappings') || '{}');
+              const key = String(currentMainProductId);
+              
+              // 替换整个数组（以最后一次为准）
+              mappings[key] = freeGifts.map(gift => String(gift.variantId));
+              localStorage.setItem('free_gift_mappings', JSON.stringify(mappings));
+            }
           }
           
           const result = await response.json();
@@ -973,6 +1049,7 @@
           
         } catch (error) {
           console.error('[添加购物车失败]', error);
+          sessionStorage.removeItem('_replacing_free_gifts');
           
           // 如果添加失败，尝试使用表单原生提交
           const formElement = form;

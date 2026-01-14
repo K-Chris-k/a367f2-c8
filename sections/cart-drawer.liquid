@@ -976,6 +976,7 @@
       window._freeGiftMonitorInitialized = true;
       let isRestoring = false;
       let pendingQuickCheck = false;
+      
       function scheduleRestoreCheck(delay = 200) {
         if (pendingQuickCheck) return;
         pendingQuickCheck = true;
@@ -990,6 +991,11 @@
       // 检查并恢复被删除的免费礼物
       async function checkAndRestoreFreeGifts() {
         if (isRestoring) return;
+        
+        // 检查是否正在从产品页替换礼物
+        if (sessionStorage.getItem('_replacing_free_gifts') === 'true') {
+          return; // 如果是替换操作，不自动恢复
+        }
         
         try {
           const cartResponse = await fetch('/cart.js');
@@ -1139,6 +1145,8 @@
       }
       
       document.addEventListener('free-gift:check', () => scheduleRestoreCheck(120));
+      
+      // 定期检查（每3秒）
       setInterval(() => {
         if (!isRestoring) {
           checkAndRestoreFreeGifts();
