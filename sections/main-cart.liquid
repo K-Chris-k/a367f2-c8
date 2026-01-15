@@ -229,7 +229,7 @@
                   {%- endif -%}
 
                   {%- capture cart_item -%}
-                    <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}">
+                  <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}" data-product-id="{{ item.product_id }}" {% if item.properties._free_gift == 'true' %}data-free-gift="true" data-main-product-id="{{ item.properties._main_product_id }}"{% endif %}>
                       <td class="cart-item__product">
                         <div class="flex items-start gap-4">
                           {%- if item.image -%}
@@ -1001,6 +1001,13 @@
       }
     }
     
+    function scheduleFastCheck(delay = 180) {
+      setTimeout(() => {
+        checkAndRemoveOrphanedFreeGifts();
+        checkAndRestoreMissingFreeGifts();
+      }, delay);
+    }
+    
     // 更新 cart-count 显示
     function updateCartCountDisplay(cartData) {
       if (!cartData) return;
@@ -1206,10 +1213,7 @@
     if (window.FoxTheme && window.FoxTheme.pubsub) {
       FoxTheme.pubsub.subscribe(FoxTheme.pubsub.PUB_SUB_EVENTS.cartUpdate, (event) => {
         if (event.sources !== 'free-gift-monitor' && event.sources !== 'free-gift-monitor-auto') {
-          setTimeout(() => {
-            checkAndRemoveOrphanedFreeGifts();
-            checkAndRestoreMissingFreeGifts();
-          }, 1000);
+          scheduleFastCheck(300);
         }
       });
     }
@@ -1224,24 +1228,42 @@
           const currentCount = cart.items ? cart.items.length : 0;
           
           if (lastCartItemCount > 0 && currentCount < lastCartItemCount) {
-            setTimeout(checkAndRemoveOrphanedFreeGifts, 500);
+            scheduleFastCheck(200);
+          } else {
+            scheduleFastCheck(400);
           }
-          
-          // 若数量变少或持平，也检查是否有缺失赠品
-          setTimeout(checkAndRestoreMissingFreeGifts, 800);
           
           lastCartItemCount = currentCount;
         })
         .catch(e => console.error('[购物车获取失败]', e));
     }
     
-    // 每2秒检查一次
-    setInterval(observeCartChanges, 2000);
+    // 监听删除按钮，快速触发检查
+    function attachRemoveListeners() {
+      document.querySelectorAll('a[is="cart-remove-item"], a.cart__remove, a.btn--link[href*="cart/change"]').forEach(link => {
+        if (link._freeGiftListenerAttached) return;
+        link._freeGiftListenerAttached = true;
+        link.addEventListener('click', () => {
+          scheduleFastCheck(220);
+        });
+      });
+    }
     
-    // 页面加载时检查一次
+    attachRemoveListeners();
+    
+    // 监听 DOM 变化，及时重新绑定删除按钮监听
+    const mainCartEl = document.querySelector('main-cart');
+    if (mainCartEl) {
+      const mo = new MutationObserver(() => attachRemoveListeners());
+      mo.observe(mainCartEl, { childList: true, subtree: true });
+    }
+    
+    // 每1秒检查一次，提升响应速度
+    setInterval(observeCartChanges, 1000);
+    
+    // 页面加载时快速检查
     setTimeout(() => {
-      checkAndRemoveOrphanedFreeGifts();
-      checkAndRestoreMissingFreeGifts();
-    }, 2000);
+      scheduleFastCheck(0);
+    }, 800);
   })();
 </script>

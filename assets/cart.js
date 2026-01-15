@@ -616,7 +616,8 @@ class MainCart extends HTMLElement {
   }
 
   getSectionToRender(event) {
-    event.detail.sections.push(FoxTheme.utils.getSectionId(this));
+    const sid = FoxTheme.utils.getSectionId(this);
+    if (sid) event.detail.sections.push(sid);
   }
 }
 customElements.define('main-cart', MainCart);

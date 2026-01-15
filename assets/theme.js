@@ -160,14 +160,15 @@ FoxTheme.config = {
       };
     },
     getSectionId: (element) => {
-      if (element.hasAttribute('data-section-id')) {
+      if (!element) return null;
+      if (element.hasAttribute && element.hasAttribute('data-section-id')) {
         return element.dataset.sectionId;
-      } else {
-        if (!element.classList.contains('shopify-section')) {
-          element = element.closest('.shopify-section');
-        }
-        return element.id.replace('shopify-section-', '');
       }
+      const sectionEl =
+        element.classList && element.classList.contains('shopify-section')
+          ? element
+          : element.closest && element.closest('.shopify-section');
+      return sectionEl && sectionEl.id ? sectionEl.id.replace('shopify-section-', '') : null;
     },
     debounce: (fn, wait) => {
       let t;
