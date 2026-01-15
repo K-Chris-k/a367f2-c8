@@ -188,6 +188,48 @@
       {{ product.variants | json }}
     </script>
     <script>
+      // ========== 性能优化：缓存常用 DOM 元素 ==========
+      const DOM_CACHE = {
+        bundleConfig: null,
+        stickyBar: null,
+        mainProductIdEl: null,
+        cartCounts: null,
+        init() {
+          this.stickyBar = document.querySelector('sticky-atc-bar');
+          this.mainProductIdEl = document.querySelector('.free-gift-products-block');
+          this.cartCounts = document.querySelectorAll('cart-count');
+        },
+        getBundleConfig() {
+          if (!this.bundleConfig) {
+            this.bundleConfig = document.querySelector('[id^="BundleProductsConfig-"]');
+          }
+          return this.bundleConfig;
+        },
+        refreshCartCounts() {
+          this.cartCounts = document.querySelectorAll('cart-count');
+        }
+      };
+      
+      // 页面加载时初始化缓存
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => DOM_CACHE.init());
+      } else {
+        DOM_CACHE.init();
+      }
+      
+      // ========== 性能优化：防抖函数 ==========
+      function debounce(func, wait) {
+        let timeout;
+        return function executedFunction(...args) {
+          const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+        };
+      }
+      
       // 获取赠品变体ID（如果需要）
       if (typeof window.fetchFreeGiftVariantId === 'undefined') {
         window.fetchFreeGiftVariantId = async (handle) => {
@@ -201,12 +243,12 @@
           }
         };
       }
-      // 收集 Bundle 产品（主机 + 电池包 + 太阳能板）
+      // 收集 Bundle 产品（主机 + 电池包 + 太阳能板）- 性能优化版
       function collectBundleProducts() {
         const items = [];
-        const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
+        const bundleConfigEl = DOM_CACHE.getBundleConfig();
 
-        if (!bundleConfigEl) return items; // 不是 Bundle 模式
+        if (!bundleConfigEl) return items; // 提前退出
 
         try {
           const bundleConfig = JSON.parse(bundleConfigEl.textContent);
@@ -215,18 +257,15 @@
           // 1. 主机 - 添加 Bundle 标记
           let hostVariantId = null;
           if (displayMode === 'multi_host') {
-            // Multi Host 模式：从表单中获取当前选中的主产品变体ID
-            const stickyBar = document.querySelector('sticky-atc-bar');
-            if (stickyBar) {
-              const variantSelect = stickyBar.querySelector('select[name="id"]');
-              const variantInput = stickyBar.querySelector('input[name="id"]');
+            // Multi Host 模式：从缓存中获取
+            if (DOM_CACHE.stickyBar) {
+              const variantSelect = DOM_CACHE.stickyBar.querySelector('select[name="id"]');
+              const variantInput = DOM_CACHE.stickyBar.querySelector('input[name="id"]');
               hostVariantId = variantSelect?.value || variantInput?.value;
             }
           } else {
-            // Bundle with Battery 模式：使用配置中的固定主机变体ID
-            if (bundleConfig.host && bundleConfig.host.variant_id) {
-              hostVariantId = bundleConfig.host.variant_id;
-            }
+            // Bundle with Battery 模式
+            hostVariantId = bundleConfig.host?.variant_id;
           }
 
           if (hostVariantId) {
@@ -240,7 +279,7 @@
             });
           }
 
-          // 2. 电池包（如果选中且 qty > 0）- 添加 Bundle 标记
+          // 2. 电池包（如果选中且 qty > 0）
           const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
           if (selectedBatteryBtn) {
             const batteryVariantId = selectedBatteryBtn.dataset.variantId;
@@ -258,24 +297,21 @@
             }
           }
 
-          // 3. 所有 bundle-category-grid 产品（包括太阳能板和其他产品，如果选中且 qty > 0）- 添加 Bundle 标记
-          document.querySelectorAll('.bundle-category-grid-fieldset').forEach((fieldset) => {
-            const selectedBtn = fieldset.querySelector('.bundle-category-btn.selected');
-            if (selectedBtn) {
-              const variantId = selectedBtn.dataset.variantId;
-              const qty = parseInt(selectedBtn.dataset.qty) || 0;
+          // 3. 批量收集 bundle-category-grid 产品
+          const categoryBtns = document.querySelectorAll('.bundle-category-grid-fieldset .bundle-category-btn.selected');
+          categoryBtns.forEach((selectedBtn) => {
+            const variantId = selectedBtn.dataset.variantId;
+            const qty = parseInt(selectedBtn.dataset.qty) || 0;
 
-              // 只有当 qty > 0 时才添加（"Keine" 表示不选择）
-              if (variantId && variantId.trim() !== '' && qty > 0) {
-                items.push({
-                  id: parseInt(variantId),
-                  quantity: 1,
-                  properties: {
-                    _bundle_item: 'true',
-                    _bundle_role: 'solar',
-                  },
-                });
-              }
+            if (variantId && variantId.trim() !== '' && qty > 0) {
+              items.push({
+                id: parseInt(variantId),
+                quantity: 1,
+                properties: {
+                  _bundle_item: 'true',
+                  _bundle_role: 'solar',
+                },
+              });
             }
           });
         } catch (e) {
@@ -284,16 +320,15 @@
 
         return items;
       }
-      // 排除主机
+      // 排除主机 - 性能优化版
       function collectBundleProducts2() {
         const items = [];
-        const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
+        const bundleConfigEl = DOM_CACHE.getBundleConfig();
 
-        if (!bundleConfigEl) return items; // 不是 Bundle 模式
+        if (!bundleConfigEl) return items; // 提前退出
 
         try {
-          const bundleConfig = JSON.parse(bundleConfigEl.textContent);
-          // 2. 电池包（如果选中且 qty > 0）- 添加 Bundle 标记
+          // 2. 电池包
           const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
           if (selectedBatteryBtn) {
             const batteryVariantId = selectedBatteryBtn.dataset.variantId;
@@ -311,24 +346,21 @@
             }
           }
 
-          // 3. 所有 bundle-category-grid 产品（包括太阳能板和其他产品，如果选中且 qty > 0）- 添加 Bundle 标记
-          document.querySelectorAll('.bundle-category-grid-fieldset').forEach((fieldset) => {
-            const selectedBtn = fieldset.querySelector('.bundle-category-btn.selected');
-            if (selectedBtn) {
-              const variantId = selectedBtn.dataset.variantId;
-              const qty = parseInt(selectedBtn.dataset.qty) || 0;
+          // 3. 批量收集 bundle-category-grid 产品
+          const categoryBtns = document.querySelectorAll('.bundle-category-grid-fieldset .bundle-category-btn.selected');
+          categoryBtns.forEach((selectedBtn) => {
+            const variantId = selectedBtn.dataset.variantId;
+            const qty = parseInt(selectedBtn.dataset.qty) || 0;
 
-              // 只有当 qty > 0 时才添加
-              if (variantId && variantId.trim() !== '' && qty > 0) {
-                items.push({
-                  id: parseInt(variantId),
-                  quantity: 1,
-                  properties: {
-                    _bundle_item: 'true',
-                    _bundle_role: 'solar',
-                  },
-                });
-              }
+            if (variantId && variantId.trim() !== '' && qty > 0) {
+              items.push({
+                id: parseInt(variantId),
+                quantity: 1,
+                properties: {
+                  _bundle_item: 'true',
+                  _bundle_role: 'solar',
+                },
+              });
             }
           });
         } catch (e) {
@@ -337,17 +369,22 @@
         return items;
       }
 
-      // 收集Lookbook插件产品
+      // 收集Lookbook插件产品 - 性能优化版
       function collectRecommendationProducts() {
         const items = [];
+        const selectedCards = document.querySelectorAll('.lb-select-on-click[lb-selected]');
+        
+        // 快速路径：没有选中的卡片
+        if (selectedCards.length === 0) return items;
 
-        // Lookbook 推荐商品
-        document.querySelectorAll('.lb-select-on-click[lb-selected]').forEach((card) => {
+        selectedCards.forEach((card) => {
           const variantId = card.getAttribute('lb-variant-id');
+          if (!variantId) return;
+          
           const qtyInput = card.querySelector('input.lb-qty-count');
           const qty = qtyInput ? parseInt(qtyInput.value || '1', 10) : 1;
 
-          if (variantId && qty > 0) {
+          if (qty > 0) {
             items.push({ id: parseInt(variantId), quantity: qty });
           }
         });
@@ -363,34 +400,60 @@
         return [];
       }
 
-      // 收集免费赠品（支持多选）
+      // 收集免费赠品（支持多选）- 性能优化版
       function collectFreeGiftProducts() {
-        const items = [];
-        const mainProductIdEl = document.querySelector('.free-gift-products-block');
-        const currentMainProductId = mainProductIdEl ? mainProductIdEl.dataset.mainProductId : null;
-        
-        if (typeof window.getSelectedFreeGifts === 'function') {
-          const freeGifts = window.getSelectedFreeGifts();
-          
-          freeGifts.forEach(freeGift => {
-            if (freeGift && freeGift.variantId) {
-              const mainProdId = freeGift.mainProductId || currentMainProductId;
-              
-              items.push({
-                id: freeGift.variantId,
-                quantity: 1,
-                properties: {
-                  _free_gift: 'true',
-                  _main_product_id: String(mainProdId),
-                  _gift_type: 'gratisgeschenk'
-                }
-              });
-            }
-          });
+        // 快速检查：如果没有 getSelectedFreeGifts 函数，直接返回
+        if (typeof window.getSelectedFreeGifts !== 'function') {
+          return [];
         }
+        
+        const items = [];
+        const currentMainProductId = DOM_CACHE.mainProductIdEl?.dataset.mainProductId;
+        const freeGifts = window.getSelectedFreeGifts();
+        
+        // 快速路径：没有选中的礼物
+        if (!freeGifts || freeGifts.length === 0) return items;
+        
+        freeGifts.forEach(freeGift => {
+          if (freeGift && freeGift.variantId) {
+            const mainProdId = freeGift.mainProductId || currentMainProductId;
+            
+            items.push({
+              id: freeGift.variantId,
+              quantity: 1,
+              properties: {
+                _free_gift: 'true',
+                _main_product_id: String(mainProdId),
+                _gift_type: 'gratisgeschenk'
+              }
+            });
+          }
+        });
+        
         return items;
       }
 
+      // ========== 性能优化：批量更新购物车数量显示 ==========
+      function updateCartCounts(cart) {
+        requestAnimationFrame(() => {
+          DOM_CACHE.refreshCartCounts();
+          const itemCount = cart.item_count;
+          
+          DOM_CACHE.cartCounts.forEach(countEl => {
+            if (itemCount > 99) {
+              countEl.innerHTML = `<span class="text-sm">99+</span>`;
+              countEl.classList.add('cart-count--small-medium');
+            } else {
+              countEl.innerText = itemCount;
+              countEl.classList.remove('cart-count--small-medium');
+            }
+            countEl.hidden = itemCount === 0;
+          });
+          
+          document.documentElement.classList[itemCount === 0 ? 'remove' : 'add']('cart-has-items');
+        });
+      }
+      
       function collectAllProducts() {
         const items = [];
 
@@ -509,23 +572,26 @@
         }
       }
 
-      // 立即购买按钮（Buy it now）- 清空购物车后添加所有产品并跳转结账
+      // 立即购买按钮（Buy it now）- 性能优化版
       async function handleBuyItNow() {
-        const buyBtnLoading = document.querySelector('#ProductSubmitButton').querySelector('.loading__spinner');
-        const buyBtnText = document.querySelector('#ProductSubmitButton').querySelector('.buy-now-text');
-        buyBtnText.style = 'display : none;';
-        buyBtnLoading.style = 'opacity : 1 ; display : block;';
+        const buyBtn = document.querySelector('#ProductSubmitButton');
+        if (!buyBtn) return;
+        
+        const buyBtnLoading = buyBtn.querySelector('.loading__spinner');
+        const buyBtnText = buyBtn.querySelector('.buy-now-text');
+        
+        buyBtnText.style.display = 'none';
+        buyBtnLoading.style.opacity = '1';
+        buyBtnLoading.style.display = 'block';
 
         const items = collectAllProducts();
 
         try {
-          // 设置标记：表示是从产品页主动操作（不应该自动恢复）
+          // 设置标记：表示是从产品页主动操作
           sessionStorage.setItem('_replacing_free_gifts', 'true');
           
-          // 清空购物车（包括所有旧的免费礼物）
+          // 清空购物车
           await fetch('/cart/clear.js', { method: 'POST' });
-          
-          // 清空免费礼物映射关系
           localStorage.removeItem('free_gift_mappings');
 
           // 添加商品
@@ -539,58 +605,48 @@
             throw new Error('添加商品失败');
           }
 
-          // 添加成功后，更新免费礼物映射
+          // 更新免费礼物映射
           const freeGiftItems = collectFreeGiftProducts();
-          if (freeGiftItems.length > 0) {
-            const mainProductIdEl = document.querySelector('.free-gift-products-block');
-            const currentMainProductId = mainProductIdEl ? mainProductIdEl.dataset.mainProductId : null;
+          if (freeGiftItems.length > 0 && typeof window.getSelectedFreeGifts === 'function') {
+            const currentMainProductId = DOM_CACHE.mainProductIdEl?.dataset.mainProductId;
             
-            if (currentMainProductId && typeof window.getSelectedFreeGifts === 'function') {
+            if (currentMainProductId) {
               const freeGifts = window.getSelectedFreeGifts();
               const mappings = JSON.parse(localStorage.getItem('free_gift_mappings') || '{}');
-              const key = String(currentMainProductId);
-              
-              // 替换整个数组（以最后一次为准）
-              mappings[key] = freeGifts.map(gift => String(gift.variantId));
+              mappings[String(currentMainProductId)] = freeGifts.map(gift => String(gift.variantId));
               localStorage.setItem('free_gift_mappings', JSON.stringify(mappings));
             }
           }
 
-          // 等待购物车数据更新完成
+          // 等待购物车更新
           await fetch('/cart.js');
-
-          // 触发购物车刷新事件
+          
+          // 触发购物车刷新
           document.dispatchEvent(new CustomEvent('cart:refresh'));
 
-          // 等待购物车UI渲染完成
           await new Promise((resolve) => setTimeout(resolve, 300));
           
           // 清除标记
-          setTimeout(() => {
-            sessionStorage.removeItem('_replacing_free_gifts');
-          }, 1000);
+          setTimeout(() => sessionStorage.removeItem('_replacing_free_gifts'), 1000);
 
-          // 检查是否有赠品应用（需要用户选择赠品）
+          // 检查赠品应用
           const isGiftCheck = document.querySelector('.koala-element--app-block');
           if (isGiftCheck) {
-            // 有赠品应用，显示购物车让用户选择赠品
             showCartDrawerAndWaitCheckout();
           } else {
-            // 没有赠品，直接跳转结账
             window.location.href = '/checkout';
           }
         } catch (error) {
           console.error('[Buy it now] 操作失败:', error);
           sessionStorage.removeItem('_replacing_free_gifts');
         } finally {
-          buyBtnText.style = 'display : block;';
-          buyBtnLoading.style = 'opacity : 0 ; display : none;';
-          // 清空选项 恢复默认选项  0x Keine
-          // 重置所有 Bundle 选项到默认状态
+          buyBtnText.style.display = 'block';
+          buyBtnLoading.style.opacity = '0';
+          buyBtnLoading.style.display = 'none';
           resetBundleSelections();
         }
       }
-      // 监听购物车添加事件，自动添加 Bundle 产品
+      // 监听购物车添加事件，自动添加 Bundle 产品 - 性能优化版
       (function initBundleCartHandler() {
         let isProcessingBundle = false;
         let previousCartItemCount = 0;
@@ -606,15 +662,17 @@
           }
         })();
 
-        // 监听购物车更新事件
-        document.addEventListener('cart:updated', handleCartUpdate);
-        document.addEventListener('cart:refresh', handleCartUpdate);
+        // 防抖处理，避免频繁触发
+        const debouncedHandleCartUpdate = debounce(handleCartUpdate, 100);
+        
+        document.addEventListener('cart:updated', debouncedHandleCartUpdate);
+        document.addEventListener('cart:refresh', debouncedHandleCartUpdate);
 
         async function handleCartUpdate(e) {
           if (isProcessingBundle) return;
 
-          // 检查是否是 Bundle 模式
-          const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
+          // 快速检查：是否是 Bundle 模式
+          const bundleConfigEl = DOM_CACHE.getBundleConfig();
           if (!bundleConfigEl) return;
 
           try {
@@ -629,30 +687,23 @@
               return;
             }
 
-            // 检查是否有主机产品在购物车中（判断是否刚添加了主产品）
+            // 检查是否有主机产品
             const bundleConfig = JSON.parse(bundleConfigEl.textContent);
             const displayMode = bundleConfig.display_mode || 'bundle_with_battery';
             
             let hasHostProduct = false;
             if (displayMode === 'multi_host') {
-              // Multi Host 模式：从表单中获取当前选中的主产品变体ID
-              const stickyBar = document.querySelector('sticky-atc-bar');
-              if (stickyBar) {
-                const variantSelect = stickyBar.querySelector('select[name="id"]');
-                const variantInput = stickyBar.querySelector('input[name="id"]');
+              if (DOM_CACHE.stickyBar) {
+                const variantSelect = DOM_CACHE.stickyBar.querySelector('select[name="id"]');
+                const variantInput = DOM_CACHE.stickyBar.querySelector('input[name="id"]');
                 const mainVariantId = variantSelect?.value || variantInput?.value;
                 if (mainVariantId) {
-                  hasHostProduct = cart.items.some(
-                    (item) => item.variant_id === parseInt(mainVariantId)
-                  );
+                  hasHostProduct = cart.items.some(item => item.variant_id === parseInt(mainVariantId));
                 }
               }
             } else {
-              // Bundle with Battery 模式：使用配置中的固定主机变体ID
-              if (bundleConfig.host && bundleConfig.host.variant_id) {
-                hasHostProduct = cart.items.some(
-                  (item) => item.variant_id === parseInt(bundleConfig.host.variant_id)
-                );
+              if (bundleConfig.host?.variant_id) {
+                hasHostProduct = cart.items.some(item => item.variant_id === parseInt(bundleConfig.host.variant_id));
               }
             }
 
@@ -663,10 +714,10 @@
 
             isProcessingBundle = true;
 
-            // 获取应该添加的 Bundle 产品（排除主机，因为主机已通过表单提交） 
+            // 获取应该添加的 Bundle 产品
             const bundleItems = collectBundleProducts2();
 
-            // 找出缺失的产品（不在购物车中的）
+            // 找出缺失的产品
             const missingItems = bundleItems.filter((bundleItem) => {
               return !cart.items.some(
                 (cartItem) => cartItem.variant_id === bundleItem.id && cartItem.properties?._bundle_item === 'true'
@@ -680,7 +731,6 @@
                 body: JSON.stringify({ items: missingItems }),
               });
 
-              // 等待购物车更新完成，然后获取最新的购物车数量
               await new Promise(resolve => setTimeout(resolve, 300));
               
               try {
@@ -697,7 +747,6 @@
                 document.dispatchEvent(new CustomEvent('cart:refresh'));
               }, 100);
             } else {
-              // 没有缺失产品，直接更新数量
               previousCartItemCount = currentCartItemCount;
             }
           } catch (error) {
@@ -863,7 +912,6 @@
   </div>
 
   <script>
-    // 在ProductForm初始化前拦截表单提交
     (function initEarlyFormInterceptor() {
       
       // 收集Cross-sell产品
