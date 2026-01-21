@@ -879,12 +879,29 @@
                 {%- assign is_default_selected = block.settings[default_setting_key] -%}
                 {%- if cross_product != blank -%}
                   {%- assign variant = cross_product.selected_or_first_available_variant -%}
+                  {%- capture cross_sell_variants_json -%}
+                  [
+                    {%- for v in cross_product.variants -%}
+                      {
+                        "id": {{ v.id }},
+                        "title": "{{ v.title | escape }}",
+                        "price": {{ v.price }},
+                        "compare_at_price": {{ v.compare_at_price | default: v.price }},
+                        "available": {{ v.available | json }},
+                        "image": "{% if v.featured_image %}{{ v.featured_image | image_url: width: 200 }}{% endif %}"
+                      }{% unless forloop.last %},{% endunless %}
+                    {%- endfor -%}
+                  ]
+                  {%- endcapture -%}
                   <div 
                     class="cross-sell-product-card{% if is_default_selected %} selected{% endif %}"
                     data-variant-id="{{ variant.id }}"
                     data-product-id="{{ cross_product.id }}"
+                    data-product-title="{{ cross_product.title | escape }}"
+                    data-default-image="{% if cross_product.featured_image %}{{ cross_product.featured_image | image_url: width: 200 }}{% endif %}"
                     data-price="{{ variant.price }}"
                     data-compare-price="{{ variant.compare_at_price | default: variant.price }}"
+                    data-variants="{{ cross_sell_variants_json | strip_newlines | escape }}"
                   >
                     <div class="cross-sell-checkbox-wrapper">
                       <input 
@@ -913,6 +930,23 @@
                     </div>
                     <div class="cross-sell-product-content">
                       <h4 class="cross-sell-product-title">{{ cross_product.title }}</h4>
+                      {%- if cross_product.variants.size > 1 -%}
+                        <div class="cross-sell-variant-select">
+                          <select class="cross-sell-variant-dropdown">
+                            {%- for v in cross_product.variants -%}
+                              <option 
+                                value="{{ v.id }}"
+                                data-price="{{ v.price }}"
+                                data-compare="{{ v.compare_at_price | default: v.price }}"
+                                data-image="{% if v.featured_image %}{{ v.featured_image | image_url: width: 200 }}{% endif %}"
+                                {% if v.id == variant.id %}selected{% endif %}
+                              >
+                                {{ v.title }}
+                              </option>
+                            {%- endfor -%}
+                          </select>
+                        </div>
+                      {%- endif -%}
                       <div class="cross-sell-product-bottom">
                         <div class="cross-sell-quantity-wrapper">
                           <button type="button" class="cross-sell-qty-btn cross-sell-qty-minus" aria-label="Decrease quantity">
@@ -1036,6 +1070,16 @@
               margin: 0;
               line-height: 1.4;
             }
+            .cross-sell-variant-select {
+              max-width: 140px;
+            }
+            .cross-sell-variant-dropdown {
+              width: 100%;
+              padding: 6px 8px;
+              border: 1px solid #e5e5e5;
+              border-radius: 6px;
+              font-size: 13px;
+            }
             .cross-sell-product-bottom {
               display: flex;
               align-items: center;
@@ -1104,6 +1148,13 @@
           </style>
           <script>
             (function() {
+              function formatMoney(cents) {
+                if (window.FoxTheme?.Currency?.formatMoney) {
+                  return window.FoxTheme.Currency.formatMoney(cents, window.FoxTheme.settings.moneyFormat);
+                }
+                return (cents / 100).toFixed(2);
+              }
+
               function initCrossSellProducts() {
                 const cards = document.querySelectorAll('.cross-sell-product-card');
                 cards.forEach(card => {
@@ -1111,6 +1162,68 @@
                   const minusBtn = card.querySelector('.cross-sell-qty-minus');
                   const plusBtn = card.querySelector('.cross-sell-qty-plus');
                   const qtyInput = card.querySelector('.cross-sell-qty-input');
+                  const variantDropdown = card.querySelector('.cross-sell-variant-dropdown');
+                  const priceEl = card.querySelector('.cross-sell-price');
+                  const imageEl = card.querySelector('.cross-sell-product-image img');
+                  const titleEl = card.querySelector('.cross-sell-product-title');
+                  const productTitle = card.dataset.productTitle || '';
+                  const defaultImage = card.dataset.defaultImage || (imageEl?.getAttribute('src') || '');
+
+                  let variants = [];
+                  try {
+                    variants = card.dataset.variants ? JSON.parse(card.dataset.variants) : [];
+                  } catch (e) {
+                    variants = [];
+                  }
+
+                  function applyVariant(variantId) {
+                    if (!variants.length) return;
+                    const variant = variants.find(v => String(v.id) === String(variantId)) || variants[0];
+                    if (!variant) return;
+
+                    card.dataset.variantId = variant.id;
+                    card.dataset.price = variant.price;
+                    card.dataset.comparePrice = variant.compare_at_price || variant.price;
+
+                    if (priceEl) {
+                      priceEl.textContent = formatMoney(variant.price);
+                    }
+
+                    if (imageEl) {
+                      if (variant.image) {
+                        imageEl.src = variant.image;
+                      } else if (defaultImage) {
+                        imageEl.src = defaultImage;
+                      }
+                    }
+
+                    if (titleEl) {
+                      const variantLabel = variant.title && variant.title !== 'Default Title' ? ` - ${variant.title}` : '';
+                      titleEl.textContent = `${productTitle}${variantLabel}`;
+                    }
+
+                    if (qtyInput) {
+                      qtyInput.dataset.variantId = variant.id;
+                    }
+                    if (checkbox) {
+                      checkbox.dataset.variantId = variant.id;
+                    }
+
+                    triggerCrossSellPriceUpdate();
+                  }
+
+                  if (variantDropdown) {
+                    // 阻止冒泡，避免点击下拉时触发卡片选中
+                    variantDropdown.addEventListener('mousedown', e => e.stopPropagation());
+                    variantDropdown.addEventListener('click', e => e.stopPropagation());
+                    variantDropdown.addEventListener('change', function(e) {
+                      e.stopPropagation();
+                      applyVariant(this.value);
+                    });
+                    applyVariant(variantDropdown.value);
+                  } else if (variants.length) {
+                    applyVariant(card.dataset.variantId || variants[0].id);
+                  }
                   
                   checkbox.addEventListener('change', function() {
                     if (this.checked) {
@@ -1149,7 +1262,8 @@
                   
                   card.addEventListener('click', function(e) {
                     if (e.target.closest('.cross-sell-quantity-wrapper') || 
-                        e.target.closest('.cross-sell-checkbox-wrapper')) {
+                        e.target.closest('.cross-sell-checkbox-wrapper') ||
+                        e.target.closest('.cross-sell-variant-select')) {
                       return;
                     }
                     checkbox.checked = !checkbox.checked;
