@@ -230,7 +230,7 @@
                   {%- endif -%}
 
                   {%- capture cart_item -%}
-                    <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}" data-product-id="{{ item.product_id }}" {% if item.properties._free_gift == 'true' %}data-free-gift="true" data-main-product-id="{{ item.properties._main_product_id }}"{% endif %}>
+                    <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}" data-product-id="{{ item.product_id }}" data-variant-id="{{ item.variant_id }}" {% if item.properties._free_gift == 'true' %}data-free-gift="true" data-main-product-id="{{ item.properties._main_product_id }}"{% endif %}>
                     {% comment %} <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}"> {% endcomment %}
                       <td class="cart-item__product">
                         <div class="flex items-start gap-4">
@@ -1267,5 +1267,173 @@
     setTimeout(() => {
       scheduleFastCheck(0);
     }, 800);
+  })();
+</script>
+
+<script>
+  (function initBundleItemAutoRemoveCartPage() {
+    if (window._bundleItemAutoRemoveCartPageInitialized) return;
+    window._bundleItemAutoRemoveCartPageInitialized = true;
+    function getBundleMappings() {
+      try {
+        return JSON.parse(localStorage.getItem('bundle_product_mappings') || '{}');
+      } catch (e) {
+        return {};
+      }
+    }
+    
+    function removeBundleMapping(hostVariantId) {
+      try {
+        const mappings = getBundleMappings();
+        delete mappings[String(hostVariantId)];
+        localStorage.setItem('bundle_product_mappings', JSON.stringify(mappings));
+      } catch (e) {}
+    }
+    
+    async function refreshCartPageSection() {
+      try {
+        const mainCart = document.querySelector('main-cart');
+        if (!mainCart) {
+          window.location.reload();
+          return;
+        }
+        
+        const sectionId = mainCart.closest('[id^="shopify-section-"]')?.id?.replace('shopify-section-', '');
+        if (!sectionId) {
+          window.location.reload();
+          return;
+        }
+        
+        const response = await fetch(`${window.location.pathname}?sections=${sectionId}`);
+        if (response.ok) {
+          const data = await response.json();
+          const newHTML = data[sectionId];
+          if (newHTML) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(newHTML, 'text/html');
+            const newMainCart = doc.querySelector('main-cart');
+            if (newMainCart && mainCart) {
+              mainCart.innerHTML = newMainCart.innerHTML;
+              // 重新绑定监听器
+              setTimeout(() => attachBundleRemoveListeners(), 100);
+            }
+          }
+        }
+      } catch (e) {
+        window.location.reload();
+      }
+    }
+    
+    function attachBundleRemoveListeners() {
+      const removeSelectors = [
+        'a[is="cart-remove-item"]',
+        'a.cart__remove',
+        '.cart-item__remove',
+        'a[href*="cart/change"]'
+      ];
+      
+      document.querySelectorAll(removeSelectors.join(', ')).forEach(removeBtn => {
+        if (removeBtn._bundleItemListenerAttached) return;
+        removeBtn._bundleItemListenerAttached = true;
+        
+        removeBtn.addEventListener('click', function(e) {
+          const cartItem = this.closest('.cart-item') || this.closest('tr') || this.closest('[data-variant-id]');
+          if (!cartItem) return;
+          
+          const variantId = cartItem.dataset.variantId || cartItem.getAttribute('data-variant-id');
+          if (!variantId) return;
+          
+          const mappings = getBundleMappings();
+          const bundleVariantIds = mappings[String(variantId)];
+          
+          if (!bundleVariantIds || bundleVariantIds.length === 0) {
+            return;
+          }
+          
+          // 延迟执行，等待 Shopify 完成主产品删除
+          setTimeout(async () => {
+            try {
+              const cartResponse = await fetch('/cart.js');
+              const cart = await cartResponse.json();
+              
+              if (!cart.items || cart.items.length === 0) {
+                removeBundleMapping(variantId);
+                return;
+              }
+              
+              const keysToRemove = [];
+              cart.items.forEach(item => {
+                const itemVariantId = String(item.variant_id);
+                if (bundleVariantIds.includes(itemVariantId)) {
+                  keysToRemove.push({ key: item.key, title: item.title });
+                }
+              });
+              
+              if (keysToRemove.length === 0) {
+                removeBundleMapping(variantId);
+                return;
+              }
+              
+              const updates = {};
+              keysToRemove.forEach(k => {
+                updates[k.key] = 0;
+              });
+              
+              const updateResponse = await fetch('/cart/update.js', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ updates: updates })
+              });
+              
+              if (updateResponse.ok) {
+                const updatedCart = await updateResponse.json();
+                
+                // 更新购物车数量显示
+                document.querySelectorAll('cart-count').forEach(countEl => {
+                  if (updatedCart.item_count > 99) {
+                    countEl.innerHTML = `<span class="text-sm">99+</span>`;
+                    countEl.classList.add('cart-count--small-medium');
+                  } else {
+                    countEl.innerText = updatedCart.item_count;
+                    countEl.classList.remove('cart-count--small-medium');
+                  }
+                  countEl.hidden = updatedCart.item_count === 0;
+                });
+                
+                document.documentElement.classList[updatedCart.item_count === 0 ? 'remove' : 'add']('cart-has-items');
+                
+                // 如果购物车为空，刷新页面显示空状态
+                if (updatedCart.item_count === 0) {
+                  window.location.reload();
+                } else {
+                  // 刷新购物车页面内容
+                  await refreshCartPageSection();
+                }
+              }
+              
+              removeBundleMapping(variantId);
+              
+            } catch (error) {
+              removeBundleMapping(variantId);
+            }
+          }, 600);
+        });
+      });
+    }
+    
+    // 初始化
+    attachBundleRemoveListeners();
+    
+    // 监听 DOM 变化
+    const mainCart = document.querySelector('main-cart');
+    const cartContainer = document.querySelector('.cart');
+    if (mainCart) {
+      const observer = new MutationObserver(() => attachBundleRemoveListeners());
+      observer.observe(mainCart, { childList: true, subtree: true });
+    }
+    if (cartContainer && !mainCart) {
+      const observer = new MutationObserver(() => attachBundleRemoveListeners());
+      observer.observe(cartContainer, { childList: true, subtree: true });
+    }
   })();
 </script>
