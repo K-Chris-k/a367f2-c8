@@ -23,16 +23,36 @@
             line-height: 1.2;
 }
   .slick-dotted .slick-dots {margin-top:30px;display: flex ;visibility:visible;gap:8px;align-items: center;justify-content: center;}
-  .slick-dotted .slick-dots .slick-active button{width:2rem; background: #3250C3;}
-  .slick-dotted .slick-dots button {
+  .slick-dotted .slick-dots .slick-active button{  background: #3250C3;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    transition: all .5s;
+  }
+  {% comment %} .slick-dotted .slick-dots button {
     padding:0px;
     width:2rem;
-    height:0.4rem;
+    height:0.8rem;
     border-radius:0.2rem;
     background: #D9D9D9;
     color: transparent;
     transition: all .4s ease;
-  }
+  } {% endcomment %}
+
+  .slick-dotted .slick-dots button {
+    /* 按钮重置样式，增强可访问性 */
+    border: none;
+    background: #D9D9D9; /* 非激活态半透明白色 */
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; /* 圆形 */
+    padding: 0;
+    cursor: pointer;
+    text-indent: -9999px; /* 隐藏按钮内文字（如果有） */
+    overflow: hidden;
+    transition: all 0.3s ease; /* 平滑过渡效果 */
+}
+
   .slick-dotted .slick-dots button:before{display:none}
   .logo-title{margin-top:100px}
   .slick-dots li{display: inline-flex;    align-items: center;}
@@ -57,7 +77,7 @@
                 max-height: none;
                 white-space: normal;
     }
-     .slick-dotted .slick-dots{margin-top:0px;gap:0px}
+     .slick-dotted .slick-dots{margin-top:10px;gap:8px}
      .logo-box{margin:5rem 3rem 0rem 3rem}
      .logo-position-center{padding-bottom:0px}
      .logo-title{margin-top:7rem}

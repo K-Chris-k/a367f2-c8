@@ -136,11 +136,6 @@
           "storefrontAccessToken": ""
         }
       },
-      "6770548097779500122": {
-        "type": "shopify://apps/koala-upsells-gifts/blocks/gifts-embed/baf92dc5-8ffa-40c0-967e-57b74cddc9e3",
-        "disabled": false,
-        "settings": {}
-      },
       "8776485610325655785": {
         "type": "shopify://apps/hiko-social-login/blocks/hiko-auth/3832d7e1-5bcd-4b72-91da-236b57feef8f",
         "disabled": false,
@@ -171,13 +166,13 @@
         "disabled": false,
         "settings": {}
       },
-      "16450442240576678850": {
-        "type": "shopify://apps/hura-effects-decor/blocks/app-embed/23cb3569-c623-4373-82e9-770ef1e1f0d1",
-        "disabled": false,
+      "6770548097779500122": {
+        "type": "shopify://apps/koala-upsells-gifts/blocks/gifts-embed/baf92dc5-8ffa-40c0-967e-57b74cddc9e3",
+        "disabled": true,
         "settings": {}
       },
-      "8605505498557855500": {
-        "type": "shopify://apps/bogos-io-free-gift/blocks/app-embed/0432bba6-720a-4e95-be5a-b868386f7aa6",
+      "2539598332178966696": {
+        "type": "shopify://apps/xcotton-post-purchase-guard/blocks/insurance/6531bb8b-340c-42d4-b5da-1734c7a2c524",
         "disabled": false,
         "settings": {}
       }

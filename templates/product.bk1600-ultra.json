@@ -118,13 +118,44 @@
             "show_gift_card_recipient": true
           }
         },
-        "koala_upsells_gifts_product_page_banner_qbqdTh": {
-          "type": "shopify://apps/koala-upsells-gifts/blocks/product-page-banner/baf92dc5-8ffa-40c0-967e-57b74cddc9e3",
-          "settings": {}
+        "free_gift_products_admxhx": {
+          "type": "free_gift_products",
+          "settings": {
+            "title": "Gratisgeschenk",
+            "free_label_text": "GRATIS",
+            "max_selections": 1,
+            "max_selection_message": "Sie können maximal {count} Gratisgeschenk(e) auswählen.",
+            "free_product_1": "indevolt-smart-plug-free",
+            "free_product_1_default": true,
+            "free_product_1_variant": "",
+            "free_product_1_custom_price": "",
+            "free_product_2": "",
+            "free_product_2_default": false,
+            "free_product_2_variant": "",
+            "free_product_2_custom_price": "",
+            "free_product_3": "",
+            "free_product_3_default": false,
+            "free_product_3_variant": "",
+            "free_product_3_custom_price": "",
+            "free_product_4": "",
+            "free_product_4_default": false,
+            "free_product_4_variant": "",
+            "free_product_4_custom_price": ""
+          }
         },
-        "selleasy_lb_upsell_widget_pal_HLwnJd": {
-          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-pal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
-          "settings": {}
+        "cross_sell_products_YDBWFA": {
+          "type": "cross_sell_products",
+          "settings": {
+            "title": "Vielleicht brauchst du auch",
+            "cross_sell_product_1": "indevolt-solarbank-schuko-anschlusskabel-5m",
+            "cross_sell_product_1_default": false,
+            "cross_sell_product_2": "solarman-smart-plug",
+            "cross_sell_product_2_default": false,
+            "cross_sell_product_3": "indevolt-smarter-stromzahlersmd3",
+            "cross_sell_product_3_default": false,
+            "cross_sell_product_4": "shelly-pro-3em-120a",
+            "cross_sell_product_4_default": false
+          }
         },
         "logistics_pN3qrf": {
           "type": "logistics",
@@ -176,8 +207,8 @@
         "bundle_products_6ApqTi",
         "recommend_product_Mnzq6P",
         "buy_buttons",
-        "koala_upsells_gifts_product_page_banner_qbqdTh",
-        "selleasy_lb_upsell_widget_pal_HLwnJd",
+        "free_gift_products_admxhx",
+        "cross_sell_products_YDBWFA",
         "logistics_pN3qrf",
         "icon_with_text",
         "complementary"
@@ -919,8 +950,8 @@
           "type": "image",
           "settings": {
             "container": "fixed",
-            "image": "shopify://shop_images/ultra-package-pc.png",
-            "mobile_image": "shopify://shop_images/ultra-package-mob.png"
+            "image": "shopify://shop_images/bk1600ultra-package-pc.png",
+            "mobile_image": "shopify://shop_images/bk1600ultra-package-mob.png"
           }
         }
       },

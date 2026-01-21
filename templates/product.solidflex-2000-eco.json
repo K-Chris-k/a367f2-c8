@@ -92,10 +92,6 @@
             "mount_sloped_roof_connect_solar_quantity": true
           }
         },
-        "koala_upsells_gifts_product_page_banner_JmkCYf": {
-          "type": "shopify://apps/koala-upsells-gifts/blocks/product-page-banner/baf92dc5-8ffa-40c0-967e-57b74cddc9e3",
-          "settings": {}
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -104,9 +100,44 @@
             "show_gift_card_recipient": true
           }
         },
-        "selleasy_lb_upsell_widget_pal_PA4D48": {
-          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-pal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
-          "settings": {}
+        "free_gift_products_C6JHQ6": {
+          "type": "free_gift_products",
+          "settings": {
+            "title": "Wähle ein Gratisgeschenk aus",
+            "free_label_text": "GRATIS",
+            "max_selections": 1,
+            "max_selection_message": "Sie können maximal {count} Gratisgeschenk(e) auswählen.",
+            "free_product_1": "indevolt-smarter-stromzahlerfree",
+            "free_product_1_default": true,
+            "free_product_1_variant": "",
+            "free_product_1_custom_price": "",
+            "free_product_2": "indevolt-smart-plug-free",
+            "free_product_2_default": false,
+            "free_product_2_variant": "",
+            "free_product_2_custom_price": "",
+            "free_product_3": "",
+            "free_product_3_default": false,
+            "free_product_3_variant": "",
+            "free_product_3_custom_price": "",
+            "free_product_4": "",
+            "free_product_4_default": false,
+            "free_product_4_variant": "",
+            "free_product_4_custom_price": ""
+          }
+        },
+        "cross_sell_products_PfpJWY": {
+          "type": "cross_sell_products",
+          "settings": {
+            "title": "Vielleicht brauchst du auch",
+            "cross_sell_product_1": "solarman-smart-plug",
+            "cross_sell_product_1_default": false,
+            "cross_sell_product_2": "shelly-pro-3em-120a",
+            "cross_sell_product_2_default": false,
+            "cross_sell_product_3": "",
+            "cross_sell_product_3_default": false,
+            "cross_sell_product_4": "",
+            "cross_sell_product_4_default": false
+          }
         },
         "logistics_pN3qrf": {
           "type": "logistics",
@@ -157,9 +188,9 @@
         "reviews_list_QJMCGK",
         "variant_picker",
         "bundle_products_zyQnV9",
-        "koala_upsells_gifts_product_page_banner_JmkCYf",
         "buy_buttons",
-        "selleasy_lb_upsell_widget_pal_PA4D48",
+        "free_gift_products_C6JHQ6",
+        "cross_sell_products_PfpJWY",
         "logistics_pN3qrf",
         "icon_with_text",
         "complementary"
@@ -1279,6 +1310,15 @@
             "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_Zertifikat_fur_den_NA-Schutz.pdf?v=1757316512"
           }
         },
+        "card_TaHhdX": {
+          "type": "card",
+          "settings": {
+            "title": "Deutschland Grid Connection 2400W",
+            "content": "VDE",
+            "date": "2026-01-15",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/2400W_VDE-AR-N_4105.pdf?v=1768447347"
+          }
+        },
         "card_e7iVix": {
           "type": "card",
           "settings": {
@@ -1313,6 +1353,7 @@
         "card_VpDFmL",
         "card_L47jed",
         "card_77znFt",
+        "card_TaHhdX",
         "card_e7iVix",
         "card_7ndAkh",
         "card_N3ziDC"

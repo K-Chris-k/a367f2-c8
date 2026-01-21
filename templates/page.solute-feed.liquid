@@ -1,0 +1,140 @@
+{%- layout none -%}
+{%- assign target_collection = collections["balkonkraftwerk-mit-speicher"] -%}
+
+{%- if target_collection -%}
+  {%- paginate target_collection.products by 1000 -%}
+    {%- if paginate.current_page <= paginate.pages -%}
+      {%- for product in target_collection.products -%}
+        {%- for variant in product.variants -%}
+          {%- if variant.available -%}
+            {
+              "item_group_id": {{ variant.product.id | json }},
+              "aid": {{ variant.id | json }},
+              {%- if variant.title != 'Default Title' -%}
+                {%- assign name = product.title | append: " - " | append: variant.title -%}
+              {%- else -%}
+                {%- assign name = product.title -%}
+              {%- endif -%}
+              "name": {{ name | strip | strip_html | strip_newlines | truncate: 200 | json }},
+              {%- if product.vendor -%}
+                "brand": {{ product.vendor | strip | strip_html | strip_newlines | truncate: 70 | json }},
+              {%- endif -%}
+              {%- if product.type -%}
+                "product_type": {{ product.type | strip | strip_html | strip_newlines | json }},
+              {%- endif -%}
+              {%- assign shop_cat = '' -%}
+              {%- for collection in product.collections -%}
+                {%- if collection.title -%}
+                  {%- assign shop_cat = shop_cat | append: collection.title -%}
+                  {%- unless forloop.last -%}
+                    {%- assign shop_cat = shop_cat | append: ' > ' -%}
+                  {%- endunless -%}
+                {%- endif -%}
+              {%- endfor -%}
+              {%- if shop_cat -%}
+                "shop_cat": {{ shop_cat | json }},
+              {%- endif -%}
+              {%- if product.tags.size > 0 -%}
+                {%- assign tags = '' -%}
+                {%- for tag in product.tags -%}
+                  {%- assign tags = tags | append: tag -%}
+                  {%- unless forloop.last -%}
+                    {%- assign tags = tags | append: "," -%}
+                  {%- endunless -%}
+                {%- endfor -%}
+                "tags": {{ tags | json }},
+              {%- endif -%}
+              {%- if variant.barcode -%}
+                "ean": {{ variant.barcode | json }},
+              {%- endif -%}
+              {%- if variant.sku -%}
+                "mpnr": {{ variant.sku | json }},
+              {%- endif -%}
+              {%- if product.description -%}
+                "desc": {{ product.description | strip | strip_html | strip_newlines | truncate: 4000 | json }},
+              {%- endif -%}
+              {%- if variant.image -%}
+                {%- assign image = variant.image | image_url: width: 1000 -%}
+              {%- else -%}
+                {%- assign image = product.featured_image | image_url: width: 1000 -%}
+              {%- endif -%}
+              {%- if image -%}
+                "image": {{ image | replace: "//", "https://" | json }},
+              {%- endif -%}
+              {%- if product.images.size > 1 -%}
+                {%- assign images = '' -%}
+                {%- for image in product.images -%}
+                  {%- if forloop.first -%}
+                    {%- continue -%}
+                  {%- endif -%}
+                  {%- assign img = image | image_url: width: 1000 -%}
+                  {%- assign images = images | append: img -%}
+                  {%- unless forloop.last -%}
+                    {%- assign images = images | append: ',' -%}
+                  {%- endunless -%}
+                {%- endfor -%}
+                "images": {{ images | replace: "//", "https://" | json }},
+              {%- endif -%}
+              {%- assign link = shop.url | append: product.url -%}
+              {%- if variant.id -%}
+                {%- assign link = link | append: '?variant=' %}
+                {%- assign link = link | append: variant.id %}
+                {%- assign link = link | append: '&utm_source=web&utm_medium=cpc&utm_campaign=billiger' -%}
+              {%- else -%}
+                {%- assign link = link | append: '?utm_source=web&utm_medium=cpc&utm_campaign=billiger' -%}
+              {%- endif -%}
+              "link": {{ link | json }},
+              {%- assign availability = 'in stock' -%}
+              "availability": {{ availability | json }},
+              {%- if variant.compare_at_price and variant.price < variant.compare_at_price -%}
+                "old_price": {{ variant.compare_at_price | divided_by: 100.0 | json }},
+              {%- endif -%}
+              {%- assign price = variant.price | divided_by: 100.0 -%}
+              "price": {{ price | json }},
+              {%- if variant.inventory_policy == 'continue' and variant.inventory_quantity > 1 -%}
+                {%- assign stock = 42 -%}
+              {%- elsif variant.inventory_management -%}
+                {%- assign stock = variant.inventory_quantity -%}
+              {%- else -%}
+                {%- assign stock = 42 -%}
+              {%- endif -%}
+              "stock_quantity": {{ stock | json }},
+              {%- if variant.unit_price_measurement -%}
+                {%- assign upm = variant.unit_price_measurement.quantity_value | append: variant.unit_price_measurement.quantity_unit -%}
+                "upm": {{ upm | json }},
+                {%- assign upbm = variant.unit_price_measurement.reference_value | append: variant.unit_price_measurement.reference_unit -%}
+                "upbm": {{ upbm | json }},
+              {%- endif -%}
+              {%- assign weight = variant.weight | divided_by: 1000.0 -%}
+              "dlv_cost": {%- if price >= 50 -%}0{%- else -%}4.90{%- endif -%},
+              "dlv_cost_AT": {%- if price >= 100 -%}0{%- else -%}6.9{%- endif -%},
+              {%- assign dlv = '2-4 Werktage' -%}
+              "dlv_time": {{ dlv | json }},
+              {%- if variant.weight > 0 -%}
+                "weight": {{ variant.weight | weight_with_unit | json }},
+              {%- endif -%}
+              {%- for product_option in product.options_with_values -%}
+                {%- if product_option.name != 'Title' -%}
+                  ,{{ product_option.name | json }}:
+                  {%- for option in variant.options -%}
+                    {%- if product_option.values contains option -%}
+                      {{ option | strip | strip_html | strip_newlines | json }}
+                      {%- break -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                {%- endif -%}
+              {%- endfor -%}
+              {%- if product.metafields.custom.size > 0 -%}
+                {%- for field in product.metafields.custom -%}
+                  ,{{ field.first | prepend: "meta_" | json }}:{{ field.last | strip | strip_html | strip_newlines | replace: '"','' | replace: '[','' | replace: ']','' | json }}
+                {%- endfor -%}
+              {%- endif -%}
+            }
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    {% endif %}
+  {% endpaginate %}
+{%- else -%}
+  []
+{%- endif -%}

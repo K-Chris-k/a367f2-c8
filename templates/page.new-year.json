@@ -20,18 +20,18 @@
     "image_with_text_overlay_new_9UKtD3": {
       "type": "image-with-text-overlay-new",
       "blocks": {
-        "heading_tfrcxF": {
-          "type": "heading",
-          "settings": {
-            "heading": "Sonniger Start im Neujahr",
-            "heading_size": "hd3",
-            "heading_highlight_style": "none"
-          }
-        },
         "subheading_nMbFzH": {
           "type": "subheading",
           "settings": {
             "subheading": "Bis zu 56% Rabatt"
+          }
+        },
+        "heading_tfrcxF": {
+          "type": "heading",
+          "settings": {
+            "heading": "Sonniger Start im Neujahr",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
           }
         },
         "text_HFYftB": {
@@ -56,8 +56,8 @@
         }
       },
       "block_order": [
-        "heading_tfrcxF",
         "subheading_nMbFzH",
+        "heading_tfrcxF",
         "text_HFYftB",
         "countdown_VtLYFe"
       ],
@@ -463,13 +463,13 @@
             "description": "<p>Solarenergiespeicher für deine PV-Anlage<br/> \\nMaximal sicheres System durch halbfeste Akkus<br/>\\nDie CycBoost-Technologie garantiert 8000 Lebenszyklen</p>",
             "price": "599,00€",
             "original": "1.199,00€",
-            "price_color": "#481d0d",
+            "price_color": "#e98300",
             "text_size": "text-base",
             "button_add_to_cart": "In den Warenkorb",
             "button_label": "Mehr erfahren",
             "button_link": "shopify://products/indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus",
             "button_style": "btn--secondary",
-            "button_title_color": "#481d0d",
+            "button_title_color": "linear-gradient(to right, #A86521, #F1B868);",
             "content_alignment": "left",
             "width": "50%",
             "alignment": "start",
@@ -566,7 +566,7 @@
         ".product-collection-box {margin-top: 0px;}",
         ".product-collection-box .custom-product-button {max-width: 100%; width: 100%; min-height: 50px;}",
         ".section-product-collection .page-width {background: transparent !important;}",
-        ".kv-size {color: #481d0d;}",
+        ".kv-size {color: #e98300;}",
         ".custom-product-title {min-height: 24px !important;}",
         "@media (max-width: 767px) {.product-collection-box .custom-product-button {min-height: 40px; } .product-collection-box .custom-product-describe {line-height: 19px; font-size: 12px; }}"
       ],
@@ -582,7 +582,7 @@
         "bg_color": "transparent",
         "content_color": "#ffffff",
         "title_color": "#000000",
-        "button_title_color": "#481d0d",
+        "button_title_color": "#e98300",
         "button_color": "cyber-monday",
         "image_height": "385",
         "sale-min_height": "1",
@@ -620,13 +620,13 @@
             "description": "<p>Halbfeste Akkus: Ein neues Maß an Sicherheit und Lebensdauer<br/> \\n3. Gen Batterieoptimierer für immer maximale Leistung<br/>\\n2400W im Off-Grid-Betrieb für unabhängigen Stromversorgung</p>",
             "price": "649,00€",
             "original": "1.199,00€",
-            "price_color": "#481d0d",
+            "price_color": "#e98300",
             "text_size": "text-base",
             "button_add_to_cart": "In den Warenkorb",
             "button_label": "Mehr erfahren",
             "button_link": "shopify://products/solidflex-2000-balkonkraftwerk-mit-speicher",
             "button_style": "btn--secondary",
-            "button_title_color": "#481d0d",
+            "button_title_color": "linear-gradient(to right, #A86521, #F1B868);",
             "content_alignment": "left",
             "width": "50%",
             "alignment": "start",
@@ -722,7 +722,7 @@
         ".product-collection-box {margin-top: 0px;}",
         ".product-collection-box .custom-product-button {max-width: 100%; width: 100%; min-height: 50px;}",
         ".section-product-collection .page-width {background: transparent !important;}",
-        ".kv-size {color: #481d0d;}",
+        ".kv-size {color: #e98300;}",
         "@media (max-width: 767px) {.product-collection-box .custom-product-button {min-height: 40px; } .product-collection-box .custom-product-describe {line-height: 19px; font-size: 12px; }}"
       ],
       "name": "产品推荐",
@@ -737,7 +737,7 @@
         "bg_color": "transparent",
         "content_color": "#ffffff",
         "title_color": "#000000",
-        "button_title_color": "#481d0d",
+        "button_title_color": "#e98300",
         "button_color": "cyber-monday",
         "image_height": "385",
         "sale-min_height": "100",
@@ -775,13 +775,13 @@
             "description": "<p>2 kWh Kapazität/Einheit, längere Akkulaufzeit \\nCycBoost-Technologie: 8000 Lebenszyklen\\n2400W mit DC- & AC-Kopplung</p>",
             "price": "649,00€",
             "original": "1.199,00€",
-            "price_color": "#481d0d",
+            "price_color": "#e98300",
             "text_size": "text-base",
             "button_add_to_cart": "In den Warenkorb",
             "button_label": "Mehr erfahren",
             "button_link": "shopify://products/powerflex-2000-balkonkraftwerk-mit-speicher",
             "button_style": "btn--secondary",
-            "button_title_color": "#481d0d",
+            "button_title_color": "linear-gradient(to right, #A86521, #F1B868);",
             "content_alignment": "left",
             "width": "50%",
             "alignment": "start",
@@ -877,7 +877,7 @@
         ".product-collection-box {margin-top: 0px;}",
         ".product-collection-box .custom-product-button {max-width: 100%; width: 100%; min-height: 50px;}",
         ".section-product-collection .page-width {background: transparent !important;}",
-        ".kv-size {color: #481d0d;}",
+        ".kv-size {color: #e98300;}",
         "@media (max-width: 767px) {.product-collection-box .custom-product-button {min-height: 40px; } .product-collection-box .custom-product-describe {line-height: 19px; font-size: 12px; }}"
       ],
       "name": "产品推荐",
@@ -892,7 +892,7 @@
         "bg_color": "transparent",
         "content_color": "#ffffff",
         "title_color": "#000000",
-        "button_title_color": "#481d0d",
+        "button_title_color": "#e98300",
         "button_color": "cyber-monday",
         "image_height": "385",
         "sale-min_height": "100",
@@ -930,13 +930,13 @@
             "description": "<p>All-in-One-Design, Plug & Play<br/> \\nBidirektionales Laden für jederzeit ausreichende Energie<br/>\\nTragbare Nutzung, 30% kompakter und leichter</p>",
             "price": "399,00€",
             "original": "999,00€",
-            "price_color": "#481d0d",
+            "price_color": "#e98300",
             "text_size": "text-base",
             "button_add_to_cart": "Button Add To Cart",
             "button_label": "Mehr erfahren",
             "button_link": "shopify://products/bk1600-balkonkraftwerk-mit-speicher",
             "button_style": "btn--secondary",
-            "button_title_color": "#481d0d",
+            "button_title_color": "linear-gradient(to right, #A86521, #F1B868);",
             "content_alignment": "left",
             "width": "50%",
             "alignment": "start",
@@ -1032,7 +1032,7 @@
         ".product-collection-box {margin-top: 0px;}",
         ".product-collection-box .custom-product-button {max-width: 100%; width: 100%; min-height: 50px;}",
         ".section-product-collection .page-width {background: transparent !important;}",
-        ".kv-size {color: #481d0d;}",
+        ".kv-size {color: #e98300;}",
         "@media (max-width: 767px) {.product-collection-box .custom-product-button {min-height: 40px; } .product-collection-box .custom-product-describe {line-height: 19px; font-size: 12px; }}"
       ],
       "name": "产品推荐",
@@ -1047,7 +1047,7 @@
         "bg_color": "transparent",
         "content_color": "#ffffff",
         "title_color": "#000000",
-        "button_title_color": "#481d0d",
+        "button_title_color": "#e98300",
         "button_color": "cyber-monday",
         "image_height": "385",
         "sale-min_height": "100",
@@ -1064,6 +1064,7 @@
       "blocks": {
         "slide_qQDpdq": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "links": "",
             "image_pc": "shopify://shop_images/mc-slib-1.png",
@@ -1076,6 +1077,7 @@
         },
         "slide_tmXfN7": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "links": "",
             "image_pc": "shopify://shop_images/mc-slib-2.png",
@@ -1088,6 +1090,7 @@
         },
         "slide_TraFr4": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "links": "",
             "image_pc": "shopify://shop_images/mc-slib-3.png",
@@ -1100,6 +1103,7 @@
         },
         "slide_hKQ6fB": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "links": "",
             "image_pc": "shopify://shop_images/mc-slib-4.png",
@@ -1112,10 +1116,23 @@
         },
         "slide_MqxUEC": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "links": "",
             "image_pc": "shopify://shop_images/mc-slib-5.png",
             "image_mobile": "shopify://shop_images/mc-slib-5-mob.png",
+            "author": "",
+            "title": "",
+            "describe": "",
+            "date": ""
+          }
+        },
+        "slide_PeKDmn": {
+          "type": "slide",
+          "settings": {
+            "links": "",
+            "image_pc": "shopify://shop_images/20260115-184531.png",
+            "image_mobile": "shopify://shop_images/20260115-184531.png",
             "author": "",
             "title": "",
             "describe": "",
@@ -1128,19 +1145,20 @@
         "slide_tmXfN7",
         "slide_TraFr4",
         "slide_hKQ6fB",
-        "slide_MqxUEC"
+        "slide_MqxUEC",
+        "slide_PeKDmn"
       ],
       "custom_css": [
         ".color-scheme-1 {background: #222a5a;}",
-        "@media (max-width: 768px) {.section__heading strong {display: inline-block; }}"
+        "@media (max-width: 768px) {.block strong {display: inline-block; }}"
       ],
       "name": "活动图片文字轮播",
       "settings": {
         "title_color": "#ffffff",
         "id": "CommunityVorteile",
-        "heading": "Tritt unserer <strong>Community bei</strong>",
+        "heading": "LIVE Q&A auf YouTube",
         "subheading": "",
-        "description": "Gewinn exklusive Preise！",
+        "description": "Neujahrs-Aktion 2026!",
         "more_title": "",
         "more_url": "",
         "color_scheme": "",

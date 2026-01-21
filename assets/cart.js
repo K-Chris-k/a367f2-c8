@@ -56,7 +56,7 @@ class CartDrawer extends DrawerComponent {
       const newCartContent = parsedHTML.getElementById(cartId).innerHTML;
       cartElement.innerHTML = newCartContent;
 
-      if (event && event.detail && event.detail.open === true) {
+      if (event.detail.open === true) {
         this.show();
       }
     } catch (error) {
@@ -616,8 +616,7 @@ class MainCart extends HTMLElement {
   }
 
   getSectionToRender(event) {
-    const sid = FoxTheme.utils.getSectionId(this);
-    if (sid) event.detail.sections.push(sid);
+    event.detail.sections.push(FoxTheme.utils.getSectionId(this));
   }
 }
 customElements.define('main-cart', MainCart);

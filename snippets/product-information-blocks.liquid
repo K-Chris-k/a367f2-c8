@@ -849,7 +849,7 @@
               %}
             </div>
           {%- endif -%}
-        {%- when 'cross_sell_products' -%}
+           {%- when 'cross_sell_products' -%}
           <div
             class="product__block product__block--{{ block.type }} cross-sell-products-block"
             {{ block.shopify_attributes }}
@@ -1188,7 +1188,9 @@
                     window.bundleProducts.updatePrice();
                   }
                 } else {
-                  updateStickyBarWithCrossSell(getCrossSellTotalInCents());
+                   //  发现价格会叠加2次  所以注释了用的上面一样的方法
+                  //updateStickyBarWithCrossSell(getCrossSellTotalInCents());
+                  window.bundleProducts.updatePrice();
                 }
               }
               
@@ -1333,17 +1335,17 @@
                       {%- endif -%}
                     </div>
                     <div class="free-gift-product-content">
-                      <h4 class="free-gift-product-title">{{ free_product.title }}</h4>
+                      <h4 class="free-gift-product-title">{{ free_product.title| split: '(' | first | strip }}</h4>
                     </div>
                     <div class="free-gift-product-price">
                       <span class="free-gift-price-free">{{ free_label_text }}</span>
-                      <span class="free-gift-price-original">
+                      {% comment %} <span class="free-gift-price-original">
                         {%- if custom_price != blank -%}
                           {{ custom_price }}
                         {%- else -%}
                           {{ variant.price | money }}
                         {%- endif -%}
-                      </span>
+                      </span> {% endcomment %}
                     </div>
                   </div>
                 {%- endif -%}
@@ -1446,7 +1448,7 @@
               min-width: 0;
               display: flex;
               align-items: center;
-              justify-content: center;
+              justify-content: left:
             }
             .free-gift-product-title {
               font-size: 14px;

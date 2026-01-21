@@ -11,6 +11,7 @@
 {%- if linklists['gift-wrapping'].links != blank and linklists['gift-wrapping'].links.first.type == 'product_link' -%}
   <script src="{{ 'gift-wrapping.js' | asset_url }}" defer="defer"></script>
 {%- endif -%}
+
     <script>
       (function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"343220475", disableAutoPageView: true, enableAutoSpaTracking: false};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");
         window.uetq = window.uetq || [];
@@ -229,7 +230,8 @@
                   {%- endif -%}
 
                   {%- capture cart_item -%}
-                  <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}" data-product-id="{{ item.product_id }}" {% if item.properties._free_gift == 'true' %}data-free-gift="true" data-main-product-id="{{ item.properties._main_product_id }}"{% endif %}>
+                    <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}" data-product-id="{{ item.product_id }}" {% if item.properties._free_gift == 'true' %}data-free-gift="true" data-main-product-id="{{ item.properties._main_product_id }}"{% endif %}>
+                    {% comment %} <tr class="cart-item" id="CartItem-{{ item.index | plus: 1 }}"> {% endcomment %}
                       <td class="cart-item__product">
                         <div class="flex items-start gap-4">
                           {%- if item.image -%}

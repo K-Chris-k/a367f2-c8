@@ -2228,8 +2228,8 @@ button .button-icon,
 
 .btn--secondary {
   background: rgb(var(--color-secondary-button));
-  color: rgb(var(--color-secondary-button-text));
-  border-color: rgb(var(--color-secondary-button-border));
+  color: #3250C3;
+  border-color: #3250C3;
 }
 .btn--plain {
   padding: 10px 0;
@@ -5760,9 +5760,7 @@ input:is([type=radio])::after {
 .link-underline:hover {
   text-decoration: underline;
 }
-ul.cart-item__discounts.discounts.list-unstyled.flex.gap-1 {
-  display: none;
-}
+
 .list-unstyled {
   margin: 0;
   padding: 0;
@@ -6638,6 +6636,11 @@ body:not(.header-pinned) .header-scrolled .header {
     padding-bottom: 1.2rem;
   }
 }
+
+.zsiq-float{
+  bottom:105px!important;
+  right:16px!important;
+}
 @media (max-width: 767.98px) {
   .footer .list-social {
     justify-content: flex-start;
@@ -6667,6 +6670,11 @@ body:not(.header-pinned) .header-scrolled .header {
   .footer__copyright {
     order: 2;
   }
+
+  .zsiq-float{
+  bottom:100px!important;
+  right:16px!important;
+  }
 }
 
 .conjured_image img{max-height:300px;max-width:300px;}
@@ -6681,3 +6689,12 @@ body:not(.header-pinned) .header-scrolled .header {
   text-decoration: underline;
   text-decoration-color: #3250C3;
 }
+
+@media only screen and (max-width: 555px) and (min-width: 100px)
+{
+.chat-iframe-wrap {
+    transform: scale(0.8) !important;
+    transform-origin: bottom center !important;
+}
+}
+ 

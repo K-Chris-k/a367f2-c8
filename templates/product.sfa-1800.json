@@ -70,9 +70,19 @@
             "show_gift_card_recipient": true
           }
         },
-        "selleasy_lb_upsell_widget_pal_mTUxp7": {
-          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-pal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
-          "settings": {}
+        "cross_sell_products_ND7zwq": {
+          "type": "cross_sell_products",
+          "settings": {
+            "title": "Vielleicht brauchst du auch",
+            "cross_sell_product_1": "solidflex-2000-balkonkraftwerk-mit-speicher",
+            "cross_sell_product_1_default": false,
+            "cross_sell_product_2": "",
+            "cross_sell_product_2_default": false,
+            "cross_sell_product_3": "",
+            "cross_sell_product_3_default": false,
+            "cross_sell_product_4": "",
+            "cross_sell_product_4_default": false
+          }
         },
         "logistics_pN3qrf": {
           "type": "logistics",
@@ -121,7 +131,7 @@
         "description",
         "variant_picker",
         "buy_buttons",
-        "selleasy_lb_upsell_widget_pal_mTUxp7",
+        "cross_sell_products_ND7zwq",
         "logistics_pN3qrf",
         "icon_with_text",
         "complementary"

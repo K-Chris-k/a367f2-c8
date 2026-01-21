@@ -51,6 +51,9 @@
         <div class="product-price-box">
           {%- render 'price', product: product, use_variant: true -%}
         </div>
+
+
+      {% unless product.selected_or_first_available_variant.available == false or product.price == 0 or product.tags contains 'Kombination'  %}
         <div class="flex items-center justify-center form-box">
           {%- form 'product',
             product,
@@ -182,6 +185,8 @@
             {% render 'loading-spinner' %}
           </button>
         </div>
+ {% endunless %}
+
       </div>
     </sticky-atc-bar>
     <script type="application/json">

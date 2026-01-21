@@ -2,7 +2,7 @@
   .back-to-top {
     position: fixed;
     {% comment %} bottom: calc(var(--mobile-sticky-bar-height, 0px) + var(--sticky-atc-bar-height, 0px) + 1.5rem); {% endcomment %}
-    bottom:16vh;
+    bottom:185px!important;
     right: 2rem;
     opacity: 0;
     visibility: hidden;
@@ -36,11 +36,11 @@
     visibility: visible;
   }
   @media (max-width: 767.98px) {
-      .back-to-top{bottom:19vh}
+      .back-to-top{bottom:165px!important;}
       .back-to-top button {width:42px;height:42px}
   }
   @media (max-width: 375px) {
-      .back-to-top{bottom:17vh}
+      {% comment %} .back-to-top{bottom:17vh} {% endcomment %}
   }
 </style>
 <back-to-top class="block back-to-top">

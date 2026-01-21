@@ -153,7 +153,7 @@
 
   <legend class="form__label">
     <div class="flex flex-wrap gap-2">
-      <span class="font-body-bold">{{ option.name }}:</span>
+      <span class="font-body-bold">{{ option.name }}</span>
     </div>
   </legend>
   <div class="variant-extension-card">
@@ -271,7 +271,8 @@
             <h3 class="variant-extension-section-title">
               {{ product.title }}
             </h3>
-            <div class="variant-extension-section-desc">{{ product.variants[0].price | money }} pro Akku</div>
+            {% comment %} <div class="variant-extension-section-desc">{{ product.variants[0].price | money }} pro Akku</div> {% endcomment %}
+             <div class="variant-extension-section-desc">{{ option_config.base_capacity}} pro Akku</div>
           </div>
         </div>
       {%- endunless -%}

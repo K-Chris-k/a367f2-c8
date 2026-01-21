@@ -93,9 +93,30 @@
             "variant_id8": ""
           }
         },
-        "koala_upsells_gifts_product_page_banner_MFyLkf": {
-          "type": "shopify://apps/koala-upsells-gifts/blocks/product-page-banner/baf92dc5-8ffa-40c0-967e-57b74cddc9e3",
-          "settings": {}
+        "free_gift_products_NnnaXL": {
+          "type": "free_gift_products",
+          "settings": {
+            "title": "Wähle ein Gratisgeschenk aus",
+            "free_label_text": "GRATIS",
+            "max_selections": 1,
+            "max_selection_message": "Sie können maximal {count} Gratisgeschenk(e) auswählen.",
+            "free_product_1": "indevolt-smarter-stromzahlerfree",
+            "free_product_1_default": true,
+            "free_product_1_variant": "",
+            "free_product_1_custom_price": "",
+            "free_product_2": "indevolt-smart-plug-free",
+            "free_product_2_default": false,
+            "free_product_2_variant": "",
+            "free_product_2_custom_price": "",
+            "free_product_3": "",
+            "free_product_3_default": false,
+            "free_product_3_variant": "",
+            "free_product_3_custom_price": "",
+            "free_product_4": "",
+            "free_product_4_default": false,
+            "free_product_4_variant": "",
+            "free_product_4_custom_price": ""
+          }
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -105,9 +126,19 @@
             "show_gift_card_recipient": true
           }
         },
-        "selleasy_lb_upsell_widget_pal_HmKYzh": {
-          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-pal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
-          "settings": {}
+        "cross_sell_products_gxUGm3": {
+          "type": "cross_sell_products",
+          "settings": {
+            "title": "Vielleicht brauchst du auch",
+            "cross_sell_product_1": "solarman-smart-plug",
+            "cross_sell_product_1_default": false,
+            "cross_sell_product_2": "shelly-pro-3em-120a",
+            "cross_sell_product_2_default": false,
+            "cross_sell_product_3": "",
+            "cross_sell_product_3_default": false,
+            "cross_sell_product_4": "",
+            "cross_sell_product_4_default": false
+          }
         },
         "logistics_pN3qrf": {
           "type": "logistics",
@@ -157,9 +188,9 @@
         "variant_picker",
         "bundle_products_8gdJxJ",
         "recommend_product_fXrzDb",
-        "koala_upsells_gifts_product_page_banner_MFyLkf",
+        "free_gift_products_NnnaXL",
         "buy_buttons",
-        "selleasy_lb_upsell_widget_pal_HmKYzh",
+        "cross_sell_products_gxUGm3",
         "logistics_pN3qrf",
         "icon_with_text",
         "complementary"
@@ -1118,7 +1149,7 @@
           "type": "card",
           "settings": {
             "title": "Maximale AC-Ausgangsleistung",
-            "content": "2400W (mit zwei Erweiterungsakkus)<br>1200W (ohne Erweiterungsakkus）",
+            "content": "2400W (mit Erweiterungsakkus)<br>1200W (ohne Erweiterungsakkus）",
             "note": ""
           }
         },
@@ -1126,7 +1157,7 @@
           "type": "card",
           "settings": {
             "title": "Maximale AC-Ladeleistung",
-            "content": "2400W (mit zwei Erweiterungsakkus)<br>1000W (ohne Erweiterungsakkus）",
+            "content": "2400W (mit zwei Erweiterungsakkus)<br>2000W (mit einem Erweiterungsakku)<br>1000W (ohne Erweiterungsakkus)",
             "note": ""
           }
         },
@@ -1278,6 +1309,15 @@
             "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/PowerFlex2000_Deutschland_Grid_Connection.pdf?v=1757330488"
           }
         },
+        "card_GXe6Jd": {
+          "type": "card",
+          "settings": {
+            "title": "Deutschland Grid Connection 2400W",
+            "content": "VDE",
+            "date": "2026-01-15",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/2400W_VDE-AR-N_4105.pdf?v=1768447347"
+          }
+        },
         "card_j9B4nf": {
           "type": "card",
           "settings": {
@@ -1311,6 +1351,7 @@
         "card_Qx6bYi",
         "card_6ejkw7",
         "card_h6NQjb",
+        "card_GXe6Jd",
         "card_j9B4nf",
         "card_JJAQQq",
         "card_QgGwMk"

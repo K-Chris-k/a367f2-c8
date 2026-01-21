@@ -173,13 +173,21 @@
             "category_name": "Zubehör",
             "pdf_list": "Indevolt Smart Plug | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Indevolt_Smart_Plug_SP16.pdf?v=1736134981\nIndevolt Smart Meter (SMD1) | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SMD1_20241212173533.pdf?v=1733996174\nIndevolt Smart Meter (SMD3) | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SMD3_20241212173854.pdf?v=1733996358\nSolarmodul-Balkonhalterungen - black | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Indevolt_Solarmodul-Balkonhalterungen_1_Paar_-_black.pdf?v=1739244521\nSolarmodul-Balkonhalterungen - sliver | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Indevolt_Solarmodul-Balkonhalterungen_1_Paar_-_sliver.pdf?v=1739244572\nSolarmodul-Dachhalterungen | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Indevolt_Solarmodul-Dachhalterungen_1_Paar.pdf?v=1739243135\nBalkongeländer-Halterung Rundhaken | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Balkongelander-Halterung_Rundhaken.pdf?v=1749022853\nHalterung für Flachdach und Garten | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Halterung_fur_Flachdach_und_Garten.pdf?v=1749017261\nHalterung für Dachziegel | https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Halterung_fur_Dachziegel.pdf?v=1749023990"
           }
+        },
+        "category_qeJaYk": {
+          "type": "category",
+          "settings": {
+            "category_name": "App",
+            "pdf_list": "App-Bedienungsnleitung|https://docs.indevolt.com/de/docs/app/introduction/|123|"
+          }
         }
       },
       "block_order": [
         "category_HEBCHd",
         "category_jEXBRN",
         "category_aJygeA",
-        "category_PLRLGD"
+        "category_PLRLGD",
+        "category_qeJaYk"
       ],
       "name": "Download Pdf",
       "settings": {

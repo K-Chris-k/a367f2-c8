@@ -78,7 +78,7 @@
   margin-bottom: 0px;
 }
  @media (max-width: 768px) {
-  .section-product-collection .slick-dotted .slick-dots{margin-top:1rem;gap:0px}
+  .section-product-collection .slick-dotted .slick-dots{margin-top:1rem;gap:8px}
    #shopify-section-{{ section.id }} .product-collection{ padding-top: {{ section.settings.padding_top | divided_by: 2  }}px;padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;}
    #shopify-section-{{ section.id }} .product-collection .title{ font-size: 28px;}
    #shopify-section-{{ section.id }} .product-collection-box{margin-top:20px!important;}
@@ -112,7 +112,7 @@
   top: 540px; /* 调整到标题下方 */
   z-index: 2;
   width: 36px;
-  height: 36px;
+  {% comment %} height: 36px; {% endcomment %}
    background: #3250C3; /* 黑色半透明背景 */  
    {% comment %} background: transparent; /* 透明背景 */ {% endcomment %}
  border: 1px solid #3250C3; /* 蓝色边框 */

@@ -23,14 +23,20 @@
 <style>
     .slideshow__item-wrap{ flex-wrap: inherit;}
     .mobile-show{display:none}
-    .section-{{ section.id }} .slideshow__content .slideshow__text{max-width: 50%;}
-    .section-{{ section.id }} .slideshow__subtitle {line-height: 34px;font-size: 28px;font-weight: 600;}
+    .section-{{ section.id }} .slideshow__content .slideshow__text{max-width: 90%;}
+    .section-{{ section.id }} .slideshow__subtitle {line-height: 58px;font-size: 48px;font-weight: 500;}
+    .section-{{ section.id }} .text-base{line-height: 34px;font-size: 28px;font-weight: 400;}
+
+  
     .slideshow__subtitle strong{font-size: 32px;}
     .slideshow__subtitle span{font-size: 18px;text-decoration-line: line-through;}
     {% comment %} .section-{{ section.id }} .slideshow__content{ align-items: self-start;} {% endcomment %}
      
-    .section-{{ section.id }} .slideshow__content{padding-top:30px; justify-content:flex-start!important;}
-    .section-{{ section.id }} .slideshow__title {display:flex;width: max-content;align-items: center;gap: 12px;}
+    .section-{{ section.id }} .slideshow__content{padding-top:120px;padding-bottom:0px; justify-content:flex-start!important;}
+    {% comment %} .section-{{ section.id }} .slideshow__title {display:flex;align-items: center;gap: 12px;} {% endcomment %}
+      .section-{{ section.id }} .slideshow__title strong{
+        display: inline-block;
+    }
     .section-{{ section.id }} .date{ align-items: center;font-weight: 500;gap: 5px;text-align:center;}
     {% comment %} display:flex; {% endcomment %}
     .section-{{ section.id }} .date span{font-weight: 700;}
@@ -167,6 +173,28 @@
       }
     }
 
+
+
+
+
+
+
+   .section-{{ section.id }} .brand-box img{
+        max-height:80px;
+        margin :0 35px;
+    }
+
+
+
+  .section-{{ section.id }} .rich-text .rich-text__subheading{
+      margin :40px 0 0!important;
+   }
+  .section-{{ section.id }} .rich-text .slideshow__description{
+      margin :40px 0 0!important;
+   }
+   
+  .section-{{ section.id }} .brand-box{padding-top:160px!important;}
+
     @media (min-width: 1024px) and (max-width: 1599px) {
      :root{
       --ui-font-size: clamp(15px, 1.6vw, 18px);
@@ -194,6 +222,14 @@
   @media (min-width: 2560px) {
        .section-{{ section.id }} .slideshow__content{padding-top:75px;}
   }       
+    @media (min-width: 2550px) {
+    .section-{{ section.id }} .brand-box{padding-top:450px!important;}
+  } 
+ 
+
+    @media (min-width: 3800px) {
+    .section-{{ section.id }} .brand-box{padding-top:1000px!important;}
+  } 
   @media (min-width: 2560px) {
     :root{
       --max-content-width: 2200px;
@@ -234,11 +270,26 @@
 
       @media (max-width: 768px) {
         .mobile-show{display:block}
+          .section-{{ section.id }} .rich-text .rich-text__subheading{
+              margin :30px 0 0!important;
+          }
+          .section-{{ section.id }} .rich-text .slideshow__description{
+              margin :20px 0 0!important;
+          }
+
+       .section-{{ section.id }} .brand-box img{
+            max-height:40px;
+            margin :0 10px;
+        }
+
+        .section-{{ section.id }} .brand-box{padding-top:150px!important;}
+        .section-{{ section.id }} .text-base{line-height: 17px;font-size: 14px;font-weight: 400;}
+         .section-{{ section.id }} .slideshow__content{padding-top:50px;}
         .section-{{ section.id }} .slideshow__content .slideshow__text{max-width:100%; }
         .section-{{ section.id }} .slideshow__title,.section-{{ section.id }} .slideshow__text {text-align:center;}
 
         .section-{{ section.id }} .slideshow__text{padding:0px 2.0rem}
-        .section-{{ section.id }} .swiper-slide .slideshow__title{flex-flow: column; width: auto;gap: 0px;line-height:31px;font-size:26px;text-align:center}
+        .section-{{ section.id }} .swiper-slide .slideshow__title{flex-flow: column; width: auto;gap: 0px;line-height:28px;font-size:22px;text-align:center}
         .slideshow__description.text-lg,.section-{{ section.id }} .slideshow__subtitle{line-height:19px;font-size:1.6rem}
         .section-{{ section.id }} .slideshow__buttons .btn{height:30px}
         .slideshow__subtitle span{font-size: 12px;}
@@ -437,6 +488,8 @@
                 assign date_size = block.settings.date_size
                 assign brand_logo1 = block.settings.brand_logo_image1
                 assign brand_logo2 = block.settings.brand_logo_image2
+                assign brand_logo3 = block.settings.brand_logo_image3
+                assign brand_logo4 = block.settings.brand_logo_image4
               -%}
               <div
                 class="
@@ -446,44 +499,7 @@
                 tabindex="-1"
               >
                 <div class="slideshow__text rich-text text-{{ text_alignment_mobile }} md:text-{{ text_alignment }}">
-                  {%- if brand_logo1 != blank or brand_logo2 != blank -%}
-                    <div class="brand-box">
-                      {%- if brand_logo1 != blank -%}
-                        <img src="{{ brand_logo1 | img_url: '350x' }}" alt="品牌Logo 1">
-                      {%- endif -%}
-
-                      {%- if brand_logo2 != blank -%}
-                        <img src="{{ brand_logo2 | img_url: '110x' }}" alt="品牌Logo 1">
-                      {%- endif -%}
-                    </div>
-                    <div class="brand-box-moblie">
-                      {%- if brand_logo1 != blank -%}
-                        <img src="{{ brand_logo1 | img_url: '200x' }}" alt="品牌Logo 1">
-                      {%- endif -%}
-
-                      {%- if brand_logo2 != blank -%}
-                        <img src="{{ brand_logo2 | img_url: '110x' }}" alt="品牌Logo 1">
-                      {%- endif -%}
-                    </div>
-                  {%- endif -%}
-             
-                  {%- unless block.settings.subheading == blank -%}
-                  <div class="tip-title mobile-show">
-                  {% if block.settings.title_span != blank and block.settings.title_span_bg != blank %}
-                    <span class="{% if block.settings.title_span_bg != blank  %}tip-color{% endif %}"style="font-size:{{ block.settings.title_span_size}};color:{{ block.settings.title_span_color }};background:{{ block.settings.title_span_bg }}">{{- block.settings.title_span -}}</span>
-                  {% endif %}
-                  </div>
-                    <div class="slideshow__subtitle rich-text__subheading text-subheading">
-                      <motion-element
-                        data-text
-                        hold
-                        class="block"
-                        style="margin-bottom:{{ block.settings.subheading_mb}};color:{{ block.settings.subheading_color }}"
-                      >
-                        {{- block.settings.subheading -}}
-                      </motion-element>
-                    </div>
-                  {%- endunless -%}
+   
                   {%- unless block.settings.title == blank -%}
                     {% if block.settings.link_title1 == blank %}
                        <motion-element
@@ -495,14 +511,7 @@
                           {{- block.settings.title -}}{% if block.settings.title_span != blank %}<span class="{% if block.settings.title_span_bg != blank  %}tip-color{% endif %}"style="font-size:{{ block.settings.title_span_size}};color:{{ block.settings.title_span_color }};background:{{ block.settings.title_span_bg }}">{{- block.settings.title_span -}}</span>{% endif %}
                       </h2>
                       </motion-element>
-                      <motion-element
-                        class="block slideshow__description {{ description_size }} rich-text__text rte"
-                        data-text
-                        hold
-                        style="color:{{ block.settings.description_color }};margin-top:{{ block.settings.description_mt }}px;"
-                      >
-                        {{- block.settings.description -}}
-                      </motion-element>
+          
                        <motion-element
                         class="block slideshow__date {{ date_size }} rich-text__text rte"
                         data-text
@@ -610,6 +619,35 @@
                       {% endif %}
                     {% endif %}
                   {%- endunless -%}
+
+
+                {%- unless block.settings.subheading == blank -%}
+                    {% comment %} <div class="tip-title mobile-show">
+                    {% if block.settings.title_span != blank and block.settings.title_span_bg != blank %}
+                        <span class="{% if block.settings.title_span_bg != blank  %}tip-color{% endif %}"style="font-size:{{ block.settings.title_span_size}};color:{{ block.settings.title_span_color }};background:{{ block.settings.title_span_bg }}">{{- block.settings.title_span -}}</span>
+                    {% endif %}
+                    </div> {% endcomment %}
+                        <div class="slideshow__subtitle rich-text__subheading text-subheading">
+                        <motion-element
+                            data-text
+                            hold
+                            class="block"
+                            style="margin-bottom:{{ block.settings.subheading_mb}};color:{{ block.settings.subheading_color }}"
+                        >
+                            {{- block.settings.subheading -}}
+                        </motion-element>
+                        </div>
+                    {%- endunless -%}
+
+            <motion-element
+                        class="block slideshow__description {{ description_size }} rich-text__text rte"
+                        data-text
+                        hold
+                        style="color:{{ block.settings.description_color }};margin-top:{{ block.settings.description_mt }}px;"
+                      >
+                        {{- block.settings.description -}}
+                      </motion-element>
+
                   {%- unless block.settings.button_label == blank or block.settings.link_title1 != blank -%}
                     <div class="slideshow__buttons rich-text__button">
                       <motion-element
@@ -632,7 +670,46 @@
                       </motion-element>
                     </div>
                   {%- endunless -%}
+
+
+                {%- if brand_logo1 != blank or brand_logo2 != blank -%}
+                    <div class="brand-box">
+                      {%- if brand_logo1 != blank -%}
+                        <img src="{{ brand_logo1 | img_url: '110x' }}" alt="品牌Logo 1">
+                      {%- endif -%}
+
+                      {%- if brand_logo2 != blank -%}
+                        <img src="{{ brand_logo2 | img_url: '110x' }}" alt="品牌Logo 1">
+                      {%- endif -%}
+
+                       {%- if brand_logo3 != blank -%}
+                        <img src="{{ brand_logo3 | img_url: '110x' }}" alt="品牌Logo 1">
+                      {%- endif -%}
+
+                      {%- if brand_logo4 != blank -%}
+                        <img src="{{ brand_logo4 | img_url: '110x' }}" alt="品牌Logo 1">
+                      {%- endif -%}
+                    </div>
+                    <div class="brand-box-moblie">
+                      {%- if brand_logo1 != blank -%}
+                        <img src="{{ brand_logo1 | img_url: '110x' }}" alt="品牌Logo 1">
+                      {%- endif -%}
+
+                      {%- if brand_logo2 != blank -%}
+                        <img src="{{ brand_logo2 | img_url: '110x' }}" alt="品牌Logo 1">
+                      {%- endif -%}
+
+                      {%- if brand_logo3 != blank -%}
+                        <img src="{{ brand_logo3 | img_url: '110x' }}" alt="品牌Logo 1">
+                      {%- endif -%}
+
+                      {%- if brand_logo4 != blank -%}
+                        <img src="{{ brand_logo4 | img_url: '110x' }}" alt="品牌Logo 1">
+                      {%- endif -%}
+                    </div>
+                  {%- endif -%}
                 </div>
+
                 {%- unless block.settings.link_title1 == blank -%}
                   {%- liquid
                     assign link_title1 = block.settings.link_title1
@@ -907,6 +984,17 @@
           "type": "image_picker",
           "id": "brand_logo_image2",
           "label": "品牌logo2"
+        },
+     {
+          "type": "image_picker",
+          "id": "brand_logo_image3",
+          "label": "品牌logo3"
+        },
+
+                {
+          "type": "image_picker",
+          "id": "brand_logo_image4",
+          "label": "品牌logo4"
         },
         {
           "type": "text",
@@ -1819,7 +1907,7 @@
   ],
   "presets": [
     {
-      "name": "t:sections.slideshow.name",
+      "name": "阳台专题页KV",
       "blocks": [
         {
           "type": "slide"

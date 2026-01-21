@@ -279,7 +279,7 @@
           "settings": {
             "image": "shopify://shop_images/aboutus-6-2.png",
             "mobile_image": "shopify://shop_images/aboutus-6-2-mob.png",
-            "title": "<p>Lokale Kommunikation<br/>für netzunabhängigen Betrieb</p>",
+            "title": "<p>Lokale Kommunikation<br/>ohne Internet möglich</p>",
             "links": ""
           }
         },
@@ -478,11 +478,11 @@
       ],
       "name": "品牌列表",
       "settings": {
-        "title": "Bekannt aus",
+        "title": "Getestet & empfohlen von",
         "padding_top": 50,
         "padding_bottom": 50,
         "custom_mobile_padding_top": 80,
-        "logo_title": "Befürwortet von",
+        "logo_title": "",
         "logo_position": false,
         "logo_pc_image": "shopify://shop_images/LOGO_683abf5c-2c78-4ae6-9835-af6ac7abd327.png",
         "logo_mobile_image": "shopify://shop_images/1219-mob.png"

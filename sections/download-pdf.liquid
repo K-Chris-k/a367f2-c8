@@ -221,10 +221,17 @@
                       <span class="pdf-icon">📄</span>
                       <span class="pdf-name">{{ pdf_name }}</span>
                     </div>
-                  <a href="{{ pdf_url }}" target="_blank" class="pdf-link">             
-                    <span class="btn btn--secondary"> {% render 'icon-download-blue', size: 'small' %} PDF</span>
-                    </a>
-                  </div>
+                      {% if  pdf_parts.size==2  %}
+                      <a href="{{ pdf_url }}" target="_blank" class="pdf-link">             
+                        <span class="btn btn--secondary"> {% render 'icon-download-blue', size: 'small' %} PDF</span>
+                      </a>
+                  
+                    {% else %}
+                      <a href="{{ pdf_url }}" target="_blank" class="pdf-link">             
+                        <span class="btn btn--secondary"> Jetzt aufrufen</span>
+                      </a>
+                    {% endif %}
+                    </div>
                   {% endif %}
                 {% endif %}
               {% endfor %}

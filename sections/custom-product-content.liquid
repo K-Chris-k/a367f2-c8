@@ -49,6 +49,12 @@
      #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap .btn--secondary:after,
      #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap .btn--secondary:focus{transform:none;background:#fff!important;border:1px solid #212121;color:#212121}
      
+     #shopify-section-{{ section.id }} .text-base{
+    margin-top:10px;
+    font-size: 22px;
+    line-height: 27px;
+    }
+
     @media (max-width: 1024px) {
       #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap .btn{ min-width:160px;max-width:160px;height:40px;}
     }
@@ -274,7 +280,7 @@
                           <a
                             class="btn {{ block.settings.button_style }}"
                             {% if block.settings.button_title_color != blank %}
-                              style="color:{{block.settings.button_title_color }};border: 2px solid {{block.settings.button_title_color }};"
+                              style="color:{{block.settings.price_color }};border: 2px solid {{block.settings.price_color }};"
                             {% endif %}
                             {% if block.settings.button_link != blank %}
                               href="{{ block.settings.button_link }}"
@@ -2532,7 +2538,7 @@ document.addEventListener('DOMContentLoaded', function() {
           "default": "btn--primary"
         },
         {
-          "type": "color",
+          "type": "text",
           "id": "button_title_color",
           "label": "按钮颜色",
           "default": "#212121"

@@ -31,14 +31,14 @@
         "text_PDnxwi": {
           "type": "text",
           "settings": {
-            "text": "<p>Werde Partner und erhalte jetzt mindestens 10% Provision.<\/p>",
+            "text": "<p>Werde Partner und erhalte jetzt mindestens 10% Provision.</p>",
             "text_size": "text-lg"
           }
         },
         "text_zKWHUj": {
           "type": "text",
           "settings": {
-            "text": "<p><a href=\"https:\/\/ui.awin.com\/awin\/merchant\/110350\/profile\" target=\"_blank\">Jetzt beitreten auf AWIN →<\/a><\/p>",
+            "text": "<p><a href=\"https://ui.awin.com/express-signup/en/awin/110350/48ff70af-43d4-45dc-b2a8-8b41dce5502d?t=RQGDftcf2H8rtPSo9gkUEDkPdAwVpuuFvx42scF6hY0\" target=\"_blank\" title=\"https://ui.awin.com/express-signup/en/awin/110350/48ff70af-43d4-45dc-b2a8-8b41dce5502d?t=RQGDftcf2H8rtPSo9gkUEDkPdAwVpuuFvx42scF6hY0\">Jetzt beitreten auf AWIN →</a></p>",
             "text_size": "text-base"
           }
         },
@@ -46,8 +46,8 @@
           "type": "image",
           "settings": {
             "container": "fixed",
-            "image": "shopify:\/\/shop_images\/affiliate-program-img1.png",
-            "mobile_image": "shopify:\/\/shop_images\/affiliate-program-mobile-img1.png"
+            "image": "shopify://shop_images/affiliate-program-img1.png",
+            "mobile_image": "shopify://shop_images/affiliate-program-mobile-img1.png"
           }
         }
       },
@@ -58,16 +58,21 @@
         "image_A9NEnK"
       ],
       "custom_css": [
-        "a{color: #3250C3;}"
+        "a {color: #3250c3;}"
       ],
       "name": "富文本+图片+视频",
       "settings": {
         "color_scheme": "",
+        "bg_color": "#ffffff",
         "content_alignment": "center",
+        "ids": "",
+        "show_title_icon": false,
+        "img-href": "",
         "padding_top": 120,
         "padding_bottom": 120,
+        "image_top": 60,
         "video_radius": 18,
-        "video_aspect_ratio": "16\/9",
+        "video_aspect_ratio": "16/9",
         "show_section_divider": false,
         "divider_width": "fixed",
         "mobile_content_alignment": "center"
