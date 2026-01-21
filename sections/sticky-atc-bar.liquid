@@ -273,6 +273,8 @@
             hostVariantId = bundleConfig.host?.variant_id;
           }
 
+          const bundleVariantIds = [];
+
           if (hostVariantId) {
             items.push({
               id: parseInt(hostVariantId),
@@ -280,11 +282,12 @@
               properties: {
                 _bundle_item: 'true',
                 _bundle_role: 'host',
+                _bundle_host_id: String(hostVariantId),
               },
             });
           }
 
-          // 2. 电池包（如果选中且 qty > 0）
+          // 2. 电池包（如果选中且 qty > 0）- variant-extension-qty-buttons
           const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
           if (selectedBatteryBtn) {
             const batteryVariantId = selectedBatteryBtn.dataset.variantId;
@@ -297,12 +300,13 @@
                 properties: {
                   _bundle_item: 'true',
                   _bundle_role: 'battery',
+                  _bundle_host_id: String(hostVariantId),
                 },
               });
+              bundleVariantIds.push(String(batteryVariantId));
             }
           }
 
-          // 3. 批量收集 bundle-category-grid 产品
           const categoryBtns = document.querySelectorAll('.bundle-category-grid-fieldset .bundle-category-btn.selected');
           categoryBtns.forEach((selectedBtn) => {
             const variantId = selectedBtn.dataset.variantId;
@@ -315,25 +319,65 @@
                 properties: {
                   _bundle_item: 'true',
                   _bundle_role: 'solar',
+                  _bundle_host_id: String(hostVariantId),
                 },
               });
+              bundleVariantIds.push(String(variantId));
             }
           });
+          
+          if (hostVariantId && bundleVariantIds.length > 0) {
+            saveBundleMapping(String(hostVariantId), bundleVariantIds);
+          }
         } catch (e) {
-          console.error('[Bundle] 解析配置失败:', e);
         }
 
         return items;
       }
-      // 排除主机 - 性能优化版
+      
+      function saveBundleMapping(hostVariantId, bundleVariantIds) {
+        try {
+          const mappings = JSON.parse(localStorage.getItem('bundle_product_mappings') || '{}');
+          mappings[hostVariantId] = bundleVariantIds;
+          localStorage.setItem('bundle_product_mappings', JSON.stringify(mappings));
+        } catch (e) {
+        }
+      }
+      
+      window.saveBundleMapping = saveBundleMapping;
+      function getCurrentHostVariantId() {
+        const bundleConfigEl = DOM_CACHE.getBundleConfig();
+        if (!bundleConfigEl) return null;
+        
+        try {
+          const bundleConfig = JSON.parse(bundleConfigEl.textContent);
+          const displayMode = bundleConfig.display_mode || 'bundle_with_battery';
+          
+          if (displayMode === 'multi_host') {
+            if (DOM_CACHE.stickyBar) {
+              const variantSelect = DOM_CACHE.stickyBar.querySelector('select[name="id"]');
+              const variantInput = DOM_CACHE.stickyBar.querySelector('input[name="id"]');
+              return variantSelect?.value || variantInput?.value;
+            }
+          } else {
+            return bundleConfig.host?.variant_id;
+          }
+        } catch (e) {
+        }
+        return null;
+      }
+      
       function collectBundleProducts2() {
         const items = [];
         const bundleConfigEl = DOM_CACHE.getBundleConfig();
 
         if (!bundleConfigEl) return items; // 提前退出
+        
+        // 获取主机 variant ID 用于关联
+        const hostVariantId = getCurrentHostVariantId();
+        const bundleVariantIds = [];
 
         try {
-          // 2. 电池包
           const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
           if (selectedBatteryBtn) {
             const batteryVariantId = selectedBatteryBtn.dataset.variantId;
@@ -346,12 +390,13 @@
                 properties: {
                   _bundle_item: 'true',
                   _bundle_role: 'battery',
+                  _bundle_host_id: String(hostVariantId),
                 },
               });
+              bundleVariantIds.push(String(batteryVariantId));
             }
           }
 
-          // 3. 批量收集 bundle-category-grid 产品
           const categoryBtns = document.querySelectorAll('.bundle-category-grid-fieldset .bundle-category-btn.selected');
           categoryBtns.forEach((selectedBtn) => {
             const variantId = selectedBtn.dataset.variantId;
@@ -364,24 +409,26 @@
                 properties: {
                   _bundle_item: 'true',
                   _bundle_role: 'solar',
+                  _bundle_host_id: String(hostVariantId),
                 },
               });
+              bundleVariantIds.push(String(variantId));
             }
           });
+          
+          // 更新组合产品映射
+          if (hostVariantId && bundleVariantIds.length > 0) {
+            saveBundleMapping(String(hostVariantId), bundleVariantIds);
+          }
         } catch (e) {
-          console.error('[Bundle] 解析配置失败:', e);
         }
         return items;
       }
 
-      // 收集Lookbook插件产品 - 性能优化版
       function collectRecommendationProducts() {
         const items = [];
         const selectedCards = document.querySelectorAll('.lb-select-on-click[lb-selected]');
-        
-        // 快速路径：没有选中的卡片
         if (selectedCards.length === 0) return items;
-
         selectedCards.forEach((card) => {
           const variantId = card.getAttribute('lb-variant-id');
           if (!variantId) return;
@@ -438,7 +485,6 @@
         return items;
       }
 
-      // ========== 性能优化：批量更新购物车数量显示 ==========
       function updateCartCounts(cart) {
         requestAnimationFrame(() => {
           DOM_CACHE.refreshCartCounts();
@@ -598,6 +644,7 @@
           // 清空购物车
           await fetch('/cart/clear.js', { method: 'POST' });
           localStorage.removeItem('free_gift_mappings');
+          localStorage.removeItem('bundle_product_mappings'); // 清空 Bundle 映射
 
           // 添加商品
           const addResponse = await fetch('/cart/add.js', {

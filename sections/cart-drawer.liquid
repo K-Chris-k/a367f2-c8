@@ -1195,3 +1195,144 @@
     })();
   })();
 </script>
+
+<script>
+  (function initBundleItemAutoRemove() {
+    if (window._bundleItemAutoRemoveInitialized) return;
+    window._bundleItemAutoRemoveInitialized = true;
+    
+    function resetBodyScrollState() {
+      document.documentElement.classList.remove('drawer-open');
+      document.body.classList.remove('modal-show', 'nodal-show', 'body--no-scrollbar');
+      document.body.style.removeProperty('overflow');
+      document.body.style.removeProperty('padding-right');
+    }
+    
+    // 获取 Bundle 映射
+    function getBundleMappings() {
+      try {
+        return JSON.parse(localStorage.getItem('bundle_product_mappings') || '{}');
+      } catch (e) {
+        return {};
+      }
+    }
+    
+    function removeBundleMapping(hostVariantId) {
+      try {
+        const mappings = getBundleMappings();
+        delete mappings[String(hostVariantId)];
+        localStorage.setItem('bundle_product_mappings', JSON.stringify(mappings));
+      } catch (e) {
+      }
+    }
+    
+    function attachBundleRemoveListeners() {
+      document.querySelectorAll('.cart-item__remove').forEach(removeBtn => {
+        if (removeBtn._bundleItemListenerAttached) return;
+        removeBtn._bundleItemListenerAttached = true;
+        removeBtn.addEventListener('click', function(e) {
+          const cartItem = this.closest('.cart-item');
+          if (!cartItem) return;
+          const variantId = cartItem.dataset.variantId;
+          if (!variantId) return;
+          const mappings = getBundleMappings();
+          const bundleVariantIds = mappings[String(variantId)];
+          
+          if (!bundleVariantIds || bundleVariantIds.length === 0) {
+            return;
+          }
+          
+          
+          setTimeout(async () => {
+            try {
+              const cartResponse = await fetch('/cart.js');
+              const cart = await cartResponse.json();
+              if (!cart.items || cart.items.length === 0) {
+                removeBundleMapping(variantId);
+                return;
+              }
+              const keysToRemove = [];
+              cart.items.forEach(item => {
+                const itemVariantId = String(item.variant_id);
+                if (bundleVariantIds.includes(itemVariantId)) {
+                  keysToRemove.push({ key: item.key, title: item.title, variantId: itemVariantId });
+                }
+              });
+              
+              if (keysToRemove.length === 0) {
+                removeBundleMapping(variantId);
+                return;
+              }
+              
+              // 构建 updates 对象：{ key: 0, key: 0, ... }
+              const updates = {};
+              keysToRemove.forEach(k => {
+                updates[k.key] = 0;
+              });
+              
+              // 批量删除
+              const updateResponse = await fetch('/cart/update.js', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ updates: updates })
+              });
+              
+              if (updateResponse.ok) {
+                const updatedCart = await updateResponse.json();
+                
+                // 更新购物车数量显示
+                document.querySelectorAll('cart-count').forEach(countEl => {
+                  if (updatedCart.item_count > 99) {
+                    countEl.innerHTML = `<span class="text-sm">99+</span>`;
+                    countEl.classList.add('cart-count--small-medium');
+                  } else {
+                    countEl.innerText = updatedCart.item_count;
+                    countEl.classList.remove('cart-count--small-medium');
+                  }
+                  countEl.hidden = updatedCart.item_count === 0;
+                });
+                
+                document.documentElement.classList[updatedCart.item_count === 0 ? 'remove' : 'add']('cart-has-items');
+                
+                // 若购物车已空，确保抽屉关闭并恢复页面滚动
+                if (updatedCart.item_count === 0) {
+                  const cartDrawerEl = document.querySelector('cart-drawer');
+                  if (cartDrawerEl) {
+                    cartDrawerEl.removeAttribute('open');
+                    cartDrawerEl.setAttribute('hidden', 'hidden');
+                  }
+                  resetBodyScrollState();
+                }
+                
+                // 触发购物车刷新（异步更新 UI，不刷新页面）
+                setTimeout(() => {
+                  document.dispatchEvent(new CustomEvent('cart:refresh'));
+                }, 100);
+                
+              }
+              
+              // 删除映射
+              removeBundleMapping(variantId);
+              
+            } catch (error) {
+              console.error('[Bundle Auto Remove] 删除组合产品失败:', error);
+              removeBundleMapping(variantId);
+            }
+          }, 600);
+        });
+      });
+    }
+    
+    // 初始化并监听 DOM 变化
+    attachBundleRemoveListeners();
+    
+    const observer = new MutationObserver(() => {
+      attachBundleRemoveListeners();
+    });
+    const cartDrawer = document.querySelector('cart-drawer');
+    const cartPage = document.querySelector('.cart');
+    if (cartDrawer) observer.observe(cartDrawer, { childList: true, subtree: true });
+    if (cartPage) observer.observe(cartPage, { childList: true, subtree: true });
+    
+  })();
+</script>
