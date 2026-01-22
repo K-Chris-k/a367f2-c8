@@ -1718,6 +1718,13 @@
                     const data = JSON.parse(saved);
                     const selections = data.selections || [];
                     
+                    // 先清除所有默认选中状态（防止与 sessionStorage 中的选择叠加）
+                    document.querySelectorAll('.free-gift-checkbox').forEach(cb => {
+                      cb.checked = false;
+                      cb.closest('.free-gift-product-card')?.classList.remove('selected');
+                    });
+                    
+                    // 然后恢复 sessionStorage 中保存的选择
                     selections.forEach(selection => {
                       const checkbox = document.querySelector(`.free-gift-checkbox[data-variant-id="${selection.variantId}"]`);
                       if (checkbox) {
