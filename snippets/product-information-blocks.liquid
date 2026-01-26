@@ -1294,6 +1294,7 @@
               function triggerCrossSellPriceUpdate() {
                 const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
                 if (bundleConfigEl) {
+                  // Bundle 模式：触发事件并调用 bundleProducts.updatePrice
                   document.dispatchEvent(new CustomEvent('crosssell:change', {
                     detail: { totalInCents: getCrossSellTotalInCents() }
                   }));
@@ -1302,18 +1303,34 @@
                     window.bundleProducts.updatePrice();
                   }
                 } else {
-                   //  发现价格会叠加2次  所以注释了用的上面一样的方法
-                  //updateStickyBarWithCrossSell(getCrossSellTotalInCents());
-                  window.bundleProducts.updatePrice();
+                  // 非 Bundle 模式：直接更新价格显示
+                  updateStickyBarWithCrossSell(getCrossSellTotalInCents());
                 }
               }
               
+              // 防抖：避免价格更新被多次调用导致叠加
+              let updatePriceTimeout = null;
+              
               function updateStickyBarWithCrossSell(crossSellTotalInCents) {
+                // 使用防抖，确保短时间内只执行一次
+                if (updatePriceTimeout) {
+                  clearTimeout(updatePriceTimeout);
+                }
+                
+                updatePriceTimeout = setTimeout(() => {
+                  doUpdateStickyBarWithCrossSell(crossSellTotalInCents);
+                }, 50);
+              }
+              
+              function doUpdateStickyBarWithCrossSell(crossSellTotalInCents) {
                 const priceContainer = document.querySelector('.product__info-container');
                 let originalPrice = 0;
+                
+                // 始终从 dataset 获取原始价格（首次保存后不再变化）
                 if (priceContainer && priceContainer.dataset.originalPrice) {
                   originalPrice = parseFloat(priceContainer.dataset.originalPrice);
                 } else {
+                  // 首次：从 DOM 获取并保存原始价格
                   const salePriceEl = priceContainer?.querySelector('.f-price-item--sale');
                   const regularPriceEl = priceContainer?.querySelector('.f-price-item--regular');
                   const mainPriceText = salePriceEl?.textContent || regularPriceEl?.textContent || '0';
@@ -1328,6 +1345,7 @@
                   }
                 }
                 
+                // 计算 Lookbook 总价
                 let lookbookTotal = 0;
                 document.querySelectorAll('.lb-select-on-click[lb-selected]').forEach(card => {
                   const priceEl = card.querySelector('.lb-price-sale-price');
@@ -1341,15 +1359,19 @@
                   lookbookTotal += price * qty;
                 });
                 
+                // 最终价格 = 原始价格 + CrossSell + Lookbook
                 const finalTotal = originalPrice + (crossSellTotalInCents / 100) + lookbookTotal;
                 const parts = finalTotal.toFixed(2).split('.');
                 const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
                 const formattedPrice = integerPart + ',' + parts[1] + ' €';
+                
+                // 更新主产品价格显示
                 const mainSalePrice = priceContainer?.querySelector('.f-price-item--sale');
                 if (mainSalePrice) {
                   mainSalePrice.textContent = formattedPrice;
                 }
                 
+                // 更新 Sticky Bar 价格显示
                 const stickyContainer = document.querySelector('.sticky-atc-bar__inner .product-price-box');
                 const stickyPrice = stickyContainer?.querySelector('.f-price-item--sale') ||
                                     stickyContainer?.querySelector('.f-price-item--regular');
