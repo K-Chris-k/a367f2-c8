@@ -31,14 +31,14 @@
         "text_PDnxwi": {
           "type": "text",
           "settings": {
-            "text": "<p>Werde Partner und erhalte jetzt mindestens 10% Provision.</p>",
+            "text": "<ol><li><strong>Registrieren </strong>Sie sich als Publisher auf Awin.</li><li><strong>Suchen </strong>Sie nach<strong> Indevolt DE</strong> oder <strong>der Programm-ID: 110350</strong> und klicken Sie auf „Beitreten“. </li></ol><p><strong>Hinweis</strong>: Nach Prüfung Ihres Profils weisen wir Ihnen manuell eine spezifische Provisionsstufe (<strong>3 %, 5 % oder 10 %</strong>) zu, basierend auf den Inhalten und der Performance Ihres Kanals.</p>",
             "text_size": "text-lg"
           }
         },
         "text_zKWHUj": {
           "type": "text",
           "settings": {
-            "text": "<p><a href=\"https://ui.awin.com/express-signup/en/awin/110350/48ff70af-43d4-45dc-b2a8-8b41dce5502d?t=RQGDftcf2H8rtPSo9gkUEDkPdAwVpuuFvx42scF6hY0\" target=\"_blank\" title=\"https://ui.awin.com/express-signup/en/awin/110350/48ff70af-43d4-45dc-b2a8-8b41dce5502d?t=RQGDftcf2H8rtPSo9gkUEDkPdAwVpuuFvx42scF6hY0\">Jetzt beitreten auf AWIN →</a></p>",
+            "text": "<p><a href=\"https://ui.awin.com/publisher-signup/de/awin/\" target=\"_blank\" title=\"https://ui.awin.com/publisher-signup/de/awin/\">Jetzt beitreten auf AWIN →</a></p>",
             "text_size": "text-base"
           }
         },
@@ -58,7 +58,10 @@
         "image_A9NEnK"
       ],
       "custom_css": [
-        "a {color: #3250c3;}"
+        "a {color: #3250c3;}",
+        ".text-lg {width: 74%; text-align: left;}",
+        ".text-lg p {padding-left: 20px;}",
+        "@media (max-width: 767.98px) {.text-lg {width: 100%; text-align: left; }}"
       ],
       "name": "富文本+图片+视频",
       "settings": {

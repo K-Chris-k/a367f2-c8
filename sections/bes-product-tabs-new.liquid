@@ -1,0 +1,1375 @@
+{%- liquid
+  assign tab_inline_style = '--tab-image-width: ' | append: 100 | append: '%;'
+  assign nav_style = 'design-1'
+  assign motion_delay = 50
+-%}
+{{ 'component-tabs.css' | asset_url | stylesheet_tag }}
+{{ 'section-collage-tabs.css' | asset_url | stylesheet_tag }}
+<style>
+    #shopify-section-{{ section.id }}{background:#F5F5F7}
+    #shopify-section-{{ section.id }} .product-collection{ padding-top: {{ section.settings.padding_top }}px;padding-bottom: {{ section.settings.padding_bottom }}px;}
+    #shopify-section-{{ section.id }} .product-collection .title{ font-size: 46px;font-weight: 700;text-align:center;color:#000}
+    #shopify-section-{{ section.id }} .product-collection-box{margin-top:40px}
+    #shopify-section-{{ section.id }} .product-collection-box .slick-list{margin-left: -20px;width: 103%;}
+    #shopify-section-{{ section.id }} .product-collection-box .slick-track{display:flex; gap:2rem;justify-content: space-between;}
+    #shopify-section-{{ section.id }} .product-collection-box .custom-product-image{ border-radius: 20px; background: #ffffff;}
+    #shopify-section-{{ section.id }} .product-collection-box .custom-product-image img{
+    {% comment %} height:{{ section.settings.image_height}}px!important; {% endcomment %}
+    border-radius:20px}
+    #shopify-section-{{ section.id }}  .custom-product-title, .custom-product-price{font-family: 'Inter';margin-top:8px;text-align: left;line-height:24px;
+     font-size: 19px;font-weight: 600;color: #1A1A1A;}
+    #shopify-section-{{ section.id }}   .custom-product-title{min-height: 48px;max-height: 48px;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical; overflow: hidden;text-overflow: ellipsis;}
+    #shopify-section-{{ section.id }}  .custom-product-describe{
+      {% comment %} min-height: 17px;max-height:34px; -webkit-line-clamp: 2;{% endcomment %}
+       display:flex;flex-flow:column;
+      margin-top:10px;line-height: normal;line-height:25px;font-size:14px;font-weight: 400;color: #1A1A1A;text-align: left;
+    display: -webkit-box;-webkit-box-orient: vertical; overflow: hidden;text-overflow: ellipsis;
+    max-height:120px;
+  }
+   #shopify-section-{{ section.id }} .describe-min-height{min-height: 100px;}
+   #shopify-section-{{ section.id }}  .card{ display:flex;flex-direction:column;justify-content:space-between;height:100%;border-radius:20px;background:#ffffff;}
+   #shopify-section-{{ section.id }}  .content-box{ padding: 0px 30px 30px 30px;}
+   #shopify-section-{{ section.id }}  .custom-product-describe .icon-vector{margin-right:8px;vertical-align: middle;}
+   #shopify-section-{{ section.id }}  .custom-product-price{margin-top:2px;text-align: left;color: #3250C3;}
+   #shopify-section-{{ section.id }}  .custom-product-price .original-price{font-size:18px;line-height:22px;display: block;font-weight: 500;color: #8D8D8D;text-decoration: line-through;}
+   #shopify-section-{{ section.id }} .product-collection-box .custom-product-button{display:flex;
+    {% comment %} left: 50%;transform: translateX(-50%); {% endcomment %}
+    margin-top:14px;max-width:260px;min-height:{{ section.settings.button_height }}px;color:{{  section.settings.button_title_color }}}
+   #shopify-section-{{ section.id }} .product-collection-box .custom-product-button:hover{color:#fff}
+   .section-product-collection .slick-dotted .slick-dots{visibility:hidden;margin-top:0px}
+   #shopify-section-{{ section.id }} .hotsale{margin-top:20px;line-height:17px;font-size: 14px;color:#EF0F0F;font-weight: 600;}
+   #shopify-section-{{ section.id }} .content-box .button-wrap{ display:flex;justify-content:center}
+   #shopify-section-{{ section.id }} .home-size{ line-height:24px;font-size: 18px;}
+   #shopify-section-{{ section.id }} .kv-size{ line-height:29px;font-size: 24px;}
+   #shopify-section-{{ section.id }} .btn--black{ background:#212121;color:#fff}
+   #shopify-section-{{ section.id }} .cyber-monday{ background:#e90028;color:#fff}
+   #shopify-section-{{ section.id }} .describe-min-height{min-height: {{ section.settings.sale-min_height }}px;}
+
+   #shopify-section-{{ section.id }} .bottom-box{
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap; /* 允许换行 */
+  }
+  #shopify-section-{{ section.id }}  .custom-product-price, .button-wrap{
+    flex: 1; /* 各占一半 */
+  min-width: 50%; /* 确保至少占一半 */
+
+  box-sizing: border-box;
+  padding: 10px;
+ }
+ #shopify-section-{{ section.id }} .current-price{
+     width: 100%;
+    display: block;
+}
+ @media (max-width: 1140px) {
+ {% comment %} .product-collection-box .custom-product-button{min-width:160px;max-width:160px} {% endcomment %}
+ #shopify-section-{{ section.id }}   .custom-product-title{min-height:32px;}
+}
+ @media (max-width: 1023px) {
+ .section-product-collection .slick-dotted .slick-dots {margin-top:30px;display: flex ;visibility:visible;gap:8px;align-items: center;justify-content: center;}
+ .slick-dotted .slick-dots .slick-active button{ background: #3250C3;}
+ .slick-dotted .slick-dots button {
+    padding:0px;
+    width: 20px;
+    height: 4px;
+    border-radius:2px;
+    background: #D9D9D9;
+    color: transparent;
+    transition: all .4s ease;
+  }
+}
+.slick-dotted.slick-slider {
+  margin-bottom: 0px;
+}
+ @media (max-width: 768px) {
+  .section-product-collection .slick-dotted .slick-dots{margin-top:1rem;gap:8px}
+   #shopify-section-{{ section.id }} .product-collection{ padding-top: {{ section.settings.padding_top | divided_by: 2  }}px;padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;}
+   #shopify-section-{{ section.id }} .product-collection .title{ font-size: 28px;}
+   #shopify-section-{{ section.id }} .product-collection-box{margin-top:20px!important;}
+   #shopify-section-{{ section.id }} .product-collection-box .slick-list{margin-left:-10px;width: 105%;}
+   #shopify-section-{{ section.id }}  .content-box{padding:0 15px;}
+   #shopify-section-{{ section.id }} .product-collection-box .custom-product-image img{height:auto!important}
+  {% comment %} .product-collection-box .custom-product-button{min-width:240px;max-width:240px;min-height:{{ section.settings.mobile_button_height }}px;} {% endcomment %}
+  #shopify-section-{{ section.id }} .product-collection-box .custom-product-button{min-width:100%;max-width:240px;min-height:{{ section.settings.mobile_button_height }}px;}
+  #shopify-section-{{ section.id }}  .card{position:relative;height:unset;border-radius: 20px;background:#ffffff;padding-bottom: 24px;}
+  #shopify-section-{{ section.id }}  .custom-product-title,.custom-product-price{font-size:16px;line-height: 19px;}
+  #shopify-section-{{ section.id }}  .custom-product-describe{max-height:135px;line-height:19px;min-height: 80px;}
+  #shopify-section-{{ section.id }}  .custom-product-title{max-height:40px;min-height:40px;}
+  .slick-dots li.slick-active button:before,.slick-dots li button:before{display:none}
+  #shopify-section-{{ section.id }} .product-collection-box .describe-min-height{min-height: {{ section.settings.mob-sale-min_height }}!important;}
+ #shopify-section-{{ section.id }} .kv-size { line-height:19px;font-size: 16px;}
+ #shopify-section-{{ section.id }} .custom-product-price .original-price { line-height:19px;font-size: 16px;}
+}
+
+
+
+
+
+
+
+
+
+
+/* Slick箭头按钮样式 - 黑色半透明背景，白色图标，右上角位置 */
+#shopify-section-{{ section.id }} .slick-prev, 
+#shopify-section-{{ section.id }} .slick-next {
+  position: absolute;
+  top: 540px; /* 调整到标题下方 */
+  z-index: 2;
+  width: 36px;
+  {% comment %} height: 36px; {% endcomment %}
+   background: #3250C3; /* 黑色半透明背景 */  
+   {% comment %} background: transparent; /* 透明背景 */ {% endcomment %}
+ border: 1px solid #3250C3; /* 蓝色边框 */
+  border-radius: 50%;
+  {% comment %} border: none; {% endcomment %}
+  cursor: pointer;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  font-size: 0;
+  transition: all 0.3s ease;
+  transform: none; /* 移除垂直居中变换 */
+}
+
+#shopify-section-{{ section.id }} .slick-prev:hover, 
+#shopify-section-{{ section.id }} .slick-next:hover {
+  {% comment %} background: rgba(0, 0, 0, 0.4); /* 鼠标悬停时背景加深 */ {% endcomment %}
+}
+
+#shopify-section-{{ section.id }} .slick-prev {
+  right: 80px; /* 增加右边距，与下一个按钮拉开距离 */
+  left: auto; /* 清除左侧定位 */
+}
+
+#shopify-section-{{ section.id }} .slick-next {
+  right: 10px; /* 下一个按钮在右上角靠右位置 */
+}
+
+/* 使用伪元素创建箭头图标 - 修正居中问题 */
+#shopify-section-{{ section.id }} .slick-prev:before,
+#shopify-section-{{ section.id }} .slick-next:before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid #ffffff; /* 白色箭头 */
+  border-bottom: 2px solid #ffffff; /* 白色箭头 */
+  position: relative; /* 添加相对定位 */
+}
+
+ 
+
+/* 方案4：使用Flexbox完全居中（推荐） */
+#shopify-section-{{ section.id }} .slick-prev, 
+#shopify-section-{{ section.id }} .slick-next {
+  /* 保持现有样式 */
+  display: flex !important;
+  align-items: center!important;
+  justify-content: center!important;
+}
+
+#shopify-section-{{ section.id }} .slick-prev:before,
+#shopify-section-{{ section.id }} .slick-next:before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  margin: 0; /* 移除所有margin */
+  flex-shrink: 0; /* 防止图标被压缩 */
+}
+
+#shopify-section-{{ section.id }} .slick-prev:before {
+  transform: rotate(45deg);
+  margin-right: -12px; /* 如果需要微调，使用小量margin */
+}
+
+#shopify-section-{{ section.id }} .slick-next:before {
+  transform: rotate(-135deg);
+  margin-left: 2px; /* 如果需要微调，使用小量margin */
+}
+
+/* 禁用状态 */
+#shopify-section-{{ section.id }} .slick-prev.slick-disabled,
+#shopify-section-{{ section.id }} .slick-next.slick-disabled {
+  opacity: 1;
+  cursor: not-allowed;
+  border-color:#8D8D8D;
+  color:#8D8D8D;
+  background: transparent; /* 透明背景 */ 
+  
+}
+
+#shopify-section-{{ section.id }} .slick-prev.slick-disabled:before,
+#shopify-section-{{ section.id }} .slick-next.slick-disabled:before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid #8D8D8D;
+  border-bottom: 2px solid #8D8D8D;
+  margin: 0; /* 移除所有margin */
+  flex-shrink: 0; /* 防止图标被压缩 */
+}
+
+
+#shopify-section-{{ section.id }} .slick-prev.slick-disabled:before {
+  transform: rotate(45deg);
+  margin-right: -12px; /* 如果需要微调，使用小量margin */
+}
+
+#shopify-section-{{ section.id }} .slick-next.slick-disabled:before {
+  transform: rotate(-135deg);
+  margin-left: 2px; /* 如果需要微调，使用小量margin */
+}
+
+/* 调整轮播容器位置，为箭头留出空间 */
+#shopify-section-{{ section.id }} .product-collection {
+  position: relative;
+}
+
+#shopify-section-{{ section.id }} .product-collection-box {
+  position: relative;
+  margin-top: 40px; /* 与箭头保持距离 */
+}
+
+/* 移动端响应式调整 */
+@media (max-width: 1024px) {
+  #shopify-section-{{ section.id }} .slick-prev, 
+  #shopify-section-{{ section.id }} .slick-next {
+    top: -60px; /* 移动端调整上边距 */
+    width: 36px;
+    height: 36px;
+  }
+  
+  #shopify-section-{{ section.id }} .slick-prev {
+    right: 50px;
+  }
+  
+  #shopify-section-{{ section.id }} .slick-next {
+    right: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  #shopify-section-{{ section.id }} .slick-prev, 
+  #shopify-section-{{ section.id }} .slick-next {
+    top: -50px; /* 移动端调整上边距 */
+    width: 32px;
+    height: 32px;
+  }
+  
+  #shopify-section-{{ section.id }} .slick-prev {
+    right: 45px;
+  }
+  
+  #shopify-section-{{ section.id }} .slick-next {
+    right: 10px;
+  }
+  
+ 
+
+  /* 使用伪元素创建箭头图标 - 修正居中问题 */
+#shopify-section-{{ section.id }} .slick-prev:before,
+#shopify-section-{{ section.id }} .slick-next:before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid #ffffff; /* 白色箭头 */
+  border-bottom: 2px solid #ffffff; /* 白色箭头 */
+  position: relative; /* 添加相对定位 */
+}
+
+/* 修正向左箭头居中 - 使用transform定位 */
+#shopify-section-{{ section.id }} .slick-prev:before {
+  transform: rotate(45deg) translate(1px, 0); /* 微调位置 */
+  margin: 0; /* 移除margin */
+}
+
+/* 修正向右箭头居中 - 使用transform定位 */
+#shopify-section-{{ section.id }} .slick-next:before {
+  transform: rotate(-135deg) translate(-1px, 0); /* 微调位置 */
+  margin: 0; /* 移除margin */
+}
+  
+  /* 移动端隐藏箭头，显示dots */
+  #shopify-section-{{ section.id }} .slick-prev, 
+  #shopify-section-{{ section.id }} .slick-next {
+    display: none !important;
+  }
+}
+
+/* 确保箭头在轮播内容之上 */
+#shopify-section-{{ section.id }} .product-collection-box {
+  position: relative;
+}
+
+#shopify-section-{{ section.id }} .product-collection-box .slick-list {
+  z-index: 1;
+}
+
+</style>
+
+
+
+
+
+<style>
+  .section-{{ section.id }} .h2-title {line-height:56px;font-size: 46px;text-align:center}
+  .section-{{ section.id }} .tabs__header {padding-top:46px}
+  .section-{{ section.id }} .tabs__nav{gap:90px;display:flex;border-bottom: 1px solid #ddd;}
+  .section-{{ section.id }}  .custom-bottom-color{ border-color:rgba(255, 255, 255, 0.3)}
+  .tabs__nav-design-1 .tabs__tab:before{width:100%;background:#1d1d1d}
+  .section-{{ section.id }} .tabs__tab{flex:1;padding-bottom: 0px;}
+  .section-{{ section.id }} .tabs__tab span{ padding: 0px 0px 0px;font-size: 18px;line-height: 22px;white-space: nowrap;}
+  .tabs__nav-design-1 .tabs__tab:before{height:2px;background:transparent}
+  .tabs__nav-design-1 .tabs__tab[aria-selected="true"] span{color: #3250C3;}
+  .tabs__nav-design-1 .tabs__tab[aria-selected="true"]:before{color: #3250C3;border-bottom: 2px solid #3250C3;}
+  .section-{{ section.id }} .flex-wrap{flex-flow: column-reverse;background:none}
+  .section-{{ section.id }} .collage-tab__content{max-width: 100%;padding:1.8rem 0.2rem 2.4rem 3.2rem;color:#666}
+  .section-{{ section.id }} .tabs__header{margin-bottom:0px}
+  .section-{{ section.id }} .tabs__tab-name{ color:{{ section.settings.tab_title_color }}}
+
+  .section-{{ section.id }} .tabs__nav-design-1 .tabs__tab {
+        padding: 0px 0px 10px 0px;
+        border-radius: 0px;
+        line-height: 24px;
+        font-size: 20px;
+    }
+
+  @media (max-width: 767.98px) {
+    .section-{{ section.id }}{padding-left:0px;padding-right:0px}
+    .section-{{ section.id }} .tabs-wraper,.section-{{ section.id }} .h2-title{ margin:0px 1.5rem}
+    .section-{{ section.id }} .tabs__nav{display:flex;gap:20px;width:100%; padding-inline: 0rem;}
+    .section-{{ section.id }} .tabs__tab span,.collage-tab__content-inner p{line-height: 17px;white-space: pre-wrap;font-size: 14px;text-align:left}
+    .tabs__nav-design-1 .tabs__tab{justify-content: flex-start;text-align:left  }
+    .section-{{ section.id }} .tabs__tab-name{ padding-right: 0px;line-height: 17px; }
+    .section-{{ section.id }} .tabs__header{padding-top:2rem}
+    .section-{{ section.id }} .tabs__nav-wrap{max-width:100%}
+    .section-{{ section.id }} .h2-title {line-height:34px;font-size: 28px;}
+    .section-{{ section.id }} .collage-tab__image{height:226px;background: transparent;}
+    .section-{{ section.id }} .collage-tab__image img{ height: 100%;object-fit: fill;}
+    .section-{{ section.id }} .collage-tab__content{padding:1.8rem 0.2rem 0rem 0rem;color:#666}
+    
+  }
+
+</style>
+
+
+
+
+
+<style>
+  /* 组件基础样式 */
+  .tabs-slider-component {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: sans-serif;
+  }
+
+  /* 标签页导航 */
+  .tabs-nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 15px;
+  }
+
+  .tab-btn {
+    padding: 12px 24px;
+    background: #f5f5f5;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    min-width: 120px;
+  }
+
+  .tab-btn:hover {
+    background: #e9e9e9;
+  }
+
+  .tab-btn.active {
+    background: #333;
+    color: white;
+  }
+
+  /* 标签页内容区 */
+  .tabs-content {
+    position: relative;
+    min-height: 300px;
+  }
+
+  .tab-pane {
+    display: none;
+    animation: fadeIn 0.5s ease;
+  }
+
+  .tab-pane.active {
+    display: block;
+  }
+
+  /* 桌面端：网格布局 */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid #eee;
+  }
+
+  .card h3 {
+    margin-top: 0;
+    color: #333;
+  }
+
+  /* 移动端：滑块布局 */
+  @media (max-width: 768px) {
+    .cards-grid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 15px;
+      padding-bottom: 10px;
+      -webkit-overflow-scrolling: touch; /* 移动端平滑滚动 */
+      scrollbar-width: none; /* Firefox隐藏滚动条 */
+    }
+    
+    .cards-grid::-webkit-scrollbar {
+      display: none; /* Chrome/Safari隐藏滚动条 */
+    }
+    
+    .card {
+      flex: 0 0 calc(85vw - 30px); /* 移动端卡片宽度 */
+      scroll-snap-align: start;
+      min-height: 200px;
+    }
+    
+    .tabs-nav {
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding-bottom: 10px;
+    }
+    
+    .tab-btn {
+      min-width: 100px;
+      padding: 10px 15px;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+  }
+
+  /* 小屏手机优化 */
+  @media (max-width: 480px) {
+    .card {
+      flex: 0 0 calc(90vw - 30px);
+    }
+  }
+
+  /* 动画效果 */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* 滑块指示器 */
+  .slider-indicator {
+    display: none;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+  }
+
+  @media (max-width: 768px) {
+    .slider-indicator {
+      display: flex;
+    }
+    
+    .indicator-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ddd;
+      transition: background 0.3s ease;
+    }
+    
+    .indicator-dot.active {
+      background: #333;
+    }
+  }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+{% render 'divider',
+  show_divider: section.settings.show_section_divider,
+  divider_width: section.settings.divider_width
+%}
+<div
+  class="section section-{{ section.id }} section--padding section--collage-tabs page-width color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  background-color: {{ section.settings.bg_color }};"
+  data-id="{{ section.id }}"
+>   {%- if section.settings.title !=blank -%}
+    <h2 class="h2-title">
+      <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}"> <span>{{ section.settings.title }}</span></motion-element>
+    </h2>
+    {% endif %}
+  {%- if section.blocks.size > 0 -%}
+    <div class="tabs-wraper">
+    <tabs-component class="tabs tabs__nav-{{ nav_style }}">
+      <div
+        class="tabs__header flex justify-{{ section.settings.desktop_navigation_alignment }}"
+        role="tablist"
+      >
+        <div class="tabs__nav-wrap">
+          <div class="tabs__nav{% if section.settings.bg_color != '#ffffff' %} custom-bottom-color {% endif %}">
+            {%- for block in section.blocks -%}
+              {%- liquid
+                if block.settings.navigation_title != blank
+                  assign tab_name = block.settings.navigation_title
+                else
+                  assign tab_name = 'Tab ' | append: forloop.index
+                endif
+              -%}
+              <button class="tabs__tab focus-inset" role="tab" id="{{- block.id -}}" {{ block.shopify_attributes }}>
+                <span class="tabs__tab-name {{ section.settings.heading_size }}">{{- tab_name -}}</span>
+              </button>
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+      <div class="tabs__panel">
+        {%- for block in section.blocks -%}
+          {%- liquid
+            assign aspect_ratio = section.settings.image_aspect_ratio | default: '1/1'
+            if aspect_ratio == 'adapt'
+              if block.settings.image != blank
+                assign aspect_ratio = block.settings.image.aspect_ratio
+              else
+                assign aspect_ratio = '1/1'
+              endif
+            endif
+
+            assign loading = 'lazy'
+            assign fetchpriority = 'low'
+            if section.index < 2 and forloop.index == 1
+              assign loading = 'eager'
+              assign fetchpriority = 'high'
+            endif
+          -%}
+          <div
+            class="tabs__content"
+            id="tab-{{ block.id }}"
+            data-index="{{ forloop.index0 }}"
+            role="tabpanel"
+            {% unless forloop.first %}
+              hidden
+            {% endunless %}
+          >
+            <div
+              class="flex flex-wrap color-{{ block.settings.content_color_scheme }}"
+              style="{{ tab_inline_style }}"
+            >
+              <div class="collage-tab__content flex-1 flex items-center">
+                <div class="collage-tab__content-inner rich-text flex flex-col w-full text-{{ block.settings.text_alignment }}">
+   
+                        <div class="cards-grid">
+                            {% for i in (1..3) %}
+                            <div class="card">
+                            {% capture custom_image_key %}custom_image{{i}}{% endcapture %}
+                            {% capture mobile_image %}mobile_image{{i}}{% endcapture %}
+                            {% capture custom_image %}custom_image{{i}}{% endcapture %}
+                            {% capture custom_title %}custom_title{{i}}{% endcapture %}
+                            {% capture custom_describe %}custom_describe{{i}}{% endcapture %}
+                            {% capture price %}price{{i}}{% endcapture %}
+                            {% capture original %}original{{i}}{% endcapture %}
+                            {% capture button_link %}button_link{{i}}{% endcapture %}
+                            
+                            <a href="{% if block.settings[button_link] != blank %}{{  block.settings[button_link] }}{% else %}{{ product.url }}{% endif %}" class="custom-product-card">
+                            {% if block.settings[custom_image_key] != blank %}
+                            <div class="custom-product-image">
+                                {% comment %} {{
+                                block.settings.custom_image
+                                | image_url: width: 600
+                                | image_tag: loading: 'lazy', alt: block.settings.custom_title | default: product.title
+                                }} {% endcomment %}
+                                    <picture>
+                                <source
+                                media="(max-width: 749px)"
+                                srcset="
+                                    {{ block.settings[mobile_image] | default: block.settings.image | img_url: '800x' }} 1x,
+                                    {{ block.settings[mobile_image] | default: block.settings.image | img_url: '1600x' }} 2x
+                                "
+                                >
+                                <source
+                                media="(min-width: 750px)"
+                                srcset="
+                                    {{ block.settings[custom_image] | img_url: '1200x' }} 1x,
+                                    {{ block.settings[custom_image] | img_url: '2400x' }} 2x
+                                "
+                                >
+                                <img
+                                src="{{ block.settings[custom_image] | img_url: '1200x' }}"
+                                class="grid-image"
+                                loading="lazy"
+                                width="100%"
+                                height="100%"
+                                >
+                            </picture>
+                            </div>
+                            {% endif %}
+                 <div class="content-box">
+                        <h3 class="custom-product-title">
+                          {{ block.settings[custom_title] | default: block.settings.title }}
+                        </h3>
+                        {%- assign desc_list = block.settings[custom_describe] | split: '\n' -%}
+                        {% if desc_list.size > 1 %}
+                          <ul class="custom-product-describe describe-min-height">
+                            {% for desc in desc_list %}
+                              {% if desc != blank %}
+                                <li>
+                                    {% render 'icon-vector' -%}
+                                  {{- desc }}
+                                </li>
+                              {% endif %}
+                            {% endfor %}
+                          </ul>
+                        {% else %}
+                          {% comment %} <div class="custom-product-describe describe-min-height">{{ block.settings[custom_describe] }}</div> {% endcomment %}
+                        {% endif %}
+                        {%- assign size_class = '' -%}
+                          {%- assign size_class = 'kv-size' -%}
+                        <div class="bottom-box">
+                          <div class="custom-product-price">
+                            <span class="current-price {{size_class}}"> {{ block.settings[price] }}</span>
+                            <span class="original-price">{{ block.settings[original] }}</span>
+                          </div>
+                          <div class="button-wrap">
+                            <button class="btn btn--secondary links custom-product-button">
+                              {{ block.settings.button_text1 }}
+                            </button>
+                        </div>
+                      </div>
+                      </div>
+                    </a>
+                    </div>
+                    {% endfor %}
+                
+                        </div>
+                        <!-- 移动端滑块指示器 -->
+                        {% comment %} <div class="slider-indicator">
+                            <span class="indicator-dot active" data-index="0"></span>
+                            <span class="indicator-dot" data-index="1"></span>
+                            <span class="indicator-dot" data-index="2"></span>
+                        </div> {% endcomment %}
+
+
+ 
+       
+                </div>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </tabs-component>
+    </div>
+  {%- endif -%}
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var tabNavWrap = document.querySelector('.section-{{ section.id }} .tabs__nav-wrap');
+    var tabs = document.querySelectorAll('.section-{{ section.id }} .tabs__tab');
+
+    tabs.forEach(function(tab) {
+      tab.addEventListener('click', function(e) {
+        tab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      });
+    });
+
+    // Scroll to the selected tab when aria-selected is changed
+    const observer = new MutationObserver(() => {
+      tabs.forEach(tab => {
+        if (tab.getAttribute('aria-selected') === 'true') {
+          tab.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+      });
+    });
+    tabs.forEach(tab => observer.observe(tab, { attributes: true }));
+  });
+</script>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 标签页切换功能
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanes = document.querySelectorAll('.tab-pane');
+    
+    tabButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // 移除所有按钮的active类
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        // 隐藏所有标签页内容
+        tabPanes.forEach(pane => pane.classList.remove('active'));
+        
+        // 激活当前按钮
+        button.classList.add('active');
+        // 显示对应的标签页内容
+        const tabId = button.getAttribute('data-tab');
+        document.getElementById(tabId).classList.add('active');
+        
+        // 重置所有滑块指示器
+        document.querySelectorAll('.slider-indicator').forEach(indicator => {
+          indicator.querySelectorAll('.indicator-dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === 0);
+          });
+        });
+        
+        // 重置所有滑块到第一个卡片
+        document.querySelectorAll('.cards-grid').forEach(grid => {
+          if (window.innerWidth <= 768) {
+            grid.scrollLeft = 0;
+          }
+        });
+      });
+    });
+    
+    // 移动端滑块滚动指示器更新
+    const cardsGrids = document.querySelectorAll('.cards-grid');
+    
+    cardsGrids.forEach(grid => {
+      grid.addEventListener('scroll', function() {
+        if (window.innerWidth <= 768) {
+          const scrollLeft = this.scrollLeft;
+          const cardWidth = this.querySelector('.card').offsetWidth + 15; // 包含gap
+          const activeIndex = Math.round(scrollLeft / cardWidth);
+          
+          // 更新当前标签页的指示器
+          const activePane = this.closest('.tab-pane');
+          if (activePane && activePane.classList.contains('active')) {
+            const dots = activePane.querySelectorAll('.indicator-dot');
+            dots.forEach((dot, index) => {
+              dot.classList.toggle('active', index === activeIndex);
+            });
+          }
+        }
+      });
+    });
+    
+    // 窗口大小调整时重新计算
+    window.addEventListener('resize', function() {
+      // 如果是移动端切回桌面端，重置指示器
+      if (window.innerWidth > 768) {
+        document.querySelectorAll('.slider-indicator').forEach(indicator => {
+          indicator.querySelectorAll('.indicator-dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === 0);
+          });
+        });
+      }
+    });
+  });
+</script>
+{% schema %}
+{
+  "name": "sf2000-scence-tabs",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "背景颜色",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "tab_title_color",
+      "label": "tab标题文字颜色",
+      "default": "#000"
+    },
+        {
+      "type": "text",
+      "id": "tab_content_color",
+      "label": "tab内容文字颜色",
+      "default": "#666"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Geschikt voor Diverse Scenario's"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.collage-tabs.settings.tab_settings.content"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.all.text_size.heading.label",
+      "default": "h4",
+      "options": [
+        {
+          "value": "h6",
+          "label": "t:sections.all.text_size.options__h6.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.all.text_size.options__h5.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.all.text_size.options__h4.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.all.text_size.options__h3.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.text_size.options__h2.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.text_size.options__h1.label"
+        },
+        {
+          "value": "hd3",
+          "label": "t:sections.all.text_size.options__hd3.label"
+        },
+        {
+          "value": "hd2",
+          "label": "t:sections.all.text_size.options__hd2.label"
+        },
+        {
+          "value": "hd1",
+          "label": "t:sections.all.text_size.options__hd1.label"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "desktop_navigation_alignment",
+      "label": "t:sections.collage-tabs.settings.desktop_navigation_alignment.label",
+      "default": "center",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:sections.collage-tabs.settings.desktop_navigation_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.collage-tabs.settings.desktop_navigation_alignment.options__2.label"
+        },
+        {
+          "value": "end",
+          "label": "t:sections.collage-tabs.settings.desktop_navigation_alignment.options__3.label"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "desktop_image_position",
+      "label": "t:sections.all.image_position.desktop.label",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.all.image_position.options__1.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.all.image_position.options__2.label"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "desktop_image_width",
+      "label": "t:sections.collage-tabs.settings.desktop_image_width.label",
+      "default": 100,
+      "min": 30,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "t:settings_schema.global.settings.image_ratio.label",
+      "default": "adapt",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:settings_schema.global.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "1/1",
+          "label": "t:settings_schema.global.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "3/4",
+          "label": "t:settings_schema.global.settings.image_ratio.options__3.label"
+        },
+        {
+          "value": "4/3",
+          "label": "t:settings_schema.global.settings.image_ratio.options__4.label"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.divider.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider",
+      "default": false,
+      "label": "t:sections.all.divider.settings.show_divider.label"
+    },
+    {
+      "type": "select",
+      "id": "divider_width",
+      "options": [
+        {
+          "value": "fixed",
+          "label": "t:sections.all.container.options__fixed.label"
+        },
+        {
+          "value": "full",
+          "label": "t:sections.all.container.options__full.label"
+        }
+      ],
+      "default": "fixed",
+      "label": "t:sections.all.divider.settings.divider_width.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "t:sections.collage-tabs.blocks.tab.name",
+      "settings": [
+        {
+          "type": "color_scheme",
+          "id": "content_color_scheme",
+          "label": "t:sections.all.colors.label",
+          "default": "scheme-2"
+        },
+        {
+          "type": "text",
+          "label": "t:sections.collage-tabs.blocks.tab.settings.navigation_title.label",
+          "id": "navigation_title"
+        },
+        {
+          "type": "image_picker",
+          "label": "t:sections.all.image.label",
+          "id": "image"
+        },
+            {
+          "type": "image_picker",
+          "label": "移动端图像",
+          "id": "mobile_image"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "t:sections.all.heading.label",
+          "default": "Collapsible tabs"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "t:sections.all.text_size.heading.label",
+          "default": "h1",
+          "options": [
+            {
+              "value": "h6",
+              "label": "t:sections.all.text_size.options__h6.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:sections.all.text_size.options__h5.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:sections.all.text_size.options__h4.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:sections.all.text_size.options__h3.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:sections.all.text_size.options__h2.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.text_size.options__h1.label"
+            },
+            {
+              "value": "hd3",
+              "label": "t:sections.all.text_size.options__hd3.label"
+            },
+            {
+              "value": "hd2",
+              "label": "t:sections.all.text_size.options__hd2.label"
+            },
+            {
+              "value": "hd1",
+              "label": "t:sections.all.text_size.options__hd1.label"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.highlight_text.header.content"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.all.highlight_text.paragraph.content"
+        },
+        {
+          "type": "select",
+          "id": "heading_highlight_style",
+          "label": "t:sections.all.highlight_text.settings.highlight_style.label",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.all.highlight_text.settings.highlight_style.options__1.label"
+            },
+            {
+              "value": "underline",
+              "label": "t:sections.all.highlight_text.settings.highlight_style.options__2.label"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "t:sections.all.subheading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "t:sections.all.description.label"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "label": "t:sections.all.text_size.description.label",
+          "default": "text-base",
+          "options": [
+            {
+              "value": "text-sm",
+              "label": "t:sections.all.text_size.options__small.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:sections.all.text_size.options__base.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:sections.all.text_size.options__large.label"
+            },
+            {
+              "value": "text-inherit",
+              "label": "t:sections.all.text_size.options__inherit.label"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "t:sections.all.text_alignment.label",
+          "default": "center",
+          "options": [
+            {
+              "value": "left",
+              "label": "t:sections.all.text_alignment.options__1.label"
+            },
+            {
+              "value": "center",
+              "label": "t:sections.all.text_alignment.options__2.label"
+            },
+            {
+              "value": "right",
+              "label": "t:sections.all.text_alignment.options__3.label"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.button.header.content"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.all.button.button_label.label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.all.button.button_link.label"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:sections.all.button.button_style.label",
+          "options": [
+            {
+              "value": "btn--primary",
+              "label": "t:sections.all.button.button_style.options__1.label"
+            },
+            {
+              "value": "btn--secondary",
+              "label": "t:sections.all.button.button_style.options__2.label"
+            },
+            {
+              "value": "btn--underline",
+              "label": "t:sections.all.button.button_style.options__4.label"
+            }
+          ],
+          "default": "btn--primary"
+        },
+
+
+        {
+          "type": "header",
+          "content": "产品1"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image1",
+          "label": "image_pc"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image1",
+          "label": "image_mobile"
+        },
+        {
+          "type": "text",
+          "id": "hotsale1",
+          "label": "hotsale标识"
+        },
+        {
+          "type": "text",
+          "id": "custom_title1",
+          "label": "自定义标题"
+        },
+          {
+          "type": "text",
+          "id": "custom_describe1",
+          "label": "自定义描述"
+        },
+         {
+          "type": "text",
+          "id": "price1",
+          "label": "定价"
+        },
+         {
+          "type": "text",
+          "id": "original1",
+          "label": "原价"
+        },
+        {
+          "type": "text",
+          "id": "button_text1",
+          "label": "按钮标题"
+        },
+        {
+          "type": "url",
+          "id": "button_link1",
+          "label": "按钮链接"
+        },
+
+
+
+        {
+          "type": "header",
+          "content": "产品2"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image2",
+          "label": "image_pc"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image2",
+          "label": "image_mobile"
+        },
+        {
+          "type": "text",
+          "id": "hotsale2",
+          "label": "hotsale标识"
+        },
+        {
+          "type": "text",
+          "id": "custom_title2",
+          "label": "自定义标题"
+        },
+          {
+          "type": "text",
+          "id": "custom_describe2",
+          "label": "自定义描述"
+        },
+         {
+          "type": "text",
+          "id": "price2",
+          "label": "定价"
+        },
+         {
+          "type": "text",
+          "id": "original2",
+          "label": "原价"
+        },
+        {
+          "type": "text",
+          "id": "button_text2",
+          "label": "按钮标题"
+        },
+        {
+          "type": "url",
+          "id": "button_link2",
+          "label": "按钮链接"
+        },
+
+
+
+        {
+          "type": "header",
+          "content": "产品3"
+        },
+        {
+          "type": "image_picker",
+          "id": "custom_image3",
+          "label": "image_pc"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image3",
+          "label": "image_mobile"
+        },
+        {
+          "type": "text",
+          "id": "hotsale3",
+          "label": "hotsale标识"
+        },
+        {
+          "type": "text",
+          "id": "custom_title3",
+          "label": "自定义标题"
+        },
+          {
+          "type": "text",
+          "id": "custom_describe3",
+          "label": "自定义描述"
+        },
+         {
+          "type": "text",
+          "id": "price3",
+          "label": "定价"
+        },
+         {
+          "type": "text",
+          "id": "original3",
+          "label": "原价"
+        },
+        {
+          "type": "text",
+          "id": "button_text3",
+          "label": "按钮标题"
+        },
+        {
+          "type": "url",
+          "id": "button_link3",
+          "label": "按钮链接"
+        }
+
+
+
+
+
+
+
+
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "阳台产品滑块",
+      "category": "自定义产品组件",
+      "blocks": [
+        {
+          "type": "tab",
+          "settings": {
+            "navigation_title": "Tab 1",
+            "heading": "Collage tab heading",
+            "description": "<p>Fill in the text content of the tab item here. You can provide details information tab item here.</p>",
+            "button_label": "Button label"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "navigation_title": "Tab 2",
+            "heading": "Collage tab heading",
+            "description": "<p>Fill in the text content of the tab item here. You can provide details information tab item here.</p>",
+            "button_label": "Button label"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

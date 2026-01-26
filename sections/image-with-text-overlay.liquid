@@ -3,9 +3,14 @@
   assign mobile_height = section.settings.mobile_height
 -%}
 <style>
+
+
+  #shopify-section-{{ section.id }}{padding-top:{{section.settings.padding_top  }}px;padding-bottom:{{section.settings.padding_bottom  }}px;}
+
+  
   #shopify-section-{{ section.id }} {
-    --section-padding-top: {{ section.settings.padding_top }}px;
-    --section-padding-bottom: {{ section.settings.padding_bottom }}px;
+    {% comment %} --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px; {% endcomment %}
     {%- if section.settings.image != blank and desktop_height == 'adapt' %}
       --media-ratio: {{ section.settings.image.aspect_ratio }};
     {% endif -%}
@@ -37,6 +42,7 @@
 
     
   @media (max-width: 767px){
+    #shopify-section-{{ section.id }}{padding-top:{{section.settings.padding_top| divided_by: 2 }}px;padding-bottom:{{section.settings.padding_bottom| divided_by: 2  }}px;}
     .image-with-text-ovelay__content-wrapper {
         margin-top: 20px !important;
         margin-left: 10px !important;

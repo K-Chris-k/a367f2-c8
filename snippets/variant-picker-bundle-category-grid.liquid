@@ -371,12 +371,20 @@
   }
 
 
- .v-scrollable ul {display:flex;flex-wrap:wrap;justify-content: space-between;}
+ {% comment %} .v-scrollable ul {display:flex;flex-wrap:wrap;justify-content: space-between;}
  .v-scrollable li { width: 46%;padding:20px 0px 20px;font-size: 18px; border-bottom:1px solid #B1B1B1}
  .v-scrollable li span{display: block;line-height:26px;}
  .v-scrollable li .title{font-weight:600}
  .v-scrollable li .content{font-weight:400}
- .v-scrollable li .note{margin-top:20px}
+ .v-scrollable li .note{margin-top:20px} {% endcomment %}
+   .v-scrollable ul, ol{
+        display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    padding-inline-start: 40px;
+    unicode-bidi: isolate;
+  }
   .drawer__body__pro {padding:60px 40px;text-align: left;color:#000}
   .drawer__body__pro h5{font-size:30px;font-weight:700}
   .popupmodal-pro .fixed-overlay{background-color: rgba(0, 0, 0, 0.1) !important; /* 深色半透明 */

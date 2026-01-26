@@ -1,0 +1,982 @@
+ 
+    <style>
+    .section-{{ section.id }} .responsive-tabs {
+        margin: 0 auto;
+        padding: 0px;
+    }
+
+    .section-{{ section.id }} .h2-title {
+        line-height:56px;
+        font-size: 46px;
+        text-align:center;
+        padding-bottom:40px;
+    }
+
+    /* PC端布局 - 30%手风琴+文字 / 70%图片 */
+    @media (min-width: 769px) {
+      .section-{{ section.id }}  .responsive-tabs {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            min-height: 500px;
+        }
+
+        /* 左边30% - 手风琴导航和文字 */
+     .section-{{ section.id }}   .accordion-mode {
+            width: 30%;
+            flex-shrink: 0;
+        }
+
+     .section-{{ section.id }}   .accordion-item {
+            margin-bottom: 0;
+            border-bottom: 1px solid #eee;
+        }
+
+    .section-{{ section.id }}    .accordion-trigger {
+            width: 100%;
+            padding: 40px 0;
+            background: transparent;
+            border: none;
+            text-align: left;
+            font-size: 22px;
+            font-weight: 600;
+            line-height:27px;
+            color: #333;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s;
+        }
+
+    .section-{{ section.id }}    .accordion-trigger:hover {
+            color: #3250C3;
+        }
+
+     .section-{{ section.id }}   .accordion-trigger.active {
+            color: #3250C3;
+        }
+
+ 
+
+        /* PC端显示箭头图标，但用CSS控制旋转 */
+     .section-{{ section.id }}   .accordion-icon.css-arrow {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            border: 1.5px solid currentColor;
+            border-radius: 50%;
+            position: relative;
+            transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+     .section-{{ section.id }}   .accordion-icon.css-arrow::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-right: 1.5px solid currentColor;
+            border-bottom: 1.5px solid currentColor;
+            transform: rotate(45deg);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+    .section-{{ section.id }}    .accordion-trigger.active .accordion-icon.css-arrow {
+            background-color: #3250C3;
+            border-color: #3250C3;
+        }
+
+     .section-{{ section.id }}   .accordion-trigger.active .accordion-icon.css-arrow::after {
+            transform: rotate(-135deg);
+            border-color: white;
+        }
+
+        /* PC端手风琴内容默认收起，只展开激活的 */
+    .section-{{ section.id }}    .accordion-mode .accordion-panel {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            padding: 0;
+            margin: 0;
+        }
+
+     .section-{{ section.id }}   .accordion-mode .accordion-panel.active {
+            max-height: 500px;
+            padding: 15px 0 25px 0;
+        }
+
+     .section-{{ section.id }}   .accordion-mode .accordion-panel h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 18px;
+            line-height: 22px;
+            font-weight: 500;
+            color: #333;
+        }
+
+    .section-{{ section.id }}    .accordion-mode .accordion-panel p {
+            margin: 0;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+        }
+
+        /* PC端隐藏移动端的图片 */
+    .section-{{ section.id }}    .accordion-mode .accordion-panel .mobile-image {
+            display: none;
+        }
+
+        /* 右边70% - 只显示图片 */
+     .section-{{ section.id }}   .tab-image-container {
+            width: 70%;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+            flex-shrink: 0;
+        }
+
+    .section-{{ section.id }}    .tab-image-container .image-panel {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+    .section-{{ section.id }}    .tab-image-container .image-panel.active {
+            display: block;
+            opacity: 1;
+            animation: fadeIn 0.5s ease;
+        }
+
+     .section-{{ section.id }}   .tab-image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+    }
+
+    /* 移动端样式 */
+    @media (max-width: 768px) {
+     .section-{{ section.id }} .h2-title {
+            line-height:34px;
+            font-size: 28px;
+            text-align:left;
+            padding-bottom:15px;
+        }
+
+     .section-{{ section.id }}   .responsive-tabs {
+            display: block;
+        }
+
+     .section-{{ section.id }}   .tab-image-container {
+            display: none;
+        }
+
+     .section-{{ section.id }}   .accordion-mode {
+            display: block;
+        }
+
+     .section-{{ section.id }}   .accordion-item {
+            border-radius: 8px;
+            {% comment %} margin-bottom: 10px; {% endcomment %}
+            overflow: hidden;
+        }
+
+     .section-{{ section.id }}   .accordion-trigger {
+            width: 100%;
+            padding: 30px 0px;
+            background: #ffffff;
+            border: none;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 0px;
+            font-weight:600;
+        }
+
+     .section-{{ section.id }} .accordion-panel h3{
+       font-size: 14px;
+       line-height:17px;
+       font-weight:500;
+      }
+
+     .section-{{ section.id }} .accordion-panel p{
+       font-size: 14px;
+       line-height:17px;
+       font-weight:300;
+      }
+
+     .section-{{ section.id }}   .accordion-trigger.active {
+            color: #3250C3;
+        }
+
+ 
+
+
+
+                 /* 基础箭头样式 */
+             .section-{{ section.id }} .accordion-icon.css-arrow {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 24px;
+                height: 24px;
+                border: 1.5px solid currentColor;
+                border-radius: 50%;
+                position: relative;
+                transition: transform 0.3s ease;
+                /* 移除原先的伪元素基础旋转，将旋转控制完全交给active状态 */
+              }
+
+            .section-{{ section.id }}  .accordion-icon.css-arrow::after {
+                content: '';
+                width: 6px;
+                height: 6px;
+                border-right: 1.5px solid currentColor;
+                border-bottom: 1.5px solid currentColor;
+                /* 初始状态：箭头向下（45度是右下箭头，需要调整为向下） */
+                transform: rotate(45deg) translateY(0);
+                transition: transform 0.3s ease;
+              }
+
+              /* 展开状态 - 只旋转伪元素，不旋转整个圆圈 */
+             .section-{{ section.id }} .accordion-trigger.active .accordion-icon.css-arrow {
+                /* 圆圈容器不旋转，保持原位 */
+                transform: none;
+              }
+
+            .section-{{ section.id }}  .accordion-trigger.active .accordion-icon.css-arrow::after {
+                /* 从向下旋转到向上：-135度是左上箭头（即向上） */
+                transform: rotate(-135deg) translateY(0);
+              }
+
+              /* 展开状态 - 向上箭头 + 蓝色背景 */
+            .section-{{ section.id }}  .accordion-trigger.active .accordion-icon.css-arrow {
+                background-color: #3250C3; /* 蓝色背景 - 使用您主题中的蓝色 */
+                border-color: #3250C3; /* 边框也改为蓝色，保持协调 */
+              }
+
+            .section-{{ section.id }}  .accordion-trigger.active .accordion-icon.css-arrow::after {
+                transform: rotate(-135deg); /* 向上箭头 */
+                border-color: white; /* 箭头变为白色，在蓝色背景上更明显 */
+              }
+
+     .section-{{ section.id }}   .accordion-panel {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+     .section-{{ section.id }}   .accordion-panel.active {
+            padding: 20px 0;
+            max-height: 1000px;
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+
+<div
+  class="section section-{{ section.id }} section--padding section--collage-tabs page-width color-{{ section.settings.color_scheme }}"
+  style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;
+  background-color: {{ section.settings.bg_color }};"
+  data-id="{{ section.id }}"
+>   {%- if section.settings.title !=blank -%}
+    <h2 class="h2-title">
+      <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}"> <span>{{ section.settings.title }}</span></motion-element>
+    </h2>
+    {% endif %}
+
+<div class="responsive-tabs">
+    <!-- 左边30% - 手风琴导航和文字 -->
+    <div class="accordion-mode">
+        {%- for block in section.blocks -%}
+            {%- liquid
+                if block.settings.navigation_title != blank
+                    assign tab_name = block.settings.navigation_title
+                else
+                    assign tab_name = 'Tab ' | append: forloop.index
+                endif
+            -%}
+            <div class="accordion-item">
+                <button class="accordion-trigger {% if forloop.first %}active{% endif %}" 
+                        data-target="tab{{ forloop.index }}">
+                    <span>{{- tab_name -}}</span>
+                    <!-- 箭头图标，PC和移动端都显示 -->
+                    <span class="accordion-icon css-arrow"></span>
+                </button>
+                <div class="accordion-panel {% if forloop.first %}active{% endif %}" 
+                     id="content-tab{{ forloop.index }}">
+                    <h3>{{ block.settings.heading }}</h3>
+                    <p>{{ block.settings.description }}</p>
+                    
+                    <!-- 移动端图片 -->
+                    <picture class="mobile-image">
+                        {% if block.settings.mobile_image %}
+                            <source
+                                media="(max-width: 749px)"
+                                srcset="
+                                    {{ block.settings.mobile_image | img_url: '800x' }} 1x,
+                                    {{ block.settings.mobile_image | img_url: '1600x' }} 2x
+                                "
+                            >
+                        {% endif %}
+                        <img
+                            src="{{ block.settings.image | img_url: '800x' }}"
+                            alt="{{ block.settings.heading | escape }}"
+                            loading="lazy"
+                            width="800"
+                            height="600"
+                        >
+                    </picture>
+                </div>
+            </div>
+        {%- endfor -%}
+    </div>
+
+    <!-- 右边70% - 只显示图片（PC端） -->
+    <div class="tab-image-container">
+        {%- for block in section.blocks -%}
+            <div class="image-panel {% if forloop.first %}active{% endif %}" 
+                 id="image-tab{{ forloop.index }}">
+                <picture>
+                    <source
+                        media="(min-width: 750px)"
+                        srcset="
+                            {{ block.settings.image | img_url: '1200x' }} 1x,
+                            {{ block.settings.image | img_url: '2400x' }} 2x
+                        "
+                    >
+                    <img
+                        src="{{ block.settings.image | img_url: '1200x' }}"
+                        alt="{{ block.settings.heading | escape }}"
+                        loading="lazy"
+                        width="1200"
+                        height="800"
+                    >
+                </picture>
+            </div>
+        {%- endfor -%}
+    </div>
+</div>
+
+
+</div>
+ <script>
+    class ResponsiveTabsacc {
+        constructor() {
+            this.isMobile = window.innerWidth <= 768;
+            console.log('ResponsiveTabs initialized, isMobile:', this.isMobile);
+           // this.init();
+            this.bindEvents();
+            window.addEventListener('resize', () => this.handleResize());
+        }
+
+        init() {
+            this.updateLayout();
+        }
+
+        bindEvents() {
+            // 绑定所有手风琴按钮的点击事件
+            document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+                trigger.addEventListener('click', (e) => {
+                    console.log('Accordion trigger clicked, target:', e.target);
+                    this.handleTabClick(e);
+                });
+            });
+        }
+
+        handleTabClick(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            const trigger = event.currentTarget; // 获取触发事件的按钮
+            const targetId = trigger.dataset.target;
+            console.log('Target ID:', targetId);
+            
+            this.switchTab(targetId, trigger);
+        }
+
+        switchTab(targetId, trigger = null) {
+            console.log('Switching to tab:', targetId);
+            
+            if (!trigger) {
+                trigger = document.querySelector(`.accordion-trigger[data-target="${targetId}"]`);
+            }
+            
+            if (!trigger) {
+                console.error('Trigger not found for target:', targetId);
+                return;
+            }
+
+            if (this.isMobile) {
+                // 移动端：手风琴展开/收起逻辑
+                console.log('Mobile mode - toggling accordion');
+                const isActive = trigger.classList.contains('active');
+                const contentPanel = document.getElementById(`content-${targetId}`);
+                
+                if (isActive) {
+                    // 收起当前
+                    trigger.classList.remove('active');
+                    if (contentPanel) contentPanel.classList.remove('active');
+                } else {
+                    // 收起所有其他面板
+                    document.querySelectorAll('.accordion-trigger').forEach(t => {
+                        if (t !== trigger) {
+                            t.classList.remove('active');
+                        }
+                    });
+                    document.querySelectorAll('.accordion-panel').forEach(p => {
+                        if (p !== contentPanel) {
+                            p.classList.remove('active');
+                        }
+                    });
+                    
+                    // 展开当前
+                    trigger.classList.add('active');
+                    if (contentPanel) contentPanel.classList.add('active');
+                }
+            } else {
+                // PC端：切换激活状态
+                console.log('PC mode - switching tab');
+                
+                // 1. 移除所有激活状态
+                document.querySelectorAll('.accordion-trigger').forEach(t => {
+                    t.classList.remove('active');
+                });
+                document.querySelectorAll('.accordion-mode .accordion-panel').forEach(p => {
+                    p.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-image-container .image-panel').forEach(p => {
+                    p.classList.remove('active');
+                });
+                
+                // 2. 设置当前激活状态
+                trigger.classList.add('active');
+                
+                // 3. 显示对应的文字内容
+                const contentPanel = document.getElementById(`content-${targetId}`);
+                if (contentPanel) {
+                    contentPanel.classList.add('active');
+                    console.log('Content panel activated:', contentPanel.id);
+                }
+                
+                // 4. 显示对应的图片
+                const imagePanel = document.getElementById(`image-${targetId}`);
+                if (imagePanel) {
+                    imagePanel.classList.add('active');
+                    console.log('Image panel activated:', imagePanel.id);
+                }
+            }
+        }
+
+        updateLayout() {
+            console.log('Updating layout for', this.isMobile ? 'mobile' : 'PC');
+            
+            if (this.isMobile) {
+                // 移动端：收起所有，只展开第一个
+                document.querySelectorAll('.accordion-trigger').forEach(t => {
+                    t.classList.remove('active');
+                });
+                document.querySelectorAll('.accordion-panel').forEach(p => {
+                    p.classList.remove('active');
+                });
+                
+                // 展开第一个
+                const firstTrigger = document.querySelector('.accordion-trigger');
+                const firstContent = document.querySelector('.accordion-panel');
+                if (firstTrigger && firstContent) {
+                    firstTrigger.classList.add('active');
+                    firstContent.classList.add('active');
+                    console.log('Mobile: First item expanded');
+                }
+                
+                // 隐藏PC端图片容器
+                const imageContainer = document.querySelector('.tab-image-container');
+                if (imageContainer) {
+                    imageContainer.style.display = 'none';
+                }
+            } else {
+                // PC端：收起所有文字内容，只展开第一个
+                document.querySelectorAll('.accordion-trigger').forEach(t => {
+                    t.classList.remove('active');
+                });
+                document.querySelectorAll('.accordion-mode .accordion-panel').forEach(p => {
+                    p.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-image-container .image-panel').forEach(p => {
+                    p.classList.remove('active');
+                });
+                
+                // 激活第一个
+                const firstTrigger = document.querySelector('.accordion-trigger');
+                const firstContent = document.querySelector('.accordion-mode .accordion-panel');
+                const firstImage = document.querySelector('.tab-image-container .image-panel');
+                 console.log(firstTrigger);
+                 console.log(firstContent);
+                 console.log(firstImage);
+                if (firstTrigger && firstContent && firstImage) {
+                    firstTrigger.classList.add('active');
+                    firstContent.classList.add('active');
+                    firstImage.classList.add('active');
+                    console.log('PC: First item activated');
+                }
+                
+                // 显示PC端图片容器
+                const imageContainer = document.querySelector('.tab-image-container');
+                if (imageContainer) {
+                    imageContainer.style.display = 'block';
+                }
+            }
+        }
+
+        handleResize() {
+            const wasMobile = this.isMobile;
+            this.isMobile = window.innerWidth <= 768;
+            
+            if (wasMobile !== this.isMobile) {
+                console.log('Screen size changed to', this.isMobile ? 'mobile' : 'PC');
+               // this.updateLayout();
+            }
+        }
+    }
+
+    // 初始化 - 确保DOM完全加载后执行
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOM loaded, initializing ResponsiveTabs...');
+        new ResponsiveTabsacc();
+        
+        // 添加调试信息
+        console.log('Total accordion triggers:', document.querySelectorAll('.accordion-trigger').length);
+        console.log('Total content panels:', document.querySelectorAll('.accordion-mode .accordion-panel').length);
+        console.log('Total image panels:', document.querySelectorAll('.tab-image-container .image-panel').length);
+    });
+</script>
+{% schema %}
+{
+  "name": "sf2000-scence-tabs",
+  "disabled_on": {
+    "groups": ["header", "footer", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "背景颜色",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "tab_title_color",
+      "label": "tab标题文字颜色",
+      "default": "#000"
+    },
+        {
+      "type": "text",
+      "id": "tab_content_color",
+      "label": "tab内容文字颜色",
+      "default": "#666"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Geschikt voor Diverse Scenario's"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.collage-tabs.settings.tab_settings.content"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "label": "t:sections.all.text_size.heading.label",
+      "default": "h4",
+      "options": [
+        {
+          "value": "h6",
+          "label": "t:sections.all.text_size.options__h6.label"
+        },
+        {
+          "value": "h5",
+          "label": "t:sections.all.text_size.options__h5.label"
+        },
+        {
+          "value": "h4",
+          "label": "t:sections.all.text_size.options__h4.label"
+        },
+        {
+          "value": "h3",
+          "label": "t:sections.all.text_size.options__h3.label"
+        },
+        {
+          "value": "h2",
+          "label": "t:sections.all.text_size.options__h2.label"
+        },
+        {
+          "value": "h1",
+          "label": "t:sections.all.text_size.options__h1.label"
+        },
+        {
+          "value": "hd3",
+          "label": "t:sections.all.text_size.options__hd3.label"
+        },
+        {
+          "value": "hd2",
+          "label": "t:sections.all.text_size.options__hd2.label"
+        },
+        {
+          "value": "hd1",
+          "label": "t:sections.all.text_size.options__hd1.label"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "desktop_navigation_alignment",
+      "label": "t:sections.collage-tabs.settings.desktop_navigation_alignment.label",
+      "default": "center",
+      "options": [
+        {
+          "value": "start",
+          "label": "t:sections.collage-tabs.settings.desktop_navigation_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.collage-tabs.settings.desktop_navigation_alignment.options__2.label"
+        },
+        {
+          "value": "end",
+          "label": "t:sections.collage-tabs.settings.desktop_navigation_alignment.options__3.label"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "desktop_image_position",
+      "label": "t:sections.all.image_position.desktop.label",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.all.image_position.options__1.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.all.image_position.options__2.label"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "desktop_image_width",
+      "label": "t:sections.collage-tabs.settings.desktop_image_width.label",
+      "default": 100,
+      "min": 30,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "t:settings_schema.global.settings.image_ratio.label",
+      "default": "adapt",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:settings_schema.global.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "1/1",
+          "label": "t:settings_schema.global.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "3/4",
+          "label": "t:settings_schema.global.settings.image_ratio.options__3.label"
+        },
+        {
+          "value": "4/3",
+          "label": "t:settings_schema.global.settings.image_ratio.options__4.label"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 50,
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.divider.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider",
+      "default": false,
+      "label": "t:sections.all.divider.settings.show_divider.label"
+    },
+    {
+      "type": "select",
+      "id": "divider_width",
+      "options": [
+        {
+          "value": "fixed",
+          "label": "t:sections.all.container.options__fixed.label"
+        },
+        {
+          "value": "full",
+          "label": "t:sections.all.container.options__full.label"
+        }
+      ],
+      "default": "fixed",
+      "label": "t:sections.all.divider.settings.divider_width.label"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "t:sections.collage-tabs.blocks.tab.name",
+      "settings": [
+        {
+          "type": "color_scheme",
+          "id": "content_color_scheme",
+          "label": "t:sections.all.colors.label",
+          "default": "scheme-2"
+        },
+        {
+          "type": "text",
+          "label": "t:sections.collage-tabs.blocks.tab.settings.navigation_title.label",
+          "id": "navigation_title"
+        },
+        {
+          "type": "image_picker",
+          "label": "t:sections.all.image.label",
+          "id": "image"
+        },
+            {
+          "type": "image_picker",
+          "label": "移动端图像",
+          "id": "mobile_image"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "label": "t:sections.all.heading.label",
+          "default": "Collapsible tabs"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "t:sections.all.text_size.heading.label",
+          "default": "h1",
+          "options": [
+            {
+              "value": "h6",
+              "label": "t:sections.all.text_size.options__h6.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:sections.all.text_size.options__h5.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:sections.all.text_size.options__h4.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:sections.all.text_size.options__h3.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:sections.all.text_size.options__h2.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.text_size.options__h1.label"
+            },
+            {
+              "value": "hd3",
+              "label": "t:sections.all.text_size.options__hd3.label"
+            },
+            {
+              "value": "hd2",
+              "label": "t:sections.all.text_size.options__hd2.label"
+            },
+            {
+              "value": "hd1",
+              "label": "t:sections.all.text_size.options__hd1.label"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.highlight_text.header.content"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.all.highlight_text.paragraph.content"
+        },
+        {
+          "type": "select",
+          "id": "heading_highlight_style",
+          "label": "t:sections.all.highlight_text.settings.highlight_style.label",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.all.highlight_text.settings.highlight_style.options__1.label"
+            },
+            {
+              "value": "underline",
+              "label": "t:sections.all.highlight_text.settings.highlight_style.options__2.label"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "subheading",
+          "label": "t:sections.all.subheading.label"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "t:sections.all.description.label"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "label": "t:sections.all.text_size.description.label",
+          "default": "text-base",
+          "options": [
+            {
+              "value": "text-sm",
+              "label": "t:sections.all.text_size.options__small.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:sections.all.text_size.options__base.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:sections.all.text_size.options__large.label"
+            },
+            {
+              "value": "text-inherit",
+              "label": "t:sections.all.text_size.options__inherit.label"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": "t:sections.all.text_alignment.label",
+          "default": "center",
+          "options": [
+            {
+              "value": "left",
+              "label": "t:sections.all.text_alignment.options__1.label"
+            },
+            {
+              "value": "center",
+              "label": "t:sections.all.text_alignment.options__2.label"
+            },
+            {
+              "value": "right",
+              "label": "t:sections.all.text_alignment.options__3.label"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.button.header.content"
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.all.button.button_label.label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.all.button.button_link.label"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:sections.all.button.button_style.label",
+          "options": [
+            {
+              "value": "btn--primary",
+              "label": "t:sections.all.button.button_style.options__1.label"
+            },
+            {
+              "value": "btn--secondary",
+              "label": "t:sections.all.button.button_style.options__2.label"
+            },
+            {
+              "value": "btn--underline",
+              "label": "t:sections.all.button.button_style.options__4.label"
+            }
+          ],
+          "default": "btn--primary"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "阳台专题手风琴",
+      "category": "自定义产品组件",
+      "blocks": [
+        {
+          "type": "tab",
+          "settings": {
+            "navigation_title": "Tab 1",
+            "heading": "Collage tab heading",
+            "description": "<p>Fill in the text content of the tab item here. You can provide details information tab item here.</p>",
+            "button_label": "Button label"
+          }
+        },
+        {
+          "type": "tab",
+          "settings": {
+            "navigation_title": "Tab 2",
+            "heading": "Collage tab heading",
+            "description": "<p>Fill in the text content of the tab item here. You can provide details information tab item here.</p>",
+            "button_label": "Button label"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

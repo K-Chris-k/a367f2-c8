@@ -113,7 +113,7 @@
 </style>
 
 <style>
-   #shopify-section-{{ section.id }}{margin-top:{{section.settings.padding_top  }}px;margin-bottom:{{section.settings.padding_bottom  }}px;}
+   {% comment %} #shopify-section-{{ section.id }}{margin-top:{{section.settings.padding_top  }}px;margin-bottom:{{section.settings.padding_bottom  }}px;} {% endcomment %}
    .video-popup-section {
      position: relative;
    }
@@ -263,7 +263,7 @@
               video_url: section.settings.video_url,
               muted: true,
               autoplay: true,
-              loop: false,
+              loop: true,
               description: section.settings.description,
               show_play_button: false,
               poster: section.settings.video_url.preview_image | image_url,
@@ -276,7 +276,7 @@
               video_url: section.settings.video_mobile_url,
               muted: true,
               autoplay: true,
-              loop: false,
+              loop: true,
               description: section.settings.description,
               show_play_button: false,
               poster: section.settings.video_mobile_url.preview_image | image_url,
