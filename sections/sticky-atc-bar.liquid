@@ -240,6 +240,7 @@
         window.fetchFreeGiftVariantId = async (handle) => {
           try {
             const response = await fetch(`/products/${handle}.js`);
+            if (!response.ok) return null;
             const product = await response.json();
             return product.variants[0].id;
           } catch (error) {
@@ -707,10 +708,13 @@
         (async function initCartCount() {
           try {
             const cartResponse = await fetch('/cart.js');
+            if (!cartResponse.ok) return; // Skip if rate limited or error
             const cart = await cartResponse.json();
             previousCartItemCount = cart.item_count;
           } catch (error) {
-            console.error('[Bundle Handler] 初始化失败:', error);
+            // Silently ignore rate limiting errors
+            if (!error.message?.includes('429')) {
+            }
           }
         })();
 
@@ -730,6 +734,10 @@
           try {
             // 获取当前购物车内容
             const cartResponse = await fetch('/cart.js');
+            if (!cartResponse.ok) {
+              if (cartResponse.status === 429) return; // Skip if rate limited
+              throw new Error(`HTTP error! status: ${cartResponse.status}`);
+            }
             const cart = await cartResponse.json();
             const currentCartItemCount = cart.item_count;
 
@@ -787,8 +795,12 @@
               
               try {
                 const updatedCartResponse = await fetch('/cart.js');
-                const updatedCart = await updatedCartResponse.json();
-                previousCartItemCount = updatedCart.item_count;
+                if (updatedCartResponse.ok) {
+                  const updatedCart = await updatedCartResponse.json();
+                  previousCartItemCount = updatedCart.item_count;
+                } else {
+                  previousCartItemCount = currentCartItemCount + missingItems.length;
+                }
               } catch (error) {
                 console.error('[Bundle Handler] 获取更新后的购物车失败:', error);
                 previousCartItemCount = currentCartItemCount + missingItems.length;
@@ -1055,6 +1067,10 @@
             sessionStorage.setItem('_replacing_free_gifts', 'true');
             
             const cartResponse = await fetch('/cart.js');
+            if (!cartResponse.ok) {
+              sessionStorage.removeItem('_replacing_free_gifts');
+              throw new Error(`HTTP error! status: ${cartResponse.status}`);
+            }
             const cart = await cartResponse.json();
             
             // 找到所有免费礼物的 key
@@ -1122,8 +1138,11 @@
           }
           
           const result = await response.json();
-          const cartResponse = await fetch('/cart.js');
-          const cart = await cartResponse.json();
+          const cartResponse2 = await fetch('/cart.js');
+          if (!cartResponse2.ok) {
+            throw new Error(`HTTP error! status: ${cartResponse2.status}`);
+          }
+          const cart = await cartResponse2.json();
           
           // 更新购物车数量显示
           document.querySelectorAll('cart-count').forEach(countEl => {

@@ -48,15 +48,20 @@ class CartDrawer extends DrawerComponent {
 
     try {
       const response = await fetch(`${FoxTheme.routes.root_url}?section_id=${this.sectionId}`);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
       const responseText = await response.text();
 
       const parser = new DOMParser();
       const parsedHTML = parser.parseFromString(responseText, 'text/html');
 
-      const newCartContent = parsedHTML.getElementById(cartId).innerHTML;
-      cartElement.innerHTML = newCartContent;
+      const newCartElement = parsedHTML.getElementById(cartId);
+      if (newCartElement) {
+        cartElement.innerHTML = newCartElement.innerHTML;
+      }
 
-      if (event.detail.open === true) {
+      if (event.detail && event.detail.open === true) {
         this.show();
       }
     } catch (error) {
@@ -70,7 +75,7 @@ class CartItems extends HTMLElement {
   constructor() {
     super();
 
-    this.addEventListener('change', FoxTheme.utils.debounce(this.onChange.bind(this), 300));
+    this.addEventListener('change', FoxTheme.utils.debounce(this.onChange.bind(this), 500));
     this.cartUpdateUnsubscriber = FoxTheme.pubsub.subscribe(
       FoxTheme.pubsub.PUB_SUB_EVENTS.cartUpdate,
       this.onCartUpdate.bind(this)
@@ -284,7 +289,15 @@ class CartItems extends HTMLElement {
     });
 
     fetch(`${FoxTheme.routes.cart_change_url}`, { ...FoxTheme.utils.fetchConfig(), ...{ body } })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          if (response.status === 429) {
+            throw new Error('Too many requests. Please wait a moment and try again.');
+          }
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((parsedState) => {
         FoxTheme.pubsub.publish(FoxTheme.pubsub.PUB_SUB_EVENTS.cartUpdate, {
           sources: 'cart-items',
@@ -295,7 +308,13 @@ class CartItems extends HTMLElement {
         });
       })
       .catch((error) => {
-        console.log(error);
+        console.error('Cart update error:', error);
+        this.hideLoader(line);
+        if (error.message.includes('429') || error.message.includes('Too many requests')) {
+          setTimeout(() => {
+            this.updateQuantity(line, quantity, name, target);
+          }, 2000);
+        }
       });
   }
 
@@ -472,7 +491,15 @@ class ShippingCalculator extends HTMLFormElement {
     sectionUrl = sectionUrl.replace('//', '/');
 
     fetch(sectionUrl, { ...FoxTheme.utils.fetchConfig('javascript'), ...{ body } })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          if (response.status === 429) {
+            throw new Error('Too many requests. Please wait a moment and try again.');
+          }
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then((parsedState) => {
         if (parsedState.shipping_rates) {
           this.formatShippingRates(parsedState.shipping_rates);
@@ -481,7 +508,8 @@ class ShippingCalculator extends HTMLFormElement {
         }
       })
       .catch((e) => {
-        console.error(e);
+        console.error('Shipping calculator error:', e);
+        this.formatError({ error: e.message });
       })
       .finally(() => {
         this.resultsElement.hidden = false;
@@ -677,19 +705,26 @@ customElements.define('free-shipping-goal', FreeShippingGoal);
 window.FoxKitAddToCart = async (payload) => {
   if (!payload?.properties?.['_FoxKit offer']) return;
 
-  const cartJson = await (
-    await fetch(`${FoxTheme.routes.cart_url}`, {
+  try {
+    const response = await fetch(`${FoxTheme.routes.cart_url}`, {
       ...FoxTheme.utils.fetchConfig(),
-    })
-  ).json();
-  cartJson['sections'] = payload['sections'];
-  FoxTheme.pubsub.publish(FoxTheme.pubsub.PUB_SUB_EVENTS.cartUpdate, { cart: cartJson });
+    });
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    const cartJson = await response.json();
+    cartJson['sections'] = payload['sections'];
+    FoxTheme.pubsub.publish(FoxTheme.pubsub.PUB_SUB_EVENTS.cartUpdate, { cart: cartJson });
 
-  document.dispatchEvent(
-    new CustomEvent('product-ajax:added', {
-      detail: {
-        product: payload,
-      },
-    })
-  );
+    document.dispatchEvent(
+      new CustomEvent('product-ajax:added', {
+        detail: {
+          product: payload,
+        },
+      })
+    );
+  } catch (error) {
+  }
 };

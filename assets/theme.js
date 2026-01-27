@@ -1829,7 +1829,15 @@ class ProductsBundle extends HTMLElement {
     });
 
     fetch(`${FoxTheme.routes.cart_add_url}`, { ...FoxTheme.utils.fetchConfig('javascript'), ...{ body } })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          if (response.status === 429) {
+            throw new Error('Too many requests. Please wait a moment and try again.');
+          }
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(async (parsedState) => {
         if (parsedState.status) {
           this.showErrorMessage(parsedState.description);
@@ -1844,9 +1852,11 @@ class ProductsBundle extends HTMLElement {
             })
           );
         } else {
-          const cartJson = await (
-            await fetch(`${FoxTheme.routes.cart_url}`, { ...FoxTheme.utils.fetchConfig() })
-          ).json();
+          const cartResponse = await fetch(`${FoxTheme.routes.cart_url}`, { ...FoxTheme.utils.fetchConfig() });
+          if (!cartResponse.ok) {
+            throw new Error(`Failed to fetch cart: ${cartResponse.status}`);
+          }
+          const cartJson = await cartResponse.json();
           cartJson['sections'] = parsedState['sections'];
 
           FoxTheme.pubsub.publish(FoxTheme.pubsub.PUB_SUB_EVENTS.cartUpdate, { cart: cartJson });
@@ -1861,7 +1871,8 @@ class ProductsBundle extends HTMLElement {
         }
       })
       .catch((e) => {
-        console.error(e);
+        console.error('Cart add error:', e);
+        this.showErrorMessage(e.message.includes('429') ? 'Too many requests. Please try again.' : e.message);
       })
       .finally(() => {
         this.toggleButtonLoading(false);
@@ -2454,14 +2465,26 @@ class ProductForm extends HTMLFormElement {
 
   handleFormSubmission = (config) => {
     fetch(`${FoxTheme.routes.cart_add_url}`, config)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          if (response.status === 429) {
+            throw new Error('Too many requests. Please wait a moment and try again.');
+          }
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+      })
       .then(async (parsedState) => {
         if (parsedState.status) {
           this.handleCartError(parsedState);
           return;
         }
 
-        const cartJson = await (await fetch(`${FoxTheme.routes.cart_url}`, { ...FoxTheme.utils.fetchConfig() })).json();
+        const cartResponse = await fetch(`${FoxTheme.routes.cart_url}`, { ...FoxTheme.utils.fetchConfig() });
+        if (!cartResponse.ok) {
+          throw new Error(`Failed to fetch cart: ${cartResponse.status}`);
+        }
+        const cartJson = await cartResponse.json();
         cartJson['sections'] = parsedState['sections'];
 
         this.updateCartState(cartJson);
@@ -2470,7 +2493,8 @@ class ProductForm extends HTMLFormElement {
         this.showCartDrawer();
       })
       .catch((error) => {
-        console.log(error);
+        console.error('Form submission error:', error);
+        this.displayFormErrors(error.message.includes('429') ? 'Too many requests. Please try again.' : error.message);
       })
       .finally(() => {
         this.submitButtonElement.classList.remove('btn--loading');

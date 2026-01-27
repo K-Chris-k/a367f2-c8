@@ -150,7 +150,15 @@ if (!customElements.get('quick-order-list')) {
           ...FoxTheme.utils.fetchConfig(),
           body: requestBody,
         })
-          .then((response) => response.json())
+          .then((response) => {
+            if (!response.ok) {
+              if (response.status === 429) {
+                throw new Error('Too many requests. Please wait a moment and try again.');
+              }
+              throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+          })
           .then((data) => this.handleCartUpdateSuccess(data, target, line, name))
           .catch((error) => this.handleCartUpdateError(error))
           .finally(() => this.toggleLoadingState(line, false));
