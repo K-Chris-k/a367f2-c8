@@ -124,7 +124,6 @@ if (!customElements.get('sticky-atc-bar')) {
             }
           })
           .catch((error) => {
-            console.error(error);
           })
           .finally(() => {});
       }

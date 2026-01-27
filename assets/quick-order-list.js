@@ -179,9 +179,7 @@ if (!customElements.get('quick-order-list')) {
        */
       handleCartUpdateError(error) {
         if (error.name === 'AbortError') {
-          console.log('Request cancelled');
         } else {
-          console.error('Cart update error:', error);
           this.showErrorMessage(FoxTheme.cartStrings.error);
         }
       }
@@ -364,7 +362,6 @@ if (!customElements.get('quick-order-list-remove')) {
           this.bindEvents();
           this.findParentForm();
         } catch (error) {
-          console.error('Error initializing QuickOrderListRemove:', error);
         }
       }
 
@@ -402,7 +399,6 @@ if (!customElements.get('quick-order-list-remove')) {
 
           this.removeItem(itemIndex);
         } catch (error) {
-          console.error('Error handling remove click:', error);
         }
       }
 
@@ -458,7 +454,6 @@ if (!customElements.get('quick-order-list-remove-all')) {
           this.findParentForm();
           this.initializeCartItems();
         } catch (error) {
-          console.error('Error initializing QuickOrderListRemoveAll:', error);
         }
       }
 
@@ -521,7 +516,6 @@ if (!customElements.get('quick-order-list-remove-all')) {
 
           this.handleAction(action);
         } catch (error) {
-          console.error('Error handling click:', error);
         }
       }
 

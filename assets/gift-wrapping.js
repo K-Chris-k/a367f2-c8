@@ -78,7 +78,6 @@ class GiftWrapping extends HTMLElement {
         FoxTheme.pubsub.publish(FoxTheme.pubsub.PUB_SUB_EVENTS.cartUpdate, { cart: parsedState });
       })
       .catch((error) => {
-        console.error('Error updating cart:', error);
       });
   }
 

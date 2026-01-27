@@ -92,7 +92,6 @@ class PredictiveSearch extends HTMLFormElement {
         this.cachedMap.set(url, responseText);
       })
       .catch((error) => {
-        console.error('Error fetching data: ', error);
         this.setAttribute('error', 'Failed to load data');
       })
       .finally(() => {
@@ -115,10 +114,8 @@ class PredictiveSearch extends HTMLFormElement {
         this.searchContent?.classList.remove('hidden');
         targetElement.innerHTML = contentElement.innerHTML;
       } else {
-        console.error(`Element with id '${id}' not found in the parsed response.`);
       }
     } else {
-      console.error(`Element with id '${id}' not found in the document.`);
     }
   }
 

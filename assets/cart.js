@@ -56,11 +56,10 @@ class CartDrawer extends DrawerComponent {
       const newCartContent = parsedHTML.getElementById(cartId).innerHTML;
       cartElement.innerHTML = newCartContent;
 
-      if (event.detail.open === true) {
+      if (event.detail?.open === true) {
         this.show();
       }
     } catch (error) {
-      console.error('Error refreshing cart:', error);
     }
   }
 }
@@ -295,7 +294,6 @@ class CartItems extends HTMLElement {
         });
       })
       .catch((error) => {
-        console.log(error);
       });
   }
 
@@ -481,7 +479,6 @@ class ShippingCalculator extends HTMLFormElement {
         }
       })
       .catch((e) => {
-        console.error(e);
       })
       .finally(() => {
         this.resultsElement.hidden = false;
@@ -583,7 +580,6 @@ class CartDrawerProductsRecommendation extends HTMLElement {
         }
       })
       .catch((e) => {
-        console.error(e);
       });
   }
 

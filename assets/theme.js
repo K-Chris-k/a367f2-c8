@@ -43,7 +43,6 @@ FoxTheme.config = {
       var elements = FoxTheme.a11y.getFocusableElements(container);
       var first = elements[0];
       var last = elements[elements.length - 1];
-      console.log(elements,first,last)
       FoxTheme.a11y.removeTrapFocus();
       FoxTheme.a11y.trapFocusHandlers.focusin = (event) => {
         if (event.target !== container && event.target !== last && event.target !== first) return;
@@ -1861,7 +1860,6 @@ class ProductsBundle extends HTMLElement {
         }
       })
       .catch((e) => {
-        console.error(e);
       })
       .finally(() => {
         this.toggleButtonLoading(false);
@@ -2470,7 +2468,6 @@ class ProductForm extends HTMLFormElement {
         this.showCartDrawer();
       })
       .catch((error) => {
-        console.log(error);
       })
       .finally(() => {
         this.submitButtonElement.classList.remove('btn--loading');

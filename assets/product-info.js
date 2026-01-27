@@ -235,9 +235,7 @@ if (!customElements.get('product-info')) {
           })
           .catch((error) => {
             if (error.name === 'AbortError') {
-              console.log('Fetch aborted by user');
             } else {
-              console.error(error);
             }
           });
       }
@@ -367,7 +365,6 @@ if (!customElements.get('product-info')) {
             this.updateQuantityRules(this.sectionId, this.productId, parsedHTML);
           })
           .catch((error) => {
-            console.error(error);
           })
           .finally(() => {
             this.querySelector('.quantity__rules-cart')?.classList.remove('btn--loading');

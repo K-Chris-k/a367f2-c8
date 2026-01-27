@@ -44,7 +44,6 @@ if (!customElements.get('recently-viewed-products')) {
             }
           })
           .catch((e) => {
-            console.error(e);
           });
       }
 

@@ -25,7 +25,6 @@ if (!customElements.get('mobile-sticky-bar')) {
 
       calculateHeight() {
         requestAnimationFrame(() => {
-          console.log(this.offsetHeight,'*******this.offsetHeight')
           document.documentElement.style.setProperty('--mobile-sticky-bar-height', `${this.offsetHeight}px`);
         });
       }

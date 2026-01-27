@@ -95,7 +95,6 @@ if (!customElements.get('quick-view-modal')) {
             );
           })
           .catch((e) => {
-            console.error(e);
           });
       }
 

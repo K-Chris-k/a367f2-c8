@@ -39,7 +39,6 @@ if (!customElements.get('product-recommendations')) {
             }
           })
           .catch((e) => {
-            console.error(e);
           });
       }
     }

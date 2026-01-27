@@ -978,7 +978,6 @@
       try {
         localStorage.setItem('free_gift_mappings', JSON.stringify(mappings));
       } catch (e) {
-        console.error('[Cart Page Monitor] 保存映射失败:', e);
       }
     }
     
@@ -999,7 +998,6 @@
         // 让主题脚本有机会重新绑定
         document.dispatchEvent(new CustomEvent('cart:refresh', { detail: { open: false } }));
       } catch (e) {
-        console.error('[Cart Page Monitor] 刷新购物车Section失败:', e);
       }
     }
     
@@ -1110,13 +1108,11 @@
               await refreshCartSection();
             }
           } catch (e) {
-            console.error('[Cart Page Monitor] 删除失败:', e);
           }
           
           isUpdatingCart = false;
         }
       } catch (error) {
-        console.error('[Cart Page Monitor] 检查购物车失败:', error);
       } finally {
         isMonitoring = false;
         isUpdatingCart = false;
@@ -1205,7 +1201,6 @@
           }
         }
       } catch (error) {
-        console.error('[Cart Page Monitor] 恢复免费赠品失败:', error);
       } finally {
         isRestoring = false;
       }
@@ -1237,16 +1232,44 @@
           
           lastCartItemCount = currentCount;
         })
-        .catch(e => console.error('[购物车获取失败]', e));
+        .catch(e => {});
     }
     
-    // 监听删除按钮，快速触发检查
+    // 监听删除按钮，立即清除映射并触发检查
     function attachRemoveListeners() {
-      document.querySelectorAll('a[is="cart-remove-item"], a.cart__remove, a.btn--link[href*="cart/change"]').forEach(link => {
+      document.querySelectorAll('a[is="cart-remove-item"], a.cart__remove, a.btn--link[href*="cart/change"], .cart-item__remove').forEach(link => {
         if (link._freeGiftListenerAttached) return;
         link._freeGiftListenerAttached = true;
-        link.addEventListener('click', () => {
-          scheduleFastCheck(220);
+        link.addEventListener('click', function() {
+          const cartItem = this.closest('.cart-item') || this.closest('tr') || this.closest('[data-product-id]');
+          if (!cartItem) {
+            scheduleFastCheck(220);
+            return;
+          }
+          
+          const productId = cartItem.dataset.productId || cartItem.getAttribute('data-product-id');
+          const isFreeGift = cartItem.dataset.freeGift === 'true';
+          
+          // 如果是免费礼物被删除，只要主产品还在，就需要自动恢复
+          // 不删除映射，延迟触发恢复检查
+          if (isFreeGift) {
+            scheduleFastCheck(400);
+            return;
+          }
+          
+          // 如果是主产品被删除，立即清除该产品的映射
+          if (productId) {
+            try {
+              const mappings = getFreeGiftMappings();
+              if (mappings[String(productId)]) {
+                delete mappings[String(productId)];
+                saveFreeGiftMappings(mappings);
+              }
+            } catch (err) {}
+          }
+          
+          // 延迟触发检查，删除孤立的免费礼物
+          scheduleFastCheck(300);
         });
       });
     }
@@ -1274,6 +1297,7 @@
   (function initBundleItemAutoRemoveCartPage() {
     if (window._bundleItemAutoRemoveCartPageInitialized) return;
     window._bundleItemAutoRemoveCartPageInitialized = true;
+    
     function getBundleMappings() {
       try {
         return JSON.parse(localStorage.getItem('bundle_product_mappings') || '{}');
@@ -1314,7 +1338,6 @@
             const newMainCart = doc.querySelector('main-cart');
             if (newMainCart && mainCart) {
               mainCart.innerHTML = newMainCart.innerHTML;
-              // 重新绑定监听器
               setTimeout(() => attachBundleRemoveListeners(), 100);
             }
           }
@@ -1343,10 +1366,12 @@
           const variantId = cartItem.dataset.variantId || cartItem.getAttribute('data-variant-id');
           if (!variantId) return;
           
+          // 立即删除映射，防止恢复逻辑介入
           const mappings = getBundleMappings();
-          const bundleVariantIds = mappings[String(variantId)];
+          const bundleVariantIds = mappings[String(variantId)] || [];
+          removeBundleMapping(variantId);
           
-          if (!bundleVariantIds || bundleVariantIds.length === 0) {
+          if (bundleVariantIds.length === 0) {
             return;
           }
           
@@ -1357,26 +1382,30 @@
               const cart = await cartResponse.json();
               
               if (!cart.items || cart.items.length === 0) {
-                removeBundleMapping(variantId);
                 return;
               }
               
+              // 双重匹配：通过映射 + _bundle_host_id 属性
               const keysToRemove = [];
+              const hostVariantIdStr = String(variantId);
+              
               cart.items.forEach(item => {
                 const itemVariantId = String(item.variant_id);
-                if (bundleVariantIds.includes(itemVariantId)) {
-                  keysToRemove.push({ key: item.key, title: item.title });
+                const itemBundleHostId = item.properties && item.properties._bundle_host_id;
+                
+                if (bundleVariantIds.includes(itemVariantId) || 
+                    (itemBundleHostId && String(itemBundleHostId) === hostVariantIdStr)) {
+                  keysToRemove.push(item.key);
                 }
               });
               
               if (keysToRemove.length === 0) {
-                removeBundleMapping(variantId);
                 return;
               }
               
               const updates = {};
-              keysToRemove.forEach(k => {
-                updates[k.key] = 0;
+              keysToRemove.forEach(key => {
+                updates[key] = 0;
               });
               
               const updateResponse = await fetch('/cart/update.js', {
@@ -1402,21 +1431,16 @@
                 
                 document.documentElement.classList[updatedCart.item_count === 0 ? 'remove' : 'add']('cart-has-items');
                 
-                // 如果购物车为空，刷新页面显示空状态
                 if (updatedCart.item_count === 0) {
                   window.location.reload();
                 } else {
-                  // 刷新购物车页面内容
                   await refreshCartPageSection();
                 }
               }
               
-              removeBundleMapping(variantId);
-              
             } catch (error) {
-              removeBundleMapping(variantId);
             }
-          }, 600);
+          }, 500);
         });
       });
     }
