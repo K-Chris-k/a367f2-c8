@@ -285,7 +285,7 @@
                 <h5>Technische Daten</h5>
                 <ul class="spec-scrollable">
                   {%- for param in category.param -%}
-                    <li><span class="title">{{ param.name }}</span><span class="content">{{ param.val }}</span></li>  
+                    <li><span class="title" style="font-weight:600;">{{ param.name }}</span>: <span class="content">{{ param.val }}</span></li>  
                   {%- endfor -%}
                 </ul>
             </div>
