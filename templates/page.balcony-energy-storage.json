@@ -103,6 +103,21 @@
             "button_link": ""
           }
         },
+        "card_cU9WrJ": {
+          "type": "card",
+          "settings": {
+            "product_item": "indevolt-mikrowechselrichter",
+            "custom_image": "shopify://shop_images/bes-user-6.jpg",
+            "mobile_image": "shopify://shop_images/bes-user-6.jpg",
+            "hotsale": "",
+            "custom_title": "Lukas Müller",
+            "custom_describe": "Die Indevolt-Lösung gibt mir wirklich Ruhe: Das System erkennt Stromausfälle in weniger als 10 ms und schützt meine Familienfotos sofort auf meinem PC oder NAS. Absolute Empfehlung für jede Familie, die ihre Erinnerungen sichern will!",
+            "price": "",
+            "original": "",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
         "card_Qk4JBe": {
           "type": "card",
           "settings": {
@@ -162,33 +177,18 @@
             "button_text": "",
             "button_link": ""
           }
-        },
-        "card_cU9WrJ": {
-          "type": "card",
-          "settings": {
-            "product_item": "indevolt-mikrowechselrichter",
-            "custom_image": "shopify://shop_images/bes-user-6.jpg",
-            "mobile_image": "shopify://shop_images/bes-user-6.jpg",
-            "hotsale": "",
-            "custom_title": "Lukas Müller",
-            "custom_describe": "Die Indevolt-Lösung gibt mir wirklich Ruhe: Das System erkennt Stromausfälle in weniger als 10 ms und schützt meine Familienfotos sofort auf meinem PC oder NAS. Absolute Empfehlung für jede Familie, die ihre Erinnerungen sichern will!",
-            "price": "",
-            "original": "",
-            "button_text": "",
-            "button_link": ""
-          }
         }
       },
       "block_order": [
         "card_xaWV4n",
+        "card_cU9WrJ",
         "card_Qk4JBe",
         "card_yUfVRG",
         "card_XGmCmp",
-        "card_p6mtYV",
-        "card_cU9WrJ"
+        "card_p6mtYV"
       ],
       "custom_css": [
-        "@media (max-width: 768px) {.product-collection .title {text-align: left; }}"
+        "@media (max-width: 768px) {.product-collection .title {text-align: left; padding-left: 15px; } .product-collection .title span {display: inline-block; }}"
       ],
       "name": "阳台专题产品推荐",
       "settings": {
@@ -206,7 +206,7 @@
         "button_color": "btn--secondary",
         "image_height": "216",
         "sale-min_height": "220",
-        "mob-sale-min_height": "100",
+        "mob-sale-min_height": "180px;",
         "product_show_count": "4",
         "product_show_count_mob": "1.2",
         "product_onsale": "home-size",

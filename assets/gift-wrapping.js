@@ -73,15 +73,7 @@ class GiftWrapping extends HTMLElement {
 
   updateCart(body) {
     fetch(`${FoxTheme.routes.cart_update_url}`, { ...FoxTheme.utils.fetchConfig(), ...{ body } })
-      .then((response) => {
-        if (!response.ok) {
-          if (response.status === 429) {
-            throw new Error('Too many requests. Please wait a moment and try again.');
-          }
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
+      .then((response) => response.json())
       .then((parsedState) => {
         FoxTheme.pubsub.publish(FoxTheme.pubsub.PUB_SUB_EVENTS.cartUpdate, { cart: parsedState });
       })

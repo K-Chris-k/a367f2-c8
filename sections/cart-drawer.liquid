@@ -889,22 +889,10 @@
           
           if (freeGiftVariantIds.length === 0) return;
           
-          async function removeFreeGiftItems(freeGiftVariantIds, productId, mappings, retryCount = 0) {
-            const maxRetries = 3;
-            const retryDelay = 1500;
-            
+          setTimeout(async () => {
             try {
               // 获取当前购物车
               const cartResponse = await fetch('/cart.js');
-              if (!cartResponse.ok) {
-                if (cartResponse.status === 429 && retryCount < maxRetries) {
-                  console.log(`[Free Gift Auto Remove] Rate limited, retrying in ${retryDelay}ms... (attempt ${retryCount + 1}/${maxRetries})`);
-                  setTimeout(() => removeFreeGiftItems(freeGiftVariantIds, productId, mappings, retryCount + 1), retryDelay);
-                  return;
-                }
-                throw new Error(`HTTP error! status: ${cartResponse.status}`);
-              }
-              
               const cart = await cartResponse.json();
               
               // 找到所有需要删除的免费赠品的key
@@ -916,12 +904,7 @@
                 }
               });
               
-              if (keysToRemove.length === 0) {
-                // 删除映射
-                delete mappings[String(productId)];
-                localStorage.setItem('free_gift_mappings', JSON.stringify(mappings));
-                return;
-              }
+              if (keysToRemove.length === 0) return;
               
               // 构建updates对象：{ key: 0, key: 0, ... }
               const updates = {};
@@ -936,63 +919,46 @@
                 body: JSON.stringify({ updates: updates })
               });
               
-              if (!updateResponse.ok) {
-                if (updateResponse.status === 429 && retryCount < maxRetries) {
-                  console.log(`[Free Gift Auto Remove] Rate limited on update, retrying in ${retryDelay}ms... (attempt ${retryCount + 1}/${maxRetries})`);
-                  setTimeout(() => removeFreeGiftItems(freeGiftVariantIds, productId, mappings, retryCount + 1), retryDelay);
-                  return;
+              if (updateResponse.ok) {
+                const updatedCart = await updateResponse.json();
+                
+                // 更新购物车数量显示
+                document.querySelectorAll('cart-count').forEach(countEl => {
+                  if (updatedCart.item_count > 99) {
+                    countEl.innerHTML = `<span class="text-sm">99+</span>`;
+                    countEl.classList.add('cart-count--small-medium');
+                  } else {
+                    countEl.innerText = updatedCart.item_count;
+                    countEl.classList.remove('cart-count--small-medium');
+                  }
+                  countEl.hidden = updatedCart.item_count === 0;
+                });
+                
+                document.documentElement.classList[updatedCart.item_count === 0 ? 'remove' : 'add']('cart-has-items');
+                
+                // 若购物车已空，确保抽屉关闭并恢复页面滚动（防止卡死）
+                if (updatedCart.item_count === 0) {
+                  const cartDrawerEl = document.querySelector('cart-drawer');
+                  if (cartDrawerEl) {
+                    cartDrawerEl.removeAttribute('open');
+                    cartDrawerEl.setAttribute('hidden', 'hidden');
+                  }
+                  resetBodyScrollState();
                 }
-                throw new Error(`HTTP error! status: ${updateResponse.status}`);
+                
+                // 触发购物车刷新
+                setTimeout(() => {
+                  document.dispatchEvent(new CustomEvent('cart:refresh'));
+                }, 100);
               }
-              
-              const updatedCart = await updateResponse.json();
-              
-              // 更新购物车数量显示
-              document.querySelectorAll('cart-count').forEach(countEl => {
-                if (updatedCart.item_count > 99) {
-                  countEl.innerHTML = `<span class="text-sm">99+</span>`;
-                  countEl.classList.add('cart-count--small-medium');
-                } else {
-                  countEl.innerText = updatedCart.item_count;
-                  countEl.classList.remove('cart-count--small-medium');
-                }
-                countEl.hidden = updatedCart.item_count === 0;
-              });
-              
-              document.documentElement.classList[updatedCart.item_count === 0 ? 'remove' : 'add']('cart-has-items');
-              
-              // 若购物车已空，确保抽屉关闭并恢复页面滚动（防止卡死）
-              if (updatedCart.item_count === 0) {
-                const cartDrawerEl = document.querySelector('cart-drawer');
-                if (cartDrawerEl) {
-                  cartDrawerEl.removeAttribute('open');
-                  cartDrawerEl.setAttribute('hidden', 'hidden');
-                }
-                resetBodyScrollState();
-              }
-              
-              // 触发购物车刷新
-              setTimeout(() => {
-                document.dispatchEvent(new CustomEvent('cart:refresh', { detail: { open: false } }));
-              }, 100);
               
               // 删除映射
               delete mappings[String(productId)];
               localStorage.setItem('free_gift_mappings', JSON.stringify(mappings));
               
             } catch (error) {
-              console.error('[Free Gift Auto Remove] 删除免费赠品失败:', error);
-              if (retryCount < maxRetries) {
-                setTimeout(() => removeFreeGiftItems(freeGiftVariantIds, productId, mappings, retryCount + 1), retryDelay);
-              } else {
-                // 最终失败也要清理映射
-                delete mappings[String(productId)];
-                localStorage.setItem('free_gift_mappings', JSON.stringify(mappings));
-              }
             }
-          }
-          
-          setTimeout(() => removeFreeGiftItems(freeGiftVariantIds, productId, mappings, 0), 800);
+          }, 600);
         });
       });
     }
@@ -1038,10 +1004,6 @@
           isRestoring = true;
           
           const cartResponse = await fetch('/cart.js');
-          if (!cartResponse.ok) {
-            isRestoring = false;
-            return; // Skip if rate limited or error
-          }
           const cart = await cartResponse.json();
           
           if (!cart.items || cart.items.length === 0) {
@@ -1118,10 +1080,6 @@
             if (response.ok) {
               // 获取更新后的购物车
               const updatedCartResponse = await fetch('/cart.js');
-              if (!updatedCartResponse.ok) {
-                isRestoring = false;
-                return; // Skip if rate limited or error
-              }
               const updatedCart = await updatedCartResponse.json();
               
               // 批量更新 cart-count 显示
@@ -1147,10 +1105,7 @@
               if (sectionId) {
                 // 使用异步方式更新，不阻塞主流程
                 fetch(`/?sections=${sectionId}`)
-                  .then(res => {
-                    if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-                    return res.json();
-                  })
+                  .then(res => res.json())
                   .then(data => {
                     const sectionHTML = data[sectionId];
                     if (!sectionHTML) return;
@@ -1288,27 +1243,14 @@
           }
           
           
-          async function removeBundleItems(bundleVariantIds, variantId, retryCount = 0) {
-            const maxRetries = 3;
-            const retryDelay = 1500;
-            
+          setTimeout(async () => {
             try {
               const cartResponse = await fetch('/cart.js');
-              if (!cartResponse.ok) {
-                if (cartResponse.status === 429 && retryCount < maxRetries) {
-                  console.log(`[Bundle Auto Remove] Rate limited, retrying in ${retryDelay}ms... (attempt ${retryCount + 1}/${maxRetries})`);
-                  setTimeout(() => removeBundleItems(bundleVariantIds, variantId, retryCount + 1), retryDelay);
-                  return;
-                }
-                throw new Error(`HTTP error! status: ${cartResponse.status}`);
-              }
-              
               const cart = await cartResponse.json();
               if (!cart.items || cart.items.length === 0) {
                 removeBundleMapping(variantId);
                 return;
               }
-              
               const keysToRemove = [];
               cart.items.forEach(item => {
                 const itemVariantId = String(item.variant_id);
@@ -1335,62 +1277,48 @@
                 body: JSON.stringify({ updates: updates })
               });
               
-              if (!updateResponse.ok) {
-                if (updateResponse.status === 429 && retryCount < maxRetries) {
-                  console.log(`[Bundle Auto Remove] Rate limited on update, retrying in ${retryDelay}ms... (attempt ${retryCount + 1}/${maxRetries})`);
-                  setTimeout(() => removeBundleItems(bundleVariantIds, variantId, retryCount + 1), retryDelay);
-                  return;
+              if (updateResponse.ok) {
+                const updatedCart = await updateResponse.json();
+                
+                // 更新购物车数量显示
+                document.querySelectorAll('cart-count').forEach(countEl => {
+                  if (updatedCart.item_count > 99) {
+                    countEl.innerHTML = `<span class="text-sm">99+</span>`;
+                    countEl.classList.add('cart-count--small-medium');
+                  } else {
+                    countEl.innerText = updatedCart.item_count;
+                    countEl.classList.remove('cart-count--small-medium');
+                  }
+                  countEl.hidden = updatedCart.item_count === 0;
+                });
+                
+                document.documentElement.classList[updatedCart.item_count === 0 ? 'remove' : 'add']('cart-has-items');
+                
+                // 若购物车已空，确保抽屉关闭并恢复页面滚动
+                if (updatedCart.item_count === 0) {
+                  const cartDrawerEl = document.querySelector('cart-drawer');
+                  if (cartDrawerEl) {
+                    cartDrawerEl.removeAttribute('open');
+                    cartDrawerEl.setAttribute('hidden', 'hidden');
+                  }
+                  resetBodyScrollState();
                 }
-                throw new Error(`HTTP error! status: ${updateResponse.status}`);
+                
+                // 触发购物车刷新（异步更新 UI，不刷新页面）
+                setTimeout(() => {
+                  document.dispatchEvent(new CustomEvent('cart:refresh'));
+                }, 100);
+                
               }
-              
-              const updatedCart = await updateResponse.json();
-              
-              // 更新购物车数量显示
-              document.querySelectorAll('cart-count').forEach(countEl => {
-                if (updatedCart.item_count > 99) {
-                  countEl.innerHTML = `<span class="text-sm">99+</span>`;
-                  countEl.classList.add('cart-count--small-medium');
-                } else {
-                  countEl.innerText = updatedCart.item_count;
-                  countEl.classList.remove('cart-count--small-medium');
-                }
-                countEl.hidden = updatedCart.item_count === 0;
-              });
-              
-              document.documentElement.classList[updatedCart.item_count === 0 ? 'remove' : 'add']('cart-has-items');
-              
-              // 若购物车已空，确保抽屉关闭并恢复页面滚动
-              if (updatedCart.item_count === 0) {
-                const cartDrawerEl = document.querySelector('cart-drawer');
-                if (cartDrawerEl) {
-                  cartDrawerEl.removeAttribute('open');
-                  cartDrawerEl.setAttribute('hidden', 'hidden');
-                }
-                resetBodyScrollState();
-              }
-              
-              // 触发购物车刷新（异步更新 UI，不刷新页面）
-              setTimeout(() => {
-                document.dispatchEvent(new CustomEvent('cart:refresh', { detail: { open: false } }));
-              }, 100);
               
               // 删除映射
               removeBundleMapping(variantId);
               
             } catch (error) {
               console.error('[Bundle Auto Remove] 删除组合产品失败:', error);
-              if (retryCount < maxRetries) {
-                console.log(`[Bundle Auto Remove] Retrying in ${retryDelay}ms... (attempt ${retryCount + 1}/${maxRetries})`);
-                setTimeout(() => removeBundleItems(bundleVariantIds, variantId, retryCount + 1), retryDelay);
-              } else {
-                removeBundleMapping(variantId);
-              }
+              removeBundleMapping(variantId);
             }
-          }
-          
-          // 延迟执行，等待 Shopify 完成主产品删除
-          setTimeout(() => removeBundleItems(bundleVariantIds, variantId, 0), 800);
+          }, 600);
         });
       });
     }

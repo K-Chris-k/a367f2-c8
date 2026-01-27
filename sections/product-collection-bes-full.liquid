@@ -6,10 +6,15 @@
     #shopify-section-{{ section.id }}{background:{{ section.settings.section_bg_color }}}
     #shopify-section-{{ section.id }} .product-collection{ padding-top: {{ section.settings.padding_top }}px;padding-bottom: {{ section.settings.padding_bottom }}px;}
     #shopify-section-{{ section.id }} .product-collection .title{ font-size: 46px;font-weight: 700;text-align:center;color:#000}
-    #shopify-section-{{ section.id }} .product-collection-box{margin-top:40px}
+    #shopify-section-{{ section.id }} .product-collection-box{margin-top:40px;}
     #shopify-section-{{ section.id }} .product-collection-box .slick-list{margin-left: -20px;width: 103%;}
-    #shopify-section-{{ section.id }} .product-collection-box .slick-track{display:flex; gap:1.6rem;justify-content: space-between;}
-    #shopify-section-{{ section.id }} .product-collection-box .custom-product-image{ border-radius: 20px; background: #ffffff;}
+     /* 添加新的滑块容器样式 */
+  {% comment %} #shopify-section-{{ section.id }} .product-collection-slider-container {
+    position: relative;
+    overflow: hidden;
+    margin-left: -20px; /* 抵消slick-list的负边距 */
+    width: calc(100% + 20px);
+  } {% endcomment %}
 
   @media (min-width: 768px) {
  /* 添加初始CSS样式，确保加载时就有留白 */
@@ -41,15 +46,7 @@
   }
 
 
-
-
-
-
-
-
-
-
-
+    #shopify-section-{{ section.id }} .product-collection-box .custom-product-image{ border-radius: 20px; background: #ffffff;}
     #shopify-section-{{ section.id }} .product-collection-box .custom-product-image img{
     {% comment %} height:{{ section.settings.image_height}}px!important; {% endcomment %}
     border-radius:20px}
@@ -176,12 +173,12 @@
 }
 
 #shopify-section-{{ section.id }} .slick-prev {
-  right: calc((100vw - 1046px) / 2); /* 增加右边距，与下一个按钮拉开距离 */
+  right: calc((100vw - 1160px) / 2); /* 增加右边距，与下一个按钮拉开距离 */
   left: auto; /* 清除左侧定位 */
 }
 
 #shopify-section-{{ section.id }} .slick-next {
-  right: calc((100vw - 1186px) / 2); /* 下一个按钮在右上角靠右位置 */
+  right: calc((100vw - 1300px) / 2); /* 下一个按钮在右上角靠右位置 */
 }
 
 /* 使用伪元素创建箭头图标 - 修正居中问题 */
@@ -359,6 +356,7 @@
               {% assign product = all_products[block.settings.product_item] %}
               {% if product != blank %} 
                 <div class="item slick-slide" >
+                  <a href="{% if block.settings.button_link != blank %}{{  block.settings.button_link }}{% else %}{{ product.url }}{% endif %}" class="custom-product-card">
                     
                                   
                      <div class="content-box">
@@ -439,15 +437,18 @@
                         }}
                       </div> 
                     {% endif %}
+      
+                  </a>
                 </div>
                {% endif %}
             {% endfor %} 
           </div>
 
 
-  
     </div>
 </div>
+ 
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     console.log(111111111111111111111111111);
@@ -455,14 +456,6 @@
     const productShowCountMob = {{ section.settings.product_show_count_mob }};
     const itemWidth = 400;
     const gap = 16;
-    const viewportWidth = window.innerWidth;
-    var _slidesToShow=3.4;
-     console.log("_slidesToShow=================="+viewportWidth);
-    if(viewportWidth>2000 && viewportWidth<3000){
-       _slidesToShow=3.68;
-    }else if(viewportWidth>=3000){
-       _slidesToShow=4.12;
-    }
      console.log("-------------------------"+((itemWidth * 7) + (gap * (7 - 1))));
     // 确保DOM完全加载后再初始化slick
     initSlider();
@@ -475,10 +468,9 @@
         return (itemWidth * slideCount) + (gap * (slideCount - 1));
       }
       
-      console.log("_slidesToShow=================="+_slidesToShow);
       // 初始化滑块
       $('.product-collection-box').slick({
-        slidesToShow: _slidesToShow,
+        slidesToShow: 3.5,
         slidesToScroll: 1,
         infinite: false,
         dots: true,
@@ -850,7 +842,7 @@
   ],
   "presets": [
     {
-      "name": "阳台专题产品推荐",
+      "name": "阳台专题产品推荐全屏",
       "category": "自定义组件",
       "blocks": [
         {
