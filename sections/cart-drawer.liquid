@@ -166,7 +166,7 @@
                       endif
                     endfor
                   -%}
-                  <li id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item flex flex-col gap-4" data-variant-id="{{ item.variant_id }}" data-product-id="{{ item.product_id }}" data-handle="{{ item.product.handle }}" data-quantity="{{ item.quantity }}" data-price="{{ item.original_price }}" {% if item.properties._free_gift == 'true' %}data-free-gift="true"{% endif %}>
+                  <li id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item flex flex-col gap-4" data-variant-id="{{ item.variant_id }}" data-product-id="{{ item.product_id }}" data-handle="{{ item.product.handle }}" data-quantity="{{ item.quantity }}" data-price="{{ item.original_price }}" {% if item.properties._free_gift == 'true' %}data-free-gift="true"{% endif %} {% if item.properties._bundle_group_id %}data-bundle-group-id="{{ item.properties._bundle_group_id }}"{% endif %}>
                     <div class="cart-item__product flex items-start gap-3">
                       {%- if item.image -%}
                         <a class="cart-item__media blocks-radius-sm media-wrapper" href="{{ item.url }}" tabindex="-1" aria-label="{{ item.title }}">
@@ -1231,6 +1231,7 @@
           if (!cartItem) return;
           const variantId = cartItem.dataset.variantId;
           const productId = cartItem.dataset.productId;
+          const bundleGroupId = cartItem.dataset.bundleGroupId;
           if (!variantId) return;
           
           // 延迟执行，等待主产品删除完成
@@ -1242,27 +1243,45 @@
                 return;
               }
               
-              const hostVariantIdStr = String(variantId);
               const productIdStr = String(productId);
               const keysToRemove = [];
               
+              // 检查被删除的是否是主机
+              const deletedItem = cart.items.find(item => 
+                item.properties && 
+                item.properties._bundle_group_id === bundleGroupId &&
+                item.properties._bundle_role === 'host'
+              );
+              const isDeletingHost = !!deletedItem;
+              
+              // 计算删除后剩余的主机数量
+              let remainingHostCount = 0;
               cart.items.forEach(item => {
-                const itemBundleHostId = item.properties && item.properties._bundle_host_id;
+                if (item.properties && item.properties._bundle_role === 'host') {
+                  // 如果不是被删除的那组，计入剩余主机
+                  if (!bundleGroupId || item.properties._bundle_group_id !== bundleGroupId) {
+                    remainingHostCount += item.quantity;
+                  }
+                }
+              });
+              
+              cart.items.forEach(item => {
+                const itemBundleGroupId = item.properties && item.properties._bundle_group_id;
                 const itemMainProductId = item.properties && item.properties._main_product_id;
                 const isFreeGift = item.properties && item.properties._free_gift === 'true';
                 
-                // 匹配方式1: Bundle 配件 - _bundle_host_id 等于被删除的主机 variant_id
-                if (itemBundleHostId && String(itemBundleHostId) === hostVariantIdStr) {
+                // 匹配方式1: Bundle 组 - 使用 _bundle_group_id 匹配同一组的所有商品
+                if (bundleGroupId && itemBundleGroupId && itemBundleGroupId === bundleGroupId) {
                   keysToRemove.push(item.key);
                 }
-                // 匹配方式2: 免费礼品 - _main_product_id 等于被删除的主机 product_id
-                else if (isFreeGift && itemMainProductId && String(itemMainProductId) === productIdStr) {
+                // 匹配方式2: 免费礼品 - 只有当删除最后一个主机时才删除礼品
+                else if (isFreeGift && isDeletingHost && remainingHostCount === 0) {
                   keysToRemove.push(item.key);
                 }
               });
               
-              // 同时清除 localStorage 中的免费礼品映射
-              if (productId) {
+              // 只有当删除最后一个主机时才清除 localStorage 中的免费礼品映射
+              if (isDeletingHost && remainingHostCount === 0 && productId) {
                 try {
                   const mappings = JSON.parse(localStorage.getItem('free_gift_mappings') || '{}');
                   delete mappings[productIdStr];
