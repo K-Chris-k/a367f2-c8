@@ -1298,22 +1298,6 @@
     if (window._bundleItemAutoRemoveCartPageInitialized) return;
     window._bundleItemAutoRemoveCartPageInitialized = true;
     
-    function getBundleMappings() {
-      try {
-        return JSON.parse(localStorage.getItem('bundle_product_mappings') || '{}');
-      } catch (e) {
-        return {};
-      }
-    }
-    
-    function removeBundleMapping(hostVariantId) {
-      try {
-        const mappings = getBundleMappings();
-        delete mappings[String(hostVariantId)];
-        localStorage.setItem('bundle_product_mappings', JSON.stringify(mappings));
-      } catch (e) {}
-    }
-    
     async function refreshCartPageSection() {
       try {
         const mainCart = document.querySelector('main-cart');
@@ -1364,16 +1348,8 @@
           if (!cartItem) return;
           
           const variantId = cartItem.dataset.variantId || cartItem.getAttribute('data-variant-id');
+          const productId = cartItem.dataset.productId || cartItem.getAttribute('data-product-id');
           if (!variantId) return;
-          
-          // 立即删除映射，防止恢复逻辑介入
-          const mappings = getBundleMappings();
-          const bundleVariantIds = mappings[String(variantId)] || [];
-          removeBundleMapping(variantId);
-          
-          if (bundleVariantIds.length === 0) {
-            return;
-          }
           
           // 延迟执行，等待 Shopify 完成主产品删除
           setTimeout(async () => {
@@ -1385,19 +1361,33 @@
                 return;
               }
               
-              // 双重匹配：通过映射 + _bundle_host_id 属性
-              const keysToRemove = [];
               const hostVariantIdStr = String(variantId);
+              const productIdStr = String(productId);
+              const keysToRemove = [];
               
               cart.items.forEach(item => {
-                const itemVariantId = String(item.variant_id);
                 const itemBundleHostId = item.properties && item.properties._bundle_host_id;
+                const itemMainProductId = item.properties && item.properties._main_product_id;
+                const isFreeGift = item.properties && item.properties._free_gift === 'true';
                 
-                if (bundleVariantIds.includes(itemVariantId) || 
-                    (itemBundleHostId && String(itemBundleHostId) === hostVariantIdStr)) {
+                // 匹配方式1: Bundle 配件 - _bundle_host_id 等于被删除的主机 variant_id
+                if (itemBundleHostId && String(itemBundleHostId) === hostVariantIdStr) {
+                  keysToRemove.push(item.key);
+                }
+                // 匹配方式2: 免费礼品 - _main_product_id 等于被删除的主机 product_id
+                else if (isFreeGift && itemMainProductId && String(itemMainProductId) === productIdStr) {
                   keysToRemove.push(item.key);
                 }
               });
+              
+              // 同时清除 localStorage 中的免费礼品映射
+              if (productId) {
+                try {
+                  const mappings = JSON.parse(localStorage.getItem('free_gift_mappings') || '{}');
+                  delete mappings[productIdStr];
+                  localStorage.setItem('free_gift_mappings', JSON.stringify(mappings));
+                } catch (err) {}
+              }
               
               if (keysToRemove.length === 0) {
                 return;
@@ -1439,8 +1429,9 @@
               }
               
             } catch (error) {
+              console.error('[Bundle Remove Cart Page] Error:', error);
             }
-          }, 500);
+          }, 600);
         });
       });
     }

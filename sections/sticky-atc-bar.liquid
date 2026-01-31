@@ -698,27 +698,13 @@
           resetBundleSelections();
         }
       }
-      // 监听购物车添加事件，自动添加 Bundle 产品 - 性能优化版
+      // 监听购物车添加事件，自动添加 Bundle 产品
       (function initBundleCartHandler() {
         let isProcessingBundle = false;
-        let previousCartItemCount = 0;
+        let lastProcessedHostQty = 0;
 
-        // 初始化：获取当前购物车数量
-        (async function initCartCount() {
-          try {
-            const cartResponse = await fetch('/cart.js');
-            const cart = await cartResponse.json();
-            previousCartItemCount = cart.item_count;
-          } catch (error) {
-            console.error('[Bundle Handler] 初始化失败:', error);
-          }
-        })();
-
-        // 防抖处理，避免频繁触发
-        const debouncedHandleCartUpdate = debounce(handleCartUpdate, 100);
-        
-        document.addEventListener('cart:updated', debouncedHandleCartUpdate);
-        document.addEventListener('cart:refresh', debouncedHandleCartUpdate);
+        // 只监听 cart:updated 事件
+        document.addEventListener('cart:updated', handleCartUpdate);
 
         async function handleCartUpdate(e) {
           if (isProcessingBundle) return;
@@ -728,85 +714,165 @@
           if (!bundleConfigEl) return;
 
           try {
+            isProcessingBundle = true;
+            
             // 获取当前购物车内容
-            const cartResponse = await fetch('/cart.js');
-            const cart = await cartResponse.json();
-            const currentCartItemCount = cart.item_count;
-
-            // 只在购物车数量增加时才处理
-            if (currentCartItemCount <= previousCartItemCount) {
-              previousCartItemCount = currentCartItemCount;
+            const cartResponse = await fetch('/cart.js', {
+              method: 'GET',
+              headers: { 'Accept': 'application/json' }
+            });
+            
+            if (!cartResponse.ok) {
+              console.error('[Bundle Handler] 获取购物车失败');
               return;
             }
+            
+            const cart = await cartResponse.json();
 
             // 检查是否有主机产品
             const bundleConfig = JSON.parse(bundleConfigEl.textContent);
             const displayMode = bundleConfig.display_mode || 'bundle_with_battery';
             
-            let hasHostProduct = false;
+            let hostVariantId = null;
+            
             if (displayMode === 'multi_host') {
               if (DOM_CACHE.stickyBar) {
                 const variantSelect = DOM_CACHE.stickyBar.querySelector('select[name="id"]');
                 const variantInput = DOM_CACHE.stickyBar.querySelector('input[name="id"]');
-                const mainVariantId = variantSelect?.value || variantInput?.value;
-                if (mainVariantId) {
-                  hasHostProduct = cart.items.some(item => item.variant_id === parseInt(mainVariantId));
-                }
+                hostVariantId = variantSelect?.value || variantInput?.value;
               }
             } else {
-              if (bundleConfig.host?.variant_id) {
-                hasHostProduct = cart.items.some(item => item.variant_id === parseInt(bundleConfig.host.variant_id));
-              }
+              hostVariantId = bundleConfig.host?.variant_id;
             }
 
-            if (!hasHostProduct) {
-              previousCartItemCount = currentCartItemCount;
+            if (!hostVariantId) {
+              return;
+            }
+            
+            // 找到主机在购物车中的项目
+            const hostItem = cart.items.find(item => item.variant_id === parseInt(hostVariantId));
+            
+            if (!hostItem) {
+              lastProcessedHostQty = 0;
+              return;
+            }
+            
+            const hostQuantity = hostItem.quantity;
+            const hostVariantIdStr = String(hostVariantId);
+
+            // 如果主机数量没有增加，跳过处理
+            if (hostQuantity <= lastProcessedHostQty) {
               return;
             }
 
-            isProcessingBundle = true;
+            console.log('[Bundle Handler] 主机数量:', hostQuantity, '上次处理:', lastProcessedHostQty);
 
-            // 获取应该添加的 Bundle 产品
-            const bundleItems = collectBundleProducts2();
-
-            // 找出缺失的产品
-            const missingItems = bundleItems.filter((bundleItem) => {
-              return !cart.items.some(
-                (cartItem) => cartItem.variant_id === bundleItem.id && cartItem.properties?._bundle_item === 'true'
-              );
+            // 1. 先检查购物车中已有的配件，更新它们的数量
+            const updatesToMake = {};
+            const existingBundleItems = cart.items.filter(
+              (ci) => ci.properties?._bundle_item === 'true' && 
+                      ci.properties?._bundle_host_id === hostVariantIdStr
+            );
+            
+            console.log('[Bundle Handler] 找到配件数量:', existingBundleItems.length);
+            
+            existingBundleItems.forEach(item => {
+              if (item.quantity < hostQuantity) {
+                console.log('[Bundle Handler] 需要更新配件:', item.variant_id, '从', item.quantity, '到', hostQuantity);
+                updatesToMake[item.key] = hostQuantity;
+              }
             });
 
-            if (missingItems.length > 0) {
-              await fetch('/cart/add.js', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ items: missingItems }),
-              });
+            // 2. 获取当前页面上选择的新配件（还不在购物车中的）
+            const bundleItems = collectBundleProducts2();
+            const itemsToAdd = [];
+            
+            for (const bundleItem of bundleItems) {
+              // 检查这个配件是否已经在购物车中
+              const alreadyInCart = cart.items.some(
+                (ci) => ci.variant_id === bundleItem.id && 
+                        ci.properties?._bundle_item === 'true' &&
+                        ci.properties?._bundle_host_id === hostVariantIdStr
+              );
+              
+              if (!alreadyInCart) {
+                // 配件不存在，添加新的，数量与主机一致
+                console.log('[Bundle Handler] 需要添加新配件:', bundleItem.id);
+                itemsToAdd.push({
+                  ...bundleItem,
+                  quantity: hostQuantity
+                });
+              }
+            }
 
+            let hasChanges = false;
+            
+            // 更新已有配件的数量
+            if (Object.keys(updatesToMake).length > 0) {
+              console.log('[Bundle Handler] 更新配件数量:', updatesToMake);
+              const updateResponse = await fetch('/cart/update.js', {
+                method: 'POST',
+                headers: { 
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+                },
+                body: JSON.stringify({ updates: updatesToMake }),
+              });
+              if (updateResponse.ok) {
+                hasChanges = true;
+                console.log('[Bundle Handler] 配件数量更新成功');
+              } else {
+                console.error('[Bundle Handler] 配件数量更新失败');
+              }
+            }
+            
+            // 添加新的配件
+            if (itemsToAdd.length > 0) {
+              console.log('[Bundle Handler] 添加新配件:', itemsToAdd);
+              const addResponse = await fetch('/cart/add.js', {
+                method: 'POST',
+                headers: { 
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json'
+                },
+                body: JSON.stringify({ items: itemsToAdd }),
+              });
+              if (addResponse.ok) {
+                hasChanges = true;
+                console.log('[Bundle Handler] 新配件添加成功');
+              } else {
+                console.error('[Bundle Handler] 新配件添加失败');
+              }
+            }
+
+            // 更新已处理的主机数量
+            lastProcessedHostQty = hostQuantity;
+
+            if (hasChanges) {
+              // 等待一下让 Shopify 处理完成
               await new Promise(resolve => setTimeout(resolve, 300));
               
-              try {
-                const updatedCartResponse = await fetch('/cart.js');
+              // 获取更新后的购物车
+              const updatedCartResponse = await fetch('/cart.js', {
+                method: 'GET',
+                headers: { 'Accept': 'application/json' }
+              });
+              
+              if (updatedCartResponse.ok) {
                 const updatedCart = await updatedCartResponse.json();
-                previousCartItemCount = updatedCart.item_count;
-              } catch (error) {
-                console.error('[Bundle Handler] 获取更新后的购物车失败:', error);
-                previousCartItemCount = currentCartItemCount + missingItems.length;
+                // 更新购物车计数
+                updateCartCounts(updatedCart);
               }
-
-              // 触发购物车刷新
-              setTimeout(() => {
-                document.dispatchEvent(new CustomEvent('cart:refresh'));
-              }, 100);
-            } else {
-              previousCartItemCount = currentCartItemCount;
+              
+              // 触发购物车 UI 刷新
+              document.dispatchEvent(new CustomEvent('cart:refresh'));
             }
           } catch (error) {
             console.error('[Bundle Handler] 错误:', error);
           } finally {
             setTimeout(() => {
               isProcessingBundle = false;
-            }, 1000);
+            }, 500);
           }
         }
 

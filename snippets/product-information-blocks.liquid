@@ -1401,6 +1401,12 @@
                    data-max-count="{{ block.settings.max_selections | default: 1 }}">
               </div>
             {%- endif -%}
+            {%- if block.settings.min_selection_message != blank -%}
+              <div class="free-gift-min-message" style="display: none;" 
+                   data-message-template="{{ block.settings.min_selection_message | escape }}" 
+                   data-min-count="1">
+              </div>
+            {%- endif -%}
             <div class="free-gift-products-list">
               {%- for i in (1..4) -%}
                 {%- assign product_setting_key = 'free_product_' | append: i -%}
@@ -1476,7 +1482,8 @@
               margin-bottom: 16px;
               color: #000;
             }
-            .free-gift-max-message {
+            .free-gift-max-message,
+            .free-gift-min-message {
               padding: 12px 16px;
               margin-bottom: 12px;
               background: #fff3cd;
@@ -1626,25 +1633,48 @@
                 const cards = document.querySelectorAll('.free-gift-product-card');
                 const blockEl = document.querySelector('.free-gift-products-block');
                 const maxSelections = parseInt(blockEl?.dataset.maxSelections || '1', 10);
-                const messageEl = document.querySelector('.free-gift-max-message');
+                const maxMessageEl = document.querySelector('.free-gift-max-message');
+                const minMessageEl = document.querySelector('.free-gift-min-message');
                 let messageTimeout;
                 
                 // 显示超出限制提示
                 function showMaxMessage() {
-                  if (!messageEl) return;
+                  if (!maxMessageEl) return;
                   
-                  const template = messageEl.dataset.messageTemplate || '';
-                  const maxCount = messageEl.dataset.maxCount || maxSelections;
+                  const template = maxMessageEl.dataset.messageTemplate || '';
+                  const maxCount = maxMessageEl.dataset.maxCount || maxSelections;
                   const message = template.replace(/\{count\}/g, maxCount);
                   
-                  messageEl.textContent = message;
-                  messageEl.style.display = 'block';
+                  maxMessageEl.textContent = message;
+                  maxMessageEl.style.display = 'block';
                   
                   if (messageTimeout) clearTimeout(messageTimeout);
                   
                   messageTimeout = setTimeout(() => {
-                    messageEl.style.display = 'none';
+                    maxMessageEl.style.display = 'none';
                   }, 3000);
+                }
+                
+                // 显示至少选一个的提示
+                function showMinMessage() {
+                  // 如果有配置的消息元素，使用它
+                  if (minMessageEl) {
+                    const template = minMessageEl.dataset.messageTemplate || 'Bitte wählen Sie mindestens 1 Produkt aus.';
+                    const minCount = minMessageEl.dataset.minCount || '1';
+                    const message = template.replace(/\{count\}/g, minCount);
+                    
+                    minMessageEl.textContent = message;
+                    minMessageEl.style.display = 'block';
+                    
+                    if (messageTimeout) clearTimeout(messageTimeout);
+                    
+                    messageTimeout = setTimeout(() => {
+                      minMessageEl.style.display = 'none';
+                    }, 3000);
+                  } else {
+                    // 如果没有消息元素，使用 alert 作为后备
+                    alert('Bitte wählen Sie mindestens 1 Produkt aus.');
+                  }
                 }
                 
                 cards.forEach(card => {
@@ -1669,6 +1699,16 @@
                           showMaxMessage();
                           return;
                         }
+                      }
+                    } else {
+                      // 取消选择时：检查是否还有至少一个选中的产品
+                      const selectedCount = document.querySelectorAll('.free-gift-checkbox:checked').length;
+                      
+                      if (selectedCount < 1) {
+                        // 阻止取消，重新选中
+                        this.checked = true;
+                        showMinMessage();
+                        return;
                       }
                     }
                     
