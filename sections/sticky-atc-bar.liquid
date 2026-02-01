@@ -249,12 +249,17 @@
         };
       }
       // 基于选择的配件组合生成 bundle group ID
-      // 相同的配件组合会生成相同的 ID，这样 Shopify 会自动合并数量
-      function generateBundleGroupId(hostVariantId, batteryVariantId, solarVariantIds) {
+      // 相同的配件组合（包括 qty）会生成相同的 ID，这样 Shopify 会自动合并数量
+      function generateBundleGroupId(hostVariantId, batteryVariantId, batteryQty, solarItems) {
         const parts = [String(hostVariantId)];
-        if (batteryVariantId) parts.push('b' + batteryVariantId);
-        if (solarVariantIds && solarVariantIds.length > 0) {
-          parts.push('s' + solarVariantIds.sort().join('-'));
+        // 包含电池 variant 和 qty（如 2x, 5x）
+        if (batteryVariantId && batteryQty > 0) {
+          parts.push('b' + batteryVariantId + 'x' + batteryQty);
+        }
+        // 包含光伏板 variant 和 qty
+        if (solarItems && solarItems.length > 0) {
+          const solarParts = solarItems.map(s => s.variantId + 'x' + s.qty).sort();
+          parts.push('s' + solarParts.join('-'));
         }
         return parts.join('_');
       }
@@ -287,7 +292,7 @@
           // 先收集所有配件信息，用于生成 group ID
           let batteryVariantId = null;
           let batteryQty = 0;
-          const solarVariantIds = [];
+          const solarItems = [];  // {variantId, qty}
           
           // 2. 电池包（如果选中且 qty > 0）
           const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
@@ -302,13 +307,12 @@
             const variantId = selectedBtn.dataset.variantId;
             const qty = parseInt(selectedBtn.dataset.qty) || 0;
             if (variantId && variantId.trim() !== '' && qty > 0) {
-              solarVariantIds.push(variantId);
+              solarItems.push({ variantId, qty });
             }
           });
           
-          // 基于配件组合生成 group ID（相同组合 = 相同 ID = 合并数量）
-          const bundleGroupId = generateBundleGroupId(hostVariantId, batteryVariantId, solarVariantIds);
-          console.log('[Bundle] 生成 group ID:', bundleGroupId);
+          // 基于配件组合生成 group ID（包含 qty，相同组合 = 相同 ID = 合并数量）
+          const bundleGroupId = generateBundleGroupId(hostVariantId, batteryVariantId, batteryQty, solarItems);
 
           const bundleVariantIds = [];
 
@@ -323,7 +327,6 @@
                 _bundle_group_id: bundleGroupId,
               },
             });
-            console.log('[Bundle] 添加主机:', hostVariantId);
           }
 
           // 添加电池
@@ -339,14 +342,12 @@
               },
             });
             bundleVariantIds.push(String(batteryVariantId));
-            console.log('[Bundle] 添加电池:', batteryVariantId);
           }
 
           // 添加光伏板
-          console.log('[Bundle] 找到选中的光伏板:', solarVariantIds.length);
-          solarVariantIds.forEach((variantId) => {
+          solarItems.forEach((solar) => {
             items.push({
-              id: parseInt(variantId),
+              id: parseInt(solar.variantId),
               quantity: 1,
               properties: {
                 _bundle_item: 'true',
@@ -355,11 +356,8 @@
                 _bundle_group_id: bundleGroupId,
               },
             });
-            bundleVariantIds.push(String(variantId));
-            console.log('[Bundle] 添加光伏板:', variantId);
+            bundleVariantIds.push(String(solar.variantId));
           });
-          
-          console.log('[Bundle] 最终收集的产品:', JSON.stringify(items, null, 2));
           
           if (hostVariantId && bundleVariantIds.length > 0) {
             saveBundleMapping(String(hostVariantId), bundleVariantIds);
