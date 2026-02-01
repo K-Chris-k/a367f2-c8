@@ -1024,7 +1024,7 @@
       document.documentElement.classList[cartData.item_count === 0 ? 'remove' : 'add']('cart-has-items');
     }
     
-    // 检查购物车并移除孤立的免费赠品
+    // 检查购物车并移除孤立的免费赠品（仅当没有主机时）
     async function checkAndRemoveOrphanedFreeGifts() {
       if (isMonitoring || isUpdatingCart) return;
       isMonitoring = true;
@@ -1039,6 +1039,21 @@
           return;
         }
         
+        // 检查是否还有主机存在 - 如果有主机，不删除免费礼品
+        let hasHost = false;
+        cart.items.forEach(item => {
+          if (item.properties && item.properties._bundle_role === 'host') {
+            hasHost = true;
+          }
+        });
+        
+        // 如果还有主机，不删除免费礼品（让 Bundle 删除逻辑处理）
+        if (hasHost) {
+          console.log('[Orphan检查] 还有主机，跳过删除');
+          isMonitoring = false;
+          return;
+        }
+        console.log('[Orphan检查] 没有主机，检查孤立礼品');
         
         // 获取映射关系
         const mappings = getFreeGiftMappings();
@@ -1235,7 +1250,7 @@
         .catch(e => {});
     }
     
-    // 监听删除按钮，立即清除映射并触发检查
+    // 监听删除按钮 - 仅在删除最后一个主机时才处理免费礼品
     function attachRemoveListeners() {
       document.querySelectorAll('a[is="cart-remove-item"], a.cart__remove, a.btn--link[href*="cart/change"], .cart-item__remove').forEach(link => {
         if (link._freeGiftListenerAttached) return;
@@ -1243,33 +1258,20 @@
         link.addEventListener('click', function() {
           const cartItem = this.closest('.cart-item') || this.closest('tr') || this.closest('[data-product-id]');
           if (!cartItem) {
-            scheduleFastCheck(220);
-            return;
+            return; // 不触发检查，让 Bundle 删除逻辑处理
           }
           
-          const productId = cartItem.dataset.productId || cartItem.getAttribute('data-product-id');
           const isFreeGift = cartItem.dataset.freeGift === 'true';
           
           // 如果是免费礼物被删除，只要主产品还在，就需要自动恢复
-          // 不删除映射，延迟触发恢复检查
           if (isFreeGift) {
             scheduleFastCheck(400);
             return;
           }
           
-          // 如果是主产品被删除，立即清除该产品的映射
-          if (productId) {
-            try {
-              const mappings = getFreeGiftMappings();
-              if (mappings[String(productId)]) {
-                delete mappings[String(productId)];
-                saveFreeGiftMappings(mappings);
-              }
-            } catch (err) {}
-          }
-          
-          // 延迟触发检查，删除孤立的免费礼物
-          scheduleFastCheck(300);
+          // 不在这里清除映射或触发检查
+          // 让 initBundleItemAutoRemoveCartPage 中的逻辑统一处理
+          // 那里会检查 remainingHostCount，只在最后一个主机被删除时才删除免费礼品
         });
       });
     }
@@ -1356,6 +1358,9 @@
           // 从 HTML 判断被删除的是否是主机（因为 Shopify 先删除了，cart.items 中已经没有了）
           const isDeletingHost = bundleRole === 'host';
           
+          // 关键调试日志
+          console.log('[Bundle删除-Cart] 点击删除:', { bundleGroupId, bundleRole, isDeletingHost });
+          
           // 延迟执行，等待 Shopify 完成主产品删除
           setTimeout(async () => {
             try {
@@ -1363,6 +1368,7 @@
               const cart = await cartResponse.json();
               
               if (!cart.items || cart.items.length === 0) {
+                console.log('[Bundle删除-Cart] 购物车已空');
                 return;
               }
               
@@ -1377,20 +1383,33 @@
                 }
               });
               
+              console.log('[Bundle删除-Cart] 剩余主机数:', remainingHostCount, '删除的是主机:', isDeletingHost, 'bundleGroupId:', bundleGroupId);
+              
               cart.items.forEach(item => {
                 const itemBundleGroupId = item.properties && item.properties._bundle_group_id;
                 const itemMainProductId = item.properties && item.properties._main_product_id;
                 const isFreeGift = item.properties && item.properties._free_gift === 'true';
                 
+                // 调试: 显示每个商品的属性
+                if (item.properties) {
+                  console.log('[Bundle删除-Cart] 检查商品:', item.title, 'groupId:', itemBundleGroupId, 'isFreeGift:', isFreeGift);
+                }
+                
                 // 匹配方式1: Bundle 组 - 使用 _bundle_group_id 匹配同一组的所有商品
                 if (bundleGroupId && itemBundleGroupId && itemBundleGroupId === bundleGroupId) {
                   keysToRemove.push(item.key);
+                  console.log('[Bundle删除-Cart] → 匹配配件:', item.title);
                 }
                 // 匹配方式2: 免费礼品 - 只有当删除最后一个主机时才删除礼品
                 else if (isFreeGift && isDeletingHost && remainingHostCount === 0) {
                   keysToRemove.push(item.key);
+                  console.log('[Bundle删除-Cart] → 删除免费礼品 (最后一个主机)');
+                } else if (isFreeGift) {
+                  console.log('[Bundle删除-Cart] → 保留免费礼品 (还有主机:', remainingHostCount, ')');
                 }
               });
+              
+              console.log('[Bundle删除-Cart] 待删除数量:', keysToRemove.length);
               
               // 只有当删除最后一个主机时才清除 localStorage 中的免费礼品映射
               if (isDeletingHost && remainingHostCount === 0 && productId) {
