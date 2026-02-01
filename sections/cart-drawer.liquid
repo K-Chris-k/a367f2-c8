@@ -166,7 +166,7 @@
                       endif
                     endfor
                   -%}
-                  <li id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item flex flex-col gap-4" data-variant-id="{{ item.variant_id }}" data-product-id="{{ item.product_id }}" data-handle="{{ item.product.handle }}" data-quantity="{{ item.quantity }}" data-price="{{ item.original_price }}" {% if item.properties._free_gift == 'true' %}data-free-gift="true"{% endif %} {% if item.properties._bundle_group_id %}data-bundle-group-id="{{ item.properties._bundle_group_id }}"{% endif %}>
+                  <li id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-item flex flex-col gap-4" data-variant-id="{{ item.variant_id }}" data-product-id="{{ item.product_id }}" data-handle="{{ item.product.handle }}" data-quantity="{{ item.quantity }}" data-price="{{ item.original_price }}" {% if item.properties._free_gift == 'true' %}data-free-gift="true"{% endif %} {% if item.properties._bundle_group_id %}data-bundle-group-id="{{ item.properties._bundle_group_id }}"{% endif %} {% if item.properties._bundle_role %}data-bundle-role="{{ item.properties._bundle_role }}"{% endif %}>
                     <div class="cart-item__product flex items-start gap-3">
                       {%- if item.image -%}
                         <a class="cart-item__media blocks-radius-sm media-wrapper" href="{{ item.url }}" tabindex="-1" aria-label="{{ item.title }}">
@@ -1232,7 +1232,11 @@
           const variantId = cartItem.dataset.variantId;
           const productId = cartItem.dataset.productId;
           const bundleGroupId = cartItem.dataset.bundleGroupId;
+          const bundleRole = cartItem.dataset.bundleRole; // 从 HTML 获取角色
           if (!variantId) return;
+          
+          // 从 HTML 判断被删除的是否是主机（因为 Shopify 先删除了，cart.items 中已经没有了）
+          const isDeletingHost = bundleRole === 'host';
           
           // 延迟执行，等待主产品删除完成
           setTimeout(async () => {
@@ -1246,22 +1250,11 @@
               const productIdStr = String(productId);
               const keysToRemove = [];
               
-              // 检查被删除的是否是主机
-              const deletedItem = cart.items.find(item => 
-                item.properties && 
-                item.properties._bundle_group_id === bundleGroupId &&
-                item.properties._bundle_role === 'host'
-              );
-              const isDeletingHost = !!deletedItem;
-              
-              // 计算删除后剩余的主机数量
+              // 计算购物车中剩余的主机数量（被删除的已经不在 cart.items 中了）
               let remainingHostCount = 0;
               cart.items.forEach(item => {
                 if (item.properties && item.properties._bundle_role === 'host') {
-                  // 如果不是被删除的那组，计入剩余主机
-                  if (!bundleGroupId || item.properties._bundle_group_id !== bundleGroupId) {
-                    remainingHostCount += item.quantity;
-                  }
+                  remainingHostCount += item.quantity;
                 }
               });
               
