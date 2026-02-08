@@ -104,7 +104,7 @@
   .tabs__header {
     margin-bottom: var(--header-padding-bottom-mobile);
   }
-  .tabs__tab{max-width: 21rem;min-width:13rem}
+  /* .tabs__tab{max-width: 21rem;min-width:13rem} */
   .tabs__nav-wrap {
     justify-content: center;
     min-width: 100%;

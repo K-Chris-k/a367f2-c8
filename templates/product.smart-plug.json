@@ -79,10 +79,6 @@
             "show_gift_card_recipient": true
           }
         },
-        "selleasy_lb_upsell_widget_pal_JtYtQQ": {
-          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-pal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
-          "settings": {}
-        },
         "logistics_pN3qrf": {
           "type": "logistics",
           "settings": {
@@ -98,7 +94,7 @@
             "title_size": "text-base",
             "icon_1": "certificate",
             "heading_1": "Orders over $50 ship free",
-            "content_image_1": "shopify://shop_images/card.png",
+            "content_image_1": "shopify://shop_images/pay-mob.png",
             "icon_2": "truck",
             "content_image_2": "shopify://shop_images/track.png",
             "heading_2": "30 day returns",
@@ -129,7 +125,6 @@
         "description",
         "variant_picker",
         "buy_buttons",
-        "selleasy_lb_upsell_widget_pal_JtYtQQ",
         "logistics_pN3qrf",
         "icon_with_text",
         "complementary"

@@ -1,5 +1,5 @@
 <style>
-   #shopify-section-{{ section.id }}{margin-top:{{section.settings.padding_top  }}px;margin-bottom:{{section.settings.padding_bottom  }}px;}
+    #shopify-section-{{ section.id }} .product-collection{ padding-top: {{ section.settings.padding_top }}px;padding-bottom: {{ section.settings.padding_bottom }}px;}
    #shopify-section-{{ section.id }} .tab-buttons{position: relative;max-width: fit-content; left: 50%;transform: translateX(-50%);margin-bottom:30px;border-bottom: 1px solid #ddd;}
    .video-tab{display: flex; align-items: end;line-height:22px;padding-right:40px;font-size: 18px;cursor: pointer;font-weight: 500;}
    .video-tab:last-child{padding-right:0px}
@@ -15,23 +15,13 @@
     align-items: center;
     justify-content: center;
   }
-   #shopify-section-{{ section.id }} .scene-main-slider .slide {
-    width: 900px; /* 固定宽度 */
-    height: 450px;
-    overflow: hidden;
-    position: relative;
-    flex: 0 0 auto;
-    margin: 0 10px;
-    transition: transform 0.3s ease;
-    cursor: pointer;
-  }
+ 
+
    #shopify-section-{{ section.id }} .scene-main-slider .slick-center {
     transform: scale(1.03);
     z-index: 2;
   }
-  .scene-main-slider .slide .detail-bg{position: absolute;top: 0px;height: 100%;width: 100%;left: 0px;
-    background: linear-gradient(180deg, rgba(143, 143, 143, 0.00) 73.67%, rgba(0, 0, 0, 0.26) 87.47%, rgba(0, 0, 0, 0.50) 100%);}
-  .scene-main-slider .slide .detail{ position: absolute;width: 100%;bottom: 20px;padding:0px 100px;line-height:22px;font-size: 18px;text-align: center;color:#fff;}
+ 
   #shopify-section-{{ section.id }} .tip-btn-popup{ display: flex;justify-content: center;align-items: center;   margin-top: 30px;width: 240px;
     height: 50px; line-height: 50px;border-radius: 30px; background: #D9D9D9;text-align: center;gap: 10px;cursor:pointer;font-size: 18px;font-family: 'Inter';font-weight: 500;}
   #shopify-section-{{ section.id }} .tip-btn-popup .icon-add {width:30px;height:30px}
@@ -97,8 +87,264 @@
   .modal>.tip-background .drawer__body .content{margin-top:14px;line-height:28px;font-size: 22px;}
   .modal>.tip-background .drawer__close-btn{width: 30px;height: 30px; color: #3250C3;background: #fff; }
   
+
+/* Slick箭头按钮样式 - 黑色半透明背景，白色图标，右上角位置 */
+#shopify-section-{{ section.id }} .slick-prev, 
+#shopify-section-{{ section.id }} .slick-next {
+  position: absolute;
+  top: 640px; /* 调整到标题下方 */
+  z-index: 2;
+  width: 36px;
+  {% comment %} height: 36px; {% endcomment %}
+   background: #3250C3; /* 黑色半透明背景 */  
+   {% comment %} background: transparent; /* 透明背景 */ {% endcomment %}
+ border: 1px solid #3250C3; /* 蓝色边框 */
+  border-radius: 50%;
+  {% comment %} border: none; {% endcomment %}
+  cursor: pointer;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  font-size: 0;
+  transition: all 0.3s ease;
+  transform: none; /* 移除垂直居中变换 */
+}
+
+#shopify-section-{{ section.id }} .slick-prev:hover, 
+#shopify-section-{{ section.id }} .slick-next:hover {
+  {% comment %} background: rgba(0, 0, 0, 0.4); /* 鼠标悬停时背景加深 */ {% endcomment %}
+}
+
+#shopify-section-{{ section.id }} .slick-prev {
+  right: calc((100vw - 1196px) / 2); /* 增加右边距，与下一个按钮拉开距离 */
+  left: auto; /* 清除左侧定位 */
+}
+
+#shopify-section-{{ section.id }} .slick-next {
+  right: calc((100vw - 1336px) / 2);/* 下一个按钮在右上角靠右位置 */
+}
+
+/* 使用伪元素创建箭头图标 - 修正居中问题 */
+#shopify-section-{{ section.id }} .slick-prev:before,
+#shopify-section-{{ section.id }} .slick-next:before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid #ffffff; /* 白色箭头 */
+  border-bottom: 2px solid #ffffff; /* 白色箭头 */
+  position: relative; /* 添加相对定位 */
+}
+
+ 
+
+/* 方案4：使用Flexbox完全居中（推荐） */
+#shopify-section-{{ section.id }} .slick-prev, 
+#shopify-section-{{ section.id }} .slick-next {
+  /* 保持现有样式 */
+  display: flex !important;
+  align-items: center!important;
+  justify-content: center!important;
+}
+
+#shopify-section-{{ section.id }} .slick-prev:before,
+#shopify-section-{{ section.id }} .slick-next:before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid #ffffff;
+  border-bottom: 2px solid #ffffff;
+  margin: 0; /* 移除所有margin */
+  flex-shrink: 0; /* 防止图标被压缩 */
+}
+
+#shopify-section-{{ section.id }} .slick-prev:before {
+  transform: rotate(45deg);
+  margin-right: -12px; /* 如果需要微调，使用小量margin */
+}
+
+#shopify-section-{{ section.id }} .slick-next:before {
+  transform: rotate(-135deg);
+  margin-left: 2px; /* 如果需要微调，使用小量margin */
+}
+
+/* 禁用状态 */
+#shopify-section-{{ section.id }} .slick-prev.slick-disabled,
+#shopify-section-{{ section.id }} .slick-next.slick-disabled {
+  opacity: 1;
+  cursor: not-allowed;
+  border-color:#8D8D8D;
+  color:#8D8D8D;
+  background: transparent; /* 透明背景 */ 
+  
+}
+
+#shopify-section-{{ section.id }} .slick-prev.slick-disabled:before,
+#shopify-section-{{ section.id }} .slick-next.slick-disabled:before {
+  content: '';
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-left: 2px solid #8D8D8D;
+  border-bottom: 2px solid #8D8D8D;
+  margin: 0; /* 移除所有margin */
+  flex-shrink: 0; /* 防止图标被压缩 */
+}
+
+
+#shopify-section-{{ section.id }} .slick-prev.slick-disabled:before {
+  transform: rotate(45deg);
+  margin-right: -12px; /* 如果需要微调，使用小量margin */
+}
+
+#shopify-section-{{ section.id }} .slick-next.slick-disabled:before {
+  transform: rotate(-135deg);
+  margin-left: 2px; /* 如果需要微调，使用小量margin */
+}
+
+/* 调整轮播容器位置，为箭头留出空间 */
+#shopify-section-{{ section.id }} .product-collection {
+  position: relative;
+}
+
+#shopify-section-{{ section.id }} .product-collection-box {
+  position: relative;
+  margin-top: 40px; /* 与箭头保持距离 */
+}
+
+
+  #shopify-section-{{ section.id }} .slick-dotted .slick-dots {margin-top:30px;display: flex ;visibility:visible;gap:8px;align-items: center;justify-content: center;}
+  #shopify-section-{{ section.id }} .slick-dotted .slick-dots .slick-active button{  background: #3250C3;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    transition: all .5s;
+  }
+  #shopify-section-{{ section.id }} .slick-dotted .slick-dots button {
+    /* 按钮重置样式，增强可访问性 */
+    border: none;
+    background: #D9D9D9; /* 非激活态半透明白色 */
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; /* 圆形 */
+    padding: 0;
+    cursor: pointer;
+    text-indent: -9999px; /* 隐藏按钮内文字（如果有） */
+    overflow: hidden;
+    transition: all 0.3s ease; /* 平滑过渡效果 */
+}
+
+  #shopify-section-{{ section.id }} .slick-dotted .slick-dots button:before{display:none}
+  #shopify-section-{{ section.id }} .slick-dots li{display: inline-flex;    align-items: center;}
+  #shopify-section-{{ section.id }} .slick-dots {
+      position: absolute;
+      {% comment %} bottom: 20px;   /* 距离底部20px */ {% endcomment %}
+      top:630px;
+      left: calc((100vw - 1336px) / 2);    /* 距离左侧25px */
+      padding: 0;
+      margin: 0;
+      transform: none !important;
+  }
+
+
+
+@media (min-width: 768px) {
+
+  /* 配套CSS */
+#shopify-section-{{ section.id }} .scene-main-slider {
+    width: 100%;
+}
+
+#shopify-section-{{ section.id }} .slick-slide {
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+/* 居中滑块 */
+#shopify-section-{{ section.id }} .slick-slide.slick-center {
+    width: 1280px !important;
+    margin: 0 auto; /* 居中 */
+    position: relative;
+    z-index: 10; /* 确保在最上层 */
+}
+
+/* 两侧滑块 */
+#shopify-section-{{ section.id }} .slick-slide:not(.slick-center) {
+    width: 1300px !important; /* 非居中滑块宽度 */
+    {% comment %} height:519px!important; {% endcomment %}
+    transform: translateX(0) scale(0.95);
+    opacity: 0.6;
+    filter: blur(1px); /* 可选：模糊效果突出中心 */
+}
+
+
+  #shopify-section-{{ section.id }} .text-subheading{
+    line-height:27px;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .text-description{
+    line-height:22px;
+    font-size: 18px;
+    font-weight: 600;
+    padding-top:14px;
+    color: #666;
+  }
+
+
+
+
+
+
+
+
+    #shopify-section-{{ section.id }} .scene-main-slider .slide {
+    width: 900px; /* 固定宽度 */
+    {% comment %} height: 610px; {% endcomment %}
+    height: auto; /* 改为自动高度 */
+  overflow: visible; /* 改为可见 */
+    overflow: hidden;
+    position: relative;
+    flex: 0 0 auto;
+    margin: 0 10px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+      display: flex;
+  flex-direction: column; /* 垂直排列 */
+  }
+
+  /* 视频容器 */
+#shopify-section-{{ section.id }} .scene-main-slider .slide .video-box {
+  width: 100%;
+  height: 610px; /* 固定视频高度 */
+  overflow: hidden;
+  position: relative;
+}
+
+/* 移除原有的detail-bg样式 */
+#shopify-section-{{ section.id }} .scene-main-slider .slide .detail-bg {
+  display: none; /* 删除或注释掉原来的绝对定位样式 */
+}
+
+/* 新的详情区域 */
+#shopify-section-{{ section.id }}  .detail-container {
+  position: relative  ;
+  width: 1200px;
+  padding: 110px 0 0 0;
+  left: calc((100vw - 1336px) / 2);
+  text-align: left;
+  background: rgba(255, 255, 255, 0);
+  margin-top: 0; /* 与视频无缝连接 */
+  z-index: -1; /* 注意：这会使容器内容也被覆盖 */
+}
+
+  }
+
+
   @media (max-width: 768px) {
-    #shopify-section-{{ section.id }}{margin-top:{{section.settings.padding_top | divided_by: 2  }}px;margin-bottom:{{section.settings.padding_bottom | divided_by: 2  }}px;}
+    #shopify-section-{{ section.id }} .product-collection{ padding-top: {{ section.settings.padding_top | divided_by: 2  }}px;padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;}
     #shopify-section-{{ section.id }} .tab-buttons{margin-bottom:1.5rem}
     #shopify-section-{{ section.id }} .video-tab{min-width:auto;padding:0px}
     #shopify-section-{{ section.id }} .video-tab span{font-size: 14px;line-height: 17px;padding:0px 0.6rem 0.8rem 0.6rem!important;text-align:left}
@@ -116,21 +362,36 @@
     flex-flow: column;
   }
   #shopify-section-{{ section.id }} .scene-main-slider .video-container {
-    width: 100vw;
-    max-width: 100vw;
+    width: 100%;
+    {% comment %} max-width: 100vw; {% endcomment %}
+    height:260px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
   }
   #shopify-section-{{ section.id }} .scene-main-slider .video-container video {
-    width: 100vw;
+    {% comment %} width: 100vw; {% endcomment %}
     height: 100%;
-    max-width: 100vw;
+    {% comment %} max-width: 100vw; {% endcomment %}
     max-height: 100%;
-    object-fit: contain;
+    width: calc(100% + 1px);
+    object-fit: cover ;
     display: block;
   }
+
+
+  #shopify-section-{{ section.id }}  .custom-product-image picture{
+    {% comment %} width: 100vw; {% endcomment %}
+    height: auto;
+    min-height:280px;
+    max-height:280px;
+    max-width: 100vw;
+    object-fit: cover ;
+    display: block;
+  }
+
+ 
    #shopify-section-{{ section.id }} .scene-main-slider .slide .detail-bg {
     position: static !important;
     width: 100%;
@@ -177,11 +438,119 @@
   .modal>.tip-background .drawer__body .content{margin-top:14px;line-height:19px;font-size: 16px;}
   .modal>.tip-background .drawer__close-btn{width: 30px;height: 30px; color: #3250C3;background: #fff; }
   
+
+
+        /* 视频容器 */
+    #shopify-section-{{ section.id }}   .video-box {
+      width: 100%;
+      padding:0 20px;
+    }
+
+
+  #shopify-section-{{ section.id }} .slick-dotted .slick-dots {margin-top:30px;display: flex ;visibility:visible;gap:8px;align-items: center;justify-content: center;}
+  #shopify-section-{{ section.id }} .slick-dotted .slick-dots .slick-active button{  background: #3250C3;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    transition: all .5s;
   }
+  #shopify-section-{{ section.id }} .slick-dotted .slick-dots button {
+    /* 按钮重置样式，增强可访问性 */
+    border: none;
+    background: #D9D9D9; /* 非激活态半透明白色 */
+    width: 10px;
+    height: 10px;
+    border-radius: 50%; /* 圆形 */
+    padding: 0;
+    cursor: pointer;
+    text-indent: -9999px; /* 隐藏按钮内文字（如果有） */
+    overflow: hidden;
+    transition: all 0.3s ease; /* 平滑过渡效果 */
+}
+
+  #shopify-section-{{ section.id }} .slick-dotted .slick-dots button:before{display:none}
+  #shopify-section-{{ section.id }} .slick-dots li{display: inline-flex;    align-items: center;}
+  #shopify-section-{{ section.id }} .slick-dots {
+      position: absolute;
+      {% comment %} bottom: 20px;   /* 距离底部20px */ {% endcomment %}
+      top:240px;
+      left: 20px;    /* 距离左侧25px */
+      padding: 0;
+      margin: 0;
+      transform: none !important;
+  }
+
+
+
+  /* 新的详情区域 */
+#shopify-section-{{ section.id }}  .detail-container {
+  position: relative  ;
+  width: 100%;
+  padding: 65px 20px 0 20px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0);
+  margin-top: 0; /* 与视频无缝连接 */
+  z-index: -1; /* 注意：这会使容器内容也被覆盖 */
+}
+ 
+
+  #shopify-section-{{ section.id }} .text-subheading{
+    line-height:19px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+
+  #shopify-section-{{ section.id }} .detail-container  .text-description{
+    padding-top:10px;
+    font-size: 14px;
+    line-height:19px;
+    font-weight: 400;
+  }
+
+
+  }
+
+
+     
+
+
+
+  @media (max-width: 435px) {
+  #shopify-section-{{ section.id }}  .custom-product-image picture{
+    min-height:260px;
+    max-height:260px;
+  }
+
+  #shopify-section-{{ section.id }} .slick-dots {
+          top:265px;
+  }
+  }
+
+  @media (max-width: 390px) {
+      #shopify-section-{{ section.id }} .slick-dots {
+          top:260px;
+      }
+  }
+
+  @media (max-width: 375px) {
+    #shopify-section-{{ section.id }}  .custom-product-image picture{
+      min-height:240px;
+      max-height:240px;
+    }
+
+  #shopify-section-{{ section.id }} .scene-main-slider .video-container {
+    height:240px;
+  }
+
+    #shopify-section-{{ section.id }} .slick-dots {
+      top:240px;
+  }
+}
 </style>
-<div class="section section-full-scene-list">
+{% comment %} <div class="section section-full-scene-list"> {% endcomment %}
+<div class="section section-product-collection section--padding page-full" style=" background:{{ section.settings.bg_color }}" id="{{ section.settings.id }}">
   <div class="product-collection product-slider-container">
-    <div class="page-width">
+    {% comment %} <div class="page-width">
       <div class="flex justify-center tab-buttons">
         {% for block in section.blocks %}
           <div class="video-tab" data-slide="{{ forloop.index0 }}">
@@ -189,7 +558,7 @@
           </div>
         {% endfor %}
       </div>
-    </div>
+    </div> {% endcomment %}
     <div class="scene-main-slider">
       {% for block in section.blocks %}
         <div class="slide">
@@ -208,7 +577,7 @@
                   <source src="{{ block.settings.video }}" type="video/mp4">
                   Your browser does not support HTML5 video.
                 </video>
-                <div class="video-controls">
+                {% comment %} <div class="video-controls">
                   <div class="video-progress-bar">
                     <div class="video-progress"></div>
                   </div>
@@ -216,52 +585,100 @@
                    <svg class="icon-play" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"></polygon></svg>
                    <svg class="icon-pause" viewBox="0 0 24 24" style="display:none"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
                   </button>
-                </div>
+                </div> {% endcomment %}
               </div>
             {% else %}
-              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                 <div class="custom-product-image">
+                     {% if block.settings.slib_url != blank %}   
+                        <a href="{{ block.settings.slib_url }}"  {% if block.settings.slib_url_open == "1" %}   target="_blank"  {% endif %}>
+                     {% endif %} 
+                      <picture>
+                        <source
+                          media="(max-width: 749px)"
+                          srcset="
+                            {{ block.settings.mobile_image | img_url: '375x' }} 375w,
+                            {{ block.settings.mobile_image | img_url: '750x' }} 750w,
+                            {{ block.settings.mobile_image | img_url: '1100x' }} 1100w
+                          "
+                        >
+                        <source
+                          media="(min-width: 750px)"
+                          srcset="
+                            {{ block.settings.custom_image | img_url: '1200x' }} 1x,
+                            {{ block.settings.custom_image | img_url: '2400x' }} 2x
+                          "
+                        >
+                        <img
+                          src="{{ block.settings.custom_image | img_url: '1200x' }}"
+                          alt="{{ block.settings.title | escape }}"
+                          class="grid-image"
+                          loading="lazy"
+                          width="100%"
+                          height="100%"
+                        >
+                      </picture>
+                      {% if block.settings.slib_url != blank %}
+                        </a>
+                      {% endif %}
+                 </div>
             {% endif %}
           </div>
-          <div class="detail-bg">
-             <div class="detail">{{ block.settings.description }}</div>
-          </div>
+
         </div>
       {% endfor %}
     </div>
-    <div class="page-width flex justify-center">
-      <div class="tip-btn-popup"  aria-controls="PopupModal-{{ section.id }}">{{section.settings.tip_title}} {% render 'icon-add' %}
-        <basic-modal id="PopupModal-{{section.id}}" class="drawer modal" style="--modal-width: 77rem;">
-          <div class="fixed-overlay" aria-controls="PopupModal-{{section.id}}"></div>
-          <div class="drawer__inner tip-background">
-            <button
-              class="drawer__close-btn"
-              aria-controls="PopupModal-{{section.id}}"
-              aria-label="{{ 'accessibility.close' | t }}"
-            >
-              {% render 'icon-close' %}
-            </button>
-            <div class="drawer__body v-scrollable h-full">
-                <h5>{{ section.settings.tip_popup_title }}</h5>
-                <div class="content">{{ section.settings.tip_popup_content }}</div>
+     
+        <!-- 新增详情容器，放在视频下方 -->
+          <div class="detail-container">
+            {% for block in section.blocks %}
+            <div class="detail" style="display:none;"  data-index="{{ forloop.index0 }}" >
+              {%- if block.settings.subheading != blank -%}
+                <motion-element
+                  data-motion="fade-up"
+                  data-motion-delay="{{ motion_delay }}"
+                  class="block rich-text__subheading text-subheading"
+                >
+                  {{ block.settings.subheading }}
+                </motion-element>
+                {%- assign motion_delay = motion_delay | plus: 50 -%} 
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <motion-element
+                  data-motion="fade-up"
+                  data-motion-delay="{{ motion_delay }}"
+                  class="block rich-text__text rte  text-description"
+                >
+                  {{ block.settings.description }}
+                </motion-element>
+                {%- assign motion_delay = motion_delay | plus: 50 -%}
+              {%- endif -%}
+
+            
+            
             </div>
+             {% endfor %}    
           </div>
-        </basic-modal>
-      </div>
-    </div>
+      
   </div>
 </div>
 <script>
   $(document).ready(function () {
+    //第一个文案显示
+    document.querySelector('.detail-container div:nth-child(1)').style.display = 'block';
+
     const $slider = $('.scene-main-slider');
     $('.scene-main-slider video').get(0).play();
     $('.video-tab').first().addClass('active');
     $slider.slick({
+     centerPadding: 'calc(50vw - 640px)', // 动态padding：50%视口 - 650px（1300px的一半）  
+    slidesToShow: 1,
       centerMode: true,
       variableWidth: true,
-      dots: false,
-      arrows: false,
+      infinite: false,   
+      dots: true,
+      arrows: true,    
       autoplay: false,
-      speed: 500,
+      speed: 300,
       cssEase: 'ease-out',
       responsive: [
         {
@@ -274,6 +691,7 @@
         }
       ]
     });
+    
     $('.video-tab').on('click', function () {
       const index = $(this).data('slide');
       $('.video-tab').removeClass('active');
@@ -340,7 +758,29 @@
       });
     }
   });
+
+
+
   $slider.on('afterChange', function (event, slick, currentSlide) {
+
+    
+      // 获取需要显示的div
+    const showDiv = document.querySelector('.detail-container div:nth-child('+(currentSlide+1)+')');
+
+    // 获取所有兄弟div
+    const allDivs = document.querySelectorAll('.detail-container div');
+
+    // 隐藏所有div
+    allDivs.forEach(div => {
+        div.style.display = 'none';
+    });
+
+    // 显示div
+    if (showDiv) {
+        showDiv.style.display = 'block';
+    }
+    
+
     $('.scene-main-slider .slide').each(function(i){
       const $video = $(this).find('video');
       const $playPause = $(this).find('.video-play-pause');
@@ -400,7 +840,7 @@
       "type": "range",
       "id": "padding_top",
       "min": 0,
-      "max": 120,
+      "max": 160,
       "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
@@ -410,7 +850,7 @@
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
-      "max": 120,
+      "max": 160,
       "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
@@ -434,6 +874,45 @@
           "label": "上传MP4视频",
           "info": "建议尺寸：1920x1080，小于20MB"
         },
+        {
+          "type": "image_picker",
+          "id": "custom_image",
+          "label": "image_pc"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "image_mobile"
+        },
+
+        {
+          "type": "url",
+          "id": "slib_url",
+          "label": "跳转链接"
+        },
+     {
+      "type": "select",
+      "id": "slib_url_open",
+      "label": "链接是否打开新窗口",
+       "options": [
+        {
+          "value": "1",
+          "label": "是"
+        },
+        {
+          "value": "0",
+          "label": "否"
+        },
+      ],
+      "default": "0",
+    },
+
+       {
+          "type": "text",
+          "id": "subheading",
+          "label": "t:sections.all.subheading.label"
+        },
+
         {
           "type": "text",
           "id": "description",

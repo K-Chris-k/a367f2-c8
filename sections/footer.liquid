@@ -50,6 +50,19 @@
     padding-top: 40px;
     border-top: 1px solid hsla(0, 0%, 100%, .2);
   }
+
+  /* 在现有CSS中添加 */
+.footer__top-wrapper.f-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1%; /* 调整间距 */
+}
+
+.footer__top-wrapper.f-flex .footer-block {
+  flex: 0 0 calc(20% - 1%); /* 5个区块，每个20%，减去间距 */
+  max-width: calc(20% - 1%);
+}
+
   .footer .section-divider {
     display: none;
   }
@@ -93,6 +106,10 @@
       .new-links ul{margin-top: 10px;gap:0px;line-height: 0px; }
       .new-links ul li{margin-right:15px; margin-bottom: 12px;}
       .footer__copyright{width:100%;border-bottom: 1px solid hsla(0, 0%, 100%, .2);padding-bottom: 5px;}
+      .footer__top-wrapper.f-flex .footer-block {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
   }
 
 </style>
@@ -597,7 +614,7 @@
             <!-- &copy; {{ 'now' | date: '%Y' }}
             <a class="link-underline" href="{{ routes.root_url }}">{{ shop.name }}</a>.
             <span>{{ powered_by_link }}</span> -->  
-             Copyright @ 2025 Power Genius GmbH alle Rechte vorbehalten.
+             Copyright @ 2026 Power Genius GmbH alle Rechte vorbehalten.
           </p>
 
           {%- if shop.features.follow_on_shop? and section.settings.enable_follow_on_shop -%}
@@ -614,9 +631,9 @@
           {% if section.settings.footer_bottom_menu != blank %}
             <ul class="flex linklist linklist--horizontal list-unstyled">
               {% for link in linklists[section.settings.footer_bottom_menu].links %}
-                <li>
+                {% comment %} <li>
                   <a href="{{ link.url }}">{{ link.title | escape }}</a>
-                </li>
+                </li> {% endcomment %}
               {% endfor %}
             </ul>
           {% endif %}

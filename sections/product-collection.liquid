@@ -39,7 +39,7 @@
    #shopify-section-{{ section.id }} .home-size{ line-height:24px;font-size: 18px;}
    #shopify-section-{{ section.id }} .kv-size{ line-height:29px;font-size: 24px;}
    #shopify-section-{{ section.id }} .btn--black{ background:#212121;color:#fff}
-   #shopify-section-{{ section.id }} .cyber-monday{ background:transparent;border-color:#E98300}
+   #shopify-section-{{ section.id }} .cyber-monday{ background:transparent;border-color:#DF4763}
    #shopify-section-{{ section.id }} .describe-min-height{min-height: {{ section.settings.sale-min_height }}px;}
  @media (max-width: 1140px) {
  {% comment %} .product-collection-box .custom-product-button{min-width:160px;max-width:160px} {% endcomment %}
@@ -62,6 +62,7 @@
   margin-bottom: 0px;
 }
  @media (max-width: 768px) {
+  #shopify-section-{{ section.id }} .product-collection-box .custom-product-describe .icon-vector{vertical-align: top;padding-top:4px;width:13px;}
   .section-product-collection .slick-dotted .slick-dots{margin-top:1rem;gap:0px}
    #shopify-section-{{ section.id }} .product-collection{ padding-top: {{ section.settings.padding_top | divided_by: 2  }}px;padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;}
    #shopify-section-{{ section.id }} .product-collection .title{ font-size: 28px;}
@@ -73,7 +74,7 @@
   #shopify-section-{{ section.id }} .product-collection-box .custom-product-button{min-width:100%;max-width:240px;min-height:{{ section.settings.mobile_button_height }}px;}
   #shopify-section-{{ section.id }} .product-collection-box .item{position:relative;height:unset;border-radius: 20px;background:{{section.settings.content_color}};padding-bottom: 34px;}
   #shopify-section-{{ section.id }} .product-collection-box .custom-product-title,.product-collection-box .custom-product-price{font-size:16px;}
-  #shopify-section-{{ section.id }} .product-collection-box .custom-product-describe{max-height:135px;line-height:19px}
+  #shopify-section-{{ section.id }} .product-collection-box .custom-product-describe{max-height:135px;line-height:15px}
   #shopify-section-{{ section.id }} .product-collection-box .custom-product-title{max-height:48px;min-height:48px;}
   .slick-dots li.slick-active button:before,.slick-dots li button:before{display:none}
   #shopify-section-{{ section.id }} .product-collection-box .describe-min-height{min-height: {{ section.settings.mob-sale-min_height }}!important;}

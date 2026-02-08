@@ -24,8 +24,8 @@
           "type": "slide",
           "settings": {
             "color_scheme": "",
-            "background": "shopify://shop_images/bes-kv-pc_78dfb769-0acb-4123-9032-32b300928a57.jpg",
-            "background_mobile": "shopify://shop_images/bes-kv-mob.jpg",
+            "background": "shopify://shop_images/bes-kv-pc-22.jpg",
+            "background_mobile": "shopify://shop_images/bes-kv-mob-22.jpg",
             "brand_logo_image1": "shopify://shop_images/bes-kv-icon1.png",
             "brand_logo_image2": "shopify://shop_images/bes-kv-icon2.jpg",
             "brand_logo_image3": "shopify://shop_images/bes-kv-icon3.png",
@@ -37,21 +37,21 @@
             "content_position": "middle-center",
             "content_position_mobile": "middle-center",
             "text_alignment": "center",
-            "title": "Willst du eigene Power produzieren und jederzeit nutzen?<strong> Indevolt Balkonkraftwerk mit Speicher</strong>",
+            "title": "Power of Your Own",
             "title_span": "",
             "title_span_color": "#ffa81d",
             "title_span_bg": "",
             "title_span_size": "",
             "heading_size": "hd1",
-            "title_color": "#ffffff",
-            "subheading": "Günstiger. Sicherer. Langlebiger.",
-            "subheading_color": "#ffffff",
+            "title_color": "#000000",
+            "subheading": "Flexibler. Sicherer. Langlebiger.",
+            "subheading_color": "#000000",
             "subheading_mb": "",
-            "description": "<p>Cycboost Tech  l  Open API  l  2400W AC-Kopplung</p>",
+            "description": "<p>CycBoost Tech  l  Open API  l  2400W AC-Kopplung</p>",
             "description_size": "text-base",
             "description_mt": "",
             "description_mt_mob": "",
-            "description_color": "#ffffff",
+            "description_color": "#000000",
             "date": "",
             "date_size": "text-base",
             "date_color": "#ffffff",
@@ -85,9 +85,190 @@
         "accessibility_info": "Slideshow about our brand"
       }
     },
+    "review_list_Gm9hyr": {
+      "type": "review-list",
+      "blocks": {
+        "card_aEEdbL": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/review-12-pc.jpg",
+            "image_mobile": "shopify://shop_images/review-12-pc.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Geniales Balkonkraftwerk mit toller SoftwareHabe bereits die 2. in Vollkonfiguration bestellt weil das Teil echt was kann. Ideal für Dynamische Tarife und Balkonkraft PV. Auch Clustern bis 30kwh möglich. Bei dem Preis echt unschlagbar. Klare Empfehlung.",
+            "name": "Wilhelm Bauer"
+          }
+        },
+        "card_B8VpTn": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/review-11-pc.jpg",
+            "image_mobile": "shopify://shop_images/review-11-pc.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Nach langer Suche nach einem geeigneten PV Akku bin ich über die SF2000 gestolpert. Die flexiblen Erweiterungs- und Anschlußmöglichkeiten, technischen Daten und vor allem die Möglichkeit der lokalen Steuerung auch ohne Cloud haben mich überzeugt. Der Speicher ist noch nicht so bekannt, aber ich würde ihn sofort wieder kaufen. Support und Feedback bei Fragen ist Top.",
+            "name": "Rainer"
+          }
+        },
+        "card_NP9biV": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/index-review1-pc.jpg",
+            "image_mobile": "shopify://shop_images/index-review1-pc.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Ich habe den SolidFlex 2000+SFA1800 mit 4 Modulen und SMD3. Funktioniert erstaunlich gut. Akkuladung, Einspeisung nur für Eigenverbrauch. Bin super zufrieden.",
+            "name": "Christian H."
+          }
+        },
+        "card_cLVhDW": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/home-Kunden-img1.jpg",
+            "image_mobile": "shopify://shop_images/home-Kunden-img1.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Der Indevolt SolidFlex 2000 Speicher für Balkonkraftwerke oder kleine PV-Anlagen punktet durch einfache Plug-and-Playinstallation und unterbrechungsfreier Notstromversorgung. Außerdem lässt er sich auf bis zu 10,8 kWh erweitern und sogar ins Smart Home einbinden.",
+            "name": "Mariella W."
+          }
+        },
+        "card_6KadAz": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/index-review2-pc.jpg",
+            "image_mobile": "shopify://shop_images/index-review2-pc.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Material sehr hochwertig und schwer, Einrichtung Shelly/Ecotracker/Gerät selber sehr gut und einfach, das Netzkabel ist sehr massiv.",
+            "name": "Fettarme Hmilch"
+          }
+        },
+        "card_dpULJV": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/index-review3-pc.jpg",
+            "image_mobile": "shopify://shop_images/index-review3-pc.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Mit einer Kapazität von 1600Wh deckt es super gut unseren Strombedarf nachts. Ich kann es echt empfehlen!",
+            "name": "Hans Müller"
+          }
+        },
+        "card_UUYNU3": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/index-review4-pc.jpg",
+            "image_mobile": "shopify://shop_images/index-review4-pc.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Leicht und perfekt für den Campinggebrauch. Die 1600Wh Kapazität sind klasse! Ich kann mehrere Geräte gleichzeitig nutzen.",
+            "name": "Michail Cohen"
+          }
+        },
+        "card_7Kcj4r": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/index-review5-pc.jpg",
+            "image_mobile": "shopify://shop_images/index-review5-pc.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Morgenenergie. Die heutige Wahl: Indevolt BK1600 – ein wahrer Erbe jeder Sonnenstrahlung.",
+            "name": "Leon Fischer"
+          }
+        },
+        "card_exYtry": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/index-review7-pc.jpg",
+            "image_mobile": "shopify://shop_images/index-review7-pc.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Die Indevolt-Lösung gibt mir wirklich Ruhe: Das System erkennt Stromausfälle in weniger als 10 ms und schützt meine Familienfotos sofort auf meinem PC oder NAS. Absolute Empfehlung für jede Familie, die ihre Erinnerungen sichern will!",
+            "name": "Lukas Müller"
+          }
+        },
+        "card_i6mKUR": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/index-review8-pc.jpg",
+            "image_mobile": "shopify://shop_images/index-review8-pc.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Im Off-Grid-Modus versorgt der BK1600 Ultra Haushaltslasten zuverlässig mit Strom, sodass Waschmaschine und andere Geräte auch ohne externe Energiequelle weiterlaufen können.",
+            "name": "Martin Braun"
+          }
+        },
+        "card_LKG6qP": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/index-review9-pc.jpg",
+            "image_mobile": "shopify://shop_images/index-review9-pc.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Durch die Verwendung des BK1600 Ultra + BK1600 lässt sich die 800W Grenze durchbrechen und ihr könnt beide Speicher mit 1200W laden sofern die Solarmodule das hergeben. Zeitgleich könnt ihr eure gewonnene Energie speichern und diese Nachts nutzen! Je nach eurem Grundbedarf zb. kleiner als 200W könntet ihr mit 2 Speicher die komplette Nacht abdecken.",
+            "name": "Daniel Reichmann"
+          }
+        },
+        "card_g9ULha": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/index-review10-pc.jpg",
+            "image_mobile": "shopify://shop_images/index-review10-pc.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Der BK1600 macht grundsätzlich was er soll. Das Gerät wird weiterhin verbessert und bietet von Haus aus die Möglichkeiten die beworben werden. Zudem werden die verfügbaren Kapazitäten durch ein sinnvolles Entlademanagement nach bester Möglichkeit erhöht. Ich bin jedenfalls weiterhin sehr begeistert.",
+            "name": "Alex Miriel"
+          }
+        }
+      },
+      "block_order": [
+        "card_aEEdbL",
+        "card_B8VpTn",
+        "card_NP9biV",
+        "card_cLVhDW",
+        "card_6KadAz",
+        "card_dpULJV",
+        "card_UUYNU3",
+        "card_7Kcj4r",
+        "card_exYtry",
+        "card_i6mKUR",
+        "card_LKG6qP",
+        "card_g9ULha"
+      ],
+      "custom_css": [
+        "@media (max-width: 768px) {.title {text-align: left; padding-left: 20px; } .title span span {display: inline-block; }}"
+      ],
+      "name": "评价列表",
+      "settings": {
+        "title": "Echte Erfahrungen. <span>Echte Ergebnisse.</span>",
+        "padding_top": 140,
+        "padding_bottom": 140,
+        "more_title": "",
+        "more_url": "https://www.facebook.com/groups/indevoltde",
+        "logo_position": false
+      }
+    },
     "product_collection_bes_FPdQDq": {
       "type": "product-collection-bes",
       "blocks": {
+        "card_Dk3NYH": {
+          "type": "card",
+          "settings": {
+            "product_item": "indevolt-mikrowechselrichter",
+            "custom_image": "shopify://shop_images/bes-user-8-pc.jpg",
+            "mobile_image": "shopify://shop_images/bes-user-8-pc.jpg",
+            "hotsale": "",
+            "custom_title": "Mariella W.",
+            "custom_describe": "Der Indevolt SolidFlex 2000 Speicher für Balkonkraftwerke oder kleine PV-Anlagen punktet durch einfache Plug-and-Playinstallation und unterbrechungsfreier Notstromversorgung. Außerdem lässt er sich auf bis zu 10,8 kWh erweitern und sogar ins Smart Home einbinden.",
+            "price": "",
+            "original": "",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
+        "card_AX7qUw": {
+          "type": "card",
+          "settings": {
+            "product_item": "indevolt-mikrowechselrichter",
+            "custom_image": "shopify://shop_images/bes-user-7-pc.jpg",
+            "mobile_image": "shopify://shop_images/bes-user-7-pc.jpg",
+            "hotsale": "",
+            "custom_title": "Fettarme Hmilch",
+            "custom_describe": "Material sehr hochwertig und schwer, Einrichtung Shelly/Ecotracker/Gerät selber sehr gut und einfach, das Netzkabel ist sehr massiv.",
+            "price": "",
+            "original": "",
+            "button_text": "",
+            "button_link": ""
+          }
+        },
         "card_xaWV4n": {
           "type": "card",
           "settings": {
@@ -180,6 +361,8 @@
         }
       },
       "block_order": [
+        "card_Dk3NYH",
+        "card_AX7qUw",
         "card_xaWV4n",
         "card_cU9WrJ",
         "card_Qk4JBe",
@@ -187,6 +370,7 @@
         "card_XGmCmp",
         "card_p6mtYV"
       ],
+      "disabled": true,
       "custom_css": [
         "@media (max-width: 768px) {.product-collection .title {text-align: left; padding-left: 15px; } .product-collection .title span {display: inline-block; }}"
       ],
@@ -262,6 +446,102 @@
         "padding_bottom": 0,
         "show_section_divider": false,
         "divider_width": "fixed"
+      }
+    },
+    "slider_center_bes_twYD7t": {
+      "type": "slider-center-bes",
+      "blocks": {
+        "card_QCKxYA": {
+          "type": "card",
+          "settings": {
+            "title": "Null Verlust bei gemischten Akkus",
+            "video": "",
+            "custom_image": "shopify://shop_images/bes-tip1-pc.jpg",
+            "mobile_image": "shopify://shop_images/bes-tip1-mob.jpg",
+            "slib_url": "",
+            "slib_url_open": "0",
+            "subheading": "CycBoost-Tech",
+            "description": "Unsere exclusive 3-in-1 CycBoost Technologie mit Großzellen, Ausgleichsschaltung und Batterieoptimierer behebt Batterie-Ungleichgewichte. Das Ergebnis: Maximale Speicherkapazität, längere Lebensdauer und höhere Rendite."
+          }
+        },
+        "card_a4cXdE": {
+          "type": "card",
+          "settings": {
+            "title": "Null Verlust bei gemischten Akkus",
+            "video": "https://cdn.shopify.com/videos/c/vp/bfbb909bc0fc4effbb3d74ee0299f862/bfbb909bc0fc4effbb3d74ee0299f862.HD-720p-4.5Mbps-54950683.mp4",
+            "slib_url": "",
+            "slib_url_open": "0",
+            "subheading": "Große Akkuzellen",
+            "description": "Weniger Akkuzellen reduzieren das Risiko eines Flaschenhals-Effekts. Das sorgt für mehr Stabilität und eine längere Lebensdauer unseres Systems."
+          }
+        },
+        "card_wqk6W9": {
+          "type": "card",
+          "settings": {
+            "title": "Null Verlust bei gemischten Akkus",
+            "video": "https://cdn.shopify.com/videos/c/o/v/ecd79e8ab55c46a0996f4db2d5f31e5f.mp4",
+            "slib_url": "",
+            "slib_url_open": "0",
+            "subheading": "Batterieoptimierer",
+            "description": "Wie ein „eigenes Büro“ für jedes Akkupack: Unser innovativer Batterieoptimierer ermöglicht simultanes und unabhängiges Laden und Entladen – damit sind „Flaschenhals-Effekte“ endgültig vorbei. So erhalten Sie nicht nur mehr nutzbare Energie und eine längere Lebensdauer, sondern auch maximale Flexibilität: Akkus von Verschiedene Kapazitäten lassen sich nach Bedarf kombinieren und arbeiten reibungslos zusammen."
+          }
+        },
+        "card_eTLrMg": {
+          "type": "card",
+          "settings": {
+            "title": "Null Verlust bei gemischten Akkus",
+            "video": "",
+            "custom_image": "shopify://shop_images/bes-tip4-130-pc.jpg",
+            "mobile_image": "shopify://shop_images/bes-tip4-130-mob-new.jpg",
+            "slib_url": "https://de.indevolt.com/pages/halbfeste-akkus",
+            "slib_url_open": "0",
+            "subheading": "Halbfeste LFP-Akkus",
+            "description": "Halbfeste Lithium-Eisenphosphat-Akkus sind die Schlüsseltechnologie für die nächste Akku-Generation. Ihre innovative Elektrolyt-Kombination sorgt für mehr Hitzebeständigkeit, Robustheit und Sicherheit – selbst unter Extrembedingungen."
+          }
+        },
+        "card_JXUHGx": {
+          "type": "card",
+          "settings": {
+            "title": "Null Verlust bei gemischten Akkus",
+            "video": "",
+            "custom_image": "shopify://shop_images/bes-tip5-pc-129.jpg",
+            "mobile_image": "shopify://shop_images/bes-tip5-mob-129_b1c9262a-ad9e-428f-a6f6-a2745fcd1e59.jpg",
+            "slib_url": "https://github.com/INDEVOLT/homeassistant-indevolt/issues",
+            "slib_url_open": "1",
+            "subheading": "Smart-Home-Integration",
+            "description": "Das SolidFlex 2000 bietet eine lokale Open API und unterstützt Standardprotokolle wie HTTP. Perfekt kompatibel mit beliebten Smart-Home-Systemen – z. B. Home Assistant – für eine mühelose Vernetzung ohne Cloud-Zwang."
+          }
+        },
+        "card_UUgipJ": {
+          "type": "card",
+          "settings": {
+            "title": "Null Verlust bei gemischten Akkus",
+            "video": "",
+            "custom_image": "shopify://shop_images/bes-tip6-pc-129.jpg",
+            "mobile_image": "shopify://shop_images/bes-tip6-mob-129.jpg",
+            "slib_url": "",
+            "slib_url_open": "0",
+            "subheading": "Konnektivität & Steuerung",
+            "description": "Der SolidFlex 2000 bietet umfassende Konnektivität via Bluetooth, Wi-Fi und LoRa. Für kabelgebundenes LAN lässt sich das Gerät flexibel über ein optionales Kommunikationsmodul erweitern (Kommunikationsmodul separat erhältlich – selbst austauschbar). Die intelligente lokale Steuerung macht dir unabhängig von der Cloud und garantiert einen stabilen, sicheren Betrieb für jedes Szenario."
+          }
+        }
+      },
+      "block_order": [
+        "card_QCKxYA",
+        "card_a4cXdE",
+        "card_wqk6W9",
+        "card_eTLrMg",
+        "card_JXUHGx",
+        "card_UUgipJ"
+      ],
+      "name": "阳台储能品牌列表",
+      "settings": {
+        "title": "Bekannt aus",
+        "tip_title": "Bekannt aus",
+        "tip_popup_title": "Was ist der „Fass-Effekt“?",
+        "tip_popup_content": "<p>Der „Fass-Effekt“ tritt auf, wenn die Leistung des schwächsten Akkus die Gesamteffizienz des Systems beeinträchtigt. Sobald ein Akku beim Laden voll ist, stoppt der Ladevorgang, wodurch die anderen Akkus nicht vollständig aufgeladen werden. Wenn dieser erschöpft ist, hören alle Akkus mit der Entladung auf.</p>",
+        "padding_top": 140,
+        "padding_bottom": 70
       }
     },
     "bes_scence_tabs_8NDJW7": {
@@ -350,6 +630,7 @@
         "tab_E6a4gK",
         "tab_MkKVpw"
       ],
+      "disabled": true,
       "name": "阳台专题页-scence-tabs",
       "settings": {
         "ids": "",
@@ -385,30 +666,31 @@
             "button_label": "Button label",
             "button_link": "",
             "button_style": "btn--primary",
-            "custom_image1": "shopify://shop_images/tab1-1_d9b250ae-7893-4f78-b55e-65d30b07d2c2.png",
-            "mobile_image1": "shopify://shop_images/tab1-1_d9b250ae-7893-4f78-b55e-65d30b07d2c2.png",
+            "sale_height_diy": "h100px",
+            "custom_image1": "shopify://shop_images/home-pro-2-0203.png",
+            "mobile_image1": "shopify://shop_images/home-pro-2-0203.png",
             "hotsale1": "Hot Sale",
             "custom_title1": "SolidFlex 2000 + SFA1800",
             "custom_describe1": "2400W AC-Kopplung \\nDas sicherste System\\nExklusive CycBoost‑Technologie",
-            "price1": "1.048,00€",
+            "price1": "1.098,00€",
             "original1": "1.898,00€",
             "button_text1": "Mehr erfahren",
             "button_link1": "https://de.indevolt.com/products/solidflex-2000-balkonkraftwerk-mit-speicher?variant=43629440696419&battery=43859125076067",
-            "custom_image2": "shopify://shop_images/tab1-2_f74cca49-758a-4f6c-8769-d00735b65c71.png",
-            "mobile_image2": "shopify://shop_images/tab1-2_f74cca49-758a-4f6c-8769-d00735b65c71.png",
+            "custom_image2": "shopify://shop_images/sale-pro-1-2-0203.png",
+            "mobile_image2": "shopify://shop_images/sale-pro-1-2-0203.png",
             "hotsale2": "",
             "custom_title2": "SolidFlex 2000 + SFA1800 + 445W Bifaziale Solarpanel*4",
             "custom_describe2": "In nur 1,87 Jahren amortisiert \\nProduziert ca. 7 kWh täglich \\nErzeugt rund 2056 kWh pro Jahr \\nSpart bis zu 822€ im Jahr",
-            "price2": "1.428,00€",
+            "price2": "1.478,00€",
             "original2": "2.597,00€",
             "button_text2": "Mehr erfahren",
             "button_link2": "https://de.indevolt.com/products/solidflex-2000-balkonkraftwerk-mit-speicher?battery=43859125076067&solar=43859125305443",
-            "custom_image3": "shopify://shop_images/tab1-3_79286f21-482f-46ae-a392-d8e5c2d27e4d.png",
-            "mobile_image3": "shopify://shop_images/tab1-3_79286f21-482f-46ae-a392-d8e5c2d27e4d.png",
+            "custom_image3": "shopify://shop_images/sale-pro-1-3-0203.png",
+            "mobile_image3": "shopify://shop_images/sale-pro-1-3-0203.png",
             "hotsale3": "",
             "custom_title3": "SolidFlex 2000 + SFA1800*2 + 500W Bifaziale Solarpanel*4",
             "custom_describe3": "In nur 2,6 Jahren amortisiert \\nProduziert ca. 8 kWh täglich \\nErzeugt rund 2336 kWh pro Jahr \\nSpart bis zu 934€ im Jahr",
-            "price3": "1.922,00€",
+            "price3": "2.047,00€",
             "original3": "3.395,00€",
             "button_text3": "Mehr erfahren",
             "button_link3": "https://de.indevolt.com/products/solidflex-2000-balkonkraftwerk-mit-speicher?battery=43859125108835&solar=43859125567587"
@@ -429,30 +711,31 @@
             "button_label": "Button label",
             "button_link": "",
             "button_style": "btn--primary",
-            "custom_image1": "shopify://shop_images/tab2-1.png",
-            "mobile_image1": "shopify://shop_images/tab2-1.png",
+            "sale_height_diy": "75px-height",
+            "custom_image1": "shopify://shop_images/sale-pro-2-1-0203.png",
+            "mobile_image1": "shopify://shop_images/sale-pro-2-1-0203.png",
             "hotsale1": "",
             "custom_title1": "SolidFlex 2000 ECO + SFA1800",
-            "custom_describe1": "",
-            "price1": "998,00€",
+            "custom_describe1": "Energiespeicher für deine PV-Anlage \\nMaximale Sicherheit mit halbfesten Akkus\\n8000 Zyklen – garantiert durch CycBoost Tech",
+            "price1": "1.048,00€",
             "original1": "1.898,00€",
             "button_text1": "Mehr erfahren",
             "button_link1": "https://de.indevolt.com/products/indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus?variant=43817398173795&battery=43859125076067",
-            "custom_image2": "shopify://shop_images/tab2-2.png",
-            "mobile_image2": "shopify://shop_images/tab2-2.png",
+            "custom_image2": "shopify://shop_images/sale-pro-2-2-0203.png",
+            "mobile_image2": "shopify://shop_images/sale-pro-2-2-0203.png",
             "hotsale2": "",
             "custom_title2": "SolidFlex 2000 ECO + SFA1800*2",
-            "custom_describe2": "",
-            "price2": "1.397,00€",
+            "custom_describe2": "Energiespeicher für deine PV-Anlage \\nMaximale Sicherheit mit halbfesten Akkus\\n8000 Zyklen – garantiert durch CycBoost Tech",
+            "price2": "1.497,00€",
             "original2": "2.597,00€",
             "button_text2": "Mehr erfahren",
             "button_link2": "https://de.indevolt.com/products/indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus?variant=43817398173795&battery=43859125108835",
-            "custom_image3": "shopify://shop_images/tab2-3.png",
-            "mobile_image3": "shopify://shop_images/tab2-3.png",
+            "custom_image3": "shopify://shop_images/sale-pro-2-3-0203.png",
+            "mobile_image3": "shopify://shop_images/sale-pro-2-3-0203.png",
             "hotsale3": "",
             "custom_title3": "SolidFlex 2000 ECO + SFA1800*3",
-            "custom_describe3": "",
-            "price3": "1.796,00€",
+            "custom_describe3": "Energiespeicher für deine PV-Anlage \\nMaximale Sicherheit mit halbfesten Akkus\\n8000 Zyklen – garantiert durch CycBoost Tech",
+            "price3": "1.996,00€",
             "original3": "3.296,00€",
             "button_text3": "Mehr erfahren",
             "button_link3": "https://de.indevolt.com/products/indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus?variant=43817398173795&battery=43859125141603"
@@ -473,8 +756,9 @@
             "button_label": "",
             "button_link": "",
             "button_style": "btn--primary",
-            "custom_image1": "shopify://shop_images/tab3-1.png",
-            "mobile_image1": "shopify://shop_images/tab3-1.png",
+            "sale_height_diy": "h100px",
+            "custom_image1": "shopify://shop_images/sale-pro-3-1-0203.png",
+            "mobile_image1": "shopify://shop_images/sale-pro-3-1-0203.png",
             "hotsale1": "",
             "custom_title1": "BK1600 + 445W Bifaziale Solarpanel*2",
             "custom_describe1": "In nur 1,82 Jahren amortisiert \\nProduziert ca. 3,5 kWh täglich \\nErzeugt rund 1028 kWh pro Jahr \\nSpart bis zu 411€ im Jahr",
@@ -482,8 +766,8 @@
             "original1": "1.398,00€",
             "button_text1": "Mehr erfahren",
             "button_link1": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher?variant=43351637426275&solar=43859125272675",
-            "custom_image2": "shopify://shop_images/tab3-2.png",
-            "mobile_image2": "shopify://shop_images/tab3-2.png",
+            "custom_image2": "shopify://shop_images/sale-pro-3-2-0203.png",
+            "mobile_image2": "shopify://shop_images/sale-pro-3-2-0203.png",
             "hotsale2": "",
             "custom_title2": "BK1600 Ultra + 445W Bifaziale Solarpanel*2",
             "custom_describe2": "In nur 2 Jahren amortisiert \\nProduziert ca. 3,5 kWh täglich \\nErzeugt rund 1028 kWh pro Jahr \\nSpart bis zu 411€ im Jahr",
@@ -491,8 +775,8 @@
             "original2": "1.498,00€",
             "button_text2": "Mehr erfahren",
             "button_link2": "https://de.indevolt.com/products/bk1600-ultra-balkonkraftwerk-mit-speicher?solar=43859125272675",
-            "custom_image3": "shopify://shop_images/tab3-3.png",
-            "mobile_image3": "shopify://shop_images/tab3-3.png",
+            "custom_image3": "shopify://shop_images/sale-pro-3-3-0203.png",
+            "mobile_image3": "shopify://shop_images/sale-pro-3-3-0203.png",
             "hotsale3": "",
             "custom_title3": "BK1600 Ultra*2",
             "custom_describe3": "Tagsüber Solarenergie speichern, nachts versorgen \\nBegrenzung von 800W umgehen\\nKapazität und PV-Eingänge erweitern",
@@ -516,7 +800,7 @@
         "bg_color": "#f5f5f7",
         "tab_title_color": "#000000",
         "tab_content_color": "#666",
-        "title": "Funktionen im Detail",
+        "title": "Die perfekte Energielösung für jedes Zuhause",
         "heading_size": "h4",
         "desktop_navigation_alignment": "center",
         "desktop_image_position": "left",
@@ -569,6 +853,24 @@
             "button_style": "btn--primary"
           }
         },
+        "tab_JDeJTF": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "scheme-2",
+            "navigation_title": "AC-Kopplung",
+            "video": "shopify://files/videos/2_361b83ee-d82a-430c-a755-5a04a3f40bc9.mp4",
+            "heading": "AC-Kopplung",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Das Indevolt Solarspeichersystem ist die ideale Ergänzung für deine bestehende PV-Anlage: Es ist mit 99% aller gängigen Mikrowechselrichter bis zu einer Leistung von 2400W kompatibel. Du musst nichts umbauen – einfach anschließen und intelligent speichern. Der Smart Meter erkennt automatisch überschüssigen Solarstrom und speichert die Energie. Über den Off-Grid-Port kannst du auch dein bestehendes Balkonkraftwerk anschließen. So nutzt du jede Kilowattstunde Sonne – einfach, smart und effizient.<br/><br/></p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
         "tab_rwDFF4": {
           "type": "tab",
           "settings": {
@@ -611,21 +913,145 @@
       "block_order": [
         "tab_n9bUez",
         "tab_dVFnXa",
+        "tab_JDeJTF",
         "tab_rwDFF4",
         "tab_eRzdfW"
       ],
+      "disabled": true,
       "name": "阳台专题产品tabs",
       "settings": {
         "bg_color": "#ffffff",
         "tab_title_color": "#000000",
         "tab_content_color": "#666",
-        "title": "Geschikt voor Diverse Scenario's",
+        "title": "Funktionen im Detail",
         "heading_size": "h4",
         "desktop_navigation_alignment": "center",
         "desktop_image_position": "left",
         "desktop_image_width": 100,
         "image_aspect_ratio": "adapt",
         "padding_top": 70,
+        "padding_bottom": 70,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "bes_product_tabs_0202_GjiAw7": {
+      "type": "bes-product-tabs-0202",
+      "blocks": {
+        "tab_3ftrak": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "scheme-2",
+            "navigation_title": "Plug & Play",
+            "image": "shopify://shop_images/bes-tab1-pc.jpg",
+            "mobile_image": "shopify://shop_images/bes-tab1-mob.jpg",
+            "heading": "Einfache Installation. Sofort einsatzbereit.",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Mit Indevolt brauchst du keinen Elektriker. Die Installation ist unkompliziert im DIY-Stil – schließe einfach das AC-Kabel des Geräts an eine herkömmliche Steckdose zu Hause an und genieße eine einfache Handhabung ohne spezielles Fachwissen.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_GQkLWB": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "scheme-2",
+            "navigation_title": "Nulleinspeisung",
+            "image": "shopify://shop_images/bes-tab2-pc.jpg",
+            "mobile_image": "shopify://shop_images/bes-tab2-mob.jpg",
+            "heading": "Null Verschwendung",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Installiere einfach einen Stromzähler. Er erkennt sofort, wenn Energie ins Netz fließen würde – und speichert sie stattdessen in deinem Akku. So behältst du jede Kilowattstunde für dich, maximierst deine Energieeffizienz und vermeidest jede Form von Energieverschwendung.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_YXa3xe": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "scheme-2",
+            "navigation_title": "AC-Kopplung",
+            "video": "shopify://files/videos/2_361b83ee-d82a-430c-a755-5a04a3f40bc9.mp4",
+            "heading": "AC-Kopplung",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Das Indevolt Solarspeichersystem ist die ideale Ergänzung für deine bestehende PV-Anlage: Es ist mit 99% aller gängigen Mikrowechselrichter bis zu einer Leistung von 2400W kompatibel. Du musst nichts umbauen – einfach anschließen und intelligent speichern. Der Smart Meter erkennt automatisch überschüssigen Solarstrom und speichert die Energie. Über den Off-Grid-Port kannst du auch dein bestehendes Balkonkraftwerk anschließen. So nutzt du jede Kilowattstunde Sonne – einfach, smart und effizient.</p><p></p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_i4NmBc": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "",
+            "navigation_title": "Flexible Erweiterung",
+            "image": "shopify://shop_images/bes-tab3-pc.jpg",
+            "mobile_image": "shopify://shop_images/bes-tab3-mob.jpg",
+            "heading": "Einfache Erweiterung",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Staple einfach weitere Akkupacks auf deinen SolidFlex 2000 und steigere so mühelos die Kapazität. Das System ermöglicht eine nahtlose Dreifach-Parallelerweiterung – perfekt für Haushalte mit Ein- oder Dreiphasenanschluss.Nach der Erweiterung erreichst du beeindruckende 7200W Gesamtsystemleistung mit 7200W PV-Eingang und bis zu 32,4 kWh Speicherkapazität. Die ideale Lösung für höchste Leistungsanforderungen.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_rJJcxj": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "",
+            "navigation_title": "Notstromversorgung",
+            "image": "shopify://shop_images/bes-tab4-pc.jpg",
+            "mobile_image": "shopify://shop_images/bes-tab4-mob.jpg",
+            "heading": "Max. 2400W Notstromversorgung",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Mit der SolidFlex 2000 ist dein Zuhause bei einem Stromausfall in weniger als einer Sekunde abgesichert. Das System schaltet sich über die Off-Grid-Steckdose blitzschnell in nur 10 ms automatisch zu und versorgt deine wichtigsten Geräte nahtlos weiter. Die Leistung passt sich genau deinen Bedürfnissen an: Starte mit 1000W, erweitere auf 2000W mit einem zusätzlichen Akku (SFA1800) und erreiche mit zwei Akkus bis zu 2400W – genug Kraft, um Kühlschrank, Beleuchtung und essentielle Haushaltsgeräte am Laufen zu halten. </p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "tab_3ftrak",
+        "tab_GQkLWB",
+        "tab_YXa3xe",
+        "tab_i4NmBc",
+        "tab_rJJcxj"
+      ],
+      "name": "阳台专题产品tabsPC+移动",
+      "settings": {
+        "bg_color": "#ffffff",
+        "tab_title_color": "#000000",
+        "tab_content_color": "#666",
+        "title": "Funktionen im Detail",
+        "heading_size": "h4",
+        "desktop_navigation_alignment": "center",
+        "desktop_image_position": "left",
+        "desktop_image_width": 100,
+        "image_aspect_ratio": "adapt",
+        "padding_top": 140,
         "padding_bottom": 70,
         "show_section_divider": false,
         "divider_width": "fixed"
@@ -1244,29 +1670,44 @@
       "settings": {
         "title": "Getestet & empfohlen von",
         "padding_top": 70,
-        "padding_bottom": 0,
+        "padding_bottom": 70,
         "custom_mobile_padding_top": 100,
         "logo_title": "",
         "logo_position": false,
         "logo_pc_image": "shopify://shop_images/LOGO_683abf5c-2c78-4ae6-9835-af6ac7abd327.png",
         "logo_mobile_image": "shopify://shop_images/1219-mob.png"
       }
+    },
+    "custom_liquid_GHreeW": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .haft-div{\n  \t  padding-top:100px;\n  \t  padding-bottom:100px;\n\t  max-width:1280px;\n\t  font-size:16px;\n  }\n\n @media (max-width: 768px) {\n\t  .haft-div{\n\t  \t\t padding-top:50px;\n\t  \t\tpadding-bottom:50px;\n\t  \t\tmax-width:1280px;\n\t  \t\tfont-size:14px;\n\t  }\n }\n</style>\n<div style=\"background-color:#000000;padding:15px; display: flex;\n  justify-content: center;\n  align-items: center;\">\n<div data-page-id=\"Dm5hdIPgEokbCOxNAt2c2IiTnMc\" data-lark-html-role=\"root\" data-docx-has-block-data=\"false\">\n\n<div   class=\"haft-div\">\n\n<div data-zone-id=\"0\" data-line-index=\"0\" data-line=\"true\">\n<span style=\"color: #8A8A8A;text-align: center;\">\n<h3 style=\"color:#8A8A8A;\">Haftungsausschluss</h3>\n</span>\n</div>\n\n\n<div data-zone-id=\"0\" data-line-index=\"1\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"2\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Stromkostenersparnis, CO₂-Einsparungen: Bis zu 1.046 € pro Jahr und 1996 kg CO₂.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"3\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>1. Stromerzeugung:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"4\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Die Berechnung basiert auf der folgenden Produktkonfiguration: SolidFlex 2000 (1792 Wh) + 4 x 500W-Solarmodule (2000W) + 5 Erweiterungsakkus (8960 Wh). Die jährlichen Sonnenstunden in Deutschland betragen 1160 Stunden, und die jährliche Stromproduktion beträgt: 1160 * 2000 = 2320 kWh. Die jährliche Speicherkapazität beträgt: 10,75 x 365 = 3924 kWh.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"5\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>2. Berechnungsannahmen:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"6\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Der Eigenverbrauchsanteil beträgt 85%<a href=\"https://solar.htw-berlin.de/rechner/unabhaengigkeitsrechner\"  style=\"color:gray\" target=\"_blank\" rel=\"nofollow\">(Quelle);</a> </span></div>\n<div data-zone-id=\"0\" data-line-index=\"7\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Fester Strompreis: 0,40 €/kWh;</span></div>\n<div data-zone-id=\"0\" data-line-index=\"8\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Preisdifferenz zwischen Spitzen- und Nebenzeiten: 0,132 €/kWh.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"9\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>3. CO₂-Reduktion:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"10\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Jede 1 kWh Solarstrom reduziert die CO₂-Emissionen um ungefähr 0,997 kg.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"11\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>4. Haftungsausschluss:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"12\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Alle Daten basieren auf idealen Testbedingungen; tatsächliche Ergebnisse können je nach individuellen Umständen variieren.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"13\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"14\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Berechnungsdetails:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"15\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Jährliche Stromkostenersparnis</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"16\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= Ersparnisse aus Eigenverbrauch + Ersparnisse aus KI-optimiertem Laden</span></div>\n<div data-zone-id=\"0\" data-line-index=\"17\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= 2320 kWh × 85% × 0,40 € + (3924 kWh − 2320 kWh × 85%) × 0,132 € </span></div>\n<div data-zone-id=\"0\" data-line-index=\"18\" data-line=\"true\"><span style=\"color: #8A8A8A;\">≈ 1.046,46 €</span></div>\n<div data-zone-id=\"0\" data-line-index=\"19\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Geschätzte CO₂-Emissionsreduktion</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"20\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= 2320 kWh × 85% × 0,997</span></div>\n<div data-zone-id=\"0\" data-line-index=\"21\" data-line=\"true\"><span style=\"color: #8A8A8A;\">≈ 1996 kg</span></div>\n<div data-zone-id=\"0\" data-line-index=\"22\" data-line=\"true\"><br></div>\n \n</div>\n\n</div>",
+        "container": "full",
+        "color_scheme": "",
+        "padding_top": 140,
+        "padding_bottom": 0
+      }
     }
   },
   "order": [
     "main",
     "bes_kv_home_LYHgec",
+    "review_list_Gm9hyr",
     "product_collection_bes_FPdQDq",
     "video_hero_bes_Ur3hAV",
+    "slider_center_bes_twYD7t",
     "bes_scence_tabs_8NDJW7",
     "bes_product_tabs_new_XQpHkp",
     "bes_product_tabs_xdrz6L",
+    "bes_product_tabs_0202_GjiAw7",
     "rich_text_image_bes_VKnr3W",
     "bes_product_accordion_JGbB7k",
     "collapsible_tabs_cn38Yt",
     "fullscreen_slider_bDGAKA",
     "image_with_text_overlay_RjzXaB",
     "bes_imageurl_tabs_YbFKdh",
-    "brand_list_3LMwdX"
+    "brand_list_3LMwdX",
+    "custom_liquid_GHreeW"
   ]
 }

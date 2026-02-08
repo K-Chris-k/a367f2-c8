@@ -27,7 +27,7 @@
                 border: none;
                 border-bottom: 2px solid transparent;
                 cursor: pointer;
-                font-size: 16px;
+                font-size: 18px;
             }
             
            .section-{{ section.id }} .tab-trigger.active {
@@ -39,8 +39,15 @@
            .section-{{ section.id }} .tabs-content .tab-panel {
                 display: none;
                 padding: 20px 0 0 0;
-                animation: fadeIn 0.5s;
+                {% comment %} animation: fadeIn 0.5s; {% endcomment %}
+                   opacity: 0;
+                transition: opacity 0.5s ease-in-out;
             }
+
+         .section-{{ section.id }} .tabs-content .tab-panel.active {
+              display: block;
+              opacity: 1;
+          }
             
           .section-{{ section.id }}  .tabs-content .tab-panel.active {
                 display: block;
@@ -54,7 +61,12 @@
 
         /* 移动端样式 */
         @media (max-width: 768px) {
-          .section-{{ section.id }} .h2-title {line-height:34px;font-size: 28px;text-align:left;padding-bottom:15px;}
+
+
+          .section-{{ section.id }} .accordion-item{
+            border-bottom: 1px solid #ddd;
+          }
+          .section-{{ section.id }} .h2-title {line-height:34px;font-size: 28px;text-align:left;padding-bottom:30px;}
 
            .section-{{ section.id }} .tabs-header {
                 display: none;
@@ -82,7 +94,7 @@
                padding: 30px 0px;
                 background: #ffffff;
                 border: none;
-                border-bottom: 1px solid #ddd;
+                {% comment %} border-bottom: 1px solid #ddd; {% endcomment %}
                 text-align: left;
                 display: flex;
                 justify-content: space-between;
@@ -112,7 +124,7 @@
             }
 
           .section-{{ section.id }}   .accordion-trigger.active span {
-               border-bottom: 2px solid #3250C3; /* 2像素宽、实线、蓝色 */
+               {% comment %} border-bottom: 2px solid #3250C3; /* 2像素宽、实线、蓝色 */ {% endcomment %}
             }
 
      
@@ -184,7 +196,7 @@
             }
             
           .section-{{ section.id }}  .accordion-panel.active {
-                padding: 20px 0;
+                {% comment %} padding: 20px 0; {% endcomment %}
                 max-height: 1000px;
             }
         }
@@ -201,6 +213,10 @@
 
         /* PC端样式 */
 @media (min-width: 769px) {
+
+  .section-{{ section.id }} .collage-tab__video-element{
+    max-height:600px;
+  }
   .section-{{ section.id }}  .image-with-overlay {
         position: relative;
         display: block;
@@ -221,6 +237,8 @@
         max-width: 1150px; /* 控制文字最大宽度 */
         z-index: 2;    /* 确保文字在图片上方 */
     }
+
+ 
     
    .section-{{ section.id }} .image-with-overlay .text-overlay h3 {
         margin-top: 0;
@@ -253,7 +271,19 @@
         padding: 15px 0;  /* 添加适当间距 */
         max-width: 100%;
     }
+
+    .section-{{ section.id }} video{
+        object-fit: cover;
+    width: 100%;
+    height: 100%;
+    }
 }
+
+
+
+ 
+
+
     </style>
 
 <div
@@ -293,42 +323,59 @@
               <div class="image-with-overlay">
                    
               <div class="collage-tab__image media-wrapper">
-                  {% if block.settings.image != blank %}
-                  <picture>
-                    <!-- 移动端图片 -->
-                    <source
-                      media="(max-width: 749px)"
-                      srcset="
-                        {{ block.settings.mobile_image | img_url: '800x' }} 1x,
-                        {{ block.settings.mobile_image | img_url: '1600x' }} 2x
-                      "
-                    >
+                 {% if block.settings.video != blank %}
+                   {{ block.settings.video | video_tag: 
+                    class: 'collage-tab__video-element', 
+                    autoplay: true,
+                    loop: true,
+                    muted: true,
+                    controls: false,
+                    playsinline: true,
+                    preload: 'metadata'
+                  }}
+          
+                   {% else %}
+                        {% if block.settings.image != blank %}
+                              <picture>
+                                <!-- 移动端图片 -->
+                                <source
+                                  media="(max-width: 749px)"
+                                  srcset="
+                                    {{ block.settings.mobile_image | img_url: '800x' }} 1x,
+                                    {{ block.settings.mobile_image | img_url: '1600x' }} 2x
+                                  "
+                                >
 
-                    <!-- 桌面端图片 -->
-                    <source
-                      media="(min-width: 750px)"
-                      srcset="
-                        {{ block.settings.image | img_url: '1200x' }} 1x,
-                        {{ block.settings.image | img_url: '2400x' }} 2x
-                      "
-                    >
+                                <!-- 桌面端图片 -->
+                                <source
+                                  media="(min-width: 750px)"
+                                  srcset="
+                                    {{ block.settings.image | img_url: '1200x' }} 1x,
+                                    {{ block.settings.image | img_url: '2400x' }} 2x
+                                  "
+                                >
 
-                    <!-- 默认图片 -->
-                    <img
-                      src="{{ block.settings.image | img_url: '1200x' }}"
-                      alt="{{ block.settings.title | escape }}"
-                      class="grid-image"
-                      loading="lazy"
-                      width="{{ block.settings.image.width }}"
-                      height="{{ block.settings.image.height }}"
-                    >
-                  </picture>
-                {% else %}
-                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-                {% endif %}
+                                <!-- 默认图片 -->
+                                <img
+                                  src="{{ block.settings.image | img_url: '1200x' }}"
+                                  alt="{{ block.settings.title | escape }}"
+                                  class="grid-image"
+                                  loading="lazy"
+                                  width="{{ block.settings.image.width }}"
+                                  height="{{ block.settings.image.height }}"
+                                >
+                              </picture>
+                            {% else %}
+                              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                         {% endif %}
+
+
+
+                  {% endif %}  
+                
               </div>
 
-                  <div class="text-overlay">
+                  <div class="text-overlay"  {% if block.settings.video != blank %} style="background: rgba(0, 0, 0, 0.2);" {% endif %}  >
                       <h3>{{block.settings.heading}}</h3>
                       <p>{{block.settings.description}}</p>
                   </div>
@@ -354,8 +401,23 @@
                       <span class="accordion-icon css-arrow"></span>
                   </button>
                   <div class="accordion-panel {% if forloop.first  %}active{% endif %}" id="mobile-tab{{ forloop.index }}">
-                      <h3>{{block.settings.heading}}</h3>
+                      {% comment %} <h3>{{block.settings.heading}}</h3> {% endcomment %}
                       <p>{{block.settings.description}}</p>
+                      {% if block.settings.video != blank %}
+                        {{ block.settings.video | video_tag: 
+                            class: 'collage-tab__video-element', 
+                            autoplay: true,
+                            loop: true,
+                            muted: true,
+                            controls: false,
+                            playsinline: true,
+                            preload: 'metadata'
+                          }}
+
+
+
+                      {% else %}
+
                         <picture>
                     <!-- 移动端图片 -->
                     <source
@@ -385,6 +447,8 @@
                       height="{{ block.settings.image.height }}"
                     >
                   </picture>
+
+                  {% endif %}  
                   </div>
               </div>
             {%- endfor -%}
@@ -394,6 +458,7 @@
 </div>
     <script>
         class ResponsiveTabs {
+
             constructor() {
                 this.init();
                 this.bindEvents();
@@ -407,7 +472,7 @@
 
             bindEvents() {
                 // PC端标签页事件
-                document.querySelectorAll('.tab-trigger').forEach(trigger => {
+                document.querySelectorAll('.section-{{ section.id }} .tab-trigger').forEach(trigger => {
                     trigger.addEventListener('click', (e) => {
                         if (this.isMobile) return;
                         this.switchTab(e.target.dataset.target);
@@ -415,63 +480,63 @@
                 });
 
                 // 移动端手风琴事件
-                document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+                document.querySelectorAll('.section-{{ section.id }} .accordion-trigger').forEach(trigger => {
                     trigger.addEventListener('click', (e) => {
                         if (!this.isMobile) return;
-                        this.toggleAccordion(e.target.closest('.accordion-trigger'));
+                        this.toggleAccordion(e.target.closest('.section-{{ section.id }} .accordion-trigger'));
                     });
                 });
             }
 
             switchTab(targetId) {
                 // 更新PC端标签页
-                document.querySelectorAll('.tab-trigger').forEach(t => {
+                document.querySelectorAll('.section-{{ section.id }} .tab-trigger').forEach(t => {
                     t.classList.toggle('active', t.dataset.target === targetId);
                 });
-                document.querySelectorAll('.tab-panel').forEach(p => {
+                document.querySelectorAll('.section-{{ section.id }} .tab-panel').forEach(p => {
                     p.classList.toggle('active', p.id === targetId);
                 });
 
                 // 同步移动端
-                const accordionTrigger = document.querySelector(`.accordion-trigger[data-target="${targetId}"]`);
+                const accordionTrigger = document.querySelector(`.section-{{ section.id }} .accordion-trigger[data-target="${targetId}"]`);
                 const accordionPanel = document.getElementById(`mobile-${targetId}`);
                 
                 if (accordionTrigger && accordionPanel) {
-                    document.querySelectorAll('.accordion-panel').forEach(p => p.classList.remove('active'));
-                    document.querySelectorAll('.accordion-trigger').forEach(t => t.classList.remove('active'));
+                    document.querySelectorAll('.section-{{ section.id }} .accordion-panel').forEach(p => p.classList.remove('active'));
+                    document.querySelectorAll('.section-{{ section.id }} .accordion-trigger').forEach(t => t.classList.remove('active'));
                     
                     accordionTrigger.classList.add('active');
                     accordionPanel.classList.add('active');
                 }
             }
 
-            toggleAccordion(trigger) {
-                const targetId = trigger.dataset.target;
-                const panel = document.getElementById(`mobile-${targetId}`);
-                const isActive = trigger.classList.contains('active');
+           toggleAccordion(trigger) {
+                  const targetId = trigger.dataset.target;
+                  const panel = document.getElementById(`mobile-${targetId}`);
+                  const isActive = panel.classList.contains('active'); // 修复这里：检查panel而不是trigger
 
-                if (isActive) {
-                    trigger.classList.remove('active');
-                    panel.classList.remove('active');
-                } else {
-                    // 关闭其他
-                    document.querySelectorAll('.accordion-panel').forEach(p => p.classList.remove('active'));
-                    document.querySelectorAll('.accordion-trigger').forEach(t => t.classList.remove('active'));
-                    
-                    // 打开当前
-                    trigger.classList.add('active');
-                    panel.classList.add('active');
+                  if (isActive) {
+                      // 如果已经展开，则收起当前项
+                      trigger.classList.remove('active');
+                      panel.classList.remove('active');
+                  } else {
+                      // 关闭其他所有项
+                      document.querySelectorAll('.section-{{ section.id }} .accordion-panel').forEach(p => p.classList.remove('active'));
+                      document.querySelectorAll('.section-{{ section.id }} .accordion-trigger').forEach(t => t.classList.remove('active'));
+                      
+                      // 打开当前项
+                      trigger.classList.add('active');
+                      panel.classList.add('active');
 
-                    // 同步PC端
-                    document.querySelectorAll('.tab-trigger').forEach(t => {
-                        t.classList.toggle('active', t.dataset.target === targetId);
-                    });
-                    document.querySelectorAll('.tab-panel').forEach(p => {
-                        p.classList.toggle('active', p.id === targetId);
-                    });
-                }
-            }
-
+                      // 同步PC端
+                      document.querySelectorAll('.section-{{ section.id }} .tab-trigger').forEach(t => {
+                          t.classList.toggle('active', t.dataset.target === targetId);
+                      });
+                      document.querySelectorAll('.section-{{ section.id }} .tab-panel').forEach(p => {
+                          p.classList.toggle('active', p.id === targetId);
+                      });
+                  }
+              }
             handleResize() {
                 const wasMobile = this.isMobile;
                 this.isMobile = window.innerWidth <= 768;
@@ -714,6 +779,13 @@
           "type": "image_picker",
           "label": "移动端图像",
           "id": "mobile_image"
+        },
+
+        {
+          "type": "video",
+          "id": "video",
+          "label": "上传视频文件",
+          "info": "支持MP4格式视频"
         },
         {
           "type": "inline_richtext",

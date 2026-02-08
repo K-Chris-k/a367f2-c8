@@ -18,11 +18,11 @@
       "settings": {
         "color_scheme": "scheme-inverse",
         "layout": "vertical",
-        "heading": "50€ Rabatt sichern",
+        "heading": "30€ Rabatt sichern",
         "heading_size": "h2",
         "heading_highlight_style": "none",
         "subheading": "",
-        "description": "<p>Newsletter abonnieren und 50€ sparen (ab 500€ Einkauf)</p>",
+        "description": "<p>Newsletter abonnieren und 30€ sparen (ab 300€ Einkauf)</p>",
         "text_size": "text-base",
         "alignment": "center",
         "design": "design-1",
@@ -44,8 +44,20 @@
           "settings": {
             "block_width": 25,
             "heading": "Produkte",
-            "heading_size": "h4",
+            "heading_size": "h6",
             "menu": "foooter-produkte",
+            "menu_2": "",
+            "open_default": false,
+            "show_divider": false
+          }
+        },
+        "menu_L3RgYq": {
+          "type": "menu",
+          "settings": {
+            "block_width": 25,
+            "heading": "Datenschutz & Bedingungen",
+            "heading_size": "h6",
+            "menu": "footer-private",
             "menu_2": "",
             "open_default": false,
             "show_divider": false
@@ -56,7 +68,7 @@
           "settings": {
             "block_width": 25,
             "heading": "Support",
-            "heading_size": "h4",
+            "heading_size": "h6",
             "menu": "footer-support",
             "menu_2": "footer-vorteile",
             "open_default": false,
@@ -68,7 +80,7 @@
           "settings": {
             "block_width": 25,
             "heading": "Unternehmen",
-            "heading_size": "h4",
+            "heading_size": "h6",
             "menu": "footer-unternehmen",
             "menu_2": "",
             "open_default": false,
@@ -80,7 +92,7 @@
           "settings": {
             "block_width": 25,
             "heading": "Power Genius GmbH",
-            "heading_size": "h4",
+            "heading_size": "h6",
             "image_width": 150,
             "text": "<p><a href=\"mailto:service@indevolt.com\" title=\"mailto:service@indevolt.com\">Email: service@indevolt.com</a></p>",
             "button_label": "",
@@ -106,6 +118,7 @@
       },
       "block_order": [
         "menu_DEKGYP",
+        "menu_L3RgYq",
         "menu_4eCrBB",
         "menu_4HwJkC",
         "image_text_F3FNhx",
@@ -121,8 +134,8 @@
         "enable_country_selector": false,
         "enable_language_selector": false,
         "payment_enable": true,
-        "image": "shopify://shop_images/footer-paylist.png",
-        "mobile_image": "shopify://shop_images/footer-paylist-mobile.png",
+        "image": "shopify://shop_images/pay-pc.png",
+        "mobile_image": "shopify://shop_images/pay-mob.png",
         "footer_bottom_menu": "footer-bottom",
         "show_section_divider": true,
         "divider_width": "full"

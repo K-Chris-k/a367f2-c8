@@ -136,6 +136,7 @@
         "card_KNxCfg",
         "card_b8HAgK"
       ],
+      "disabled": true,
       "name": "合作伙伴-配件",
       "settings": {
         "title": "Wählen Sie Ihr passendes Angebot aus",

@@ -17,7 +17,7 @@
         "announcement_bar_npRHcX": {
           "type": "announcement_bar",
           "settings": {
-            "text": "Neujahrs-Sale bis zu 56% Rabatt！<span><a href=\"/pages/neujahrs-sale\" title=\"Neujahrs-Sale\">Mehr erfahren →</a></span>",
+            "text": "Kostenloser & schneller Versand丨30 Tage Preisgarantie",
             "link": ""
           }
         }
@@ -26,8 +26,7 @@
         "announcement_bar_npRHcX"
       ],
       "custom_css": [
-        ".color-scheme-4 {background-image: url(\"https://cdn.shopify.com/s/files/1/0596/6367/9587/files/ggl-pc.png?v=1767840207\"); background-size: cover;}",
-        ".announcement-bar__text a {padding-left: 5px; /* 确保a标签宽度为父容器的100% */}",
+        ".color-scheme-4 {background-image: url(\"https://cdn.shopify.com/s/files/1/0596/6367/9587/files/2-top-pc.jpg?v=1770533632\"); background-size: cover;}",
         "@media (max-width: 768px) {.announcement-bar__text a {padding-left: 5px; /* 确保a标签宽度为父容器的100% */ } .announcement-bar__text span {display: inline-block; }}",
         "@media (max-width: 413px) {.announcement-bar__text a {/* display: flex; */ justify-content: center; /* 确保a标签宽度为父容器的100% */ }}"
       ],

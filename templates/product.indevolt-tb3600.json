@@ -33,12 +33,6 @@
             "heading_size": "h1"
           }
         },
-        "klaviyo_reviews_average_rating_crFAif": {
-          "type": "shopify://apps/klaviyo-reviews/blocks/average-rating/db20e365-d984-4ac4-9655-e1588d951ca9",
-          "settings": {
-            "product": "{{product}}"
-          }
-        },
         "price": {
           "type": "price",
           "settings": {}
@@ -77,10 +71,6 @@
             "show_gift_card_recipient": true
           }
         },
-        "selleasy_lb_upsell_widget_pal_4mLHkb": {
-          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-pal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
-          "settings": {}
-        },
         "logistics_pN3qrf": {
           "type": "logistics",
           "settings": {
@@ -97,7 +87,7 @@
             "icon_1": "certificate",
             "image_1": "shopify://shop_images/brand-icon1.svg",
             "heading_1": "Bequem bezahlen",
-            "content_image_1": "shopify://shop_images/card.png",
+            "content_image_1": "shopify://shop_images/pay-mob.png",
             "icon_2": "truck",
             "image_2": "shopify://shop_images/brand-icon2.svg",
             "content_image_2": "shopify://shop_images/track.png",
@@ -122,13 +112,11 @@
       "block_order": [
         "badges",
         "title",
-        "klaviyo_reviews_average_rating_crFAif",
         "price",
         "taxs_GrQ8nR",
         "description",
         "variant_picker",
         "buy_buttons",
-        "selleasy_lb_upsell_widget_pal_4mLHkb",
         "logistics_pN3qrf",
         "icon_with_text",
         "complementary"
@@ -304,15 +292,6 @@
     },
     "17557913358ae15877": {
       "type": "apps",
-      "blocks": {
-        "klaviyo_reviews_product_reviews_7gtVxN": {
-          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "klaviyo_reviews_product_reviews_7gtVxN"
-      ],
       "settings": {
         "include_margins": true,
         "padding_top": 0,

@@ -24,12 +24,6 @@
             "heading_size": "h1"
           }
         },
-        "klaviyo_reviews_average_rating_eJiBiB": {
-          "type": "shopify://apps/klaviyo-reviews/blocks/average-rating/db20e365-d984-4ac4-9655-e1588d951ca9",
-          "settings": {
-            "product": "{{product}}"
-          }
-        },
         "price": {
           "type": "price",
           "settings": {}
@@ -80,15 +74,6 @@
             "size_chart_from_page": ""
           }
         },
-        "globo_product_options_variant_app_block_biRwgN": {
-          "type": "shopify://apps/globo-product-options-variant/blocks/app-block/fdc9fad5-1a0f-4bd4-9c8a-1af6a6eef6b8",
-          "disabled": true,
-          "settings": {}
-        },
-        "koala_upsells_gifts_product_page_banner_JmkCYf": {
-          "type": "shopify://apps/koala-upsells-gifts/blocks/product-page-banner/baf92dc5-8ffa-40c0-967e-57b74cddc9e3",
-          "settings": {}
-        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
@@ -96,10 +81,6 @@
             "show_dynamic_checkout": true,
             "show_gift_card_recipient": true
           }
-        },
-        "selleasy_lb_upsell_widget_pal_PA4D48": {
-          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-pal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
-          "settings": {}
         },
         "logistics_pN3qrf": {
           "type": "logistics",
@@ -117,7 +98,7 @@
             "icon_1": "certificate",
             "image_1": "shopify://shop_images/brand-icon1.svg",
             "heading_1": "Bequem bezahlen",
-            "content_image_1": "shopify://shop_images/card.png",
+            "content_image_1": "shopify://shop_images/pay-mob.png",
             "icon_2": "truck",
             "image_2": "shopify://shop_images/brand-icon2.svg",
             "content_image_2": "shopify://shop_images/track.png",
@@ -141,7 +122,6 @@
       },
       "block_order": [
         "title",
-        "klaviyo_reviews_average_rating_eJiBiB",
         "price",
         "sleek_social_sharing_share_button_meejVn",
         "taxs_nEaGBP",
@@ -149,10 +129,7 @@
         "awards_rpNbYK",
         "reviews_list_QJMCGK",
         "variant_picker",
-        "globo_product_options_variant_app_block_biRwgN",
-        "koala_upsells_gifts_product_page_banner_JmkCYf",
         "buy_buttons",
-        "selleasy_lb_upsell_widget_pal_PA4D48",
         "logistics_pN3qrf",
         "icon_with_text",
         "complementary"
@@ -1606,15 +1583,6 @@
     },
     "1758853090704a66e2": {
       "type": "apps",
-      "blocks": {
-        "klaviyo_reviews_product_reviews_KiXgP9": {
-          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "klaviyo_reviews_product_reviews_KiXgP9"
-      ],
       "settings": {
         "include_margins": true,
         "padding_top": 0,

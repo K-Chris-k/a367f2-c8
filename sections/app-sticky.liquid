@@ -34,7 +34,7 @@
   .black-friday-nav .nav-link {
     display:block;
     text-decoration: none;
-    color: #ffffff;
+    color: #151515;
     font-weight: 500;
     padding: 0px 30px;
     transition: all 0.2s ease;
@@ -63,7 +63,7 @@
       padding: 0px 10px;
       text-align: center;
       font-size: 14px;
-      color:#ffffff;
+      color:#151515;
     }
     
   }
@@ -80,11 +80,11 @@
       <a href="#ExklusiveVorteile" class="nav-link active">Exklusive Vorteile</a>
     </li>
     <li class="nav-item">
-      <a href="#einstiegsoption" class="nav-link">Neujahr-Angebote</a>
+      <a href="#einstiegsoption" class="nav-link">Febraur-Sales</a>
     </li> 
-    <li class="nav-item">
+    {% comment %} <li class="nav-item">
       <a href="#CommunityVorteile" class="nav-link">Community-Vorteile</a>
-    </li>
+    </li> {% endcomment %}
     <li class="nav-item">
       <a href="#indepointssammeln" class="nav-link">Belohnungen sichern</a>
     </li>
@@ -241,7 +241,7 @@
     const announcementBar = document.querySelector('.announcement-bar-section');
     const headerSection = document.querySelector('.header-section');
     //const loyaltyBlock = document.querySelector('#shopify-section-template--17877653127267__image_with_text_overlay_new_atxzwY');
-    const loyaltyBlock = document.querySelector('#shopify-section-template--18148277518435__image_with_text_overlay_new_9UKtD3');
+    const loyaltyBlock = document.querySelector('#shopify-section-template--18294444130403__image_with_text_overlay_new_9UKtD3');
     
     let headerHeight = 0;
     if (announcementBar) headerHeight += announcementBar.offsetHeight;

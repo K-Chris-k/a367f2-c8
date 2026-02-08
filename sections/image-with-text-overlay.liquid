@@ -5,12 +5,12 @@
 <style>
 
 
-  #shopify-section-{{ section.id }}{padding-top:{{section.settings.padding_top  }}px;padding-bottom:{{section.settings.padding_bottom  }}px;}
+  {% comment %} #shopify-section-{{ section.id }}{padding-top:{{section.settings.padding_top  }}px;padding-bottom:{{section.settings.padding_bottom  }}px;} {% endcomment %}
 
   
   #shopify-section-{{ section.id }} {
-    {% comment %} --section-padding-top: {{ section.settings.padding_top }}px;
-    --section-padding-bottom: {{ section.settings.padding_bottom }}px; {% endcomment %}
+      --section-padding-top: {{ section.settings.padding_top }}px;
+    --section-padding-bottom: {{ section.settings.padding_bottom }}px;  
     {%- if section.settings.image != blank and desktop_height == 'adapt' %}
       --media-ratio: {{ section.settings.image.aspect_ratio }};
     {% endif -%}
@@ -42,7 +42,7 @@
 
     
   @media (max-width: 767px){
-    #shopify-section-{{ section.id }}{padding-top:{{section.settings.padding_top| divided_by: 2 }}px;padding-bottom:{{section.settings.padding_bottom| divided_by: 2  }}px;}
+    {% comment %} #shopify-section-{{ section.id }}{padding-top:{{section.settings.padding_top| divided_by: 2 }}px;padding-bottom:{{section.settings.padding_bottom| divided_by: 2  }}px;} {% endcomment %}
     .image-with-text-ovelay__content-wrapper {
         margin-top: 20px !important;
         margin-left: 10px !important;
@@ -60,6 +60,8 @@
     #shopify-section-{{ section.id }} .rich-text__text { margin-top:10px; line-height: 19px;font-size: 16px;}
     #shopify-section-{{ section.id }} .btn-wrapper{ margin-top:3rem;justify-content: center; gap:16px; }
   }
+
+ 
 
 </style>
 <div class="image-with-text-overlay section--padding" style="background-color: {{ section.settings.bg_color }};">
@@ -108,7 +110,7 @@
       </parallax-element>
       <div class="image-with-text-overlay__content">
         <div class="image-with-text-overlay__content-wrapper content-overlay section--padding content-overlay--{{ section.settings.content_position }} color-{{ section.settings.color_scheme }}{% if section.settings.container == 'full' %} page-width{% endif %}">
-          <div class="relative z-1 rich-text text-{{ section.settings.content_alignment }}" style="max-width: {{ section.settings.max_width }}px;">
+          <div class="relative show-up-div z-1 rich-text text-{{ section.settings.content_alignment }}" style="max-width: {{ section.settings.max_width }}px;">
             {%- assign motion_delay = 50 -%}
             {% for block in section.blocks %}
               {% case block.type %}
@@ -211,6 +213,54 @@
     </div>
   </div>
 </div>
+
+<script>
+// 最简单的实现
+document.addEventListener('DOMContentLoaded', function() {
+  // 添加CSS
+const css = `
+  .show-up-on-scroll {
+    opacity: 0;
+    transform: scale(1.4);
+    filter: blur(5px); /* 初始模糊效果 */
+    transition: all 2.7s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .show-up-on-scroll.show-up-visible {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0); /* 动画结束时消除模糊 */
+  }
+`;
+
+
+ 
+  
+  const style = document.createElement('style');
+  style.textContent = css;
+  document.head.appendChild(style);
+  
+  // 初始化观察者
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show-up-visible');
+      } else {
+        // 如果需要每次出现都动画，就移除类
+        entry.target.classList.remove('show-up-visible');
+      }
+    });
+  }, { threshold: 0.1 });
+  
+  // 为所有需要动画的元素添加类并观察
+  document.querySelectorAll('.show-up-div').forEach(el => {
+    el.classList.add('show-up-on-scroll');
+    observer.observe(el);
+  });
+});
+
+
+</script>
 {% schema %}
 {
   "name": "t:sections.image-with-text-overlay.name",

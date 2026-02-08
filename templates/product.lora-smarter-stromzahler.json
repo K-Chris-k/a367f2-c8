@@ -75,10 +75,6 @@
             "show_gift_card_recipient": true
           }
         },
-        "selleasy_lb_upsell_widget_pal_NTPwBw": {
-          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-pal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
-          "settings": {}
-        },
         "logistics_pN3qrf": {
           "type": "logistics",
           "settings": {
@@ -95,7 +91,7 @@
             "icon_1": "certificate",
             "image_1": "shopify://shop_images/brand-icon1.svg",
             "heading_1": "Bequem bezahlen",
-            "content_image_1": "shopify://shop_images/card.png",
+            "content_image_1": "shopify://shop_images/pay-mob.png",
             "icon_2": "truck",
             "image_2": "shopify://shop_images/brand-icon2.svg",
             "content_image_2": "shopify://shop_images/track.png",
@@ -126,7 +122,6 @@
         "description",
         "variant_picker",
         "buy_buttons",
-        "selleasy_lb_upsell_widget_pal_NTPwBw",
         "logistics_pN3qrf",
         "icon_with_text",
         "complementary"
@@ -348,7 +343,7 @@
             "image_width": "extra-large",
             "title": "",
             "heading_size": "h4",
-            "text": "<h5>Gebruikershandleiding</h5>",
+            "text": "",
             "text_size": "text-base",
             "button_label": "",
             "button_style": "btn--underline",
@@ -365,7 +360,7 @@
             "image_width": "extra-large",
             "title": "",
             "heading_size": "h4",
-            "text": "<h5>Gebruikershandleiding</h5>",
+            "text": "<h5>Bedienungsanleitung</h5>",
             "text_size": "text-base",
             "button_label": "",
             "button_style": "btn--underline",

@@ -23,13 +23,13 @@
         "subheading_nMbFzH": {
           "type": "subheading",
           "settings": {
-            "subheading": "Bis zu 56% Rabatt"
+            "subheading": "Febraur-Sales | 9. - 27. Februar"
           }
         },
         "heading_tfrcxF": {
           "type": "heading",
           "settings": {
-            "heading": "Sonniger Start im Neujahr",
+            "heading": "Bis zu 50% Rabatt",
             "heading_size": "hd2",
             "heading_highlight_style": "none"
           }
@@ -37,12 +37,13 @@
         "text_HFYftB": {
           "type": "text",
           "settings": {
-            "text": "<p>Frische Energie für dein warmes Zuhause</p>",
+            "text": "<p>Aus Liebe zur Erde.<strong> Mit Energie fürs Zuhause.</strong></p>",
             "text_size": "text-base"
           }
         },
         "countdown_VtLYFe": {
           "type": "countdown",
+          "disabled": true,
           "settings": {
             "countdown_title": "8. bis 30. Januar",
             "end_date": "",
@@ -61,14 +62,18 @@
         "text_HFYftB",
         "countdown_VtLYFe"
       ],
+      "custom_css": [
+        "@media (min-width: 768px) {.block strong {margin-top: 20px; color: #1a1a1a; line-height: 29px; font-size: 24px; font-weight: 500; }}",
+        "@media (max-width: 768px) {.block strong {display: inline-block; }}"
+      ],
       "name": "黑五活动页kv",
       "settings": {
         "container": "full",
         "bg_color": "#ffffff",
-        "title_color": "#ffffff",
+        "title_color": "#df4763",
         "text_color": "#ffffff",
         "btn_wrapper_alignment": "center",
-        "image": "shopify://shop_images/sale-KV-pc_e93476f6-79d6-403a-9d15-77e553edaa93.png",
+        "image": "shopify://shop_images/KV_163c5f2c-f3ed-45ac-a885-3088ee7bf619.jpg",
         "desktop_height": "extra-medium",
         "overlay_opacity": 0,
         "enable_parallax": false,
@@ -77,8 +82,8 @@
         "max_width": 720,
         "content_position": "top-center",
         "content_alignment": "center",
-        "image_mobile": "shopify://shop_images/sale-KV-mob.jpg",
-        "mobile_height": "auto",
+        "image_mobile": "shopify://shop_images/Frame_284.jpg",
+        "mobile_height": "large",
         "padding_top": 0,
         "padding_bottom": 0
       }
@@ -174,9 +179,9 @@
     "app_sticky_rEhNqt": {
       "type": "app-sticky",
       "custom_css": [
-        ".black-friday-nav {background: linear-gradient(to right, #04112a, #04112a);}",
-        ".black-friday-nav .nav-link:hover {background: linear-gradient(to right, #fffbf8, #ffd5ab); color: #481d0d;}",
-        ".black-friday-nav .nav-link.active,.black-friday-nav .nav-link[aria-current=\"true\"] {background: linear-gradient(to right, #fffbf8, #ffd5ab); color: #481d0d;}"
+        ".black-friday-nav {background: linear-gradient(to right, #ffffff, #ffffff);}",
+        ".black-friday-nav .nav-link:hover {background: linear-gradient(to right, #ffd7e1, #ffd7e1); color: #481d0d;}",
+        ".black-friday-nav .nav-link.active,.black-friday-nav .nav-link[aria-current=\"true\"] {background: linear-gradient(to right, #ffd7e1, #ffd7e1); color: #481d0d;}"
       ],
       "name": "自定义锚点导航",
       "settings": {}
@@ -205,7 +210,7 @@
             "style": "with_text",
             "number_size": "hd3",
             "duration": "every_month",
-            "time": "2026/01/30 11:59 PM"
+            "time": "2026/02/27 11:59 PM"
           }
         }
       },
@@ -215,7 +220,7 @@
         "timer_WnyC7H"
       ],
       "custom_css": [
-        ".color-scheme-1 {background: #222a5a !important;}"
+        ".color-scheme-1 {background-image: linear-gradient(#afd3fd, #afd3fd);}"
       ],
       "name": "t:sections.countdown-timer.name",
       "settings": {
@@ -236,8 +241,8 @@
         "featured_collection_tbrzhi": {
           "type": "featured_collection",
           "settings": {
-            "image": "shopify://shop_images/A-pc-new.png",
-            "mobile_image": "shopify://shop_images/A-mob.png",
+            "image": "shopify://shop_images/2-rabb-a-pc.png",
+            "mobile_image": "shopify://shop_images/2-rabb-a-mob.png",
             "title": "",
             "description": "",
             "button_title": "",
@@ -249,8 +254,8 @@
         "featured_collection_JRt9xT": {
           "type": "featured_collection",
           "settings": {
-            "image": "shopify://shop_images/B-pc-new.png",
-            "mobile_image": "shopify://shop_images/B-mob-new.png",
+            "image": "shopify://shop_images/2-rabb-b-pc.png",
+            "mobile_image": "shopify://shop_images/2-rabb-b-mob.png",
             "title": "",
             "description": "",
             "button_title": "",
@@ -262,8 +267,8 @@
         "featured_collection_cgw8DA": {
           "type": "featured_collection",
           "settings": {
-            "image": "shopify://shop_images/threeCode.png",
-            "mobile_image": "shopify://shop_images/C-rabb-mob.png",
+            "image": "shopify://shop_images/2-rabb-c-pc.png",
+            "mobile_image": "shopify://shop_images/2-rabb-c-mob.png",
             "title": "",
             "description": "",
             "button_title": "",
@@ -275,7 +280,7 @@
         "text_B3F8C4": {
           "type": "text",
           "settings": {
-            "text": "<p>Beim SolidFlex 2000 ist standardmäßig ein Indevolt-Stromzähler  enthalten. Falls du statt des Stromzählers den Smart Plug bevorzugst, kannst du dies bei der Bestellung vermerken.</p>",
+            "text": "<p>Für die SolidFlex und PowerFlex Serien ist standardmäßig ein Indevolt-Stromzähler enthalten. Falls Sie statt des Stromzählers den Smart Plug bevorzugen, können Sie dies auf der Bestellseite entsprechend ankreuzen.</p>",
             "text_size": "text-base"
           }
         }
@@ -287,8 +292,8 @@
         "text_B3F8C4"
       ],
       "custom_css": [
-        ".color-scheme-1 {background: #222a5a !important;}",
-        "h2 {color: #ffffff;}"
+        ".color-scheme-1 {background-image: linear-gradient(#afd3fd, #b9d7fb);}",
+        "h2 {color: #1a1a1a;}"
       ],
       "name": "优惠券列表新年",
       "settings": {
@@ -443,8 +448,8 @@
         "image_bBfCeJ": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/0107-eco-pc.jpg",
-            "mobile_image": "shopify://shop_images/0107-eco-mob.jpg",
+            "image": "shopify://shop_images/2-eco-pc.jpg",
+            "mobile_image": "shopify://shop_images/2-eco-mob.jpg",
             "width": "50%",
             "alignment": "center",
             "block_custom_class": ""
@@ -457,13 +462,13 @@
             "heading_size": "h3",
             "heading_highlight_style": "none",
             "subheading": "",
-            "product": "indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus",
+            "product": "",
             "image": "shopify://shop_images/mc-eco-logos-pc.jpg",
             "mobile_image": "shopify://shop_images/mc-eco-logos-mob-1208.jpg",
             "description": "<p>Solarenergiespeicher für deine PV-Anlage<br/> \\nMaximal sicheres System durch halbfeste Akkus<br/>\\nDie CycBoost-Technologie garantiert 8000 Lebenszyklen</p>",
             "price": "599,00€",
             "original": "1.199,00€",
-            "price_color": "#e98300",
+            "price_color": "#df4763",
             "text_size": "text-base",
             "button_add_to_cart": "In den Warenkorb",
             "button_label": "Mehr erfahren",
@@ -482,14 +487,14 @@
         "text_C6XnXY"
       ],
       "custom_css": [
-        ".color-scheme-1 {background: #222a5a;}",
+        ".color-scheme-1 {background-image: linear-gradient(#b9d7fb, #c4dafa) !important;}",
         "@media (max-width: 768px) {.hd2 strong {display: inline-block; }}"
       ],
       "name": "专题活动产品",
       "settings": {
         "id": "einstiegsoption",
         "content_color": "#ffffff",
-        "title_color": "#ffffff",
+        "title_color": "#1a1a1a",
         "container": "fixed",
         "color_scheme": "scheme-1",
         "enable_sticky_column": false,
@@ -515,12 +520,12 @@
           "type": "card",
           "settings": {
             "product_item": "solidflex-2000-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/0107-eco-1-pc.jpg",
-            "mobile_image": "shopify://shop_images/0107-eco-1-mob.jpg",
+            "custom_image": "shopify://shop_images/2-eco-1-pc.jpg",
+            "mobile_image": "shopify://shop_images/2-eco-1-mob.jpg",
             "hotsale": "",
             "custom_title": "SolidFlex 2000 ECO + SFA1800",
             "custom_describe": "",
-            "price": "998,00€",
+            "price": "1.048,00€",
             "original": "1.898,00€",
             "button_text": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus?variant=43817398173795&battery=43859125076067"
@@ -530,12 +535,12 @@
           "type": "card",
           "settings": {
             "product_item": "bk1600-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/0107-eco-2-pc.jpg",
-            "mobile_image": "shopify://shop_images/0107-eco-2-mob.jpg",
+            "custom_image": "shopify://shop_images/2-eco-2-pc.jpg",
+            "mobile_image": "shopify://shop_images/2-eco-2-mob.jpg",
             "hotsale": "",
             "custom_title": "SolidFlex 2000 ECO + SFA1800*2",
             "custom_describe": "",
-            "price": "1.397,00€",
+            "price": "1.497,00€",
             "original": "2.597,00€",
             "button_text": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus?variant=43817398173795&battery=43859125108835"
@@ -545,12 +550,12 @@
           "type": "card",
           "settings": {
             "product_item": "bk1600-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/0107-eco-3-pc.jpg",
-            "mobile_image": "shopify://shop_images/0107-eco-3-mob.jpg",
+            "custom_image": "shopify://shop_images/2-eco-3-pc.jpg",
+            "mobile_image": "shopify://shop_images/2-eco-3-mob.jpg",
             "hotsale": "",
             "custom_title": "SolidFlex 2000 ECO + SFA1800*3",
             "custom_describe": "",
-            "price": "1.796,00€",
+            "price": "1.946,00€",
             "original": "3.296,00€",
             "button_text": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus?variant=43817398173795&battery=43859125141603"
@@ -566,7 +571,7 @@
         ".product-collection-box {margin-top: 0px;}",
         ".product-collection-box .custom-product-button {max-width: 100%; width: 100%; min-height: 50px;}",
         ".section-product-collection .page-width {background: transparent !important;}",
-        ".kv-size {color: #e98300;}",
+        ".kv-size {color: #df4763;}",
         ".custom-product-title {min-height: 24px !important;}",
         "@media (max-width: 767px) {.product-collection-box .custom-product-button {min-height: 40px; } .product-collection-box .custom-product-describe {line-height: 19px; font-size: 12px; }}"
       ],
@@ -578,11 +583,11 @@
         "padding_bottom": 70,
         "button_height": 48,
         "mobile_button_height": 40,
-        "section_bg_color": "#222a5a;",
+        "section_bg_color": "linear-gradient(#C4DAFA, #CCDDF8) !important;",
         "bg_color": "transparent",
         "content_color": "#ffffff",
         "title_color": "#000000",
-        "button_title_color": "#e98300",
+        "button_title_color": "#df4763",
         "button_color": "cyber-monday",
         "image_height": "385",
         "sale-min_height": "1",
@@ -600,8 +605,8 @@
         "image_j33kjM": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/0107-sf2000-pc.jpg",
-            "mobile_image": "shopify://shop_images/0107-sf2000-mob.jpg",
+            "image": "shopify://shop_images/2-sf-pc.jpg",
+            "mobile_image": "shopify://shop_images/2-sf-mob.jpg",
             "width": "50%",
             "alignment": "center",
             "block_custom_class": ""
@@ -614,13 +619,13 @@
             "heading_size": "h3",
             "heading_highlight_style": "none",
             "subheading": "",
-            "product": "solidflex-2000-balkonkraftwerk-mit-speicher",
+            "product": "",
             "image": "shopify://shop_images/mc-logos-pc.jpg",
             "mobile_image": "shopify://shop_images/mc-logos-mob.jpg",
             "description": "<p>Halbfeste Akkus: Ein neues Maß an Sicherheit und Lebensdauer<br/> \\n3. Gen Batterieoptimierer für immer maximale Leistung<br/>\\n2400W im Off-Grid-Betrieb für unabhängigen Stromversorgung</p>",
             "price": "649,00€",
             "original": "1.199,00€",
-            "price_color": "#e98300",
+            "price_color": "#df4763",
             "text_size": "text-base",
             "button_add_to_cart": "In den Warenkorb",
             "button_label": "Mehr erfahren",
@@ -639,13 +644,13 @@
         "text_pzDN8W"
       ],
       "custom_css": [
-        ".color-scheme-1 {background: #222a5a;}"
+        ".color-scheme-1 {background-image: linear-gradient(#ccddf8, #d6e0f7) !important;}"
       ],
       "name": "专题活动产品",
       "settings": {
         "id": "Bestseller",
         "content_color": "#ffffff",
-        "title_color": "#ffffff",
+        "title_color": "#1a1a1a",
         "container": "fixed",
         "color_scheme": "scheme-1",
         "enable_sticky_column": false,
@@ -671,12 +676,12 @@
           "type": "card",
           "settings": {
             "product_item": "solidflex-2000-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/0107-sf2000-1-pc.jpg",
-            "mobile_image": "shopify://shop_images/0107-sf2000-1-mob.jpg",
+            "custom_image": "shopify://shop_images/2-sf-1-pc.jpg",
+            "mobile_image": "shopify://shop_images/2-sf-1-mob.jpg",
             "hotsale": "",
             "custom_title": "SolidFlex 2000 + SFA1800",
             "custom_describe": "2400W AC-Kopplung \\nDas sicherste System\\nExklusive CycBoost‑Technologie",
-            "price": "1.048,00€",
+            "price": "1.098,00€",
             "original": "1.898,00€",
             "button_text": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/solidflex-2000-balkonkraftwerk-mit-speicher?variant=43629440696419&battery=43859125076067"
@@ -686,12 +691,12 @@
           "type": "card",
           "settings": {
             "product_item": "bk1600-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/0107-sf2000-2-pc.jpg",
-            "mobile_image": "shopify://shop_images/0107-sf2000-2-mob.jpg",
+            "custom_image": "shopify://shop_images/2-sf-2-pc.jpg",
+            "mobile_image": "shopify://shop_images/2-sf-2-mob.jpg",
             "hotsale": "",
             "custom_title": "SolidFlex 2000 + SFA1800 + 445W Bifaziale Solarpanel*4",
             "custom_describe": "In nur 1,87 Jahren amortisiert \\nProduziert ca. 7 kWh täglich \\nErzeugt rund 2056 kWh pro Jahr \\nSpart bis zu 822€ im Jahr",
-            "price": "1.428,00€",
+            "price": "1.478,00€",
             "original": "2.597,00€",
             "button_text": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/solidflex-2000-balkonkraftwerk-mit-speicher?battery=43859125076067&solar=43859125305443"
@@ -701,12 +706,12 @@
           "type": "card",
           "settings": {
             "product_item": "bk1600-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/0107-sf2000-3-pc.jpg",
-            "mobile_image": "shopify://shop_images/0107-sf2000-3-mob.jpg",
+            "custom_image": "shopify://shop_images/2-sf-3-pc.jpg",
+            "mobile_image": "shopify://shop_images/2-sf-3-mob.jpg",
             "hotsale": "",
             "custom_title": "SolidFlex 2000 + SFA1800*2 + 500W Bifaziale Solarpanel*4",
             "custom_describe": "In nur 2,6 Jahren amortisiert \\nProduziert ca. 8 kWh täglich \\nErzeugt rund 2336 kWh pro Jahr \\nSpart bis zu 934€ im Jahr",
-            "price": "1.922,00€",
+            "price": "2.047,00€",
             "original": "3.395,00€",
             "button_text": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/solidflex-2000-balkonkraftwerk-mit-speicher?battery=43859125108835&solar=43859125567587"
@@ -722,8 +727,8 @@
         ".product-collection-box {margin-top: 0px;}",
         ".product-collection-box .custom-product-button {max-width: 100%; width: 100%; min-height: 50px;}",
         ".section-product-collection .page-width {background: transparent !important;}",
-        ".kv-size {color: #e98300;}",
-        "@media (max-width: 767px) {.product-collection-box .custom-product-button {min-height: 40px; } .product-collection-box .custom-product-describe {line-height: 19px; font-size: 12px; }}"
+        ".kv-size {color: #df4763;}",
+        "@media (max-width: 767px) {.product-collection-box .custom-product-button {min-height: 40px; } .product-collection-box .custom-product-describe {line-height: 15px; font-size: 12px; }}"
       ],
       "name": "产品推荐",
       "settings": {
@@ -733,15 +738,15 @@
         "padding_bottom": 70,
         "button_height": 48,
         "mobile_button_height": 40,
-        "section_bg_color": "#222a5a;",
+        "section_bg_color": "linear-gradient(#D6E0F7, #E1E4F5) !important;",
         "bg_color": "transparent",
         "content_color": "#ffffff",
         "title_color": "#000000",
-        "button_title_color": "#e98300",
+        "button_title_color": "#df4763",
         "button_color": "cyber-monday",
         "image_height": "385",
         "sale-min_height": "100",
-        "mob-sale-min_height": "76px",
+        "mob-sale-min_height": "60px",
         "product_show_count": "3",
         "product_show_count_mob": "1.2",
         "product_onsale": "kv-size",
@@ -755,8 +760,8 @@
         "image_qi3RyQ": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/0107-pf2000-pc.jpg",
-            "mobile_image": "shopify://shop_images/0107-pf2000-mob.jpg",
+            "image": "shopify://shop_images/2-pf-pc.jpg",
+            "mobile_image": "shopify://shop_images/2-pf-mob.jpg",
             "width": "50%",
             "alignment": "center",
             "block_custom_class": ""
@@ -769,13 +774,13 @@
             "heading_size": "h3",
             "heading_highlight_style": "none",
             "subheading": "",
-            "product": "powerflex-2000-balkonkraftwerk-mit-speicher",
+            "product": "",
             "image": "shopify://shop_images/pf-logos-pc-new.jpg",
             "mobile_image": "shopify://shop_images/pf-logos-mob-new.jpg",
             "description": "<p>2 kWh Kapazität/Einheit, längere Akkulaufzeit \\nCycBoost-Technologie: 8000 Lebenszyklen\\n2400W mit DC- & AC-Kopplung</p>",
             "price": "649,00€",
             "original": "1.199,00€",
-            "price_color": "#e98300",
+            "price_color": "#df4763",
             "text_size": "text-base",
             "button_add_to_cart": "In den Warenkorb",
             "button_label": "Mehr erfahren",
@@ -794,13 +799,13 @@
         "text_VxkWEF"
       ],
       "custom_css": [
-        ".color-scheme-1 {background: #222a5a;}"
+        ".color-scheme-1 {background-image: linear-gradient(#e1e4f5, #ece8f3) !important;}"
       ],
       "name": "专题活动产品",
       "settings": {
         "id": "Bestseller",
         "content_color": "#ffffff",
-        "title_color": "#ffffff",
+        "title_color": "#1a1a1a",
         "container": "fixed",
         "color_scheme": "scheme-1",
         "enable_sticky_column": false,
@@ -826,12 +831,12 @@
           "type": "card",
           "settings": {
             "product_item": "solidflex-2000-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/0107-pf2000-1-pc.jpg",
-            "mobile_image": "shopify://shop_images/0107-pf2000-1-mob.jpg",
+            "custom_image": "shopify://shop_images/2-pf-1-pc.jpg",
+            "mobile_image": "shopify://shop_images/2-pf-1-mob.jpg",
             "hotsale": "",
             "custom_title": "PowerFlex 2000 + PFA2000",
             "custom_describe": "2 kWh Kapazität/Einheit, längere Akkulaufzeit \\nCycBoost-Technologie: 8000 Lebenszyklen\\n2400W mit DC- & AC-Kopplung",
-            "price": "1.048,00€",
+            "price": "1.098,00€",
             "original": "1.898,00€",
             "button_text": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/powerflex-2000-balkonkraftwerk-mit-speicher?variant=43526874988643&battery=43917307412579"
@@ -841,12 +846,12 @@
           "type": "card",
           "settings": {
             "product_item": "bk1600-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/0107-pf2000-3-pc.jpg",
-            "mobile_image": "shopify://shop_images/0107-pf2000-3-mob.jpg",
+            "custom_image": "shopify://shop_images/2-pf-3-pc.jpg",
+            "mobile_image": "shopify://shop_images/2-pf-3-mob.jpg",
             "hotsale": "",
             "custom_title": "PowerFlex 2000 + PFA2000*2",
             "custom_describe": "2 kWh Kapazität/Einheit, längere Akkulaufzeit \\nCycBoost-Technologie: 8000 Lebenszyklen\\n2400W mit DC- & AC-Kopplung",
-            "price": "1.447,00€",
+            "price": "1.547,00€",
             "original": "2.597,00€",
             "button_text": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/powerflex-2000-balkonkraftwerk-mit-speicher?variant=43526874988643&battery=43917307445347"
@@ -856,12 +861,12 @@
           "type": "card",
           "settings": {
             "product_item": "bk1600-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/0107-pf2000-2-pc.jpg",
-            "mobile_image": "shopify://shop_images/0107-pf2000-2-mob.jpg",
+            "custom_image": "shopify://shop_images/2-pf-2-pc.jpg",
+            "mobile_image": "shopify://shop_images/2-pf-2-mob.jpg",
             "hotsale": "",
             "custom_title": "PowerFlex 2000 + PFA2000 + 500W Bifaziale Solarpanel*4",
             "custom_describe": "In nur 2,07 Jahren amortisiert \\nProduziert ca. 7 kWh täglich \\nErzeugt rund 2056 kWh pro Jahr \\nSpart bis zu 822€ im Jahr",
-            "price": "1.523,00€",
+            "price": "1.598,00€",
             "original": "2.696,00€",
             "button_text": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/powerflex-2000-balkonkraftwerk-mit-speicher?variant=43526874988643&battery=43917307412579&solar=43859125567587"
@@ -877,8 +882,8 @@
         ".product-collection-box {margin-top: 0px;}",
         ".product-collection-box .custom-product-button {max-width: 100%; width: 100%; min-height: 50px;}",
         ".section-product-collection .page-width {background: transparent !important;}",
-        ".kv-size {color: #e98300;}",
-        "@media (max-width: 767px) {.product-collection-box .custom-product-button {min-height: 40px; } .product-collection-box .custom-product-describe {line-height: 19px; font-size: 12px; }}"
+        ".kv-size {color: #df4763;}",
+        "@media (max-width: 767px) {.product-collection-box .custom-product-button {min-height: 40px; } .product-collection-box .custom-product-describe {line-height: 15px; font-size: 12px; }}"
       ],
       "name": "产品推荐",
       "settings": {
@@ -888,15 +893,15 @@
         "padding_bottom": 70,
         "button_height": 48,
         "mobile_button_height": 40,
-        "section_bg_color": "#222a5a;",
+        "section_bg_color": "linear-gradient(#ECE8F3, #F6EBF1) !important;",
         "bg_color": "transparent",
         "content_color": "#ffffff",
         "title_color": "#000000",
-        "button_title_color": "#e98300",
+        "button_title_color": "#df4763",
         "button_color": "cyber-monday",
         "image_height": "385",
         "sale-min_height": "100",
-        "mob-sale-min_height": "95px",
+        "mob-sale-min_height": "75px",
         "product_show_count": "3",
         "product_show_count_mob": "1.2",
         "product_onsale": "kv-size",
@@ -910,8 +915,8 @@
         "image_LWxXwk": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/0107-1600-pc.jpg",
-            "mobile_image": "shopify://shop_images/0107-1600-mob.jpg",
+            "image": "shopify://shop_images/2-bk-pc.jpg",
+            "mobile_image": "shopify://shop_images/2-bk-mob.jpg",
             "width": "50%",
             "alignment": "center",
             "block_custom_class": ""
@@ -924,13 +929,13 @@
             "heading_size": "h3",
             "heading_highlight_style": "none",
             "subheading": "",
-            "product": "bk1600-balkonkraftwerk-mit-speicher",
+            "product": "",
             "image": "shopify://shop_images/bk1600-logos-pc-new.jpg",
             "mobile_image": "shopify://shop_images/black-product-logos3-mob.png",
             "description": "<p>All-in-One-Design, Plug & Play<br/> \\nBidirektionales Laden für jederzeit ausreichende Energie<br/>\\nTragbare Nutzung, 30% kompakter und leichter</p>",
             "price": "399,00€",
             "original": "999,00€",
-            "price_color": "#e98300",
+            "price_color": "#df4763",
             "text_size": "text-base",
             "button_add_to_cart": "Button Add To Cart",
             "button_label": "Mehr erfahren",
@@ -949,13 +954,13 @@
         "text_J3XmYF"
       ],
       "custom_css": [
-        ".color-scheme-1 {background: #222a5a;}"
+        ".color-scheme-1 {background-image: linear-gradient(#f6ebf1, #ffeef0) !important;}"
       ],
       "name": "专题活动产品",
       "settings": {
         "id": "",
         "content_color": "#ffffff",
-        "title_color": "#ffffff",
+        "title_color": "#1a1a1a",
         "container": "fixed",
         "color_scheme": "",
         "enable_sticky_column": false,
@@ -981,8 +986,8 @@
           "type": "card",
           "settings": {
             "product_item": "bk1600-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/0107-1600-1-pc.jpg",
-            "mobile_image": "shopify://shop_images/0107-1600-1-mob.jpg",
+            "custom_image": "shopify://shop_images/2-bk-1-pc.jpg",
+            "mobile_image": "shopify://shop_images/2-bk-1-mob.jpg",
             "hotsale": "",
             "custom_title": "BK1600 + 445W Bifaziale Solarpanel*2",
             "custom_describe": "In nur 1,82 Jahren amortisiert \\nProduziert ca. 3,5 kWh täglich \\nErzeugt rund 1028 kWh pro Jahr \\nSpart bis zu 411€ im Jahr",
@@ -996,8 +1001,8 @@
           "type": "card",
           "settings": {
             "product_item": "bk1600-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/0107-1600-2-pc.jpg",
-            "mobile_image": "shopify://shop_images/0107-1600-2-mob.jpg",
+            "custom_image": "shopify://shop_images/2-bk-2-pc.jpg",
+            "mobile_image": "shopify://shop_images/2-bk-2-mob.jpg",
             "hotsale": "",
             "custom_title": "BK1600 Ultra + 445W Bifaziale Solarpanel*2",
             "custom_describe": "In nur 2 Jahren amortisiert \\nProduziert ca. 3,5 kWh täglich \\nErzeugt rund 1028 kWh pro Jahr \\nSpart bis zu 411€ im Jahr",
@@ -1011,8 +1016,8 @@
           "type": "card",
           "settings": {
             "product_item": "bk1600-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/0107-1600-3-pc.jpg",
-            "mobile_image": "shopify://shop_images/0107-1600-3-mob.jpg",
+            "custom_image": "shopify://shop_images/2-bk-3-pc.jpg",
+            "mobile_image": "shopify://shop_images/2-bk-3-mob.jpg",
             "hotsale": "",
             "custom_title": "BK1600 Ultra*2",
             "custom_describe": "Tagsüber Solarenergie speichern, nachts versorgen \\nBegrenzung von 800W umgehen\\nKapazität und PV-Eingänge erweitern",
@@ -1032,8 +1037,8 @@
         ".product-collection-box {margin-top: 0px;}",
         ".product-collection-box .custom-product-button {max-width: 100%; width: 100%; min-height: 50px;}",
         ".section-product-collection .page-width {background: transparent !important;}",
-        ".kv-size {color: #e98300;}",
-        "@media (max-width: 767px) {.product-collection-box .custom-product-button {min-height: 40px; } .product-collection-box .custom-product-describe {line-height: 19px; font-size: 12px; }}"
+        ".kv-size {color: #df4763;}",
+        "@media (max-width: 767px) {.product-collection-box .custom-product-button {min-height: 40px; } .product-collection-box .custom-product-describe {line-height: 15px; font-size: 12px; }}"
       ],
       "name": "产品推荐",
       "settings": {
@@ -1043,15 +1048,15 @@
         "padding_bottom": 70,
         "button_height": 48,
         "mobile_button_height": 40,
-        "section_bg_color": "#222a5a;",
+        "section_bg_color": "#FFEEF0;",
         "bg_color": "transparent",
         "content_color": "#ffffff",
         "title_color": "#000000",
-        "button_title_color": "#e98300",
+        "button_title_color": "#df4763",
         "button_color": "cyber-monday",
         "image_height": "385",
         "sale-min_height": "100",
-        "mob-sale-min_height": "95px",
+        "mob-sale-min_height": "75px",
         "product_show_count": "3",
         "product_show_count_mob": "1",
         "product_onsale": "kv-size",
@@ -1175,8 +1180,8 @@
         "card_Kb9ryM": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/mc-vip-1-pc.png",
-            "mobile_image": "shopify://shop_images/mc-vip-1-mob.png",
+            "image": "shopify://shop_images/vip-left-pc.jpg",
+            "mobile_image": "shopify://shop_images/vip-left-mob.jpg",
             "title": "Mitglied werden und Vorteile sichern",
             "button_title": "Mehr erfahren",
             "button_link": "shopify://pages/rewards-program"
@@ -1185,8 +1190,8 @@
         "card_ANngjE": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/mc-vip-2-pc.png",
-            "mobile_image": "shopify://shop_images/mc-vip-2-mob.png",
+            "image": "shopify://shop_images/vip-right-pc.jpg",
+            "mobile_image": "shopify://shop_images/vip-right-mob.jpg",
             "title": "50€ Prämie für deine Empfehlung",
             "button_title": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/pages/empfehlungsprogram"
@@ -1198,14 +1203,14 @@
         "card_ANngjE"
       ],
       "custom_css": [
-        ".section-black-member {background: #222a5a !important;}",
+        ".section-black-member {background: #ffeef0 !important;}",
         ".section-black-member .coupon-list .coupon-content-wrapper a.grid-button {background: linear-gradient(to right, #aa6723, #eeb465);}"
       ],
       "name": "黑五会员推荐",
       "settings": {
         "ids": "indepointssammeln",
         "title": "Belohnungen sichern",
-        "title_color": "#ffffff",
+        "title_color": "#1a1a1a",
         "bg_color": "#d63a2f",
         "padding_top": 72,
         "padding_bottom": 72
@@ -1236,8 +1241,8 @@
         "image_Eqihin"
       ],
       "custom_css": [
-        ".color-scheme-1 {background: #222a5a !important;}",
-        "h2 {color: #ffffff;}"
+        ".color-scheme-1 {background: #ffeef0 !important;}",
+        "h2 {color: #1a1a1a;}"
       ],
       "name": "富文本+图片+视频",
       "settings": {
@@ -1263,7 +1268,7 @@
         "text_bGjyc3": {
           "type": "text",
           "settings": {
-            "text": "<p><strong>Aktionshinweise:</strong><br/>1. Aktionszeitraum: Neujahrsangebot vom 8. bis 30. Januar.  <br/>2. Geschenke: Gratisartikel werden ggf. separat versendet. Geschenke können nicht umgetauscht oder zurückgegeben werden.<br/>3. Mindestbestellwert-Rabatt: Rabatte werden automatisch abgezogen, sobald der Mindestwert erreicht ist. Kein Rabattcode nötig.<br/>4. Pro Bestellung max. zwei Gutscheine; bei gleichzeitiger Nutzung eines Abonnements-Gutscheins und eines Aktions-Gutscheins gilt der Gutschein mit der höheren Ersparnis.</p>",
+            "text": "<p><strong>Aktionshinweise:</strong><br/>1. Aktionszeitraum: Febraur-Sales vom 9. bis 27. Februar.  <br/>2. Geschenke: Gratisartikel werden ggf. separat versendet. Geschenke können nicht umgetauscht oder zurückgegeben werden.<br/>3. Mindestbestellwert-Rabatt: Rabatte werden automatisch abgezogen, sobald der Mindestwert erreicht ist. Kein Rabattcode nötig.<br/>4. Pro Bestellung max. zwei Gutscheine; bei gleichzeitiger Nutzung eines Abonnements-Gutscheins und eines Aktions-Gutscheins gilt der Gutschein mit der höheren Ersparnis.</p>",
             "text_size": "text-base"
           }
         }
@@ -1272,9 +1277,9 @@
         "text_bGjyc3"
       ],
       "custom_css": [
-        ".color-scheme-1 {background: #222a5a !important;}",
+        ".color-scheme-1 {background: #ffeef0 !important;}",
         "a {color: #ffa81d;}",
-        "p {color: #ffffff;}",
+        "p {color: #1a1a1a;}",
         "@media (max-width: 767.98px) {p {line-height: 15px; font-size: 12px; }}"
       ],
       "name": "t:sections.rich-text.presets.name",

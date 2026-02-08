@@ -19,7 +19,7 @@
     #shopify-section-{{ section.id }} .product-collection-box .custom-product-describe{
       {% comment %} min-height: 17px;max-height:34px; -webkit-line-clamp: 2;{% endcomment %}
        display:flex;flex-flow:column;
-      margin-top:10px;line-height: normal;line-height:25px;font-size:14px;font-weight: 400;color: #1A1A1A;text-align: left;
+      margin-top:10px;margin-bottom:30px;line-height: normal;line-height:25px;font-size:14px;font-weight: 400;color: #1A1A1A;text-align: left;
     display: -webkit-box;-webkit-box-orient: vertical; overflow: hidden;text-overflow: ellipsis;
     max-height:120px;
   }
@@ -39,7 +39,9 @@
    #shopify-section-{{ section.id }} .home-size{ line-height:24px;font-size: 18px;}
    #shopify-section-{{ section.id }} .kv-size{ line-height:29px;font-size: 24px;}
    #shopify-section-{{ section.id }} .btn--black{ background:#212121;color:#fff}
-   #shopify-section-{{ section.id }} .cyber-monday{ background:#e90028;color:#fff}
+   #shopify-section-{{ section.id }} .cyber-monday{
+  background: rgb(var(--color-secondary-button));
+  border-color: #DF4763;}
    #shopify-section-{{ section.id }} .describe-min-height{min-height: {{ section.settings.sale-min_height }}px;}
 
    #shopify-section-{{ section.id }} .bottom-box{
@@ -51,7 +53,7 @@
     flex: 1; /* 各占一半 */
   min-width: 50%; /* 确保至少占一半 */
   box-sizing: border-box;
-  padding: 10px;
+  padding: 10px 10px 10px 0;
  }
  #shopify-section-{{ section.id }} .current-price{
      width: 100%;
@@ -89,7 +91,7 @@
   #shopify-section-{{ section.id }} .product-collection-box .custom-product-button{min-width:100%;max-width:240px;min-height:{{ section.settings.mobile_button_height }}px;}
   #shopify-section-{{ section.id }} .product-collection-box .item{position:relative;height:unset;border-radius: 20px;background:{{section.settings.content_color}};padding-bottom: 34px;}
   #shopify-section-{{ section.id }} .product-collection-box .custom-product-title,.product-collection-box .custom-product-price{font-size:16px;}
-  #shopify-section-{{ section.id }} .product-collection-box .custom-product-describe{max-height:135px;line-height:19px}
+  #shopify-section-{{ section.id }} .product-collection-box .custom-product-describe{max-height:135px;line-height:19px;margin-bottom:15px;}
   #shopify-section-{{ section.id }} .product-collection-box .custom-product-title{max-height:48px;min-height:48px;}
   .slick-dots li.slick-active button:before,.slick-dots li button:before{display:none}
   #shopify-section-{{ section.id }} .product-collection-box .describe-min-height{min-height: {{ section.settings.mob-sale-min_height }}!important;}
@@ -97,19 +99,11 @@
 }
 
 
-
-
-
-
-
-
-
-
 /* Slick箭头按钮样式 - 黑色半透明背景，白色图标，右上角位置 */
 #shopify-section-{{ section.id }} .slick-prev, 
 #shopify-section-{{ section.id }} .slick-next {
   position: absolute;
-  top: 540px; /* 调整到标题下方 */
+  top: 570px; /* 调整到标题下方 */
   z-index: 2;
   width: 36px;
   {% comment %} height: 36px; {% endcomment %}

@@ -70,7 +70,7 @@
       #shopify-section-{{ section.id }} .h3,#shopify-section-{{ section.id }} .section__description { line-height:19px;font-size:16px}
       #shopify-section-{{ section.id }} .custom-content-block--text .image-container{ height:69px;margin-top:15px}
       #shopify-section-{{ section.id }} .custom-content-block--text .rich-text__text{ margin-top:15px}
-      #shopify-section-{{ section.id }} .custom-product-describe li .icon-vector {width: 13px;}
+      #shopify-section-{{ section.id }} .custom-product-describe li .icon-vector {width: 13px;padding-top:4px;}
        #shopify-section-{{ section.id }} .custom-product-describe li div{width:calc(100% - 13px)}
       #shopify-section-{{ section.id }} .custom-product-describe li{ line-height:15px;font-size:12px}
       #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap{gap: 10px; margin-top: 15px;justify-content: center;}
@@ -84,22 +84,40 @@
       #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap .bnt--black .button-text span{ width:calc(100% - 2.6rem)}
       #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap .button-text .icon-shopping-cart{ width: 2.6rem; height: 1.5rem;  padding-left: 8px;}
     }
-    @media (max-width: 374.98px) {
-       #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:211px;}
-       #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius img{ object-fit: fill; object-position: top center;}
-          
-      }
-    @media (max-width: 410px) {
-       #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:280px;}
+
+
+
+        @media (max-width: 430px) {
+       #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:285px;}
        #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius img{ object-fit: fill; object-position: top center;}
           
       }
 
-        @media (max-width: 430px) {
-       #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:290px;}
+          @media (max-width: 410px) {
+       #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:270px;}
        #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius img{ object-fit: fill; object-position: top center;}
           
       }
+
+      @media (max-width: 400px) {
+       #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:256px;}
+       #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius img{ object-fit: fill; object-position: top center;}
+          
+      }
+
+       @media (max-width: 389.98px) {
+       #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:245px;}
+       #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius img{ object-fit: fill; object-position: top center;}
+          
+      }
+
+      @media (max-width: 374px) {
+       #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:234px;}
+       #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius img{ object-fit: fill; object-position: top center;}
+          
+      }
+
+
 </style>
 {% if card_overlay_blocks.size > 0 %}
   {{ 'component-promotion-card.css' | asset_url | stylesheet_tag }}

@@ -215,7 +215,7 @@
 @media (max-width: 767.98px) {
   .slideshow-wrapper.slideshow-layout--split .slideshow__item-wrap, .slideshow-wrapper.slideshow-content-mobile--below .slideshow__item-wrap {
     flex-direction: row;
-    min-height: 60rem;
+    min-height: 50rem;
   }
   .slideshow-wrapper.slideshow-layout--split .slideshow__item-wrap:before, .slideshow-wrapper.slideshow-content-mobile--below .slideshow__item-wrap:before {
     display: none;

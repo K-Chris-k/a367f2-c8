@@ -9,7 +9,7 @@
         line-height:56px;
         font-size: 46px;
         text-align:center;
-        padding-bottom:40px;
+        padding-bottom:60px;
     }
 
     /* PC端布局 - 30%手风琴+文字 / 70%图片 */
@@ -188,7 +188,7 @@
             padding: 30px 0px;
             background: #ffffff;
             border: none;
-            border-bottom: 1px solid #ddd;
+            {% comment %} border-bottom: 1px solid #ddd; {% endcomment %}
             text-align: left;
             display: flex;
             justify-content: space-between;
@@ -198,6 +198,10 @@
             border-radius: 0px;
             font-weight:600;
         }
+
+        .section-{{ section.id }}   .accordion-item {
+            border-bottom: 1px solid #ddd;
+        }   
 
      .section-{{ section.id }} .accordion-panel h3{
        font-size: 14px;
@@ -388,7 +392,7 @@
 
         bindEvents() {
             // 绑定所有手风琴按钮的点击事件
-            document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+            document.querySelectorAll('.section-{{ section.id }} .accordion-trigger').forEach(trigger => {
                 trigger.addEventListener('click', (e) => {
                     console.log('Accordion trigger clicked, target:', e.target);
                     this.handleTabClick(e);
@@ -411,7 +415,7 @@
             console.log('Switching to tab:', targetId);
             
             if (!trigger) {
-                trigger = document.querySelector(`.accordion-trigger[data-target="${targetId}"]`);
+                trigger = document.querySelector(`.section-{{ section.id }} .accordion-trigger[data-target="${targetId}"]`);
             }
             
             if (!trigger) {
@@ -431,12 +435,12 @@
                     if (contentPanel) contentPanel.classList.remove('active');
                 } else {
                     // 收起所有其他面板
-                    document.querySelectorAll('.accordion-trigger').forEach(t => {
+                    document.querySelectorAll('.section-{{ section.id }} .accordion-trigger').forEach(t => {
                         if (t !== trigger) {
                             t.classList.remove('active');
                         }
                     });
-                    document.querySelectorAll('.accordion-panel').forEach(p => {
+                    document.querySelectorAll('.section-{{ section.id }} .accordion-panel').forEach(p => {
                         if (p !== contentPanel) {
                             p.classList.remove('active');
                         }
@@ -447,17 +451,26 @@
                     if (contentPanel) contentPanel.classList.add('active');
                 }
             } else {
+
+               const isActive = trigger.classList.contains('active');
+                const contentPanel = document.getElementById(`content-${targetId}`);
+              if (isActive) {
+                    // 收起当前
+                    trigger.classList.remove('active');
+                    if (contentPanel) contentPanel.classList.remove('active');
+                } else {
+
                 // PC端：切换激活状态
                 console.log('PC mode - switching tab');
                 
                 // 1. 移除所有激活状态
-                document.querySelectorAll('.accordion-trigger').forEach(t => {
+                document.querySelectorAll('.section-{{ section.id }} .accordion-trigger').forEach(t => {
                     t.classList.remove('active');
                 });
-                document.querySelectorAll('.accordion-mode .accordion-panel').forEach(p => {
+                document.querySelectorAll('.section-{{ section.id }} .accordion-mode .accordion-panel').forEach(p => {
                     p.classList.remove('active');
                 });
-                document.querySelectorAll('.tab-image-container .image-panel').forEach(p => {
+                document.querySelectorAll('.section-{{ section.id }} .tab-image-container .image-panel').forEach(p => {
                     p.classList.remove('active');
                 });
                 
@@ -477,6 +490,7 @@
                     imagePanel.classList.add('active');
                     console.log('Image panel activated:', imagePanel.id);
                 }
+               }
             }
         }
 
@@ -485,16 +499,16 @@
             
             if (this.isMobile) {
                 // 移动端：收起所有，只展开第一个
-                document.querySelectorAll('.accordion-trigger').forEach(t => {
+                document.querySelectorAll('.section-{{ section.id }} .accordion-trigger').forEach(t => {
                     t.classList.remove('active');
                 });
-                document.querySelectorAll('.accordion-panel').forEach(p => {
+                document.querySelectorAll('.section-{{ section.id }} .accordion-panel').forEach(p => {
                     p.classList.remove('active');
                 });
                 
                 // 展开第一个
-                const firstTrigger = document.querySelector('.accordion-trigger');
-                const firstContent = document.querySelector('.accordion-panel');
+                const firstTrigger = document.querySelector('.section-{{ section.id }} .accordion-trigger');
+                const firstContent = document.querySelector('.section-{{ section.id }} .accordion-panel');
                 if (firstTrigger && firstContent) {
                     firstTrigger.classList.add('active');
                     firstContent.classList.add('active');
@@ -502,26 +516,26 @@
                 }
                 
                 // 隐藏PC端图片容器
-                const imageContainer = document.querySelector('.tab-image-container');
+                const imageContainer = document.querySelector('.section-{{ section.id }} .tab-image-container');
                 if (imageContainer) {
                     imageContainer.style.display = 'none';
                 }
             } else {
                 // PC端：收起所有文字内容，只展开第一个
-                document.querySelectorAll('.accordion-trigger').forEach(t => {
+                document.querySelectorAll('.section-{{ section.id }} .accordion-trigger').forEach(t => {
                     t.classList.remove('active');
                 });
-                document.querySelectorAll('.accordion-mode .accordion-panel').forEach(p => {
+                document.querySelectorAll('.section-{{ section.id }} .accordion-mode .accordion-panel').forEach(p => {
                     p.classList.remove('active');
                 });
-                document.querySelectorAll('.tab-image-container .image-panel').forEach(p => {
+                document.querySelectorAll('.section-{{ section.id }} .tab-image-container .image-panel').forEach(p => {
                     p.classList.remove('active');
                 });
                 
                 // 激活第一个
-                const firstTrigger = document.querySelector('.accordion-trigger');
-                const firstContent = document.querySelector('.accordion-mode .accordion-panel');
-                const firstImage = document.querySelector('.tab-image-container .image-panel');
+                const firstTrigger = document.querySelector('.section-{{ section.id }} .accordion-trigger');
+                const firstContent = document.querySelector('.section-{{ section.id }} .accordion-mode .accordion-panel');
+                const firstImage = document.querySelector('.section-{{ section.id }} .tab-image-container .image-panel');
                  console.log(firstTrigger);
                  console.log(firstContent);
                  console.log(firstImage);
@@ -533,7 +547,7 @@
                 }
                 
                 // 显示PC端图片容器
-                const imageContainer = document.querySelector('.tab-image-container');
+                const imageContainer = document.querySelector('.section-{{ section.id }} .tab-image-container');
                 if (imageContainer) {
                     imageContainer.style.display = 'block';
                 }

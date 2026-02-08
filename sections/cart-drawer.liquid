@@ -1145,7 +1145,6 @@
           
           // 从 HTML 判断被删除的是否是主机（因为 Shopify 先删除了，cart.items 中已经没有了）
           const isDeletingHost = bundleRole === 'host';
-          
           // 关键调试日志
           console.log('[Bundle删除] 点击删除:', { bundleGroupId, bundleRole, isDeletingHost });
           

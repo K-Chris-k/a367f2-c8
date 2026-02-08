@@ -69,9 +69,9 @@
     background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
     text-align: center;
     color: #fff;
-    transform: translateY(100%);
+     transform: translateY(100%);
     transition: transform 0.8s ease;
-    opacity: 0;
+    opacity: 0;  
   }
 
   .review-main-slider .slick-slide:hover .review-content {
@@ -207,7 +207,7 @@ display: inline-block;
     .section-review-list .product-collection{padding-top: {{ section.settings.padding_top | divided_by: 2  }}px;padding-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;}
     .section-review-list .product-collection .title{ font-size: 28px;}
     .review-main-slider {
-      margin-top: 2rem;
+      margin-top: 3rem;
     }
     .review-main-slider .slick-track {
       gap:16px
@@ -222,7 +222,8 @@ display: inline-block;
     }
 
     .review-main-slider .review-content .details {
-      font-size: 14px;
+      font-size: 12px;
+      line-height: 15px;
     }
 
     .review-main-slider .review-content .user {
@@ -288,7 +289,7 @@ display: inline-block;
                 {% endif %}
           
               <div class="review-content">
-                {% if block.settings.image_pc != blank %}
+                {% if block.settings.start != blank %}
                   <picture>
                     <source
                       media="(max-width: 749px)"
@@ -314,7 +315,7 @@ display: inline-block;
                     >
                   </picture>
                 {% else %}
-                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {% comment %} {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }} {% endcomment %}
                 {% endif %}
                 <div class="details">{{ block.settings.content }}</div>
                 <div class="user">{{ block.settings.name }}</div>
@@ -394,7 +395,7 @@ display: inline-block;
   "name": "review-list",
   "tag": "section",
   "class": "section section-review-list",
-  "max_blocks": 10,
+  "max_blocks": 20,
   "disabled_on": {
     "groups": ["footer", "header", "custom.overlay"]
   },
@@ -412,7 +413,7 @@ display: inline-block;
       "label": "t:sections.all.padding.padding_top",
       "default": 50,
       "min": 0,
-      "max": 100,
+      "max": 160,
       "step": 2,
       "unit": "px"
     },
@@ -422,7 +423,7 @@ display: inline-block;
       "label": "t:sections.all.padding.padding_bottom",
       "default": 50,
       "min": 0,
-      "max": 100,
+      "max": 160,
       "step": 2,
       "unit": "px"
     },

@@ -114,4 +114,7 @@ body.sticky-atc-bar-enabled {
   .sticky-atc-bar.page-width--full {
     --page-padding: 5rem;
   }
+    .product-price-box{
+    min-width:90px;
+  }
 }

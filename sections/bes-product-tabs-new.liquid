@@ -22,11 +22,16 @@
     #shopify-section-{{ section.id }}  .custom-product-describe{
       {% comment %} min-height: 17px;max-height:34px; -webkit-line-clamp: 2;{% endcomment %}
        display:flex;flex-flow:column;
-      margin-top:10px;line-height: normal;line-height:25px;font-size:14px;font-weight: 400;color: #1A1A1A;text-align: left;
+      margin-top:10px;margin-bottom:30px;line-height: normal;line-height:25px;font-size:14px;font-weight: 400;color: #1A1A1A;text-align: left;
     display: -webkit-box;-webkit-box-orient: vertical; overflow: hidden;text-overflow: ellipsis;
     max-height:120px;
   }
-   #shopify-section-{{ section.id }} .describe-min-height{min-height: 100px;}
+   {% comment %} #shopify-section-{{ section.id }} .describe-min-height{min-height: 100px;} {% endcomment %}
+   #shopify-section-{{ section.id }} .h75px{min-height: 75px;}
+   #shopify-section-{{ section.id }} .h100px{min-height: 100px;}
+   #shopify-section-{{ section.id }} .h125px{min-height: 125px;}
+
+
    #shopify-section-{{ section.id }}  .card{ display:flex;flex-direction:column;justify-content:space-between;height:100%;border-radius:20px;background:#ffffff;}
    #shopify-section-{{ section.id }}  .content-box{ padding: 0px 30px 30px 30px;}
    #shopify-section-{{ section.id }}  .custom-product-describe .icon-vector{margin-right:8px;vertical-align: middle;}
@@ -53,9 +58,8 @@
   #shopify-section-{{ section.id }}  .custom-product-price, .button-wrap{
     flex: 1; /* 各占一半 */
   min-width: 50%; /* 确保至少占一半 */
-
   box-sizing: border-box;
-  padding: 10px;
+  padding: 10px 10px 10px 0;
  }
  #shopify-section-{{ section.id }} .current-price{
      width: 100%;
@@ -93,12 +97,16 @@
   #shopify-section-{{ section.id }} .product-collection-box .custom-product-button{min-width:100%;max-width:240px;min-height:{{ section.settings.mobile_button_height }}px;}
   #shopify-section-{{ section.id }}  .card{position:relative;height:unset;border-radius: 20px;background:#ffffff;padding-bottom: 24px;}
   #shopify-section-{{ section.id }}  .custom-product-title,.custom-product-price{font-size:16px;line-height: 19px;}
-  #shopify-section-{{ section.id }}  .custom-product-describe{max-height:135px;line-height:19px;min-height: 80px;}
+  #shopify-section-{{ section.id }}  .custom-product-describe{max-height:135px;line-height:19px;min-height: 80px; margin-bottom:15px;}
   #shopify-section-{{ section.id }}  .custom-product-title{max-height:40px;min-height:40px;}
   .slick-dots li.slick-active button:before,.slick-dots li button:before{display:none}
   #shopify-section-{{ section.id }} .product-collection-box .describe-min-height{min-height: {{ section.settings.mob-sale-min_height }}!important;}
  #shopify-section-{{ section.id }} .kv-size { line-height:19px;font-size: 16px;}
  #shopify-section-{{ section.id }} .custom-product-price .original-price { line-height:19px;font-size: 16px;}
+
+  #shopify-section-{{ section.id }} .h75px{min-height: 57px;}
+  #shopify-section-{{ section.id }} .h100px{min-height: 76px;}
+  #shopify-section-{{ section.id }} .h125px{min-height: 95px;}
 }
 
 
@@ -114,7 +122,7 @@
 #shopify-section-{{ section.id }} .slick-prev, 
 #shopify-section-{{ section.id }} .slick-next {
   position: absolute;
-  top: 540px; /* 调整到标题下方 */
+  top: 570px; /* 调整到标题下方 */
   z-index: 2;
   width: 36px;
   {% comment %} height: 36px; {% endcomment %}
@@ -323,7 +331,7 @@
   .section-{{ section.id }} .tabs__nav{gap:90px;display:flex;border-bottom: 1px solid #ddd;}
   .section-{{ section.id }}  .custom-bottom-color{ border-color:rgba(255, 255, 255, 0.3)}
   .tabs__nav-design-1 .tabs__tab:before{width:100%;background:#1d1d1d}
-  .section-{{ section.id }} .tabs__tab{flex:1;padding-bottom: 0px;}
+  .section-{{ section.id }} .tabs__tab{padding-bottom: 0px;}
   .section-{{ section.id }} .tabs__tab span{ padding: 0px 0px 0px;font-size: 18px;line-height: 22px;white-space: nowrap;}
   .tabs__nav-design-1 .tabs__tab:before{height:2px;background:transparent}
   .tabs__nav-design-1 .tabs__tab[aria-selected="true"] span{color: #3250C3;}
@@ -343,12 +351,12 @@
   @media (max-width: 767.98px) {
     .section-{{ section.id }}{padding-left:0px;padding-right:0px}
     .section-{{ section.id }} .tabs-wraper,.section-{{ section.id }} .h2-title{ margin:0px 1.5rem}
-    .section-{{ section.id }} .tabs__nav{display:flex;gap:20px;width:100%; padding-inline: 0rem;}
+    .section-{{ section.id }} .tabs__nav{display:flex;gap:40px;border-bottom: 1px solid #ddd;}
     .section-{{ section.id }} .tabs__tab span,.collage-tab__content-inner p{line-height: 17px;white-space: pre-wrap;font-size: 14px;text-align:left}
     .tabs__nav-design-1 .tabs__tab{justify-content: flex-start;text-align:left  }
     .section-{{ section.id }} .tabs__tab-name{ padding-right: 0px;line-height: 17px; }
-    .section-{{ section.id }} .tabs__header{padding-top:2rem}
-    .section-{{ section.id }} .tabs__nav-wrap{max-width:100%}
+    .section-{{ section.id }} .tabs__header{padding-top:3rem}
+    .section-{{ section.id }} .tabs__nav-wrap{max-width:100%;justify-content: left;}
     .section-{{ section.id }} .h2-title {line-height:34px;font-size: 28px;}
     .section-{{ section.id }} .collage-tab__image{height:226px;background: transparent;}
     .section-{{ section.id }} .collage-tab__image img{ height: 100%;object-fit: fill;}
@@ -646,7 +654,7 @@
                         </h3>
                         {%- assign desc_list = block.settings[custom_describe] | split: '\n' -%}
                         {% if desc_list.size > 1 %}
-                          <ul class="custom-product-describe describe-min-height">
+                          <ul class="custom-product-describe {{block.settings.sale_height_diy }}">
                             {% for desc in desc_list %}
                               {% if desc != blank %}
                                 <li>
@@ -1178,6 +1186,28 @@
             }
           ],
           "default": "btn--primary"
+        },
+
+
+        {
+          "type": "select",
+          "id": "sale_height_diy",
+          "label": "卖点高度样式",
+          "options": [
+            {
+              "value": "h75px",
+              "label": "h75px"
+            },
+            {
+              "value": "h100px",
+              "label": "h100px"
+            },
+          {
+              "value": "h125px",
+              "label": "h125px"
+            },
+          ],
+          "default": "h75px",
         },
 
 

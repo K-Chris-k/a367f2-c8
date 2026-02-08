@@ -192,7 +192,6 @@
         },
         "position_C8Xx6n": {
           "type": "position",
-          "disabled": true,
           "settings": {
             "color_scheme": "scheme-1",
             "background": "shopify://shop_images/position.png",
@@ -223,10 +222,11 @@
         },
         "slide_GejMF3": {
           "type": "slide",
+          "disabled": true,
           "settings": {
             "color_scheme": "scheme-1",
-            "background": "shopify://shop_images/110-home-kv-pc.jpg",
-            "background_mobile": "shopify://shop_images/110-home-kv-mob.jpg",
+            "background": "shopify://shop_images/home-kv-pc.jpg",
+            "background_mobile": "shopify://shop_images/home-kv-mob.jpg",
             "logo_title": "",
             "is_show_email": false,
             "image_overlay_opacity": 0,
@@ -234,22 +234,22 @@
             "content_position": "top-center",
             "content_position_mobile": "middle-center",
             "text_alignment": "center",
-            "title": "Sonniger Start im Neujahr",
+            "title": "Bis zu 50% Rabatt",
             "title_span": "",
             "title_span_color": "#ffffff",
             "title_span_bg": "#3250C3",
             "title_span_size": "18px",
             "heading_size": "hd2",
-            "title_color": "#ffffff",
-            "subheading": "Bis zu <strong>56%</strong> Rabatt",
-            "subheading_color": "#fb9b23",
+            "title_color": "#d63a2f",
+            "subheading": "Febraur-Sales | 9. - 27. Februar",
+            "subheading_color": "#1a1a1a",
             "subheading_mb": "8px",
-            "description": "<p>Frische Energie für dein warmes Zuhause</p>",
+            "description": "<p>Aus Liebe zur Erde.<strong> Mit Energie fürs Zuhause.</strong></p>",
             "description_size": "text-lg",
             "description_mt": "12",
             "description_mt_mob": "8",
-            "description_color": "#ffffff",
-            "date": "8. bis 30. Januar",
+            "description_color": "#000000",
+            "date": "",
             "date_size": "text-base",
             "date_color": "#ffffff",
             "date_mt": "25",
@@ -258,7 +258,7 @@
             "date_span_color": "#ffa81d",
             "date_span_size": "28px",
             "button_label": "Mehr erfahren",
-            "button_link": "shopify://pages/neujahrs-sale",
+            "button_link": "shopify://pages/february-sales",
             "button_style": "btn--primary",
             "button_mt": "",
             "button_mt_mob": ""
@@ -273,7 +273,10 @@
         "position_C8Xx6n",
         "slide_GejMF3"
       ],
-      "custom_css": [],
+      "custom_css": [
+        "@media (min-width: 768px) {.block strong {margin-top: 20px; color: #1a1a1a; line-height: 29px; font-size: 24px; font-weight: 400; }}",
+        "@media (max-width: 768px) {.block strong {display: inline-block; font-weight: 500; } .slideshow__description p {font-weight: 500; }}"
+      ],
       "settings": {
         "container": "full",
         "layout": "standard",
@@ -452,13 +455,13 @@
           "type": "card",
           "settings": {
             "product_item": "bk1600-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/home-pro-1-pc_796fd660-a381-49e3-bd83-b110ac6ae405.png",
-            "mobile_image": "shopify://shop_images/home-pro-1-pc_796fd660-a381-49e3-bd83-b110ac6ae405.png",
+            "custom_image": "shopify://shop_images/sale-pro-3-1-0203.png",
+            "mobile_image": "shopify://shop_images/sale-pro-3-1-0203.png",
             "hotsale": "Hot Sale",
             "custom_title": "BK1600 + 445W Bifaziale Solarpanel*2",
             "custom_describe": "In nur 1,82 Jahren amortisiert \\nProduziert ca. 3,5 kWh täglich \\nErzeugt rund 1028 kWh pro Jahr \\nSpart bis zu 411€ im Jahr",
             "price": "599,00€",
-            "original": "1.328,00€",
+            "original": "1.398,00€",
             "button_text": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher?variant=43351637426275&solar=43859125272675"
           }
@@ -467,12 +470,12 @@
           "type": "card",
           "settings": {
             "product_item": "bk1600-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/home-pro-2-pc.png",
-            "mobile_image": "shopify://shop_images/home-pro-2-pc.png",
+            "custom_image": "shopify://shop_images/home-pro-2-0203.png",
+            "mobile_image": "shopify://shop_images/home-pro-2-0203.png",
             "hotsale": "Hot Sale",
             "custom_title": "SolidFlex 2000 + SFA1800*1",
             "custom_describe": "4 MPPT, 2400W PV-Eingang\\nHöchste Sicherheit mit halbfesten Akkus\\nCycBoost-Technologie: 8000 Lebenszyklen\\n2400W AC-Kopplung",
-            "price": "1.048,00€",
+            "price": "1.098,00€",
             "original": "1.898,00€",
             "button_text": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/solidflex-2000-balkonkraftwerk-mit-speicher?variant=43629440696419&battery=43859125076067"
@@ -482,12 +485,12 @@
           "type": "card",
           "settings": {
             "product_item": "bk1600-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/home-pro-3-pc.png",
-            "mobile_image": "shopify://shop_images/home-pro-3-pc.png",
+            "custom_image": "shopify://shop_images/home-pro-3-0203.png",
+            "mobile_image": "shopify://shop_images/home-pro-3-0203.png",
             "hotsale": "Hot Sale",
             "custom_title": "SolidFlex 2000 + SFA1800*1 + 500W Solarpanel*4",
             "custom_describe": "In nur 1,84 Jahren amortisiert \\nProduziert ca. 7 kWh täglich\\nErzeugt rund 2056 kWh pro Jahr\\nSpart bis zu 822€ im Jahr",
-            "price": "1.523,00€",
+            "price": "1.598,00€",
             "original": "2.57200€",
             "button_text": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/solidflex-2000-balkonkraftwerk-mit-speicher?variant=43629440696419&battery=43859125076067&solar=43859125567587"
@@ -497,12 +500,12 @@
           "type": "card",
           "settings": {
             "product_item": "bk1600-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/home-pro-4-pc.png",
-            "mobile_image": "shopify://shop_images/home-pro-4-pc.png",
+            "custom_image": "shopify://shop_images/home-pro-4-0203.png",
+            "mobile_image": "shopify://shop_images/home-pro-4-0203.png",
             "hotsale": "Hot Sale",
             "custom_title": "SolidFlex 2000 ECO + SFA1800*2",
             "custom_describe": "Die Energiespeicherlösung für deine PV-Anlage\\nHöchste Sicherheit mit halbfesten Akkus\\nCycBoost-Technologie: 8000 Lebenszyklen\\n2400W AC-Kopplung",
-            "price": "1.397,00€",
+            "price": "1.497,00€",
             "original": "2.397,00€",
             "button_text": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus?variant=43817398173795&battery=43859125108835"
@@ -512,12 +515,12 @@
           "type": "card",
           "settings": {
             "product_item": "bk1600-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/home-pro-5-pc.png",
-            "mobile_image": "shopify://shop_images/home-pro-5-pc.png",
+            "custom_image": "shopify://shop_images/home-pro-5-0203.png",
+            "mobile_image": "shopify://shop_images/home-pro-5-0203.png",
             "hotsale": "Hot Sale",
             "custom_title": "PowerFlex 2000 + PFA2000*2",
             "custom_describe": "2 kWh Kapazität/Einheit, längere Akkulaufzeit \\nCycBoost-Technologie: 8000 Lebenszyklen\\n2400W mit DC- & AC-Kopplung",
-            "price": "1.447,00€",
+            "price": "1.547,00€",
             "original": "2.597,00€",
             "button_text": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/powerflex-2000-balkonkraftwerk-mit-speicher?variant=43526874988643&battery=43917307445347"
@@ -555,6 +558,120 @@
         "button_alignment": "center"
       }
     },
+    "product_collection_1208_nCjwbg": {
+      "type": "product-collection-1208",
+      "blocks": {
+        "card_MtdC6w": {
+          "type": "card",
+          "settings": {
+            "product_item": "indevolt-2000w-balkonkraftwerk-mit-mikrowechselrichter-deye-m200g4",
+            "custom_image": "shopify://shop_images/home-top1.png",
+            "mobile_image": "shopify://shop_images/home-top1.png",
+            "hotsale": "",
+            "custom_title": "SolidFlex 2000 + SFA1800",
+            "custom_describe": "4 MPPT, 2400W PV-Eingang\\nHöchste Sicherheit mit halbfesten Akkus\\nCycBoost-Technologie: 8000 Lebenszyklen\\n2400W AC-Kopplung",
+            "price": "1.098,00€",
+            "original": "1.898,00€",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/solidflex-2000-balkonkraftwerk-mit-speicher?variant=43629440696419&battery=43859125076067"
+          }
+        },
+        "card_WYCDCH": {
+          "type": "card",
+          "settings": {
+            "product_item": "indevolt-2000w-balkonkraftwerk-mit-mikrowechselrichter-deye-m200g4",
+            "custom_image": "shopify://shop_images/home-top2.png",
+            "mobile_image": "shopify://shop_images/home-top2.png",
+            "hotsale": "",
+            "custom_title": "SolidFlex 2000 ECO + SFA1800",
+            "custom_describe": "Energiespeicher für deine PV-Anlage \\nMaximale Sicherheit mit halbfesten Akkus\\n8000 Zyklen – garantiert durch CycBoost Tech",
+            "price": "1.048,00€",
+            "original": "1.898,00€",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus?variant=43817398173795&battery=43859125076067"
+          }
+        },
+        "card_cQXpLK": {
+          "type": "card",
+          "settings": {
+            "product_item": "indevolt-2000w-balkonkraftwerk-mit-mikrowechselrichter-deye-m200g4",
+            "custom_image": "shopify://shop_images/home-top3.png",
+            "mobile_image": "shopify://shop_images/home-top3.png",
+            "hotsale": "",
+            "custom_title": "PowerFlex 2000 + PFA2000",
+            "custom_describe": "2 kWh Kapazität/Einheit, längere Akkulaufzeit \\nCycBoost-Technologie: 8000 Lebenszyklen\\n2400W mit DC- & AC-Kopplung",
+            "price": "1.098,00€",
+            "original": "1.898,00€",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/powerflex-2000-balkonkraftwerk-mit-speicher?variant=43526874988643&battery=43917307412579"
+          }
+        },
+        "card_ipdqL7": {
+          "type": "card",
+          "settings": {
+            "product_item": "indevolt-2000w-balkonkraftwerk-mit-mikrowechselrichter-deye-m200g4",
+            "custom_image": "shopify://shop_images/home-top4.png",
+            "mobile_image": "shopify://shop_images/home-top4.png",
+            "hotsale": "",
+            "custom_title": "SolidFlex 2000 + SFA1800 + 500W Bifaziale Solarpanel*4",
+            "custom_describe": "In nur 2,07 Jahren amortisiert \\nProduziert ca. 7 kWh täglich \\nErzeugt rund 2056 kWh pro Jahr \\nSpart bis zu 822€ im Jahr",
+            "price": "1.598,00€",
+            "original": "2.696,00€",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/solidflex-2000-balkonkraftwerk-mit-speicher?variant=43629440696419&battery=43859125076067&solar=43859125567587"
+          }
+        },
+        "card_zJ9kKR": {
+          "type": "card",
+          "settings": {
+            "product_item": "indevolt-2000w-balkonkraftwerk-mit-mikrowechselrichter-deye-m200g4",
+            "custom_image": "shopify://shop_images/home-top5.png",
+            "mobile_image": "shopify://shop_images/home-top5.png",
+            "hotsale": "",
+            "custom_title": "BK1600 + 445W Bifaziale Solarpanel*2",
+            "custom_describe": "In nur 1,82 Jahren amortisiert \\nProduziert ca. 3,5 kWh täglich \\nErzeugt rund 1028 kWh pro Jahr \\nSpart bis zu 411€ im Jahr",
+            "price": "599,00€",
+            "original": "1.398,00€",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher?variant=43351637426275&solar=43859125272675"
+          }
+        }
+      },
+      "block_order": [
+        "card_MtdC6w",
+        "card_WYCDCH",
+        "card_cQXpLK",
+        "card_ipdqL7",
+        "card_zJ9kKR"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".custom-product-price {color: #df4763 !important;}"
+      ],
+      "name": "产品推荐1208",
+      "settings": {
+        "id": "",
+        "title": "Produktempfehlung",
+        "padding_top": 160,
+        "padding_bottom": 80,
+        "button_height": 48,
+        "mobile_button_height": 40,
+        "section_bg_color": "#ffffff",
+        "bg_color": "",
+        "content_color": "#f5f5f5",
+        "title_color": "#000000",
+        "button_title_color": "#1a1a1a",
+        "button_color": "cyber-monday",
+        "image_height": "216",
+        "sale-min_height": "100",
+        "mob-sale-min_height": "95",
+        "product_show_count": "4",
+        "product_show_count_mob": "1",
+        "product_onsale": "kv-size",
+        "list_style": "home-list",
+        "button_alignment": "center"
+      }
+    },
     "product_coupon_KwiHgH": {
       "type": "product-coupon",
       "blocks": {
@@ -565,7 +682,7 @@
             "mobile_image": "shopify://shop_images/b92458a6006851e37c9015d216bc64e9_ce156021-2c46-4049-8104-02a38b7bd8de.png",
             "title": "Jetzt kaufen und sparen",
             "button_title": "Mehr erfahren >",
-            "button_link": "shopify://pages/balkonkraftwerk-mit-speicher"
+            "button_link": "shopify://pages/balkonkraftwerk-mit-speicher-off"
           }
         },
         "card_DWmKQB": {
@@ -684,7 +801,7 @@
             "product_img": "shopify://shop_images/sfa1800-2.png",
             "product_title": "SolidFlex 2000 ECO + SFA1800*2",
             "product_des": "",
-            "product_price": "1.397,00 €",
+            "product_price": "1.497,00 €",
             "product_link": "https://de.indevolt.com/products/indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus?battery=43859125108835"
           }
         },
@@ -698,7 +815,7 @@
             "product_img": "shopify://shop_images/flex-pimg4.png",
             "product_title": "PowerFlex 2000 + PFA2000",
             "product_des": "4*445W Bifaziales Solarmodul",
-            "product_price": "1.586,00 €",
+            "product_price": "1.636,00 €",
             "product_link": "https://de.indevolt.com/products/powerflex-2000-balkonkraftwerk-mit-speicher?battery=43917307412579&solar=43859125305443&mount=43868337274979"
           }
         }
@@ -902,6 +1019,26 @@
     "review_list_XNNiXX": {
       "type": "review-list",
       "blocks": {
+        "card_33CQFy": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/review-12-pc.jpg",
+            "image_mobile": "shopify://shop_images/review-12-pc.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Geniales Balkonkraftwerk mit toller SoftwareHabe bereits die 2. in Vollkonfiguration bestellt weil das Teil echt was kann. Ideal für Dynamische Tarife und Balkonkraft PV. Auch Clustern bis 30kwh möglich. Bei dem Preis echt unschlagbar. Klare Empfehlung",
+            "name": "Wilhelm Bauer"
+          }
+        },
+        "card_WfXWQr": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/review-11-pc.jpg",
+            "image_mobile": "shopify://shop_images/review-11-pc.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Nach langer Suche nach einem geeigneten PV Akku bin ich über die SF2000 gestolpert. Die flexiblen Erweiterungs- und Anschlußmöglichkeiten, technischen Daten und vor allem die Möglichkeit der lokalen Steuerung auch ohne Cloud haben mich überzeugt. Der Speicher ist noch nicht so bekannt, aber ich würde ihn sofort wieder kaufen. Support und Feedback bei Fragen ist Top",
+            "name": "Rainer"
+          }
+        },
         "card_gD7KCd": {
           "type": "card",
           "settings": {
@@ -920,6 +1057,16 @@
             "start": "shopify://shop_images/start.svg",
             "content": "Material sehr hochwertig und schwer, Einrichtung Shelly/Ecotracker/Gerät selber sehr gut und einfach, das Netzkabel ist sehr massiv.",
             "name": "Fettarme Hmilch"
+          }
+        },
+        "card_jq89aU": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/home-Kunden-img1.jpg",
+            "image_mobile": "shopify://shop_images/home-Kunden-img1.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Der Indevolt SolidFlex 2000 Speicher für Balkonkraftwerke oder kleine PV-Anlagen punktet durch einfache Plug-and-Playinstallation und unterbrechungsfreier Notstromversorgung. Außerdem lässt er sich auf bis zu 10,8 kWh erweitern und sogar ins Smart Home einbinden.",
+            "name": "Mariella W."
           }
         },
         "card_YH9LNL": {
@@ -950,16 +1097,6 @@
             "start": "shopify://shop_images/start.svg",
             "content": "Morgenenergie. Die heutige Wahl: Indevolt BK1600 – ein wahrer Erbe jeder Sonnenstrahlung.",
             "name": "Leon Fischer"
-          }
-        },
-        "card_jq89aU": {
-          "type": "card",
-          "settings": {
-            "image_pc": "shopify://shop_images/home-Kunden-img1.jpg",
-            "image_mobile": "shopify://shop_images/home-Kunden-img1.jpg",
-            "start": "shopify://shop_images/start.svg",
-            "content": "Der Indevolt SolidFlex 2000 Speicher für Balkonkraftwerke oder kleine PV-Anlagen punktet durch einfache Plug-and-Playinstallation und unterbrechungsfreier Notstromversorgung. Außerdem lässt er sich auf bis zu 10,8 kWh erweitern und sogar ins Smart Home einbinden.",
-            "name": "Mariella W."
           }
         },
         "card_my4qMB": {
@@ -1004,12 +1141,14 @@
         }
       },
       "block_order": [
+        "card_33CQFy",
+        "card_WfXWQr",
         "card_gD7KCd",
         "card_Hrg3dX",
+        "card_jq89aU",
         "card_YH9LNL",
         "card_Pq9FhP",
         "card_38DYVV",
-        "card_jq89aU",
         "card_my4qMB",
         "card_bCBJDy",
         "card_R8PxWw",
@@ -1073,7 +1212,7 @@
           "settings": {
             "image": "shopify://shop_images/646401_31f22922-6c9c-456b-8535-77d14ad2894a.png",
             "title": "Sende eine E-Mail",
-            "content": "<a href=\"mailto:sales@indevolt.com\" alt=\"sales@indevolt.com\">sales@indevolt.com</a>"
+            "content": "<a href=\"mailto:service@indevolt.com\" alt=\"service@indevolt.com\">service@indevolt.com</a>"
           }
         },
         "card_YcAehM": {
@@ -1222,6 +1361,7 @@
     "scene_list_CwKJ7V",
     "product_collection_tDncTn",
     "product_collection_1208_VKXU47",
+    "product_collection_1208_nCjwbg",
     "product_coupon_KwiHgH",
     "product_member_7PnRwB",
     "flexible_scene_list_AwPzpT",

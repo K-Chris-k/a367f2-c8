@@ -6,14 +6,13 @@
 {{ 'component-tabs.css' | asset_url | stylesheet_tag }}
 {{ 'section-collage-tabs.css' | asset_url | stylesheet_tag }}
 <style>
+   .section-{{ section.id }} {padding-top: {{ section.settings.padding_top }}px;padding-bottom: {{ section.settings.padding_bottom }}px;}
   .section-{{ section.id }} .h2-title {line-height:56px;font-size: 46px;text-align:center}
   .section-{{ section.id }} .tabs__header {padding-top:46px}
   .section-{{ section.id }} .tabs__nav{gap:90px;display:flex;border-bottom: 1px solid #ddd;}
   .section-{{ section.id }}  .custom-bottom-color{ border-color:rgba(255, 255, 255, 0.3)}
   .tabs__nav-design-1 .tabs__tab:before{width:100%;background:#1d1d1d}
-  .section-{{ section.id }} .tabs__tab{padding-bottom: 0px;}
-  {% comment %} flex:1; {% endcomment %}
-
+  .section-{{ section.id }} .tabs__tab{flex:1;padding-bottom: 0px;}
   .section-{{ section.id }} .tabs__tab span{ padding: 0px 0px 10px;font-size: 18px;line-height: 22px;white-space: nowrap;}
   .tabs__nav-design-1 .tabs__tab:before{height:2px;background:transparent}
   .tabs__nav-design-1 .tabs__tab[aria-selected="true"] span{color: #3250C3;}
@@ -22,103 +21,184 @@
   .section-{{ section.id }} .collage-tab__content{max-width: 100%;padding:1.8rem 3.2rem 2.4rem 3.2rem;color:#666}
   .section-{{ section.id }} .tabs__header{margin-bottom:0px}
   .section-{{ section.id }} .tabs__tab-name{ color:{{ section.settings.tab_title_color }}}
-  .section-{{ section.id }} .collage-tab__image{background: transparent;}
-{% comment %} style="height:30px;width:100px;" {% endcomment %}
-  {% comment %} .section-{{ section.id }}  .text-overlay {
-    position: absolute;
-    top: 340px;
-    left: 150px;
-    color: white;
-    width: 300px;
-    height:60px;
-    z-index: 2;
-} {% endcomment %}
 
-    .image-hotspot {
+  .section-{{ section.id }} .tabs__panel{padding: 20px 0 0 0;}
+  .section-{{ section.id }}  .image-with-overlay {
+        position: relative;
+        display: block;
+        width: 100%;
+    }
+
+     .section-{{ section.id }} .image-with-overlay .text-overlay {
         position: absolute;
-        
-        left: 180px;
-        width: 300px;
-        height: 60px;
-        opacity: 0;
-        cursor: pointer;
-        z-index: 10;
-        transition: background-color 0.2s;
+        top: 40px;     /* 距图片顶部40px */
+        left: 50px;    /* 距图片左边50px */
+        color: white;  /* 建议使用白色文字，确保在图片上可读 */
+        max-width: 1150px; /* 控制文字最大宽度 */
+        z-index: 2;    /* 确保文字在图片上方 */
     }
 
-    .hotspot-1{
-        top: 270px;
-    }
-
-    .hotspot-2{
-        top: 375px;
+ 
+    
+   .section-{{ section.id }} .image-with-overlay .text-overlay h3 {
+        margin-top: 0;
+        margin-bottom: 12px;
+        font-size: 32px;
+        line-height:39px;
+        font-weight: 600;
+        color:#ffffff;
+        {% comment %} text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* 添加文字阴影增强可读性 */ {% endcomment %}
     }
     
-    /* 调试时可显示 */
-    {% comment %} .image-hotspot:hover {
-        background-color: rgba(50, 80, 195, 0.3);
-         opacity: 0.3;
-        border: 1px dashed #3250C3;  
-    } {% endcomment %}
+   .section-{{ section.id }} .image-with-overlay .text-overlay p {
+        margin: 0;
+        font-size: 18px;
+        line-height:22px;
+        font-weight: 400;
+        {% comment %} text-shadow: 1px 1px 2px rgba(0,0,0,0.5); {% endcomment %}
+    }
 
+   .section-{{ section.id }} .image-with-overlay .video-div{
+      background: rgba(0, 0, 0, 0.2);
+   }
+
+   
   @media (max-width: 767.98px) {
+    .section-{{ section.id }}{padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;padding-bottom: {{ section.settings.padding_bottom | divided_by: 2}}px;}
     .section-{{ section.id }}{padding-left:0px;padding-right:0px}
-    .section-{{ section.id }} .tabs-wraper,.section-{{ section.id }} .h2-title{ margin:0px 1.5rem}
-    .section-{{ section.id }} .tabs__nav{display:flex;gap:40px;border-bottom: 1px solid #ddd;}
-    {% comment %} width:100%; padding-inline: 0rem; {% endcomment %}
+    .section-{{ section.id }} .tabs-wraper,.section-{{ section.id }} .h2-title{ margin:0px 1.5rem; text-align:left;}
+    .section-{{ section.id }} .tabs__nav{display:flex;gap:40px;width:100%; padding-inline: 0rem;}
     .section-{{ section.id }} .tabs__tab span,.collage-tab__content-inner p{line-height: 17px;white-space: pre-wrap;font-size: 14px;text-align:left}
     .tabs__nav-design-1 .tabs__tab{justify-content: flex-start;text-align:left  }
     .section-{{ section.id }} .tabs__tab-name{ padding-right: 0px;line-height: 17px; }
-    .section-{{ section.id }} .tabs__header{padding-top:2rem}
-    .section-{{ section.id }} .tabs__nav-wrap{max-width:100%;justify-content: left;}
+    .section-{{ section.id }} .tabs__header{padding-top:3rem}
+    .section-{{ section.id }} .tabs__nav-wrap{max-width:100%}
     .section-{{ section.id }} .h2-title {line-height:34px;font-size: 28px;}
-    .section-{{ section.id }} .collage-tab__image{height:550px;background: transparent;}
-    .section-{{ section.id }} .collage-tab__image img{ height: 100%;object-fit: fill;}
+    .section-{{ section.id }} .collage-tab__image{min-height:400px;background: transparent;}
+    .section-{{ section.id }} .collage-tab__image img{ height: 255px;object-fit: fill;}
     .section-{{ section.id }} .collage-tab__content{padding:1.8rem 3.2rem 2.4rem 0rem;color:#666}
-    .section-{{ section.id }} .image-hotspot {
-        left: 70px;
-        width: 230px;
-        height: 40px;
-    }
-   
+    .section-{{ section.id }} .tabs__panel{padding: 0 0 0 0;}
+   .section-{{ section.id }} .image-with-overlay .video-div{
+      background: rgba(0, 0, 0, 0);
+   }
+
+    /* 修改这里：移动端文字在图片上方，不在图片上重叠 */
+  .section-{{ section.id }} .image-with-overlay {
+    display: flex;
+    flex-direction: column;
+    position: relative;
   }
-      @media (max-width: 450.98px) {
-    .hotspot-1{
-        top: 202px;
-    }
-    .hotspot-2{
-        top: 268px;
-    }
+  
+  .section-{{ section.id }} .image-with-overlay .text-overlay {
+    position: static; /* 恢复静态定位 */
+    order: 1; /* 文字在第一位置 */
+    padding: 15px 0; /* 添加上下间距 */
+    color: #1C1C1C; /* 使用深色文字 */
+    background: none; /* 移除背景 */
+    border-radius: 0; /* 移除圆角 */
+    text-shadow: none; /* 移除文字阴影 */
+    z-index: auto; /* 恢复默认层级 */
+    margin-bottom: 10px; /* 文字和图片之间的间距 */
+  }
+
+  .section-{{ section.id }} .image-with-overlay picture,video {
+    order: 2; /* 图片在第二位置 */
+    width: 100%;
+  }
+
+  .section-{{ section.id }} .image-with-overlay .text-overlay h3 {
+    font-size: 16px;
+    line-height: 19px;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #1C1C1C; /* 深色文字 */
+  }
+  
+  .section-{{ section.id }} .image-with-overlay .text-overlay p {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight:400;
+    color: #666; /* 灰色文字 */
+  }
+
+  .section-{{ section.id }} video{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
   }
 
 
-      @media (max-width: 410.98px) {
-    .hotspot-1{
-        top: 202px;
-    }
-    .hotspot-2{
-        top: 268px;
-    }
+
+  /* 1. 修改外层容器样式，允许横向滚动 */
+  .section-{{ section.id }} .tabs__nav-wrap {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch; /* iOS平滑滚动 */
+    scrollbar-width: none; /* Firefox隐藏滚动条 */
+    padding-bottom: 5px; /* 给滚动条留空间 */
+  }
+  
+  /* 隐藏滚动条（Chrome, Safari, Edge） */
+  .section-{{ section.id }} .tabs__nav-wrap::-webkit-scrollbar {
+    display: none;
+    height: 0;
+  }
+  
+  /* 2. 修改导航容器，禁用换行并设置最小宽度 */
+  .section-{{ section.id }} .tabs__nav {
+    display: flex;
+    flex-wrap: nowrap; /* 关键：禁止换行 */
+    gap: 40px;
+    width: max-content; /* 根据内容自动扩展宽度 */
+    min-width: 100%; /* 最小宽度为父容器100% */
+    padding-inline: 0rem;
+    border-bottom: 1px solid #ddd; /* 确保边框跟随内容 */
+  }
+  
+  /* 3. 修改tab项样式，保持固定宽度或自动宽度 */
+  .section-{{ section.id }} .tabs__tab {
+    flex: 0 0 auto; /* 不伸缩，不收缩，自动宽度 */
+    white-space: nowrap; /* 防止文字换行 */
+  }
+  
+  .section-{{ section.id }} .tabs__tab span {
+    line-height: 17px;
+    white-space: nowrap; /* 确保tab文字不换行 */
+    font-size: 14px;
+    text-align: left;
+    padding-right: 0;
+  }
+  
+  /* 4. 调整tabs容器样式 */
+  .section-{{ section.id }} .tabs__header {
+    margin: 0;
+    position: relative;
+  }
+  
+  /* 5. 如果需要，可以添加左右滑动提示 */
+  .section-{{ section.id }} .tabs__nav-wrap:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: linear-gradient(to right, transparent, {{ section.settings.bg_color }} 80%);
+    pointer-events: none;
+  }
+  
+  .section-{{ section.id }} .tabs__nav-wrap.scroll-start:after {
+    opacity: 0;
   }
 
-      @media (max-width: 395.98px) {
-    .hotspot-1{
-        top: 202px;
-    }
-    .hotspot-2{
-        top: 268px;
-    }
-  }
 
 
-    @media (max-width: 380.98px) {
-    .hotspot-1{
-        top: 202px;
-    }
-    .hotspot-2{
-        top: 268px;
-    }
+
   }
+
+ 
+
+ 
 </style>
 {% render 'divider',
   show_divider: section.settings.show_section_divider,
@@ -126,8 +206,7 @@
 %}
 <div
   class="section section-{{ section.id }} section--padding section--collage-tabs page-width color-{{ section.settings.color_scheme }}"
-  style="--section-padding-top: {{ section.settings.padding_top }}px;--section-padding-bottom: {{ section.settings.padding_bottom }}px;
-  background-color: {{ section.settings.bg_color }};"
+  style="  background-color: {{ section.settings.bg_color }};"
   data-id="{{ section.id }}"
 >   {%- if section.settings.title !=blank -%}
     <h2 class="h2-title">
@@ -191,51 +270,65 @@
               style="{{ tab_inline_style }}"
             >
               <div
-                class="image-wrapper collage-tab__image media-wrapper{% if block.settings.image == blank %} bg-none{% endif %}{% if section.settings.desktop_image_position == 'right' %} md:order-last{% endif %}"
-                style="--aspect-ratio: {{ aspect_ratio }};"
+                class="collage-tab__image media-wrapper{% if block.settings.image == blank %} bg-none{% endif %}{% if section.settings.desktop_image_position == 'right' %} md:order-last{% endif %}"
+                {% comment %} style="--aspect-ratio: {{ aspect_ratio }};" {% endcomment %}
               >
-                  {% if block.settings.image != blank %}
-                  <picture>
-                    <!-- 移动端图片 -->
-                    <source
-                      media="(max-width: 749px)"
-                      srcset="
-                        {{ block.settings.mobile_image | img_url: '800x' }} 1x,
-                        {{ block.settings.mobile_image | img_url: '1600x' }} 2x
-                      "
-                    >
 
-                    <!-- 桌面端图片 -->
-                    <source
-                      media="(min-width: 750px)"
-                      srcset="
-                        {{ block.settings.image | img_url: '1200x' }} 1x,
-                        {{ block.settings.image | img_url: '2400x' }} 2x
-                      "
-                    >
+                <div class="image-with-overlay">
+     
+                  {% if block.settings.video != blank %}
+                    {{ block.settings.video | video_tag: 
+                      class: 'collage-tab__video-element', 
+                      autoplay: true,
+                      loop: true,
+                      muted: true,
+                      controls: false,
+                      playsinline: true,
+                      preload: 'metadata'
+                    }}
+          
+                   {% else %}
 
-                    <!-- 默认图片 -->
-                    <img
-                      src="{{ block.settings.image | img_url: '1200x' }}"
-                      alt="{{ block.settings.title | escape }}"
-                      class="grid-image"
-                      loading="lazy"
-                      width="{{ block.settings.image.width }}"
-                      height="{{ block.settings.image.height }}"
-                    >
-                  </picture>
-                   {%- if block.settings.subheading != blank -%}
-                     <a href="https://de.indevolt.com/pages/help-center#Anleitungsvideos" class="image-hotspot hotspot-1" style="display:block;"></a>
-                     <a href="https://de.indevolt.com/pages/help-center#Gebrauchsanweisungen" class="image-hotspot hotspot-2" style="display:block;"></a>
-                  {%- endif -%}
-                {% else %}
-                  {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-                {% endif %}
+                        {% if block.settings.image != blank %}
+                        <picture>
+                          <!-- 移动端图片 -->
+                          <source
+                            media="(max-width: 749px)"
+                            srcset="
+                              {{ block.settings.mobile_image | img_url: '800x' }} 1x,
+                              {{ block.settings.mobile_image | img_url: '1600x' }} 2x
+                            "
+                          >
+
+                          <!-- 桌面端图片 -->
+                          <source
+                            media="(min-width: 750px)"
+                            srcset="
+                              {{ block.settings.image | img_url: '1200x' }} 1x,
+                              {{ block.settings.image | img_url: '2400x' }} 2x
+                            "
+                          >
+
+                          <!-- 默认图片 -->
+                          <img
+                            src="{{ block.settings.image | img_url: '1200x' }}"
+                            alt="{{ block.settings.title | escape }}"
+                            class="grid-image"
+                            loading="lazy"
+                            width="{{ block.settings.image.width }}"
+                            height="{{ block.settings.image.height }}"
+                          >
+                        </picture>
+                      {% else %}
+                        {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+                      {% endif %}
+              {% endif %}
+               <div class="text-overlay {% if block.settings.video != blank %} video-div {% endif %}" >
+                      <h3>{{block.settings.heading}}</h3>
+                      <p>{{block.settings.description}}</p>
+                    </div>
               </div>
-              <div class="collage-tab__content flex-1 flex items-center">
-                <div class="collage-tab__content-inner rich-text flex flex-col w-full text-{{ block.settings.text_alignment }}">
-                 
-                </div>
+
               </div>
             </div>
           </div>
@@ -426,7 +519,7 @@
       "label": "t:sections.all.padding.padding_top",
       "default": 50,
       "min": 0,
-      "max": 100,
+      "max": 180,
       "step": 2,
       "unit": "px"
     },
@@ -436,7 +529,7 @@
       "label": "t:sections.all.padding.padding_bottom",
       "default": 50,
       "min": 0,
-      "max": 100,
+      "max": 180,
       "step": 2,
       "unit": "px"
     },
@@ -492,6 +585,13 @@
           "type": "image_picker",
           "label": "移动端图像",
           "id": "mobile_image"
+        },
+
+        {
+          "type": "video",
+          "id": "video",
+          "label": "上传视频文件",
+          "info": "支持MP4格式视频"
         },
         {
           "type": "inline_richtext",
@@ -659,7 +759,7 @@
   ],
   "presets": [
     {
-      "name": "阳台储能图片链接tabs",
+      "name": "阳台专题产品tabsPC+移动",
       "category": "自定义产品组件",
       "blocks": [
         {

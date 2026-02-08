@@ -203,14 +203,14 @@
             >
               <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
                  {% if section.settings.show_title_icon != false %}
-                   {% render 'icon-gift' -%}
+                   {% render 'icon-gift-left' -%}
                  {% endif %}
                 {% render 'highlight-text',
                   text: block.settings.heading,
                   style: block.settings.heading_highlight_style
                 %}
                 {% if section.settings.show_title_icon != false %}
-                   {% render 'icon-gift' -%}
+                   {% render 'icon-gift-right' -%}
                  {% endif %}
               </motion-element>
             </h2>

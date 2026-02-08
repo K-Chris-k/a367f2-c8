@@ -79,10 +79,6 @@
             "show_gift_card_recipient": true
           }
         },
-        "selleasy_lb_upsell_widget_pal_c7NQdD": {
-          "type": "shopify://apps/selleasy/blocks/lb-upsell-widget-pal/790c1a03-a71f-4bc1-9869-00dad526d3c2",
-          "settings": {}
-        },
         "logistics_pN3qrf": {
           "type": "logistics",
           "settings": {
@@ -99,7 +95,7 @@
             "icon_1": "certificate",
             "image_1": "shopify://shop_images/brand-icon1.svg",
             "heading_1": "Bequem bezahlen",
-            "content_image_1": "shopify://shop_images/card.png",
+            "content_image_1": "shopify://shop_images/pay-mob.png",
             "icon_2": "truck",
             "image_2": "shopify://shop_images/brand-icon2.svg",
             "content_image_2": "shopify://shop_images/track.png",
@@ -131,7 +127,6 @@
         "description",
         "variant_picker",
         "buy_buttons",
-        "selleasy_lb_upsell_widget_pal_c7NQdD",
         "logistics_pN3qrf",
         "icon_with_text",
         "complementary"
@@ -295,7 +290,7 @@
         "text_bHb4UC": {
           "type": "text",
           "settings": {
-            "text": "<p>Überwache deinen Energieverbrauch in Echtzeit über die Energy Ease App und schalte nur die benötigte Stromzufuhr frei.</p>",
+            "text": "<p>Überwache deinen Energieverbrauch in Echtzeit über die Indevolt APP und schalte nur die benötigte Stromzufuhr frei.</p>",
             "text_size": "text-lg"
           }
         }
@@ -309,7 +304,7 @@
         "section_color_scheme": "",
         "color_scheme": "",
         "custom_background": "#ffffff",
-        "image": "shopify://shop_images/Smarter-img4.jpg",
+        "image": "shopify://shop_images/20260205-170610.jpg",
         "image_height": "adapt",
         "layout": "image_first",
         "desktop_content_position": "center",
@@ -336,7 +331,7 @@
             "image_width": "extra-large",
             "title": "",
             "heading_size": "h4",
-            "text": "<h5>Slimme Stekker</h5>",
+            "text": "<h5>Smarter Stecker</h5>",
             "text_size": "text-base",
             "button_label": "",
             "button_style": "btn--underline",
@@ -353,7 +348,7 @@
             "image_width": "extra-large",
             "title": "",
             "heading_size": "h4",
-            "text": "<h5>Gebruikershandleiding</h5>",
+            "text": "<h5>Stromtransformator</h5>",
             "text_size": "text-base",
             "button_label": "",
             "button_style": "btn--underline",
@@ -370,7 +365,7 @@
             "image_width": "extra-large",
             "title": "",
             "heading_size": "h4",
-            "text": "<h5>Gebruikershandleiding</h5>",
+            "text": "<h5>Bedienungsanleitung</h5>",
             "text_size": "text-base",
             "button_label": "",
             "button_style": "btn--underline",
@@ -465,7 +460,7 @@
       ],
       "name": "参数列表",
       "settings": {
-        "title": "Technische Gegevens",
+        "title": "Technische Daten",
         "ids": "",
         "padding_top": 60,
         "padding_bottom": 60

@@ -24,7 +24,7 @@
     .slideshow__item-wrap{ flex-wrap: inherit;}
     .mobile-show{display:none}
     .section-{{ section.id }} .slideshow__content .slideshow__text{max-width: 50%;}
-    .section-{{ section.id }} .slideshow__subtitle {line-height: 34px;font-size: 28px;font-weight: 600;}
+    .section-{{ section.id }} .slideshow__subtitle {line-height: 29px;font-size: 24px;font-weight: 500;padding-top:20px;}
     .slideshow__subtitle strong{font-size: 32px;}
     .slideshow__subtitle span{font-size: 18px;text-decoration-line: line-through;}
     {% comment %} .section-{{ section.id }} .slideshow__content{ align-items: self-start;} {% endcomment %}
@@ -235,6 +235,10 @@
       @media (max-width: 768px) {
         .mobile-show{display:block}
         .section-{{ section.id }} .slideshow__content .slideshow__text{max-width:100%; }
+
+        .section-{{ section.id }} .slideshow-wrapper.slideshow-content-mobile--below .slideshow__content {
+          top:0rem;
+        }
         .section-{{ section.id }} .slideshow__title,.section-{{ section.id }} .slideshow__text {text-align:center;}
 
         .section-{{ section.id }} .slideshow__text{padding:0px 2.0rem}
@@ -262,6 +266,8 @@
          .text-box a{display:none}
 
          .section-{{ section.id }} .slideshow__subtitle strong{font-size: 22px;}
+
+         .section-{{ section.id }}  .slideshow__item-wrap{min-height:400px;}
       }
 </style>
 <script src="{{ 'slideshow-component.js' | asset_url }}" defer></script>

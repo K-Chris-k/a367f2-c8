@@ -1,6 +1,14 @@
 {% comment %} {{ 'announcement-bar.css' | asset_url | stylesheet_tag }} {% endcomment %}
 <style>
-  .announcement-bar__text{font-size:15px}
+  .announcement-bar__text{font-size:15px;color: #000!important;}
+  .announcement-bar__text a {
+  color: #000;
+  font-weight: 600;
+  padding-left: 5px; /* 确保a标签宽度为父容器的100% */
+}
+  .announcement-bar__text a:hover{
+  color: #000;
+}
 @media (max-width: 767.98px) {
   .announcement-bar__text{font-size:12px}
 }
