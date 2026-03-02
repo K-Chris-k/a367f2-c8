@@ -863,6 +863,27 @@
           "label": "Connect Solar Panel Quantity",
           "default": true,
           "visible_if": "{{block.settings.mount_sloped_roof != blank}}"
+        },
+        {
+          "type": "header",
+          "content": "Layout Settings"
+        },
+        {
+          "type": "select",
+          "id": "bundle_layout_type",
+          "label": "Bundle Card Layout",
+          "options": [
+            {
+              "value": "default",
+              "label": "Default (show price)"
+            },
+            {
+              "value": "selector",
+              "label": "Quantity Selector (1x/2x/3x)"
+            }
+          ],
+          "default": "default",
+          "info": "Default shows price; Selector replaces price with 1x/2x/3x quantity buttons"
         }
       ]
     },

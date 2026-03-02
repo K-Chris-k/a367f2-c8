@@ -745,7 +745,8 @@
             section: section,
             option_index: 0,
             bundle_mode: false,
-            bundle_display_mode: bundle_display_mode
+            bundle_display_mode: bundle_display_mode,
+            bundle_layout_type: bundle_config_block.settings.bundle_layout_type
           -%}
         {%- endif -%}
       {%- else -%}
@@ -793,7 +794,8 @@
             badge_new: bundle_config_block.settings.battery_badge_new,
             badge_new_text: bundle_config_block.settings.battery_badge_new_text,
             badge_best: bundle_config_block.settings.battery_badge_best,
-            badge_best_text: bundle_config_block.settings.battery_badge_best_text
+            badge_best_text: bundle_config_block.settings.battery_badge_best_text,
+            bundle_layout_type: bundle_config_block.settings.bundle_layout_type
           -%}
         {%- endif -%}
       {%- else -%}
@@ -1469,23 +1471,24 @@
       // 检查是否是 Multi Host 模式
       const isMultiHostMode = document.querySelector('[data-multi-host-mode="true"]') !== null;
 
+      // 检查是否是新布局（selector 模式）—— 有 1x/2x/3x 选择器
+      const layoutQtySelector = document.querySelector('[data-layout-qty-selector]');
+      const isLayoutSelector = !!layoutQtySelector;
+      const layoutMultiplier = (isLayoutSelector && window._bundleLayoutQty) ? window._bundleLayoutQty : 1;
+
       let hostPriceInCents = 0;
-      let hostOriginalPrice = 0;//主机原价original_price
+      let hostOriginalPrice = 0;
       let batteryPriceInCents = 0;
-      let batteryOriginalPrice = 0;//电池包原价
+      let batteryOriginalPrice = 0;
 
       if (isMultiHostMode) {
-        // Multi Host 模式：从选中的 multi-host-btn 获取主产品价格
         const selectedMultiHostBtn = document.querySelector('.multi-host-btn.selected');
         if (selectedMultiHostBtn) {
           hostPriceInCents = parseInt(selectedMultiHostBtn.dataset.price) || 0;
           hostOriginalPrice= parseInt(selectedMultiHostBtn.dataset.compareAtPrice) || 0;
-          
         }
-        // Multi Host 模式下没有电池包
         batteryPriceInCents = 0;
       } else {
-        // Bundle with Battery 模式：从配置中获取主机价格
         const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
         if (bundleConfigEl) {
           try {
@@ -1494,7 +1497,6 @@
               hostPriceInCents = parseInt(bundleConfig.host.price) || 0;
               hostOriginalPrice= parseInt(bundleConfig.host.original_price) || 0;
             } else if (bundleConfig.host && bundleConfig.host.handle && bundleConfig.host.variant_id) {
-              // 如果配置中没有价格，尝试从 API 获取（后备方案）
               fetch(`/products/${bundleConfig.host.handle}.js`)
                 .then((response) => response.json())
                 .then((product) => {
@@ -1504,7 +1506,7 @@
                     const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
                     const batteryPrice = selectedBatteryBtn ? parseInt(selectedBatteryBtn.dataset.price) || 0 : 0;
                     const bundleCategoryGridPrice = getBundleCategoryGridPrice();
-                    updateStickyBarPriceWithBundle(hostPriceInCents, batteryPrice, bundleCategoryGridPrice);
+                    updateStickyBarPriceWithBundle(hostPriceInCents * layoutMultiplier, batteryPrice, bundleCategoryGridPrice);
                   } else {
                     updateStickyBarPriceWithBundle(0, 0, getBundleCategoryGridPrice());
                   }
@@ -1513,17 +1515,22 @@
                   console.error('[Bundle] 获取主机价格失败:', error);
                   updateStickyBarPriceWithBundle(0, 0, getBundleCategoryGridPrice());
                 });
-              return; // 异步获取，直接返回
+              return;
             }
           } catch (e) {
             console.error('[Bundle] 解析配置失败:', e);
           }
         }
 
-        // Bundle 模式：获取选中的电池包价格
         const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
         batteryPriceInCents = selectedBatteryBtn ? parseInt(selectedBatteryBtn.dataset.price) || 0 : 0;
         batteryOriginalPrice= selectedBatteryBtn ? parseInt(selectedBatteryBtn.dataset.comparePrice) || 0 : 0;
+      }
+
+      // 新布局 selector 模式：主机价格 * 倍数
+      if (isLayoutSelector && layoutMultiplier > 1) {
+        hostPriceInCents = hostPriceInCents * layoutMultiplier;
+        hostOriginalPrice = hostOriginalPrice * layoutMultiplier;
       }
 
       // 获取所有 bundle-category-grid 产品的价格（两种模式都支持太阳能板、支架等）

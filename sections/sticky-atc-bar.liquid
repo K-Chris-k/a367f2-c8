@@ -316,10 +316,13 @@
 
           const bundleVariantIds = [];
 
+          // 新布局 selector 模式：主机数量使用选择器倍数
+          const hostQty = (window._bundleLayoutQty && window._bundleLayoutQty > 0) ? window._bundleLayoutQty : 1;
+
           if (hostVariantId) {
             items.push({
               id: parseInt(hostVariantId),
-              quantity: 1,
+              quantity: hostQty,
               properties: {
                 _bundle_item: 'true',
                 _bundle_role: 'host',
@@ -541,18 +544,17 @@
       
       function collectAllProducts() {
         const items = [];
+        const layoutQty = (window._bundleLayoutQty && window._bundleLayoutQty > 0) ? window._bundleLayoutQty : 1;
 
         // 检查是否是 Bundle 模式
         const bundleItems = collectBundleProducts();
         
         if (bundleItems.length > 0) {
-          // Bundle 模式：添加主机 + 电池包 + 太阳能板
           items.push(...bundleItems);
         } else {
-          // 非 Bundle 模式：添加主商品
           const mainVariantId = document.querySelector('input[name="id"]')?.value;
           if (mainVariantId) {
-            items.push({ id: parseInt(mainVariantId), quantity: 1 });
+            items.push({ id: parseInt(mainVariantId), quantity: layoutQty });
           }
         }
 
@@ -568,17 +570,16 @@
       }
       function addToCartCollectAllProducts() {
         const items = [];
+        const layoutQty = (window._bundleLayoutQty && window._bundleLayoutQty > 0) ? window._bundleLayoutQty : 1;
 
         // 检查是否是 Bundle 模式
         const bundleItems = collectBundleProducts();
         if (bundleItems.length > 0) {
-          // Bundle 模式：添加主机 + 电池包 + 太阳能板
           items.push(...bundleItems);
         } else {
-          // 非 Bundle 模式：添加主商品
           const mainVariantId = document.querySelector('input[name="id"]')?.value;
           if (mainVariantId) {
-            items.push({ id: parseInt(mainVariantId), quantity: 1 });
+            items.push({ id: parseInt(mainVariantId), quantity: layoutQty });
           }
         }
 
@@ -1046,14 +1047,13 @@
           
           // 构建要添加的产品列表
           let allItems = [];
+          const formLayoutQty = (window._bundleLayoutQty && window._bundleLayoutQty > 0) ? window._bundleLayoutQty : 1;
           
           if (bundleItems.length > 0) {
-            // Bundle 模式：使用 collectBundleProducts 的结果（已包含主机）
             allItems = [...bundleItems, ...crossSellItems, ...freeGiftItems];
           } else {
-            // 非 Bundle 模式：添加主产品 + 其他
             allItems = [
-              { id: parseInt(mainVariantId), quantity: 1 },
+              { id: parseInt(mainVariantId), quantity: formLayoutQty },
               ...crossSellItems,
               ...freeGiftItems
             ];

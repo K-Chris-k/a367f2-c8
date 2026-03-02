@@ -6,6 +6,13 @@
   assign selected_variant = product.selected_or_first_available_variant
   assign selected_option_value = selected_variant.options[option_index]
 
+  # 布局类型：优先使用传入的 bundle_layout_type 参数（来自后台设置），回退到 option_config
+  assign layout_type = bundle_layout_type | default: 'default'
+  assign is_selector_layout = false
+  if layout_type == 'selector'
+    assign is_selector_layout = true
+  endif
+
   # ========== Multi Host 模式：使用主产品数据 ==========
   if display_mode == 'multi_host'
     # Multi Host 模式：使用主产品（main_product）的数据
@@ -156,7 +163,7 @@
       <span class="font-body-bold">{{ option.name }}</span>
     </div>
   </legend>
-  <div class="variant-extension-card">
+  <div class="variant-extension-card {% if is_selector_layout %}variant-extension-card--selector{% else %}variant-extension-card--default{% endif %}">
     {%- comment -%} 徽标显示 {%- endcomment -%}
     {%- if badge_new or badge_best -%}
       <div class="variant-extension-badges">
@@ -239,12 +246,40 @@
               <span class="variant-extension-title-separator">|</span>{{ option_config.base_capacity }}
             {%- endif -%}
           </h3>
-          <div class="variant-extension-base-price">
-            <span class="current-price">{{ host_variant.price | money }}</span>
-            {%- if host_variant.compare_at_price > host_variant.price -%}
-              <span class="original-price">{{ host_variant.compare_at_price | money }}</span>
-            {%- endif -%}
-          </div>
+          {%- if is_selector_layout -%}
+            {%- comment -%} 新布局：在基础信息区域显示 1x/2x/3x 选择器，隐藏价格 {%- endcomment -%}
+            <div class="variant-extension-base-price variant-extension-base-price--selector">
+              <div
+                class="variant-extension-qty-buttons variant-extension-qty-buttons--layout-selector"
+                data-layout-qty-selector
+              >
+                {%- assign selector_default_qty = option_config.layout_default_qty | default: 1 -%}
+                {%- assign host_unit_price = host_variant.price -%}
+                {%- assign host_unit_compare_price = host_variant.compare_at_price | default: 0 -%}
+                {%- for qty in (1..3) -%}
+                  {%- assign total_price = host_unit_price | times: qty -%}
+                  {%- assign total_compare_price = host_unit_compare_price | times: qty -%}
+                  <button
+                    type="button"
+                    class="variant-extension-qty-btn variant-extension-qty-btn--layout {% if qty == selector_default_qty %}selected{% endif %}"
+                    data-layout-qty="{{ qty }}"
+                    data-price="{{ total_price }}"
+                    data-compare-price="{{ total_compare_price }}"
+                    data-unit-price="{{ host_unit_price }}"
+                  >
+                    {{ qty }}x
+                  </button>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- else -%}
+            <div class="variant-extension-base-price">
+              <span class="current-price">{{ host_variant.price | money }}</span>
+              {%- if host_variant.compare_at_price > host_variant.price -%}
+                <span class="original-price">{{ host_variant.compare_at_price | money }}</span>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
         </div>
       {%- endif -%}
     </div>
@@ -542,6 +577,76 @@
 
       // 获取电池包图片元素（Bundle 模式专用）
       const batteryImage = document.getElementById('bundle-battery-image-' + sectionId);
+
+      // 新布局：1x/2x/3x 选择器按钮
+      const layoutQtyButtons = document.querySelectorAll('.variant-extension-qty-btn--layout');
+
+      function updateGlobalQuantity(multiplier, btn) {
+        const qty = parseInt(multiplier, 10) || 1;
+
+        // 保存当前选择器倍数到全局，供 collectBundleProducts 和 updateBundlePrice 使用
+        window._bundleLayoutQty = qty;
+
+        // 更新主 product-info 区域内所有 quantity 输入
+        const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
+        if (productInfo) {
+          const qtyInputs = productInfo.querySelectorAll('input[name="quantity"]');
+          qtyInputs.forEach((input) => {
+            input.value = qty;
+          });
+        }
+
+        // 更新 sticky-atc-bar 内所有 quantity 输入
+        const stickyBar = document.querySelector('sticky-atc-bar');
+        if (stickyBar) {
+          const stickyQtyInputs = stickyBar.querySelectorAll('input[name="quantity"]');
+          stickyQtyInputs.forEach((input) => {
+            input.value = qty;
+          });
+        }
+
+        // 派发事件，携带价格信息（供 updateBundlePrice 使用）
+        const priceInCents = btn ? (parseInt(btn.dataset.price) || 0) : 0;
+        const comparePriceInCents = btn ? (parseInt(btn.dataset.comparePrice) || 0) : 0;
+
+        document.dispatchEvent(
+          new CustomEvent('layout:qty:change', {
+            detail: {
+              qty: qty,
+              priceInCents: priceInCents,
+              comparePriceInCents: comparePriceInCents,
+            },
+          })
+        );
+
+        // 调用全局价格更新
+        if (window.bundleProducts && window.bundleProducts.updatePrice) {
+          window.bundleProducts.updatePrice();
+        }
+
+        console.log('[Bundle Extension] Layout quantity selector set quantity to:', qty, 'price:', priceInCents);
+      }
+
+      // 绑定新布局选择器事件
+      if (layoutQtyButtons.length > 0) {
+        layoutQtyButtons.forEach((btn) => {
+          btn.addEventListener('click', function () {
+            const qty = this.dataset.layoutQty || '1';
+
+            layoutQtyButtons.forEach((b) => b.classList.remove('selected'));
+            this.classList.add('selected');
+
+            updateGlobalQuantity(qty, this);
+          });
+        });
+
+        // 初始化：如果有默认选中的按钮，设置一次数量（默认 1x）
+        const initialLayoutBtn = document.querySelector('.variant-extension-qty-btn--layout.selected');
+        if (initialLayoutBtn) {
+          const initialQty = initialLayoutBtn.dataset.layoutQty || '1';
+          window._bundleLayoutQty = parseInt(initialQty, 10) || 1;
+        }
+      }
 
       // Multi Host 模式：更新价格显示
       function updateMultiHostPrice(priceInCents, compareAtPriceInCents = null) {
