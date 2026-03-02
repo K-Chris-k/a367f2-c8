@@ -31,6 +31,7 @@
 
     # 获取主机 variant 价格
     assign host_price = 0
+    assign host_original_price = 0
     if host_product
       assign host_product_obj = all_products[host_product.handle]
       if host_product_obj
@@ -38,6 +39,7 @@
         for v in host_product_obj.variants
           if v.id == host_variant_id_num
             assign host_price = v.price
+            assign host_original_price = v.compare_at_price | default: 0
             break
           endif
         endfor
@@ -66,7 +68,8 @@
       "product_id": {% if host_product %}{{ host_product.id | json }}{% else %}null{% endif %},
       "variant_id": {{ host_variant_id | json }},
       "handle": {% if host_product %}{{ host_product.handle | json }}{% else %}null{% endif %},
-      "price": {{ host_price | json }}
+      "price": {{ host_price | json }},
+      "original_price": {{ host_original_price | json }}
     },
     "battery": {
       {%- if battery_product -%}
@@ -1467,13 +1470,17 @@
       const isMultiHostMode = document.querySelector('[data-multi-host-mode="true"]') !== null;
 
       let hostPriceInCents = 0;
+      let hostOriginalPrice = 0;//主机原价original_price
       let batteryPriceInCents = 0;
+      let batteryOriginalPrice = 0;//电池包原价
 
       if (isMultiHostMode) {
         // Multi Host 模式：从选中的 multi-host-btn 获取主产品价格
         const selectedMultiHostBtn = document.querySelector('.multi-host-btn.selected');
         if (selectedMultiHostBtn) {
           hostPriceInCents = parseInt(selectedMultiHostBtn.dataset.price) || 0;
+          hostOriginalPrice= parseInt(selectedMultiHostBtn.dataset.compareAtPrice) || 0;
+          
         }
         // Multi Host 模式下没有电池包
         batteryPriceInCents = 0;
@@ -1485,6 +1492,7 @@
             const bundleConfig = JSON.parse(bundleConfigEl.textContent);
             if (bundleConfig.host && bundleConfig.host.price) {
               hostPriceInCents = parseInt(bundleConfig.host.price) || 0;
+              hostOriginalPrice= parseInt(bundleConfig.host.original_price) || 0;
             } else if (bundleConfig.host && bundleConfig.host.handle && bundleConfig.host.variant_id) {
               // 如果配置中没有价格，尝试从 API 获取（后备方案）
               fetch(`/products/${bundleConfig.host.handle}.js`)
@@ -1515,13 +1523,16 @@
         // Bundle 模式：获取选中的电池包价格
         const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
         batteryPriceInCents = selectedBatteryBtn ? parseInt(selectedBatteryBtn.dataset.price) || 0 : 0;
+        batteryOriginalPrice= selectedBatteryBtn ? parseInt(selectedBatteryBtn.dataset.comparePrice) || 0 : 0;
       }
 
       // 获取所有 bundle-category-grid 产品的价格（两种模式都支持太阳能板、支架等）
       const bundleCategoryGridPriceInCents = getBundleCategoryGridPrice();
+      console.log("bundleCategoryGridPriceInCents====="+bundleCategoryGridPriceInCents);
+      const bundleCategoryGridOriginalPrice = getBundleCategoryGridOriginalPrice();
 
       // 同步更新价格
-      updateStickyBarPriceWithBundle(hostPriceInCents, batteryPriceInCents, bundleCategoryGridPriceInCents);
+      updateStickyBarPriceWithBundle(hostPriceInCents, batteryPriceInCents, bundleCategoryGridPriceInCents,hostOriginalPrice,batteryOriginalPrice,bundleCategoryGridOriginalPrice);
     }
 
     // 提取获取 bundle-category-grid 产品价格的逻辑
@@ -1529,6 +1540,7 @@
       let bundleCategoryGridPriceInCents = 0;
       document.querySelectorAll('.bundle-category-grid-fieldset').forEach((fieldset) => {
         const selectedBtn = fieldset.querySelector('.bundle-category-btn.selected');
+
         if (selectedBtn) {
           const price = selectedBtn.dataset.price;
           const qty = parseInt(selectedBtn.dataset.qty) || 0;
@@ -1542,10 +1554,43 @@
       return bundleCategoryGridPriceInCents;
     }
 
-    // 更新 Sticky Bar 价格（主机价格 + 电池包价格 + 所有 bundle-category-grid 产品价格 + Lookbook 推荐商品价格 + Cross Sell 产品价格）
-    function updateStickyBarPriceWithBundle(hostPriceInCents, batteryPriceInCents, bundleCategoryGridPriceInCents) {
-      let totalPriceInCents = hostPriceInCents + batteryPriceInCents + (bundleCategoryGridPriceInCents || 0);
+        // 提取获取 bundle-category-grid 产品 原价 价格的逻辑
+    function getBundleCategoryGridOriginalPrice() {
+      let bundleCategoryGridPriceInCents = 0;
+      document.querySelectorAll('.bundle-category-grid-fieldset').forEach((fieldset) => {
+        const selectedBtn = fieldset.querySelector('.bundle-category-btn.selected');
+        if (selectedBtn) {
+          const price = selectedBtn.dataset.comparePrice;
+          const qty = parseInt(selectedBtn.dataset.qty) || 0;
 
+          // 只有当 qty > 0 时才累加价格（"Keine" 表示不选择，价格为 0）
+          if (price && qty > 0) {
+            bundleCategoryGridPriceInCents += parseInt(price) || 0;
+          }
+        }
+      });
+      return bundleCategoryGridPriceInCents;
+    }
+
+
+   // 格式化展示货币
+    function getFormatPrice(totalPriceInCents) {
+      let formattedPrice = 0;
+       // 格式化价格（欧元格式：1.234,56 €）
+      const priceInEuros = totalPriceInCents / 100;
+      const parts = priceInEuros.toFixed(2).split('.');
+      const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+      formattedPrice = integerPart + ',' + parts[1] + '€';
+      return formattedPrice;
+    }
+
+
+    // 更新 Sticky Bar 价格（主机价格 + 电池包价格 + 所有 bundle-category-grid 产品价格 + Lookbook 推荐商品价格 + Cross Sell 产品价格）
+    function updateStickyBarPriceWithBundle(hostPriceInCents, batteryPriceInCents, bundleCategoryGridPriceInCents,hostOriginalPrice,batteryOriginalPrice,bundleCategoryGridOriginalPrice) {
+      let totalPriceInCents = hostPriceInCents + batteryPriceInCents + (bundleCategoryGridPriceInCents || 0);
+      console.log("totalPriceInCents========"+totalPriceInCents);
+      let totalOriginalPrice = hostOriginalPrice + batteryOriginalPrice + (bundleCategoryGridOriginalPrice || 0);
+      let totalOriginalPriceInCents = 0;
       // 累加 Lookbook 选中产品价格
       function parseEuroPrice(priceStr) {
         if (!priceStr) return 0;
@@ -1567,6 +1612,7 @@
           const qtyInput = card.querySelector('input.lb-qty-count');
           const qty = qtyInput ? parseInt(qtyInput.value || '1', 10) : 1;
           totalPriceInCents += priceInCents * qty;
+          totalOriginalPrice  += priceInCents * qty;
         }
       });
 
@@ -1575,6 +1621,7 @@
       if (typeof window.getCrossSellTotalInCents === 'function') {
         crossSellPriceInCents = window.getCrossSellTotalInCents();
         totalPriceInCents += crossSellPriceInCents;
+        totalOriginalPrice += crossSellPriceInCents;
       }
 
       // 获取 sticky-atc-bar 价格元素
@@ -1589,10 +1636,20 @@
       const regularPrice = stickyContainer.querySelector('.f-price-item--regular');
 
       // 格式化价格（欧元格式：1.234,56 €）
-      const priceInEuros = totalPriceInCents / 100;
+      {% comment %} const priceInEuros = totalPriceInCents / 100;
       const parts = priceInEuros.toFixed(2).split('.');
       const integerPart = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-      const formattedPrice = integerPart + ',' + parts[1] + '€';
+      const formattedPrice = integerPart + ',' + parts[1] + '€'; {% endcomment %}
+      const formattedPrice=getFormatPrice(totalPriceInCents);
+
+       // 格式化原价 价格（欧元格式：1.234,56 €）
+      {% comment %} const originalPriceInEuros = totalOriginalPrice / 100;
+      const originalparts = originalPriceInEuros.toFixed(2).split('.');
+      const originalintegerPart = originalparts[0].replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+      const formattedoriginalPrice = originalintegerPart + ',' + originalparts[1] + '€';   {% endcomment %}
+      const formattedoriginalPrice=getFormatPrice(totalOriginalPrice);
+
+      const formatDiscountPrice=getFormatPrice(totalOriginalPrice-totalPriceInCents);
 
       // 更新价格显示 - Sticky Bar
       if (salePrice) {
@@ -1604,9 +1661,19 @@
       // 更新主产品价格显示
       const mainPriceContainer = document.querySelector('.product__info-container');
       if (mainPriceContainer) {
+        //售价
         const mainSalePrice = mainPriceContainer.querySelector('.f-price-item--sale');
+        //原价
+        const mainSaleoriginalPrice = mainPriceContainer.querySelector('.f-price-item--regular s');
+        //优惠额度
+        const discountPrice = mainPriceContainer.querySelector('.discount-label-span');
+   
         if (mainSalePrice) {
-          mainSalePrice.textContent = formattedPrice;
+          //2026-02-26   
+           mainSalePrice.textContent = formattedPrice;
+           mainSaleoriginalPrice.textContent = formattedoriginalPrice;
+           discountPrice.textContent = formatDiscountPrice;
+           
         }
       }
 

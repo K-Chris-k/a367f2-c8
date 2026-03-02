@@ -242,6 +242,7 @@
         speed: 300,
         draggable: true,
         swipe: true,
+        infinite: false,  // 关闭无限循环
         responsive: [
           { breakpoint: 768, settings: { slidesToShow: 3 } },
           { breakpoint: 767, settings: { slidesToShow: 1, dots: true } }
@@ -255,6 +256,7 @@
         centerMode: false, 
         focusOnSelect: true,
         draggable: false,
+        infinite: false,  // 关闭无限循环
         swipe: false,
         responsive: [
           { breakpoint: 768, settings: { slidesToShow: 3 } },
@@ -266,6 +268,7 @@
         $thumbnailSlider.find('.slide').removeClass('slick-current');
         $thumbnailSlider.find('.slide[data-slick-index="' + currentSlide + '"]').addClass('slick-current');
       });
+      
       $thumbnailSlider.on('click', '.slide', function(e) {
         e.preventDefault();
         const index = $(this).data('slick-index');

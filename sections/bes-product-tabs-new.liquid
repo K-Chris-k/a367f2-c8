@@ -605,7 +605,7 @@
    
                         <div class="cards-grid">
                             {% for i in (1..3) %}
-                            <div class="card">
+                           
                             {% capture custom_image_key %}custom_image{{i}}{% endcapture %}
                             {% capture mobile_image %}mobile_image{{i}}{% endcapture %}
                             {% capture custom_image %}custom_image{{i}}{% endcapture %}
@@ -614,9 +614,10 @@
                             {% capture price %}price{{i}}{% endcapture %}
                             {% capture original %}original{{i}}{% endcapture %}
                             {% capture button_link %}button_link{{i}}{% endcapture %}
-                            
-                            <a href="{% if block.settings[button_link] != blank %}{{  block.settings[button_link] }}{% else %}{{ product.url }}{% endif %}" class="custom-product-card">
                             {% if block.settings[custom_image_key] != blank %}
+                             <div class="card">
+                            <a href="{% if block.settings[button_link] != blank %}{{  block.settings[button_link] }}{% else %}{{ product.url }}{% endif %}" class="custom-product-card">
+                            
                             <div class="custom-product-image">
                                 {% comment %} {{
                                 block.settings.custom_image
@@ -647,7 +648,7 @@
                                 >
                             </picture>
                             </div>
-                            {% endif %}
+                           
                  <div class="content-box">
                         <h3 class="custom-product-title">
                           {{ block.settings[custom_title] | default: block.settings.title }}
@@ -681,8 +682,11 @@
                         </div>
                       </div>
                       </div>
+
+                       
                     </a>
                     </div>
+                    {% endif %}
                     {% endfor %}
                 
                         </div>

@@ -53,7 +53,7 @@
         </div>
 
 
-      {% unless product.selected_or_first_available_variant.available == false or product.price == 0 or product.tags contains 'Kombination'  %}
+      {% unless  product.price == 0 or product.tags contains 'Kombination'  %}
         <div class="flex items-center justify-center form-box">
           {%- form 'product',
             product,

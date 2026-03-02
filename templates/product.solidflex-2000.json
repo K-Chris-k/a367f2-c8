@@ -61,6 +61,7 @@
         },
         "reviews_list_QJMCGK": {
           "type": "reviews_list",
+          "disabled": true,
           "settings": {
             "title": "Trustpilot",
             "more": "Mehr anzeigen",
@@ -94,6 +95,7 @@
         },
         "recommend_product_T66P8N": {
           "type": "recommend_product",
+          "disabled": true,
           "settings": {
             "recommended_product1": "solidflex-2000-balkonkraftwerk-mit-speicher",
             "product1_badge_new": false,
@@ -173,7 +175,7 @@
             "icon_1": "certificate",
             "image_1": "shopify://shop_images/brand-icon1.svg",
             "heading_1": "Bequem bezahlen",
-            "content_image_1": "shopify://shop_images/pay-mob.png",
+            "content_image_1": "shopify://shop_images/pay-pc_3ab91652-09c9-42bc-9bcc-30c3f533fbbf.png",
             "icon_2": "truck",
             "image_2": "shopify://shop_images/brand-icon2.svg",
             "content_image_2": "shopify://shop_images/track.png",
@@ -436,7 +438,7 @@
           "settings": {
             "title": "Großzellen-Technologie",
             "video": "https://cdn.shopify.com/videos/c/vp/bfbb909bc0fc4effbb3d74ee0299f862/bfbb909bc0fc4effbb3d74ee0299f862.HD-720p-4.5Mbps-54950683.mp4",
-            "description": "Weniger Akkuzellen bedeuten eine geringere Wahrscheinlichkeit für den „Flaschenhals-Effekt“. So gewährleistet unser System eine höhere Stabilität."
+            "description": "Die Verwendung großer Akkuzellen reduziert nicht nur die Anzahl der internen Verbindungspunkte, um die Wärmeentwicklung zu minimieren und so eine höhere Leistung bei gleichzeitig leichterer und sichererer Bauweise zu ermöglichen, sondern bietet auch eine höhere Energiedichte und eine längere Lebensdauer, was eine außergewöhnliche Ausdauer und langfristige Haltbarkeit gewährleistet."
           }
         },
         "card_EUaLze": {

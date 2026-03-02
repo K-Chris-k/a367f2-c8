@@ -231,6 +231,7 @@
                   data-qty="{{ qty }}"
                   data-variant-id="{{ qty_variant.id }}"
                   data-price="{{ qty_variant.price }}"
+                  data-compare-price="{{ qty_variant.compare_at_price | default: qty_variant.price}}"
                   data-wattage="{{ qty_value_config.wattage }}"
                   data-image-url="{{ variant_image_url }}"
                   {% if qty_value_config.other_display_text %}

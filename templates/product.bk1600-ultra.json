@@ -95,6 +95,7 @@
         },
         "recommend_product_Mnzq6P": {
           "type": "recommend_product",
+          "disabled": true,
           "settings": {
             "recommended_product1": "bk1600-ultra-balkonkraftwerk-mit-speicher",
             "product1_badge_new": false,
@@ -125,6 +126,7 @@
             "free_label_text": "GRATIS",
             "max_selections": 1,
             "max_selection_message": "Sie können maximal {count} Gratisgeschenk(e) auswählen.",
+            "min_selection_message": "Bitte wählen Sie mindestens {count} Produkt aus.",
             "free_product_1": "indevolt-smart-plug-free",
             "free_product_1_default": true,
             "free_product_1_variant": "",
@@ -172,7 +174,7 @@
             "icon_1": "package",
             "image_1": "shopify://shop_images/brand-icon1.svg",
             "heading_1": "Bequem bezahlen",
-            "content_image_1": "shopify://shop_images/pay-mob.png",
+            "content_image_1": "shopify://shop_images/pay-pc_3ab91652-09c9-42bc-9bcc-30c3f533fbbf.png",
             "icon_2": "currency-circle-dollar",
             "image_2": "shopify://shop_images/brand-icon2.svg",
             "content_image_2": "shopify://shop_images/track.png",

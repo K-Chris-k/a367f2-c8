@@ -116,9 +116,10 @@
     right: 60px;
   } {% endcomment %}
 
-  .carousel-arrows {
+  #shopify-section-{{ section.id }} .carousel-arrows {
     position: absolute;
-    top: 44%;
+    {% comment %} top: 44%; {% endcomment %}
+    top: 59%;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -334,9 +335,9 @@ display: inline-block;
     {% comment %} </div> {% endcomment %}
 
                 <!-- Begin eTrusted widget tag -->
-<div class="page-width eTrusted-widget" >
+{% comment %} <div class="page-width eTrusted-widget" >
 <etrusted-widget data-etrusted-widget-id="wdg-6e18218c-e3a9-46b7-8f4d-19bc26274c42"></etrusted-widget>
-</div>
+</div> {% endcomment %}
 <!-- End eTrusted widget tag -->
   </div>
 </div>

@@ -134,8 +134,8 @@
         "enable_country_selector": false,
         "enable_language_selector": false,
         "payment_enable": true,
-        "image": "shopify://shop_images/pay-pc.png",
-        "mobile_image": "shopify://shop_images/pay-mob.png",
+        "image": "shopify://shop_images/pay-pc_3ab91652-09c9-42bc-9bcc-30c3f533fbbf.png",
+        "mobile_image": "shopify://shop_images/pay-mob_59cbf4dd-6d26-464f-8868-92bda4056782.png",
         "footer_bottom_menu": "footer-bottom",
         "show_section_divider": true,
         "divider_width": "full"

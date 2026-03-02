@@ -24,13 +24,14 @@
     .slideshow__item-wrap{ flex-wrap: inherit;}
     .mobile-show{display:none}
     .section-{{ section.id }} .slideshow__content .slideshow__text{max-width: 50%;}
+    .section-{{ section.id }}  .slideshow__title{text-align:center;width:100%}
     .section-{{ section.id }} .slideshow__subtitle {line-height: 29px;font-size: 24px;font-weight: 500;padding-top:20px;}
     .slideshow__subtitle strong{font-size: 32px;}
     .slideshow__subtitle span{font-size: 18px;text-decoration-line: line-through;}
     {% comment %} .section-{{ section.id }} .slideshow__content{ align-items: self-start;} {% endcomment %}
      
     .section-{{ section.id }} .slideshow__content{padding-top:30px; justify-content:flex-start!important;}
-    .section-{{ section.id }} .slideshow__title {display:flex;width: max-content;align-items: center;gap: 12px;}
+    {% comment %} .section-{{ section.id }} .slideshow__title {display:flex;width: max-content;align-items: center;gap: 12px;} {% endcomment %}
     .section-{{ section.id }} .date{ align-items: center;font-weight: 500;gap: 5px;text-align:center;}
     {% comment %} display:flex; {% endcomment %}
     .section-{{ section.id }} .date span{font-weight: 700;}

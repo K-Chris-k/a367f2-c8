@@ -240,8 +240,8 @@
             "title_span_bg": "#3250C3",
             "title_span_size": "18px",
             "heading_size": "hd2",
-            "title_color": "#d63a2f",
-            "subheading": "Febraur-Sales | 9. - 27. Februar",
+            "title_color": "#df4763",
+            "subheading": "Februar-Sales | 9. - 27. Februar",
             "subheading_color": "#1a1a1a",
             "subheading_mb": "8px",
             "description": "<p>Aus Liebe zur Erde.<strong> Mit Energie fürs Zuhause.</strong></p>",
@@ -318,23 +318,23 @@
         "featured_collection_weNg9r": {
           "type": "featured_collection",
           "settings": {
-            "image": "shopify://shop_images/home-bk1600-pc.jpg",
-            "mobile_image": "shopify://shop_images/home-bk1600-mob.jpg",
-            "title": "BK1600",
-            "description": "Die beste Einstiegsoption für Balkonkraftwerk mit Speicher",
+            "image": "shopify://shop_images/pf-new-pc.jpg",
+            "mobile_image": "shopify://shop_images/pf-new-mob.jpg",
+            "title": "PowerFlex 2000",
+            "description": "Größere Kapazität zur Solarspeicherung",
             "button_title": "Jetzt kaufen",
-            "button_link": "shopify://products/bk1600-balkonkraftwerk-mit-speicher"
+            "button_link": "shopify://products/powerflex-2000-balkonkraftwerk-mit-speicher"
           }
         },
         "featured_collection_xmNLUg": {
           "type": "featured_collection",
           "settings": {
-            "image": "shopify://shop_images/home-ultra-pc.jpg",
-            "mobile_image": "shopify://shop_images/home-ultra-mob.jpg",
-            "title": "BK1600 Ultra",
-            "description": "Die Solarenergie maximal nutzen",
+            "image": "shopify://shop_images/home-bk1600-pc.jpg",
+            "mobile_image": "shopify://shop_images/home-bk1600-mob.jpg",
+            "title": "BK1600",
+            "description": "Balkonkraftwerk mit Speicher für Einsteiger",
             "button_title": "Jetzt kaufen",
-            "button_link": "shopify://products/bk1600-ultra-balkonkraftwerk-mit-speicher"
+            "button_link": "shopify://products/bk1600-balkonkraftwerk-mit-speicher"
           }
         }
       },
@@ -451,21 +451,6 @@
     "product_collection_1208_VKXU47": {
       "type": "product-collection-1208",
       "blocks": {
-        "card_i4rE78": {
-          "type": "card",
-          "settings": {
-            "product_item": "bk1600-balkonkraftwerk-mit-speicher",
-            "custom_image": "shopify://shop_images/sale-pro-3-1-0203.png",
-            "mobile_image": "shopify://shop_images/sale-pro-3-1-0203.png",
-            "hotsale": "Hot Sale",
-            "custom_title": "BK1600 + 445W Bifaziale Solarpanel*2",
-            "custom_describe": "In nur 1,82 Jahren amortisiert \\nProduziert ca. 3,5 kWh täglich \\nErzeugt rund 1028 kWh pro Jahr \\nSpart bis zu 411€ im Jahr",
-            "price": "599,00€",
-            "original": "1.398,00€",
-            "button_text": "Mehr erfahren",
-            "button_link": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher?variant=43351637426275&solar=43859125272675"
-          }
-        },
         "card_yH3c6V": {
           "type": "card",
           "settings": {
@@ -525,14 +510,29 @@
             "button_text": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/powerflex-2000-balkonkraftwerk-mit-speicher?variant=43526874988643&battery=43917307445347"
           }
+        },
+        "card_i4rE78": {
+          "type": "card",
+          "settings": {
+            "product_item": "bk1600-balkonkraftwerk-mit-speicher",
+            "custom_image": "shopify://shop_images/sale-pro-3-1-0203.png",
+            "mobile_image": "shopify://shop_images/sale-pro-3-1-0203.png",
+            "hotsale": "Hot Sale",
+            "custom_title": "BK1600 + 445W Bifaziale Solarpanel*2",
+            "custom_describe": "In nur 1,82 Jahren amortisiert \\nProduziert ca. 3,5 kWh täglich \\nErzeugt rund 1028 kWh pro Jahr \\nSpart bis zu 411€ im Jahr",
+            "price": "599,00€",
+            "original": "1.398,00€",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher?variant=43351637426275&solar=43859125272675"
+          }
         }
       },
       "block_order": [
-        "card_i4rE78",
         "card_yH3c6V",
         "card_4UTQpX",
         "card_yKEkXw",
-        "card_kPgxiB"
+        "card_kPgxiB",
+        "card_i4rE78"
       ],
       "name": "产品推荐1208",
       "settings": {
@@ -780,15 +780,15 @@
         "card_LEjQRi": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/index-sence2-pc.jpg",
-            "mobile_image": "shopify://shop_images/index-sence2-mob.jpg",
+            "image": "shopify://shop_images/home-image-2-pc.jpg",
+            "mobile_image": "shopify://shop_images/home-image-2-mob.jpg",
             "title": "Standardversion",
-            "description": "Kompatibel mit 99% der Micro-Wechselrichter-Modelle, keine Demontage des bestehenden PV-Systems erforderlich.",
-            "product_img": "shopify://shop_images/BK1600_Ulitra_BK1600.png",
-            "product_title": "BK1600 Ultra*2",
+            "description": "Drahtloser Cluster unterstützt: erweiterbar auf bis zu 3 x BK1600 – für 6 MPPT und 4,8 kWh Gesamtkapazität.",
+            "product_img": "shopify://shop_images/BK1600_2_0eacbed3-76f8-4e21-b430-c90c1076d466.jpg",
+            "product_title": "BK1600*2",
             "product_des": "",
-            "product_price": "898,00 €",
-            "product_link": "https://de.indevolt.com/products/bk1600-ultra-balkonkraftwerk-mit-speicher?main_variant=43685504843875"
+            "product_price": "758,00 €",
+            "product_link": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher?variant=43685459001443"
           }
         },
         "card_zdCQqN": {
@@ -1069,6 +1069,16 @@
             "name": "Mariella W."
           }
         },
+        "card_edrE37": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/image00002.jpg",
+            "image_mobile": "shopify://shop_images/image00002.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Anhand eurer anstrenung habe ich vom meinem stromanbieter 340 euroerhalten ich muss euch wirklich danken und ihr seit ein super team",
+            "name": "Bernhard Fasser"
+          }
+        },
         "card_YH9LNL": {
           "type": "card",
           "settings": {
@@ -1121,6 +1131,7 @@
         },
         "card_R8PxWw": {
           "type": "card",
+          "disabled": true,
           "settings": {
             "image_pc": "shopify://shop_images/index-review9-pc.jpg",
             "image_mobile": "shopify://shop_images/index-review9-pc.jpg",
@@ -1131,6 +1142,7 @@
         },
         "card_3YjKzT": {
           "type": "card",
+          "disabled": true,
           "settings": {
             "image_pc": "shopify://shop_images/index-review10-pc.jpg",
             "image_mobile": "shopify://shop_images/index-review10-pc.jpg",
@@ -1146,6 +1158,7 @@
         "card_gD7KCd",
         "card_Hrg3dX",
         "card_jq89aU",
+        "card_edrE37",
         "card_YH9LNL",
         "card_Pq9FhP",
         "card_38DYVV",

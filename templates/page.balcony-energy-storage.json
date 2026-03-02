@@ -138,6 +138,16 @@
             "name": "Fettarme Hmilch"
           }
         },
+        "card_gVMULG": {
+          "type": "card",
+          "settings": {
+            "image_pc": "shopify://shop_images/image00002.jpg",
+            "image_mobile": "shopify://shop_images/image00002.jpg",
+            "start": "shopify://shop_images/start.svg",
+            "content": "Anhand eurer anstrenung habe ich vom meinem stromanbieter 340 euroerhalten ich muss euch wirklich danken und ihr seit ein super team",
+            "name": "Bernhard Fasser"
+          }
+        },
         "card_dpULJV": {
           "type": "card",
           "settings": {
@@ -190,6 +200,7 @@
         },
         "card_LKG6qP": {
           "type": "card",
+          "disabled": true,
           "settings": {
             "image_pc": "shopify://shop_images/index-review9-pc.jpg",
             "image_mobile": "shopify://shop_images/index-review9-pc.jpg",
@@ -200,6 +211,7 @@
         },
         "card_g9ULha": {
           "type": "card",
+          "disabled": true,
           "settings": {
             "image_pc": "shopify://shop_images/index-review10-pc.jpg",
             "image_mobile": "shopify://shop_images/index-review10-pc.jpg",
@@ -215,6 +227,7 @@
         "card_NP9biV",
         "card_cLVhDW",
         "card_6KadAz",
+        "card_gVMULG",
         "card_dpULJV",
         "card_UUYNU3",
         "card_7Kcj4r",
@@ -228,7 +241,7 @@
       ],
       "name": "评价列表",
       "settings": {
-        "title": "Echte Erfahrungen. <span>Echte Ergebnisse.</span>",
+        "title": "Echte Erfahrungen. Echte Ergebnisse.",
         "padding_top": 140,
         "padding_bottom": 140,
         "more_title": "",
@@ -472,7 +485,7 @@
             "slib_url": "",
             "slib_url_open": "0",
             "subheading": "Große Akkuzellen",
-            "description": "Weniger Akkuzellen reduzieren das Risiko eines Flaschenhals-Effekts. Das sorgt für mehr Stabilität und eine längere Lebensdauer unseres Systems."
+            "description": "Die Verwendung großer Akkuzellen reduziert nicht nur die Anzahl der internen Verbindungspunkte, um die Wärmeentwicklung zu minimieren und so eine höhere Leistung bei gleichzeitig leichterer und sichererer Bauweise zu ermöglichen, sondern bietet auch eine höhere Energiedichte und eine längere Lebensdauer, was eine außergewöhnliche Ausdauer und langfristige Haltbarkeit gewährleistet."
           }
         },
         "card_wqk6W9": {
@@ -756,7 +769,7 @@
             "button_label": "",
             "button_link": "",
             "button_style": "btn--primary",
-            "sale_height_diy": "h100px",
+            "sale_height_diy": "h125px",
             "custom_image1": "shopify://shop_images/sale-pro-3-1-0203.png",
             "mobile_image1": "shopify://shop_images/sale-pro-3-1-0203.png",
             "hotsale1": "",
@@ -766,24 +779,22 @@
             "original1": "1.398,00€",
             "button_text1": "Mehr erfahren",
             "button_link1": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher?variant=43351637426275&solar=43859125272675",
-            "custom_image2": "shopify://shop_images/sale-pro-3-2-0203.png",
-            "mobile_image2": "shopify://shop_images/sale-pro-3-2-0203.png",
+            "custom_image2": "shopify://shop_images/Group_534.png",
+            "mobile_image2": "shopify://shop_images/Group_534.png",
             "hotsale2": "",
-            "custom_title2": "BK1600 Ultra + 445W Bifaziale Solarpanel*2",
-            "custom_describe2": "In nur 2 Jahren amortisiert \\nProduziert ca. 3,5 kWh täglich \\nErzeugt rund 1028 kWh pro Jahr \\nSpart bis zu 411€ im Jahr",
-            "price2": "649,00€",
-            "original2": "1.498,00€",
+            "custom_title2": "BK1600*2",
+            "custom_describe2": "Tagsüber Solarenergie speichern, nachts versorgen \\nDrahtlos clusterfähig – Erweiterung leicht gemacht\\nKapazität und PV-Eingänge erweitern",
+            "price2": "758,00€",
+            "original2": "1.998,00€",
             "button_text2": "Mehr erfahren",
-            "button_link2": "https://de.indevolt.com/products/bk1600-ultra-balkonkraftwerk-mit-speicher?solar=43859125272675",
-            "custom_image3": "shopify://shop_images/sale-pro-3-3-0203.png",
-            "mobile_image3": "shopify://shop_images/sale-pro-3-3-0203.png",
+            "button_link2": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher?variant=43685459001443",
             "hotsale3": "",
-            "custom_title3": "BK1600 Ultra*2",
-            "custom_describe3": "Tagsüber Solarenergie speichern, nachts versorgen \\nBegrenzung von 800W umgehen\\nKapazität und PV-Eingänge erweitern",
-            "price3": "898,00€",
-            "original3": "2.198,00€",
-            "button_text3": "Mehr erfahren",
-            "button_link3": "https://de.indevolt.com/products/bk1600-ultra-balkonkraftwerk-mit-speicher?variant=43685504843875"
+            "custom_title3": "",
+            "custom_describe3": "",
+            "price3": "",
+            "original3": "",
+            "button_text3": "",
+            "button_link3": ""
           }
         }
       },

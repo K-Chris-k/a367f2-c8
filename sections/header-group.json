@@ -26,8 +26,8 @@
         "announcement_bar_npRHcX"
       ],
       "custom_css": [
-        ".color-scheme-4 {background-image: url(\"https://cdn.shopify.com/s/files/1/0596/6367/9587/files/2-top-pc.jpg?v=1770533632\"); background-size: cover;}",
-        "@media (max-width: 768px) {.announcement-bar__text a {padding-left: 5px; /* 确保a标签宽度为父容器的100% */ } .announcement-bar__text span {display: inline-block; }}",
+        ".color-scheme-4 {background-image: linear-gradient(#b9d7fb, #c4dafa) !important; background-size: cover;}",
+        "@media (max-width: 768px) {.announcement-bar__text a {padding-left: 5px; /* 确保a标签宽度为父容器的100% */ } .announcement-bar__text span {display: inline-block; } .announcement-bar__text a {display: inline-block; }}",
         "@media (max-width: 413px) {.announcement-bar__text a {/* display: flex; */ justify-content: center; /* 确保a标签宽度为父容器的100% */ }}"
       ],
       "name": "t:sections.announcement-bar.name",
@@ -54,7 +54,6 @@
               "solidflex-2000-balkonkraftwerk-mit-speicher",
               "indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus",
               "indevolt-sfa1800-erweiterungsakku",
-              "bk1600-ultra-balkonkraftwerk-mit-speicher",
               "bk1600-balkonkraftwerk-mit-speicher",
               "powerflex-2000-balkonkraftwerk-mit-speicher",
               "pfa2000-erweiterungsakku"

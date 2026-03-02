@@ -896,10 +896,6 @@
     (function monitorFreeGiftDeletion() {
       if (window._freeGiftMonitorInitialized) return;
       window._freeGiftMonitorInitialized = true;
-      
-      // 页面加载时清除清空购物车标志
-      sessionStorage.removeItem('_cart_clearing');
-      
       let isRestoring = false;
       let restoreTimer = null;
       let lastCheckTime = 0;
@@ -924,11 +920,6 @@
         // 检查是否正在从产品页替换礼物
         if (sessionStorage.getItem('_replacing_free_gifts') === 'true') {
           return; // 如果是替换操作，不自动恢复
-        }
-        
-        // 检查是否正在清空购物车
-        if (sessionStorage.getItem('_cart_clearing') === 'true') {
-          return; // 如果正在清空购物车，不自动恢复
         }
         
         try {
@@ -1079,19 +1070,12 @@
       }
       
       // 监听删除事件 - 快速触发恢复
-      document.addEventListener('free-gift:check', () => {
-        if (sessionStorage.getItem('_cart_clearing') !== 'true') {
-          debounceRestore(50);
-        }
-      });
+      document.addEventListener('free-gift:check', () => debounceRestore(50));
       
       // 使用 MutationObserver 监听购物车 DOM 变化（更实时）
       const cartDrawer = document.querySelector('cart-drawer');
       if (cartDrawer) {
         const observer = new MutationObserver((mutations) => {
-          // 如果正在清空购物车，不触发恢复
-          if (sessionStorage.getItem('_cart_clearing') === 'true') return;
-          
           // 检查是否有礼物被删除
           const hasCartItemRemoved = mutations.some(mutation => 
             mutation.type === 'childList' && 
@@ -1118,10 +1102,10 @@
       
       // 降低定期检查频率（作为备用机制）
       setInterval(() => {
-        if (!isRestoring && sessionStorage.getItem('_replacing_free_gifts') !== 'true' && sessionStorage.getItem('_cart_clearing') !== 'true') {
+        if (!isRestoring && sessionStorage.getItem('_replacing_free_gifts') !== 'true') {
           debounceRestore(500);
         }
-      }, 10000); // 从5秒改为10秒，减少API调用
+      }, 5000); // 从3秒改为5秒
       
       // 页面加载时检查一次
       setTimeout(() => {
@@ -1150,52 +1134,132 @@
       document.querySelectorAll('.cart-item__remove').forEach(removeBtn => {
         if (removeBtn._bundleItemListenerAttached) return;
         removeBtn._bundleItemListenerAttached = true;
-        removeBtn.addEventListener('click', async function(e) {
+        removeBtn.addEventListener('click', function(e) {
           const cartItem = this.closest('.cart-item');
           if (!cartItem) return;
+          const variantId = cartItem.dataset.variantId;
+          const productId = cartItem.dataset.productId;
+          const bundleGroupId = cartItem.dataset.bundleGroupId;
+          const bundleRole = cartItem.dataset.bundleRole; // 从 HTML 获取角色
+          if (!variantId) return;
           
-          // 检查是否是主产品（host）
-          const bundleRole = cartItem.dataset.bundleRole;
-          const isHostProduct = bundleRole === 'host';
+          // 从 HTML 判断被删除的是否是主机（因为 Shopify 先删除了，cart.items 中已经没有了）
+          const isDeletingHost = bundleRole === 'host';
+          // 关键调试日志
+          console.log('[Bundle删除] 点击删除:', { bundleGroupId, bundleRole, isDeletingHost });
           
-          // 如果删除的是主产品，直接清空购物车
-          if (isHostProduct) {
-            e.preventDefault();
-            e.stopPropagation();
-            
+          // 延迟执行，等待主产品删除完成
+          setTimeout(async () => {
             try {
-              // 设置标志，阻止免费礼品恢复逻辑
-              sessionStorage.setItem('_cart_clearing', 'true');
+              const cartResponse = await fetch('/cart.js');
+              const cart = await cartResponse.json();
+              if (!cart.items || cart.items.length === 0) {
+                console.log('[Bundle删除] 购物车已空');
+                return;
+              }
               
-              // 清空购物车
-              await fetch('/cart/clear.js', { method: 'POST' });
+              const productIdStr = String(productId);
+              const keysToRemove = [];
               
-              // 清除所有映射
-              localStorage.removeItem('bundle_product_mappings');
-              localStorage.removeItem('free_gift_mappings');
-              
-              // 更新购物车数量显示
-              document.querySelectorAll('cart-count').forEach(countEl => {
-                countEl.innerText = '0';
-                countEl.hidden = true;
+              // 计算购物车中剩余的主机数量（被删除的已经不在 cart.items 中了）
+              let remainingHostCount = 0;
+              cart.items.forEach(item => {
+                if (item.properties && item.properties._bundle_role === 'host') {
+                  remainingHostCount += item.quantity;
+                }
               });
               
-              document.documentElement.classList.remove('cart-has-items');
+              console.log('[Bundle删除] 剩余主机数:', remainingHostCount, '删除的是主机:', isDeletingHost, 'bundleGroupId:', bundleGroupId);
               
-              // 关闭购物车抽屉
-              const cartDrawerEl = document.querySelector('cart-drawer');
-              if (cartDrawerEl) {
-                cartDrawerEl.removeAttribute('open');
-                cartDrawerEl.setAttribute('hidden', 'hidden');
+              cart.items.forEach(item => {
+                const itemBundleGroupId = item.properties && item.properties._bundle_group_id;
+                const itemMainProductId = item.properties && item.properties._main_product_id;
+                const isFreeGift = item.properties && item.properties._free_gift === 'true';
+                
+                // 调试: 显示每个商品的属性
+                if (item.properties) {
+                  console.log('[Bundle删除] 检查商品:', item.title, 'groupId:', itemBundleGroupId, 'isFreeGift:', isFreeGift);
+                }
+                
+                // 匹配方式1: Bundle 组 - 使用 _bundle_group_id 匹配同一组的所有商品
+                if (bundleGroupId && itemBundleGroupId && itemBundleGroupId === bundleGroupId) {
+                  keysToRemove.push(item.key);
+                  console.log('[Bundle删除] → 匹配配件:', item.title);
+                }
+                // 匹配方式2: 免费礼品 - 只有当删除最后一个主机时才删除礼品
+                else if (isFreeGift && isDeletingHost && remainingHostCount === 0) {
+                  keysToRemove.push(item.key);
+                  console.log('[Bundle删除] → 删除免费礼品 (最后一个主机)');
+                } else if (isFreeGift) {
+                  console.log('[Bundle删除] → 保留免费礼品 (还有主机:', remainingHostCount, ')');
+                }
+              });
+              
+              console.log('[Bundle删除] 待删除数量:', keysToRemove.length);
+              
+              // 只有当删除最后一个主机时才清除 localStorage 中的免费礼品映射
+              if (isDeletingHost && remainingHostCount === 0 && productId) {
+                try {
+                  const mappings = JSON.parse(localStorage.getItem('free_gift_mappings') || '{}');
+                  delete mappings[productIdStr];
+                  localStorage.setItem('free_gift_mappings', JSON.stringify(mappings));
+                } catch (err) {}
               }
-              resetBodyScrollState();
               
-              // 触发购物车刷新
-              document.dispatchEvent(new CustomEvent('cart:refresh'));
+              if (keysToRemove.length === 0) {
+                return;
+              }
+              
+              // 构建 updates 对象：{ key: 0, key: 0, ... }
+              const updates = {};
+              keysToRemove.forEach(key => {
+                updates[key] = 0;
+              });
+              
+              // 批量删除
+              const updateResponse = await fetch('/cart/update.js', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ updates: updates })
+              });
+              
+              if (updateResponse.ok) {
+                const updatedCart = await updateResponse.json();
+                
+                // 更新购物车数量显示
+                document.querySelectorAll('cart-count').forEach(countEl => {
+                  if (updatedCart.item_count > 99) {
+                    countEl.innerHTML = `<span class="text-sm">99+</span>`;
+                    countEl.classList.add('cart-count--small-medium');
+                  } else {
+                    countEl.innerText = updatedCart.item_count;
+                    countEl.classList.remove('cart-count--small-medium');
+                  }
+                  countEl.hidden = updatedCart.item_count === 0;
+                });
+                
+                document.documentElement.classList[updatedCart.item_count === 0 ? 'remove' : 'add']('cart-has-items');
+                
+                // 若购物车已空，确保抽屉关闭并恢复页面滚动
+                if (updatedCart.item_count === 0) {
+                  const cartDrawerEl = document.querySelector('cart-drawer');
+                  if (cartDrawerEl) {
+                    cartDrawerEl.removeAttribute('open');
+                    cartDrawerEl.setAttribute('hidden', 'hidden');
+                  }
+                  resetBodyScrollState();
+                }
+                
+                // 触发购物车刷新
+                setTimeout(() => {
+                  document.dispatchEvent(new CustomEvent('cart:refresh'));
+                }, 100);
+              }
               
             } catch (error) {
+              console.error('[Bundle Remove] Error:', error);
             }
-          }
+          }, 600);
         });
       });
     }
