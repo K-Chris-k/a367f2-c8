@@ -316,17 +316,18 @@
 
           const bundleVariantIds = [];
 
-          // 新布局 selector 模式：主机数量使用选择器倍数
-          const hostQty = (window._bundleLayoutQty && window._bundleLayoutQty > 0) ? window._bundleLayoutQty : 1;
+          // 新布局 selector 模式：使用选中的 variant ID（每个 1x/2x/3x 是不同的 variant）
+          const layoutVariantId = window._bundleLayoutVariantId;
+          const actualHostVariantId = layoutVariantId ? layoutVariantId : hostVariantId;
 
-          if (hostVariantId) {
+          if (actualHostVariantId) {
             items.push({
-              id: parseInt(hostVariantId),
-              quantity: hostQty,
+              id: parseInt(actualHostVariantId),
+              quantity: 1,
               properties: {
                 _bundle_item: 'true',
                 _bundle_role: 'host',
-                _bundle_host_id: String(hostVariantId),
+                _bundle_host_id: String(actualHostVariantId),
                 _bundle_group_id: bundleGroupId,
               },
             });
@@ -544,7 +545,6 @@
       
       function collectAllProducts() {
         const items = [];
-        const layoutQty = (window._bundleLayoutQty && window._bundleLayoutQty > 0) ? window._bundleLayoutQty : 1;
 
         // 检查是否是 Bundle 模式
         const bundleItems = collectBundleProducts();
@@ -552,9 +552,10 @@
         if (bundleItems.length > 0) {
           items.push(...bundleItems);
         } else {
+          // 非 Bundle 模式：variant ID 已在选择器切换时同步更新
           const mainVariantId = document.querySelector('input[name="id"]')?.value;
           if (mainVariantId) {
-            items.push({ id: parseInt(mainVariantId), quantity: layoutQty });
+            items.push({ id: parseInt(mainVariantId), quantity: 1 });
           }
         }
 
@@ -570,7 +571,6 @@
       }
       function addToCartCollectAllProducts() {
         const items = [];
-        const layoutQty = (window._bundleLayoutQty && window._bundleLayoutQty > 0) ? window._bundleLayoutQty : 1;
 
         // 检查是否是 Bundle 模式
         const bundleItems = collectBundleProducts();
@@ -579,7 +579,7 @@
         } else {
           const mainVariantId = document.querySelector('input[name="id"]')?.value;
           if (mainVariantId) {
-            items.push({ id: parseInt(mainVariantId), quantity: layoutQty });
+            items.push({ id: parseInt(mainVariantId), quantity: 1 });
           }
         }
 
@@ -1047,13 +1047,12 @@
           
           // 构建要添加的产品列表
           let allItems = [];
-          const formLayoutQty = (window._bundleLayoutQty && window._bundleLayoutQty > 0) ? window._bundleLayoutQty : 1;
           
           if (bundleItems.length > 0) {
             allItems = [...bundleItems, ...crossSellItems, ...freeGiftItems];
           } else {
             allItems = [
-              { id: parseInt(mainVariantId), quantity: formLayoutQty },
+              { id: parseInt(mainVariantId), quantity: 1 },
               ...crossSellItems,
               ...freeGiftItems
             ];

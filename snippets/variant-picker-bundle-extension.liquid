@@ -247,27 +247,34 @@
             {%- endif -%}
           </h3>
           {%- if is_selector_layout -%}
-            {%- comment -%} 新布局：在基础信息区域显示 1x/2x/3x 选择器，隐藏价格 {%- endcomment -%}
+            {%- comment -%} 新布局：使用 main_product（页面主产品）的 variants，数据完整不受 all_products 限制 {%- endcomment -%}
+            {%- if main_product and main_product.variants.size > 0 -%}
+              {%- assign selector_variants = main_product.variants -%}
+            {%- elsif host_product_obj and host_product_obj.variants.size > 0 -%}
+              {%- assign selector_variants = host_product_obj.variants -%}
+            {%- else -%}
+              {%- assign selector_variants = product.variants -%}
+            {%- endif -%}
             <div class="variant-extension-base-price variant-extension-base-price--selector">
               <div
                 class="variant-extension-qty-buttons variant-extension-qty-buttons--layout-selector"
                 data-layout-qty-selector
               >
                 {%- assign selector_default_qty = option_config.layout_default_qty | default: 1 -%}
-                {%- assign host_unit_price = host_variant.price -%}
-                {%- assign host_unit_compare_price = host_variant.compare_at_price | default: 0 -%}
-                {%- for qty in (1..3) -%}
-                  {%- assign total_price = host_unit_price | times: qty -%}
-                  {%- assign total_compare_price = host_unit_compare_price | times: qty -%}
+                {%- for v in selector_variants -%}
+                  {%- assign btn_index = forloop.index -%}
+                  {%- assign v_compare = v.compare_at_price | default: 0 -%}
                   <button
                     type="button"
-                    class="variant-extension-qty-btn variant-extension-qty-btn--layout {% if qty == selector_default_qty %}selected{% endif %}"
-                    data-layout-qty="{{ qty }}"
-                    data-price="{{ total_price }}"
-                    data-compare-price="{{ total_compare_price }}"
-                    data-unit-price="{{ host_unit_price }}"
+                    class="variant-extension-qty-btn variant-extension-qty-btn--layout {% if btn_index == selector_default_qty %}selected{% endif %}"
+                    data-layout-qty="{{ btn_index }}"
+                    data-variant-id="{{ v.id }}"
+                    data-product-id="{{ v.product_id }}"
+                    data-price="{{ v.price }}"
+                    data-compare-price="{{ v_compare }}"
+                    data-title="{{ v.title | escape }}"
                   >
-                    {{ qty }}x
+                    {{ btn_index }}x
                   </button>
                 {%- endfor -%}
               </div>
@@ -581,38 +588,50 @@
       // 新布局：1x/2x/3x 选择器按钮
       const layoutQtyButtons = document.querySelectorAll('.variant-extension-qty-btn--layout');
 
-      function updateGlobalQuantity(multiplier, btn) {
-        const qty = parseInt(multiplier, 10) || 1;
+      function updateLayoutSelection(btn) {
+        if (!btn) return;
 
-        // 保存当前选择器倍数到全局，供 collectBundleProducts 和 updateBundlePrice 使用
-        window._bundleLayoutQty = qty;
+        const variantId = btn.dataset.variantId || '';
+        const priceInCents = parseInt(btn.dataset.price) || 0;
+        const comparePriceInCents = parseInt(btn.dataset.comparePrice) || 0;
 
-        // 更新主 product-info 区域内所有 quantity 输入
-        const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
-        if (productInfo) {
-          const qtyInputs = productInfo.querySelectorAll('input[name="quantity"]');
-          qtyInputs.forEach((input) => {
-            input.value = qty;
-          });
-        }
+        // 保存当前选中的 variant 信息到全局
+        window._bundleLayoutVariantId = variantId;
+        window._bundleLayoutPrice = priceInCents;
+        window._bundleLayoutComparePrice = comparePriceInCents;
 
-        // 更新 sticky-atc-bar 内所有 quantity 输入
+        // 更新 sticky-atc-bar 中的 variant select/input（让加购使用选中的 variant）
         const stickyBar = document.querySelector('sticky-atc-bar');
         if (stickyBar) {
-          const stickyQtyInputs = stickyBar.querySelectorAll('input[name="quantity"]');
-          stickyQtyInputs.forEach((input) => {
-            input.value = qty;
+          const variantSelect = stickyBar.querySelector('select[name="id"]');
+          if (variantSelect) {
+            variantSelect.value = variantId;
+            const opt = variantSelect.querySelector(`option[value="${variantId}"]`);
+            if (opt) {
+              variantSelect.querySelectorAll('option').forEach(o => o.removeAttribute('selected'));
+              opt.setAttribute('selected', 'selected');
+            }
+          }
+          const variantInput = stickyBar.querySelector('input[name="id"]');
+          if (variantInput) {
+            variantInput.value = variantId;
+          }
+        }
+
+        // 同步更新 product-info 中的 hidden input
+        const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
+        if (productInfo) {
+          const mainFormInputs = productInfo.querySelectorAll('input[name="id"]');
+          mainFormInputs.forEach((input) => {
+            input.value = variantId;
           });
         }
 
-        // 派发事件，携带价格信息（供 updateBundlePrice 使用）
-        const priceInCents = btn ? (parseInt(btn.dataset.price) || 0) : 0;
-        const comparePriceInCents = btn ? (parseInt(btn.dataset.comparePrice) || 0) : 0;
-
+        // 派发事件
         document.dispatchEvent(
           new CustomEvent('layout:qty:change', {
             detail: {
-              qty: qty,
+              variantId: variantId,
               priceInCents: priceInCents,
               comparePriceInCents: comparePriceInCents,
             },
@@ -624,27 +643,25 @@
           window.bundleProducts.updatePrice();
         }
 
-        console.log('[Bundle Extension] Layout quantity selector set quantity to:', qty, 'price:', priceInCents);
+        console.log('[Bundle Extension] Layout selector variant changed:', variantId, 'price:', priceInCents);
       }
 
       // 绑定新布局选择器事件
       if (layoutQtyButtons.length > 0) {
         layoutQtyButtons.forEach((btn) => {
           btn.addEventListener('click', function () {
-            const qty = this.dataset.layoutQty || '1';
-
             layoutQtyButtons.forEach((b) => b.classList.remove('selected'));
             this.classList.add('selected');
-
-            updateGlobalQuantity(qty, this);
+            updateLayoutSelection(this);
           });
         });
 
-        // 初始化：如果有默认选中的按钮，设置一次数量（默认 1x）
+        // 初始化：保存默认选中按钮的 variant 信息
         const initialLayoutBtn = document.querySelector('.variant-extension-qty-btn--layout.selected');
         if (initialLayoutBtn) {
-          const initialQty = initialLayoutBtn.dataset.layoutQty || '1';
-          window._bundleLayoutQty = parseInt(initialQty, 10) || 1;
+          window._bundleLayoutVariantId = initialLayoutBtn.dataset.variantId || '';
+          window._bundleLayoutPrice = parseInt(initialLayoutBtn.dataset.price) || 0;
+          window._bundleLayoutComparePrice = parseInt(initialLayoutBtn.dataset.comparePrice) || 0;
         }
       }
 
