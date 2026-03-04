@@ -1488,9 +1488,12 @@
         }
         batteryPriceInCents = 0;
       } else if (isLayoutSelector && window._bundleLayoutPrice) {
-        // 新布局 selector 模式：直接使用选中 variant 的价格
         hostPriceInCents = window._bundleLayoutPrice || 0;
         hostOriginalPrice = window._bundleLayoutComparePrice || 0;
+
+        const selectedBatteryBtnLayout = document.querySelector('.bundle-extension-btn.selected');
+        batteryPriceInCents = selectedBatteryBtnLayout ? parseInt(selectedBatteryBtnLayout.dataset.price) || 0 : 0;
+        batteryOriginalPrice = selectedBatteryBtnLayout ? parseInt(selectedBatteryBtnLayout.dataset.comparePrice) || 0 : 0;
       } else {
         const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
         if (bundleConfigEl) {

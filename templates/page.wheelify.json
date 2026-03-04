@@ -18,15 +18,6 @@
     },
     "176121011769b2cbdf": {
       "type": "apps",
-      "blocks": {
-        "wheelify_spin_wheel_email_pop_wheelify_app_section_8gTUB4": {
-          "type": "shopify://apps/wheelify-spin-wheel-email-pop/blocks/wheelify-app-section/505ff42c-abce-4466-9558-7e1d3b2cfcd7",
-          "settings": {}
-        }
-      },
-      "block_order": [
-        "wheelify_spin_wheel_email_pop_wheelify_app_section_8gTUB4"
-      ],
       "settings": {
         "include_margins": true,
         "padding_top": 0,

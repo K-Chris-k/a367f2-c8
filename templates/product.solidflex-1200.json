@@ -90,7 +90,8 @@
             "mount_flat_roof": "indevolt-halterung",
             "mount_flat_roof_connect_solar_quantity": true,
             "mount_sloped_roof": "",
-            "mount_sloped_roof_connect_solar_quantity": true
+            "mount_sloped_roof_connect_solar_quantity": true,
+            "bundle_layout_type": "selector"
           }
         },
         "recommend_product_T66P8N": {
