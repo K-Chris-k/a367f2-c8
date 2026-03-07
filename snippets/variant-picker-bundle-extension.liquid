@@ -264,6 +264,12 @@
                 {%- for v in selector_variants -%}
                   {%- assign btn_index = forloop.index -%}
                   {%- assign v_compare = v.compare_at_price | default: 0 -%}
+                  {%- assign v_image_url = '' -%}
+                  {%- if v.image -%}
+                    {%- assign v_image_url = v.image | image_url: width: 1600 -%}
+                  {%- elsif v.featured_image -%}
+                    {%- assign v_image_url = v.featured_image | image_url: width: 1600 -%}
+                  {%- endif -%}
                   <button
                     type="button"
                     class="variant-extension-qty-btn variant-extension-qty-btn--layout {% if btn_index == selector_default_qty %}selected{% endif %}"
@@ -273,6 +279,9 @@
                     data-price="{{ v.price }}"
                     data-compare-price="{{ v_compare }}"
                     data-title="{{ v.title | escape }}"
+                    {% if v_image_url != blank %}
+                      data-image-url="{{ v_image_url }}"
+                    {% endif %}
                   >
                     {{ btn_index }}x
                   </button>
@@ -588,6 +597,17 @@
       // 新布局：1x/2x/3x 选择器按钮
       const layoutQtyButtons = document.querySelectorAll('.variant-extension-qty-btn--layout');
 
+      // 预加载所有 variant 图片，点击时直接从缓存读取，无延迟
+      const preloadedImages = {};
+      layoutQtyButtons.forEach((btn) => {
+        const url = btn.dataset.imageUrl;
+        if (url && !preloadedImages[url]) {
+          const img = new Image();
+          img.src = url;
+          preloadedImages[url] = img;
+        }
+      });
+
       function updateLayoutSelection(btn) {
         if (!btn) return;
 
@@ -627,6 +647,12 @@
           });
         }
 
+        // 更新主产品图片（切换到对应 variant 的图片）
+        const imageUrl = btn.dataset.imageUrl || '';
+        if (imageUrl) {
+          updateMainProductImage(imageUrl);
+        }
+
         // 派发事件
         document.dispatchEvent(
           new CustomEvent('layout:qty:change', {
@@ -643,7 +669,7 @@
           window.bundleProducts.updatePrice();
         }
 
-        console.log('[Bundle Extension] Layout selector variant changed:', variantId, 'price:', priceInCents);
+        console.log('[Bundle Extension] Layout selector variant changed:', variantId, 'price:', priceInCents, 'image:', imageUrl);
       }
 
       // 绑定新布局选择器事件
@@ -656,12 +682,19 @@
           });
         });
 
-        // 初始化：保存默认选中按钮的 variant 信息
+        // 初始化：保存默认选中按钮的 variant 信息，并显示对应图片
         const initialLayoutBtn = document.querySelector('.variant-extension-qty-btn--layout.selected');
         if (initialLayoutBtn) {
           window._bundleLayoutVariantId = initialLayoutBtn.dataset.variantId || '';
           window._bundleLayoutPrice = parseInt(initialLayoutBtn.dataset.price) || 0;
           window._bundleLayoutComparePrice = parseInt(initialLayoutBtn.dataset.comparePrice) || 0;
+
+          const initialImageUrl = initialLayoutBtn.dataset.imageUrl || '';
+          if (initialImageUrl) {
+            setTimeout(() => {
+              updateMainProductImage(initialImageUrl);
+            }, 200);
+          }
         }
       }
 
