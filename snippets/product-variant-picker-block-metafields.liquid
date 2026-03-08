@@ -308,6 +308,21 @@
     }
   }
 
+  .variant-extension-qty-buttons--layout-selector {
+    gap: 10px;
+    justify-content: flex-start;
+  }
+
+  .variant-extension-qty-btn--layout {
+    min-width: 48px;
+  }
+
+  .variant-extension-qty-btn--layout.selected {
+    background: #3250c3 !important;
+    color: #fff !important;
+    border-color: #3250c3 !important;
+  }
+
   .variant-extension-qty-btn {
     padding: 8px 16px;
     /* border: 1px solid #e5e5e5; */
@@ -629,7 +644,20 @@
       width: 60px;
       height: 60px;
     }
-
+    .variant-extension-base.variant-extension-variant-seletor-custom-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-bottom: 30px;
+}
+.bundle-overlay-text-solar {
+    top: 17% !important;
+    right: -2% !important;
+}
+.bundle-layout-alt-text {
+    bottom: calc(26% + 240px) !important;
+    left: -12px !important;
+}
     .variant-extension-qty-btn {
       padding: 6px 12px;
       font-size: 14px !important;
@@ -655,6 +683,26 @@
 
     .variant-none-btn {
       font-size: 14px;
+    }
+
+    /* selector 布局移动端：图片+标题一行，按钮独占下一行 */
+    .variant-extension-card--selector .variant-extension-base {
+      flex-wrap: wrap;
+    }
+
+    .variant-extension-card--selector .variant-extension-qty-buttons--layout-selector {
+      flex-basis: 100%;
+      gap: 8px;
+      justify-content: center;
+
+    }
+
+    .variant-extension-qty-btn--layout {
+      padding: 6px 12px;
+      font-size: 14px !important;
+      min-height: 30px !important;
+      min-width: 60px !important;
+      flex: 0 0 auto;
     }
   }
   /* 选中Label 填充 */

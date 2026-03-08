@@ -1,3 +1,31 @@
+
+<style>
+  .variant-extension-base.variant-extension-variant-seletor-custom-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 30px;
+}
+
+  .custom-layout-main-product-image-container-host-product-custom-layout-image {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+  }
+  button.variant-extension-qty-btn.variant-extension-qty-btn--layout {
+    padding: 0 2.6rem;
+    height: 40px !important;
+}
+@media (max-width: 768px) {
+  button.variant-extension-qty-btn.variant-extension-qty-btn--layout {
+    padding: 0 2.6rem;
+    height: 30px !important;
+    min-width: 94px !important;
+}
+}
+
+</style>
+
 {%- liquid
   # 获取 bundle_display_mode（从参数或默认为 bundle_with_battery）
   assign display_mode = bundle_display_mode | default: 'bundle_with_battery'
@@ -180,7 +208,7 @@
       </div>
     {%- endif -%}
     {%- comment -%} 基础产品部分 {%- endcomment -%}
-    <div class="variant-extension-base">
+    <div class="variant-extension-base variant-extension-variant-seletor-custom-layout">
       {%- if is_multi_host -%}
         {%- comment -%} Multi Host 模式：显示主产品基础信息 {%- endcomment -%}
         {%- if base_image -%}
@@ -215,8 +243,9 @@
         </div>
       {%- else -%}
         {%- comment -%} Bundle with Battery 模式：显示主机信息 {%- endcomment -%}
+        <div class="custom-layout-main-product-image-container-host-product-custom-layout-image">
         {%- if host_image -%}
-          <div class="variant-extension-base-image">
+          <div class="variant-extension-base-image custom-layout-main-product-image">
             <img
               src="{{ host_image | image_url: width: 160 }}"
               alt="{{ option_config.base_display_name }}"
@@ -246,57 +275,62 @@
               <span class="variant-extension-title-separator">|</span>{{ option_config.base_capacity }}
             {%- endif -%}
           </h3>
-          {%- if is_selector_layout -%}
-            {%- comment -%} 新布局：使用 main_product（页面主产品）的 variants，数据完整不受 all_products 限制 {%- endcomment -%}
-            {%- if main_product and main_product.variants.size > 0 -%}
-              {%- assign selector_variants = main_product.variants -%}
-            {%- elsif host_product_obj and host_product_obj.variants.size > 0 -%}
-              {%- assign selector_variants = host_product_obj.variants -%}
-            {%- else -%}
-              {%- assign selector_variants = product.variants -%}
-            {%- endif -%}
-            <div class="variant-extension-base-price variant-extension-base-price--selector">
-              <div
-                class="variant-extension-qty-buttons variant-extension-qty-buttons--layout-selector"
-                data-layout-qty-selector
-              >
-                {%- assign selector_default_qty = option_config.layout_default_qty | default: 1 -%}
-                {%- for v in selector_variants -%}
-                  {%- assign btn_index = forloop.index -%}
-                  {%- assign v_compare = v.compare_at_price | default: 0 -%}
-                  {%- assign v_image_url = '' -%}
-                  {%- if v.image -%}
-                    {%- assign v_image_url = v.image | image_url: width: 1600 -%}
-                  {%- elsif v.featured_image -%}
-                    {%- assign v_image_url = v.featured_image | image_url: width: 1600 -%}
-                  {%- endif -%}
-                  <button
-                    type="button"
-                    class="variant-extension-qty-btn variant-extension-qty-btn--layout {% if btn_index == selector_default_qty %}selected{% endif %}"
-                    data-layout-qty="{{ btn_index }}"
-                    data-variant-id="{{ v.id }}"
-                    data-product-id="{{ v.product_id }}"
-                    data-price="{{ v.price }}"
-                    data-compare-price="{{ v_compare }}"
-                    data-title="{{ v.title | escape }}"
-                    {% if v_image_url != blank %}
-                      data-image-url="{{ v_image_url }}"
-                    {% endif %}
-                  >
-                    {{ btn_index }}x
-                  </button>
-                {%- endfor -%}
-              </div>
-            </div>
-          {%- else -%}
+          {%- unless is_selector_layout -%}
             <div class="variant-extension-base-price">
               <span class="current-price">{{ host_variant.price | money }}</span>
               {%- if host_variant.compare_at_price > host_variant.price -%}
                 <span class="original-price">{{ host_variant.compare_at_price | money }}</span>
               {%- endif -%}
             </div>
-          {%- endif -%}
+          {%- endunless -%}
         </div>
+        {%- if is_selector_layout -%}
+          {%- if main_product and main_product.variants.size > 0 -%}
+            {%- assign selector_variants = main_product.variants -%}
+          {%- elsif host_product_obj and host_product_obj.variants.size > 0 -%}
+            {%- assign selector_variants = host_product_obj.variants -%}
+          {%- else -%}
+            {%- assign selector_variants = product.variants -%}
+          {%- endif -%}
+          </div>
+          <div
+            class="variant-extension-qty-buttons variant-extension-qty-buttons--layout-selector"
+            data-layout-qty-selector
+          >
+            {%- assign selector_default_qty = option_config.layout_default_qty | default: 1 -%}
+            {%- for v in selector_variants -%}
+              {%- assign btn_index = forloop.index -%}
+              {%- assign v_compare = v.compare_at_price | default: 0 -%}
+              {%- assign v_image_url = '' -%}
+              {%- assign v_image_alt = '' -%}
+              {%- if v.image -%}
+                {%- assign v_image_url = v.image | image_url: width: 1600 -%}
+                {%- assign v_image_alt = v.image.alt | default: '' -%}
+              {%- elsif v.featured_image -%}
+                {%- assign v_image_url = v.featured_image | image_url: width: 1600 -%}
+                {%- assign v_image_alt = v.featured_image.alt | default: '' -%}
+              {%- endif -%}
+              <button
+                type="button"
+                class="variant-extension-qty-btn variant-extension-qty-btn--layout {% if btn_index == selector_default_qty %}selected{% endif %}"
+                data-layout-qty="{{ btn_index }}"
+                data-variant-id="{{ v.id }}"
+                data-product-id="{{ v.product_id }}"
+                data-price="{{ v.price }}"
+                data-compare-price="{{ v_compare }}"
+                data-title="{{ v.title | escape }}"
+                {% if v_image_url != blank %}
+                  data-image-url="{{ v_image_url }}"
+                {% endif %}
+                {% if v_image_alt != blank %}
+                  data-image-alt="{{ v_image_alt | escape }}"
+                {% endif %}
+              >
+                {{ btn_index }}x
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
       {%- endif -%}
     </div>
 
@@ -647,10 +681,20 @@
           });
         }
 
-        // 更新主产品图片（切换到对应 variant 的图片）
+        // 更新主产品图片或显示 alt text（取决于其他选择器组的状态）
         const imageUrl = btn.dataset.imageUrl || '';
-        if (imageUrl) {
-          updateMainProductImage(imageUrl);
+        const imageAlt = btn.dataset.imageAlt || '';
+        window._bundleLayoutAltText = imageAlt;
+
+        if (hasBatteryNonDefault()) {
+          // 电池非默认 → 不切换图片，显示 alt text
+          updateLayoutAltTextVisibility();
+        } else {
+          // 电池默认(0x) → 切换图片，隐藏 alt text
+          if (imageUrl) {
+            updateMainProductImage(imageUrl);
+          }
+          updateLayoutAltTextVisibility();
         }
 
         // 派发事件
@@ -690,9 +734,12 @@
           window._bundleLayoutComparePrice = parseInt(initialLayoutBtn.dataset.comparePrice) || 0;
 
           const initialImageUrl = initialLayoutBtn.dataset.imageUrl || '';
+          const initialImageAlt = initialLayoutBtn.dataset.imageAlt || '';
+          window._bundleLayoutAltText = initialImageAlt;
           if (initialImageUrl) {
             setTimeout(() => {
               updateMainProductImage(initialImageUrl);
+              updateLayoutAltTextVisibility();
             }, 200);
           }
         }
@@ -921,9 +968,91 @@
         }
       }
 
+      // 显示 layout selector 的 alt text（独立于 bundle-other-display-text）
+      function showLayoutAltText(slideElement, text) {
+        if (!slideElement || !text) return;
+
+        let altOverlay = slideElement.querySelector('.bundle-layout-alt-text');
+        if (!altOverlay) {
+          altOverlay = document.createElement('div');
+          altOverlay.className = 'bundle-layout-alt-text';
+          altOverlay.style.cssText = `
+            position: absolute;
+            bottom: calc(26% + 150px);
+            left: 0;
+            color: #000;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            z-index: 10;
+            pointer-events: none;
+            white-space: nowrap;
+          `;
+
+          let imageContainer = slideElement.querySelector('.product-big-image');
+          if (!imageContainer) {
+            imageContainer = slideElement.querySelector('.product__media');
+          }
+          if (imageContainer) {
+            if (getComputedStyle(imageContainer).position === 'static') {
+              imageContainer.style.position = 'relative';
+            }
+            imageContainer.appendChild(altOverlay);
+          }
+        }
+
+        altOverlay.textContent = text;
+        altOverlay.style.display = 'block';
+      }
+
+      function hideLayoutAltText(slideElement) {
+        if (!slideElement) return;
+        const altOverlay = slideElement.querySelector('.bundle-layout-alt-text');
+        if (altOverlay) {
+          altOverlay.style.display = 'none';
+        }
+      }
+
+      // 检查电池选择器是否处于非默认选中状态（qty > 0）
+      // 只有电池非默认才触发 alt text 模式；太阳能板/支架等类别选择不影响
+      function hasBatteryNonDefault() {
+        const selectedBatteryBtn = document.querySelector(
+          '.variant-extension-qty-buttons:not(.variant-extension-qty-buttons--layout-selector) .variant-extension-qty-btn.selected'
+        );
+        return selectedBatteryBtn && selectedBatteryBtn.dataset.qty !== '0';
+      }
+
+      // 根据其他选择器组的状态决定是否显示 layout alt text
+      function updateLayoutAltTextVisibility() {
+        const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
+        if (!productInfo) return;
+
+        const mainSectionId = productInfo.dataset.section;
+        const mediaGallery = productInfo.querySelector(`[id^="MediaGallery-${mainSectionId}"]`);
+        if (!mediaGallery) return;
+
+        let activeSlide = mediaGallery.querySelector('.swiper-slide-active');
+        if (!activeSlide) {
+          activeSlide = mediaGallery.querySelector('.product__media-item[data-media-index="0"]');
+        }
+        if (!activeSlide) {
+          activeSlide = mediaGallery.querySelector('.product__media-item:first-child');
+        }
+        if (!activeSlide) return;
+
+        const batteryActive = hasBatteryNonDefault();
+        const altText = window._bundleLayoutAltText || '';
+
+        if (batteryActive && altText) {
+          showLayoutAltText(activeSlide, altText);
+        } else {
+          hideLayoutAltText(activeSlide);
+        }
+      }
+
       // 恢复主产品原始图片
       function restoreMainProductImage() {
-        console.log('[Bundle Extension] 开始恢复主产品原始图片');
 
         const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
         if (!productInfo) return;
@@ -1333,6 +1462,9 @@
           if (window.bundleProducts && window.bundleProducts.updatePrice) {
             window.bundleProducts.updatePrice();
           }
+
+          // 电池选中状态变化后，刷新 layout alt text 显示
+          updateLayoutAltTextVisibility();
         });
       });
 

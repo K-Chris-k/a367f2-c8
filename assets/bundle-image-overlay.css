@@ -57,7 +57,8 @@
   .bundle-overlay-wrapper img[data-overlay-type="mount"] {
     width: 30% !important;
     height: 30% !important;
-    top: 0 !important;
+    left: -14px !important;
+    top: 30px !important;
     transform: scale(0.5) translate(-20%, -20%) !important;
   }
 }
