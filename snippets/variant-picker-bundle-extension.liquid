@@ -723,6 +723,8 @@
             layoutQtyButtons.forEach((b) => b.classList.remove('selected'));
             this.classList.add('selected');
             updateLayoutSelection(this);
+            // layout 变化时同步更新容量显示
+            updateCombinedCapacityDisplay();
           });
         });
 
@@ -742,6 +744,9 @@
               updateLayoutAltTextVisibility();
             }, 200);
           }
+
+          // 初始化时，如果有 layout 选择器，先根据 layout 更新一次容量显示
+          updateCombinedCapacityDisplay();
         }
       }
 
@@ -1020,7 +1025,81 @@
         const selectedBatteryBtn = document.querySelector(
           '.variant-extension-qty-buttons:not(.variant-extension-qty-buttons--layout-selector) .variant-extension-qty-btn.selected'
         );
-        return selectedBatteryBtn && selectedBatteryBtn.dataset.qty !== '0';
+        // 如果当前电池没有任何选中按钮，也视为“非默认”（走 alt text 模式）
+        if (!selectedBatteryBtn) return true;
+        return selectedBatteryBtn.dataset.qty !== '0';
+      }
+
+      // 获取当前 layout 选择器选中按钮中括号里的容量文案
+      function getSelectedLayoutCapacityText() {
+        const layoutSelectedBtn = document.querySelector(
+          '.variant-extension-qty-buttons--layout-selector .variant-extension-qty-btn--layout.selected'
+        );
+        if (!layoutSelectedBtn) return '';
+        const title = layoutSelectedBtn.dataset.title || '';
+        // 匹配第一个括号内的内容，例如 "XXX (5 kWh)" → "5 kWh"
+        const match = title.match(/\(([^()]*)\)/);
+        return match ? match[1].trim() : '';
+      }
+
+      // 获取当前电池选择器的容量文案（忽略 0x）
+      function getSelectedBatteryCapacityText() {
+        const selectedBatteryBtn = document.querySelector(
+          '.variant-extension-qty-buttons:not(.variant-extension-qty-buttons--layout-selector) .variant-extension-qty-btn.selected'
+        );
+        if (!selectedBatteryBtn) return '';
+        const qty = selectedBatteryBtn.dataset.qty || '0';
+        if (qty === '0') return '';
+        return selectedBatteryBtn.dataset.capacity || '';
+      }
+
+      // 将类似 "3584Wh" 或 "3.5 kWh" 的文案解析为数值
+      function parseCapacityValue(text) {
+        if (!text) return null;
+        const normalized = String(text).replace(',', '.');
+        const match = normalized.match(/([\d.]+)/);
+        if (!match) return null;
+        const num = parseFloat(match[1]);
+        return isNaN(num) ? null : num;
+      }
+
+      // 从容量文案中提取单位，例如 "Wh" 或 "kWh"
+      function extractCapacityUnit(text) {
+        if (!text) return '';
+        const match = String(text).match(/([a-zA-Z]+)$/);
+        return match ? match[1] : '';
+      }
+
+      // 统一更新容量显示：layout 容量 + 电池容量（代码累加，页面只显示总和）
+      function updateCombinedCapacityDisplay() {
+        if (!capacityDisplay) return;
+
+        const layoutText = getSelectedLayoutCapacityText();
+        const batteryText = getSelectedBatteryCapacityText();
+
+        const layoutVal = parseCapacityValue(layoutText);
+        const batteryVal = parseCapacityValue(batteryText);
+
+        // 如果两个都解析不到数值，就保持当前值（由后端初始渲染）
+        if (layoutVal === null && batteryVal === null) {
+          return;
+        }
+
+        const sum = (layoutVal || 0) + (batteryVal || 0);
+        const unit =
+          extractCapacityUnit(layoutText) ||
+          extractCapacityUnit(batteryText) ||
+          '';
+
+        let sumText;
+        if (Number.isInteger(sum)) {
+          sumText = String(sum);
+        } else {
+          // 保留最多两位小数，并去掉末尾的 .00
+          sumText = sum.toFixed(2).replace(/\.00$/, '');
+        }
+
+        capacityDisplay.textContent = unit ? sumText + unit : sumText;
       }
 
       // 根据其他选择器组的状态决定是否显示 layout alt text
@@ -1371,10 +1450,8 @@
           const totalCapacity = this.dataset.capacity;
           const otherText = this.dataset.otherText || '';
 
-          // 更新容量显示
-          if (capacityDisplay && totalCapacity) {
-            capacityDisplay.textContent = totalCapacity;
-          }
+          // 更新容量显示：使用统一的 layout + 电池 组合逻辑
+          updateCombinedCapacityDisplay();
 
           // 更新电池包图片
           if (batteryImage) {
@@ -1387,12 +1464,32 @@
             }
           }
 
-          // 更新主产品图片（如果有图片URL，包括0x选项的主机图片）
-          if (imageUrl && imageUrl !== '') {
-            updateMainProductImage(imageUrl, otherText);
+          // 更新主产品图片
+          // 需求：
+          // - 当 qty > 0 时，用电池对应的图片（可带 other_display_text）
+          // - 当 qty === '0' 时，使用当前 layout selector 选中的变体图片，且不显示 alt text 叠加
+          if (qty === '0') {
+            const currentLayoutBtn = document.querySelector(
+              '.variant-extension-qty-buttons--layout-selector .variant-extension-qty-btn--layout.selected'
+            );
+            const layoutImageUrl = currentLayoutBtn ? currentLayoutBtn.dataset.imageUrl || '' : '';
+
+            if (layoutImageUrl) {
+              // 0x 场景：只切主图，不要任何 alt text 叠加
+              updateMainProductImage(layoutImageUrl, '');
+            } else if (imageUrl && imageUrl !== '') {
+              // 回退：如果 layout 没有图片，就使用 0x 上配置的图片
+              updateMainProductImage(imageUrl, '');
+            } else {
+              restoreMainProductImage();
+            }
           } else {
-            // 如果没有图片，恢复原始图片
-            restoreMainProductImage();
+            if (imageUrl && imageUrl !== '') {
+              updateMainProductImage(imageUrl, otherText);
+            } else {
+              // 如果没有图片，恢复原始图片
+              restoreMainProductImage();
+            }
           }
 
           // 获取选中的 radio input 并标记为选中（Bundle 模式不需要触发 change 事件，避免触发 variant-selects 重置）
@@ -1628,13 +1725,17 @@
           })
         );
 
-        // 初始化时更新主产品图片（如果有图片URL，包括0x选项的主机图片）
-        setTimeout(() => {
-          if (imageUrl && imageUrl !== '') {
-            const otherText = selectedBtn.dataset.otherText || '';
-            updateMainProductImage(imageUrl, otherText);
-          }
-        }, 200);
+        // 初始化时更新主产品图片：
+        // - 如果是 0x（默认），让 layout selector 控制主图，这里不改图片
+        // - 如果是 >0 的电池数量，则按原逻辑更新主图
+        if (qty !== '0') {
+          setTimeout(() => {
+            if (imageUrl && imageUrl !== '') {
+              const otherText = selectedBtn.dataset.otherText || '';
+              updateMainProductImage(imageUrl, otherText);
+            }
+          }, 200);
+        }
 
         console.log('[Bundle Extension] Initial price update triggered for selected button:', {
           variantId: variantId || 'none (0x - no battery)',
