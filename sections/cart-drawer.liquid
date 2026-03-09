@@ -1147,7 +1147,30 @@
           const isDeletingHost = bundleRole === 'host';
           // 关键调试日志
           console.log('[Bundle删除] 点击删除:', { bundleGroupId, bundleRole, isDeletingHost });
+
+          // === 简化逻辑：如果删除的是主机，直接清空整个购物车 ===
+          if (isDeletingHost) {
+            // 等待主题自己的 AJAX 删除完成，再清空购物车，避免竞态
+            setTimeout(async () => {
+              try {
+                await fetch('/cart/clear.js', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' }
+                });
+                // 触发抽屉刷新，显示空购物车
+                document.dispatchEvent(
+                  new CustomEvent('cart:refresh', {
+                    detail: { open: true }
+                  })
+                );
+              } catch (err) {
+                console.error('[Bundle删除] 清空购物车失败', err);
+              }
+            }, 300);
+            return;
+          }
           
+          // 非主机删除，走原有逻辑：只删除同 bundle 的附属品 / 礼品
           // 延迟执行，等待主产品删除完成
           setTimeout(async () => {
             try {

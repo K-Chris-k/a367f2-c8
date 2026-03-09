@@ -1360,7 +1360,25 @@
           
           // 关键调试日志
           console.log('[Bundle删除-Cart] 点击删除:', { bundleGroupId, bundleRole, isDeletingHost });
+
+          // === 简化逻辑：如果删除的是主机，直接清空整个购物车 ===
+          if (isDeletingHost) {
+            setTimeout(async () => {
+              try {
+                await fetch('/cart/clear.js', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' }
+                });
+                // 清空后，刷新整页，让主购物车显示为空
+                window.location.reload();
+              } catch (err) {
+                console.error('[Bundle删除-Cart] 清空购物车失败', err);
+              }
+            }, 300);
+            return;
+          }
           
+          // 非主机删除，走原有逻辑：只删除同 bundle 的附属品 / 礼品
           // 延迟执行，等待 Shopify 完成主产品删除
           setTimeout(async () => {
             try {
