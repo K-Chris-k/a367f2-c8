@@ -1051,8 +1051,6 @@
           '.variant-extension-qty-buttons:not(.variant-extension-qty-buttons--layout-selector) .variant-extension-qty-btn.selected'
         );
         if (!selectedBatteryBtn) return '';
-        const qty = selectedBatteryBtn.dataset.qty || '0';
-        if (qty === '0') return '';
         return selectedBatteryBtn.dataset.capacity || '';
       }
 
@@ -1068,40 +1066,28 @@
       // 从容量文案中提取单位，例如 "Wh" 或 "kWh"
       function extractCapacityUnit(text) {
         if (!text) return '';
-        const match = String(text).match(/([a-zA-Z]+)$/);
+        const t = String(text);
+        if (/kwh/i.test(t)) return 'kWh';
+        if (/wh/i.test(t)) return 'Wh';
+        const match = t.match(/([a-zA-Z]+)$/);
         return match ? match[1] : '';
       }
       function updateCombinedCapacityDisplay() {
         if (!capacityDisplay) return;
 
         const layoutText = getSelectedLayoutCapacityText();
+        const batteryText = getSelectedBatteryCapacityText();
+
         const layoutVal = parseCapacityValue(layoutText);
+        const batteryVal = parseCapacityValue(batteryText);
 
-        const selectedBatteryBtn = document.querySelector(
-          '.variant-extension-qty-buttons:not(.variant-extension-qty-buttons--layout-selector) .variant-extension-qty-btn.selected'
-        );
+        // 两边都解析不到，就不覆盖页面初始值
+        if (layoutVal === null && batteryVal === null) return;
 
-        const qty = selectedBatteryBtn ? (parseInt(selectedBatteryBtn.dataset.qty) || 0) : 0;
+        // 页面只展示“总容量”，即 layout + 当前选中电池绝对容量的和
+        const sum = (layoutVal || 0) + (batteryVal || 0);
 
-        let batteryContribution = 0;
-        if (qty > 0 && selectedBatteryBtn) {
-          const batteryTotalVal = parseCapacityValue(selectedBatteryBtn.dataset.capacity);
-          const zeroBtn = document.querySelector(
-            '.variant-extension-qty-btn.bundle-extension-btn[data-qty="0"]'
-          );
-          const baseVal = zeroBtn ? (parseCapacityValue(zeroBtn.dataset.capacity) || 0) : 0;
-          batteryContribution = (batteryTotalVal || 0) - baseVal;
-        }
-
-        if (layoutVal === null && batteryContribution === 0 && qty === 0) {
-          return;
-        }
-
-        const sum = (layoutVal || 0) + batteryContribution;
-        const unit =
-          extractCapacityUnit(layoutText) ||
-          (selectedBatteryBtn ? extractCapacityUnit(selectedBatteryBtn.dataset.capacity || '') : '') ||
-          '';
+        const unit = extractCapacityUnit(layoutText) || extractCapacityUnit(batteryText) || '';
 
         let sumText;
         if (Number.isInteger(sum)) {
