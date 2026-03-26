@@ -37,7 +37,10 @@
         },
         "button_3T7neJ": {
           "type": "button",
-          "settings": {}
+          "settings": {
+            "button_label": "Learn more",
+            "button_style": "btn--primary"
+          }
         }
       },
       "block_order": [
@@ -71,7 +74,7 @@
         "heading_size": "h1",
         "heading_highlight_style": "none",
         "subheading": "Organic Ingredients",
-        "description": "<p>Sustainability is the epitome of allure in modern fashion. Our workout wear collection embodies this ethos, seamlessly blending eco-consciousness with undeniable sexiness. From sleek designs to flattering cuts, each piece exudes confidence and style while leaving</p>",
+        "description": "<p>Sustainability is the epitome of allure in modern fashion. Our workout wear collection embodies this ethos, seamlessly blending eco-consciousness with undeniable sexiness. From sleek designs to flattering cuts, each piece exudes confidence and style while leaving<\/p>",
         "text_size": "text-base",
         "show_collection_description": false,
         "limit": 4,
@@ -156,7 +159,7 @@
         "heading_size": "h1",
         "heading_highlight_style": "none",
         "subheading": "",
-        "description": "<p>Transform your look this season with our products!</p>",
+        "description": "<p>Transform your look this season with our products!<\/p>",
         "limit": 3,
         "columns": "2",
         "media_position": "left",
@@ -239,7 +242,7 @@
             "image_width": "extra-large",
             "title": "",
             "heading_size": "h4",
-            "text": "<p>“ Also the customer service is phenomenal.<br/>I would purchase again.”</p>",
+            "text": "<p>“ Also the customer service is phenomenal.<br\/>I would purchase again.”<\/p>",
             "text_size": "text-lg",
             "button_label": "",
             "button_style": "btn--underline",
@@ -253,7 +256,7 @@
             "image_width": "extra-large",
             "title": "",
             "heading_size": "h4",
-            "text": "<p>“Great product line. <br/>Very attentive staff to deal with.”</p>",
+            "text": "<p>“Great product line. <br\/>Very attentive staff to deal with.”<\/p>",
             "text_size": "text-lg",
             "button_label": "",
             "button_style": "btn--underline",
@@ -267,7 +270,7 @@
             "image_width": "extra-large",
             "title": "",
             "heading_size": "h4",
-            "text": "<p>\"Looking to affordably upgrade your everyday dinnerware? Look no further than e.Space\"</p>",
+            "text": "<p>\"Looking to affordably upgrade your everyday dinnerware? Look no further than e.Space\"<\/p>",
             "text_size": "text-lg",
             "button_label": "",
             "button_style": "btn--underline",
@@ -315,7 +318,7 @@
         "pcard_title_size": "hd2",
         "pcard_description_display": "3-lines",
         "pcard_description_size": "text-lg",
-        "pcard_image_ratio": "3/4",
+        "pcard_image_ratio": "3\/4",
         "pcard_show_vendor": false,
         "pcard_show_type": true,
         "pcard_button_label": "Shop this product",

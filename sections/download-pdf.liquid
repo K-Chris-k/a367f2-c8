@@ -175,6 +175,7 @@
             <div class="pdf-list">
               {% if block.settings.pdf_list != blank %}
                 {% assign pdfs = block.settings.pdf_list | newline_to_br | split: '<br />' %}
+
                 {% for pdf in pdfs %}
                   {% if pdf != blank %}
                     {% assign pdf_parts = pdf | split: '|' %}
@@ -249,9 +250,9 @@
   function isMobile() {
     return window.matchMedia("(max-width: 767.98px)").matches;
   }
-  const categoryItems = document.querySelectorAll('.category-item[data-category]');
-  const pdfCategories = document.querySelectorAll('.pdf-category[data-category]');
-  const pdfCategoriesInline = document.querySelectorAll('.pdf-category-inline[data-category]');
+  const categoryItems = document.querySelectorAll('#shopify-section-{{ section.id }} .category-item[data-category]');
+  const pdfCategories = document.querySelectorAll('#shopify-section-{{ section.id }} .pdf-category[data-category]');
+  const pdfCategoriesInline = document.querySelectorAll('#shopify-section-{{ section.id }} .pdf-category-inline[data-category]');
 
   // PC端行为
   function handleDesktopClick(clicked) {
@@ -272,8 +273,8 @@
   // 移动端行为
   function handleMobileClick(clicked) {
     const category = clicked.getAttribute('data-category');
-    const inlineCats = document.querySelectorAll('.pdf-category-inline');
-    const inlineCat = document.querySelector(`.pdf-category-inline[data-category="${category}"]`);
+    const inlineCats = document.querySelectorAll('#shopify-section-{{ section.id }} .pdf-category-inline');
+    const inlineCat = document.querySelector(`#shopify-section-{{ section.id }} .pdf-category-inline[data-category="${category}"]`);
     // 收起其它
     categoryItems.forEach(i => i.classList.remove('active'));
     inlineCats.forEach(cat => cat.classList.remove('open'));

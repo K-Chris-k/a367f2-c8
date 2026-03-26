@@ -73,20 +73,27 @@
         {%- assign motion_delay = motion_delay | plus: 50 -%}
       {%- endif -%}
       {%- if section_settings.heading != blank -%} 
+         <div class="flex items-center " style="justify-content: center;">
+        <div class="title-container" >
+        {% if show_icon %} {% render 'icon-gift-left' %} {% endif %}
         <h2 class="section__heading{% if section_settings.heading_size %} {{ section_settings.heading_size }}{% endif %}"  style="color:{{ section_settings.title_color }}">
           <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
            
-           {% if show_icon %} {% render 'icon-gift-left' %} {% endif %}
+           
             {% render 'highlight-text',
               text: section_settings.heading,
               style: section_settings.heading_highlight_style
             %} 
-           {% if show_icon %} {% render 'icon-gift-right' %}{% endif %} 
+       
            {% if section_settings.more_title != blank and section_settings.more_url != blank%}
             <span class="links"><a class="a_underline" href="{{ section_settings.more_url }}" target="_blank">{{ section_settings.more_title }}</a></span>
-        {% endif %}
+           {% endif %}
           </motion-element>
         </h2>
+          {% if show_icon %} {% render 'icon-gift-right' %}{% endif %} 
+        </div>
+          </div>
+          
         {%- assign motion_delay = motion_delay | plus: 50 -%}
       {%- endif -%}
       {%- if description != blank -%}

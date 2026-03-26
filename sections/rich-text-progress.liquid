@@ -1,0 +1,1501 @@
+{% render 'divider',
+  show_divider: section.settings.show_section_divider,
+  divider_width: section.settings.divider_width
+%}
+<style>
+    #shopify-section-{{ section.id }} .rich-text-list-section{padding-top: {{ section.settings.padding_top }}px;padding-bottom: {{ section.settings.padding_bottom }}px;}
+    #shopify-section-{{ section.id }} .rich-text{flex-flow: column;}
+    #shopify-section-{{ section.id }} p{ font-family: 'Inter';line-height:22px; font-size:18px;color: #666;}
+    #shopify-section-{{ section.id }} .image-wrapper-container{margin:0px;}
+    #shopify-section-{{ section.id }} .image-wrapper-container .image-wrapper{margin-top:{{ section.settings.image_top }}px}
+    #shopify-section-{{ section.id }} .details-box{gap:168px}
+    #shopify-section-{{ section.id }} .details-box .item{display: flex;flex-flow: column;}
+    #shopify-section-{{ section.id }} .details-box strong{line-height: 44px;font-weight: 700;font-size: 36px;background: linear-gradient(180deg, #3250C3 0%, #91AFFA 100%);
+    -webkit-background-clip: text;-webkit-text-fill-color: transparent;}
+    #shopify-section-{{ section.id }} .details-box span{line-height: 22px;font-size: 18px}
+    #shopify-section-{{ section.id }} .h3{font-size: 30px;line-height: 36px;font-weight: 500;}
+    #shopify-section-{{ section.id }} .text-base p{ font-family: 'Inter'; line-height: 17px;font-size:14px; }
+    #shopify-section-{{ section.id }} .container-full {width: 100vw;margin-left: calc(-50vw + 50%);}
+    #shopify-section-{{ section.id }} .container-full .grid-image {width: 100%;height: auto;object-fit: contain; }
+    #shopify-section-{{ section.id }} .grid-image { width: revert-layer;height: auto;object-fit: contain; }
+
+    /* 新增视频区块样式 */
+    #shopify-section-{{ section.id }} .video-popup-block {
+      margin-top: 40px;
+    }
+
+    #shopify-section-{{ section.id }} .video-container-inner {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    #shopify-section-{{ section.id }} .video-thumbnail {
+       width: 100%;
+       height: 100%;
+       object-fit:contain;
+       transition: opacity 0.3s ease;
+     }
+
+    .play-button {
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       width: 50px;
+       height: 50px;
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       color:#fff;
+       transition: transform 0.2s ease;
+    }
+
+    .video-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .video-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .video-modal .modal-content {
+      width: 90%;
+      max-width: 1000px;
+      position: relative;
+      padding:0px;
+      background:none;
+      border:none
+    }
+
+    .close-button {
+      position: absolute;
+      top: -50px;
+      right: 0;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 40px;
+      cursor: pointer;
+    }
+
+    .video-player {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-player iframe,
+    .video-player video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    #shopify-section-{{ section.id }} .video-container-custom {
+      position: relative;
+      margin-top:60px;
+      overflow: hidden;
+      /* aspect-ratio: {{ section.settings.video_aspect_ratio }};  */
+    }
+    #shopify-section-{{ section.id }} .custom-video {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      /* border-radius: {{ section.settings.video_radius }}px;  */
+    }
+    #shopify-section-{{ section.id }} .hd2 strong{display:block}
+ 
+   .progress-title-text{
+        font-size: 20px;
+        line-height: 24px;
+        font-weight: 500;
+        color:#666666;
+        width:760px;
+    }
+
+@media (max-width: 767.98px) {
+      #shopify-section-{{ section.id }} .rich-text-list-section{padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;padding-bottom: {{ section.settings.padding_bottom | divided_by: 2}}px;}
+      #shopify-section-{{ section.id }} .image-wrapper-container .image-wrapper{margin-top:{{ section.settings.image_top | divided_by: 2 }}px}
+      #shopify-section-{{ section.id }} .image-with-text__inner{padding:0px}
+      #shopify-section-{{ section.id }} .rich-text__heading{ line-height:34px;font-size:28px}
+      #shopify-section-{{ section.id }} p{ line-height:19px;font-size:16px;}
+      #shopify-section-{{ section.id }} .details-box{gap:65px}
+      #shopify-section-{{ section.id }} .details-box strong{line-height: 22px;font-size: 18px}
+      #shopify-section-{{ section.id }} .details-box span{line-height: 15px;font-size: 12px;color: #303030;}
+      #shopify-section-{{ section.id }} .h3{font-size: 28px;line-height: 30px;}
+      #shopify-section-{{ section.id }} .video-container-inner{ width: 200px!important;height:36px!important}
+      #shopify-section-{{ section.id }} .video-container-custom { margin-top:3rem}
+      #shopify-section-{{ section.id }} .video-popup-block {
+        margin-top: 20px;
+      }
+      #shopify-section-{{ section.id }} .hd2{font-size:26px;}
+      .close-button {
+        top: -40px;
+        font-size: 30px;
+      }
+ 
+
+    #shopify-section-{{ section.id }} .title-container {
+      margin: 0px 0px;
+    }
+
+    .progress-title-text{
+        font-size: 16px;
+        line-height: 19px;
+        font-weight: 500;
+        width:100%;
+        padding-inline:15px;
+    }
+
+    /* 移动端：使用 Grid 重新排列 progress-first-div 内的元素 */
+    #shopify-section-{{ section.id }} .progress-first-div {
+        display: grid;
+        grid-template-areas: 
+            "label value"
+            "center center";
+        {% comment %} grid-template-columns: 1fr auto; {% endcomment %}
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+    
+    /* 将 progress-label 放在第一行左侧 */
+    #shopify-section-{{ section.id }} .progress-first-div .progress-label {
+        grid-area: label;
+        width: auto;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+    }
+    
+    /* 将 progress-value 放在第一行右侧，并让文字换行 */
+    #shopify-section-{{ section.id }} .progress-first-div .progress-value {
+        grid-area: value;
+        display: flex !important;
+        width: auto;
+        text-align: right;
+        padding: 0;
+        margin: 0;
+        background: transparent;
+        justify-content: flex-end;
+        flex-direction: column;
+    }
+    
+    /* 让 progress-value 内部的 span 内容换行显示 */
+    #shopify-section-{{ section.id }} .progress-first-div .progress-value span {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        line-height: 1.3;
+    }
+    
+    /* 将 "20 Jahre" 和 "Lebensdauer" 分成两行 */
+    #shopify-section-{{ section.id }} .progress-first-div .progress-value span {
+        white-space: normal;
+        word-break: keep-all;
+    }
+    
+    /* 如果 span 内是纯文本，通过添加换行符来实现分行 */
+    #shopify-section-{{ section.id }} .progress-first-div .progress-value span br {
+        display: block;
+        content: "";
+        margin: 0;
+    }
+    
+    /* 将 progress-center-div 放在第二行，占满整行 */
+    #shopify-section-{{ section.id }} .progress-first-div .progress-center-div {
+        grid-area: center;
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: left;
+        font-size: 7.2rem;
+        line-height:87px;
+        margin: 0;
+        padding: 0.5rem 0 0 0;
+        box-sizing: border-box;
+
+    }
+    
+    /* 调整 progress-label 中的数字大小 */
+    #shopify-section-{{ section.id }} .progress-first-div .progress-label span {
+        font-size: 3.2rem;
+        line-height:39px;
+        display: inline-block;
+        margin-right: 0.2rem;
+    }
+    
+    /* 调整 progress-value 中的文字样式 */
+    #shopify-section-{{ section.id }} .progress-first-div .progress-value span:first-child {
+         font-size: 3.2rem;
+        line-height:39px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+    }
+
+        /* 调整 progress-value 中的文字样式 */
+    #shopify-section-{{ section.id }} .progress-first-div .progress-value span:last-child {
+        font-size: 1.4rem;
+        line-height:17px;
+        font-weight: 400;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+    }
+
+
+    
+    /* 确保 progress-value 的渐变背景在移动端不显示 */
+    #shopify-section-{{ section.id }} .progress-stack .progress-item:first-child .progress-value {
+        background: transparent;
+        -webkit-background-clip: unset;
+        -webkit-text-fill-color: unset;
+        color: #1e2f41;
+    }
+    
+    /* 确保 progress-center-div 内部的文字也占满宽度 */
+    #shopify-section-{{ section.id }} .progress-first-div .progress-center-div span {
+        display: inline-block;
+        width: 100%;
+        text-align: left;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+   /* 全局重置与基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .progress-section {
+            max-width: 1100px;
+            width:100%;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            background-color: transparent;
+        }
+
+        .progress-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .progress-first-div{
+            padding-bottom:20px;
+        }
+
+        .progress-first-div .progress-label{
+            font-size: 24px;
+            line-height:29px;
+            font-weight: 400;
+        }
+
+        .progress-first-div .progress-label span{
+            display: inline-block;
+            font-size: 48px;
+            line-height:58px;
+            font-weight: 700;
+        }
+
+        .progress-first-div .progress-value span:first-child{
+            display: inline-block;
+            font-size: 48px;
+            line-height:58px;
+            font-weight: 700;
+        }
+
+
+        .progress-first-div .progress-label, .progress-first-div .progress-value{
+            text-align:center;
+        }
+
+        
+        
+
+        .progress-item {
+            width: 100%;
+            background: transparent;
+            border-radius: 20px;
+            padding: 0.25rem 0 0.5rem 0;
+        }
+
+        /* PC端布局 (默认 >= 768px) */
+        .progress-bar-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            width: 100%;
+            flex-wrap: nowrap;
+        }
+
+        .progress-label {
+            font-size: 22px;
+            line-height:27px;
+            font-weight: 400;
+            color: #1f2a3e;
+            width: 185px;
+            text-align:left;
+            line-height: 1.3;
+            word-break: break-word;
+            flex-shrink: 0;
+        }
+
+        .progress-track {
+            flex: 1;
+            background-color: transparent;
+            {% comment %} border-radius: 100px; {% endcomment %}
+            height: 45px;
+            max-width:650px;
+            width:650px;
+            overflow: hidden;
+            {% comment %} box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05); {% endcomment %}
+            position: relative;
+        }
+
+        .progress-center-div{
+            font-size:128px;
+            background: linear-gradient(to bottom, #3250C3, #8FA3F0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            font-weight: 600;
+            width:650px;
+        }
+
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #2c6e9e, #3b8fc2);
+            {% comment %} border-radius: 100px; {% endcomment %}
+            transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            box-shadow: inset 0 1px 1px rgba(255,255,255,0.3);
+        }
+
+        .progress-value {
+            font-size: 24px;
+            font-weight: 400;
+            color: #1e2f41;
+            background: transparent;
+            padding: 0.25rem 0.75rem;
+            border-radius: 40px;
+            width:230px;
+            text-align: right;
+            letter-spacing: 0.3px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+
+        }
+
+        .progress-value-money{
+            font-size: 34px;
+            font-weight: 700;
+            line-height:41px;
+        }
+
+        .progress-stack .progress-item:first-child .progress-value{
+           background: linear-gradient(to bottom, #3250C3, #8FA3F0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .progress-stack .progress-item:last-child .progress-value{
+            color: #7A7A7A;
+        }
+
+        .progress-stack .progress-item:last-child .progress-label{
+            color: #7A7A7A;
+        }
+
+        .progress-stack .progress-item:last-child .progress-track{
+              border: 0px; 
+        }
+
+        .progress-caption {
+            font-size: 0.75rem;
+            color: #6c7a8e;
+            margin-top: 0.5rem;
+            margin-left: 0px;
+            letter-spacing: 0.2px;
+        }
+
+        /* 两条进度条不同配色 */
+        .progress-item:first-child .progress-fill {
+            background: linear-gradient(90deg, #304FC4, #9FC3FF);
+        }
+        .progress-item:last-child .progress-fill {
+            background: linear-gradient(90deg, #7A7A7A, #7A7A7A);
+        }
+
+        /* 手机端适配 (宽度 < 768px) */
+        @media (max-width: 767px) {
+            .progress-section {
+                padding: 3.0rem 1rem 1.5rem 1rem;
+            }
+
+            .progress-stack {
+                gap: 1.75rem;
+            }
+
+            .progress-bar-wrapper {
+                display: flex;
+                align-items: center;
+                gap: 0.9rem;
+                flex-wrap: nowrap;
+                width: 100%;
+            }
+
+            .progress-label {
+                min-width: 80px;
+                max-width: 130px;
+                font-size: 0.95rem;
+                font-weight: 600;
+                flex-shrink: 0;
+            }
+
+            .progress-track {
+                flex: 1;
+                position: relative;
+                height: 36px;
+                background-color: transparent;
+                {% comment %} border-radius: 40px; {% endcomment %}
+                {% comment %} box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05); {% endcomment %}
+                overflow: hidden;
+            }
+
+            .progress-fill {
+                height: 100%;
+                width: 0%;
+                {% comment %} border-radius: 40px; {% endcomment %}
+                transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            }
+
+            /* 手机专用数字徽章 */
+            .mobile-value-badge {
+                position: absolute;
+                left: 12px;
+                top: 50%;
+                transform: translateY(-50%);
+                background: transparent;
+                backdrop-filter: blur(4px);
+                color: white;
+                font-size: 1.2rem;
+                font-weight: 400;
+                padding: 0.2rem 0.6rem;
+                border-radius: 30px;
+                letter-spacing: 0.5px;
+                z-index: 2;
+                pointer-events: none;
+                white-space: nowrap;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+                transition: all 0.2s ease;
+            }
+
+            .progress-mobile-value-money{
+                 font-size: 1.8rem;
+                font-weight: 600;
+            }
+
+            .progress-value {
+                display: none;
+            }
+
+            .progress-track {
+                position: relative;
+            }
+
+            .progress-first-div .progress-label{
+                font-size: 14px;
+                line-height:17px;
+            }
+
+           .progress-value {
+                font-size: 14px;
+                line-height:17px;
+            }
+
+        }
+
+        @media (max-width: 480px) {
+            .progress-label {
+                min-width: 70px;
+                font-size: 0.85rem;
+            }
+            .mobile-value-badge {
+                left: 8px;
+                padding: 0.15rem 0.5rem;
+                font-size: 1.2rem;
+            }
+            .progress-track {
+                height: 32px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .mobile-value-badge {
+                display: none;
+            }
+        }
+
+        /* 淡入动画 */
+        .progress-item {
+            opacity: 0;
+            transform: translateY(8px);
+            animation: fadeSlideUp 0.5s ease forwards;
+        }
+        .progress-item:first-child {
+            animation-delay: 0.05s;
+        }
+        .progress-item:last-child {
+            animation-delay: 0.15s;
+        }
+        @keyframes fadeSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+ 
+
+        /* 控制按钮样式 - 仅用于演示动态效果 */
+        .demo-controls {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+        .demo-btn {
+            background: #f0f2f5;
+            border: 1px solid #d0d5dd;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #1f2a3e;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .demo-btn:hover {
+            background: #e6e9ef;
+            border-color: #b9c0cc;
+            transform: translateY(-1px);
+        }
+        .demo-btn:active {
+            transform: translateY(0);
+        }
+        .demo-btn.primary {
+            background: #2c6e9e;
+            border-color: #2c6e9e;
+            color: white;
+        }
+        .demo-btn.primary:hover {
+            background: #235b82;
+        }
+        @media (max-width: 767px) {
+            .demo-btn {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.75rem;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        
+/* 在移动端将进度条包装器改为上下排列 */
+@media (max-width: 767.98px) {
+    #shopify-section-{{ section.id }} .progress-item .progress-bar-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        width: 100%;
+    }
+
+    /* 调整标签宽度为自适应 */
+    #shopify-section-{{ section.id }} .progress-item .progress-label {
+        width: auto;
+        min-width: unset;
+        max-width: 100%;
+        text-align: left;
+        font-size:16px;
+        line-height:19px;
+        font-weight: 400;
+
+    }
+
+    /* 进度条轨道占满宽度 */
+    #shopify-section-{{ section.id }} .progress-item .progress-track {
+        width: 100%;
+        max-width: 100%;
+        flex: none;
+    }
+
+    /* 数值容器宽度自适应，右对齐 */
+    #shopify-section-{{ section.id }} .progress-item .progress-value {
+        width: auto;
+        text-align: right;
+        align-self: flex-end;
+    }
+
+    /* 确保数字金额样式在移动端正常显示 */
+    #shopify-section-{{ section.id }} .progress-item .progress-value-money {
+        font-size: 2rem;
+        line-height: 2.4rem;
+    }
+ 
+}
+</style>
+{%- assign motion_delay = 50 -%}
+<div class="section section--padding rich-text-list-section color-{{ section.settings.color_scheme }}" id="{{section.settings.ids}}" style=" background-image: linear-gradient(to bottom left, #7098B8, #E9F2F9);">
+  <div class="rich-text-list">
+    <div class="rich-text  md:flex items-{{ section.settings.content_alignment }} text-{{ section.settings.mobile_content_alignment }} md:text-{{ section.settings.content_alignment }}">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'subheading' %}
+            <motion-element
+              data-motion="fade-up"
+              data-motion-delay="{{ motion_delay }}"
+              class="block page-width rich-text__subheading text-subheading"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.subheading }}
+            </motion-element>  
+
+            {%- assign motion_delay = motion_delay | plus: 50 -%}
+          {% when 'heading' %}
+             <div class="flex items-center  " style="justify-content: center;">
+            <div class="{% if section.settings.show_title_icon != true %} page-width {% endif %}title-container">
+            <h2
+              class=" rich-text__heading {{ block.settings.heading_size }}"
+              {{ block.shopify_attributes }}
+            >
+              <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+                {% render 'highlight-text',
+                  text: block.settings.heading,
+                  style: block.settings.heading_highlight_style
+                %}
+              </motion-element>
+            </h2>
+            </div>
+            </div>
+            {%- assign motion_delay = motion_delay | plus: 50 -%}
+          {% when 'text' %}
+            <motion-element
+              data-motion="fade-up"
+              data-motion-delay="{{ motion_delay }}"
+              class="block rich-text__text rte {{ block.settings.text_size }} progress-title-text"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.text }}
+            </motion-element>
+
+
+
+            <!-- 此进度条模块可直接复制粘贴到 Shopify 任何页面 (产品页、首页、自定义HTML区) -->
+                <div class="progress-section">
+                            <div class="progress-bar-wrapper progress-first-div">
+                                <span class="progress-label"><span>8000</span>Lebenszyklen</span>
+                                <div class="progress-center-div">
+                                    <span class="">+1002€</span>
+                                </div>
+                                <span class="progress-value"><span>20 Jahre</span><span>Lebensdauer</span></span>
+                            </div>
+                    <div class="progress-stack">
+                        <!-- 进度条 1: 订单履行率 -->
+                        <div class="progress-item" data-target-progress="100.2" data-current-progress="0">
+                            <div class="progress-bar-wrapper">
+                                <span class="progress-label">Indevolt SolidFlex 1200</span>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width: 0%;"></div>
+                                    <span class="mobile-value-badge"><span class="progress-mobile-value-money">0€</span>/Jahre</span>
+                                </div>
+                                <span class="progress-value"><span class="progress-value-money">0€</span>/Jahre</span>
+                            </div>
+                            {% comment %} <div class="progress-caption">text</div> {% endcomment %}
+                        </div>
+
+                        <!-- 进度条 2: 客户满意度 -->
+                        <div class="progress-item" data-target-progress="39" data-current-progress="0">
+                            <div class="progress-bar-wrapper">
+                                <span class="progress-label">Traditionelle Balkonkraftwerke</span>
+                                <div class="progress-track">
+                                    <div class="progress-fill" style="width: 0%;"></div>
+                                    <span class="mobile-value-badge"><span class="progress-mobile-value-money">0€</span>/Jahre</span>
+                                </div>
+                                <span class="progress-value"><span class="progress-value-money">0€</span>/Jahre</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 演示控制按钮 - 展示动态效果，实际使用时可以删除此区域 -->
+                    {% comment %} <div class="demo-controls">
+                        <button class="demo-btn" id="resetBtn">重置为0%</button>
+                        <button class="demo-btn primary" id="animateBtn">播放动画到目标值</button>
+                        <button class="demo-btn" id="randomBtn">随机更新数值</button>
+                    </div> {% endcomment %}
+                </div>
+
+
+
+            {%- assign motion_delay = motion_delay | plus: 50 -%}
+   
+          {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<script>
+     (function() {
+        // 存储动画状态，避免重复动画干扰
+        let animatingItems = new Set();
+        
+        // 获取所有进度条项目
+        const progressItems = document.querySelectorAll('.progress-item');
+        
+        // 动画函数：将进度条从当前值平滑过渡到目标值
+        function animateProgressBar(item, targetPercent, duration = 1200) {
+            return new Promise((resolve) => {
+                // 防止同一个进度条同时进行多个动画
+                if (animatingItems.has(item)) {
+                    // 如果已经在动画中，先停止当前动画
+                    const fillDiv = item.querySelector('.progress-fill');
+                    const currentWidth = parseFloat(fillDiv.style.width) || 0;
+                    fillDiv.style.transition = 'none';
+                    fillDiv.style.width = currentWidth + '%';
+                    void fillDiv.offsetHeight;
+                    fillDiv.style.transition = '';
+                    animatingItems.delete(item);
+                }
+                
+                animatingItems.add(item);
+                
+                const fillDiv = item.querySelector('.progress-fill');
+                const valueSpan = item.querySelector('.progress-value .progress-value-money');
+                const mobileBadge = item.querySelector('.mobile-value-badge .progress-mobile-value-money');
+                
+                // 获取当前宽度值
+                let startWidth = 0;
+                const currentStyle = fillDiv.style.width;
+                if (currentStyle && currentStyle !== '') {
+                    const match = currentStyle.match(/(\d+(?:\.\d+)?)%/);
+                    if (match) {
+                        startWidth = parseFloat(match[1]);
+                    }
+                }
+                
+                // 如果起始值和目标值相同，直接更新数字并返回
+                if (Math.abs(startWidth - targetPercent) < 0.1) {
+                    const displayVal = Math.round(targetPercent) + '€';
+                    if (valueSpan) valueSpan.innerText = displayVal;
+                    if (mobileBadge) mobileBadge.innerText = displayVal;
+                    animatingItems.delete(item);
+                    resolve();
+                    return;
+                }
+                
+                // 更新数字的动画
+                const startValue = startWidth;
+                const endValue = targetPercent;
+                const startTime = performance.now();
+                
+                function updateNumbers(currentPercent) {
+                    const roundedVal = Math.round(currentPercent*10);
+                    const displayVal = roundedVal + '€';
+                    if (valueSpan && valueSpan.innerText !== displayVal) {
+                        valueSpan.innerText = displayVal;
+                    }
+                    if (mobileBadge && mobileBadge.innerText !== displayVal) {
+                        mobileBadge.innerText = displayVal;
+                    }
+                }
+                
+                updateNumbers(startWidth);
+                
+                fillDiv.style.transition = `width ${duration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94)`;
+                fillDiv.style.width = targetPercent + '%';
+                
+                let animationFrameId = null;
+                
+                function animateNumbers(now) {
+                    const elapsed = now - startTime;
+                    let progress = Math.min(1, elapsed / duration);
+                    const easeOutCubic = 1 - Math.pow(1 - progress, 3);
+                    const currentPercent = startValue + (endValue - startValue) * easeOutCubic;
+                    updateNumbers(currentPercent);
+                    
+                    if (progress < 1) {
+                        animationFrameId = requestAnimationFrame(animateNumbers);
+                    } else {
+                        updateNumbers(endValue);
+                        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+                    }
+                }
+                
+                animationFrameId = requestAnimationFrame(animateNumbers);
+                
+                const onTransitionEnd = () => {
+                    fillDiv.removeEventListener('transitionend', onTransitionEnd);
+                    if (animationFrameId) cancelAnimationFrame(animationFrameId);
+                    updateNumbers(targetPercent);
+                    animatingItems.delete(item);
+                    resolve();
+                };
+                
+                fillDiv.addEventListener('transitionend', onTransitionEnd, { once: true });
+                
+                setTimeout(() => {
+                    if (animatingItems.has(item)) {
+                        fillDiv.removeEventListener('transitionend', onTransitionEnd);
+                        if (animationFrameId) cancelAnimationFrame(animationFrameId);
+                        updateNumbers(targetPercent);
+                        animatingItems.delete(item);
+                        resolve();
+                    }
+                }, duration + 100);
+            });
+        }
+        
+        // 设置进度条到指定值（无动画）
+        function setProgressInstant(item, percent) {
+            const fillDiv = item.querySelector('.progress-fill');
+            const valueSpan = item.querySelector('.progress-value .progress-value-money');
+            const mobileBadge = item.querySelector('.mobile-value-badge .progress-mobile-value-money');
+            const displayVal = Math.round(percent) + '€';
+            
+            fillDiv.style.transition = 'none';
+            fillDiv.style.width = percent + '%';
+            if (valueSpan) valueSpan.innerText = displayVal;
+            if (mobileBadge) mobileBadge.innerText = displayVal;
+            
+            void fillDiv.offsetHeight;
+            fillDiv.style.transition = '';
+            
+            item.setAttribute('data-current-progress', percent);
+        }
+        
+        // 播放所有进度条动画到目标值
+        function playAllAnimations() {
+            const items = document.querySelectorAll('.progress-item');
+            const promises = [];
+            items.forEach(item => {
+                const targetProgress = parseFloat(item.getAttribute('data-target-progress')) || 0;
+                promises.push(animateProgressBar(item, targetProgress, 1200).then(() => {
+                    item.setAttribute('data-current-progress', targetProgress);
+                }));
+            });
+            return Promise.all(promises);
+        }
+        
+        // 重置所有进度条为0
+        function resetAllProgress() {
+            const items = document.querySelectorAll('.progress-item');
+            items.forEach(item => {
+                if (animatingItems.has(item)) {
+                    const fillDiv = item.querySelector('.progress-fill');
+                    fillDiv.style.transition = 'none';
+                    animatingItems.delete(item);
+                }
+                setProgressInstant(item, 0);
+                item.setAttribute('data-current-progress', 0);
+            });
+        }
+        
+        // 随机更新进度条数值并带动画
+        function randomUpdate() {
+            const items = document.querySelectorAll('.progress-item');
+            items.forEach(item => {
+                const newValue = Math.floor(Math.random() * 101);
+                item.setAttribute('data-target-progress', newValue);
+                animateProgressBar(item, newValue, 1000).then(() => {
+                    item.setAttribute('data-current-progress', newValue);
+                });
+            });
+        }
+        
+        // 暴露全局方法
+        window.updateShopifyProgress = function(identifier, newPercent) {
+            let targetItem = null;
+            const items = document.querySelectorAll('.progress-item');
+            
+            if (typeof identifier === 'number') {
+                if (items[identifier]) {
+                    targetItem = items[identifier];
+                }
+            } else if (typeof identifier === 'string') {
+                for (let i = 0; i < items.length; i++) {
+                    const labelSpan = items[i].querySelector('.progress-label');
+                    if (labelSpan && labelSpan.innerText.includes(identifier)) {
+                        targetItem = items[i];
+                        break;
+                    }
+                }
+            }
+            
+            if (targetItem) {
+                let percent = Math.min(100, Math.max(0, parseFloat(newPercent)));
+                if (isNaN(percent)) percent = 0;
+                targetItem.setAttribute('data-target-progress', percent);
+                animateProgressBar(targetItem, percent, 1000).then(() => {
+                    targetItem.setAttribute('data-current-progress', percent);
+                });
+                return true;
+            }
+            console.warn('updateShopifyProgress: 未找到指定进度条');
+            return false;
+        };
+        
+        // 每次滚动到可视区域都播放动画
+        function initScrollAnimation() {
+            const section = document.querySelector('.progress-section');
+            if (!section) return;
+            
+            let isAnimating = false;
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !isAnimating) {
+                        isAnimating = true;
+                        
+                        // 重置所有进度条
+                        resetAllProgress();
+                        
+                        // 播放动画
+                        setTimeout(() => {
+                            playAllAnimations().then(() => {
+                                // 动画完成后重置标志
+                                setTimeout(() => {
+                                    isAnimating = false;
+                                }, 200);
+                            }).catch(() => {
+                                isAnimating = false;
+                            });
+                        }, 50);
+                    }
+                });
+            }, { 
+                threshold: 0.2  // 当元素20%进入视口时触发
+            });
+            
+            observer.observe(section);
+        }
+        
+        // 初始化进度条
+        function initProgressBars() {
+            const items = document.querySelectorAll('.progress-item');
+            items.forEach(item => {
+                const targetVal = parseFloat(item.getAttribute('data-target-progress')) || 0;
+                item.setAttribute('data-target-progress', targetVal);
+                item.setAttribute('data-current-progress', 0);
+                const fillDiv = item.querySelector('.progress-fill');
+                const valueSpan = item.querySelector('.progress-value .progress-value-money');
+                const mobileBadge = item.querySelector('.mobile-value-badge .progress-mobile-value-money');
+                if (fillDiv) {
+                    fillDiv.style.width = '0%';
+                    fillDiv.style.transition = '';
+                }
+                if (valueSpan) valueSpan.innerText = '0€';
+                if (mobileBadge) mobileBadge.innerText = '0€';
+            });
+        }
+        
+        // 页面完全加载后初始化
+        window.addEventListener('load', () => {
+            initProgressBars();
+            initScrollAnimation();
+        });
+        
+        // 暴露重新播放动画的方法
+        window.replayProgressAnimation = function() {
+            resetAllProgress();
+            setTimeout(() => {
+                playAllAnimations();
+            }, 50);
+        };
+    })();
+</script>
+{% schema %}
+{
+  "name": "rich-text-with-image",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "[Read How-to](https://foxecom.link/E1POXzl)"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.general.name"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "背景颜色",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.content.name"
+    },
+    {
+      "type": "select",
+      "id": "content_alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.all.text_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.all.text_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.all.text_alignment.options__3.label"
+        }
+      ],
+      "default": "center",
+      "label": "t:sections.all.text_alignment.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "text",
+      "id": "ids",
+      "label": "设置ID",
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title_icon",
+      "default": false,
+      "label": "标题是否需要图标"
+    },
+    {
+      "type": "url",
+      "id": "img-href",
+      "label": "图片跳转链接",
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 60
+    },
+    {
+        "type": "range",
+        "id": "image_top",
+        "default":60,
+        "min": 0,
+        "max": 280,
+        "step": 4,
+        "unit": "px",
+        "label": "设置图片顶部距离"
+      },
+     {
+      "type": "range",
+      "id": "video_radius",
+      "label": "视频圆角",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "select",
+      "id": "video_aspect_ratio",
+      "label": "视频比例",
+      "options": [
+        {"value": "16/9", "label": "16:9 (横屏)"},
+        {"value": "9/16", "label": "9:16 (竖屏)"},
+        {"value": "1/1", "label": "1:1 (方形)"},
+        {"value": "4/3", "label": "4:3 (标准)"}
+      ],
+      "default": "16/9"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.divider.content"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_section_divider",
+      "default": false,
+      "label": "t:sections.all.divider.settings.show_divider.label"
+    },
+    {
+      "type": "select",
+      "id": "divider_width",
+      "options": [
+        {
+          "value": "fixed",
+          "label": "t:sections.all.container.options__fixed.label"
+        },
+        {
+          "value": "full",
+          "label": "t:sections.all.container.options__full.label"
+        }
+      ],
+      "default": "fixed",
+      "label": "t:sections.all.divider.settings.divider_width.label"
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "select",
+      "id": "mobile_content_alignment",
+      "label": "t:sections.all.text_alignment.label",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.all.text_alignment.options__1.label"
+        },
+        {
+          "value": "center",
+          "label": "t:sections.all.text_alignment.options__2.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.all.text_alignment.options__3.label"
+        }
+      ],
+      "default": "center"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "subheading",
+      "name": "t:sections.all.subheading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "subheading",
+          "default": "Add a tagline",
+          "label": "t:sections.all.subheading.label"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "name": "t:sections.all.heading.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "inline_richtext",
+          "id": "heading",
+          "default": "Talk about your brand",
+          "label": "t:sections.all.heading.label"
+        },
+        {
+          "type": "select",
+          "id": "heading_size",
+          "label": "t:sections.all.text_size.heading.label",
+          "default": "hd1",
+          "options": [
+            {
+              "value": "h6",
+              "label": "t:sections.all.text_size.options__h6.label"
+            },
+            {
+              "value": "h5",
+              "label": "t:sections.all.text_size.options__h5.label"
+            },
+            {
+              "value": "h4",
+              "label": "t:sections.all.text_size.options__h4.label"
+            },
+            {
+              "value": "h3",
+              "label": "t:sections.all.text_size.options__h3.label"
+            },
+            {
+              "value": "h2",
+              "label": "t:sections.all.text_size.options__h2.label"
+            },
+            {
+              "value": "h1",
+              "label": "t:sections.all.text_size.options__h1.label"
+            },
+            {
+              "value": "hd3",
+              "label": "t:sections.all.text_size.options__hd3.label"
+            },
+            {
+              "value": "hd2",
+              "label": "t:sections.all.text_size.options__hd2.label"
+            },
+            {
+              "value": "hd1",
+              "label": "t:sections.all.text_size.options__hd1.label"
+            }
+          ]
+        },
+        {
+          "type": "header",
+          "content": "t:sections.all.highlight_text.header.content"
+        },
+        {
+          "type": "paragraph",
+          "content": "t:sections.all.highlight_text.paragraph.content"
+        },
+        {
+          "type": "select",
+          "id": "heading_highlight_style",
+          "label": "t:sections.all.highlight_text.settings.highlight_style.label",
+          "options": [
+            {
+              "value": "none",
+              "label": "t:sections.all.highlight_text.settings.highlight_style.options__1.label"
+            },
+            {
+              "value": "underline",
+              "label": "t:sections.all.highlight_text.settings.highlight_style.options__2.label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "t:sections.all.text.name",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+          "label": "t:sections.all.text.label"
+        },
+        {
+          "type": "select",
+          "id": "text_size",
+          "label": "t:sections.all.text_size.text.label",
+          "default": "text-base",
+          "options": [
+            {
+              "value": "text-sm",
+              "label": "t:sections.all.text_size.options__small.label"
+            },
+            {
+              "value": "text-base",
+              "label": "t:sections.all.text_size.options__base.label"
+            },
+            {
+              "value": "text-lg",
+              "label": "t:sections.all.text_size.options__large.label"
+            },
+            {
+              "value": "text-inherit",
+              "label": "t:sections.all.text_size.options__inherit.label"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "name": "两个说明",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "details1",
+          "default": "4,9 kWh",
+          "label": "描述1-标题"
+        },
+        {
+          "type": "text",
+          "id": "detail1_description",
+          "default": "Parallelerweiterung",
+          "label": "描述1-内容"
+        },
+        {
+          "type": "text",
+          "id": "details2",
+          "default": "3,6 kW",
+          "label": "描述2-标题"
+        },
+        {
+          "type": "text",
+          "id": "detail2_description",
+          "default": "PV-Eingangsleistung",
+          "label": "描述2-内容"
+        }
+      ]
+    },
+    {
+      "type": "image",
+      "name": "图片",
+      "limit": 3,
+      "settings": [
+        {
+          "type": "select",
+          "id": "container",
+          "options": [
+            {
+              "value": "full",
+              "label": "t:sections.all.container.options__full.label"
+            },
+            {
+              "value": "fixed",
+              "label": "t:sections.all.container.options__fixed.label"
+            }
+          ],
+          "default": "fixed",
+          "label": "t:sections.all.container.label"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image_pc"
+        },
+        {
+          "type": "image_picker",
+          "id": "mobile_image",
+          "label": "image_mobile"
+        }
+      ]
+    },
+    {
+      "type": "button",
+      "name": "t:sections.all.button.name",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": "t:sections.all.button.button_label.label",
+          "default": "Button label"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "t:sections.all.button.button_link.label"
+        },
+        {
+          "type": "select",
+          "id": "button_style",
+          "label": "t:sections.all.button.button_style.label",
+          "options": [
+            {
+              "value": "btn--primary",
+              "label": "t:sections.all.button.button_style.options__1.label"
+            },
+            {
+              "value": "btn--secondary",
+              "label": "t:sections.all.button.button_style.options__2.label"
+            },
+            {
+              "value": "btn--underline",
+              "label": "t:sections.all.button.button_style.options__4.label"
+            }
+          ],
+          "default": "btn--primary"
+        },
+         {
+          "type": "select",
+          "id": "button_target",
+          "label": "链接打开方式",
+          "options": [
+            {
+              "value": "_blank",
+              "label": "新窗口打开"
+            },
+            {
+              "value": "_self",
+              "label": "默认"
+            },
+          ],
+          "default": "_self"
+        }
+      ]
+    } 
+  ],
+  "presets": [
+    {
+      "name": "富文本+进度条",
+      "category": "自定义产品组件",
+      "blocks": [
+        {
+          "type": "heading"
+        },
+        {
+          "type": "text"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -170,6 +170,16 @@
         "settings": {
           "useCustomCode": false
         }
+      },
+      "5254461746450177899": {
+        "type": "shopify://apps/ymq-b2b-wholesale-solution/blocks/app-embed/ef8663e7-9d07-4952-bb17-2e62f084164e",
+        "disabled": false,
+        "settings": {}
+      },
+      "2118589882331710876": {
+        "type": "shopify://apps/essential-trust-badges/blocks/app-embed/0ff65b25-07e1-408e-950f-f54dd3d1751b",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {

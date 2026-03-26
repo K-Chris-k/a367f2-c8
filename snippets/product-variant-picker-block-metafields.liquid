@@ -654,11 +654,10 @@
     top: 17% !important;
     right: -2% !important;
 }
-.bundle-layout-alt-text {
-    bottom: calc(26% + 240px) !important;
-    left: -12px !important;
-}
-    .variant-extension-qty-btn {
+    .bundle-layout-alt-text {
+        bottom: calc(26% + 120px) !important;
+    }
+        .variant-extension-qty-btn {
       padding: 6px 12px;
       font-size: 14px !important;
       min-height: 30px !important;
@@ -705,6 +704,28 @@
       flex: 0 0 auto;
     }
   }
+   @media screen and (max-width: 540px) {
+         .bundle-overlay-text-solar {
+        top: 4% !important;
+        right: 0% !important;
+        padding: 0 !important;
+        font-size:12px !important;
+    }
+  }
+    @media screen and (max-width: 375px) {
+      .bundle-layout-alt-text {
+        bottom: calc(26% + 100px) !important;
+       left: -12px !important;
+    }
+        .bundle-overlay-text-solar {
+        top: 4% !important;
+        right: 1% !important;
+        padding: 0 !important;
+    }
+    .bundle-other-display-text {
+        left: -12px !important;
+    }
+    }
   /* 选中Label 填充 */
   .product-form__input--button input[type='radio']:checked + label.is_connected_solar {
     background-color: #3250c3 !important;

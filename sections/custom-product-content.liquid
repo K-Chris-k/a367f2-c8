@@ -22,7 +22,7 @@
      #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:500px; border-top-right-radius: 0px;border-bottom-right-radius: 0px;}
      #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius img{ width:100%;height:100%; object-fit:fill}
      #shopify-section-{{ section.id }} .custom-content-block--text{ border-top-right-radius: 20px;border-bottom-right-radius: 20px;}
-     #shopify-section-{{ section.id }} .custom-content-block--text .custom__block { padding-top: 28px;padding-left: 21px;}
+     #shopify-section-{{ section.id }} .custom-content-block--text .custom__block { padding-top: 0px;padding-left: 21px;}
      #shopify-section-{{ section.id }} .h3 { line-height:36px;font-size:30px}
      #shopify-section-{{ section.id }} .custom-product-describe{ display: flex;flex-flow: column;gap: 8px;padding:0px}
      #shopify-section-{{ section.id }} .custom-product-describe li{ display: flex;justify-content: start;gap: 5px;align-items: baseline;line-height: 22px;font-size: 18px;list-style:none}
@@ -55,6 +55,23 @@
     line-height: 27px;
     }
 
+    #shopify-section-{{ section.id }} .title-container {
+      display: flex;
+      align-items: center;  /* 关键：垂直居中 */
+      justify-content: center;
+      gap: 0px;  /* 控制间距 */
+    }
+
+    #shopify-section-{{ section.id }} .icon-gift {
+      flex-shrink: 0;  /* 防止SVG被压缩 */
+      color: #333;
+    }
+
+    #shopify-section-{{ section.id }} h2 {
+      margin: 0;  /* 移除默认边距 */
+      flex: 1;  /* 让h2占据剩余空间 */
+    }
+
     @media (max-width: 1024px) {
       #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap .btn{ min-width:160px;max-width:160px;height:40px;}
     }
@@ -64,9 +81,9 @@
       #shopify-section-{{ section.id }} .f-flex>.custom-content-block--image{border-top-left-radius: 20px;border-top-right-radius: 12px;border-bottom-left-radius: 0px;}
       #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius img{ object-fit:cover}
       #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:250px; border-top-right-radius: 12px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;}
-      #shopify-section-{{ section.id }} .custom-content-block--text{ border-top-right-radius: 0px; border-top-left-radius: 0px;border-bottom-right-radius: 12px; border-bottom-left-radius: 12px;}
+      #shopify-section-{{ section.id }} .custom-content-block--text{ border-top-right-radius: 0px; border-top-left-radius: 0px;border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;}
       #shopify-section-{{ section.id }} .custom-content-block--text .custom__block { padding: 10px 18px 15px}
-      #shopify-section-{{ section.id }} .section__header--text { padding: 0px 2rem}
+      #shopify-section-{{ section.id }} .section__header--text { padding: 0px 0rem}
       #shopify-section-{{ section.id }} .h3,#shopify-section-{{ section.id }} .section__description { line-height:19px;font-size:16px}
       #shopify-section-{{ section.id }} .custom-content-block--text .image-container{ height:69px;margin-top:15px}
       #shopify-section-{{ section.id }} .custom-content-block--text .rich-text__text{ margin-top:15px}
@@ -77,12 +94,17 @@
       #shopify-section-{{ section.id }} .custom-content-block--text .custom-product-price .current-price{ font-size:24px}
       #shopify-section-{{ section.id }} .custom-content-block--text .custom-product-price .original-price{font-size: 16px;}
       #shopify-section-{{ section.id }} .hd2{ line-height: 34px;font-size:28px;}
-      #shopify-section-{{ section.id }} .icon-gift{ display:none}
       #shopify-section-{{ section.id }} .section__description{ margin-top:8px}
       #shopify-section-{{ section.id }} .section__header--tex{padding:0px 20px}
       #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap .bnt--black .button-text{gap:8px}
       #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap .bnt--black .button-text span{ width:calc(100% - 2.6rem)}
       #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap .button-text .icon-shopping-cart{ width: 2.6rem; height: 1.5rem;  padding-left: 8px;}
+
+
+          #shopify-section-{{ section.id }} .icon-gift{ width: 2rem; height: 1.5rem;margin: 0px 5px;}
+      #shopify-section-{{ section.id }} .title-container {
+        margin: 0px 0px;
+      }
     }
 
 

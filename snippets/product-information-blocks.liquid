@@ -39,7 +39,7 @@
   }
   .product__tax_new .item-content {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 4px;
   }
   .drawer__inner .drawer__body p {
@@ -372,6 +372,12 @@
               <div class="item-content">
                 {%- render 'icon-light', size: 'small' -%}
                 {{ block.settings.heading_1 }}
+              </div>
+            {%- endif -%}
+            {%- if block.settings.heading_new != blank -%}
+              <div class="item-content">
+                {%- render 'icon-light', size: 'small' -%}
+                {{ block.settings.heading_new }}
               </div>
             {%- endif -%}
             {%- if block.settings.heading_2 != blank -%}
@@ -995,7 +1001,7 @@
               align-items: flex-start;
               gap: 12px;
               padding: 16px;
-              border: 1.5px solid #e5e5e5;
+              border: 2px solid #e5e5e5;
               border-radius: 12px;
               background: #fff;
               transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -1003,7 +1009,7 @@
             }
             .cross-sell-product-card.selected {
               border-color: #3250c3 !important;
-              box-shadow: 0 0 0 .5px #2164ff80, inset 0 0 0 .3px #3250c3;
+              {% comment %} box-shadow: 0 0 0 .5px #2164ff80, inset 0 0 0 .3px #3250c3; {% endcomment %}
             }
             .cross-sell-checkbox-wrapper {
               position: relative;
@@ -1508,7 +1514,7 @@
               justify-content: center;
               gap: 12px;
               padding: 16px;
-              border: 1.5px solid #e5e5e5;
+              border: 2px solid #e5e5e5;
               border-radius: 12px;
               background: #fff;
               transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -1516,7 +1522,7 @@
             }
             .free-gift-product-card.selected {
               border-color: #3250c3 !important;
-              box-shadow: 0 0 0 .5px #2164ff80, inset 0 0 0 .3px #3250c3;
+              {% comment %} box-shadow: 0 0 0 .5px #2164ff80, inset 0 0 0 .3px #3250c3; {% endcomment %}
             }
             .free-gift-checkbox-wrapper {
               position: relative;

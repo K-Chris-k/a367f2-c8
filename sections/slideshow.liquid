@@ -24,13 +24,14 @@
     .slideshow__item-wrap{ flex-wrap: inherit;}
     .mobile-show{display:none}
     .section-{{ section.id }} .slideshow__content .slideshow__text{max-width: 50%;}
-    .section-{{ section.id }}  .slideshow__title{text-align:center;width:100%}
+    .section-{{ section.id }}  .slideshow__title{text-align:left;width:100%}
     .section-{{ section.id }} .slideshow__subtitle {line-height: 29px;font-size: 24px;font-weight: 500;padding-top:20px;}
     .slideshow__subtitle strong{font-size: 32px;}
     .slideshow__subtitle span{font-size: 18px;text-decoration-line: line-through;}
     {% comment %} .section-{{ section.id }} .slideshow__content{ align-items: self-start;} {% endcomment %}
      
-    .section-{{ section.id }} .slideshow__content{padding-top:30px; justify-content:flex-start!important;}
+    {% comment %} .section-{{ section.id }} .slideshow__content{padding-top:30px; justify-content:flex-start!important;} {% endcomment %}
+     .section-{{ section.id }} .slideshow__content{padding-top:30px; }
     {% comment %} .section-{{ section.id }} .slideshow__title {display:flex;width: max-content;align-items: center;gap: 12px;} {% endcomment %}
     .section-{{ section.id }} .date{ align-items: center;font-weight: 500;gap: 5px;text-align:center;}
     {% comment %} display:flex; {% endcomment %}
@@ -83,7 +84,7 @@
     }
     .swiper-button-prev{left:60px;}
     .swiper-button-next{right:60px}
-    .slideshow__content .slideshow__text{text-align: center;}
+    .slideshow__content .slideshow__text{text-align: left;}
     .brand-box-moblie{display: none;}
     .slideshow__text #mc_embed_signup{display: flex;width: 100%;justify-content: flex-start;}
     .slideshow__text #mc_embed_signup form{margin:20px 0px 20px 0px}
@@ -153,6 +154,14 @@
       font-size:24px;
       line-height: 29px;
     }
+
+        #shopify-section-{{ section.id }} .mob_show{
+      display: none;
+    }
+    #shopify-section-{{ section.id }} .pc_show{
+      display: block;
+    }
+
     @keyframes ripple {
       0% {
         transform: scale(0.35);
@@ -243,8 +252,8 @@
         .section-{{ section.id }} .slideshow__title,.section-{{ section.id }} .slideshow__text {text-align:center;}
 
         .section-{{ section.id }} .slideshow__text{padding:0px 2.0rem}
-        .section-{{ section.id }} .swiper-slide .slideshow__title{flex-flow: column; width: auto;gap: 0px;line-height:31px;font-size:26px;text-align:center}
-        .slideshow__description.text-lg,.section-{{ section.id }} .slideshow__subtitle{line-height:19px;font-size:1.6rem}
+        .section-{{ section.id }} .swiper-slide .slideshow__title{flex-flow: column; width: auto;gap: 0px;line-height:29px;font-size:22px;text-align:center}
+        .slideshow__description.text-lg,.section-{{ section.id }} .slideshow__subtitle{line-height:17px;font-size:1.4rem}
         .section-{{ section.id }} .slideshow__buttons .btn{height:30px}
         .slideshow__subtitle span{font-size: 12px;}
         {% comment %} .section-{{ section.id }} .slideshow__subtitle {line-height: 17px;font-size: 14px;} {% endcomment %}
@@ -269,6 +278,13 @@
          .section-{{ section.id }} .slideshow__subtitle strong{font-size: 22px;}
 
          .section-{{ section.id }}  .slideshow__item-wrap{min-height:400px;}
+
+          #shopify-section-{{ section.id }} .pc_show{
+            display: none;
+          }
+          #shopify-section-{{ section.id }} .mob_show{
+            display: flex;
+          }
       }
 </style>
 <script src="{{ 'slideshow-component.js' | asset_url }}" defer></script>
@@ -398,7 +414,19 @@
                               >
                               <source
                                 media="(min-width: 767px)"
-                                srcset="{{ background_default | image_url: width: '1000x' }} 1000w,{{ background_default | image_url: width: '1200x' }} 1200w, {{ background_default | image_url: width: '1400x' }} 1400w, {{ background_default | image_url: width: '1800x' }} 1800w, {{ background_default | image_url: width: '2000x' }} 2000w, {{ background_default | image_url: width: '2800x' }} 2800w, {{ background_default | image_url: width: '3200x' }} 3200w"
+                                srcset="
+                                {{ background_default | image_url: width: '1000x' }} 1000w,
+                                 {{ background_default | image_url: width: '1200x' }} 1200w, 
+                                  {{ background_default | image_url: width: '1400x' }} 1400w, 
+                                   {{ background_default | image_url: width: '1800x' }} 1800w, 
+                                    {{ background_default | image_url: width: '2000x' }} 2000w, 
+                                     {{ background_default | image_url: width: '2400x' }} 2400w, 
+                                     {{ background_default | image_url: width: '2800x' }} 2800w, 
+                                      {{ background_default | image_url: width: '3200x' }} 3200w, 
+                                       {{ background_default | image_url: width: '3400x' }} 3400w, 
+                                        {{ background_default | image_url: width: '3600x' }} 3600w, 
+                                       {{ background_default | image_url: width: '3840x' }} 3840w
+                                    "
                                 width="{{ background_default.width }}"
                                 height="{{ background_default.height }}"
                               >
@@ -422,7 +450,7 @@
                                 alt: background_default_alt,
                                 fetchpriority: fetchpriority,
                                 sizes: sizes,
-                                widths: '300,400,500,600,700,800,900,1000,1200,1300,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
+                                widths: '300,400,500,600,700,800,900,1000,1200,1300,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200,3400,3600,3840',
                                 is: 'image-lazy',
                                 class: 'media-image'
                             -}}
@@ -498,8 +526,14 @@
                           hold
                           class="block"
                         >
+                          
                       <h2 class="slideshow__title {{ block.settings.heading_size }} rich-text__heading" style="color:{{ block.settings.title_color  }}">
+                         {% if block.settings.is_show_countdown %}
+                          <span class="mob_show">Fruhlings-Special: Bis zu -57%</span>
+                          <span class="pc_show">{{- block.settings.title -}}</span> 
+                         {% else %}
                           {{- block.settings.title -}}{% if block.settings.title_span != blank %}<span class="{% if block.settings.title_span_bg != blank  %}tip-color{% endif %}"style="font-size:{{ block.settings.title_span_size}};color:{{ block.settings.title_span_color }};background:{{ block.settings.title_span_bg }}">{{- block.settings.title_span -}}</span>{% endif %}
+                          {% endif %} 
                       </h2>
                       </motion-element>
                       <motion-element
@@ -519,6 +553,10 @@
                         {{- block.settings.date -}} {% if block.settings.date_span != blank %}<span style="color:{{ block.settings.date_span_color }};font-size:{{  block.settings.date_span_size }}">{{- block.settings.date_span -}}</span>{% endif %}
                         </div>
                       </motion-element>
+                        
+                      {% if block.settings.is_show_countdown %}
+                        {% render 'kv-countdown-diy',block:block %}
+                      {% endif %}
                      {% if block.settings.is_show_email %}
                         <div id="mc_embed_shell">
                           <link
@@ -934,6 +972,12 @@
           "type": "checkbox",
           "id": "is_show_email",
           "label": "是否显示邮箱订阅",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "is_show_countdown",
+          "label": "是否显示倒计时",
           "default": false
         },
         {

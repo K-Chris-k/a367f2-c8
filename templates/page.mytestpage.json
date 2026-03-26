@@ -11,6 +11,7 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
@@ -257,6 +258,7 @@
         "tab_FfqMPE",
         "tab_hqNABT"
       ],
+      "disabled": true,
       "name": "阳台专题产品tabsPC+移动",
       "settings": {
         "bg_color": "#ffffff",
@@ -333,12 +335,266 @@
         "show_section_divider": false,
         "divider_width": "fixed"
       }
+    },
+    "image_with_text_overlay_home_rEHXX9": {
+      "type": "image-with-text-overlay-home",
+      "blocks": {
+        "heading_8qkFk6": {
+          "type": "heading",
+          "settings": {
+            "heading": "Frühlings-Special: Bis zu 57% Rabatt",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "subheading_mLYC3R": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Dein Zuhause mit Solarstrom versorgen"
+          }
+        },
+        "countdown_38HJKV": {
+          "type": "countdown",
+          "settings": {
+            "countdown_title": "10. – 31. März",
+            "end_date": "2026-03-31 23:59:59",
+            "countdown_text_color": "#ffffff",
+            "countdown_style": "standard",
+            "show_days": true,
+            "show_hours": true,
+            "show_minutes": true,
+            "show_seconds": true
+          }
+        },
+        "button_nrkX8w": {
+          "type": "button",
+          "settings": {
+            "button_label_first": "Mehr erfahren",
+            "button_link_first": "",
+            "button_style_first": "btn--primary",
+            "button_label_second": "",
+            "button_link_second": "",
+            "button_style_second": "white--btn--secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8qkFk6",
+        "subheading_mLYC3R",
+        "countdown_38HJKV",
+        "button_nrkX8w"
+      ],
+      "disabled": true,
+      "name": "首页活动页kv",
+      "settings": {
+        "container": "full",
+        "bg_color": "#ffffff",
+        "title_color": "#ff9400",
+        "text_color": "#666",
+        "btn_wrapper_alignment": "start",
+        "image": "shopify://shop_images/kv-pc_f7fdbad9-cc3a-4af6-86fd-6e8958a1705c.jpg",
+        "desktop_height": "extra-large",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 900,
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "image_mobile": "shopify://shop_images/kv-mob_3fc1a5ad-2230-461d-adf1-ccb572cb30cf.jpg",
+        "mobile_height": "auto",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "slideshow_Hw3eJe": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_ariTfC": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "",
+            "background": "shopify://shop_images/kv-pc_f7fdbad9-cc3a-4af6-86fd-6e8958a1705c.jpg",
+            "background_mobile": "shopify://shop_images/kv-mob_3fc1a5ad-2230-461d-adf1-ccb572cb30cf.jpg",
+            "logo_title": "",
+            "is_show_email": false,
+            "is_show_countdown": true,
+            "image_overlay_opacity": 0,
+            "show_content_in_container": true,
+            "content_position": "middle-left",
+            "content_position_mobile": "middle-center",
+            "text_alignment": "left",
+            "title": "<strong>Frühlings-Special  </strong>Bis zu 57% Rabatt",
+            "title_span": "",
+            "title_span_color": "#ffa81d",
+            "title_span_bg": "",
+            "title_span_size": "",
+            "heading_size": "hd2",
+            "title_color": "#ff9400",
+            "subheading": "",
+            "subheading_color": "#ffffff",
+            "subheading_mb": "",
+            "description": "<p>Dein Zuhause mit Solarstrom versorgen</p>",
+            "description_size": "text-lg",
+            "description_mt": "",
+            "description_mt_mob": "",
+            "description_color": "#000000",
+            "date": "",
+            "date_size": "text-base",
+            "date_color": "#ffffff",
+            "date_mt": "",
+            "date_mt_mob": "",
+            "date_span": "",
+            "date_span_color": "#ffffff",
+            "date_span_size": "",
+            "button_label": "Mehr erfahren",
+            "button_link": "shopify://pages/spring-update",
+            "button_style": "btn--primary",
+            "button_mt": "",
+            "button_mt_mob": ""
+          }
+        },
+        "slide_YaQmHA": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "",
+            "background": "shopify://shop_images/kv-1200-pc.jpg",
+            "background_mobile": "shopify://shop_images/kv-1200-mob_5440dc7b-7219-49a1-af14-023358e6012d.jpg",
+            "logo_title": "",
+            "is_show_email": false,
+            "is_show_countdown": false,
+            "image_overlay_opacity": 0,
+            "show_content_in_container": true,
+            "content_position": "middle-center",
+            "content_position_mobile": "middle-center",
+            "text_alignment": "center",
+            "title": "",
+            "title_span": "",
+            "title_span_color": "#ffa81d",
+            "title_span_bg": "",
+            "title_span_size": "",
+            "heading_size": "hd1",
+            "title_color": "#ffffff",
+            "subheading": "",
+            "subheading_color": "#ffffff",
+            "subheading_mb": "",
+            "description": "<p>Tell your brand's story through images</p>",
+            "description_size": "text-base",
+            "description_mt": "",
+            "description_mt_mob": "",
+            "description_color": "#ffffff",
+            "date": "",
+            "date_size": "text-base",
+            "date_color": "#ffffff",
+            "date_mt": "",
+            "date_mt_mob": "",
+            "date_span": "",
+            "date_span_color": "#ffffff",
+            "date_span_size": "",
+            "button_label": "",
+            "button_link": "shopify://products/indevolt-solidflex-1200-hybrid-balkonkraftwerk-mit-halbfesten-lifepo-akkus",
+            "button_style": "btn--primary",
+            "button_mt": "",
+            "button_mt_mob": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_ariTfC",
+        "slide_YaQmHA"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".hd2 strong {line-height: 58px !important; font-size: 48px !important; font-weight: 700 !important; display: block; color: #000000;}",
+        "@media (min-width: 768px) {.block strong {margin-top: 20px; color: #1a1a1a; line-height: 29px; font-size: 24px; font-weight: 400; }}",
+        "@media (max-width: 768px) {.block strong {display: inline-block; font-weight: 500; } .slideshow__description p {font-weight: 500; }}"
+      ],
+      "name": "t:sections.slideshow.name",
+      "settings": {
+        "container": "full",
+        "layout": "standard",
+        "slide_height": "large",
+        "show_dots": true,
+        "autoplay": true,
+        "autoplay_delay": 3,
+        "controls_position": "bottom",
+        "show_text_below": true,
+        "text_alignment_mobile": "center",
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "video_with_text_animate_CXfDDF": {
+      "type": "video-with-text-animate",
+      "blocks": {
+        "heading_GVVwcz": {
+          "type": "heading",
+          "settings": {
+            "heading": "Talk about your brand",
+            "heading_size": "hd1",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_X7Uajh": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+            "text_size": "text-base"
+          }
+        },
+        "video_NBPWnG": {
+          "type": "video",
+          "settings": {
+            "video": "shopify://files/videos/de.mp4",
+            "autoplay": true,
+            "loop": true,
+            "muted": true,
+            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+            "description": "产品展示视频"
+          }
+        },
+        "big_image_nyq3rg": {
+          "type": "big_image",
+          "disabled": true,
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/All-in-One-pc-new.jpg",
+            "image_text": "Sicherer  /  langlebiger  /  Dichter",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary",
+            "button_target": "_self"
+          }
+        }
+      },
+      "block_order": [
+        "heading_GVVwcz",
+        "text_X7Uajh",
+        "video_NBPWnG",
+        "big_image_nyq3rg"
+      ],
+      "name": "video-with-text-animate",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "ids": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "image_top": 60,
+        "video_radius": 0,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
     }
   },
   "order": [
     "main",
     "product_collection_bes_full_nR3AEY",
     "bes_product_tabs_0202_LmiErh",
-    "bes_product_tabs_K38LWN"
+    "bes_product_tabs_K38LWN",
+    "image_with_text_overlay_home_rEHXX9",
+    "slideshow_Hw3eJe",
+    "video_with_text_animate_CXfDDF"
   ]
 }

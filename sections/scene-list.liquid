@@ -1,4 +1,48 @@
 {{ 'component-scene-card.css' | asset_url | stylesheet_tag }}
+<style>
+
+      #shopify-section-{{ section.id }} .h2-badge{
+       display: flex;           /* 使用flex布局让标识和文字自然对齐 */
+            flex-wrap: wrap;          /* 小屏时折行保持可读性 */
+            align-items: center;      /* 垂直居中 (标识40px, 文字行高较高时依然对齐) */
+            justify-content: center;
+      }
+      #shopify-section-{{ section.id }}  .new-badge {
+            display: inline-flex;           /* 保持与文字在一行 */
+            align-items: center;
+            justify-content: center;
+            width: 46px;
+            height: 25px;
+            background-color: #3250C3;     /* 鲜明蓝色 */
+            color: white;                   /* 白色字 */
+            font-size: 14px;               /* 相对h2小一点，但清晰可见 */
+            font-weight: 500;
+            text-transform: uppercase;       /* new 全大写或小写？ 一般标识大写简洁, 也可小写, 随意 */
+            letter-spacing: 0.3px;
+            border-radius: 8px;              /* 微微圆角，现代感 (不改变宽高) 如果希望绝对的直角可去掉 */
+            /* 保证宽高严格40x40，不受文字内容影响 */
+            flex-shrink: 0;
+            /* 可选微调位置: 让标识视觉上像是文字的最后部分，与最后一个字贴近 */
+            margin-left: 10px;                 /* 几乎紧贴, 但避免黏连 */
+            transform: translateY(0);          /* 确保无偏移 */
+            line-height: 1;                    /* 防止行高干扰垂直 */
+                     
+            align-self: center;                /* 强制自身垂直居中 */
+            
+            vertical-align: middle;             /* 辅助对齐 */
+        }
+
+        @media (max-width: 767.98px) {
+              #shopify-section-{{ section.id }}  .new-badge {
+                width: 34px;
+                height: 19px;
+                font-size: 12px;      /* 字稍微小一点，保持视觉舒适 */
+                border-radius: 5px;       /* 微调圆角比例 */
+                margin-left: 6px;          /* 间隙不变，可自行调节 */
+                }
+        }
+
+</style>
 <div class="section scene-section" >
   <div class="page-width fullscreen-grid-section">
     <div class="section__wrapper grid-container product-box">
@@ -52,7 +96,12 @@
                 {% endif %}
               </div>
               <div class="content-wrapper">
-                <h2 class="grid-title">{{ block.settings.title }}</h2>
+                <h2 class="grid-title {% if block.settings.enable_show_new %} h2-badge {% endif %}">{{ block.settings.title }}
+                   {% if block.settings.enable_show_new %}
+                       <span class="new-badge">NEU</span>
+                   {% endif %}
+
+                </h2>
                 <h4 class="grid-des">{{ block.settings.description }}</h4>
                 {% if block.settings.button_link != blank %} 
                   <button
@@ -109,6 +158,12 @@
           "id": "title",
           "label": "大标题"
         },
+        {
+          "type": "checkbox",
+          "id": "enable_show_new",
+          "label": "是否显示新品标识",
+          "default":false
+        }, 
         {
           "type": "text",
           "id": "description",

@@ -42,9 +42,10 @@
             "title": "0% MwSt. auf PV-Sets in Deutschland",
             "content": "Hiermit bestätigen Sie, dass Sie die Voraussetzungen für eine umsatzsteuerfreie Lieferung gemäß § 12 Abs. 3 von Deutschland erfüllen.",
             "taxs_title": "Erfahren Sie mehr.",
-            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie hier um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
-            "heading_1": "Hinweis: Bestellungen können in mehreren Paketen versendet werden.",
-            "heading_2": ""
+            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie <a href='https://www.gesetze-im-internet.de/ustg_1980/__12.html' target='_blank'>hier</a> um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
+            "heading_1": "Voraussichtlicher Versandtermin: bis zum 15. April",
+            "heading_2": "Der Versand von Energiespeicherprodukten erfolgt standardmäßig durch DPD. Abweichungen hiervon sind gegen Aufpreis möglich.",
+            "heading_new": "Hinweis: Bestellungen können in mehreren Paketen versendet werden."
           }
         },
         "description": {
@@ -53,6 +54,7 @@
         },
         "awards_rpNbYK": {
           "type": "awards",
+          "disabled": true,
           "settings": {
             "title": "Produktauszeichnung",
             "image_pc": "shopify://shop_images/pro-img-pc.png",
@@ -83,7 +85,7 @@
           "type": "bundle_products",
           "settings": {
             "bundle_display_mode": "bundle_with_battery",
-            "host_product": "solidflex-2000-balkonkraftwerk-mit-speicher",
+            "host_product": "indevolt-solidflex-1200-hybrid-balkonkraftwerk-mit-halbfesten-lifepo-akkus",
             "host_variant_id": "43629440696419",
             "battery_product": "indevolt-sfa1800-erweiterungsakku-kombination",
             "solar_product": "indevolt-bifaziale-monokristalline-solarmodule-kombination",
@@ -128,12 +130,12 @@
             "max_selections": 1,
             "max_selection_message": "Sie können maximal {count} Gratisgeschenk(e) auswählen.",
             "min_selection_message": "Bitte wählen Sie mindestens {count} Produkt aus.",
-            "free_product_1": "indevolt-smarter-stromzahlerfree",
-            "free_product_1_default": true,
+            "free_product_1": "",
+            "free_product_1_default": false,
             "free_product_1_variant": "",
             "free_product_1_custom_price": "",
             "free_product_2": "indevolt-smart-plug-free",
-            "free_product_2_default": false,
+            "free_product_2_default": true,
             "free_product_2_variant": "",
             "free_product_2_custom_price": "",
             "free_product_3": "",
@@ -150,11 +152,11 @@
           "type": "cross_sell_products",
           "settings": {
             "title": "Vielleicht brauchst du auch",
-            "cross_sell_product_1": "solarman-smart-plug",
+            "cross_sell_product_1": "indevolt-smarter-stromzahler",
             "cross_sell_product_1_default": false,
             "cross_sell_product_2": "shelly-pro-3em-120a",
             "cross_sell_product_2_default": false,
-            "cross_sell_product_3": "",
+            "cross_sell_product_3": "indevolt-ac-verlangerungskabel-fur-solidflex-und-powerflex-serie",
             "cross_sell_product_3_default": false,
             "cross_sell_product_4": "",
             "cross_sell_product_4_default": false
@@ -240,142 +242,345 @@
         "title": "",
         "container": "fixed",
         "ids": "uberblick",
-        "image_pc": "shopify://shop_images/sf2000-ksp-1201-pc.png",
-        "image_mobile": "shopify://shop_images/sf2000-ksp-1201-mob.png",
-        "margin_top": 60,
-        "margin_bottom": 0
+        "image_pc": "shopify://shop_images/ksp-1200-320.png",
+        "image_mobile": "shopify://shop_images/ksp-1200-320-mob.png",
+        "margin_top": 80,
+        "margin_bottom": 160
       }
     },
-    "youtube_popup_eHUQqP": {
-      "type": "youtube-popup",
-      "disabled": true,
-      "name": "Video Popup Player",
-      "settings": {
-        "alignment": "center",
-        "video_type": "youtube",
-        "youtube_url": "https://www.youtube.com/watch?v=MDleTF2lBbQ",
-        "custom_thumbnail": "shopify://shop_images/video-img1.gif",
-        "shopify_video": "",
-        "autoplay": true,
-        "alt_text": "Video thumbnail",
-        "video_width": 300,
-        "video_height": 64,
-        "padding_top": 40,
-        "padding_bottom": 120
-      }
-    },
-    "video_p6VPeC": {
-      "type": "video",
-      "name": "t:sections.video.name",
-      "settings": {
-        "container": "full",
-        "video": "shopify://files/videos/sf2000-video1.mp4",
-        "video_mobile": "shopify://files/videos/SF2000-3-1-MOB.mp4",
-        "ids": "eigenschaften",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_ratio": "16/9",
-        "description": "",
-        "enable_video_autoplay": true,
-        "enable_video_looping": true,
-        "enable_parallax": false,
-        "enable_radius": false,
-        "image_container": "fixed",
-        "parallax_direction": "vertical",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "show_section_divider": false,
-        "divider_width": "fixed"
-      }
-    },
-    "image_with_text_animate_7Re4hR": {
-      "type": "image-with-text-animate",
+    "rich_text_progress_neVPDp": {
+      "type": "rich-text-progress",
       "blocks": {
-        "heading_x6WMwE": {
+        "heading_XYmVaq": {
           "type": "heading",
           "settings": {
-            "heading": "Der weltweit erste Balkonkraftwerk-Speicher mit halbfesten LiFePO₄-Akkus",
+            "heading": "All-in-One-Lösung – smart & günstig",
             "heading_size": "hd2",
             "heading_highlight_style": "none"
           }
         },
-        "text_VDjKYj": {
+        "text_f7xPJn": {
           "type": "text",
           "settings": {
-            "text": "<p><a href=\"https://de.indevolt.com/pages/halbfeste-akkus\" title=\"https://de.indevolt.com/pages/halbfeste-akkus\">Halbfeste Lithium-Eisenphosphat-Akkus </a>gelten in der Branche als die zentrale Kerntechnologie für die nächste Generation von Lithium-Akkus. Durch eine innovative Kombination der Vorteile von Festkörper- und Flüssigheltrolyten bieten sie eine deutlich verbesserte thermische Stabilität und Schlagfestigkeit und erhöhen so die Sicherheit auch unter extremen Bedingungen erheblich.</p>",
-            "text_size": "text-lg"
+            "text": "<p>Erfüllt ganz einfach die Plug-&-Play-Vorgaben – die kosteneffiziente Wahl für deine lohnende Investition. Starte jetzt in die neue Ära der grünen HEMS-Technologie.</p>",
+            "text_size": "text-sm"
           }
         },
-        "big_image_pd7yYi": {
-          "type": "big_image",
+        "image_YEgQYW": {
+          "type": "image",
           "settings": {
-            "container": "fixed",
-            "image": "shopify://shop_images/SF2000-LIPO4-PC.jpg",
-            "mobile_image": "shopify://shop_images/SF2000-LIPO4-MOB.jpg",
-            "image_text": "Sicherer. Langlebiger. Dichter.",
-            "button_label": "Mehr erfahren",
-            "button_link": "https://de.indevolt.com/pages/halbfeste-akkus",
-            "button_style": "btn--primary",
-            "button_target": "_self"
-          }
-        },
-        "subheading_wH7Bi4": {
-          "type": "subheading",
-          "settings": {
-            "subheading": "Rundum geschützt – von der Zelle bis zum System",
-            "heading_size": "hd2",
-            "padding_top": 120
-          }
-        },
-        "image_list_j7NHBd": {
-          "type": "image_list",
-          "settings": {
-            "image_1": "shopify://shop_images/SF2000-system1-PC.jpg",
-            "mobile_image_1": "shopify://shop_images/SF2000-system1-PC.jpg",
-            "title_1": "Materialschutz",
-            "desc_1": "Halbfester Akku, der Fest- und Flüssig-Elektrolyt verschmelzen lässt und die thermische Stabilität auf Materialebene optimiert.",
-            "icon_1": "shopify://shop_images/sichere-icon1.png",
-            "mobile_icon_1": "shopify://shop_images/sichere-mobile-icon1.png",
-            "image_2": "shopify://shop_images/SF2000-system2-PC.jpg",
-            "mobile_image_2": "shopify://shop_images/SF2000-system2-PC.jpg",
-            "title_2": "Aktiver Schutz",
-            "desc_2": "In jeder Speichereinheit befinden sich zwei Zellen, das BMS überwacht in Echtzeit Temperatur, Spannung und weitere Schlüsselparameter, und durch kontinuierliche Datenanalyse wird der Betrieb des Systems stets auf höchster Sicherheit und Stabilität gehalten.",
-            "icon_2": "shopify://shop_images/sichere-icon2.png",
-            "mobile_icon_2": "shopify://shop_images/sichere-mobile-icon2.png",
-            "image_3": "shopify://shop_images/SF2000-system3-PC.jpg",
-            "mobile_image_3": "shopify://shop_images/SF2000-system3-PC.jpg",
-            "title_3": "Strukturschutz",
-            "desc_3": "Die Energiespeicher-Modulgehäuse bestehen aus hochwertiger Aluminiumlegierung, bietet dank Festigkeit und Verformungsbeständigkeit eine stabile Schutzumgebung und hervorragenden Brandschutz für die Kernkomponenten.",
-            "icon_3": "shopify://shop_images/sichere-icon3.png",
-            "mobile_icon_3": "shopify://shop_images/sichere-mobile-icon3.png",
-            "image_4": "shopify://shop_images/SF2000-system4-PC.jpg",
-            "mobile_image_4": "shopify://shop_images/SF2000-system4-PC.jpg",
-            "title_4": "Wasserresistenz",
-            "desc_4": "Exzellenter Staub- und Wasserschutz schützt die Kernbauteile zuverlässig vor Outdoor-Staub und Regen und sorgt so für langfristige Zuverlässigkeit in anspruchsvollen Umgebungen.",
-            "icon_4": "shopify://shop_images/sichere-icon4.png",
-            "mobile_icon_4": "shopify://shop_images/sichere-mobile-icon4.png"
+            "container": "fixed"
           }
         }
       },
       "block_order": [
-        "heading_x6WMwE",
-        "text_VDjKYj",
-        "big_image_pd7yYi",
-        "subheading_wH7Bi4",
-        "image_list_j7NHBd"
+        "heading_XYmVaq",
+        "text_f7xPJn",
+        "image_YEgQYW"
       ],
-      "name": "image-with-text-animate",
+      "name": "富文本+进度条",
       "settings": {
         "color_scheme": "",
+        "bg_color": "#ffffff",
         "content_alignment": "center",
         "ids": "",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "image_top": 60,
+        "show_title_icon": false,
+        "img-href": "",
+        "padding_top": 120,
+        "padding_bottom": 120,
+        "image_top": 0,
         "video_radius": 0,
         "video_aspect_ratio": "16/9",
         "show_section_divider": false,
         "divider_width": "fixed",
         "mobile_content_alignment": "left"
+      }
+    },
+    "image_with_text_list_HL7qnh": {
+      "type": "image-with-text-list",
+      "blocks": {
+        "card_RJqwUP": {
+          "type": "card",
+          "disabled": true,
+          "settings": {
+            "desktop_content_position": "center",
+            "desktop_content_alignment": "left",
+            "enable_reserve_pc": false,
+            "enable_parallax": false,
+            "parallax_direction": "vertical",
+            "enable_reserve_mobile": true,
+            "mobile_content_alignment": "left",
+            "image": "shopify://shop_images/SF2000-lr1-PC.jpg",
+            "heading": "<strong>1200W bidirektionales Laden</strong>",
+            "heading_size": "hd2",
+            "text": "<p>Der SolidFlex 1200 ist mit einem integrierten bidirektionalen Wechselrichter ausgestattet, der Lade- und Entladeleistungen von 1200W bietet. Wenn die Strompreise niedrig sind, kann es schnell Strom speichern und so die Stromkosten senken.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "card_LywqH6": {
+          "type": "card",
+          "settings": {
+            "desktop_content_position": "center",
+            "desktop_content_alignment": "left",
+            "enable_reserve_pc": true,
+            "enable_parallax": false,
+            "parallax_direction": "vertical",
+            "enable_reserve_mobile": false,
+            "mobile_content_alignment": "left",
+            "image": "shopify://shop_images/1200-akku-pc.jpg",
+            "heading": "Die sichere Wahl: Halbfeststoff-Akku",
+            "heading_size": "hd2",
+            "text": "<p>Halbfeststoff-LiFePO₄-Akkus gelten in der Branche als richtungsweisende Schlüsseltechnologie der nächsten Lithium-Batterie-Generation. Diese Technologie überzeugt durch herausragende Sicherheit und stabilere Leistungsabgabe – selbst unter extremen Bedingungen bleibt sie rauch- und feuerfrei.</p>",
+            "text_size": "text-lg"
+          }
+        },
+        "card_JGbmxD": {
+          "type": "card",
+          "disabled": true,
+          "settings": {
+            "desktop_content_position": "center",
+            "desktop_content_alignment": "left",
+            "enable_reserve_pc": false,
+            "enable_parallax": false,
+            "parallax_direction": "vertical",
+            "enable_reserve_mobile": true,
+            "mobile_content_alignment": "left",
+            "image": "shopify://shop_images/SF2000-lr3-PC.jpg",
+            "heading": "<strong>Modulares Stapel-Design</strong>",
+            "heading_size": "hd2",
+            "text": "<p>Die Kapazität kann erweitert werden, indem die Akkupacks einfach aufeinander gestapelt werden.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "card_RJqwUP",
+        "card_LywqH6",
+        "card_JGbmxD"
+      ],
+      "name": "image-with-text-list",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#ffffff",
+        "layout": "image_first",
+        "image_height": "adapt",
+        "padding_top": 160,
+        "padding_bottom": 80,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "rich_text_image_bes_nFWHUX": {
+      "type": "rich-text-image-bes",
+      "blocks": {
+        "heading_LWFAne": {
+          "type": "heading",
+          "settings": {
+            "heading": "Batterieoptimierer",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_pi4zC6": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Wie ein „eigenes Büro“ für jedes Akkupack: Unser innovativer Batterieoptimierer ermöglicht simultanes und unabhängiges Laden und Entladen – damit sind „Flaschenhals-Effekte“ endgültig vorbei. So erhalten Sie nicht nur mehr nutzbare Energie und eine längere Lebensdauer, sondern auch maximale Flexibilität: Akkus von Verschiedene Kapazitäten lassen sich nach Bedarf kombinieren und arbeiten reibungslos zusammen.</p>",
+            "text_size": "text-sm"
+          }
+        }
+      },
+      "block_order": [
+        "heading_LWFAne",
+        "text_pi4zC6"
+      ],
+      "name": "阳台专题富文本+图片",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "",
+        "show_title_icon": false,
+        "img-href": "",
+        "padding_top": 80,
+        "padding_bottom": 40,
+        "image_top": 60,
+        "video_radius": 0,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "full",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "video_hero_bes_TgfaRU": {
+      "type": "video-hero-bes",
+      "name": "阳台专题大视频",
+      "settings": {
+        "container": "fixed",
+        "video": "shopify://files/videos/de.mp4",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "description": "",
+        "video_height": "adapt",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 720,
+        "content_position": "middle-center",
+        "content_alignment": "center",
+        "video_mobile": "shopify://files/videos/de.mp4",
+        "video_mobile_url": "",
+        "video_mobile_height": "adapt",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "video_wcxYyA": {
+      "type": "video",
+      "disabled": true,
+      "name": "video-with-image",
+      "settings": {
+        "container": "fixed",
+        "video": "shopify://files/videos/de.mp4",
+        "video_mobile": "shopify://files/videos/de.mp4",
+        "ids": "",
+        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
+        "video_ratio": "adapt",
+        "description": "",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "enable_parallax": true,
+        "enable_radius": true,
+        "image_container": "fixed",
+        "parallax_direction": "vertical",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "bk1600ultra_scence_tabs_myPAPz": {
+      "type": "bk1600ultra-scence-tabs",
+      "blocks": {
+        "tab_NJLzQC": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "",
+            "navigation_title": "Dach PV-Systeme",
+            "image": "shopify://shop_images/1200-pv-1-pc.jpg",
+            "mobile_image": "shopify://shop_images/1200-pv-1-mob.jpg",
+            "heading": "Collage tab heading",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_Qh3BHk": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "",
+            "navigation_title": "Mikro-Wechselrichter-Systeme",
+            "image": "shopify://shop_images/1200-pv-2-pc.jpg",
+            "mobile_image": "shopify://shop_images/1200-pv-2-mob.jpg",
+            "heading": "Collage tab heading",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "tab_NJLzQC",
+        "tab_Qh3BHk"
+      ],
+      "custom_css": [
+        "@media (min-width: 767px) {.h2-title .block {padding: 0px 150px; }}",
+        "@media (max-width: 767px) {.section--collage-tabs {padding: 0px 15px; } .h2-title {text-align: left; }}"
+      ],
+      "name": "bk1600ultra-scence-tabs",
+      "settings": {
+        "ids": "",
+        "title": "Nahtlose Integration – kompatibel mit bestehenden PV-Anlagen",
+        "description": "",
+        "heading_size": "h4",
+        "desktop_navigation_alignment": "center",
+        "desktop_image_position": "left",
+        "desktop_image_width": 100,
+        "image_aspect_ratio": "adapt",
+        "padding_top": 160,
+        "padding_bottom": 80,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
+    },
+    "fullscreen_slider_1200_HbUqMH": {
+      "type": "fullscreen-slider-1200",
+      "blocks": {
+        "slide_Anacnd": {
+          "type": "slide",
+          "settings": {
+            "links": "",
+            "image_pc": "shopify://shop_images/1200-maximal-1-pc.jpg",
+            "image_mobile": "shopify://shop_images/1200_maximal-1-mob.jpg",
+            "author": "",
+            "title": "Smart Home ready",
+            "describe": "<p>Offene API ermöglicht die einfache Einbindung in dein Smart Home – für intelligentes Energiemanagement. </p>",
+            "date": ""
+          }
+        },
+        "slide_nhUez6": {
+          "type": "slide",
+          "settings": {
+            "links": "",
+            "image_pc": "shopify://shop_images/1200-maximal-2-pc.jpg",
+            "image_mobile": "shopify://shop_images/1200_maximal-2-mob.jpg",
+            "author": "",
+            "title": "Kompatibel mit gängigen Smart Metern",
+            "describe": "<p>Indevolt integriert sich nahtlos in alle führenden Smart-Meter-Systeme. Überwache deinen Stromverbrauch sowie deine Solarerzeugung in Echtzeit, vermeide unnötige Netzeinspeisung und maximiere so deinen Eigenverbrauch.</p>",
+            "date": ""
+          }
+        },
+        "slide_yqbJKh": {
+          "type": "slide",
+          "settings": {
+            "links": "",
+            "image_pc": "shopify://shop_images/1200-maximal-3-pc.jpg",
+            "image_mobile": "shopify://shop_images/1200_maximal-3-mob.jpg",
+            "author": "",
+            "title": "Offen für dein PV-System",
+            "describe": "<p>Indevolt spricht die Sprache deiner PV-Anlage. Per API-Anbindung fließen alle Erzeugungsdaten direkt in dein Dashboard. Für volle Transparenz und ein smarteres Zuhause.</p>",
+            "date": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_Anacnd",
+        "slide_nhUez6",
+        "slide_yqbJKh"
+      ],
+      "name": "全屏滑块+文本",
+      "settings": {
+        "title": "Maximal flexibel: Das offene Ökosystem",
+        "more_title": "",
+        "more_url": "",
+        "autoplay": false,
+        "autoplay_speed": 3000,
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "rich_text_x6YUUc": {
@@ -417,6 +622,7 @@
         "text_hapjAt",
         "video_popup_tFgzBG"
       ],
+      "disabled": true,
       "custom_css": [
         "a {text-decoration: none; color: #3250c3;}"
       ],
@@ -431,52 +637,6 @@
         "show_section_divider": false,
         "divider_width": "fixed",
         "mobile_content_alignment": "left"
-      }
-    },
-    "slider_center_yFRkwq": {
-      "type": "slider-center",
-      "blocks": {
-        "card_FhNm8H": {
-          "type": "card",
-          "settings": {
-            "title": "Großzellen-Technologie",
-            "video": "https://cdn.shopify.com/videos/c/vp/bfbb909bc0fc4effbb3d74ee0299f862/bfbb909bc0fc4effbb3d74ee0299f862.HD-720p-4.5Mbps-54950683.mp4",
-            "description": "Die Verwendung großer Akkuzellen reduziert nicht nur die Anzahl der internen Verbindungspunkte, um die Wärmeentwicklung zu minimieren und so eine höhere Leistung bei gleichzeitig leichterer und sichererer Bauweise zu ermöglichen, sondern bietet auch eine höhere Energiedichte und eine längere Lebensdauer, was eine außergewöhnliche Ausdauer und langfristige Haltbarkeit gewährleistet."
-          }
-        },
-        "card_EUaLze": {
-          "type": "card",
-          "settings": {
-            "title": "Batterieoptimierer-Technologie",
-            "video": "https://cdn.shopify.com/videos/c/vp/0c7310be08da4a96b9f8f8a7bae47dd6/0c7310be08da4a96b9f8f8a7bae47dd6.HD-720p-3.0Mbps-54951208.mp4",
-            "description": "Jeder Akkupack ist mit einem innovativen Batterieoptimierer ausgestattet, der unabhängiges Laden und Entladen ermöglicht. So wird der „Flaschenhals-Effekt“ zwischen den Akkupacks vermieden, was zu mehr verfügbarer Energie und einer verlängerten Lebensdauer der Akkus führt."
-          }
-        },
-        "card_4NKP4D": {
-          "type": "card",
-          "settings": {
-            "title": "Spezielle Ausgleichsschaltung",
-            "video": "https://cdn.shopify.com/videos/c/vp/24e347ac4f754e2d8ac5526a08587a5c/24e347ac4f754e2d8ac5526a08587a5c.HD-720p-4.5Mbps-54951225.mp4",
-            "description": "In Kombination mit speziellen Ausgleichsschaltungen ermöglicht sie die Echtzeitüberwachung und dynamische Anpassung der Spannungen der beiden Akkuzellen. Dadurch wird die Sicherheit erhöht und die Verschlechterung von Inkonsistenzen verlangsamt."
-          }
-        }
-      },
-      "block_order": [
-        "card_FhNm8H",
-        "card_EUaLze",
-        "card_4NKP4D"
-      ],
-      "custom_css": [
-        "@media (max-width: 760px) {.text-center, .tabs__tab-name {text-align: left !important; padding-left: 0px; } .tabs__nav-wrap {justify-content: left; } .detail {text-align: left !important; padding-left: 20px !important; } span {text-align: left !important; padding-left: 20px !important; }}"
-      ],
-      "name": "全屏轮播",
-      "settings": {
-        "title": "Geschikt voor Diverse Scenario's",
-        "tip_title": "Flaschenhals-Effekt",
-        "tip_popup_title": "Was ist der Flaschenhals-Effekt?",
-        "tip_popup_content": "<p>Bei herkömmlichen Akkupacks beeinflusst die schwächste Zelle das gesamte System. Wenn sie voll ist, stoppen alle Zellen den Ladevorgang. Wenn sie leer ist, stoppen alle Zellen den Entladevorgang.<br/><br/></p>",
-        "padding_top": 60,
-        "padding_bottom": 60
       }
     },
     "sf2000_scence_tabs_7UhwRM": {
@@ -525,6 +685,7 @@
         "tab_JagNrW",
         "tab_DgkTDY"
       ],
+      "disabled": true,
       "custom_css": [
         "@media (max-width: 760px) {.text-center, .tabs__tab-name {text-align: left !important; padding-left: 0px; } .tabs__nav-wrap {justify-content: left; } .h2-title {text-align: left !important; padding-left: 0px; }}"
       ],
@@ -579,6 +740,7 @@
         "text_8gifBP",
         "button_YUfhEL"
       ],
+      "disabled": true,
       "name": "t:sections.rich-text.presets.name",
       "settings": {
         "color_scheme": "",
@@ -592,37 +754,13 @@
         "mobile_content_alignment": "left"
       }
     },
-    "video_AzeRLN": {
-      "type": "video",
-      "name": "t:sections.video.name",
-      "settings": {
-        "container": "fixed",
-        "video": "shopify://files/videos/sf2000-video5.mp4",
-        "ids": "",
-        "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-        "video_ratio": "adapt",
-        "description": "",
-        "enable_video_autoplay": true,
-        "enable_video_looping": true,
-        "enable_parallax": false,
-        "enable_radius": false,
-        "image_container": "fixed",
-        "image": "shopify://shop_images/Group_275.png",
-        "mobile_image": "shopify://shop_images/Group_287.png",
-        "parallax_direction": "vertical",
-        "padding_top": 30,
-        "padding_bottom": 60,
-        "show_section_divider": false,
-        "divider_width": "fixed"
-      }
-    },
     "rich_text_image_list_xWPfNc": {
       "type": "rich-text-image-list",
       "blocks": {
         "heading_iVL7G8": {
           "type": "heading",
           "settings": {
-            "heading": "Optimiere deine Energieeinsparungen mit Smart AI",
+            "heading": "<strong>Dynamische Tarife</strong>",
             "heading_size": "hd2",
             "heading_highlight_style": "none"
           }
@@ -630,7 +768,7 @@
         "text_VGcCbp": {
           "type": "text",
           "settings": {
-            "text": "<p>Indevolt Smart AI entwickelt maßgeschneiderte Energielösungen durch fortschrittliche Big-Data-Analyse. Indem wir historische Stromverbräuche und Wetterdaten nutzen, prognostizieren wir deinen stündlichen Verbrauch für den Tag. Unsere Technologie schätzt außerdem die Solarstromerzeugung auf Grundlage von Wetterprognosen und der Leistung deines Photovoltaik-Systems. Mit Echtzeit-Updates zu dynamischen Strompreisen und dem Akkustatus kannst du die Kosten pro Kilowattstunde überwachen. So bestimmen wir automatisch die optimalen Lade- und Entlade-Strategien, um deine Energieeinsparungen zu maximieren und die Abrechnung zu optimieren.</p>",
+            "text": "<p>Die Indevolt-App ruft für Europa die aktuellen Echtzeit-Strompreise im 15-Minuten-Takt ab. So kann das System automatisch bei günstigen Preisen laden und bei hohen Preisen einspeisen – für optimierte Stromkosten, auch bei wenig Sonneneinstrahlung.</p>",
             "text_size": "text-lg"
           }
         },
@@ -638,8 +776,8 @@
           "type": "image",
           "settings": {
             "container": "fixed",
-            "image": "shopify://shop_images/sf2000AI.png",
-            "mobile_image": "shopify://shop_images/mobimage.png"
+            "image": "shopify://shop_images/1200-dyna-pc.jpg",
+            "mobile_image": "shopify://shop_images/1200-dyna-mob.jpg"
           }
         }
       },
@@ -648,7 +786,6 @@
         "text_VGcCbp",
         "image_wFhm9g"
       ],
-      "disabled": true,
       "name": "富文本与图片",
       "settings": {
         "color_scheme": "",
@@ -657,14 +794,137 @@
         "ids": "",
         "show_title_icon": false,
         "img-href": "",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "image_top": 60,
+        "padding_top": 80,
+        "padding_bottom": 160,
+        "image_top": 40,
         "video_radius": 18,
         "video_aspect_ratio": "16/9",
         "show_section_divider": false,
         "divider_width": "fixed",
         "mobile_content_alignment": "left"
+      }
+    },
+    "bes_product_accordion_Rtimqn": {
+      "type": "bes-product-accordion",
+      "blocks": {
+        "tab_KAe3RL": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "scheme-2",
+            "navigation_title": "Selbstversorgung",
+            "image": "shopify://shop_images/bes-app-1-pc.jpg",
+            "mobile_image": "shopify://shop_images/bes-app-1-mob.jpg",
+            "heading": "Eigenverbrauch priorisieren",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Installier unser Indevolt Balkonkraftwerk Speicher mit Smart Meter. Es erkennt deinen Strombedarf präzise, speichert tagsüber überschüssigen Solarstrom für nachts oder bewölkte Tage und steuert jede Kilowattstunde intelligent nach deinem Verbrauch. So wird Erzeugung, Speicherung und Verbrauch fein abgestimmt, deine PV-Eigenversorgung steigt auf über 90% und die Energieeffizienz wird maximiert.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_8QLADW": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "scheme-2",
+            "navigation_title": "TOU Modus",
+            "image": "shopify://shop_images/bes-app-2-pc.jpg",
+            "mobile_image": "shopify://shop_images/bes-app-2-mob.jpg",
+            "heading": "Intelligenter Stromtarif. Maximaler Ertrag.",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Mit der Indevolt App behältst du die Strompreise im Blick und optimierst dein Balkonkraftwerk ganz einfach: Erhalte Echtzeit-Benachrichtigungen, setze deinen Wunschpreis und lass das System den Rest erledigen. Automatisches Laden bei Tiefstpreisen, Einspeisen bei hohen Tarifen – so sparst du bares Geld und generierst passives Einkommen direkt von deinem Balkon.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_wBUDLg": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "scheme-2",
+            "navigation_title": "KI Assistent",
+            "image": "shopify://shop_images/bes-app-3-pc.jpg",
+            "mobile_image": "shopify://shop_images/bes-app-3-mob.jpg",
+            "heading": "Dein Smart Assistent: So sparst du maximal",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Die Indevolt Smart AI analysiert deinen Verbrauch und das Wetter in Echtzeit, sagt deinen Bedarf voraus und erstellt daraus deinen persönlichen Energiesparplan. Dabei beobachtet sie live die Strompreise – so lädt sie deinen Speicher automatisch zum günstigsten Zeitpunkt und nutzt oder speist ihn ein, wenn es für dich am besten ist. Mehr Ersparnis, weniger Aufwand.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_UcwhXd": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "",
+            "navigation_title": "Überwachung",
+            "image": "shopify://shop_images/bes-app-4-pc.jpg",
+            "mobile_image": "shopify://shop_images/bes-app-4-mob.jpg",
+            "heading": "Deine Energie immer im Blick.",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Behalte dein Balkonkraftwerk mit Indevolt immer im Griff. Auf einen Blick siehst du auf der Startseite alle wichtigen Echtzeitdaten deiner aktuellen Stromproduktion. Verfolge klar und übersichtlich deine komplette Energielandschaft – von Erzeugung über Speicherung und Verteilung bis hin zur Nutzung. Alles immer und überall unter Kontrolle.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        },
+        "tab_Mrqa9m": {
+          "type": "tab",
+          "settings": {
+            "content_color_scheme": "",
+            "navigation_title": "Analysieren",
+            "image": "shopify://shop_images/bes-app-5-pc.jpg",
+            "mobile_image": "shopify://shop_images/bes-app-5-mob.jpg",
+            "heading": "Klarheit über deine Stromerzeugung",
+            "heading_size": "h1",
+            "heading_highlight_style": "none",
+            "subheading": "",
+            "description": "<p>Die Indevolt-App bietet dir ausführliche Statistiken und ein klares Dashboard. Sieh auf einen Blick, wann deine Anlage am meisten produziert, verfolge historische Erzeugungs- und Verbrauchsdaten und erfahre, wie viel du gespart hast. So triffst du fundierte Entscheidungen, um deine Energie optimal zu nutzen und deine Erträge zu steigern.</p>",
+            "text_size": "text-base",
+            "text_alignment": "center",
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style": "btn--primary"
+          }
+        }
+      },
+      "block_order": [
+        "tab_KAe3RL",
+        "tab_8QLADW",
+        "tab_wBUDLg",
+        "tab_UcwhXd",
+        "tab_Mrqa9m"
+      ],
+      "name": "阳台专题手风琴",
+      "settings": {
+        "bg_color": "#f1f6ff",
+        "tab_title_color": "#000000",
+        "tab_content_color": "#666",
+        "title": "Alles in deiner Hand – die Indevolt App",
+        "heading_size": "h4",
+        "desktop_navigation_alignment": "center",
+        "desktop_image_position": "left",
+        "desktop_image_width": 100,
+        "image_aspect_ratio": "adapt",
+        "padding_top": 120,
+        "padding_bottom": 120,
+        "show_section_divider": false,
+        "divider_width": "fixed"
       }
     },
     "rich_text_image_list_fg6cwJ": {
@@ -673,31 +933,34 @@
         "heading_ecA3gP": {
           "type": "heading",
           "settings": {
-            "heading": "Entdecke, wie viel das Indevolt SolidFlex 1200 an Kosten und CO₂-Emissionen einsparen kann.",
+            "heading": "<strong>1200W Notstrom – bei Stromausfall einsatzbereit</strong>",
             "heading_size": "hd3",
             "heading_highlight_style": "none"
+          }
+        },
+        "text_pp6Mtp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Selbst bei Netzausfall bleiben deine wichtigsten Haushaltsgeräte am Laufen.<br/><strong>Ohne Erweiterungsakkus:</strong> max. Ausgangsleistung 1000W<br/><strong>Mit Erweiterungsakku:</strong> max. Ausgangsleistung 1200W</p>",
+            "text_size": "text-inherit"
           }
         },
         "image_V444PP": {
           "type": "image",
           "settings": {
             "container": "fixed",
-            "image": "shopify://shop_images/SF2000-co2-PC.jpg",
-            "mobile_image": "shopify://shop_images/SF2000-co2-mob.jpg"
-          }
-        },
-        "text_pp6Mtp": {
-          "type": "text",
-          "settings": {
-            "text": "<p>*Die Berechnung basiert auf der folgenden Produktkonfiguration: SolidFlex 1200 (1792 Wh) + 4 x 500W-Solarmodule (2000W) + 5 Erweiterungsakkus (8960 Wh). </p>",
-            "text_size": "text-inherit"
+            "image": "shopify://shop_images/1200-1200w-pc.jpg",
+            "mobile_image": "shopify://shop_images/1200-1200w-mob.jpg"
           }
         }
       },
       "block_order": [
         "heading_ecA3gP",
-        "image_V444PP",
-        "text_pp6Mtp"
+        "text_pp6Mtp",
+        "image_V444PP"
+      ],
+      "custom_css": [
+        "@media (max-width: 768px) {.rich-text__text {font-size: 16px; line-height: 19px; }}"
       ],
       "name": "富文本与图片",
       "settings": {
@@ -707,9 +970,9 @@
         "ids": "",
         "show_title_icon": false,
         "img-href": "",
-        "padding_top": 60,
-        "padding_bottom": 120,
-        "image_top": 60,
+        "padding_top": 160,
+        "padding_bottom": 80,
+        "image_top": 40,
         "video_radius": 18,
         "video_aspect_ratio": "16/9",
         "show_section_divider": false,
@@ -759,6 +1022,7 @@
         "card_H8V9yF",
         "card_e6me38"
       ],
+      "disabled": true,
       "name": "image-with-text-list",
       "settings": {
         "section_color_scheme": "",
@@ -804,6 +1068,7 @@
         "text_XEBDYw",
         "image_i9e8xj"
       ],
+      "disabled": true,
       "name": "富文本与图片",
       "settings": {
         "color_scheme": "",
@@ -820,79 +1085,6 @@
         "show_section_divider": false,
         "divider_width": "fixed",
         "mobile_content_alignment": "left"
-      }
-    },
-    "image_with_text_list_HL7qnh": {
-      "type": "image-with-text-list",
-      "blocks": {
-        "card_RJqwUP": {
-          "type": "card",
-          "settings": {
-            "desktop_content_position": "center",
-            "desktop_content_alignment": "left",
-            "enable_reserve_pc": false,
-            "enable_parallax": false,
-            "parallax_direction": "vertical",
-            "enable_reserve_mobile": true,
-            "mobile_content_alignment": "left",
-            "image": "shopify://shop_images/SF2000-lr1-PC.jpg",
-            "heading": "<strong>1200W bidirektionales Laden</strong>",
-            "heading_size": "hd2",
-            "text": "<p>Der SolidFlex 1200 ist mit einem integrierten bidirektionalen Wechselrichter ausgestattet, der Lade- und Entladeleistungen von 1200W bietet. Wenn die Strompreise niedrig sind, kann es schnell Strom speichern und so die Stromkosten senken.</p>",
-            "text_size": "text-lg"
-          }
-        },
-        "card_LywqH6": {
-          "type": "card",
-          "settings": {
-            "desktop_content_position": "center",
-            "desktop_content_alignment": "left",
-            "enable_reserve_pc": true,
-            "enable_parallax": false,
-            "parallax_direction": "vertical",
-            "enable_reserve_mobile": false,
-            "mobile_content_alignment": "left",
-            "image": "shopify://shop_images/SF2000-lr2-PC.jpg",
-            "heading": "Parallelerweiterung",
-            "heading_size": "hd2",
-            "text": "<p>SolidFlex 1200 bietet nahtlose Dreifach-Parallelerweiterung – ideal für Ein- und Dreiphasen-Haushalte. Nach der Erweiterung ergeben sich bis zu 3600W Systemleistung, 3600W PV-Eingang und 32,4 kWh Kapazität. Für hohe Leistungsanforderungen ist eine erstklassige Wahl.</p>",
-            "text_size": "text-lg"
-          }
-        },
-        "card_JGbmxD": {
-          "type": "card",
-          "settings": {
-            "desktop_content_position": "center",
-            "desktop_content_alignment": "left",
-            "enable_reserve_pc": false,
-            "enable_parallax": false,
-            "parallax_direction": "vertical",
-            "enable_reserve_mobile": true,
-            "mobile_content_alignment": "left",
-            "image": "shopify://shop_images/SF2000-lr3-PC.jpg",
-            "heading": "<strong>Modulares Stapel-Design</strong>",
-            "heading_size": "hd2",
-            "text": "<p>Die Kapazität kann erweitert werden, indem die Akkupacks einfach aufeinander gestapelt werden.</p>",
-            "text_size": "text-lg"
-          }
-        }
-      },
-      "block_order": [
-        "card_RJqwUP",
-        "card_LywqH6",
-        "card_JGbmxD"
-      ],
-      "name": "image-with-text-list",
-      "settings": {
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "custom_background": "#ffffff",
-        "layout": "image_first",
-        "image_height": "adapt",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "show_section_divider": false,
-        "divider_width": "fixed"
       }
     },
     "multicolumn_xTyLxF": {
@@ -955,6 +1147,7 @@
         "column_iFz7dc",
         "column_g3gYbJ"
       ],
+      "disabled": true,
       "custom_css": [],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
@@ -974,87 +1167,6 @@
         "padding_bottom": 60,
         "show_section_divider": false,
         "divider_width": "fixed"
-      }
-    },
-    "fullscreen_slider_7gy4ke": {
-      "type": "fullscreen-slider",
-      "blocks": {
-        "slide_dnaNrk": {
-          "type": "slide",
-          "settings": {
-            "links": "",
-            "image_pc": "shopify://shop_images/SF2000-4-1-PC.jpg",
-            "image_mobile": "shopify://shop_images/SF2000-4-1-mob.jpg",
-            "author": "",
-            "title": "",
-            "describe": "",
-            "date": ""
-          }
-        },
-        "slide_GYN6ae": {
-          "type": "slide",
-          "settings": {
-            "links": "",
-            "image_pc": "shopify://shop_images/SF2000-4-2-PC.jpg",
-            "image_mobile": "shopify://shop_images/SF2000-4-2-mob.jpg",
-            "author": "",
-            "title": "",
-            "describe": "",
-            "date": ""
-          }
-        },
-        "slide_VBKMdJ": {
-          "type": "slide",
-          "settings": {
-            "links": "",
-            "image_pc": "shopify://shop_images/SF2000-4-3-PC.jpg",
-            "image_mobile": "shopify://shop_images/SF2000-4-3-mob.jpg",
-            "author": "",
-            "title": "",
-            "describe": "",
-            "date": ""
-          }
-        },
-        "slide_byKJhH": {
-          "type": "slide",
-          "settings": {
-            "links": "",
-            "image_pc": "shopify://shop_images/SF2000-4-4-PC.jpg",
-            "image_mobile": "shopify://shop_images/SF2000-4-4-mob.jpg",
-            "author": "",
-            "title": "",
-            "describe": "",
-            "date": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_dnaNrk",
-        "slide_GYN6ae",
-        "slide_VBKMdJ",
-        "slide_byKJhH"
-      ],
-      "name": "Fullscreen Slider",
-      "settings": {
-        "title": "Ideal für vielseitige Anwendungen",
-        "more_title": "",
-        "more_url": "",
-        "autoplay": false,
-        "autoplay_speed": 3000,
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "custom_liquid_ma3yWD": {
-      "type": "custom-liquid",
-      "disabled": true,
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "<style>\n        table {\n            table-layout: fixed;\n            width: 100%;\n            margin-bottom: 10px;\n \n    }\n\n    .diytable{\n       /* border: 0.1rem solid rgba(var(--color-foreground),.2); */\n       border-collapse: collapse;\n    }\n \n\n        td {\n            \n        border: 0.1rem solid rgba(var(--color-foreground),.2);\n        text-align: center; /* 默认所有单元格居中 */\n        padding: 30px;\n        /* border: 1px solid #ddd; */\n        font-size: 16px;\n        font-family: 'Inter';\n        line-height: 19px;\n        font-weight: 400;\n        word-wrap: break-word;\n        color: #262626;\n        }\n\n        .diytable img{\n            width:150px;\n            /* vertical-align:center; */\n        }\n\n        td:first-child {\n     \n        text-align: left; /* 第一列靠左 */\n        font-family: 'Inter';\n        font-size: 18px;\n        font-weight: 500;\n        line-height: 22px;\n        border-left: none !important;\n        }\n\n       td:last-child {\n        border-right:  none !important;\n        }\n\n        tr:first-child td{\n            border-top:  none !important;\n            font-family: 'Inter';\n            font-size: 18px;\n            font-weight: 600;\n            line-height: 22px;\n            color: #3250C3;\n        }\n\n\n        @media screen and (max-width: 760px)  {\n            td {\n                text-align: center; /* 默认所有单元格居中 */\n                padding: 20px 8px 20px 8px;\n                border: 1px solid #ddd;\n                font-size: 12px;\n                font-family: 'Inter';\n                line-height: 15px;\n                font-weight: 400;\n                color: #262626;\n            }\n            \n            .diytable img{\n                width:90px;\n                vertical-align:center;\n            }\n\n            td:first-child {\n                width:35%;\n                text-align: left; /* 第一列靠左 */\n                font-family: 'Inter';\n                font-size: 12px;\n                font-weight: 500;\n                line-height: 15px;\n            }\n\n\n        tr:first-child td{\n            font-family: 'Inter';\n            font-size: 12px;\n            font-weight: 600;\n            line-height: 15px;\n            color: #3250C3;\n        }\n        } \n \n        .hidden-row {\n            display: none;\n        }\n        .controls_pc {\n            margin-bottom: 10px;\n        }\n        button {\n            padding: 5px 10px;\n            cursor: pointer;\n        }\n\n        .controls_pc a{\n            font-size: 16px;\n            font-family: 'Inter';\n            line-height: 19px;\n            font-weight: 400;\n            color: #3250C3;\n        }\n\n        /* 为带有特定类的td设置背景图片 */\n            td.with-image {\n            background-image: url('https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Union.svg?v=1753958300');\n            \n            background-position: center;\n            background-repeat: no-repeat;\n            background-size: 15px 11px; /* 使图片匹配单元格尺寸 */\n            width:15px;\n            height:11px;\n            }\n            \n \n \n    </style>\n \n\n<div id=\"vergleich\">\n    <table id=\"myTable\" class=\"diytable \">\n            <tr style=\"border-top: none;\">\n                <td style=\"  border-collapse: collapse;\n  border: 1px solid #ddd; \n  border-top: none;       \n  border-left: none;      \n  border-right: none; width: 43.3%;\"></td>\n                <td style=\"width: 33.3%;\"><img src=\"https://cdn.shopify.com/s/files/1/0596/6367/9587/files/3_1.png?v=1753941892\" style=\"padding-bottom:20px;\" /><br>SolidFlex 2000</td>\n                <td style=\"width: 33.3%;\"><a href=\"/products/powerflex-2000-balkonkraftwerk-mit-speicher\"  ><img src=\"https://cdn.shopify.com/s/files/1/0596/6367/9587/files/3_1.png?v=1753941892\" style=\"padding-bottom:20px;\"/><br>PowerFlex 2000</a></td>\n            </tr>\n            <tr>\n                <td>Akkutyp</td>\n                <td>Halbfeste LiFePO₄</td>\n                <td>LiFePO₄</td>\n            </tr>\n            <tr>\n                <td>Kapazität</td>\n                <td>1792 Wh</td>\n                <td>2010 Wh</td>\n            </tr>\n            <tr >\n                <td>Lebenszyklen</td>\n                <td>8000</td>\n                <td>8000</td>\n            </tr>\n             <tr>\n                <td>PV-Eingang</td>\n                <td>2400W（je 600w）</td>\n                <td>2400W（je 600w）</td>\n            </tr>\n            <tr >\n                <td>Anzahl der MPPTS</td>\n                <td>4</td>\n                <td>4</td>\n            </tr>\n                        <tr >\n                <td>AC-Eingangs-/ Ausgangsleistung</td>\n                <td>2400W (mit Erweiterungsakkus)</td>\n                <td>2400W (mit Erweiterungsakkus)</td>\n            </tr>\n                        <tr >\n                <td>Kabellose Verbindung</td>\n                <td>Bluetooth, 2.4GHz Wi-Fi, LoRa, 4G (Optional)</td>\n                <td>Bluetooth, 2.4GHz Wi-Fi, LoRa, 4G (Optional)</td>\n            </tr>\n                        <tr >\n                <td>Wasserdichte Bewertung</td>\n                <td>IP65</td>\n                <td>IP65</td>\n            </tr>\n                        <tr >\n                <td>Einfacher Aufbau (Plug & Play)</td>\n                <td class=\"with-image\"> </td>\n                <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Akkuheizfunktion</td>\n                <td class=\"with-image\"> </td>\n               <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>App Steuerung</td>\n                <td class=\"with-image\"> </td>\n                <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Smart Meter für Nulleinspeisung</td>\n               <td class=\"with-image\"> </td>\n                <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Smart Plugs</td>\n               <td class=\"with-image\"> </td>\n               <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Bidirektionales Laden</td>\n               <td class=\"with-image\"> </td>\n               <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Zeitsteuerung</td>\n               <td class=\"with-image\"> </td>\n               <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Dynamische Stromtarife</td>\n               <td class=\"with-image\"> </td>\n                <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Notstromfunktion bei Stromausfall</td>\n               <td class=\"with-image\"> </td>\n               <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>EPS (10ms)</td>\n               <td class=\"with-image\"> </td>\n               <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Smarte DC-DC Technologie für effizientes Batteriemanagement</td>\n               <td class=\"with-image\"> </td>\n              <td class=\"with-image\"> </td>\n            </tr>\n                        <tr >\n                <td>Kompatibel mit 99% der Mikrowechselrichter</td>\n                <td class=\"with-image\"> </td>\n               <td class=\"with-image\"> </td>\n            </tr>\n\n                                    <tr >\n                <td>Bypass Modus bei vollem Akku</td>\n                <td class=\"with-image\"> </td>\n               <td class=\"with-image\"> </td>\n            </tr>\n    </table>\n    <div id=\"controls_pc\" class=\"controls_pc\" style=\"width:100%;text-align:center;\">\n        <a href=\"javascript:void(0)\"   onclick=\"showAll()\">weitere Infos &darr;</a>\n        <a href=\"javascript:void(0)\" style=\"display:none;\"  onclick=\"showPartial()\">weniger anzeigen &uarr;</a>\n    </div>\n</div>\n    <script>\n        function showAll() {\n           const rows = document.querySelectorAll('#myTable tr');\n            rows.forEach((row, index) => {\n                 row.style.display = '';\n            });\n            const arows = document.querySelectorAll('#controls_pc a');\n            arows.forEach((arow, index) => {\n                if(index==0){\n                    arow.style.display = 'none';\n                }else{\n                    arow.style.display = '';\n                }\n                 \n            });\n\n        }\n\n        function showPartial() {\n       \n            const rows = document.querySelectorAll('#myTable tr');\n            rows.forEach((row, index) => {\n                if (index >= 4) { // 只显示前2行，其余隐藏\n                    row.style.display = 'none';\n                } else {\n                    row.style.display = '';\n                }\n            });\n\n        const arows = document.querySelectorAll('#controls_pc a');\n            arows.forEach((arow, index) => {\n                if(index==0){\n                    arow.style.display = '';\n                }else{\n                    arow.style.display = 'none';\n                }\n                 \n            });\n        }\n\n        // 初始状态显示部分行\n        document.addEventListener('DOMContentLoaded', showPartial);\n    </script>",
-        "container": "fixed",
-        "color_scheme": "",
-        "padding_top": 60,
-        "padding_bottom": 60
       }
     },
     "rich_text_image_list_hmCAn8": {
@@ -1081,6 +1193,7 @@
         "heading_nEX8NT",
         "image_biTg8T"
       ],
+      "disabled": true,
       "name": "富文本与图片",
       "settings": {
         "color_scheme": "",
@@ -1218,7 +1331,7 @@
           "type": "card",
           "settings": {
             "title": "Konnektivität",
-            "content": "Bluetooth, 2.4GHz Wi-Fi, LoRa, 4G (Optional)",
+            "content": "Bluetooth, Wi-Fi (2.4/5 GHz)",
             "note": ""
           }
         },
@@ -1271,8 +1384,8 @@
       "settings": {
         "title": "Technische Daten",
         "ids": "parameter",
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "download_eFJ3zG": {
@@ -1725,17 +1838,18 @@
       "block_order": [
         "judge_me_reviews_review_widget_46Md4q"
       ],
+      "disabled": true,
       "settings": {
         "include_margins": true,
         "padding_top": 0,
         "padding_bottom": 0
       }
     },
-    "custom_liquid_XVMgRn": {
+    "custom_liquid_EnNBbQ": {
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "<style>\n  .haft-div{\n  \t  padding-top:100px;\n  \t  padding-bottom:100px;\n\t  max-width:1280px;\n\t  font-size:16px;\n  }\n\n @media (max-width: 768px) {\n\t  .haft-div{\n\t  \t\t padding-top:50px;\n\t  \t\tpadding-bottom:50px;\n\t  \t\tmax-width:1280px;\n\t  \t\tfont-size:14px;\n\t  }\n }\n</style>\n<div style=\"background-color:#000000;padding:15px; display: flex;\n  justify-content: center;\n  align-items: center;\">\n<div data-page-id=\"Dm5hdIPgEokbCOxNAt2c2IiTnMc\" data-lark-html-role=\"root\" data-docx-has-block-data=\"false\">\n\n<div   class=\"haft-div\">\n\n<div data-zone-id=\"0\" data-line-index=\"0\" data-line=\"true\">\n<span style=\"color: #8A8A8A;text-align: center;\">\n<h3 style=\"color:#8A8A8A;\">Haftungsausschluss</h3>\n</span>\n</div>\n\n\n<div data-zone-id=\"0\" data-line-index=\"1\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"2\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Stromkostenersparnis, CO₂-Einsparungen: Bis zu 1.046 € pro Jahr und 1996 kg CO₂.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"3\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>1. Stromerzeugung:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"4\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Die Berechnung basiert auf der folgenden Produktkonfiguration: SolidFlex 1200 (1792 Wh) + 4 x 500W-Solarmodule (2000W) + 5 Erweiterungsakkus (8960 Wh). Die jährlichen Sonnenstunden in Deutschland betragen 1160 Stunden, und die jährliche Stromproduktion beträgt: 1160 * 2000 = 2320 kWh. Die jährliche Speicherkapazität beträgt: 10,75 x 365 = 3924 kWh.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"5\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>2. Berechnungsannahmen:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"6\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Der Eigenverbrauchsanteil beträgt 85%<a href=\"https://solar.htw-berlin.de/rechner/unabhaengigkeitsrechner\"  style=\"color:gray\" target=\"_blank\" rel=\"nofollow\">(Quelle);</a> </span></div>\n<div data-zone-id=\"0\" data-line-index=\"7\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Fester Strompreis: 0,40 €/kWh;</span></div>\n<div data-zone-id=\"0\" data-line-index=\"8\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Preisdifferenz zwischen Spitzen- und Nebenzeiten: 0,132 €/kWh.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"9\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>3. CO₂-Reduktion:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"10\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Jede 1 kWh Solarstrom reduziert die CO₂-Emissionen um ungefähr 0,997 kg.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"11\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>4. Haftungsausschluss:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"12\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Alle Daten basieren auf idealen Testbedingungen; tatsächliche Ergebnisse können je nach individuellen Umständen variieren.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"13\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"14\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Berechnungsdetails:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"15\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Jährliche Stromkostenersparnis</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"16\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= Ersparnisse aus Eigenverbrauch + Ersparnisse aus KI-optimiertem Laden</span></div>\n<div data-zone-id=\"0\" data-line-index=\"17\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= 2320 kWh × 85% × 0,40 € + (3924 kWh − 2320 kWh × 85%) × 0,132 € </span></div>\n<div data-zone-id=\"0\" data-line-index=\"18\" data-line=\"true\"><span style=\"color: #8A8A8A;\">≈ 1.046,46 €</span></div>\n<div data-zone-id=\"0\" data-line-index=\"19\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Geschätzte CO₂-Emissionsreduktion</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"20\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= 2320 kWh × 85% × 0,997</span></div>\n<div data-zone-id=\"0\" data-line-index=\"21\" data-line=\"true\"><span style=\"color: #8A8A8A;\">≈ 1996 kg</span></div>\n<div data-zone-id=\"0\" data-line-index=\"22\" data-line=\"true\"><br></div>\n \n</div>\n\n</div>",
+        "custom_liquid": "<style>\n  .haft-div{\n  \t  padding-top:100px;\n  \t  padding-bottom:100px;\n\t  max-width:1280px;\n\t  font-size:14px;\n  }\n\n @media (max-width: 768px) {\n\t  .haft-div{\n\t  \t\t padding-top:50px;\n\t  \t\tpadding-bottom:50px;\n\t  \t\tmax-width:1280px;\n\t  \t\tfont-size:14px;\n\t  }\n }\n</style>\n<div style=\"background-color:#000000;padding:15px; display: flex;\n  justify-content: center;\n  align-items: center;\">\n<div data-page-id=\"Dm5hdIPgEokbCOxNAt2c2IiTnMc\" data-lark-html-role=\"root\" data-docx-has-block-data=\"false\">\n\n<div   class=\"haft-div\">\n\n<div data-zone-id=\"0\" data-line-index=\"0\" data-line=\"true\">\n<span style=\"color: #8A8A8A;text-align: center;\">\n<h3 style=\"color:#8A8A8A;\">Haftungsausschluss</h3>\n</span>\n</div>\n\n\n<div data-zone-id=\"0\" data-line-index=\"1\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"3\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>1. Systemkonfiguration</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"4\" data-line=\"true\"><span style=\"color: #8A8A8A;\">SolidFlex 1200 (1792 Wh) + 4 × 600 W Solarmodule (gesamt 2400 W) + 5 × SFA1800 Erweiterungsakkus (gesamt 8960 Wh)</span></div>\n<div data-zone-id=\"0\" data-line-index=\"13\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"5\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>2. Ertragsumfeld</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"6\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Basierend auf optimalen Installationsbedingungen in Süddeutschland (Module nach Süden ausgerichtet, Neigung 30°–35°) ergibt sich eine jährliche Volllaststundenzahl von ca. 1160 h:</span></div>\n<div data-zone-id=\"0\" data-line-index=\"7\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Jährlicher PV-Energieertrag: 1160 h × 2400 W = 2785 kWh</span></div>\n<div data-zone-id=\"0\" data-line-index=\"8\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Jährlich nutzbare Speicherkapazität: 10,75 kWh × 365 = 3924 kWh</span></div>\n<div data-zone-id=\"0\" data-line-index=\"13\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"9\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>3. Berechnungsannahmen</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"10\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Eigenverbrauchsquote: 90% <a href=\"https://solar.htw-berlin.de/rechner/\"  style=\"color:gray\" target=\"_blank\" rel=\"nofollow\">(Datenquelle);</a></span></div>\n<div data-zone-id=\"0\" data-line-index=\"10\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Strombezugspreis: 0,40 €/kWh (fest)</span></div>\n<div data-zone-id=\"0\" data-line-index=\"10\" data-line=\"true\"><span style=\"color: #8A8A8A;\">System-Gesamtwirkungsgrad (Round-Trip): 85%</span></div>\n<div data-zone-id=\"0\" data-line-index=\"10\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Optimierung durch dynamische Stromtarife: Durch die Nutzung von Preisunterschieden (Peak/Off-Peak) wird ein Zusatzertrag von 0,132 €/kWh für 30% der überschüssigen Energie angenommen.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"13\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"11\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>4. CO₂-Einsparung</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"12\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Pro erzeugter kWh Solarstrom können etwa 0,997 kg CO₂ vermieden werden.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"13\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"11\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>5. Jährlicher Ertrag (Berechnung)</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"14\" data-line=\"true\"><span style=\"color: #8A8A8A;\">2785 kWh × 85 % × 90 % × 0,40 € + (3924 kWh – 2784 kWh) × 0,132 € = 1002 €</span></div>\n<div data-zone-id=\"0\" data-line-index=\"13\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"15\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>6. Voraussichtliche jährliche CO₂-Reduktion</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"16\" data-line=\"true\"><span style=\"color: #8A8A8A;\">2784 kWh × 0,997 kg = 2776 kg</span></div>\n<div data-zone-id=\"0\" data-line-index=\"13\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"15\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>7. Rechtlicher Hinweis</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"18\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Netzeinspeisung: Gemäß den geltenden deutschen Richtlinien für steckerfertige PV-Anlagen (\"Plug-and-Play\") ist die maximale Einspeiseleistung des Wechselrichters in das öffentliche Netz auf 800 W begrenzt.\nLeistungsvorbehalt: Die genannten Werte basieren auf idealen Testbedingungen und Simulationsmodellen. Die tatsächliche Energieausbeute und die finanziellen Einsparungen können je nach Standort, Wetterbedingungen, individuellem Nutzungsverhalten und lokalen Netzgegebenheiten variieren.</span></div>\n \n<div data-zone-id=\"0\" data-line-index=\"22\" data-line=\"true\"><br></div>\n \n</div>\n\n</div>",
         "container": "full",
         "color_scheme": "",
         "padding_top": 60,
@@ -1747,27 +1861,27 @@
     "breadcrumbs",
     "main",
     "service_info_eEcMjc",
-    "youtube_popup_eHUQqP",
-    "video_p6VPeC",
-    "image_with_text_animate_7Re4hR",
+    "rich_text_progress_neVPDp",
+    "image_with_text_list_HL7qnh",
+    "rich_text_image_bes_nFWHUX",
+    "video_hero_bes_TgfaRU",
+    "video_wcxYyA",
+    "bk1600ultra_scence_tabs_myPAPz",
+    "fullscreen_slider_1200_HbUqMH",
     "rich_text_x6YUUc",
-    "slider_center_yFRkwq",
     "sf2000_scence_tabs_7UhwRM",
     "rich_text_ETK98q",
-    "video_AzeRLN",
     "rich_text_image_list_xWPfNc",
+    "bes_product_accordion_Rtimqn",
     "rich_text_image_list_fg6cwJ",
     "image_with_text_list_9kpz7i",
     "rich_text_image_list_PJKrKJ",
-    "image_with_text_list_HL7qnh",
     "multicolumn_xTyLxF",
-    "fullscreen_slider_7gy4ke",
-    "custom_liquid_ma3yWD",
     "rich_text_image_list_hmCAn8",
     "parameter_3GPQ6x",
     "download_eFJ3zG",
     "collapsible_tabs_NyK4qU",
     "1758853090704a66e2",
-    "custom_liquid_XVMgRn"
+    "custom_liquid_EnNBbQ"
   ]
 }

@@ -109,7 +109,7 @@
     {% comment %} border: 2px solid #DC222C; {% endcomment %}
   }    
  
-  .rabatt p{color: #1A1A1A!important;text-align: left;max-width:1380px;line-height: 22px;font-size: 18px;}
+  .rabatt p{color: #1A1A1A!important;text-align: left;max-width:1380px;line-height: 17px;font-size: 14px;}
   .content-wrapper .grid-title{line-height: 34px;font-size: 28px;font-family: 'Inter';font-weight: 700;color:#1A1A1A!important;}
   .content-wrapper .grid-des{margin-top:6px;line-height: 24px;font-size: 20px;font-family: 'Inter';font-weight: 500;color:#1A1A1A!important;}
   .content-wrapper .grid-des strong{font-weight: 700;display:block;}
@@ -128,6 +128,23 @@
       transform: none;
       box-shadow: none;
   }
+
+  
+      #shopify-section-{{ section.id }} .title-container {
+      display: flex;
+      align-items: center!important;  /* 关键：垂直居中 */
+      gap: 0px;  /* 控制间距 */
+}
+
+#shopify-section-{{ section.id }} .icon-gift {
+  flex-shrink: 0;  /* 防止SVG被压缩 */
+  color: #333;
+}
+
+#shopify-section-{{ section.id }} h2 {
+  margin: 0;  /* 移除默认边距 */
+  flex: 1;  /* 让h2占据剩余空间 */
+}
 
  
 
@@ -222,7 +239,7 @@
     gap: 10px;
   }
 
-    #shopify-section-{{ section.id }} .icon-gift{ display:none;}
+     #shopify-section-{{ section.id }} .icon-gift{ width: 2rem; height: 1.5rem;margin: 0px 5px;}
 
 
   .rabatt p{max-width:100%;line-height: 15px;font-size: 12px;}
@@ -235,12 +252,18 @@
 <div class="section scene-section color-scheme-1"   id="{{section.settings.ids}}">
   <div class="page-width ">
     <div class="rich-text">
-     <h2 class="title"> 
-      <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+      
+      <div class="flex items-center  " style="justify-content: center;">
+      <div class="title-container  ">
         {% render 'icon-gift-left' -%}
-        <span>{{section.settings.section_title}}</span>
-        {% render 'icon-gift-right' -%}
-    </motion-element></h2>
+        <h2 class="title"> 
+            <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+              <span>{{section.settings.section_title}}</span>
+          </motion-element>
+        </h2>
+      {% render 'icon-gift-right' -%}
+    </div>
+    </div>
     <div class="section__wrapper grid-container product-box" style="">
           {% for block in section.blocks %}
            {% case block.type %}
@@ -288,7 +311,7 @@
                   <div class="flex-container">
                   <button
                     type="button"  data-rabatt="{{ block.settings.rabatt }}"
-                    class="btn btn--primary links copy-button"  {% if block.settings.rabatt != blank %}  aria-controls="PopupModal-{{ section.id }}" {% endif %} 
+                    class="btn btn--primary links copy-button"  {% if block.settings.rabatt != blank %}  aria-controls="1PopupModal-{{ section.id }}" {% endif %} 
                   > 
                     <a href="javascript:void(0)" class="grid-button">
                       {{ block.settings.button_title_copy }}
@@ -303,7 +326,7 @@
 
             {% endcase %}
           {% endfor %}
-                          <basic-modal id="PopupModal-{{section.id}}" class="drawer modal" style="--modal-width: 50rem;">
+                          <basic-modal id="PopupModal-off-{{section.id}}" class="drawer modal" style="--modal-width: 50rem;">
                   <div class="fixed-overlay" aria-controls="PopupModal-{{section.id}}"></div>
                   <div class="drawer__inner tip-background">
                     <div class="drawer__body v-scrollable">
@@ -353,17 +376,27 @@ document.addEventListener("DOMContentLoaded", function() {
       // 为按钮添加点击事件
      var grid1=document.getElementsByClassName('block-1')[0]; 
      grid1.addEventListener('click', function() {
-                                          window._klOnsite = window._klOnsite || [];
-window._klOnsite.push(['openForm', 'SaexN5']);
+        // 弹出订阅框
+        //window._klOnsite = window._klOnsite || [];
+        //window._klOnsite.push(['openForm', 'SaexN5']);
 
-            });
+        // 获取目标元素并滚动到可视区域
+        document.getElementById('spinwheel').scrollIntoView();
+
+        // 带平滑滚动效果
+        document.getElementById('spinwheel').scrollIntoView({
+            behavior: 'smooth',  // 平滑滚动
+            block: 'start',      // 垂直对齐方式：start, center, end, nearest
+            inline: 'nearest'    // 水平对齐方式
+        });
+      });
 
           // 为按钮添加点击事件
      var grid2=document.getElementsByClassName('block-2')[0]; 
-     grid2.addEventListener('click', function() {
+     {% comment %} grid2.addEventListener('click', function() {
  copyText(rabattCode, this);
 
-            });
+            }); {% endcomment %}
 
 
 var buttons=document.getElementsByClassName('copy-button');

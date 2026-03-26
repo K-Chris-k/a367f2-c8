@@ -17,7 +17,7 @@
 .tabs__nav {
   display: inline-grid;
   grid-auto-flow: column;
-  grid-auto-columns: max-content;
+  /* grid-auto-columns: max-content; */
   justify-content: flex-start;
   vertical-align: top;
   overflow-y: hidden;
@@ -108,7 +108,7 @@
   .tabs__nav-wrap {
     justify-content: center;
     min-width: 100%;
-    max-width: calc(100% + 3rem);
+    /* max-width: calc(100% + 3rem); */
     margin-inline: -1.5rem;
   }
   .tabs__nav {

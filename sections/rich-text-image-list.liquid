@@ -156,6 +156,24 @@
       height: 100%;
     } {% endcomment %}
       #shopify-section-{{ section.id }} .icon-gift{ width: 3rem; height: 3rem;margin: 0px 10px;}
+
+      #shopify-section-{{ section.id }} .title-container {
+  display: flex;
+  align-items: center;  /* 关键：垂直居中 */
+  justify-content: center;
+  gap: 0px;  /* 控制间距 */
+}
+
+#shopify-section-{{ section.id }} .icon-gift {
+  flex-shrink: 0;  /* 防止SVG被压缩 */
+  color: #333;
+}
+
+#shopify-section-{{ section.id }} h2 {
+  margin: 0;  /* 移除默认边距 */
+  flex: 1;  /* 让h2占据剩余空间 */
+}
+
   @media (max-width: 767.98px) {
       #shopify-section-{{ section.id }} .rich-text-list-section{padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;padding-bottom: {{ section.settings.padding_bottom | divided_by: 2}}px;}
       #shopify-section-{{ section.id }} .image-wrapper-container .image-wrapper{margin-top:{{ section.settings.image_top | divided_by: 2 }}px}
@@ -176,7 +194,13 @@
         top: -40px;
         font-size: 30px;
       }
-         #shopify-section-{{ section.id }} .icon-gift{ display:none;}
+          #shopify-section-{{ section.id }} .icon-gift{ width: 2rem; height: 1.5rem;}
+    #shopify-section-{{ section.id }} .icon-gift-left{ margin: 0px 0px 0px 50px;}
+    #shopify-section-{{ section.id }} .icon-gift-right{ margin: 0px 50px 0px 0px;}
+
+    #shopify-section-{{ section.id }} .title-container {
+      margin: 0px 0px;
+    }
   }
 </style>
 {%- assign motion_delay = 50 -%}
@@ -197,23 +221,29 @@
 
             {%- assign motion_delay = motion_delay | plus: 50 -%}
           {% when 'heading' %}
+             <div class="flex items-center  " style="justify-content: center;">
+            <div class="{% if section.settings.show_title_icon != true %} page-width {% endif %}title-container">
+                   {% if section.settings.show_title_icon != false %}
+                   {% render 'icon-gift-left' -%}
+                 {% endif %}
             <h2
-              class="page-width rich-text__heading {{ block.settings.heading_size }}"
+              class=" rich-text__heading {{ block.settings.heading_size }}"
               {{ block.shopify_attributes }}
             >
               <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
-                 {% if section.settings.show_title_icon != false %}
-                   {% render 'icon-gift-left' -%}
-                 {% endif %}
+          
                 {% render 'highlight-text',
                   text: block.settings.heading,
                   style: block.settings.heading_highlight_style
                 %}
-                {% if section.settings.show_title_icon != false %}
-                   {% render 'icon-gift-right' -%}
-                 {% endif %}
+       
               </motion-element>
             </h2>
+                     {% if section.settings.show_title_icon != false %}
+                   {% render 'icon-gift-right' -%}
+                 {% endif %}
+            </div>
+            </div>
             {%- assign motion_delay = motion_delay | plus: 50 -%}
           {% when 'text' %}
             <motion-element
@@ -583,7 +613,7 @@
       "type": "range",
       "id": "padding_top",
       "min": 0,
-      "max": 120,
+      "max": 180,
       "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
@@ -593,7 +623,7 @@
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
-      "max": 120,
+      "max": 180,
       "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",

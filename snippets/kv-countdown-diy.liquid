@@ -55,7 +55,7 @@
     padding: 12px 10px;
     border-radius: 4px;
     border: 1px solid #FF9400;
-    min-width:47px;
+    {% comment %} min-width:47px; {% endcomment %}
     max-width:47px;
     text-align: center;
     letter-spacing: 0.5px;
@@ -72,18 +72,18 @@
   }
 
   .countdown-label {
-    font-size: 0.8em;
+    font-size: 12px;
     margin-top: 3px;
     letter-spacing: 0.5px;
     color:#000000
   }
 
   .countdown-style-compact .countdown-label {
-    font-size: 0.7em;
+    font-size: 12px;
   }
 
   .countdown-style-large .countdown-label {
-    font-size: 0.9em;
+    font-size: 12px;
   }
 
   /* 响应式设计 */
@@ -101,7 +101,7 @@
     .countdown-number {
       font-size: 1.8rem;
       padding: 7px;
-      min-width: 40px;
+      {% comment %} min-width: 40px; {% endcomment %}
       max-width: 40px
     }
 
@@ -119,49 +119,46 @@
   }
   }
 </style>
-<div class="countdown-wrapper" data-countdown="{{ block.settings.end_date | escape }}">
-  {%- if block.settings.countdown_title != blank -%}
-    <div class="countdown-title">{{ block.settings.countdown_title }}</div>
-  {%- endif -%}
-
+<div class="countdown-wrapper" data-countdown="2026-03-31 23:59:59">
+    <div class="countdown-title">10. – 31. März</div>
   <div
-    class="countdown-timer countdown-style-{{ block.settings.countdown_style }}"
-    data-show-days="{{ block.settings.show_days }}"
-    data-show-hours="{{ block.settings.show_hours }}"
-    data-show-minutes="{{ block.settings.show_minutes }}"
-    data-show-seconds="{{ block.settings.show_seconds }}"
-    style="color: {{ block.settings.countdown_text_color }};"
+    class="countdown-timer countdown-style-standard"
+    data-show-days="true"
+    data-show-hours="true"
+    data-show-minutes="true"
+    data-show-seconds="true"
+    style="color: #ffffff;"
   >
-    {%- if block.settings.show_days -%}
+  
       <div class="countdown-item">
         <span class="countdown-number days">00</span>
         <span class="countdown-label">{{ 'countdown.days' | t }}</span>
       </div>
       <div class="dot">:</div>
-    {%- endif -%}
+    
 
-    {%- if block.settings.show_hours -%}
+    
       <div class="countdown-item">
         <span class="countdown-number hours">00</span>
         <span class="countdown-label">{{ 'countdown.hours' | t }}</span>
       </div>
       <div class="dot">:</div>
-    {%- endif -%}
+ 
 
-    {%- if block.settings.show_minutes -%}
+   
       <div class="countdown-item">
         <span class="countdown-number minutes">00</span>
         <span class="countdown-label">{{ 'countdown.minutes' | t }}</span>
       </div>
       <div class="dot">:</div>
-    {%- endif -%}
+  
 
-    {%- if block.settings.show_seconds -%}
+    
       <div class="countdown-item">
         <span class="countdown-number seconds">00</span>
         <span class="countdown-label">{{ 'countdown.seconds' | t }}</span>
       </div>
-    {%- endif -%}
+   
   </div>
 </div>
 

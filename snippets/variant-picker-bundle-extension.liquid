@@ -208,11 +208,14 @@
       </div>
     {%- endif -%}
     {%- comment -%} 基础产品部分 {%- endcomment -%}
-    <div class="variant-extension-base variant-extension-variant-seletor-custom-layout">
+     <div class="variant-extension-base  variant-extension-variant-seletor-custom-layout ">
       {%- if is_multi_host -%}
+        <div class="custom-layout-main-product-image-container-host-product-custom-layout-image">
         {%- comment -%} Multi Host 模式：显示主产品基础信息 {%- endcomment -%}
         {%- if base_image -%}
+          
           <div class="variant-extension-base-image">
+            
             <img
               src="{{ base_image | image_url: width: 160 }}"
               alt="{{ option_config.base_display_name | default: main_product.title }}"
@@ -241,6 +244,7 @@
             </span>
           </div>
         </div>
+      </div>
       {%- else -%}
         {%- comment -%} Bundle with Battery 模式：显示主机信息 {%- endcomment -%}
         <div class="custom-layout-main-product-image-container-host-product-custom-layout-image">
@@ -587,7 +591,7 @@
                 data-qty="{{ qty }}"
                 data-variant-id="{{ qty_variant.id }}"
                 data-price="{{ qty_variant.price }}"
-                data-compare-price="{{ qty_variant.compare_at_price }}"
+                data-compare-price="{{ qty_variant.compare_at_price | default: qty_variant.price}}"
                 data-capacity="{{ total_capacity }}"
                 {% if button_image_url %}
                   data-image-url="{{ button_image_url }}"
@@ -907,7 +911,6 @@
           // 触发 load 事件以确保图片加载
           const img = new Image();
           img.onload = () => {
-            console.log('[Bundle Extension] 图片加载成功');
           };
           img.src = imageUrl;
         }
@@ -953,7 +956,8 @@
             if (getComputedStyle(imageContainer).position === 'static') {
               imageContainer.style.position = 'relative';
             }
-            imageContainer.appendChild(textOverlay);
+            // 2026-03-18  不显示电池包数量  暂时先不隐藏
+            imageContainer.appendChild(textOverlay); 
           }
         }
 
@@ -1025,7 +1029,6 @@
         const selectedBatteryBtn = document.querySelector(
           '.variant-extension-qty-buttons:not(.variant-extension-qty-buttons--layout-selector) .variant-extension-qty-btn.selected'
         );
-        // 如果当前电池没有任何选中按钮，也视为“非默认”（走 alt text 模式）
         if (!selectedBatteryBtn) return true;
         return selectedBatteryBtn.dataset.qty !== '0';
       }
@@ -1053,7 +1056,6 @@
         return selectedBatteryBtn.dataset.capacity || '';
       }
 
-      // 将类似 "3584Wh" 或 "3.5 kWh" 的文案解析为数值
       function parseCapacityValue(text) {
         if (!text) return null;
         const normalized = String(text).replace(',', '.');
@@ -1069,33 +1071,42 @@
         const match = String(text).match(/([a-zA-Z]+)$/);
         return match ? match[1] : '';
       }
-
-      // 统一更新容量显示：layout 容量 + 电池容量（代码累加，页面只显示总和）
       function updateCombinedCapacityDisplay() {
         if (!capacityDisplay) return;
 
         const layoutText = getSelectedLayoutCapacityText();
-        const batteryText = getSelectedBatteryCapacityText();
-
         const layoutVal = parseCapacityValue(layoutText);
-        const batteryVal = parseCapacityValue(batteryText);
 
-        // 如果两个都解析不到数值，就保持当前值（由后端初始渲染）
-        if (layoutVal === null && batteryVal === null) {
+        const selectedBatteryBtn = document.querySelector(
+          '.variant-extension-qty-buttons:not(.variant-extension-qty-buttons--layout-selector) .variant-extension-qty-btn.selected'
+        );
+
+        const qty = selectedBatteryBtn ? (parseInt(selectedBatteryBtn.dataset.qty) || 0) : 0;
+
+        let batteryContribution = 0;
+        if (qty > 0 && selectedBatteryBtn) {
+          const batteryTotalVal = parseCapacityValue(selectedBatteryBtn.dataset.capacity);
+          const zeroBtn = document.querySelector(
+            '.variant-extension-qty-btn.bundle-extension-btn[data-qty="0"]'
+          );
+          const baseVal = zeroBtn ? (parseCapacityValue(zeroBtn.dataset.capacity) || 0) : 0;
+          batteryContribution = (batteryTotalVal || 0) - baseVal;
+        }
+
+        if (layoutVal === null && batteryContribution === 0 && qty === 0) {
           return;
         }
 
-        const sum = (layoutVal || 0) + (batteryVal || 0);
+        const sum = (layoutVal || 0) + batteryContribution;
         const unit =
           extractCapacityUnit(layoutText) ||
-          extractCapacityUnit(batteryText) ||
+          (selectedBatteryBtn ? extractCapacityUnit(selectedBatteryBtn.dataset.capacity || '') : '') ||
           '';
 
         let sumText;
         if (Number.isInteger(sum)) {
           sumText = String(sum);
         } else {
-          // 保留最多两位小数，并去掉末尾的 .00
           sumText = sum.toFixed(2).replace(/\.00$/, '');
         }
 

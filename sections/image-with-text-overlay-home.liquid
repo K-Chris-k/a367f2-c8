@@ -38,7 +38,8 @@
     font-size: 27px;
     line-height: 29px;
     margin-bottom:0px;
-    padding-top:18px;
+    margin-top:5px;
+    padding-top:0px;
     padding-bottom:10px;
     }
 
@@ -66,26 +67,30 @@
     #shopify-section-{{ section.id }} .icon-list ul li {max-width:108px; margin-bottom: 30px;}
     #shopify-section-{{ section.id }} .icon-list ul li img{width:45px;height:45px}
     #shopify-section-{{ section.id }} .icon-list ul li .title{line-height: 16px; font-size: 14px;}
-    #shopify-section-{{ section.id }} .content-overlay--middle-left { justify-content: start; top: 2.2rem;     align-items:center;}
+    #shopify-section-{{ section.id }} .content-overlay--middle-left { justify-content: start; top: 0rem;     align-items:center;}
     #shopify-section-{{ section.id }} .content-overlay--middle-left .z-1{ max-width: 100%; text-align: center; }
-    #shopify-section-{{ section.id }} .hd2 { line-height: 36px;font-size: 30px;}
+    #shopify-section-{{ section.id }} .hd2 { line-height: 29px;font-size: 22px;}
     #shopify-section-{{ section.id }} .rich-text__text { margin-top:10px; line-height: 19px;font-size: 16px;}
     #shopify-section-{{ section.id }} .rich-text__text p { margin:0px; color:#1A1A1A;line-height: 19px;font-size: 16px;font-weight: 500;}
     #shopify-section-{{ section.id }} .btn-wrapper{ margin-top:3rem;justify-content: center; gap:16px; }
 
-        #shopify-section-{{ section.id }}  .relative{
+        {% comment %} #shopify-section-{{ section.id }}  .relative{
       display: flex;
       flex-wrap: wrap;  /* 允许换行 */
       justify-content: center;  /* 水平居中 */
 
-    }
+    } {% endcomment %}
 
+    #shopify-section-{{ section.id }} .media--extra-large
+    {
+        height: 550px;  
+    }
 
    #shopify-section-{{ section.id }} .text-subheading {
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    padding-top:38px;
+    padding-top:10px;
     }
 
    #shopify-section-{{ section.id }} .text-subheading strong{
@@ -122,6 +127,38 @@
 
   }
 
+    @media (max-width: 430px){
+     #shopify-section-{{ section.id }} .media--extra-large
+      {
+          height: 650px;  
+      }
+    
+    }
+
+        @media (max-width: 410px){
+     #shopify-section-{{ section.id }} .media--extra-large
+      {
+          height: 620px;  
+      }
+    
+    }
+
+        @media (max-width: 390px){
+     #shopify-section-{{ section.id }} .media--extra-large
+      {
+          height: 600px;  
+      }
+    
+    }
+
+    @media (max-width: 380px){
+     #shopify-section-{{ section.id }} .media--extra-large
+      {
+          height: 550px;  
+      }
+    
+    }
+
  
 
 </style>
@@ -151,32 +188,13 @@
                 >
               {%- endif -%}
 
-                                            <source
-                                media="(min-width: 767px)"
-                                srcset="
-                                {{ section.settings.image | image_url: width: '1000x' }} 1000w,
-                                 {{ section.settings.image | image_url: width: '1200x' }} 1200w, 
-                                  {{ section.settings.image | image_url: width: '1400x' }} 1400w, 
-                                   {{ section.settings.image | image_url: width: '1800x' }} 1800w, 
-                                    {{ section.settings.image | image_url: width: '2000x' }} 2000w, 
-                                     {{ section.settings.image | image_url: width: '2400x' }} 2400w, 
-                                     {{ section.settings.image | image_url: width: '2800x' }} 2800w, 
-                                      {{ section.settings.image | image_url: width: '3200x' }} 3200w, 
-                                       {{ section.settings.image | image_url: width: '3400x' }} 3400w, 
-                                        {{ section.settings.image | image_url: width: '3600x' }} 3600w, 
-                                       {{ section.settings.image | image_url: width: '3840x' }} 3840w
-                                    "
-                                width="{{ section.settings.image.width }}"
-                                height="{{ section.settings.image.height }}"
-                              >
-
               {{-
                 section.settings.image
                 | image_url: width: section.settings.image.width
                 | image_tag:
                   loading: 'lazy',
                   sizes: sizes,
-                  widths: '300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200,3400,3600,3840',
+                  widths: '300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
                   is: 'image-lazy'
               -}}
             </picture>
@@ -941,7 +959,7 @@
   ],
   "presets": [
     {
-      "name": "黑五活动页kv",
+      "name": "首页活动页kv",
       "blocks": [
         {
           "type": "subheading"
