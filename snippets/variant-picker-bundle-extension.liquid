@@ -1045,13 +1045,26 @@
         return match ? match[1].trim() : '';
       }
 
-      // 获取当前电池选择器的容量文案（忽略 0x）
-      function getSelectedBatteryCapacityText() {
+      // 获取当前电池选择（优先 input:checked，避免 selected class 时序问题）
+      function getSelectedBatterySelection() {
+        const checkedInput = document.querySelector('.bundle-extension-radio:checked');
+        if (checkedInput) {
+          return {
+            qty: parseInt(checkedInput.dataset.qty || '0', 10) || 0,
+            capacityText: checkedInput.dataset.capacity || '',
+          };
+        }
+
         const selectedBatteryBtn = document.querySelector(
           '.variant-extension-qty-buttons:not(.variant-extension-qty-buttons--layout-selector) .variant-extension-qty-btn.selected'
         );
-        if (!selectedBatteryBtn) return '';
-        return selectedBatteryBtn.dataset.capacity || '';
+        if (!selectedBatteryBtn) {
+          return { qty: 0, capacityText: '' };
+        }
+        return {
+          qty: parseInt(selectedBatteryBtn.dataset.qty || '0', 10) || 0,
+          capacityText: selectedBatteryBtn.dataset.capacity || '',
+        };
       }
 
       function parseCapacityValue(text) {
@@ -1072,22 +1085,47 @@
         const match = t.match(/([a-zA-Z]+)$/);
         return match ? match[1] : '';
       }
-      function updateCombinedCapacityDisplay() {
+      function updateCombinedCapacityDisplay(preferredBatterySelection) {
         if (!capacityDisplay) return;
 
         const layoutText = getSelectedLayoutCapacityText();
-        const batteryText = getSelectedBatteryCapacityText();
+        const batterySelection = preferredBatterySelection || getSelectedBatterySelection();
+        const batteryText = batterySelection.capacityText;
 
         const layoutVal = parseCapacityValue(layoutText);
-        const batteryVal = parseCapacityValue(batteryText);
+        const selectedBatteryVal = parseCapacityValue(batteryText);
+        const zeroInput = document.querySelector('.bundle-extension-radio[data-qty="0"]');
+        const zeroBatteryVal = zeroInput ? parseCapacityValue(zeroInput.dataset.capacity || '') : null;
 
         // 两边都解析不到，就不覆盖页面初始值
-        if (layoutVal === null && batteryVal === null) return;
+        if (layoutVal === null && selectedBatteryVal === null) return;
 
-        // 页面只展示“总容量”，即 layout + 当前选中电池绝对容量的和
-        const sum = (layoutVal || 0) + (batteryVal || 0);
+        let sum = 0;
+        // 自适应两类商品配置：
+        // 1) 电池数据是“总容量模型”（0x 容量 ~= layout 容量）→ 直接显示当前电池容量
+        // 2) 电池数据是“增量模型”（0x=0）→ 显示 layout + 电池增量
+        const useBatteryAsTotalModel =
+          layoutVal !== null && zeroBatteryVal !== null && Math.abs(layoutVal - zeroBatteryVal) < 0.01;
 
-        const unit = extractCapacityUnit(layoutText) || extractCapacityUnit(batteryText) || '';
+        if (useBatteryAsTotalModel) {
+          // 0x/1x/... 按电池按钮数据直接显示总容量
+          sum = selectedBatteryVal !== null ? selectedBatteryVal : (layoutVal || 0);
+        } else if (layoutVal === null) {
+          // 兜底：部分商品 layout 标题里解析不到容量时，直接使用电池按钮容量
+          // 避免 0x 场景被错误显示为 0Wh
+          sum = selectedBatteryVal !== null ? selectedBatteryVal : 0;
+        } else {
+          // 增量模型：qty=0 不加电池；qty>0 才加
+          const qty = batterySelection.qty || 0;
+          const batteryContribution = qty > 0 ? (selectedBatteryVal || 0) : 0;
+          sum = (layoutVal || 0) + batteryContribution;
+        }
+
+        const unit =
+          extractCapacityUnit(useBatteryAsTotalModel ? batteryText : layoutText) ||
+          extractCapacityUnit(batteryText) ||
+          extractCapacityUnit(layoutText) ||
+          '';
 
         let sumText;
         if (Number.isInteger(sum)) {
@@ -1447,8 +1485,18 @@
           const totalCapacity = this.dataset.capacity;
           const otherText = this.dataset.otherText || '';
 
-          // 更新容量显示：使用统一的 layout + 电池 组合逻辑
-          updateCombinedCapacityDisplay();
+          // 先同步选中的 radio，再计算容量，避免 0x/1x 时取到上一次值
+          const inputId = this.getAttribute('for');
+          const radio = document.getElementById(inputId);
+          if (radio) {
+            radio.checked = true;
+          }
+
+          // 使用当前点击按钮的数据优先计算（更稳）
+          updateCombinedCapacityDisplay({
+            qty: parseInt(qty || '0', 10) || 0,
+            capacityText: totalCapacity || '',
+          });
 
           // 更新电池包图片
           if (batteryImage) {
@@ -1489,12 +1537,7 @@
             }
           }
 
-          // 获取选中的 radio input 并标记为选中（Bundle 模式不需要触发 change 事件，避免触发 variant-selects 重置）
-          const inputId = this.getAttribute('for');
-          const radio = document.getElementById(inputId);
-          if (radio) {
-            radio.checked = true;
-          }
+          // Bundle 模式不需要触发 change 事件，避免触发 variant-selects 重置
 
           // 检查是否有叠加图片，如果有则根据电池包数量切换主图样式类
           const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
