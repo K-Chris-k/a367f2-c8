@@ -523,60 +523,43 @@
         "accessibility_info": "Slideshow about our brand"
       }
     },
-    "video_with_text_animate_CXfDDF": {
-      "type": "video-with-text-animate",
+    "rich_text_video_2026_Vr4iMJ": {
+      "type": "rich-text-video-2026",
       "blocks": {
-        "heading_GVVwcz": {
+        "heading_Ejiibt": {
           "type": "heading",
           "settings": {
-            "heading": "Talk about your brand",
-            "heading_size": "hd1",
+            "heading": "Wie funktioniert Indevolt BK1600?",
+            "heading_size": "hd2",
             "heading_highlight_style": "none"
           }
         },
-        "text_X7Uajh": {
+        "text_JTXcq3": {
           "type": "text",
           "settings": {
-            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
-            "text_size": "text-base"
-          }
-        },
-        "video_NBPWnG": {
-          "type": "video",
-          "settings": {
-            "video": "shopify://files/videos/de.mp4",
-            "autoplay": true,
-            "loop": true,
-            "muted": true,
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "description": "产品展示视频"
-          }
-        },
-        "big_image_nyq3rg": {
-          "type": "big_image",
-          "disabled": true,
-          "settings": {
-            "container": "fixed",
-            "image": "shopify://shop_images/All-in-One-pc-new.jpg",
-            "image_text": "Sicherer  /  langlebiger  /  Dichter",
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style": "btn--primary",
-            "button_target": "_self"
+            "text": "<p>Mit dem Indevolt BK1600 verwandelst du die von deinen Solarpanelen erzeugte Energie effizient in Wechselstrom für dein Zuhause. Überschüssige Energie wird in Batterien gespeichert, sodass du jederzeit auf eine zuverlässige Energiequelle zugreifen kannst, auch nachts. So versorgst du dein Zuhause rund um die Uhr mit Solarstrom, reduzierst deine Abhängigkeit vom Stromnetz und sparst Kosten.</p>",
+            "text_size": "text-lg"
           }
         }
       },
       "block_order": [
-        "heading_GVVwcz",
-        "text_X7Uajh",
-        "video_NBPWnG",
-        "big_image_nyq3rg"
+        "heading_Ejiibt",
+        "text_JTXcq3"
       ],
-      "name": "video-with-text-animate",
+      "name": "富文本+视频+2026",
       "settings": {
         "color_scheme": "",
+        "bg_color": "#ffffff",
         "content_alignment": "center",
         "ids": "",
+        "show_title_icon": false,
+        "container": "fixed",
+        "video": "shopify://files/videos/bk1600-video2.mp4",
+        "video_mobile": "shopify://files/videos/bk1600-video2.mp4",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "enable_parallax": true,
+        "img-href": "",
         "padding_top": 60,
         "padding_bottom": 60,
         "image_top": 60,
@@ -595,6 +578,6 @@
     "bes_product_tabs_K38LWN",
     "image_with_text_overlay_home_rEHXX9",
     "slideshow_Hw3eJe",
-    "video_with_text_animate_CXfDDF"
+    "rich_text_video_2026_Vr4iMJ"
   ]
 }

@@ -19,148 +19,60 @@
     #shopify-section-{{ section.id }} .container-full .grid-image {width: 100%;height: auto;object-fit: contain; }
     #shopify-section-{{ section.id }} .grid-image { width: revert-layer;height: auto;object-fit: contain; }
 
-    /* 新增视频区块样式 */
-    #shopify-section-{{ section.id }} .video-popup-block {
-      margin-top: 40px;
-    }
-
-    #shopify-section-{{ section.id }} .video-container-inner {
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    #shopify-section-{{ section.id }} .video-thumbnail {
-       width: 100%;
-       height: 100%;
-       object-fit:contain;
-       transition: opacity 0.3s ease;
-     }
-
-    .play-button {
-       position: absolute;
-       top: 50%;
-       left: 50%;
-       transform: translate(-50%, -50%);
-       width: 50px;
-       height: 50px;
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       color:#fff;
-       transition: transform 0.2s ease;
-    }
-
-    .video-modal {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.9);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .video-modal.active {
-      display: flex;
-      opacity: 1;
-    }
-
-    .video-modal .modal-content {
-      width: 100%;
-      max-width: 1200px;
-      position: relative;
-      padding:0px;
-      background:none;
-      border:none
-    }
-
-    .close-button {
-      position: absolute;
-      top: -50px;
-      right: 0;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 40px;
-      cursor: pointer;
-    }
-
-    .video-player {
-      position: relative;
-      padding-bottom: 56.25%;
-      height: 0;
-      overflow: hidden;
-    }
-
-    .video-player iframe,
-    .video-player video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    #shopify-section-{{ section.id }} .video-container-custom {
-      position: relative;
-      margin-top:40px;
-      overflow: hidden;
-      /* aspect-ratio: {{ section.settings.video_aspect_ratio }};  */
-    }
-    #shopify-section-{{ section.id }} .custom-video {
-      width: 100%;
-      height: 100%;
-      display: block;
-      object-fit: cover;
-      /* border-radius: {{ section.settings.video_radius }}px;  */
-    }
+  
     #shopify-section-{{ section.id }} .hd2 strong{display:block}
-    {% comment %} #shopify-section-{{ section.id }} .video-controls {
-      display:none;
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 15px;
-      z-index: 2;
-    }
-    #shopify-section-{{ section.id }} .video-play-button,
-    #shopify-section-{{ section.id }} .video-sound-button {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-    #shopify-section-{{ section.id }} .video-play-button:hover,
-    #shopify-section-{{ section.id }} .video-sound-button:hover {
-      background: rgba(255, 255, 255, 1);
-      transform: scale(1.1);
-    }
-    #shopify-section-{{ section.id }} .video-placeholder {
-      background: #f5f5f5;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-    } {% endcomment %}
+    
+      #shopify-section-{{ section.id }} .icon-gift{ width: 3rem; height: 3rem;margin: 0px 10px;}
 
- 
-   .video-div-grid{
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-    }
+      #shopify-section-{{ section.id }} .title-container {
+  display: flex;
+  align-items: center;  /* 关键：垂直居中 */
+  justify-content: center;
+  gap: 0px;  /* 控制间距 */
+}
+
+#shopify-section-{{ section.id }} .icon-gift {
+  flex-shrink: 0;  /* 防止SVG被压缩 */
+  color: #333;
+}
+
+#shopify-section-{{ section.id }} h2 {
+  margin: 0;  /* 移除默认边距 */
+  flex: 1;  /* 让h2占据剩余空间 */
+}
+
+
+   #shopify-section-{{ section.id }} {
+     margin-top: {{ section.settings.padding_top }}px;margin-bottom: {{ section.settings.padding_bottom }}px;
+     {%- if section.settings.video_ratio == 'adapt' %}
+       {%- if poster != null -%}
+       --media-ratio: {{ poster.aspect_ratio }};
+       {%- else -%}
+       --media-ratio: 16/9;
+       {%- endif -%}
+     {% else -%}
+       --media-ratio: {{ section.settings.video_ratio }};
+     {%- endif -%}
+
+   }
+
+   #shopify-section-{{ section.id }} .video_desk_show{ display:block; }
+   #shopify-section-{{ section.id }} .video_mobile_show{ display:none;}
+   #shopify-section-{{ section.id }} .video-width-image-section{padding-top:40px;}
+   #shopify-section-{{ section.id }} video{  width: 100%;
+  height: 100%;
+  object-fit: contain; }
+   @media (max-width: 767.98px) {
+    {% if section.settings.video_mobile != blank %}
+         #shopify-section-{{ section.id }} .video_desk_show{ display:none;!important}
+         #shopify-section-{{ section.id }} .video_mobile_show{ display:block;!important}
+         #shopify-section-{{ section.id }} .video_mobile_show .media{ height:200px}
+         #shopify-section-{{ section.id }} video{ object-fit: fill;}
+         #shopify-section-{{ section.id }} .video-width-image-section{padding-top:30px;}
+         
+    {% endif %}
+   }
+
   @media (max-width: 767.98px) {
       #shopify-section-{{ section.id }} .rich-text-list-section{padding-top: {{ section.settings.padding_top | divided_by: 2 }}px;padding-bottom: {{ section.settings.padding_bottom | divided_by: 2}}px;}
       #shopify-section-{{ section.id }} .image-wrapper-container .image-wrapper{margin-top:{{ section.settings.image_top | divided_by: 2 }}px}
@@ -172,7 +84,7 @@
       #shopify-section-{{ section.id }} .details-box span{line-height: 15px;font-size: 12px;color: #303030;}
       #shopify-section-{{ section.id }} .h3{font-size: 28px;line-height: 30px;}
       #shopify-section-{{ section.id }} .video-container-inner{ width: 200px!important;height:36px!important}
-      #shopify-section-{{ section.id }} .video-container-custom { margin-top:2rem}
+      #shopify-section-{{ section.id }} .video-container-custom { margin-top:3rem}
       #shopify-section-{{ section.id }} .video-popup-block {
         margin-top: 20px;
       }
@@ -181,11 +93,13 @@
         top: -40px;
         font-size: 30px;
       }
+          #shopify-section-{{ section.id }} .icon-gift{ width: 2rem; height: 1.5rem;}
+    #shopify-section-{{ section.id }} .icon-gift-left{ margin: 0px 0px 0px 50px;}
+    #shopify-section-{{ section.id }} .icon-gift-right{ margin: 0px 50px 0px 0px;}
 
-         .video-div-grid{
-            display: grid;
-            grid-template-columns: 1fr;
-         }
+    #shopify-section-{{ section.id }} .title-container {
+      margin: 0px 0px;
+    }
   }
 </style>
 {%- assign motion_delay = 50 -%}
@@ -206,17 +120,29 @@
 
             {%- assign motion_delay = motion_delay | plus: 50 -%}
           {% when 'heading' %}
+             <div class="flex items-center  " style="justify-content: center;">
+            <div class="{% if section.settings.show_title_icon != true %} page-width {% endif %}title-container">
+                   {% if section.settings.show_title_icon != false %}
+                   {% render 'icon-gift-left' -%}
+                 {% endif %}
             <h2
-              class="page-width rich-text__heading {{ block.settings.heading_size }}"
+              class=" rich-text__heading {{ block.settings.heading_size }}"
               {{ block.shopify_attributes }}
             >
               <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+          
                 {% render 'highlight-text',
                   text: block.settings.heading,
                   style: block.settings.heading_highlight_style
                 %}
+       
               </motion-element>
             </h2>
+                     {% if section.settings.show_title_icon != false %}
+                   {% render 'icon-gift-right' -%}
+                 {% endif %}
+            </div>
+            </div>
             {%- assign motion_delay = motion_delay | plus: 50 -%}
           {% when 'text' %}
             <motion-element
@@ -269,184 +195,136 @@
               {% endif %}
             </motion-element>
             {%- assign motion_delay = motion_delay | plus: 50 -%}
-          {% when 'image' %}
-            {% if block.settings.image != blank %}
-              <div class="{% if block.settings.container == 'fixed' %} page-width{% else %} container-full{% endif %} image-wrapper-container">
-                <div class="image-wrapper ">
-                <picture>
-                  <!-- 移动端图片 -->
-                  <source
-                    media="(max-width: 749px)"
-                    srcset="
-                      {{ block.settings.mobile_image | img_url: '800x' }} 1x,
-                      {{ block.settings.mobile_image | img_url: '1600x' }} 2x
-                    "
-                  >
-
-                  <!-- 桌面端图片 -->
-                  <source
-                    media="(min-width: 750px)"
-                    srcset="
-                      {{ block.settings.image | img_url: '1200x' }} 1x,
-                      {{ block.settings.image | img_url: '2400x' }} 2x
-                    "
-                  >
-
-                  <!-- 默认图片 -->
-                  <img
-                    src="{{ block.settings.image | img_url: '1200x' }}"
-                    alt="{{ block.settings.title | escape }}"
-                    class="grid-image"
-                    loading="lazy"
-                    width="{{ block.settings.image.width }}"
-                    height="{{ block.settings.image.height }}"
-                  >
-                </picture>
-                </div>
-              </div>
-            {% else %}
-              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
-            {% endif %}
-          {% when 'video_popup' %}
-            <motion-element
-              data-motion="fade-up"
-              data-motion-delay="{{ motion_delay }}"
-              class="block page-width video-popup-block"
-              {{ block.shopify_attributes }}
-            >
-              <div class="md:flex justify-{{ block.settings.video_alignment }} section-video-box">
-                {%- liquid
-                  assign video_type = block.settings.video_type
-                  assign autoplay = block.settings.autoplay
-                  assign thumbnail_url = ''
-
-                  # YouTube视频处理
-                  if video_type == 'youtube' and block.settings.youtube_url != blank
-                    assign video_id = block.settings.youtube_url | split: 'v=' | last | split: '&' | first
-
-                    if block.settings.custom_thumbnail != blank
-                      assign thumbnail_url = block.settings.custom_thumbnail | img_url: '800x'
-                    else
-                      assign thumbnail_url = 'https://img.youtube.com/vi/' | append: video_id | append: '/maxresdefault.jpg'
-                    endif
-                  endif
-
-                  # Shopify自有视频处理
-                  if video_type == 'shopify' and block.settings.shopify_video != blank
-                    assign video_url = block.settings.shopify_video
-
-                    if block.settings.cover_image != blank
-                      assign thumbnail_url = block.settings.cover_image | img_url: '800x'
-                    else
-                      assign thumbnail_url = settings.video_thumbnail | img_url: '800x'
-                    endif
-                  endif
-                -%}
-
-                <div
-                  class="video-container-inner"
-                  style="width: {{ block.settings.video_width }}px; height: {{ block.settings.video_height }}px;"
-                  data-video-type="{{ video_type }}"
-                  {% if video_type == 'youtube' %}
-                    data-video-id="{{ video_id }}"
-                  {% elsif video_type == 'shopify' %}
-                    data-video-url="{{ video_url }}"
-                  {% endif %}
-                >
-                  {% if thumbnail_url != blank %}
-                    <img
-                      class="video-thumbnail"
-                      src="{{ thumbnail_url }}"
-                      alt="{{ block.settings.alt_text | default: 'Video thumbnail' }}"
-                      loading="lazy"
-                      width="800"
-                      height="{{ 800 | divided_by: 1.77 | round }}"
-                    >
-                  {% else %}
-                    <div class="video-placeholder">
-                      {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
-                    </div>
-                  {% endif %}
-
-                  <div class="play-button" aria-label="Play video"></div>
-                </div>
-              </div>
-            </motion-element>
-            {%- assign motion_delay = motion_delay | plus: 50 -%}
-           {% when 'video' %}
-     
-                <div class="page-width video-container-custom">
-                  {% if block.settings.video != blank %}
-                    <!-- 自有上传视频 -->
-                    {% assign video_sources = block.settings.video.sources %}
-                    
-                    {% comment %} <div class="media-wrapper video-wrapper"> {% endcomment %}
-                     <div class="video-div-grid">
-                     <div>
-
-                        <video 
-                        class="custom-video" 
-                        {% if block.settings.autoplay %}autoplay{% endif %} 
-                        {% if block.settings.loop %}loop{% endif %} 
-                        {% if block.settings.muted %}muted{% endif %} 
-                        playsinline
-                        id="video-{{ block.id }}"
-                      >
-                      {% for source in video_sources %}
-                          <source src="{{ source.url }}" type="{{ source.mime_type }}">
-                        {% endfor %}
-                        您的浏览器不支持视频标签。
-                      </video>
-                     </div>
-
-                    <div>
-
-                        <video 
-                        class="custom-video" 
-                        {% if block.settings.autoplay %}autoplay{% endif %} 
-                        {% if block.settings.loop %}loop{% endif %} 
-                        {% if block.settings.muted %}muted{% endif %} 
-                        playsinline
-                        id="video-{{ block.id }}"
-                      >
-                      {% for source in video_sources %}
-                          <source src="https://cdn.shopify.com/videos/c/o/v/3b39d0e27b5a46d3abf3af38b58c3d2c.mp4" type="{{ source.mime_type }}">
-                        {% endfor %}
-                        您的浏览器不支持视频标签。
-                      </video>
-                     </div>
-                    </div>
-                 
-                  {% elsif block.settings.video_url != blank %}
-                    <!-- 外部视频（YouTube/Vimeo） -->
-                    {% if block.settings.video_url.type == 'youtube' %}
-                      <iframe
-                        src="https://www.youtube.com/embed/{{ block.settings.video_url.id }}?autoplay=0&mute=1&loop=1&controls=1"
-                        class="js-youtube"
-                        allow="autoplay; encrypted-media"
-                        allowfullscreen
-                        title="{{ block.settings.description | escape }}"
-                      ></iframe>
-                    {% elsif block.settings.video_url.type == 'vimeo' %}
-                      <iframe
-                        src="https://player.vimeo.com/video/{{ block.settings.video_url.id }}?autoplay=0&muted=1&loop=1&controls=1"
-                        class="js-vimeo"
-                        allow="autoplay; encrypted-media"
-                        allowfullscreen
-                        title="{{ block.settings.description | escape }}"
-                      ></iframe>
-                    {% endif %}
-                  {% else %}
-                    {% comment %} <div class="video-placeholder">
-                      {{ 'lifestyle-2' | placeholder_svg_tag: 'placeholder-svg' }}
-                    </div> {% endcomment %}
-                  {% endif %}
-                </div>
-              {% comment %} </motion-element> {% endcomment %}
-              {%- assign motion_delay = motion_delay | plus: 50 -%}
           {% endcase %}
       {% endfor %}
     </div>
+
+
+
+
+
+
+
+
+
+<div class="video-width-image-section">
+  <div class="section-video section--padding" id="{{section.settings.ids}}">
+    <div class="relative{% if section.settings.container == 'fixed' %} page-width {% else %} w-full {% endif %}">
+      <!-- 桌面端视频 -->
+      <div class="{% if section.settings.enable_radius %}blocks-radius{% endif %} video_desk_show">
+        <parallax-element
+          class="block overflow-hidden"
+          {% if section.settings.enable_parallax %}
+            data-parallax="0.3" data-parallax-direction="{{ section.settings.parallax_direction }}"
+          {% endif %}
+        >
+          <motion-element data-motion="zoom-out" class="relative block media media--adapt">
+            {%- capture sizes -%}{% if section.settings.container == 'full' %}100vw{% else %}min({{ settings.page_width }}px, 100vw){% endif %}{%- endcapture -%}
+            {% assign device_type = section.settings.video %}
+            {%-
+              render 'video',
+              sizes: sizes,
+              video: {{device_type}},
+              video_url: section.settings.video_url,
+              muted: section.settings.enable_video_autoplay,
+              autoplay: section.settings.enable_video_autoplay,
+              controls: false,
+              loop: section.settings.enable_video_looping,
+              description: section.settings.description,
+              cover_image: section.settings.cover_image,
+              show_play_button: true
+            -%}
+          </motion-element>
+        </parallax-element>
+      </div>
+
+      <!-- 移动端视频 -->
+      {% if section.settings.video_mobile != blank %}
+        <div class="{% if section.settings.enable_radius %}blocks-radius{% endif %} video_mobile_show">
+          <parallax-element
+            class="block overflow-hidden"
+            {% if section.settings.enable_parallax %}
+              data-parallax="0.3" data-parallax-direction="{{ section.settings.parallax_direction }}"
+            {% endif %}
+          >
+            <motion-element data-motion="zoom-out" class="relative block media">
+              {%- capture sizes -%}{% if section.settings.container == 'full' %}100vw{% else %}min({{ settings.page_width }}px, 100vw){% endif %}{%- endcapture -%}
+              {% assign device_type = section.settings.video_mobile %}
+              {%- if block.settings.video_mobile != blank -%}
+                {% assign device_type = section.settings.video_mobile %}
+              {% endif %}
+              {%-
+                render 'video',
+                sizes: sizes,
+                video: {{device_type}},
+                video_mobile:section.settings.video_mobile,
+                video_url: section.settings.video_url,
+                muted: section.settings.enable_video_autoplay,
+                autoplay: section.settings.enable_video_autoplay,
+                controls: false,
+                loop: section.settings.enable_video_looping,
+                description: section.settings.description,
+                cover_image: section.settings.cover_image,
+                show_play_button: true
+              -%}
+            </motion-element>
+          </parallax-element>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  {% if section.settings.image != blank %}
+   <div class="{% if section.settings.enable_radius %}blocks-radius {% endif %}video_mobile_show">
+          <parallax-element
+            class="block overflow-hidden"
+            {% if section.settings.enable_parallax %}
+              data-parallax="0.3" data-parallax-direction="{{ section.settings.parallax_direction }}"
+            {% endif %}
+          >
+            <motion-element data-motion="zoom-out" class="relative block media">
+              {%- capture sizes -%}{% if section.settings.container == 'full' %}100vw{% else %}min({{ settings.page_width }}px, 100vw){% endif %}{%- endcapture -%}
+              {%- render 'video',
+                sizes: sizes,
+                video: section.settings.video_mobile,
+                video_mobile: section.settings.video_mobile,
+                video_url: section.settings.video_url,
+                muted: section.settings.enable_video_autoplay,
+                autoplay: section.settings.enable_video_autoplay,
+                controls: false,
+                loop: section.settings.enable_video_looping,
+                description: section.settings.description,
+                cover_image: section.settings.cover_image,
+                show_play_button: true
+              -%}
+            </motion-element>
+          </parallax-element>
+        </div>
+  {% endif %}
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </div>
 </div>
 <script>
@@ -565,10 +443,65 @@
       "label": "设置ID",
     },
     {
+      "type": "checkbox",
+      "id": "show_title_icon",
+      "default": false,
+      "label": "标题是否需要图标"
+    },
+        {
+      "type": "select",
+      "id": "container",
+      "options": [
+        {
+          "value": "full",
+          "label": "t:sections.all.container.options__full.label"
+        },
+        {
+          "value": "fixed",
+          "label": "t:sections.all.container.options__fixed.label"
+        }
+      ],
+      "default": "fixed",
+      "label": "t:sections.all.container.label"
+    },
+    {
+      "type": "video",
+      "label": "t:sections.video.settings.video.label",
+      "id": "video"
+    },
+    {
+      "type": "video",
+      "label": "手机端",
+      "id": "video_mobile"
+    },
+        {
+      "type": "checkbox",
+      "id": "enable_video_autoplay",
+      "label": "t:sections.video.settings.enable_video_autoplay.label",
+      "info": "t:sections.video.settings.enable_video_autoplay.info",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "label": "t:sections.video.settings.enable_video_looping.label",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_parallax",
+      "label": "t:sections.all.enable_parallax_effect.label"
+    },
+    {
+      "type": "url",
+      "id": "img-href",
+      "label": "图片跳转链接",
+    },
+    {
       "type": "range",
       "id": "padding_top",
       "min": 0,
-      "max": 120,
+      "max": 180,
       "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
@@ -578,7 +511,7 @@
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
-      "max": 120,
+      "max": 180,
       "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
@@ -603,6 +536,38 @@
       "step": 1,
       "unit": "px",
       "default": 0
+    },
+        {
+      "type": "select",
+      "id": "video_ratio",
+      "label": "t:sections.video.settings.video_ratio.label",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.video.settings.video_ratio.options__1.label"
+        },
+        {
+          "value": "1/1",
+          "label": "t:sections.video.settings.video_ratio.options__2.label"
+        },
+        {
+          "value": "4/3",
+          "label": "t:sections.video.settings.video_ratio.options__3.label"
+        },
+        {
+          "value": "4/5",
+          "label": "t:sections.video.settings.video_ratio.options__4.label"
+        },
+        {
+          "value": "16/9",
+          "label": "t:sections.video.settings.video_ratio.options__5.label"
+        },
+        {
+          "value": "9/16",
+          "label": "t:sections.video.settings.video_ratio.options__6.label"
+        }
+      ],
+      "default": "adapt"
     },
     {
       "type": "select",
@@ -915,152 +880,11 @@
           "default": "_self"
         }
       ]
-    },
-    {
-      "type": "video_popup",
-      "name": "视频弹窗",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "select",
-          "id": "video_alignment",
-          "label": "Video Mobile Alignment",
-          "options": [
-            {
-              "value": "left",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "right",
-              "label": "Right"
-            }
-          ],
-          "default": "center"
-        },
-        {
-          "type": "select",
-          "id": "video_type",
-          "label": "视频类型",
-          "options": [
-            {
-              "value": "youtube",
-              "label": "YouTube"
-            },
-            {
-              "value": "shopify",
-              "label": "Shopify 视频"
-            }
-          ],
-          "default": "youtube"
-        },
-        {
-          "type": "video_url",
-          "id": "youtube_url",
-          "label": "YouTube 视频链接",
-          "accept": ["youtube"],
-          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
-        },
-        {
-          "type": "text",
-          "id": "shopify_video",
-          "label": "Shopify 视频链接",
-          "info": "在设置 > 文件中上传视频并粘贴链接"
-        },
-        {
-          "type": "image_picker",
-          "id": "custom_thumbnail",
-          "label": "youtube自定义缩略图",
-          "info": "覆盖默认缩略图"
-        },
-        {
-          "type": "image_picker",
-          "id": "cover_image",
-          "label": "封面图片",
-          "info": "仅用于Shopify视频"
-        },
-        {
-          "type": "range",
-          "id": "video_width",
-          "default": 200,
-          "min": 100,
-          "max": 500,
-          "step": 10,
-          "unit": "px",
-          "label": "Container Width"
-        },
-        {
-          "type": "range",
-          "id": "video_height",
-          "default": 64,
-          "min": 64,
-          "max": 324,
-          "step": 10,
-          "unit": "px",
-          "label": "Container Height"
-        },
-        {
-          "type": "text",
-          "id": "alt_text",
-          "label": "替代文本",
-          "default": "产品展示视频"
-        }
-      ]
-    },
-    {
-      "type": "video",
-      "name": "视频",
-      "settings": [
-        {
-          "type": "video",
-          "id": "video",
-          "label": "上传视频",
-          "info": "上传MP4格式视频文件（推荐最大尺寸：1920x1080）"
-        },
-        {
-          "type": "checkbox",
-          "id": "autoplay",
-          "label": "自动播放",
-          "default": false,
-          "info": "注意：移动设备可能限制自动播放"
-        },
-        {
-          "type": "checkbox",
-          "id": "loop",
-          "label": "循环播放",
-          "default": true
-        },
-        {
-          "type": "checkbox",
-          "id": "muted",
-          "label": "静音播放",
-          "default": true,
-          "info": "自动播放需要静音"
-        },
-        {
-          "type": "video_url",
-          "id": "video_url",
-          "accept": ["youtube", "vimeo"],
-          "label": "或使用外部视频链接",
-          "info": "支持YouTube或Vimeo链接",
-          "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "视频描述",
-          "info": "用于SEO和无障碍访问",
-          "default": "产品展示视频"
-        }
-      ]
-    }
+    } 
   ],
   "presets": [
     {
-      "name": "富文本+多视频",
+      "name": "富文本+视频+2026",
       "category": "自定义产品组件",
       "blocks": [
         {
@@ -1068,10 +892,7 @@
         },
         {
           "type": "text"
-        },
-        {
-          "type": "image"
-        }
+        } 
       ]
     }
   ]

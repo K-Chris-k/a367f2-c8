@@ -259,59 +259,6 @@
         "margin_bottom": 60
       }
     },
-    "rich_text_image_list_iBXbee": {
-      "type": "rich-text-image-list",
-      "blocks": {
-        "heading_m4ctJq": {
-          "type": "heading",
-          "settings": {
-            "heading": "Wie funktioniert Indevolt BK1600?",
-            "heading_size": "hd2",
-            "heading_highlight_style": "none"
-          }
-        },
-        "text_zMxGPw": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Mit dem Indevolt BK1600 verwandelst du die von deinen Solarpanelen erzeugte Energie effizient in Wechselstrom für dein Zuhause. Überschüssige Energie wird in Batterien gespeichert, sodass du jederzeit auf eine zuverlässige Energiequelle zugreifen kannst, auch nachts. So versorgst du dein Zuhause rund um die Uhr mit Solarstrom, reduzierst deine Abhängigkeit vom Stromnetz und sparst Kosten.</p>",
-            "text_size": "text-lg"
-          }
-        },
-        "video_XpUNVx": {
-          "type": "video",
-          "settings": {
-            "video": "shopify://files/videos/bk1600-video2.mp4",
-            "autoplay": true,
-            "loop": true,
-            "muted": true,
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "description": "产品展示视频"
-          }
-        }
-      },
-      "block_order": [
-        "heading_m4ctJq",
-        "text_zMxGPw",
-        "video_XpUNVx"
-      ],
-      "name": "富文本+图片+视频",
-      "settings": {
-        "color_scheme": "",
-        "bg_color": "#ffffff",
-        "content_alignment": "center",
-        "ids": "eigenschaften",
-        "show_title_icon": false,
-        "img-href": "",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "image_top": 28,
-        "video_radius": 18,
-        "video_aspect_ratio": "16/9",
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "mobile_content_alignment": "center"
-      }
-    },
     "service_info_Xz4B7e": {
       "type": "service-info",
       "name": "服务信息",
@@ -594,10 +541,10 @@
         "mobile_content_alignment": "center"
       }
     },
-    "rich_text_image_list_GcM3rm": {
-      "type": "rich-text-image-list",
+    "rich_text_video_2026_AKMzqJ": {
+      "type": "rich-text-video-2026",
       "blocks": {
-        "heading_3ag9gN": {
+        "heading_EbGEfW": {
           "type": "heading",
           "settings": {
             "heading": "<strong>Dynamischer Stromtarif</strong>",
@@ -605,42 +552,37 @@
             "heading_highlight_style": "none"
           }
         },
-        "text_MWYK8H": {
+        "text_WzBQna": {
           "type": "text",
           "settings": {
             "text": "<p>Mit der Indevolt APP erhältst du Echtzeit-Benachrichtigungen über Strompreise und kannst deine Lade- und Entladepläne ganz einfach verwalten. Setze deinen Zielpreis, und das System lädt automatisch bei niedrigen Preisen und entlädt bei hohen Preisen. Spare Geld und erziele zusätzliche Einkünfte!</p>",
             "text_size": "text-lg"
           }
-        },
-        "video_DE7dCU": {
-          "type": "video",
-          "settings": {
-            "video": "shopify://files/videos/德语_batch_e1110602-12d0-4fe5-b7e6-8b06fdfacf63.mp4",
-            "autoplay": true,
-            "loop": true,
-            "muted": true,
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "description": "产品展示视频"
-          }
         }
       },
       "block_order": [
-        "heading_3ag9gN",
-        "text_MWYK8H",
-        "video_DE7dCU"
+        "heading_EbGEfW",
+        "text_WzBQna"
       ],
-      "name": "富文本+图片+视频",
+      "name": "富文本+视频+2026",
       "settings": {
         "color_scheme": "",
         "bg_color": "#ffffff",
         "content_alignment": "center",
         "ids": "",
         "show_title_icon": false,
+        "container": "fixed",
+        "video": "shopify://files/videos/德语_batch_e1110602-12d0-4fe5-b7e6-8b06fdfacf63.mp4",
+        "video_mobile": "shopify://files/videos/德语_batch_e1110602-12d0-4fe5-b7e6-8b06fdfacf63.mp4",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "enable_parallax": true,
         "img-href": "",
         "padding_top": 60,
         "padding_bottom": 60,
-        "image_top": 28,
-        "video_radius": 18,
+        "image_top": 40,
+        "video_radius": 0,
+        "video_ratio": "adapt",
         "video_aspect_ratio": "16/9",
         "show_section_divider": false,
         "divider_width": "fixed",
@@ -1447,6 +1389,53 @@
         "padding_top": 60,
         "padding_bottom": 0
       }
+    },
+    "rich_text_video_2026_7KRc4r": {
+      "type": "rich-text-video-2026",
+      "blocks": {
+        "heading_znibJg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Wie funktioniert Indevolt BK1600?",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_UkcRgc": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Mit dem Indevolt BK1600 verwandelst du die von deinen Solarpanelen erzeugte Energie effizient in Wechselstrom für dein Zuhause. Überschüssige Energie wird in Batterien gespeichert, sodass du jederzeit auf eine zuverlässige Energiequelle zugreifen kannst, auch nachts. So versorgst du dein Zuhause rund um die Uhr mit Solarstrom, reduzierst deine Abhängigkeit vom Stromnetz und sparst Kosten.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_znibJg",
+        "text_UkcRgc"
+      ],
+      "name": "富文本+视频+2026",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "",
+        "show_title_icon": false,
+        "container": "fixed",
+        "video": "shopify://files/videos/bk1600-video2.mp4",
+        "video_mobile": "shopify://files/videos/bk1600-video2.mp4",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "enable_parallax": true,
+        "img-href": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "image_top": 60,
+        "video_radius": 0,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
     }
   },
   "order": [
@@ -1454,7 +1443,7 @@
     "main",
     "video_a3rWPF",
     "service_info_cqwgGJ",
-    "rich_text_image_list_iBXbee",
+    "rich_text_video_2026_7KRc4r",
     "service_info_Xz4B7e",
     "image_with_text_cGVRXA",
     "video_with_text_4BzEfL",
@@ -1462,7 +1451,7 @@
     "image_with_text_CMUcJb",
     "image_with_text_PxXFJU",
     "rich_text_image_list_N7WWcR",
-    "rich_text_image_list_GcM3rm",
+    "rich_text_video_2026_AKMzqJ",
     "rich_text_iAKWzr",
     "video_k4fpq6",
     "scene_tabs_XVgwzJ",
