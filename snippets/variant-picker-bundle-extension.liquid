@@ -24,6 +24,123 @@
 }
 }
 
+  .variant-extension-addon {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    flex-direction: column;
+    margin-top: 30px;
+    padding-top: 16px;
+  }
+  .variant-extension-addon[data-addon-position="bottom"] {
+    border-top: 1px solid #e5e5e5;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .variant-extension-addon[data-addon-position="middle"] {
+    border-top: none;
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 16px;
+  }
+  .variant-extension-addon[data-addon-position="top"] {
+    border-top: none;
+    border-bottom: none;
+    margin-top: 0;
+    padding-bottom: 0;
+  }
+  .variant-extension-addon__row {
+    display: flex;
+    gap: 12px;
+  }
+  .variant-extension-addon__image-box {
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .variant-extension-addon__image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  .variant-extension-addon__text-box {
+    flex: 1;
+    min-width: 0;
+  }
+  .variant-extension-addon__title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #000;
+    margin: 0 0 8px 0;
+  }
+  .variant-extension-addon__subtitle {
+    font-size: 14px;
+    color: #666;
+    margin: 0;
+  }
+  .variant-extension-qty-buttons--addon {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  @media screen and (max-width: 749px) {
+    .variant-extension-qty-buttons--addon {
+      justify-content: center;
+      gap: 8px;
+    }
+    .variant-extension-addon__image-box {
+      width: 60px;
+      height: 60px;
+    }
+  }
+  @media screen and (min-width: 750px) and (max-width: 1024px) {
+    .variant-extension-addon__image-box {
+      width: 70px;
+      height: 70px;
+    }
+  }
+
+  /* 产品图上的文本叠加层：battery + addon */
+  .bundle-other-display-text,
+  .bundle-addon-display-text {
+    position: absolute;
+    left: 0;
+    color: #000;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+    z-index: 10;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+  .bundle-other-display-text {
+    bottom: 26%;
+  }
+  .bundle-addon-display-text {
+    bottom: 26%;
+  }
+  @media (max-width: 768px) {
+    .bundle-other-display-text,
+    .bundle-addon-display-text {
+      left: 0 !important;
+      font-size: 11px;
+      padding: 4px 8px;
+    }
+  }
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .bundle-other-display-text,
+    .bundle-addon-display-text {
+      font-size: 11px;
+      padding: 6px 12px;
+    }
+  }
+
 </style>
 
 {%- liquid
@@ -207,6 +324,295 @@
         {%- endif -%}
       </div>
     {%- endif -%}
+    {%- comment -%}
+      自定义扩展块（二选一，主题优先）：
+      位置由 bundle_addon_position 控制（top / middle / bottom），默认 middle。
+      先 capture 到 addon_block_html，再在对应位置输出。
+    {%- endcomment -%}
+    {%- liquid
+      assign vpb = variant_picker_block
+      assign addon_position = 'middle'
+      if vpb != blank and vpb.settings.bundle_addon_position != blank
+        assign addon_position = vpb.settings.bundle_addon_position
+      endif
+      assign theme_addon_show = false
+      assign theme_lines = '' | split: ','
+      if vpb != blank and vpb.settings.bundle_addon_enable
+        assign raw_opts = vpb.settings.bundle_addon_options | default: ''
+        assign raw_opts_br = raw_opts | newline_to_br
+        assign theme_lines = raw_opts_br | split: '<br />'
+        assign theme_line_count = 0
+        for tl in theme_lines
+          assign tls = tl | strip
+          if tls != blank
+            assign theme_line_count = theme_line_count | plus: 1
+          endif
+        endfor
+        if theme_line_count > 0
+          assign theme_addon_show = true
+        endif
+      endif
+
+      assign ca = option_config.custom_addon
+      assign show_custom_addon = false
+      assign ca_default_idx = 0
+      if theme_addon_show == false and ca != blank
+        unless ca.enabled == false
+          if ca.options != blank
+            assign show_custom_addon = true
+          endif
+        endunless
+        assign ca_default_idx = ca.default_selected | default: 0 | plus: 0
+      endif
+    -%}
+    {% capture addon_block_html %}
+    {%- if theme_addon_show -%}
+      {%- liquid
+        assign theme_def_raw = vpb.settings.bundle_addon_default_option | default: 1 | plus: 0
+        if theme_def_raw < 1
+          assign theme_def_raw = 1
+        endif
+        assign theme_def_idx = theme_def_raw | minus: 1
+      -%}
+      <div
+        class="variant-extension-addon"
+        data-variant-addon-block
+        data-addon-source="theme"
+        data-addon-position="{{ addon_position }}"
+        data-section-id="{{ section.id }}"
+        data-option-position="{{ option.position }}"
+      >
+        <div class="variant-extension-addon__row">
+          <div class="variant-extension-addon__image-box">
+            {%- if vpb.settings.bundle_addon_image != blank -%}
+              <img
+                src="{{ vpb.settings.bundle_addon_image | image_url: width: 160 }}"
+                alt="{{ vpb.settings.bundle_addon_title | default: 'Addon' | escape }}"
+                loading="lazy"
+                width="80"
+                height="80"
+                data-addon-block-image
+              >
+            {%- endif -%}
+          </div>
+          <div class="variant-extension-addon__text-box">
+            {%- if vpb.settings.bundle_addon_title != blank -%}
+              <h3 class="variant-extension-addon__title">{{ vpb.settings.bundle_addon_title | escape }}</h3>
+            {%- endif -%}
+            {%- if vpb.settings.bundle_addon_subtitle != blank -%}
+              <p class="variant-extension-addon__subtitle">{{ vpb.settings.bundle_addon_subtitle | escape | newline_to_br }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+        <div class="variant-extension-qty-buttons variant-extension-qty-buttons--addon" data-addon-qty-buttons>
+          {%- assign addon_input_name = 'bundle-addon-' | append: section.id | append: '-' | append: option.position | append: '-theme' -%}
+          {%- assign valid_idx = 0 | plus: 0 -%}
+          {%- for line in theme_lines -%}
+            {%- assign line_stripped = line | strip -%}
+            {%- if line_stripped != blank -%}
+              {%- assign parts = line_stripped | split: '|' -%}
+              {%- liquid
+                assign opt_qty = valid_idx
+                assign opt_label = ''
+                assign opt_capacity = ''
+                assign opt_image = ''
+                assign opt_value = ''
+                assign opt_price = ''
+                assign opt_text = ''
+                if parts.size == 1
+                  assign opt_label = parts[0] | strip
+                else
+                  assign opt_label = parts[0] | strip
+                  if parts[1] != blank
+                    assign opt_qty = parts[1] | strip | plus: 0
+                  endif
+                  if parts.size > 2 and parts[2] != blank
+                    assign opt_capacity = parts[2] | strip
+                  endif
+                  if parts.size > 3 and parts[3] != blank
+                    assign opt_value = parts[3] | strip
+                  endif
+                  if parts.size > 4 and parts[4] != blank
+                    assign opt_image = parts[4] | strip
+                  endif
+                  if parts.size > 5 and parts[5] != blank
+                    assign opt_price = parts[5] | strip
+                  endif
+                  if parts.size > 6 and parts[6] != blank
+                    assign opt_text = parts[6] | strip
+                  endif
+                endif
+                if opt_label == blank
+                  assign opt_label = opt_qty | append: 'x'
+                endif
+                if opt_value == blank
+                  assign opt_value = opt_label
+                endif
+                assign opt_selected = false
+                assign valid_idx_num = valid_idx | plus: 0
+                assign theme_def_idx_num = theme_def_idx | plus: 0
+                if valid_idx_num == theme_def_idx_num
+                  assign opt_selected = true
+                endif
+                assign addon_input_id = 'bundle-addon-' | append: section.id | append: '-' | append: option.position | append: '-t-' | append: valid_idx
+              -%}
+              <input
+                type="radio"
+                id="{{ addon_input_id }}"
+                name="{{ addon_input_name }}"
+                class="bundle-addon-radio"
+                value="{{ opt_value | escape }}"
+                data-addon-qty="{{ opt_qty }}"
+                data-addon-label="{{ opt_label | escape }}"
+                {% if opt_capacity != blank %}
+                  data-addon-capacity="{{ opt_capacity | escape }}"
+                {% endif %}
+                {% if opt_image != blank %}
+                  data-addon-image-url="{{ opt_image | escape }}"
+                {% endif %}
+                {% if opt_price != blank %}
+                  data-addon-price="{{ opt_price }}"
+                {% endif %}
+                {% if opt_text != blank %}
+                  data-addon-text="{{ opt_text | escape }}"
+                {% endif %}
+                {% if opt_selected %}
+                  checked
+                {% endif %}
+                style="position: absolute; opacity: 0; pointer-events: none;"
+              >
+              <label
+                for="{{ addon_input_id }}"
+                class="variant-extension-qty-btn variant-extension-qty-btn--addon {% if opt_selected %}selected{% endif %}"
+                data-qty="{{ opt_qty }}"
+                data-addon-label="{{ opt_label | escape }}"
+                {% if opt_capacity != blank %}
+                  data-capacity="{{ opt_capacity | escape }}"
+                {% endif %}
+                {% if opt_image != blank %}
+                  data-image-url="{{ opt_image | escape }}"
+                {% endif %}
+                {% if opt_price != blank %}
+                  data-addon-price="{{ opt_price }}"
+                {% endif %}
+                {% if opt_text != blank %}
+                  data-addon-text="{{ opt_text | escape }}"
+                {% endif %}
+                data-addon-value="{{ opt_value | escape }}"
+              >
+                {{ opt_label | escape }}
+              </label>
+              {%- assign valid_idx = valid_idx | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- elsif show_custom_addon -%}
+      <div
+        class="variant-extension-addon"
+        data-variant-addon-block
+        data-addon-source="metafield"
+        data-addon-position="{{ addon_position }}"
+        data-section-id="{{ section.id }}"
+        data-option-position="{{ option.position }}"
+      >
+        <div class="variant-extension-addon__row">
+          <div class="variant-extension-addon__image-box">
+            {%- if ca.image != blank -%}
+              <img
+                src="{{ ca.image }}"
+                alt="{{ ca.title | default: 'Addon' | escape }}"
+                loading="lazy"
+                width="80"
+                height="80"
+                data-addon-block-image
+              >
+            {%- endif -%}
+          </div>
+          <div class="variant-extension-addon__text-box">
+            {%- if ca.title != blank -%}
+              <h3 class="variant-extension-addon__title">{{ ca.title | escape }}</h3>
+            {%- endif -%}
+            {%- if ca.subtitle != blank -%}
+              <p class="variant-extension-addon__subtitle">{{ ca.subtitle | escape }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+        <div class="variant-extension-qty-buttons variant-extension-qty-buttons--addon" data-addon-qty-buttons>
+          {%- assign addon_input_name = 'bundle-addon-' | append: section.id | append: '-' | append: option.position -%}
+          {%- for opt in ca.options -%}
+            {%- liquid
+              assign opt_qty = opt.qty | default: forloop.index0
+              assign opt_label = opt.label
+              if opt_label == blank
+                assign opt_label = opt_qty | append: 'x'
+              endif
+              assign opt_capacity = opt.capacity | default: ''
+              assign opt_image = opt.image_url | default: ''
+              assign opt_value = opt.value | default: opt_label
+              assign opt_price = opt.price | default: ''
+              assign opt_text = opt.text | default: ''
+              assign opt_selected = false
+              if forloop.index0 == ca_default_idx
+                assign opt_selected = true
+              endif
+              assign addon_input_id = 'bundle-addon-' | append: section.id | append: '-' | append: option.position | append: '-' | append: forloop.index0
+            -%}
+            <input
+              type="radio"
+              id="{{ addon_input_id }}"
+              name="{{ addon_input_name }}"
+              class="bundle-addon-radio"
+              value="{{ opt_value | escape }}"
+              data-addon-qty="{{ opt_qty }}"
+              data-addon-label="{{ opt_label | escape }}"
+              {% if opt_capacity != blank %}
+                data-addon-capacity="{{ opt_capacity | escape }}"
+              {% endif %}
+              {% if opt_image != blank %}
+                data-addon-image-url="{{ opt_image | escape }}"
+              {% endif %}
+              {% if opt_price != blank %}
+                data-addon-price="{{ opt_price }}"
+              {% endif %}
+              {% if opt_text != blank %}
+                data-addon-text="{{ opt_text | escape }}"
+              {% endif %}
+              {% if opt_selected %}
+                checked
+              {% endif %}
+              style="position: absolute; opacity: 0; pointer-events: none;"
+            >
+            <label
+              for="{{ addon_input_id }}"
+              class="variant-extension-qty-btn variant-extension-qty-btn--addon {% if opt_selected %}selected{% endif %}"
+              data-qty="{{ opt_qty }}"
+              data-addon-label="{{ opt_label | escape }}"
+              {% if opt_capacity != blank %}
+                data-capacity="{{ opt_capacity | escape }}"
+              {% endif %}
+              {% if opt_image != blank %}
+                data-image-url="{{ opt_image | escape }}"
+              {% endif %}
+              {% if opt_price != blank %}
+                data-addon-price="{{ opt_price }}"
+              {% endif %}
+              {% if opt_text != blank %}
+                data-addon-text="{{ opt_text | escape }}"
+              {% endif %}
+              data-addon-value="{{ opt_value | escape }}"
+            >
+              {{ opt_label | escape }}
+            </label>
+          {%- endfor -%}
+        </div>
+      </div>
+    {%- endif -%}
+    {% endcapture %}
+
+    {%- comment -%} Addon: top 位置 {%- endcomment -%}
+    {%- if addon_position == 'top' -%}{{ addon_block_html }}{%- endif -%}
+
     {%- comment -%} 基础产品部分 {%- endcomment -%}
      <div class="variant-extension-base  variant-extension-variant-seletor-custom-layout ">
       {%- if is_multi_host -%}
@@ -337,6 +743,9 @@
         {%- endif -%}
       {%- endif -%}
     </div>
+
+    {%- comment -%} Addon: middle 位置 {%- endcomment -%}
+    {%- if addon_position == 'middle' -%}{{ addon_block_html }}{%- endif -%}
 
     {%- comment -%} 扩展产品部分 {%- endcomment -%}
     <div class="variant-extension-section">
@@ -608,6 +1017,10 @@
         {%- comment -%} ========== 结束 Bundle with Battery 模式按钮渲染 ========== {%- endcomment -%}
       </div>
     </div>
+
+    {%- comment -%} Addon position: bottom → 在电池/扩展行之后 {%- endcomment -%}
+    {%- if addon_position == 'bottom' -%}{{ addon_block_html }}{%- endif -%}
+
   </div>
 </fieldset>
 
@@ -920,52 +1333,95 @@
       function showOtherDisplayText(slideElement, text) {
         if (!slideElement || !text) return;
 
-        // 查找或创建文本显示元素
         let textOverlay = slideElement.querySelector('.bundle-other-display-text');
         if (!textOverlay) {
           textOverlay = document.createElement('div');
           textOverlay.className = 'bundle-other-display-text';
-          textOverlay.style.cssText = `
-        position: absolute;
-        bottom: 26%;
-        left:0;
-        color: #000;
-        padding: 8px 16px;
-        border-radius: 4px;
-        font-size: 12px;
-        font-weight: 500;
-        z-index: 10;
-        pointer-events: none;
-        white-space: nowrap;
-      `;
-
-          // 找到图片容器并添加文本
           let imageContainer = slideElement.querySelector('.product-big-image');
-          if (!imageContainer) {
-            imageContainer = slideElement.querySelector('.product__media');
-          }
+          if (!imageContainer) imageContainer = slideElement.querySelector('.product__media');
           if (imageContainer) {
-            // 确保容器有相对定位
             if (getComputedStyle(imageContainer).position === 'static') {
               imageContainer.style.position = 'relative';
             }
-            // 2026-03-18  不显示电池包数量  暂时先不隐藏
-            imageContainer.appendChild(textOverlay); 
+            imageContainer.appendChild(textOverlay);
           }
         }
 
         textOverlay.textContent = text;
         textOverlay.style.display = 'block';
+        syncOverlayPositions(slideElement);
       }
 
       // 隐藏 other_display_text
       function hideOtherDisplayText(slideElement) {
         if (!slideElement) return;
-
         const textOverlay = slideElement.querySelector('.bundle-other-display-text');
         if (textOverlay) {
           textOverlay.style.display = 'none';
         }
+        syncOverlayPositions(slideElement);
+      }
+
+      // addon 文本叠加层：显示在主图上，class = bundle-addon-display-text
+      function showAddonDisplayText(slideElement, text) {
+        if (!slideElement || !text) return;
+        let el = slideElement.querySelector('.bundle-addon-display-text');
+        if (!el) {
+          el = document.createElement('div');
+          el.className = 'bundle-addon-display-text';
+          let container = slideElement.querySelector('.product-big-image');
+          if (!container) container = slideElement.querySelector('.product__media');
+          if (container) {
+            if (getComputedStyle(container).position === 'static') {
+              container.style.position = 'relative';
+            }
+            container.appendChild(el);
+          }
+        }
+        el.textContent = text;
+        el.style.display = 'block';
+        syncOverlayPositions(slideElement);
+      }
+
+      function hideAddonDisplayText(slideElement) {
+        if (!slideElement) return;
+        const el = slideElement.querySelector('.bundle-addon-display-text');
+        if (el) el.style.display = 'none';
+        syncOverlayPositions(slideElement);
+      }
+
+      
+      function syncOverlayPositions(slideElement) {
+        if (!slideElement) return;
+        const batteryEl = slideElement.querySelector('.bundle-other-display-text');
+        const addonEl = slideElement.querySelector('.bundle-addon-display-text');
+        const batteryVisible = batteryEl && batteryEl.style.display !== 'none';
+        const addonVisible = addonEl && addonEl.style.display !== 'none';
+
+        const isMobile = window.innerWidth <= 768;
+        const gap = isMobile ? 5 : 12;
+
+        if (batteryVisible && addonVisible) {
+          addonEl.style.bottom = '26%';
+          batteryEl.style.bottom = (26 + gap) + '%';
+        } else if (batteryVisible) {
+          batteryEl.style.bottom = '26%';
+        } else if (addonVisible) {
+          addonEl.style.bottom = '26%';
+        }
+      }
+
+      // 获取当前 active slide（复用逻辑）
+      function getActiveSlide() {
+        const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
+        if (!productInfo) return null;
+        const mainSectionId = productInfo.dataset.section;
+        const mediaGallery = productInfo.querySelector('[id^="MediaGallery-' + mainSectionId + '"]');
+        if (!mediaGallery) return null;
+        let slide = mediaGallery.querySelector('.swiper-slide-active');
+        if (!slide) slide = mediaGallery.querySelector('.product__media-item[data-media-index="0"]');
+        if (!slide) slide = mediaGallery.querySelector('.product__media-item:first-child');
+        return slide;
       }
 
       // 显示 layout selector 的 alt text（独立于 bundle-other-display-text）
@@ -1112,11 +1568,20 @@
           sum = (layoutVal || 0) + batteryContribution;
         }
 
-        const unit =
+        let unit =
           extractCapacityUnit(useBatteryAsTotalModel ? batteryText : layoutText) ||
           extractCapacityUnit(batteryText) ||
           extractCapacityUnit(layoutText) ||
           '';
+
+        const addonCapacity = parseCapacityValue(window._bundleAddonCapacity || '');
+        if (addonCapacity !== null && addonCapacity > 0) {
+          sum += addonCapacity;
+          if (!unit) {
+            const addonUnit = extractCapacityUnit(window._bundleAddonCapacity || '');
+            if (addonUnit) unit = addonUnit;
+          }
+        }
 
         let sumText;
         if (Number.isInteger(sum)) {
@@ -1749,6 +2214,84 @@
         }, 200);
 
       }
+
+      // 自定义扩展块：0x / 1x 等选项，派发 bundle:addon:change（支持多个块）
+      // 同时将选中的 addon 价格/容量存到全局，供 updateBundlePrice / capacityDisplay 使用
+      if (!window._bundleAddonPriceInCents) window._bundleAddonPriceInCents = 0;
+      if (!window._bundleAddonCapacity) window._bundleAddonCapacity = '';
+
+      document.querySelectorAll('[data-variant-addon-block]').forEach((addonBlock) => {
+        const addonButtons = addonBlock.querySelectorAll('.variant-extension-qty-btn--addon');
+        const source = addonBlock.dataset.addonSource || '';
+
+        function dispatchAddonChange(btn) {
+          if (!btn) return;
+          const priceVal = parseInt(btn.dataset.addonPrice || '0', 10) || 0;
+          const capacityVal = btn.dataset.capacity || '';
+          const addonText = btn.dataset.addonText || '';
+          const addonQty = btn.dataset.qty || '0';
+
+          window._bundleAddonPriceInCents = priceVal;
+          window._bundleAddonCapacity = capacityVal;
+
+          document.dispatchEvent(
+            new CustomEvent('bundle:addon:change', {
+              detail: {
+                sectionId: addonBlock.dataset.sectionId || '',
+                optionPosition: addonBlock.dataset.optionPosition || '',
+                source: source,
+                qty: addonQty,
+                label: btn.dataset.addonLabel || '',
+                capacity: capacityVal,
+                imageUrl: btn.dataset.imageUrl || '',
+                value: btn.dataset.addonValue || '',
+                price: priceVal,
+                text: addonText,
+              },
+            })
+          );
+
+          // addon text overlay: qty == 0 (first option) → hide; otherwise show
+          const slide = getActiveSlide();
+          if (addonQty === '0' || !addonText) {
+            hideAddonDisplayText(slide);
+          } else {
+            showAddonDisplayText(slide, addonText);
+          }
+
+          if (window.bundleProducts && window.bundleProducts.updatePrice) {
+            window.bundleProducts.updatePrice();
+          }
+
+          updateCombinedCapacityDisplay();
+        }
+
+        addonButtons.forEach((btn) => {
+          btn.addEventListener('click', function () {
+            addonButtons.forEach((b) => b.classList.remove('selected'));
+            this.classList.add('selected');
+            const fid = this.getAttribute('for');
+            if (fid) {
+              const inp = document.getElementById(fid);
+              if (inp) inp.checked = true;
+            }
+            dispatchAddonChange(this);
+          });
+        });
+        let initialAddon = addonBlock.querySelector('.variant-extension-qty-btn--addon.selected');
+        if (!initialAddon) {
+          initialAddon = addonBlock.querySelector('.variant-extension-qty-btn--addon');
+          if (initialAddon) {
+            initialAddon.classList.add('selected');
+            const fid = initialAddon.getAttribute('for');
+            if (fid) {
+              const inp = document.getElementById(fid);
+              if (inp) inp.checked = true;
+            }
+          }
+        }
+        if (initialAddon) dispatchAddonChange(initialAddon);
+      });
 
       // 将函数暴露到全局作用域，供其他组件使用
       window.updateMainProductImage = updateMainProductImage;

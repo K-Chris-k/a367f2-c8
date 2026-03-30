@@ -437,6 +437,61 @@
         {
           "type": "paragraph",
           "content": "t:sections.main-product.blocks.variant_picker.settings.size_chart.paragraph_2.content"
+        },
+        {
+          "type": "header",
+          "content": "Bundle: custom add-on row"
+        },
+        {
+          "type": "paragraph",
+          "content": "Shown above the battery/extension row when Bundle Products + metafields picker is active. Theme settings take priority over custom_addon in variant_display_config JSON."
+        },
+        {
+          "type": "checkbox",
+          "id": "bundle_addon_enable",
+          "label": "Show custom add-on row",
+          "default": false
+        },
+        {
+          "type": "image_picker",
+          "id": "bundle_addon_image",
+          "label": "Add-on image"
+        },
+        {
+          "type": "text",
+          "id": "bundle_addon_title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "bundle_addon_subtitle",
+          "label": "Subtitle"
+        },
+        {
+          "type": "range",
+          "id": "bundle_addon_default_option",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "default": 1,
+          "label": "Default option (1 = first non-empty line)"
+        },
+        {
+          "type": "textarea",
+          "id": "bundle_addon_options",
+          "label": "Quantity options (one per line)",
+          "info": "Format: Label|qty|capacity|value|image_url|price(cents)|text — fields after qty are optional. Example: 0x|0 or 1x|1|1792Wh|||29900|BP1600×1"
+        },
+        {
+          "type": "select",
+          "id": "bundle_addon_position",
+          "label": "Add-on row position",
+          "default": "middle",
+          "options": [
+            { "value": "top", "label": "Top (before layout selector)" },
+            { "value": "middle", "label": "Middle (between layout & battery)" },
+            { "value": "bottom", "label": "Bottom (after battery row)" }
+          ]
         }
       ]
     },

@@ -815,7 +815,8 @@
             option_index: 0,
             bundle_mode: false,
             bundle_display_mode: bundle_display_mode,
-            bundle_layout_type: bundle_config_block.settings.bundle_layout_type
+            bundle_layout_type: bundle_config_block.settings.bundle_layout_type,
+            variant_picker_block: block
           -%}
         {%- endif -%}
       {%- else -%}
@@ -864,7 +865,8 @@
             badge_new_text: bundle_config_block.settings.battery_badge_new_text,
             badge_best: bundle_config_block.settings.battery_badge_best,
             badge_best_text: bundle_config_block.settings.battery_badge_best_text,
-            bundle_layout_type: bundle_config_block.settings.bundle_layout_type
+            bundle_layout_type: bundle_config_block.settings.bundle_layout_type,
+            variant_picker_block: block
           -%}
         {%- endif -%}
       {%- else -%}
@@ -1581,9 +1583,11 @@
                     const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
                     const batteryPrice = selectedBatteryBtn ? parseInt(selectedBatteryBtn.dataset.price) || 0 : 0;
                     const bundleCategoryGridPrice = getBundleCategoryGridPrice();
-                    updateStickyBarPriceWithBundle(hostPriceInCents, batteryPrice, bundleCategoryGridPrice);
+                    const asyncAddonPrice = window._bundleAddonPriceInCents || 0;
+                    updateStickyBarPriceWithBundle(hostPriceInCents, batteryPrice + asyncAddonPrice, bundleCategoryGridPrice);
                   } else {
-                    updateStickyBarPriceWithBundle(0, 0, getBundleCategoryGridPrice());
+                    const asyncAddonPrice = window._bundleAddonPriceInCents || 0;
+                    updateStickyBarPriceWithBundle(0, asyncAddonPrice, getBundleCategoryGridPrice());
                   }
                 })
                 .catch((error) => {
@@ -1604,11 +1608,20 @@
 
       // 获取所有 bundle-category-grid 产品的价格（两种模式都支持太阳能板、支架等）
       const bundleCategoryGridPriceInCents = getBundleCategoryGridPrice();
-      console.log("bundleCategoryGridPriceInCents====="+bundleCategoryGridPriceInCents);
       const bundleCategoryGridOriginalPrice = getBundleCategoryGridOriginalPrice();
 
-      // 同步更新价格
-      updateStickyBarPriceWithBundle(hostPriceInCents, batteryPriceInCents, bundleCategoryGridPriceInCents,hostOriginalPrice,batteryOriginalPrice,bundleCategoryGridOriginalPrice);
+      // 加上自定义扩展块（addon）的价格
+      const addonPriceInCents = window._bundleAddonPriceInCents || 0;
+
+      // 同步更新价格（addon 价格累加到 battery 列，避免改函数签名）
+      updateStickyBarPriceWithBundle(
+        hostPriceInCents,
+        batteryPriceInCents + addonPriceInCents,
+        bundleCategoryGridPriceInCents,
+        hostOriginalPrice,
+        batteryOriginalPrice + addonPriceInCents,
+        bundleCategoryGridOriginalPrice
+      );
     }
 
     // 提取获取 bundle-category-grid 产品价格的逻辑
