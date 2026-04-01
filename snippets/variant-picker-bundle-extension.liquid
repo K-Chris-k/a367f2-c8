@@ -1045,6 +1045,45 @@
       // 获取电池包图片元素（Bundle 模式专用）
       const batteryImage = document.getElementById('bundle-battery-image-' + sectionId);
 
+      // ===== 互斥数量上限：电池 + addon 合计不超过 MAX_COMBINED_QTY =====
+      const MAX_COMBINED_QTY = 5;
+      const _batteryBtns = document.querySelectorAll('.bundle-extension-btn');
+      const _addonBtns = document.querySelectorAll('.variant-extension-qty-btn--addon');
+      const _hasMutualCap = _batteryBtns.length > 0 && _addonBtns.length > 0;
+
+      let _batteryQtyCache = 0;
+      let _addonQtyCache = 0;
+
+      function syncQtyCap() {
+        if (!_hasMutualCap) return;
+
+        const maxForBattery = MAX_COMBINED_QTY - _addonQtyCache;
+        const maxForAddon = MAX_COMBINED_QTY - _batteryQtyCache;
+
+        _batteryBtns.forEach((btn) => {
+          const q = parseInt(btn.dataset.qty || '0', 10) || 0;
+          if (q > maxForBattery) {
+            btn.classList.add('disabled');
+            btn.setAttribute('disabled', '');
+          } else {
+            btn.classList.remove('disabled');
+            btn.removeAttribute('disabled');
+          }
+        });
+
+        _addonBtns.forEach((btn) => {
+          const q = parseInt(btn.dataset.qty || '0', 10) || 0;
+          if (q > maxForAddon) {
+            btn.classList.add('disabled');
+            btn.setAttribute('disabled', '');
+          } else {
+            btn.classList.remove('disabled');
+            btn.removeAttribute('disabled');
+          }
+        });
+      }
+      window.syncQtyCap = syncQtyCap;
+
       // 新布局：1x/2x/3x 选择器按钮
       const layoutQtyButtons = document.querySelectorAll('.variant-extension-qty-btn--layout');
 
@@ -2041,6 +2080,9 @@
 
           // 电池选中状态变化后，刷新 layout alt text 显示
           updateLayoutAltTextVisibility();
+
+          _batteryQtyCache = parseInt(qty || '0', 10) || 0;
+          syncQtyCap();
         });
       });
 
@@ -2264,10 +2306,13 @@
           }
 
           updateCombinedCapacityDisplay();
+          _addonQtyCache = parseInt(addonQty || '0', 10) || 0;
+          syncQtyCap();
         }
 
         addonButtons.forEach((btn) => {
           btn.addEventListener('click', function () {
+            if (this.classList.contains('disabled')) return;
             addonButtons.forEach((b) => b.classList.remove('selected'));
             this.classList.add('selected');
             const fid = this.getAttribute('for');
@@ -2292,6 +2337,15 @@
         }
         if (initialAddon) dispatchAddonChange(initialAddon);
       });
+
+      // 初始化完毕后同步一次互斥上限：从当前选中状态读取缓存
+      {
+        const initBattery = document.querySelector('.bundle-extension-btn.selected');
+        const initAddon = document.querySelector('.variant-extension-qty-btn--addon.selected');
+        _batteryQtyCache = initBattery ? (parseInt(initBattery.dataset.qty || '0', 10) || 0) : 0;
+        _addonQtyCache = initAddon ? (parseInt(initAddon.dataset.qty || '0', 10) || 0) : 0;
+      }
+      syncQtyCap();
 
       // 将函数暴露到全局作用域，供其他组件使用
       window.updateMainProductImage = updateMainProductImage;
