@@ -8,7 +8,7 @@
     text-align: center;
     font-size: clamp(28px, 5vw, 46px);
     font-weight: 700;
-    padding: 0 4.8rem;
+    padding: 0 0.8rem;
   }
    .section-black-member .product-coupon-wrapper .coupon-list {
     display: grid;
@@ -35,10 +35,10 @@
   }
    .section-black-member .coupon-list .coupon-content-wrapper h2,
    .section-black-member .coupon-list .coupon-content-wrapper h4 {
-    color: #1A1A1A;
+    color: #FFFFFF;
     margin: 0;
   }
-   .section-black-member .coupon-list .coupon-content-wrapper h2{line-height:44px;font-size:36px;}
+   .section-black-member .coupon-list .coupon-content-wrapper h2{line-height:36px;font-size:30px;}
    .section-black-member .coupon-list .coupon-content-wrapper h4 {
     margin-top: 10px;
     font-size: 16px;
@@ -79,12 +79,20 @@
     display: block;
   }
 
+        #shopify-section-{{ section.id }} .title-container {
+        display: flex;
+        align-items: center;  /* 关键：垂直居中 */
+        justify-content: center;
+        gap: 0px;  /* 控制间距 */
+      }
+
+  #shopify-section-{{ section.id }} .icon-gift{ width: 4rem; height: 4.5rem;}
   @media (max-width: 767px) {
      #shopify-section-{{ section.id }} { background:{{ section.settings.bg_color }};padding-top:{{ section.settings.padding_top | divided_by: 2  }}px;padding-bottom:{{ section.settings.padding_bottom | divided_by: 2  }}px;}
     .section-black-member .coupon-list .grid-item .coupon-content-wrapper {margin-top:24px!important; max-width: 280px;padding:0px 24px!important; text-align: left}
     .section-black-member .coupon-list .grid-item:nth-child(1) .coupon-content-wrapper,
     .section-black-member .coupon-list .grid-item:nth-child(2) .coupon-content-wrapper{margin-left:0px!important}
-    .section-black-member .product-coupon-wrapper .title{ padding: 0px 4.8rem;font-size:28px}
+    .section-black-member .product-coupon-wrapper .title{ padding: 0px 0rem;font-size:28px}
     .section-black-member .coupon-list .coupon-content-wrapper a.grid-button{margin-top:16px; height: 3rem;padding: 0.8rem 1.4rem;line-height:15px; font-size: 12px;}
     .section-black-member .coupon-list .slick-track{ display: flex;gap: 1.6rem;}
     .section-black-member .coupon-list .grid-item:nth-child(1){ height:auto}
@@ -94,6 +102,10 @@
     .section-black-member .coupon-list .grid-item { min-height: 141px }
     .section-black-member .coupon-list .coupon-content-wrapper h2{line-height:22px; font-size: 18px;}
     .section-black-member .coupon-list .coupon-content-wrapper h4{ margin-top:10px;font-size: 12px;}
+    
+    #shopify-section-{{ section.id }} .icon-gift{ width: 3rem; height: 3.2rem;}
+    #shopify-section-{{ section.id }} .icon-gift-left{ margin: 0px 0px 0px 40px;}
+    #shopify-section-{{ section.id }} .icon-gift-right{ margin: 0px 40px 0px 0px;}
   }
 
 
@@ -101,11 +113,22 @@
   
   <div class="section section--padding page-width section-black-member" id="{{section.settings.ids}}">
     <div class="product-coupon-wrapper">
-      <h2 class="title" style="color:{{ section.settings.title_color }}">
-        <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
-          <span>{{ section.settings.title }}</span>
-        </motion-element>
-      </h2>
+
+      <div class="title-container">
+          {% if section.settings.show_title_icon != false %}
+              {% render 'icon-gift-left' -%}
+          {% endif %}
+              <h2 class="title" style="color:{{ section.settings.title_color }}">
+                <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
+        
+                        <span>{{ section.settings.title }}</span>
+
+                </motion-element>
+              </h2>
+        {% if section.settings.show_title_icon != false %}
+          {% render 'icon-gift-right' -%}
+        {% endif %}
+     </div>
       <div class="coupon-list">
         {% for block in section.blocks %}
           <div class="grid-item block-{{ forloop.index }}">

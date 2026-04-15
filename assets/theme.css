@@ -1353,7 +1353,7 @@ h6:empty {
   display: none;
 }
 
-div:empty:not(.fixed-overlay, .bg-overlay, .empty-space, .drawer__body, .no-empty) {
+div:empty:not(.fixed-overlay, .bg-overlay, .empty-space, .drawer__body, .no-empty, .progress-fill) {
   display: none;
 }
 
@@ -1553,7 +1553,7 @@ video-element[suspended] ~ * {
   height: 70rem;
 }
 .media--extra-large {
-  height: 75rem;
+  height: 80rem;
 }
 
 @media (min-width: 2800px) {
@@ -4812,7 +4812,8 @@ input:is([type=radio])::after {
   bottom: 0;
   left: 0;
   color: rgb(var(--color-foreground));
-  padding: var(--padding-y, 3.2rem) var(--padding-x, 3.2rem);
+  /* padding: var(--padding-y, 3.2rem) var(--padding-x, 3.2rem); */
+  padding-top: var(--padding-y, 3.2rem);
   background-color: transparent;
 }
 .content-overlay--top-left {
@@ -6703,3 +6704,9 @@ body:not(.header-pinned) .header-scrolled .header {
 }
 }
  
+.drawer__body a{
+
+color:#3250C3;
+  text-decoration: underline;
+  text-decoration-color: #3250C3;
+}

@@ -1,0 +1,536 @@
+<style>
+   #shopify-section-{{ section.id }}{padding-top:{{section.settings.padding_top  }}px;padding-bottom:{{section.settings.padding_bottom  }}px;}
+   #shopify-section-{{ section.id }} .tab-buttons{position: relative;max-width: fit-content; left: 50%;transform: translateX(-50%);margin-top:30px;border-bottom: 1px solid #ddd;}
+   .video-tab{display: flex; align-items: end;line-height:22px;padding-right:40px;font-size: 18px;cursor: pointer;font-weight: 500;}
+   .video-tab:last-child{padding-right:0px}
+   .video-tab span{ display: block;padding:0px 0px 10px 0px;text-align: center;}
+   .video-tab.active span{border-bottom:2px solid #3250C3;color:#3250C3}
+   .scene-main-slider,
+   .slick-track {
+    display: flex;
+    gap: 0px;
+  }
+   #shopify-section-{{ section.id }} .scene-main-slider {
+  display: block;  /* 改为block，不再使用flex */
+  margin: 0 auto;
+  max-width: 1280px; /* 限制最大宽度，根据您的slide宽度 */
+  }
+   #shopify-section-{{ section.id }} .scene-main-slider .slide {
+    width: 1280px; /* 固定宽度 */
+    height: 755px;
+    overflow: hidden;
+    position: relative;
+    flex: 0 0 auto;
+    margin: 0 00px;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+   #shopify-section-{{ section.id }} .scene-main-slider .slick-center {
+    transform: scale(1.03);
+    z-index: 2;
+  }
+  .scene-main-slider .slide .detail-bg{position: absolute;top: 0px;height: 100%;width: 100%;left: 0px; }
+  .scene-main-slider .slide .detail{ position: absolute;width: 100%;bottom: 20px;padding:0px 100px;line-height:22px;font-size: 18px;text-align: center;color:#fff;}
+  #shopify-section-{{ section.id }} .tip-btn-popup{ display: flex;justify-content: center;align-items: center;   margin-top: 30px;width: 240px;
+    height: 50px; line-height: 50px;border-radius: 30px; background: #D9D9D9;text-align: center;gap: 10px;cursor:pointer;font-size: 18px;font-family: 'Inter';font-weight: 500;}
+  #shopify-section-{{ section.id }} .tip-btn-popup .icon-add {width:30px;height:30px}
+  {% comment %} 进度条样式 {% endcomment %}
+  #shopify-section-{{ section.id }} .video-controls {
+    position: absolute;
+    bottom: 7px;
+    right: 10px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    pointer-events: none;
+  }
+  #shopify-section-{{ section.id }} .video-progress-bar {
+    width: 100%;
+    height: 3px;
+    background: transparent;;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-left: 0%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    pointer-events: all;
+    z-index: 10;
+  }
+  #shopify-section-{{ section.id }} .video-progress {
+    display:block!important;
+    height: 100%;
+    width: 0%;
+    background: #3250C3;
+    border-radius: 3px;
+    transition: width 0.2s linear;
+  }
+  #shopify-section-{{ section.id }} .video-play-pause {
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    background: rgba(0, 0, 0, 0.30);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    pointer-events: all;
+    z-index: 10;
+  }
+  #shopify-section-{{ section.id }} .icon-play,#shopify-section-{{ section.id }} .icon-pause {
+    width: 24px;
+    height: 24px;
+    fill: #fff;
+  }
+  .modal>.tip-background{background: linear-gradient(180deg, #91AFFA 0%, #3250C3 100%);}
+  .modal>.tip-background .drawer__body {padding:120px 79px;text-align: center;color:#fff}
+  .modal>.tip-background .drawer__body p{color:#fff;line-height:28px;font-size: 22px;font-family: 'Inter'}
+  .modal>.tip-background .drawer__body h5{line-height:58px;font-size: 36px;color:#fff}
+  .modal>.tip-background .drawer__body .content{margin-top:14px;line-height:28px;font-size: 22px;}
+  .modal>.tip-background .drawer__close-btn{width: 30px;height: 30px; color: #3250C3;background: #fff; }
+
+  
+ 
+
+#shopify-section-{{ section.id }} .slick-prev {
+  left: 40px;
+}
+
+#shopify-section-{{ section.id }} .slick-next {
+  right: 40px;
+}
+
+#shopify-section-{{ section.id }} .slick-prev:hover,
+#shopify-section-{{ section.id }} .slick-next:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* 禁用箭头样式 */
+#shopify-section-{{ section.id }} .slick-prev.slick-disabled,
+#shopify-section-{{ section.id }} .slick-next.slick-disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+ 
+
+
+
+
+/* 箭头容器样式 */
+#shopify-section-{{ section.id }} .slick-prev,
+#shopify-section-{{ section.id }} .slick-next {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 48px;
+  height: 48px;
+  background: #FFFFFF;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+/* 使用伪元素创建箭头图标 - 完美居中 */
+#shopify-section-{{ section.id }} .slick-prev::before,
+#shopify-section-{{ section.id }} .slick-next::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid #7A7A7A;
+  border-bottom: 2px solid #7A7A7A;
+}
+
+#shopify-section-{{ section.id }} .slick-prev::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+  margin-left: 2px;
+}
+
+#shopify-section-{{ section.id }} .slick-next::before {
+  transform: translate(-50%, -50%) rotate(-135deg);
+  margin-right: 2px;
+}
+
+/* 悬停效果 */
+#shopify-section-{{ section.id }} .slick-prev:hover,
+#shopify-section-{{ section.id }} .slick-next:hover {
+  background: #FFFFFF;
+  transform: translateY(-50%) scale(1.05);
+} 
+
+    #shopify-section-{{ section.id }} .h2-title {
+        line-height:56px;
+        font-size: 46px;
+        text-align:center;
+        padding-bottom:40px;
+    }
+
+  
+  @media (max-width: 768px) {
+    #shopify-section-{{ section.id }}{padding-top:{{section.settings.padding_top | divided_by: 2  }}px;padding-bottom:{{section.settings.padding_bottom | divided_by: 2  }}px;}
+    #shopify-section-{{ section.id }} .tab-buttons{margin-bottom:1.5rem}
+    #shopify-section-{{ section.id }} .video-tab{min-width:110px;padding:0px;justify-content: center;  /* 确保父容器居中 */}
+    #shopify-section-{{ section.id }} .video-tab span{font-size: 14px;line-height: 17px;padding:0px 0.6rem 0.8rem 0.6rem!important;text-align:left}
+    #shopify-section-{{ section.id }} .scene-main-slider .slide {
+    width: 100vw;
+    height: auto;
+    min-height: 220px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    position: relative;
+    flex-flow: column;
+  }
+  #shopify-section-{{ section.id }} .scene-main-slider .video-container {
+    width: 100vw;
+    max-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  #shopify-section-{{ section.id }} .scene-main-slider .video-container video {
+    width: 100vw;
+    height: 100%;
+    max-width: 100vw;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
+   #shopify-section-{{ section.id }} .scene-main-slider .slide .detail-bg {
+    position: static !important;
+    width: 100%;
+    height: auto;
+    left: 0;
+    top: 0;
+    background: #F5F5F5;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+   #shopify-section-{{ section.id }} .scene-main-slider .slide .detail {
+    position: static !important;
+    width: 100%;
+    padding: 16px 3rem;
+    font-size: 12px;
+    line-height: 15px;
+    color: #000;
+    background: #F5F5F5;
+    text-shadow: none;
+    min-height: 86px;
+    text-align: center;
+  }
+  {% comment %} 进度条样式 {% endcomment %}
+  #shopify-section-{{ section.id }} .video-controls {
+    bottom: 0px;
+  }
+  #shopify-section-{{ section.id }} .video-progress-bar {
+    height: 3px;
+    width: 100%;
+  }
+  #shopify-section-{{ section.id }} .video-play-pause {
+    width: 32px;
+    height: 32px;
+    right: 2rem;
+    bottom: 1.6rem;
+  }
+  #shopify-section-{{ section.id }} .icon-play,  #shopify-section-{{ section.id }} .icon-pause {
+    width: 20px;
+    height: 20px;
+  }
+  .modal>.tip-background .drawer__body {padding:74px 19px;}
+  .modal>.tip-background .drawer__body h5{line-height:34px;font-size: 28px;}
+  .modal>.tip-background .drawer__body .content{margin-top:14px;line-height:19px;font-size: 16px;}
+  .modal>.tip-background .drawer__close-btn{width: 30px;height: 30px; color: #3250C3;background: #fff; }
+
+
+  #shopify-section-{{ section.id }} .slick-prev,
+  #shopify-section-{{ section.id }} .slick-next {
+    display:none!important;
+  }
+
+
+  #shopify-section-{{ section.id }} .h2-title {
+    line-height:34px;
+    font-size: 28px;
+    text-align:left;
+    padding-bottom:30px;
+  }
+
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</style>
+<div class="section page-width">
+   {%- if section.settings.title !=blank -%}
+    <h2 class="h2-title">
+      <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}"> <span>{{ section.settings.title }}</span></motion-element>
+    </h2>
+    {% endif %}
+  <div class="product-collection product-slider-container">
+    
+    <div class="scene-main-slider">
+      {% for block in section.blocks %}
+        <div class="slide">
+          <div class="video-box">
+            {% if block.settings.image_pc != blank %}
+                <div class="image-wrapper">
+                <picture>
+                    <!-- 移动端图片 -->
+                    <source
+                    media="(max-width: 749px)"
+                    srcset="
+                        {{ block.settings.image_mobile | img_url: '800x' }} 1x,
+                        {{ block.settings.image_mobile | img_url: '1600x' }} 2x
+                    "
+                    >
+
+                    <!-- 桌面端图片 -->
+                    <source
+                    media="(min-width: 750px)"
+                    srcset="
+                        {{ block.settings.image_pc | img_url: '1200x' }} 1x,
+                        {{ block.settings.image_pc | img_url: '2400x' }} 2x
+                    "
+                    >
+
+                    <!-- 默认图片 -->
+                    <img
+                    src="{{ block.settings.image_pc | img_url: '1200x' }}"
+                    alt="{{ block.settings.title | escape }}"
+                    class="slide-image"
+                    loading="lazy"
+                    width="{{ block.settings.image_pc.width }}"
+                    height="{{ block.settings.image_pc.height }}"
+                    >
+                </picture>
+                </div>
+            {% else %}
+              {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+            {% endif %}
+          </div>
+          <div class="detail-bg">
+             <div class="detail">{{ block.settings.description }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div>
+      <div class="flex justify-center tab-buttons">
+        {% for block in section.blocks %}
+          <div class="video-tab" data-slide="{{ forloop.index0 }}">
+            <span>{{ block.settings.title }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+ 
+  </div>
+</div>
+<script>
+  $(document).ready(function () {
+    const $slider = $('.scene-main-slider');
+    $('.video-tab').first().addClass('active');
+    $slider.slick({
+      centerMode: false,  // 改为false，关闭居中模式
+      variableWidth: false, // 改为false，关闭可变宽度
+      slidesToShow: 1,     // 添加这个配置，每次显示1个slide
+      slidesToScroll: 1,   // 每次滚动1个slide
+      dots: false,
+       arrows: true,    // 显示箭头
+      autoplay: false,
+      speed: 500,
+      cssEase: 'ease-out',
+ prevArrow: '<button type="button" class="slick-prev" aria-label="Previous"></button>',
+  nextArrow: '<button type="button" class="slick-next" aria-label="Next"></button>',
+      responsive: [
+        {
+          breakpoint: 768, 
+          settings: {
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        centerMode: false,
+        centerPadding: '0px'
+          }
+        }
+      ]
+    });
+    $('.video-tab').on('click', function () {
+      const index = $(this).data('slide');
+      $('.video-tab').removeClass('active');
+      $(this).addClass('active');
+      $slider.slick('slickGoTo', index);
+    });
+
+    $slider.on('afterChange', function (event, slick, currentSlide) {
+      $('.video-tab').removeClass('active');
+      $('.video-tab[data-slide="' + currentSlide + '"]').addClass('active'); 
+      $('.scene-main-slider video').each(function (index, video) {
+        video.pause();
+        video.currentTime = 0;
+      });
+   
+    });
+ 
+ 
+  $slider.on('afterChange', function (event, slick, currentSlide) {
+    $('.scene-main-slider .slide').each(function(i){
+      const $video = $(this).find('video');
+      const $playPause = $(this).find('.video-play-pause');
+      const $iconPlay = $playPause.find('.icon-play');
+      const $iconPause = $playPause.find('.icon-pause');
+      if(i === currentSlide) {
+        if($video.length && !$video[0].paused) {
+          $iconPlay.hide();
+          $iconPause.show();
+        } else {
+          $iconPause.hide();
+          $iconPlay.show();
+        }
+      } else {
+        $iconPause.hide();
+        $iconPlay.show();
+      }
+    });
+  });
+  });
+</script>
+{% schema %}
+{
+  "name": "full-scence-list",
+  "tag": "section",
+  "class": "section section-full-scence-list",
+  "max_blocks": 10,
+  "disabled_on": {
+    "groups": ["footer", "header", "custom.overlay"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "标题",
+      "default": "Bekannt aus"
+    },
+    {
+      "type": "text",
+      "id": "tip_title",
+      "label": "提示标题",
+      "default": "Bekannt aus"
+    },
+    {
+      "type": "text",
+      "id": "tip_popup_title",
+      "label": "提示弹框标题",
+      "default": "Was ist der „Fass-Effekt“?"
+    },
+     {
+      "type": "richtext",
+      "id": "tip_popup_content",
+      "label": "提示弹框内容",
+      "default": "<p></div>Der „Fass-Effekt“ tritt auf, wenn die Leistung des schwächsten Akkus die Gesamteffizienz des Systems beeinträchtigt. Sobald ein Akku beim Laden voll ist, stoppt der Ladevorgang, wodurch die anderen Akkus nicht vollständig aufgeladen werden. Wenn dieser erschöpft ist, hören alle Akkus mit der Entladung auf.</p>"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 120
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 0
+    }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "brand item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "标题",
+          "default": "Null Verlust bei gemischten Akkus"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_pc",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile Image"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "描述"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "滑块+tab+图片+1280",
+      "category": "自定义组件",
+      "blocks": [
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        },
+        {
+          "type": "card"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

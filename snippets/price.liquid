@@ -67,6 +67,7 @@
             {% endif %}
           </s>
         </span>
+
       {%- endunless -%}
       <span class="visually-hidden visually-hidden--inline">{{ 'products.product.price.regular_price' | t }}</span>
       <span class="f-price-item f-price-item--regular">
@@ -95,6 +96,9 @@
           {% endif %}
         </s>
       </span>
+        {% comment %} {%- if product.id==7970665693283 -%}
+        <span class="f-price-item--regular" style="color:#666666;padding-left:4px;">(50€ Sofortrabatt bei Zahlung)</span>
+         {%- endif -%} {% endcomment %}
     {%- endunless -%}
   </div>
   {% if compare_at_price > price and request.page_type == 'product' %}

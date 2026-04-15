@@ -22,20 +22,20 @@
      #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:500px; border-top-right-radius: 0px;border-bottom-right-radius: 0px;}
      #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius img{ width:100%;height:100%; object-fit:fill}
      #shopify-section-{{ section.id }} .custom-content-block--text{ border-top-right-radius: 20px;border-bottom-right-radius: 20px;}
-     #shopify-section-{{ section.id }} .custom-content-block--text .custom__block { padding-top: 28px;padding-left: 21px;}
+     #shopify-section-{{ section.id }} .custom-content-block--text .custom__block { padding-top: 0px;padding-left: 21px;}
      #shopify-section-{{ section.id }} .h3 { line-height:36px;font-size:30px}
      #shopify-section-{{ section.id }} .custom-product-describe{ display: flex;flex-flow: column;gap: 8px;padding:0px}
      #shopify-section-{{ section.id }} .custom-product-describe li{ display: flex;justify-content: start;gap: 5px;align-items: baseline;line-height: 22px;font-size: 18px;list-style:none}
      #shopify-section-{{ section.id }} .custom-product-describe li .icon-vector{width:26px;}
      #shopify-section-{{ section.id }} .custom-product-describe li div{width:calc(100% - 26px)}
      #shopify-section-{{ section.id }} .custom-product-describe li p{margin:0px}
-     #shopify-section-{{ section.id }} .icon-gift{ width: 3rem; height: 3rem;margin: 0px 10px;}
+     #shopify-section-{{ section.id }} .icon-gift{ width: 4rem; height: 4.5rem;margin: 0px 10px;}
      #shopify-section-{{ section.id }} .custom-content-block--text .rich-text__text{ margin-top:25px}
      #shopify-section-{{ section.id }} .custom-content-block--text .image-container{position: relative;height: 104px;margin-top:25px;}
      #shopify-section-{{ section.id }} .custom-content-block--text .image-container .grid-image {object-fit: contain;object-position: left;}
-     #shopify-section-{{ section.id }} .custom-content-block--text .custom-product-price {display:flex;gap:12px;align-items: center;margin-top:15px;}
-     #shopify-section-{{ section.id }} .custom-content-block--text .custom-product-price .current-price{font-size: 32px;font-weight: 700;color: #DA000C;}
-     #shopify-section-{{ section.id }} .custom-content-block--text .custom-product-price .original-price{font-size: 24px;font-weight: 500;text-decoration-line: line-through;color: #8D8D8D;}
+     #shopify-section-{{ section.id }} .custom-content-block--text .bottom-box {display:flex;gap:50px;align-items: center;margin-top:15px;}
+     #shopify-section-{{ section.id }} .custom-content-block--text .bottom-box .custom-product-price .current-price{font-size: 32px;font-weight: 700;color: #DA000C;}
+     #shopify-section-{{ section.id }} .custom-content-block--text .bottom-box .custom-product-price .original-price{font-size:20px;line-height:24px;display: block;font-weight: 500;color: #8D8D8D;text-decoration: line-through;}
      #shopify-section-{{ section.id }} .rich-text__button{margin:0px }
      #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap .bnt--black{ background: #212121;}
      #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap .bnt--black .button-text{ display:flex;align-items: center;gap: 10px;}
@@ -55,6 +55,32 @@
     line-height: 27px;
     }
 
+    #shopify-section-{{ section.id }} .title-container {
+      display: flex;
+      align-items: center;  /* 关键：垂直居中 */
+      justify-content: center;
+      gap: 0px;  /* 控制间距 */
+    }
+
+    #shopify-section-{{ section.id }} .icon-gift {
+      flex-shrink: 0;  /* 防止SVG被压缩 */
+      color: #333;
+    }
+
+    #shopify-section-{{ section.id }} h2 {
+      margin: 0;  /* 移除默认边距 */
+      flex: 1;  /* 让h2占据剩余空间 */
+    }
+
+
+    #shopify-section-{{ section.id }} .text-subheading{
+      margin-bottom:0px;
+      font-size:18px;
+      line-height:22px;
+      color:#f00;
+     font-weight: 500;
+    }
+
     @media (max-width: 1024px) {
       #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap .btn{ min-width:160px;max-width:160px;height:40px;}
     }
@@ -64,25 +90,50 @@
       #shopify-section-{{ section.id }} .f-flex>.custom-content-block--image{border-top-left-radius: 20px;border-top-right-radius: 12px;border-bottom-left-radius: 0px;}
       #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius img{ object-fit:cover}
       #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:250px; border-top-right-radius: 12px;border-bottom-right-radius: 0px;border-bottom-left-radius: 0px;}
-      #shopify-section-{{ section.id }} .custom-content-block--text{ border-top-right-radius: 0px; border-top-left-radius: 0px;border-bottom-right-radius: 12px; border-bottom-left-radius: 12px;}
+      #shopify-section-{{ section.id }} .custom-content-block--text{ border-top-right-radius: 0px; border-top-left-radius: 0px;border-bottom-right-radius: 20px; border-bottom-left-radius: 20px;}
       #shopify-section-{{ section.id }} .custom-content-block--text .custom__block { padding: 10px 18px 15px}
-      #shopify-section-{{ section.id }} .section__header--text { padding: 0px 2rem}
-      #shopify-section-{{ section.id }} .h3,#shopify-section-{{ section.id }} .section__description { line-height:19px;font-size:16px}
-      #shopify-section-{{ section.id }} .custom-content-block--text .image-container{ height:69px;margin-top:15px}
+      #shopify-section-{{ section.id }} .section__header--text { padding: 0px 0rem}
+      #shopify-section-{{ section.id }} .h3,#shopify-section-{{ section.id }} .section__description { line-height:24px;font-size:20px}
+      #shopify-section-{{ section.id }} .custom-content-block--text .image-container{ height:108px;margin-top:15px}
       #shopify-section-{{ section.id }} .custom-content-block--text .rich-text__text{ margin-top:15px}
       #shopify-section-{{ section.id }} .custom-product-describe li .icon-vector {width: 13px;padding-top:4px;}
        #shopify-section-{{ section.id }} .custom-product-describe li div{width:calc(100% - 13px)}
       #shopify-section-{{ section.id }} .custom-product-describe li{ line-height:15px;font-size:12px}
-      #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap{gap: 10px; margin-top: 15px;justify-content: center;}
-      #shopify-section-{{ section.id }} .custom-content-block--text .custom-product-price .current-price{ font-size:24px}
-      #shopify-section-{{ section.id }} .custom-content-block--text .custom-product-price .original-price{font-size: 16px;}
-      #shopify-section-{{ section.id }} .hd2{ line-height: 34px;font-size:28px;}
-      #shopify-section-{{ section.id }} .icon-gift{ display:none}
+        #shopify-section-{{ section.id }} .custom-content-block--text .rich-text__button {
+    width: 100%;
+  }
+  
+      #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap{ width: 100%;
+    flex-direction: column; /* 改为垂直排列 */
+    gap: 10px;}
+
+      #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap .btn {
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+  }
+        
+      #shopify-section-{{ section.id }} .custom-content-block--text .bottom-box {flex-direction: column; /* 垂直排列 */gap:0px;align-items: flex-start;}
+      #shopify-section-{{ section.id }} .custom-content-block--text .bottom-box .custom-product-price .current-price{ font-size:24px}
+      #shopify-section-{{ section.id }} .custom-content-block--text .bottom-box .custom-product-price .original-price{font-size: 16px;font-weight: 500;display:inline;}
+      #shopify-section-{{ section.id }} .hd2{ line-height: 34px;font-size:26px;}
       #shopify-section-{{ section.id }} .section__description{ margin-top:8px}
       #shopify-section-{{ section.id }} .section__header--tex{padding:0px 20px}
       #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap .bnt--black .button-text{gap:8px}
       #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap .bnt--black .button-text span{ width:calc(100% - 2.6rem)}
       #shopify-section-{{ section.id }} .custom-content-block--text .button-wrap .button-text .icon-shopping-cart{ width: 2.6rem; height: 1.5rem;  padding-left: 8px;}
+
+
+      #shopify-section-{{ section.id }} .icon-gift{ width: 3rem; height: 3.2rem;margin: 0px 5px;}
+      #shopify-section-{{ section.id }} .title-container {
+        margin: 0px 0px;
+      }
+
+    #shopify-section-{{ section.id }} .text-subheading{
+      margin-bottom:0px;
+      font-size:16px;
+      line-height:19px;
+    }
     }
 
 
@@ -90,30 +141,35 @@
         @media (max-width: 430px) {
        #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:285px;}
        #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius img{ object-fit: fill; object-position: top center;}
+       #shopify-section-{{ section.id }} .custom-content-block--text .image-container{ height:139px;margin-top:15px}
           
       }
 
-          @media (max-width: 410px) {
+          @media (max-width: 415px) {
        #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:270px;}
        #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius img{ object-fit: fill; object-position: top center;}
+       #shopify-section-{{ section.id }} .custom-content-block--text .image-container{ height:133px;margin-top:15px}
           
       }
 
       @media (max-width: 400px) {
        #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:256px;}
        #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius img{ object-fit: fill; object-position: top center;}
+       #shopify-section-{{ section.id }} .custom-content-block--text .image-container{ height:124px;margin-top:15px}
           
       }
 
        @media (max-width: 389.98px) {
        #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:245px;}
        #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius img{ object-fit: fill; object-position: top center;}
+       #shopify-section-{{ section.id }} .custom-content-block--text .image-container{ height:108px;margin-top:15px}
           
       }
 
       @media (max-width: 374px) {
        #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius{height:234px;}
        #shopify-section-{{ section.id }} .custom-content-block--image .blocks-radius img{ object-fit: fill; object-position: top center;}
+       #shopify-section-{{ section.id }} .custom-content-block--text .image-container{ height:108px;margin-top:15px}
           
       }
 
@@ -254,64 +310,68 @@
                     {%- assign motion_delay = motion_delay | plus: 50 -%}
                   {%- endif -%}
                   {%- if block.settings.price != blank -%}
-                    <div class="custom-product-price">
-                      <span class="current-price" style="color:{{block.settings.price_color}}"> {{ block.settings.price }}</span>
-                      <span class="original-price">{{ block.settings.original }}</span>
+                    <div class="bottom-box">
+                      <div class="custom-product-price">
+                        <span class="current-price" style="color:{{block.settings.price_color}}"> {{ block.settings.price }}</span>
+                        <span class="original-price">{{ block.settings.original }}</span>
+                      </div>
+
+                      {%- if block.settings.button_label != blank -%}
+                            <motion-element
+                              data-motion="fade-up"
+                              data-motion-delay="{{ motion_delay }}"
+                              class="block rich-text__button"
+                            >
+                              <div class="button-wrap">
+                          
+                                  {%- if product != blank -%}
+                                    <form method="post" action="/cart/add" class="product-form" data-product-id="{{ product.id }}">
+                                      <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+                                      <input type="hidden" name="quantity" value="1">
+                                      <button
+                                        type="submit"
+                                        name="add"
+                                        class="product-form__submit btn btn--primary bnt--black w-full add-to-cart-ajax"
+                                        {% if product.selected_or_first_available_variant.available == false or product.price == 0  %}
+                                          disabled
+                                        {% endif %}
+                                      {% if block.settings.button_title_color != blank %}
+                                        style="background:{{block.settings.button_title_color }};"
+                                      {% endif %}
+                                        data-product-handle="{{ product.handle }}"
+                                        data-variant-id="{{ product.selected_or_first_available_variant.id }}"
+                                      >
+                                        <span class="button-text">
+                                          {%- if product.selected_or_first_available_variant.available -%}
+                                          <span> {{ 'products.product.add_to_cart' | t }} </span> {%render 'icon-cart' %}
+                                          {%- else -%}
+                                            {{ 'products.product.sold_out' | t }}
+                                          {%- endif -%}
+                                        </span>
+                                        {% render 'loading-spinner' %}
+                                      </button>
+                                    </form>
+                                  {%- endif -%}
+                                  <a
+                                    class="btn {{ block.settings.button_style }}"
+                                    {% if block.settings.button_title_color != blank %}
+                                      style="color:{{block.settings.price_color }};border: 2px solid {{block.settings.price_color }};"
+                                    {% endif %}
+                                    {% if block.settings.button_link != blank %}
+                                      href="{{ block.settings.button_link }}"
+                                    {% else %}
+                                      aria-disabled="true"
+                                    {% endif %}
+                                  >
+                                    {{- block.settings.button_label -}}
+                                  </a>
+                                  
+                            </div>
+                            </motion-element>
+                          {% endif %}
                     </div>
                   {%- endif -%}
-                  {%- if block.settings.button_label != blank -%}
-                    <motion-element
-                      data-motion="fade-up"
-                      data-motion-delay="{{ motion_delay }}"
-                      class="block rich-text__button"
-                    >
-                       <div class="button-wrap">
-                  
-                          {%- if product != blank -%}
-                            <form method="post" action="/cart/add" class="product-form" data-product-id="{{ product.id }}">
-                              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
-                              <input type="hidden" name="quantity" value="1">
-                              <button
-                                type="submit"
-                                name="add"
-                                class="product-form__submit btn btn--primary bnt--black w-full add-to-cart-ajax"
-                                {% if product.selected_or_first_available_variant.available == false or product.price == 0  %}
-                                  disabled
-                                {% endif %}
-                               {% if block.settings.button_title_color != blank %}
-                                style="background:{{block.settings.button_title_color }};"
-                              {% endif %}
-                                data-product-handle="{{ product.handle }}"
-                                data-variant-id="{{ product.selected_or_first_available_variant.id }}"
-                              >
-                                <span class="button-text">
-                                  {%- if product.selected_or_first_available_variant.available -%}
-                                   <span> {{ 'products.product.add_to_cart' | t }} </span> {%render 'icon-cart' %}
-                                  {%- else -%}
-                                    {{ 'products.product.sold_out' | t }}
-                                  {%- endif -%}
-                                </span>
-                                {% render 'loading-spinner' %}
-                              </button>
-                            </form>
-                          {%- endif -%}
-                          <a
-                            class="btn {{ block.settings.button_style }}"
-                            {% if block.settings.button_title_color != blank %}
-                              style="color:{{block.settings.price_color }};border: 2px solid {{block.settings.price_color }};"
-                            {% endif %}
-                            {% if block.settings.button_link != blank %}
-                              href="{{ block.settings.button_link }}"
-                            {% else %}
-                              aria-disabled="true"
-                            {% endif %}
-                          >
-                            {{- block.settings.button_label -}}
-                          </a>
-                          
-                    </div>
-                    </motion-element>
-                  {% endif %}
+   
                 </div>
               {%- when 'image' -%}
                 {%- liquid

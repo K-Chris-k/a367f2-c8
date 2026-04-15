@@ -1,5 +1,5 @@
 <style>
-   .section-download {margin:120px 0px 60px;}
+   .section-download {padding-top:{{section.settings.padding_top  }}px;padding-bottom:{{section.settings.padding_bottom  }}px;}
    .section-download h2{ line-height:56px;font-size:46px;text-align:center}
    .section-download .download-box{margin-top:60px;font-size: 16px;line-height: 21px;}
    .section-download .download-box li {display:flex; flex-wrap: nowrap;justify-content: space-between;width: 100%;line-height:22px;font-size:18px}
@@ -15,14 +15,14 @@
         padding-bottom: 12px;  
    }
   @media (max-width: 768px) {
-    .section-download {margin:60px 0px 30px;}
+    .section-download {padding-top:{{section.settings.padding_top | divided_by: 2  }}px;padding-bottom:{{section.settings.padding_bottom | divided_by: 2  }}px;}
     .section-download h2{ line-height:34px;font-size:28px;text-align:center}
     .section-download .download-box{margin-top:20px}
     .section-download .download-box li { font-size: 14px;}
      
   }
 </style>
-<div class="section section--padding page-width section-download">
+<div class="section section--padding page-width">
   <div class="product-collection product-slider-container">
     <h2>
        <span>{{ section.settings.title }}</span>
@@ -54,6 +54,26 @@
       "id": "title",
       "label": "标题",
       "default": "Downloads"
+    },
+      {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 60
     }
   ],
   "blocks": [

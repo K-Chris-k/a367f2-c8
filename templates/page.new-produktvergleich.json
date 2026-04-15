@@ -22,25 +22,25 @@
         "products_N3tHXm": {
           "type": "products",
           "settings": {
-            "image": "shopify://shop_images/Produktvergleich-1600.png",
-            "title": "BK1600",
+            "image": "shopify://shop_images/vs-1200_19d2c0a8-cc97-42e5-8930-707e311b80d8.png",
+            "title": "SolidFlex 1200",
             "link_title": "<p>Mehr erfahren</p>",
-            "link_url": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher"
+            "link_url": "shopify://products/indevolt-solidflex-1200-hybrid-balkonkraftwerk-mit-halbfesten-lifepo-akkus"
           }
         },
         "products_y9cQNb": {
           "type": "products",
           "settings": {
-            "image": "shopify://shop_images/Produktvergleich-Ultra.png",
-            "title": "BK1600 Ultra",
+            "image": "shopify://shop_images/vs-ECO_87120a77-8d01-4698-b8b8-9e40d0dcf7b9.png",
+            "title": "SolidFlex 2000 ECO",
             "link_title": "<p>Mehr erfahren</p>",
-            "link_url": "https://de.indevolt.com/products/indevolt-bk1600-ultra"
+            "link_url": "shopify://products/indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus"
           }
         },
         "products_GAwMCc": {
           "type": "products",
           "settings": {
-            "image": "shopify://shop_images/Produktvergleich-SF2000.png",
+            "image": "shopify://shop_images/vs-2000_5d499829-89f7-4c7e-adf8-5f1eef857361.png",
             "title": "SolidFlex 2000",
             "link_title": "<p>Mehr erfahren</p>",
             "link_url": "https://de.indevolt.com/products/indevolt-sf2000"
@@ -49,7 +49,7 @@
         "products_hNUQmh": {
           "type": "products",
           "settings": {
-            "image": "shopify://shop_images/Produktvergleich-PF2000.png",
+            "image": "shopify://shop_images/vs-PF2000_d0eb8e3c-2886-4726-ab4d-7b57269f9fb4.png",
             "title": "PowerFlex 2000",
             "link_title": "<p>Mehr erfahren</p>",
             "link_url": "https://de.indevolt.com/products/powerflex-2000-balkonkraftwerk-mit-speicher"
@@ -59,8 +59,8 @@
           "type": "product_details",
           "settings": {
             "title": "Kapazität",
-            "content1": "<p>1636 Wh</p>",
-            "content2": "<p>1636 Wh<br/>(erweiterbar auf 4,9 kWh)</p>",
+            "content1": "<p>1,8 kWh<br/>(erweiterbar auf 10,8 kWh)</p>",
+            "content2": "<p>1,8 kWh<br/>(erweiterbar auf 10,8 kWh)</p>",
             "content3": "<p>1,8 kWh<br/>(erweiterbar auf 10,8 kWh)</p>",
             "content4": "<p>2 kWh<br/>(erweiterbar auf 12 kWh)</p>"
           }
@@ -79,8 +79,8 @@
           "type": "product_details",
           "settings": {
             "title": "Kapazität der parallelen Erweiterungen",
-            "content1": "<p>4908 Wh</p>",
-            "content2": "<p>4908 Wh</p>",
+            "content1": "<p>32,4 kWh</p>",
+            "content2": "<p>32,4 kWh</p>",
             "content3": "<p>32,4 kWh</p>",
             "content4": "<p>36 kWh </p>"
           }
@@ -89,8 +89,8 @@
           "type": "product_details",
           "settings": {
             "title": "Akkutyp",
-            "content1": "<p>LiFePO₄</p>",
-            "content2": "<p>LiFePO₄</p>",
+            "content1": "<p>Halbfeste LiFePO₄</p>",
+            "content2": "<p>Halbfeste LiFePO₄</p>",
             "content3": "<p>Halbfeste LiFePO₄</p>",
             "content4": "<p>LiFePO₄</p>"
           }
@@ -99,28 +99,30 @@
           "type": "product_details",
           "settings": {
             "title": "Lebenszyklen",
-            "content1": "<p>6000</p>",
-            "content2": "<p>6000</p>",
+            "content1": "<p>8000</p>",
+            "content2": "<p>8000</p>",
             "content3": "<p>8000</p>",
-            "content4": "<p>7000</p>"
+            "content4": "<p>8000</p>"
           }
         },
         "product_details_WEhCHW": {
           "type": "product_details",
+          "disabled": true,
           "settings": {
             "title": "Maximaler Ladestrom",
-            "content1": "<p>32A</p>",
-            "content2": "<p>32A</p>",
+            "content1": "<p>140A</p>",
+            "content2": "<p>140A</p>",
             "content3": "<p>140A</p>",
             "content4": "<p>140A</p>"
           }
         },
         "product_details_MPr4Qg": {
           "type": "product_details",
+          "disabled": true,
           "settings": {
             "title": "Maximaler Entladestrom",
-            "content1": "<p>46A</p>",
-            "content2": "<p>46A</p>",
+            "content1": "<p>154A</p>",
+            "content2": "<p>154A</p>",
             "content3": "<p>154A</p>",
             "content4": "<p>154A</p>"
           }
@@ -129,8 +131,8 @@
           "type": "product_details",
           "settings": {
             "title": "Eingangsleistung",
-            "content1": "<p>1200W (je 600W)</p>",
-            "content2": "<p>1200W (je 600W)</p>",
+            "content1": "<p>2400W（je 600w）</p>",
+            "content2": "<p>2400W（je 600w）</p>",
             "content3": "<p>2400W（je 600w）</p>",
             "content4": "<p>2400W（je 600w）</p>"
           }
@@ -139,18 +141,18 @@
           "type": "product_details",
           "settings": {
             "title": "MPPT Spannungsbereich",
-            "content1": "<p>10-60V DC</p>",
-            "content2": "<p>10-60V DC</p>",
-            "content3": "<p>10-60V DC</p>",
-            "content4": "<p>10-60V DC</p>"
+            "content1": "<p>11-60V DC</p>",
+            "content2": "<p>11-60V DC</p>",
+            "content3": "<p>11-60V DC</p>",
+            "content4": "<p>11-60V DC</p>"
           }
         },
         "product_details_Gw34UQ": {
           "type": "product_details",
           "settings": {
             "title": "Anzahl der MPPTS",
-            "content1": "<p>2</p>",
-            "content2": "<p>2</p>",
+            "content1": "<p>4</p>",
+            "content2": "<p>/</p>",
             "content3": "<p>4</p>",
             "content4": "<p>4</p>"
           }
@@ -159,8 +161,8 @@
           "type": "product_details",
           "settings": {
             "title": "AC-Eingangs-/Ausgangsleistung",
-            "content1": "<p>1200W / 800W</p>",
-            "content2": "<p>1200W / 800W</p>",
+            "content1": "<p>1200W(mit Erweiterungsakkus)</p>",
+            "content2": "<p>2400W(mit Erweiterungsakkus)</p>",
             "content3": "<p>2400W(mit Erweiterungsakkus)</p>",
             "content4": "<p>2400W(mit Erweiterungsakkus)</p>"
           }
@@ -169,28 +171,30 @@
           "type": "product_details",
           "settings": {
             "title": "Maximaler AC-Strom",
-            "content1": "<p>5,3A</p>",
-            "content2": "<p>5,3A</p>",
+            "content1": "<p>10,4A</p>",
+            "content2": "<p>10,4A</p>",
             "content3": "<p>10,4A</p>",
             "content4": "<p>10,4A</p>"
           }
         },
         "product_details_ppMXTb": {
           "type": "product_details",
+          "disabled": true,
           "settings": {
             "title": "AC-Eingangs-/Ausgangsleistung",
-            "content1": "<p>1200W</p>",
-            "content2": "<p>1200W</p>",
+            "content1": "<p>2400W(mit Erweiterungsakkus)</p>",
+            "content2": "<p>2400W(mit Erweiterungsakkus)</p>",
             "content3": "<p>2400W(mit Erweiterungsakkus)</p>",
             "content4": "<p>2400W(mit Erweiterungsakkus)</p>"
           }
         },
         "product_details_JQAjhT": {
           "type": "product_details",
+          "disabled": true,
           "settings": {
             "title": "Maximaler AC-Ausgangsstrom",
-            "content1": "<p>5,3A</p>",
-            "content2": "<p>5,3A</p>",
+            "content1": "<p>10,4A</p>",
+            "content2": "<p>10,4A</p>",
             "content3": "<p>10,4A</p>",
             "content4": "<p>10,4A</p>"
           }
@@ -199,18 +203,18 @@
           "type": "product_details",
           "settings": {
             "title": "Kabellose Verbindung",
-            "content1": "<p>Bluetooth, 2.4GHz Wi-Fi, 4G </p>",
-            "content2": "<p>Bluetooth, 2.4GHz Wi-Fi, 4G </p>",
-            "content3": "<p>Bluetooth, 2.4GHz Wi-Fi, 4G </p>",
-            "content4": "<p>Bluetooth, 2.4GHz Wi-Fi, 4G </p>"
+            "content1": "<p>Bluetooth, Wi-Fi (2.4/5 GHz)</p>",
+            "content2": "<p>Bluetooth, 2.4GHz Wi-Fi, LoRa</p>",
+            "content3": "<p>Bluetooth, 2.4GHz Wi-Fi, LoRa</p>",
+            "content4": "<p>Bluetooth, 2.4GHz Wi-Fi, LoRa</p>"
           }
         },
         "product_details_DF9D7x": {
           "type": "product_details",
           "settings": {
             "title": "Gewicht",
-            "content1": "<p>16 KG</p>",
-            "content2": "<p>16 KG</p>",
+            "content1": "<p>21,5 KG</p>",
+            "content2": "<p>21,5 KG</p>",
             "content3": "<p>21,5 KG</p>",
             "content4": "<p>22 KG</p>"
           }
@@ -219,8 +223,8 @@
           "type": "product_details",
           "settings": {
             "title": "Abmessungen",
-            "content1": "<p>300×215×250 mm</p>",
-            "content2": "<p>300×215×250 mm</p>",
+            "content1": "<p>425×195×260 mm</p>",
+            "content2": "<p>425×195×260 mm</p>",
             "content3": "<p>425×195×260 mm</p>",
             "content4": "<p>425×195×260 mm</p>"
           }
@@ -229,8 +233,8 @@
           "type": "product_details",
           "settings": {
             "title": "Betriebstemperatur",
-            "content1": "<p>-20℃~45℃</p>",
-            "content2": "<p>-20℃~45℃</p>",
+            "content1": "<p>-20℃~55℃</p>",
+            "content2": "<p>-20℃~55℃</p>",
             "content3": "<p>-20℃~55℃</p>",
             "content4": "<p>-20℃~55℃</p>"
           }
@@ -239,20 +243,21 @@
           "type": "product_details",
           "settings": {
             "title": "Wasserdichte Bewertung",
-            "content1": "<p>IP54</p>",
-            "content2": "<p>IP54</p>",
+            "content1": "<p>IP65</p>",
+            "content2": "<p>IP65</p>",
             "content3": "<p>IP65</p>",
             "content4": "<p>IP65</p>"
           }
         },
         "product_details_eYyVAY": {
           "type": "product_details",
+          "disabled": true,
           "settings": {
             "title": "Zertifikat",
-            "content1": "<p>VDE-AR-N 4105IEC 62619EN 62109IEC 61000-6-2/4EN 50549UN38.3+MSDSRoHS 2.0</p>",
-            "content2": "<p>VDE-AR-N 4105IEC 62619EN 62109IEC 61000-6-2/4EN 50549UN38.3+MSDSRoHS 2.0</p>",
-            "content3": "<p>VDE-AR-N 4105IEC 62619EN 62109IEC 61000-6-2/4EN 50549UN38.3+MSDSRoHS 2.0</p>",
-            "content4": "<p>VDE-AR-N 4105IEC 62619EN 62109IEC 61000-6-2/4EN 50549UN38.3+MSDSRoHS 2.0</p>"
+            "content1": "<p>VDE-AR-N 4105 <br/>IEC 62619<br/>EN 62109<br/>IEC 61000-6-2/4<br/>EN 50549<br/>UN38.3+MSDS<br/>RoHS 2.0</p>",
+            "content2": "<p>VDE-AR-N 4105 <br/>IEC 62619<br/>EN 62109<br/>IEC 61000-6-2/4<br/>EN 50549<br/>UN38.3+MSDS<br/>RoHS 2.0</p>",
+            "content3": "<p>VDE-AR-N 4105 <br/>IEC 62619<br/>EN 62109<br/>IEC 61000-6-2/4<br/>EN 50549<br/>UN38.3+MSDS<br/>RoHS 2.0</p>",
+            "content4": "<p>VDE-AR-N 4105 <br/>IEC 62619<br/>EN 62109<br/>IEC 61000-6-2/4<br/>EN 50549<br/>UN38.3+MSDS<br/>RoHS 2.0</p>"
           }
         },
         "product_details_FVF87b": {
@@ -319,7 +324,7 @@
           "type": "product_details",
           "settings": {
             "title": "EPS",
-            "content1": "<p>/</p>",
+            "content1": "<p><em>✓</em></p>",
             "content2": "<p><em>✓</em></p>",
             "content3": "<p><em>✓</em></p>",
             "content4": "<p><em>✓</em></p>"
@@ -329,8 +334,8 @@
           "type": "product_details",
           "settings": {
             "title": "Batterieoptimierer",
-            "content1": "<p>/</p>",
-            "content2": "<p>/</p>",
+            "content1": "<p><em>✓</em></p>",
+            "content2": "<p><em>✓</em></p>",
             "content3": "<p><em>✓</em></p>",
             "content4": "<p><em>✓</em></p>"
           }
@@ -339,9 +344,9 @@
           "type": "product_details",
           "settings": {
             "title": "99% kompatibel mit dem aktuellen Mikroinverter",
-            "content1": "<p>/</p>",
-            "content2": "<p>✓</p>",
-            "content3": "<p>✓</p>",
+            "content1": "<p><em>✓</em></p>",
+            "content2": "<p><em>✓</em></p>",
+            "content3": "<p><em>✓</em></p>",
             "content4": "<p><em>✓</em></p>"
           }
         },
@@ -359,7 +364,7 @@
           "type": "product_details",
           "settings": {
             "title": "Erweiterung mit Parallelkabel",
-            "content1": "<p>/</p>",
+            "content1": "<p><em>✓</em></p>",
             "content2": "<p><em>✓</em></p>",
             "content3": "<p><em>✓</em></p>",
             "content4": "<p><em>✓</em></p>"

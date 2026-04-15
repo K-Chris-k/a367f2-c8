@@ -7,6 +7,7 @@
       #shopify-section-{{ section.id }} .reserve-pc { order: 2; }
       #shopify-section-{{ section.id }} .reserve-pc-text { order: 1; }
       #shopify-section-{{ section.id }} .image-with-text__inner{padding-inline-start:0rem}
+      #shopify-section-{{ section.id }} .rich-text__text a{color:#3250C3}
    @media (max-width: 767.98px) {
       #shopify-section-{{ section.id }} .image-with-text-list{margin-top: {{ section.settings.padding_top | divided_by:2 }}px;margin-bottom: {{ section.settings.padding_bottom | divided_by:2 }}px;}
       #shopify-section-{{ section.id }} .image-wrapper{position:relative;height: 7rem;}
@@ -119,6 +120,19 @@
               {{ block.settings.text }}
             </motion-element>
             {%- assign motion_delay = motion_delay | plus: 50 -%}
+
+            {% if block.settings.text2 != blank %}
+            <motion-element
+              class="block rich-text__text rte {{ block.settings.text_size }}"
+              
+              data-motion="fade-up"
+              data-motion-delay="{{ motion_delay }}"
+              {{ block.shopify_attributes }}
+            >
+              {{ block.settings.text2 }}
+            </motion-element>
+            {%- assign motion_delay = motion_delay | plus: 50 -%}
+          {% endif %}
           </div>
         </div>
       </div>
@@ -216,7 +230,7 @@
       "type": "range",
       "id": "padding_top",
       "min": 0,
-      "max": 120,
+      "max": 180,
       "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
@@ -226,7 +240,7 @@
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
-      "max": 120,
+      "max": 180,
       "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
@@ -421,6 +435,11 @@
           "type": "richtext",
           "id": "text",
           "default": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.</p>",
+          "label": "t:sections.all.text.label"
+        },
+       {
+          "type": "richtext",
+          "id": "text2",
           "label": "t:sections.all.text.label"
         },
         {

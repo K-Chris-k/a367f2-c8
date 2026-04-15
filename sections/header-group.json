@@ -53,51 +53,56 @@
             "promo_image_1": [
               "solidflex-2000-balkonkraftwerk-mit-speicher",
               "indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus",
-              "indevolt-sfa1800-erweiterungsakku",
-              "bk1600-balkonkraftwerk-mit-speicher",
+              "indevolt-solidflex-1200-hybrid-balkonkraftwerk-mit-halbfesten-lifepo-akkus",
               "powerflex-2000-balkonkraftwerk-mit-speicher",
-              "pfa2000-erweiterungsakku"
+              "bk1600-balkonkraftwerk-mit-speicher",
+              "bk1600-ultra-balkonkraftwerk-mit-speicher"
             ],
             "heading_1": "Balkonkraftwerk mit Speicher",
             "heading_size_1": "h5",
             "description_1": "",
             "promotion_link_1": "",
             "promo_image_2": [
-              "indevolt-mikrowechselrichter",
-              "indevolt-2000w-balkonkraftwerk-mit-mikrowechselrichter-deye-m200g4"
+              "indevolt-sfa1800-erweiterungsakku",
+              "pfa2000-erweiterungsakku"
             ],
-            "heading_2": "",
+            "heading_2": "Erweiterungsakku",
             "heading_size_2": "h5",
             "description_2": "",
             "promotion_link_2": "",
             "promo_image_3": [
-              "indevolt-bifaziale-monokristalline-solarmodule-500w-2er-pack",
-              "indevolt-bifacial-monocrystalline-solarpanel",
-              "indevolt-860w-solarpanels-430w-2er-pack",
-              "indevolt-flexibles-solarpanel"
+              "indevolt-mikrowechselrichter",
+              "indevolt-2000w-balkonkraftwerk-mit-mikrowechselrichter-deye-m200g4"
             ],
             "heading_3": "",
             "heading_size_3": "h5",
             "description_3": "",
             "promotion_link_3": "",
             "promo_image_4": [
-              "solarman-smart-plug",
-              "indevolt-smarter-stromzahler",
-              "solarman-lora-smarter-stromzahler-smd1",
-              "indevolt-solarmodul-balkonhalterungen",
-              "shelly-pro-3em-120a",
-              "indevolt-solarbank-schuko-anschlusskabel-5m",
-              "indevolt-solarmodul-dachhalterungen",
-              "balkongelander-halterung-rundhaken",
-              "halterung-fur-flachdach-und-garten",
-              "indevolt-halterung-fur-dachziegel",
-              "indevolt-halterung-fur-bitumen-und-metalldach"
+              "indevolt-bifaziale-monokristalline-solarmodule-500w-2er-pack",
+              "indevolt-bifacial-monocrystalline-solarpanel",
+              "indevolt-860w-solarpanels-430w-2er-pack",
+              "indevolt-flexibles-solarpanel"
             ],
             "heading_4": "",
             "heading_size_4": "h5",
             "description_4": "",
             "promotion_link_4": "",
-            "promo_image_5": [],
+            "promo_image_5": [
+              "solarman-smart-plug",
+              "indevolt-smarter-stromzahler",
+              "solarman-lora-smarter-stromzahler-smd1",
+              "indevolt-solarmodul-balkonhalterungen",
+              "shelly-pro-3em-120a",
+              "indevolt-solarmodul-dachhalterungen",
+              "balkongelander-halterung-rundhaken",
+              "halterung-fur-flachdach-und-garten",
+              "indevolt-halterung-fur-dachziegel",
+              "indevolt-halterung-fur-bitumen-und-metalldach",
+              "indevolt-solarbank-schuko-anschlusskabel",
+              "indevolt-ac-verlangerungskabel-fur-solidflex-und-powerflex-serie",
+              "indevolt-pv-verlangerungskabel"
+            ],
             "heading_5": "",
             "heading_size_5": "h5",
             "description_5": "",

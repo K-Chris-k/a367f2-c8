@@ -2,113 +2,93 @@
 {%- paginate collections.all.products by 1000 -%}
   {%- if paginate.current_page <= paginate.pages -%}
     {%- for product in collections.all.products -%}
-        {%- if product.tags contains 'solute-feed' -%}
-        {%- assign variant_ids = "43351637426275,43685504811107,43817398173795,43526874988643,43629440696419" | split: ',' -%}
-      {%- for variant in product.variants -%}
-        {%- assign variant_id_str = variant.id | append: '' -%}
-            {% comment %} {%- if variant_ids contains variant_id_str -%} {% endcomment %}
-        {%- if variant.available -%}
-          {
-            {%- comment -%} 核心产品信息 {%- endcomment -%}
-            "item_group_id": {{ variant.product.id | json }},
-            "aid": {{ variant.id | json }},
-
-            {%- comment -%} 名称处理 {%- endcomment -%}
+      {%- comment -%}定义要排除的产品ID列表{%- endcomment -%}
+      {%- assign excluded_product_ids = "7930507690083,7945481584739,7930508017763" | split: "," -%}
+      {%- comment -%}检查当前产品是否在排除列表中{%- endcomment -%}
+      {%- assign skip_product = false -%}
+      {%- for excluded_id in excluded_product_ids -%}
+        {%- if product.id == excluded_id | plus: 0 -%}
+          {%- assign skip_product = true -%}
+          {%- break -%}
+        {%- endif -%}
+      {%- endfor -%}
+      
+      {%- unless skip_product -%}
+        {%- for variant in product.variants -%}
+          {%- if variant.available -%}
+            {"item_group_id":{{ variant.product.id | json }}
+            {%- comment -%}{%- endcomment -%}
+            ,"aid":{{ variant.id | json }}
+            {%- comment -%}{%- endcomment -%}
             {%- if variant.title != 'Default Title' -%}
               {%- assign name = product.title | append: ' - ' | append: variant.title -%}
             {%- else -%}
               {%- assign name = product.title -%}
             {%- endif -%}
-            "name": {{ name | strip | strip_html | strip_newlines | truncate: 200 | json }},
-
-            {%- comment -%} 品牌与分类 {%- endcomment -%}
+            ,"name":{{ name | strip | strip_html | strip_newlines | truncate: 200 | json }}
+            {%- comment -%}{%- endcomment -%}
             {%- if product.vendor -%}
-              "brand": {{ product.vendor | strip | strip_html | strip_newlines | truncate: 70 | json }},
+              ,"brand":{{ product.vendor | strip | strip_html | strip_newlines | truncate: 70 | json }}
             {%- endif -%}
             {%- if product.type -%}
-              "product_type": {{ product.type | strip | strip_html | strip_newlines | json }},
+              ,"product_type":{{ product.type | strip | strip_html | strip_newlines | json }}
             {%- endif -%}
-
-            {%- comment -%} 店铺分类（集合） {%- endcomment -%}
             {%- assign shop_cat = '' -%}
             {%- for collection in product.collections -%}
               {%- if collection.title -%}
                 {%- assign shop_cat = shop_cat | append: collection.title -%}
-                {%- unless forloop.last -%}
-                  {%- assign shop_cat = shop_cat | append: ' > ' -%}
-                {%- endunless -%}
+                {%- unless forloop.last -%}{%- assign shop_cat = shop_cat | append: ' > ' -%}{%- endunless -%}
               {%- endif -%}
             {%- endfor -%}
-            {%- if shop_cat != '' -%}
-              "shop_cat": {{ shop_cat | json }},
-            {%- endif -%}
-
-            {%- comment -%} 标签 {%- endcomment -%}
+            {%- if shop_cat -%},"shop_cat":{{ shop_cat | json }}{%- endif -%}
             {%- if product.tags.size > 0 -%}
-              {%- assign tags = product.tags | join: ',' -%}
-              "tags": {{ tags | json }},
+              {%- assign tags = '' -%}
+              {%- for tag in product.tags -%}
+                {%- assign tags = tags | append: tag -%}
+                {%- unless forloop.last -%}{%- assign tags = tags | append: ',' -%}{%- endunless -%}
+              {%- endfor -%}
+              ,"tags":{{ tags | json }}
             {%- endif -%}
-
-            {%- comment -%} 标识符 {%- endcomment -%}
-            {%- if variant.barcode -%}
-              "ean": {{ variant.barcode | json }},
-            {%- endif -%}
-            {%- if variant.sku -%}
-              "mpnr": {{ variant.sku | json }},
-            {%- endif -%}
-
-            {%- comment -%} 描述 {%- endcomment -%}
+            {%- if variant.barcode -%},"ean":{{ variant.barcode | json }}{%- endif -%}
+            {%- if variant.sku -%},"mpnr":{{ variant.sku | json }}{%- endif -%}
             {%- if product.description -%}
-              "desc": {{ product.description | strip | strip_html | strip_newlines | truncate: 4000 | json }},
+              ,"desc":{{ product.description | strip | strip_html | strip_newlines | truncate: 4000 | json }}
             {%- endif -%}
-
-            {%- comment -%} 图片 {%- endcomment -%}
             {%- if variant.image -%}
               {%- assign image = variant.image | image_url: width: 1000 -%}
             {%- else -%}
               {%- assign image = product.featured_image | image_url: width: 1000 -%}
             {%- endif -%}
-            {%- if image -%}
-              "image": {{ image | replace: '//', 'https://' | json }},
-            {%- endif -%}
-
-            {%- comment -%} 额外图片 {%- endcomment -%}
+            {%- if image -%},"image":{{ image | replace: '//', 'https://' | json }}{%- endif -%}
             {%- if product.images.size > 1 -%}
               {%- assign images = '' -%}
               {%- for image in product.images -%}
-                {%- if forloop.first -%}
-                  {%- continue -%}
-                {%- endif -%}
+                {%- if forloop.first -%}{%- continue -%}{%- endif -%}
                 {%- assign img = image | image_url: width: 1000 -%}
                 {%- assign images = images | append: img -%}
-                {%- unless forloop.last -%}
-                  {%- assign images = images | append: ',' -%}
-                {%- endunless -%}
+                {%- unless forloop.last -%}{%- assign images = images | append: ',' -%}{%- endunless -%}
               {%- endfor -%}
-              {%- if images != '' -%}
-                "images": {{ images | replace: '//', 'https://' | json }},
-              {%- endif -%}
+              ,"images":{{ images | replace: '//', 'https://' | json }}
             {%- endif -%}
-
-            {%- comment -%} 链接 {%- endcomment -%}
             {%- assign link = shop.url | append: product.url -%}
             {%- if variant.id -%}
-              {%- assign link = link | append: '?variant=' | append: variant.id | append: '&utm_source=web&utm_medium=cpc&utm_campaign=billiger' -%}
+              {%- assign link = link | append: '?variant=' %}
+              {%- assign link = link | append: variant.id %}
+              {%- assign link = link | append: '&utm_source=web&utm_medium=cpc&utm_campaign=billiger' -%}
             {%- else -%}
               {%- assign link = link | append: '?utm_source=web&utm_medium=cpc&utm_campaign=billiger' -%}
             {%- endif -%}
-            "link": {{ link | json }},
-
-            {%- comment -%} 库存与价格 {%- endcomment -%}
+            ,"link":{{ link | json }}
+            {%- comment -%}{%- endcomment -%}
             {%- assign availability = 'in stock' -%}
-            "availability": {{ availability | json }},
+            ,"availability":{{ availability | json }}
+            {%- comment -%}{%- endcomment -%}
             {%- if variant.compare_at_price and variant.price < variant.compare_at_price -%}
-              "old_price": {{ variant.compare_at_price | divided_by: 100.0 | json }},
+              ,"old_price":{{ variant.compare_at_price | divided_by: 100.0 | json }}
             {%- endif -%}
             {%- assign price = variant.price | divided_by: 100.0 -%}
-            "price": {{ price | json }},
-
-            {%- comment -%} 库存数量 {%- endcomment -%}
+            ,"price":{{ price | json }}
+            {%- comment -%}{%- endcomment -%}
             {%- if variant.inventory_policy == 'continue' and variant.inventory_quantity > 1 -%}
               {%- assign stock = 42 -%}
             {%- elsif variant.inventory_management -%}
@@ -116,50 +96,63 @@
             {%- else -%}
               {%- assign stock = 42 -%}
             {%- endif -%}
-            "stock_quantity": {{ stock | json }},
-
-            {%- comment -%} 单位定价 {%- endcomment -%}
+            ,"stock_quantity":{{ stock | json }}
+            {%- comment -%}{%- endcomment -%}
             {%- if variant.unit_price_measurement -%}
-              {%- assign upm = variant.unit_price_measurement.quantity_value | append: variant.unit_price_measurement.quantity_unit -%}
-              "upm": {{ upm | json }},
-              {%- assign upbm = variant.unit_price_measurement.reference_value | append: variant.unit_price_measurement.reference_unit -%}
-              "upbm": {{ upbm | json }},
+              {%- assign upm = variant.unit_price_measurement.quantity_value
+                | append: variant.unit_price_measurement.quantity_unit
+              -%}
+              ,"upm":{{ upm | json }}
+              {%- comment -%}{%- endcomment -%}
+              {%- assign upbm = variant.unit_price_measurement.reference_value
+                | append: variant.unit_price_measurement.reference_unit
+              -%}
+              ,"upbm":{{ upbm | json }}
             {%- endif -%}
-
-            {%- comment -%} 配送信息 {%- endcomment -%}
-            {%- assign weight = variant.weight | weight_in_unit | divided_by: 1000.0 -%}
-            "dlv_cost": {%- if price >= 50 -%}0{%- else -%}4.90{%- endif -%},
-            "dlv_cost_AT": {%- if price >= 100 -%}0{%- else -%}6.9{%- endif -%},
+            {%- assign weight = variant.weight | divided_by: 1000.0 -%}
+            ,"dlv_cost":
+            {%- if price >= 50 -%}0{%- else -%}4.90{%- endif -%}
+            {%- comment -%}{%- endcomment -%}
+            ,"dlv_cost_AT":
+            {%- if price >= 100 -%}0{%- else -%}6.9{%- endif -%}
+            {%- comment -%}{%- endcomment -%}
             {%- assign dlv = '2-4 Werktage' -%}
-            "dlv_time": {{ dlv | json }},
-            {%- if variant.weight > 0 -%}
-              "weight": {{ variant.weight | weight_with_unit | json }},
-            {%- endif -%}
-
-            {%- comment -%} 产品选项（变体属性） {%- endcomment -%}
+            ,"dlv_time":{{ dlv | json }}
+            {%- comment -%}{%- endcomment -%}
+            {%- if variant.weight > 0 -%},"weight":{{ variant.weight | weight_with_unit | json }}{%- endif -%}
+            {%- comment -%}{%- endcomment -%}
             {%- for product_option in product.options_with_values -%}
               {%- if product_option.name != 'Title' -%}
+                ,{{ product_option.name | json }}:
                 {%- for option in variant.options -%}
                   {%- if product_option.values contains option -%}
-                    "{{ product_option.name | escape | json }}": {{ option | strip | strip_html | strip_newlines | json }}{%- unless forloop.parentloop.last and forloop.last -%},{%- endunless -%}
+                    {{ option | strip | strip_html | strip_newlines | json }}
                     {%- break -%}
                   {%- endif -%}
                 {%- endfor -%}
               {%- endif -%}
             {%- endfor -%}
-
-            {%- comment -%} 自定义元字段 {%- endcomment -%}
+            {%- comment -%}{%- endcomment -%}
             {%- if product.metafields.custom.size > 0 -%}
               {%- for field in product.metafields.custom -%}
-                ,"meta_{{ field.first | escape | json }}": {{ field.last | strip | strip_html | strip_newlines | replace: '"', '' | replace: '[', '' | replace: ']', '' | json }}
+                ,{{ field.first | prepend: 'meta_' | json }}:
+                {{-
+                  field.last
+                  | strip
+                  | strip_html
+                  | strip_newlines
+                  | replace: '"', ''
+                  | replace: '[', ''
+                  | replace: ']', ''
+                  | json
+                }}
               {%- endfor -%}
             {%- endif -%}
-          }
-          {%- unless forloop.last and forloop.parentloop.last -%},{%- endunless -%}
-        {% comment %} {%- endif -%} {% endcomment %}
-          {%- endif -%}
-      {%- endfor -%}
-        {%- endif -%}
+            {%- comment -%}{%- endcomment -%}
+            }
+          {% endif -%}
+        {%- endfor -%}
+      {%- endunless -%}
     {%- endfor -%}
   {%- endif -%}
-{%- endpaginate -%}
+{%- endpaginate %}

@@ -42,9 +42,10 @@
             "title": "0% MwSt. auf PV-Sets in Deutschland",
             "content": "Hiermit bestätigen Sie, dass Sie die Voraussetzungen für eine umsatzsteuerfreie Lieferung gemäß § 12 Abs. 3 von Deutschland erfüllen.",
             "taxs_title": "Erfahren Sie mehr.",
-            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie hier um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
+            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie <a href='https://www.gesetze-im-internet.de/ustg_1980/__12.html' target='_blank'>hier</a> um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
             "heading_1": "Hinweis: Bestellungen können in mehreren Paketen versendet werden.",
-            "heading_2": "Sofort ab Lager verfügbar, Versand innerhalb von 24 Stunden."
+            "heading_2": "Der Versand von Energiespeicherprodukten erfolgt standardmäßig durch DPD. Abweichungen hiervon sind gegen Aufpreis möglich.",
+            "heading_new": ""
           }
         },
         "description": {
@@ -82,7 +83,8 @@
             "mount_flat_roof": "indevolt-halterung",
             "mount_flat_roof_connect_solar_quantity": true,
             "mount_sloped_roof": "",
-            "mount_sloped_roof_connect_solar_quantity": true
+            "mount_sloped_roof_connect_solar_quantity": true,
+            "bundle_layout_type": "default"
           }
         },
         "recommend_product_HFUhTx": {
@@ -140,7 +142,7 @@
           "type": "cross_sell_products",
           "settings": {
             "title": "Vielleicht brauchst du auch",
-            "cross_sell_product_1": "indevolt-solarbank-schuko-anschlusskabel-5m",
+            "cross_sell_product_1": "indevolt-solarbank-schuko-anschlusskabel",
             "cross_sell_product_1_default": false,
             "cross_sell_product_2": "solarman-smart-plug",
             "cross_sell_product_2_default": false,
@@ -257,10 +259,10 @@
         "margin_bottom": 60
       }
     },
-    "rich_text_image_list_iBXbee": {
-      "type": "rich-text-image-list",
+    "rich_text_video_2026_7KRc4r": {
+      "type": "rich-text-video-2026",
       "blocks": {
-        "heading_m4ctJq": {
+        "heading_znibJg": {
           "type": "heading",
           "settings": {
             "heading": "Wie funktioniert Indevolt BK1600?",
@@ -268,43 +270,38 @@
             "heading_highlight_style": "none"
           }
         },
-        "text_zMxGPw": {
+        "text_UkcRgc": {
           "type": "text",
           "settings": {
             "text": "<p>Mit dem Indevolt BK1600 verwandelst du die von deinen Solarpanelen erzeugte Energie effizient in Wechselstrom für dein Zuhause. Überschüssige Energie wird in Batterien gespeichert, sodass du jederzeit auf eine zuverlässige Energiequelle zugreifen kannst, auch nachts. So versorgst du dein Zuhause rund um die Uhr mit Solarstrom, reduzierst deine Abhängigkeit vom Stromnetz und sparst Kosten.</p>",
             "text_size": "text-lg"
           }
-        },
-        "video_XpUNVx": {
-          "type": "video",
-          "settings": {
-            "video": "shopify://files/videos/bk1600-video2.mp4",
-            "autoplay": true,
-            "loop": true,
-            "muted": true,
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "description": "产品展示视频"
-          }
         }
       },
       "block_order": [
-        "heading_m4ctJq",
-        "text_zMxGPw",
-        "video_XpUNVx"
+        "heading_znibJg",
+        "text_UkcRgc"
       ],
-      "name": "富文本+图片+视频",
+      "name": "富文本+视频+2026",
       "settings": {
         "color_scheme": "",
         "bg_color": "#ffffff",
         "content_alignment": "center",
-        "ids": "eigenschaften",
+        "ids": "",
         "show_title_icon": false,
+        "container": "fixed",
+        "video": "shopify://files/videos/bk1600-video2.mp4",
+        "video-height-custom": "600",
+        "video_mobile": "shopify://files/videos/bk1600-video2.mp4",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "enable_parallax": true,
         "img-href": "",
         "padding_top": 60,
         "padding_bottom": 60,
-        "image_top": 28,
-        "video_radius": 18,
-        "video_aspect_ratio": "16/9",
+        "image_top": 60,
+        "video_radius": 0,
+        "video_ratio": "16/9",
         "show_section_divider": false,
         "divider_width": "fixed",
         "mobile_content_alignment": "center"
@@ -592,10 +589,10 @@
         "mobile_content_alignment": "center"
       }
     },
-    "rich_text_image_list_GcM3rm": {
-      "type": "rich-text-image-list",
+    "rich_text_video_2026_AKMzqJ": {
+      "type": "rich-text-video-2026",
       "blocks": {
-        "heading_3ag9gN": {
+        "heading_EbGEfW": {
           "type": "heading",
           "settings": {
             "heading": "<strong>Dynamischer Stromtarif</strong>",
@@ -603,94 +600,38 @@
             "heading_highlight_style": "none"
           }
         },
-        "text_MWYK8H": {
+        "text_WzBQna": {
           "type": "text",
           "settings": {
             "text": "<p>Mit der Indevolt APP erhältst du Echtzeit-Benachrichtigungen über Strompreise und kannst deine Lade- und Entladepläne ganz einfach verwalten. Setze deinen Zielpreis, und das System lädt automatisch bei niedrigen Preisen und entlädt bei hohen Preisen. Spare Geld und erziele zusätzliche Einkünfte!</p>",
             "text_size": "text-lg"
           }
-        },
-        "video_DE7dCU": {
-          "type": "video",
-          "settings": {
-            "video": "shopify://files/videos/德语_batch_e1110602-12d0-4fe5-b7e6-8b06fdfacf63.mp4",
-            "autoplay": true,
-            "loop": true,
-            "muted": true,
-            "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
-            "description": "产品展示视频"
-          }
         }
       },
       "block_order": [
-        "heading_3ag9gN",
-        "text_MWYK8H",
-        "video_DE7dCU"
+        "heading_EbGEfW",
+        "text_WzBQna"
       ],
-      "name": "富文本+图片+视频",
+      "name": "富文本+视频+2026",
       "settings": {
         "color_scheme": "",
         "bg_color": "#ffffff",
         "content_alignment": "center",
         "ids": "",
         "show_title_icon": false,
+        "container": "fixed",
+        "video": "shopify://files/videos/德语_batch_e1110602-12d0-4fe5-b7e6-8b06fdfacf63.mp4",
+        "video-height-custom": "700",
+        "video_mobile": "shopify://files/videos/德语_batch_e1110602-12d0-4fe5-b7e6-8b06fdfacf63.mp4",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "enable_parallax": true,
         "img-href": "",
         "padding_top": 60,
         "padding_bottom": 60,
-        "image_top": 28,
-        "video_radius": 18,
-        "video_aspect_ratio": "16/9",
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "mobile_content_alignment": "center"
-      }
-    },
-    "rich_text_image_list_BTGngr": {
-      "type": "rich-text-image-list",
-      "blocks": {
-        "heading_RcUkFk": {
-          "type": "heading",
-          "settings": {
-            "heading": "Stromkosten effizienter mit KI sparen",
-            "heading_size": "hd2",
-            "heading_highlight_style": "none"
-          }
-        },
-        "text_qXhgNC": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Indevolt Smart AI entwickelt maßgeschneiderte Energiemanagementlösungen auf Basis präziser Big-Data-Analysen. Mithilfe historischer Stromverbrauchsdaten und unter Berücksichtigung von Wetterfaktoren prognostiziert unsere Technologie deinen stündlichen Stromverbrauch für den Tag. Gleichzeitig schätzen wir die erwartete Sonnenstromerzeugung anhand der Wettervorhersage und der Leistung deiner Photovoltaikanlage. Dank der Integration dynamischer Strompreise und aktueller Batteriestatusinformationen behältst du die Kosten pro Kilowattstunde in Echtzeit im Blick. So bestimmen wir automatisch die optimalen Lade- und Entladestrategien, um deine Energiekosten zu maximieren und die Energieabrechnung zu optimieren.</p>",
-            "text_size": "text-lg"
-          }
-        },
-        "image_8zRmVr": {
-          "type": "image",
-          "settings": {
-            "container": "fixed",
-            "image": "shopify://shop_images/image_5af30c00-dd22-4b85-95cb-5288d53eab62.png",
-            "mobile_image": "shopify://shop_images/0226bk1600-_1_1_24dc809d-3523-4e18-9ee8-4088ccd6e078.png"
-          }
-        }
-      },
-      "block_order": [
-        "heading_RcUkFk",
-        "text_qXhgNC",
-        "image_8zRmVr"
-      ],
-      "disabled": true,
-      "name": "富文本与图片",
-      "settings": {
-        "color_scheme": "",
-        "bg_color": "#ffffff",
-        "content_alignment": "center",
-        "ids": "",
-        "show_title_icon": false,
-        "img-href": "",
-        "padding_top": 50,
-        "padding_bottom": 50,
-        "image_top": 28,
-        "video_radius": 8,
-        "video_aspect_ratio": "16/9",
+        "image_top": 40,
+        "video_radius": 0,
+        "video_ratio": "adapt",
         "show_section_divider": false,
         "divider_width": "fixed",
         "mobile_content_alignment": "center"
@@ -931,7 +872,7 @@
             "image": "shopify://shop_images/ultra-vs-bk1600-pc.jpg",
             "mobile_image": "shopify://shop_images/ultra-vs-bk1600-mob.jpg",
             "title": "BK1600",
-            "description": "<ul><li>Die beste Einstiegsoption für Balkonkraftwerk mit Speicher</li><li>PV-Anlagen und Speicher in einem Schritt (Ideal für Anfänger ohne Balkonkraftwerke)</li><li>Unterstützt die Kapazitätserweiterung durch einen drahtlosen Parallelbetrieb</li></ul>",
+            "description": "<ul><li>Die beste Einstiegsoption für Balkonkraftwerk mit Speicher</li><li>PV-Anlagen und Speicher in einem Schritt (Ideal für Anfänger ohne Balkonkraftwerke)</li><li>Unterstützt die Kapazitätserweiterung durch einen drahtlosen Parallelbetrieb</li><li>Keine EPS-Funktion</li></ul>",
             "button_title": "Jetzt kaufen",
             "button_link": "#"
           }
@@ -942,7 +883,7 @@
             "image": "shopify://shop_images/ultra-vs-ultra-pc.jpg",
             "mobile_image": "shopify://shop_images/ultra-vs-ultra-mob.jpg",
             "title": "BK1600 Ultra",
-            "description": "<ul><li>Besitzt alle Funktionen von BK1600</li><li>Unterstützt Kopplung mit Mikro-Wechselrichtern (Aufrüstung bestehender PV-Anlagen mit Energiespeicher)</li><li>Unterstützt die Kapazitätserweiterung durch den Parallelbetrieb des BK1600</li></ul>",
+            "description": "<ul><li>Besitzt alle Funktionen von BK1600</li><li>Unterstützt Kopplung mit Mikro-Wechselrichtern (Aufrüstung bestehender PV-Anlagen mit Energiespeicher)</li><li>Unterstützt die Kapazitätserweiterung durch den Parallelbetrieb des BK1600</li><li>Unterstützt EPS (Notstromfunktion)</li></ul>",
             "button_title": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/bk1600-ultra-balkonkraftwerk-mit-speicher"
           }
@@ -1242,7 +1183,7 @@
           "settings": {
             "icon": "none",
             "heading": "Was ist der Unterschied zwischen dem BK1600 Ultra und dem BK1600?",
-            "content": "<p>Beide Geräte, der BK1600 und der BK1600 Ultra, haben ein All-in-One-Design und enthalten einen bidirektionalen Wechselrichter. Wenn in deinem Zuhause keine Solaranlage installiert ist (also ohne Mikro-Wechselrichter), solltest du den BK1600 wählen. Damit kannst du die Solarange und die Speicherung auf einmal umsetzen und den überschüssigen Strom, den die PV-Anlage tagsüber erzeugt, optimal nutzen, um ihn abends zu verwenden. Das ist die kostengünstigste Wahl. Wenn du jedoch bereits eine Solaranlage installiert hast, dann wähle den BK1600 Ultra, um eine Speicherung zu ermöglichen und zusätzlich 1200W an Solarmodulen anzuschließen.</p>",
+            "content": "<p>Beide Geräte, der BK1600 und der BK1600 Ultra, haben ein All-in-One-Design und enthalten einen bidirektionalen Wechselrichter. Wenn in deinem Zuhause keine Solaranlage installiert ist (also ohne Mikro-Wechselrichter), solltest du den BK1600 wählen. Damit kannst du die Solarange und die Speicherung auf einmal umsetzen und den überschüssigen Strom, den die PV-Anlage tagsüber erzeugt, optimal nutzen, um ihn abends zu verwenden. Das ist die kostengünstigste Wahl. Wenn du jedoch bereits eine Solaranlage installiert hast, dann wähle den BK1600 Ultra, um eine Speicherung zu ermöglichen und zusätzlich 1200W an Solarmodulen anzuschließen.<br/>Der BK1600 hat keine EPS-Funktion am Off-Grid-Ausgang – der BK1600 Ultra unterstützt EPS.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1404,6 +1345,7 @@
         },
         "collapsible_item_VhCxaq": {
           "type": "collapsible_item",
+          "disabled": true,
           "settings": {
             "icon": "none",
             "heading": "Haftungsausschluss & Berechnung",
@@ -1484,6 +1426,17 @@
         "padding_top": 0,
         "padding_bottom": 0
       }
+    },
+    "custom_liquid_yGdgzX": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .haft-div{\n  \t  padding-top:100px;\n  \t  padding-bottom:100px;\n\t  max-width:1280px;\n\t  font-size:16px;\n  }\n\n @media (max-width: 768px) {\n\t  .haft-div{\n\t  \t\t padding-top:50px;\n\t  \t\tpadding-bottom:50px;\n\t  \t\tmax-width:1280px;\n\t  \t\tfont-size:14px;\n\t  }\n }\n</style>\n<div style=\"background-color:#000000;padding:15px; display: flex;\n  justify-content: center;\n  align-items: center;\">\n<div data-page-id=\"Dm5hdIPgEokbCOxNAt2c2IiTnMc\" data-lark-html-role=\"root\" data-docx-has-block-data=\"false\">\n\n<div   class=\"haft-div\">\n\n \n\n\n \n<div data-zone-id=\"0\" data-line-index=\"3\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Haftungsausschluss</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"4\" data-line=\"true\"><span style=\"color: #8A8A8A;\">1. Die Berechnung basiert auf der folgenden Produktkonfiguration:\nBK1600 (1,6 kWh) + 2 × 445 W Solarpanels (gesamt 900 W) + Smart Meter + 4 × Balkonhalterungen.</span></div>\n\n<div data-zone-id=\"0\" data-line-index=\"4\" data-line=\"true\"><span style=\"color: #8A8A8A;\">2. Unter idealen Bedingungen können zwei 445 W Solarpanels jährlich bis zu 1.046 kWh Strom produzieren.</span></div>\n\n<div data-zone-id=\"0\" data-line-index=\"4\" data-line=\"true\"><span style=\"color: #8A8A8A;\">3. Unter Berücksichtigung der Verbrauchszeiten und der Umwandlungseffizienz beträgt der Eigenverbrauchsanteil 97 %. Das Indevolt BK1600-System liefert somit jährlich 1.015 kWh nutzbaren Strom.\n</span></div>\n\n<div data-zone-id=\"0\" data-line-index=\"4\" data-line=\"true\"><span style=\"color: #8A8A8A;\">4. Die Stromkostenersparnis basiert auf einem Strompreis von 0,40 €/kWh – dem offiziellen durchschnittlichen Strompreis in Deutschland für das zweite Halbjahr 2022.\nDaraus ergibt sich eine jährliche Ersparnis von insgesamt 406 €.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"13\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"5\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Berechnung</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"6\" data-line=\"true\"><span style=\"color: #8A8A8A;\">1. Jährliche Rendite des BK1600-Systems:</span></div>\n<div data-zone-id=\"0\" data-line-index=\"7\" data-line=\"true\"><span style=\"color: #8A8A8A;\">1.046 kWh × 97 % × 0,40 €/kWh = 406 €</span></div>\n<div data-zone-id=\"0\" data-line-index=\"8\" data-line=\"true\"><span style=\"color: #8A8A8A;\">2. Jährliche Rendite des Balkonkraftwerks ohne Speicher:</span></div>\n<div data-zone-id=\"0\" data-line-index=\"8\" data-line=\"true\"><span style=\"color: #8A8A8A;\">1.046 kWh × 40 % × 0,40 €/kWh = 167 €</span></div>\n<div data-zone-id=\"0\" data-line-index=\"22\" data-line=\"true\"><br></div>\n \n</div>\n\n</div>",
+        "container": "full",
+        "color_scheme": "",
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
     }
   },
   "order": [
@@ -1491,7 +1444,7 @@
     "main",
     "video_a3rWPF",
     "service_info_cqwgGJ",
-    "rich_text_image_list_iBXbee",
+    "rich_text_video_2026_7KRc4r",
     "service_info_Xz4B7e",
     "image_with_text_cGVRXA",
     "video_with_text_4BzEfL",
@@ -1499,8 +1452,7 @@
     "image_with_text_CMUcJb",
     "image_with_text_PxXFJU",
     "rich_text_image_list_N7WWcR",
-    "rich_text_image_list_GcM3rm",
-    "rich_text_image_list_BTGngr",
+    "rich_text_video_2026_AKMzqJ",
     "rich_text_iAKWzr",
     "video_k4fpq6",
     "scene_tabs_XVgwzJ",
@@ -1511,6 +1463,7 @@
     "parameter_jVPXz4",
     "download_VfWKJX",
     "collapsible_tabs_tPN7pj",
-    "17586961750477b632"
+    "17586961750477b632",
+    "custom_liquid_yGdgzX"
   ]
 }

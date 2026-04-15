@@ -11,6 +11,7 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
@@ -257,6 +258,7 @@
         "tab_FfqMPE",
         "tab_hqNABT"
       ],
+      "disabled": true,
       "name": "阳台专题产品tabsPC+移动",
       "settings": {
         "bg_color": "#ffffff",
@@ -333,12 +335,252 @@
         "show_section_divider": false,
         "divider_width": "fixed"
       }
+    },
+    "image_with_text_overlay_home_rEHXX9": {
+      "type": "image-with-text-overlay-home",
+      "blocks": {
+        "heading_8qkFk6": {
+          "type": "heading",
+          "settings": {
+            "heading": "Frühlings-Special: Bis zu 57% Rabatt",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "subheading_mLYC3R": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Dein Zuhause mit Solarstrom versorgen"
+          }
+        },
+        "countdown_38HJKV": {
+          "type": "countdown",
+          "settings": {
+            "countdown_title": "10. – 31. März",
+            "end_date": "2026-03-31 23:59:59",
+            "countdown_text_color": "#ffffff",
+            "countdown_style": "standard",
+            "show_days": true,
+            "show_hours": true,
+            "show_minutes": true,
+            "show_seconds": true
+          }
+        },
+        "button_nrkX8w": {
+          "type": "button",
+          "settings": {
+            "button_label_first": "Mehr erfahren",
+            "button_link_first": "",
+            "button_style_first": "btn--primary",
+            "button_label_second": "",
+            "button_link_second": "",
+            "button_style_second": "white--btn--secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_8qkFk6",
+        "subheading_mLYC3R",
+        "countdown_38HJKV",
+        "button_nrkX8w"
+      ],
+      "disabled": true,
+      "name": "首页活动页kv",
+      "settings": {
+        "container": "full",
+        "bg_color": "#ffffff",
+        "title_color": "#ff9400",
+        "text_color": "#666",
+        "btn_wrapper_alignment": "start",
+        "image": "shopify://shop_images/kv-pc_f7fdbad9-cc3a-4af6-86fd-6e8958a1705c.jpg",
+        "desktop_height": "extra-large",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 900,
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "image_mobile": "shopify://shop_images/kv-mob_3fc1a5ad-2230-461d-adf1-ccb572cb30cf.jpg",
+        "mobile_height": "auto",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "slideshow_Hw3eJe": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_ariTfC": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "",
+            "background": "shopify://shop_images/kv-pc_f7fdbad9-cc3a-4af6-86fd-6e8958a1705c.jpg",
+            "background_mobile": "shopify://shop_images/kv-mob_3fc1a5ad-2230-461d-adf1-ccb572cb30cf.jpg",
+            "logo_title": "",
+            "is_show_email": false,
+            "is_show_countdown": true,
+            "image_overlay_opacity": 0,
+            "show_content_in_container": true,
+            "content_position": "middle-left",
+            "content_position_mobile": "middle-center",
+            "text_alignment": "left",
+            "title": "<strong>Frühlings-Special  </strong>Bis zu 57% Rabatt",
+            "title_span": "",
+            "title_span_color": "#ffa81d",
+            "title_span_bg": "",
+            "title_span_size": "",
+            "heading_size": "hd2",
+            "title_color": "#ff9400",
+            "subheading": "",
+            "subheading_color": "#ffffff",
+            "subheading_mb": "",
+            "description": "<p>Dein Zuhause mit Solarstrom versorgen</p>",
+            "description_size": "text-lg",
+            "description_mt": "",
+            "description_mt_mob": "",
+            "description_color": "#000000",
+            "date": "",
+            "date_size": "text-base",
+            "date_color": "#ffffff",
+            "date_mt": "",
+            "date_mt_mob": "",
+            "date_span": "",
+            "date_span_color": "#ffffff",
+            "date_span_size": "",
+            "button_label": "Mehr erfahren",
+            "button_link": "shopify://pages/spring-update",
+            "button_style": "btn--primary",
+            "button_mt": "",
+            "button_mt_mob": ""
+          }
+        },
+        "slide_YaQmHA": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "",
+            "background": "shopify://shop_images/kv-1200-pc.jpg",
+            "background_mobile": "shopify://shop_images/kv-1200-mob_5440dc7b-7219-49a1-af14-023358e6012d.jpg",
+            "logo_title": "",
+            "is_show_email": false,
+            "is_show_countdown": false,
+            "image_overlay_opacity": 0,
+            "show_content_in_container": true,
+            "content_position": "middle-center",
+            "content_position_mobile": "middle-center",
+            "text_alignment": "center",
+            "title": "",
+            "title_span": "",
+            "title_span_color": "#ffa81d",
+            "title_span_bg": "",
+            "title_span_size": "",
+            "heading_size": "hd1",
+            "title_color": "#ffffff",
+            "subheading": "",
+            "subheading_color": "#ffffff",
+            "subheading_mb": "",
+            "description": "<p>Tell your brand's story through images</p>",
+            "description_size": "text-base",
+            "description_mt": "",
+            "description_mt_mob": "",
+            "description_color": "#ffffff",
+            "date": "",
+            "date_size": "text-base",
+            "date_color": "#ffffff",
+            "date_mt": "",
+            "date_mt_mob": "",
+            "date_span": "",
+            "date_span_color": "#ffffff",
+            "date_span_size": "",
+            "button_label": "",
+            "button_link": "shopify://products/indevolt-solidflex-1200-hybrid-balkonkraftwerk-mit-halbfesten-lifepo-akkus",
+            "button_style": "btn--primary",
+            "button_mt": "",
+            "button_mt_mob": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_ariTfC",
+        "slide_YaQmHA"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".hd2 strong {line-height: 58px !important; font-size: 48px !important; font-weight: 700 !important; display: block; color: #000000;}",
+        "@media (min-width: 768px) {.block strong {margin-top: 20px; color: #1a1a1a; line-height: 29px; font-size: 24px; font-weight: 400; }}",
+        "@media (max-width: 768px) {.block strong {display: inline-block; font-weight: 500; } .slideshow__description p {font-weight: 500; }}"
+      ],
+      "name": "t:sections.slideshow.name",
+      "settings": {
+        "container": "full",
+        "layout": "standard",
+        "slide_height": "large",
+        "show_dots": true,
+        "autoplay": true,
+        "autoplay_delay": 3,
+        "controls_position": "bottom",
+        "show_text_below": true,
+        "text_alignment_mobile": "center",
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "image_animate_QjneWp": {
+      "type": "image--animate",
+      "blocks": {
+        "subheading_W6CgqX": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Add a tagline",
+            "heading_size": "hd1",
+            "padding_top": 160
+          }
+        },
+        "image_list_DmL9Lt": {
+          "type": "image_list",
+          "settings": {
+            "image_1": "shopify://shop_images/1200-img-slib3-1-pc.jpg",
+            "mobile_image_1": "shopify://shop_images/1200-img-slib3-1-mob_a848912a-3f3e-4fc8-afa6-0d452ffc8f98.jpg",
+            "title_1": "🛡️ Sicherer durch einfachere Zellstruktur",
+            "desc_1": "<p>Durch die geringere Anzahl an Zellen in Serien- und Parallelschaltung wird die Batterieverbindung deutlich vereinfacht. Das Ergebnis:<br/>· Höhere Systemstabilität<br/>· Einfachere Überwachung der einzelnen Zellen<br/>· Geringeres Risiko durch Verbindungsfehler</p>",
+            "image_2": "shopify://shop_images/1200-img-slib3-2-pc.jpg",
+            "mobile_image_2": "shopify://shop_images/1200-img-slib3-2-mob.jpg",
+            "title_2": "⚡ Langlebiger durch weniger Einzelkomponenten",
+            "desc_2": "Durch die geringere Anzahl an Zellen in Serien- und Parallelschaltungwird die Batterieverbindung deutlich vereinfacht. Das Ergebnis:· Höhere Systemstabilität· Einfachere Überwachung der einzelnen Zellen· Geringeres Risiko durch Verbindungsfehler",
+            "image_3": "shopify://shop_images/1200-img-slib3-3-pc.jpg",
+            "mobile_image_3": "shopify://shop_images/1200-img-slib3-3-mob.jpg",
+            "title_3": "📦 Kompakter – ideal für kleine Installationsräume",
+            "desc_3": "Durch die geringere Anzahl an Zellen in Serien- und Parallelschaltungwird die Batterieverbindung deutlich vereinfacht. Das Ergebnis:· Höhere Systemstabilität· Einfachere Überwachung der einzelnen Zellen· Geringeres Risiko durch Verbindungsfehler",
+            "title_4": "3",
+            "desc_4": ""
+          }
+        }
+      },
+      "block_order": [
+        "subheading_W6CgqX",
+        "image_list_DmL9Lt"
+      ],
+      "name": "图片列表折叠动效",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "center",
+        "ids": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "image_top": 60,
+        "video_radius": 0,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
     }
   },
   "order": [
     "main",
     "product_collection_bes_full_nR3AEY",
     "bes_product_tabs_0202_LmiErh",
-    "bes_product_tabs_K38LWN"
+    "bes_product_tabs_K38LWN",
+    "image_with_text_overlay_home_rEHXX9",
+    "slideshow_Hw3eJe",
+    "image_animate_QjneWp"
   ]
 }

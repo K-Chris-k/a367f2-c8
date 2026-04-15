@@ -43,6 +43,7 @@
   {%- comment -%} 类别网格卡片 {%- endcomment -%}
   <div class="variant-category-cards-wrapper">
     {%- for category in option_config.categories -%}
+     
       {%- liquid
         # 找到该类别的第一个 variant（用于显示图片和判断是否选中）
         assign category_variant = null
@@ -66,7 +67,7 @@
               elsif product.featured_image
                 assign category_image = product.featured_image
               endif
-
+              
               # 检查是否选中（只有在 has_selected_solar 为 true 时才检查）
               if has_selected_solar and selected_option_value == variant_option_value
                 assign is_category_selected = true
@@ -75,6 +76,7 @@
           endif
         endfor
       -%}
+      
 
       {%- if category_variant -%}
         {%- liquid
@@ -100,7 +102,7 @@
         {% if request.path contains 'powerflex' and category.key contains '225w' %}
           {% assign hide_content = true %}
         {% endif %}
-
+        
         {% unless hide_content %}
           
        

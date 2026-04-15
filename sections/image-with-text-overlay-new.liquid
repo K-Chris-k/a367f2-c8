@@ -24,9 +24,9 @@
 
 
     #shopify-section-{{ section.id }} .hd2 { line-height: 58px;font-size: 48px;}
-    #shopify-section-{{ section.id }} .hd2  strong{ color: #FFA81D;}
+    #shopify-section-{{ section.id }} .hd2  strong{ color: #007A3B;}
     #shopify-section-{{ section.id }} .rich-text__text { margin-top:5px; line-height: 22px;font-size: 18px;}
-    #shopify-section-{{ section.id }} .rich-text__text p { margin-top:20px; color:#1A1A1A;line-height: 29px;font-size: 24px;font-weight: 500;}
+    #shopify-section-{{ section.id }} .rich-text__text p { margin-top:12px; color:#000000;line-height: 31px;font-size: 26px;font-weight: 600;}
     #shopify-section-{{ section.id }} .btn-wrapper{display:flex; gap:30px; flex-wrap:wrap;justify-content:{{section.settings.btn_wrapper_alignment }}}
     #shopify-section-{{ section.id }} .white--btn--secondary,#shopify-section-{{ section.id }} .white--btn--secondary:before, 
     #shopify-section-{{ section.id }} .white--btn--secondary:hover:before{ transition: none;background:none;border:2px solid #fff}
@@ -35,25 +35,34 @@
     #shopify-section-{{ section.id }} .icon-list ul li .title{ line-height: 24px; font-size: 16px; color: #FFFFFF; font-weight: 400; }  
     #shopify-section-{{ section.id }} .text-subheading {
     font-weight: 500;
-    font-size: 27px;
-    line-height: 29px;
+    font-size: 22px;
+    line-height: 27px;
     margin-bottom:0px;
     padding-top:18px;
     padding-bottom:10px;
     }
+
+
 
    #shopify-section-{{ section.id }} .text-subheading strong{
     font-weight: 800;
     font-size: 48px;
     }
     
+    #shopify-section-{{ section.id }} .mob_show{
+      display: none;
+    }
+    #shopify-section-{{ section.id }} .pc_show{
+      display: flex;
+
+    }
   @media (max-width: 767px){
     .image-with-text-ovelay__content-wrapper {
         margin-top: 20px !important;
         margin-left: 10px !important;
         margin-right: 10px !important;
     }
-        #shopify-section-{{ section.id }} .hd2  strong{display:block;}
+        #shopify-section-{{ section.id }} .hd2  strong{display:flex;}
     #shopify-section-{{ section.id }} .icon-list ul{gap:10px; justify-content: center; margin-top:30px;}
     #shopify-section-{{ section.id }} .icon-list ul li {max-width:108px; margin-bottom: 30px;}
     #shopify-section-{{ section.id }} .icon-list ul li img{width:45px;height:45px}
@@ -62,15 +71,24 @@
     #shopify-section-{{ section.id }} .content-overlay--middle-left .z-1{ max-width: 100%; text-align: center; }
     #shopify-section-{{ section.id }} .hd2 { line-height: 36px;font-size: 30px;}
     #shopify-section-{{ section.id }} .rich-text__text { margin-top:10px; line-height: 19px;font-size: 16px;}
-    #shopify-section-{{ section.id }} .rich-text__text p { margin:0px; color:#1A1A1A;line-height: 19px;font-size: 16px;font-weight: 600;}
+    #shopify-section-{{ section.id }} .rich-text__text p { margin:0px; color:#1A1A1A;line-height: 19px;font-size: 16px;font-weight: 500;}
     #shopify-section-{{ section.id }} .btn-wrapper{ margin-top:3rem;justify-content: center; gap:16px; }
+
+        #shopify-section-{{ section.id }}  .relative{
+      display: flex;
+      flex-wrap: wrap;  /* 允许换行 */
+      justify-content: center;  /* 水平居中 */
+
+    }
 
 
    #shopify-section-{{ section.id }} .text-subheading {
+    color:#1A1A1A;
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
-    padding-top:38px;
+    padding-top:0px;
+    width:100%;
     }
 
    #shopify-section-{{ section.id }} .text-subheading strong{
@@ -79,7 +97,36 @@
     line-height: 31px;
     }
 
+
+    #shopify-section-{{ section.id }} .mob_show{
+      display: flex;
+      order: 2; 
+      margin-top:0px;
+    }
+    #shopify-section-{{ section.id }} .pc_show{
+      display: none;
+    }
+
+    #shopify-section-{{ section.id }} .hd3{
+       font-weight: 800;
+      font-size: 22px;
+      line-height: 31px;
+      margin-top:10px;
+    }
+
+    #shopify-section-{{ section.id }} .countdown-wrapper{
+      order: 1; 
+      margin:0px 0px;
+    }
+
+    #shopify-section-{{ section.id }} .text-base{
+      order: 3; 
+    }
+
+
   }
+
+ 
 
 </style>
 <div class="image-with-text-overlay section--padding" style="background-color: {{ section.settings.bg_color }};">
@@ -108,13 +155,32 @@
                 >
               {%- endif -%}
 
+                                            <source
+                                media="(min-width: 767px)"
+                                srcset="
+                                {{ section.settings.image | image_url: width: '1000x' }} 1000w,
+                                 {{ section.settings.image | image_url: width: '1200x' }} 1200w, 
+                                  {{ section.settings.image | image_url: width: '1400x' }} 1400w, 
+                                   {{ section.settings.image | image_url: width: '1800x' }} 1800w, 
+                                    {{ section.settings.image | image_url: width: '2000x' }} 2000w, 
+                                     {{ section.settings.image | image_url: width: '2400x' }} 2400w, 
+                                     {{ section.settings.image | image_url: width: '2800x' }} 2800w, 
+                                      {{ section.settings.image | image_url: width: '3200x' }} 3200w, 
+                                       {{ section.settings.image | image_url: width: '3400x' }} 3400w, 
+                                        {{ section.settings.image | image_url: width: '3600x' }} 3600w, 
+                                       {{ section.settings.image | image_url: width: '3840x' }} 3840w
+                                    "
+                                width="{{ section.settings.image.width }}"
+                                height="{{ section.settings.image.height }}"
+                              >
+
               {{-
                 section.settings.image
                 | image_url: width: section.settings.image.width
                 | image_tag:
                   loading: 'lazy',
                   sizes: sizes,
-                  widths: '300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
+                  widths: '300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200,3400,3600,3840',
                   is: 'image-lazy'
               -}}
             </picture>
@@ -144,10 +210,18 @@
                   </motion-element>
                   {%- assign motion_delay = motion_delay | plus: 50 -%}
                 {% when 'heading' %}
-                  <h2 class="rich-text__heading {{ block.settings.heading_size }}" style="color:{{ section.settings.title_color }}" {{ block.shopify_attributes }} >
+                  <h2 class="pc_show rich-text__heading {{ block.settings.heading_size }}" style="max-width:440px;color:{{ section.settings.title_color }}" {{ block.shopify_attributes }} >
                     <motion-element data-motion="fade-up" data-motion-delay="{{ motion_delay }}" class="block">
                       {% render 'highlight-text',
                         text: block.settings.heading,
+                        style: block.settings.heading_highlight_style
+                      %}
+                    </motion-element>
+                  </h2>
+                  <h2 class="mob_show rich-text__heading {{ block.settings.heading_size }}" style="color:{{ section.settings.title_color }}" {{ block.shopify_attributes }} >
+                    <motion-element data-motion="fade-up" data-motion-delay="{{ motion_delay }}" class="block">
+                      {% render 'highlight-text',
+                        text: 'Bis zu <strong>50%</strong> Rabatt',
                         style: block.settings.heading_highlight_style
                       %}
                     </motion-element>

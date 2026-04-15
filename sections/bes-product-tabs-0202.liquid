@@ -59,8 +59,21 @@
     }
 
    .section-{{ section.id }} .image-with-overlay .video-div{
-      background: rgba(0, 0, 0, 0.2);
+      {% comment %} background: rgba(0, 0, 0, 0.2); {% endcomment %}
+     background: linear-gradient(rgba(0,0,0,0.6), transparent) ;
    }
+
+  @media (min-width: 767.98px) { 
+    .video-pc-bg{
+       top:0px;
+       left:0px;
+       position: absolute;
+       z-index: 3;
+       min-width: 1300px;
+       min-height:240px;
+    }
+  
+  }
 
    
   @media (max-width: 767.98px) {
@@ -323,12 +336,22 @@
                         {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
                       {% endif %}
               {% endif %}
-               <div class="text-overlay {% if block.settings.video != blank %} video-div {% endif %}" >
-                      <h3>{{block.settings.heading}}</h3>
-                      <p>{{block.settings.description}}</p>
-                    </div>
-              </div>
 
+              {% if block.settings.video != blank %}
+                <div class="video-div video-pc-bg" >
+                  <div class="text-overlay" >
+                          <h3>{{block.settings.heading}}</h3>
+                          <p>{{block.settings.description}}</p>
+                  </div>
+                </div>
+               {% else %}
+                  <div class="text-overlay">
+                          <h3>{{block.settings.heading}}</h3>
+                          <p>{{block.settings.description}}</p>
+                  </div>
+              {% endif %}
+
+              </div>
               </div>
             </div>
           </div>

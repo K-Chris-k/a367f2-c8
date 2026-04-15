@@ -42,9 +42,10 @@
             "title": "0% MwSt. auf PV-Sets in Deutschland",
             "content": "Hiermit bestätigen Sie, dass Sie die Voraussetzungen für eine umsatzsteuerfreie Lieferung gemäß § 12 Abs. 3 von Deutschland erfüllen.",
             "taxs_title": "Erfahren Sie mehr.",
-            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie hier um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
-            "heading_1": "Hinweis: Bestellungen können in mehreren Paketen versendet werden.",
-            "heading_2": ""
+            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie <a href=\"https://www.gesetze-im-internet.de/ustg_1980/__12.html\" target=\"_blank\">hier</a> um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
+            "heading_1": "Hinweis: PFA2000-Erweiterungsakkus voraussichtlich ab Juli wieder lieferbar.",
+            "heading_2": "Der Versand von Energiespeicherprodukten erfolgt standardmäßig durch DPD. Abweichungen hiervon sind gegen Aufpreis möglich.",
+            "heading_new": "Hinweis: Bestellungen können in mehreren Paketen versendet werden."
           }
         },
         "description": {
@@ -77,12 +78,13 @@
             "bundle_display_mode": "bundle_with_battery",
             "host_product": "powerflex-2000-balkonkraftwerk-mit-speicher",
             "host_variant_id": "43526874988643",
-            "battery_product": "pfa2000-erweiterungsakku-1",
+            "battery_product": "indevolt-sfa1800-erweiterungsakku-kombination",
             "solar_product": "indevolt-bifaziale-monokristalline-solarmodule-kombination",
             "mount_flat_roof": "indevolt-halterung",
             "mount_flat_roof_connect_solar_quantity": true,
             "mount_sloped_roof": "",
-            "mount_sloped_roof_connect_solar_quantity": true
+            "mount_sloped_roof_connect_solar_quantity": true,
+            "bundle_layout_type": "default"
           }
         },
         "recommend_product_fXrzDb": {
@@ -141,11 +143,11 @@
           "type": "cross_sell_products",
           "settings": {
             "title": "Vielleicht brauchst du auch",
-            "cross_sell_product_1": "solarman-smart-plug",
+            "cross_sell_product_1": "indevolt-sfa1800-erweiterungsakku",
             "cross_sell_product_1_default": false,
             "cross_sell_product_2": "shelly-pro-3em-120a",
             "cross_sell_product_2_default": false,
-            "cross_sell_product_3": "",
+            "cross_sell_product_3": "solarman-smart-plug",
             "cross_sell_product_3_default": false,
             "cross_sell_product_4": "",
             "cross_sell_product_4_default": false
@@ -208,7 +210,8 @@
         "complementary"
       ],
       "custom_css": [
-        ".loox-rating {margin-top: -1rem;}"
+        ".loox-rating {margin-top: -1rem;}",
+        ".item-content1 {color: #3250c3;}"
       ],
       "settings": {
         "color_scheme": "scheme-1",
@@ -847,6 +850,7 @@
             "heading": "<strong>2400W bidirektionales Laden</strong>",
             "heading_size": "hd1",
             "text": "<p>Der PowerFlex 2000 ist mit einem integrierten bidirektionalen Wechselrichter ausgestattet, der Lade- und Entladeleistungen von 2400W bietet. Wenn die Strompreise niedrig sind, kann es schnell Strom speichern und so die Stromkosten senken.</p>",
+            "text2": "",
             "text_size": "text-base"
           }
         },
@@ -864,6 +868,7 @@
             "heading": "Parallelerweiterung",
             "heading_size": "hd1",
             "text": "<p>PowerFlex 2000 bietet nahtlose Dreifach-Parallelerweiterung – ideal für Ein- und Dreiphasen-Haushalte. Nach der Erweiterung ergeben sich bis zu 7200W Systemleistung, 7200W PV-Eingang und 36 kWh Kapazität. Für hohe Leistungsanforderungen ist eine erstklassige Wahl.</p>",
+            "text2": "",
             "text_size": "text-base"
           }
         },
@@ -881,6 +886,7 @@
             "heading": "<strong>Modulares Stapel-Design</strong>",
             "heading_size": "hd1",
             "text": "<p>Die Kapazität kann erweitert werden, indem die Akkupacks einfach aufeinander gestapelt werden.</p>",
+            "text2": "",
             "text_size": "text-base"
           }
         }
@@ -1117,11 +1123,11 @@
             "note": ""
           }
         },
-        "card_ngxa4f": {
+        "card_iMbbQd": {
           "type": "card",
           "settings": {
-            "title": "Abmessungen",
-            "content": "425×195×260 mm",
+            "title": "Lebenszyklen",
+            "content": "8000",
             "note": ""
           }
         },
@@ -1189,11 +1195,11 @@
             "note": ""
           }
         },
-        "card_iMbbQd": {
+        "card_ngxa4f": {
           "type": "card",
           "settings": {
-            "title": "Lebenszyklen",
-            "content": "8000",
+            "title": "Abmessungen",
+            "content": "425×195×260 mm",
             "note": ""
           }
         },
@@ -1201,7 +1207,7 @@
           "type": "card",
           "settings": {
             "title": "Betriebstemperatur",
-            "content": "-20°C ~ 60°C",
+            "content": "-20°C ~ 55°C",
             "note": ""
           }
         },
@@ -1256,7 +1262,7 @@
       },
       "block_order": [
         "card_zpKC6A",
-        "card_ngxa4f",
+        "card_iMbbQd",
         "card_LERwBg",
         "card_e4NVaY",
         "card_gQj3P3",
@@ -1265,7 +1271,7 @@
         "card_fqKtyp",
         "card_j6ECRE",
         "card_exbrwd",
-        "card_iMbbQd",
+        "card_ngxa4f",
         "card_QcQCiw",
         "card_fbUEKG",
         "card_QTqJAf",
@@ -1291,7 +1297,7 @@
             "title": "PowerFlex 2000 Serie",
             "content": "Bedienungsanleitung",
             "date": "2025-12-17",
-            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/PowerFlex_2000_Series_DE.pdf?v=1766141584"
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/PwerFlex2000SeriesManual.pdf?v=1774602333"
           }
         },
         "card_Qx6bYi": {
@@ -1370,7 +1376,9 @@
       ],
       "name": "下载列表",
       "settings": {
-        "title": "Downloads"
+        "title": "Downloads",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "collapsible_tabs_NyK4qU": {

@@ -42,9 +42,10 @@
             "title": "0% MwSt. auf PV-Sets in Deutschland",
             "content": "Hiermit bestätigen Sie, dass Sie die Voraussetzungen für eine umsatzsteuerfreie Lieferung gemäß § 12 Abs. 3 von Deutschland erfüllen.",
             "taxs_title": "Erfahren Sie mehr.",
-            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie hier um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
+            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie <a href='https://www.gesetze-im-internet.de/ustg_1980/__12.html' target='_blank'>hier</a> um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
             "heading_1": "Hinweis: Bestellungen können in mehreren Paketen versendet werden.",
-            "heading_2": ""
+            "heading_2": "Der Versand von Energiespeicherprodukten erfolgt standardmäßig durch DPD. Abweichungen hiervon sind gegen Aufpreis möglich.",
+            "heading_new": ""
           }
         },
         "description": {
@@ -90,7 +91,8 @@
             "mount_flat_roof": "indevolt-halterung",
             "mount_flat_roof_connect_solar_quantity": true,
             "mount_sloped_roof": "",
-            "mount_sloped_roof_connect_solar_quantity": true
+            "mount_sloped_roof_connect_solar_quantity": true,
+            "bundle_layout_type": "default"
           }
         },
         "recommend_product_T66P8N": {
@@ -153,7 +155,7 @@
             "cross_sell_product_1_default": false,
             "cross_sell_product_2": "shelly-pro-3em-120a",
             "cross_sell_product_2_default": false,
-            "cross_sell_product_3": "",
+            "cross_sell_product_3": "indevolt-ac-verlangerungskabel-fur-solidflex-und-powerflex-serie",
             "cross_sell_product_3_default": false,
             "cross_sell_product_4": "",
             "cross_sell_product_4_default": false
@@ -239,8 +241,8 @@
         "title": "",
         "container": "fixed",
         "ids": "uberblick",
-        "image_pc": "shopify://shop_images/sf2000-ksp-1201-pc.png",
-        "image_mobile": "shopify://shop_images/sf2000-ksp-1201-mob.png",
+        "image_pc": "shopify://shop_images/sf-ksp-pc.png",
+        "image_mobile": "shopify://shop_images/sf-ksp-mob.png",
         "margin_top": 60,
         "margin_bottom": 0
       }
@@ -291,7 +293,7 @@
         "heading_x6WMwE": {
           "type": "heading",
           "settings": {
-            "heading": "Der weltweit erste Balkonkraftwerk-Speicher mit halbfesten LiFePO₄-Akkus",
+            "heading": "Die sichere Wahl: Halbfeste <strong>LiFePO₄</strong>-Akkus",
             "heading_size": "hd2",
             "heading_highlight_style": "none"
           }
@@ -731,6 +733,7 @@
             "heading": "<strong>Vielseitige Verbindungen</strong>",
             "heading_size": "hd2",
             "text": "<p>Das SolidFlex 2000 bietet verschiedene Anschlussmöglichkeiten und unterstützt die lokale Steuerung ganz ohne Cloud-Server.</p>",
+            "text2": "",
             "text_size": "text-lg"
           }
         },
@@ -748,6 +751,7 @@
             "heading": "<strong>Nahtlose Integration ins Smart Home</strong>",
             "heading_size": "hd1",
             "text": "<p>Das SolidFlex 2000 verfügt über eine offene lokale API und unterstützt gängige offene Protokolle wie HTTP. So lässt es sich mühelos in Drittanbieter‑Smart‑Home‑Systeme wie Home Assistant integrieren.</p>",
+            "text2": "",
             "text_size": "text-base"
           }
         }
@@ -775,7 +779,7 @@
         "heading_xdFx6m": {
           "type": "heading",
           "settings": {
-            "heading": "Max.2400W Notstromversorgung",
+            "heading": "<strong>Notstrom & Bypass – flexibel abgesichert</strong>",
             "heading_size": "hd2",
             "heading_highlight_style": "none"
           }
@@ -783,7 +787,7 @@
         "text_XEBDYw": {
           "type": "text",
           "settings": {
-            "text": "<p>Mit einer Off-Grid AC-Steckdose schaltet die SolidFlex 2000 in nur 10 ms automatisch, damit deine wichtigsten Geräte auch bei Stromausfall sanft weiterlaufen. Im Off-Grid-Betrieb oder bei Ausfall bietet sie eine maximale Leistung von 1000W. Mit dem SFA1800-Erweiterungsakku steigt die Leistung auf 2000W; mit zwei Akkus sind sogar bis zu 2400W möglich.</p>",
+            "text": "<p><strong>Bypass-Funktion – flexibel & leistungsstark: </strong>Bei Netzanschluss versorgt die Off-Grid-Steckdose Geräte mit bis zu 3600W – ideal für leistungsstarke Verbraucher im Haushalt.</p><p><strong>Notstrom – zuverlässig & blitzschnell:</strong> Bei einem Stromausfall schaltet das SolidFlex 2000 automatisch innerhalb von nur 10 ms um – damit laufen deine wichtigsten Geräte sicher weiter. Im Off-Grid-Betrieb stehen dir ohne Erweiterungsakku 1000W zur Verfügung, mit einem SFA1800 sind es 2000W und mit zwei SFA1800 sogar bis zu 2400W.</p>",
             "text_size": "text-lg"
           }
         },
@@ -801,11 +805,14 @@
         "text_XEBDYw",
         "image_i9e8xj"
       ],
+      "custom_css": [
+        "@media (max-width: 768px) {.rich-text__text {font-size: 16px; line-height: 19px; }}"
+      ],
       "name": "富文本与图片",
       "settings": {
         "color_scheme": "",
         "bg_color": "#ffffff",
-        "content_alignment": "center",
+        "content_alignment": "left",
         "ids": "",
         "show_title_icon": false,
         "img-href": "",
@@ -836,6 +843,7 @@
             "heading": "<strong>2400W bidirektionales Laden</strong>",
             "heading_size": "hd2",
             "text": "<p>Der SolidFlex 2000 ist mit einem integrierten bidirektionalen Wechselrichter ausgestattet, der Lade- und Entladeleistungen von 2400W bietet. Wenn die Strompreise niedrig sind, kann es schnell Strom speichern und so die Stromkosten senken.</p>",
+            "text2": "",
             "text_size": "text-lg"
           }
         },
@@ -853,6 +861,7 @@
             "heading": "Parallelerweiterung",
             "heading_size": "hd2",
             "text": "<p>SolidFlex 2000 bietet nahtlose Dreifach-Parallelerweiterung – ideal für Ein- und Dreiphasen-Haushalte. Nach der Erweiterung ergeben sich bis zu 7200W Systemleistung, 7200W PV-Eingang und 32,4 kWh Kapazität. Für hohe Leistungsanforderungen ist eine erstklassige Wahl.</p>",
+            "text2": "",
             "text_size": "text-lg"
           }
         },
@@ -870,6 +879,7 @@
             "heading": "<strong>Modulares Stapel-Design</strong>",
             "heading_size": "hd2",
             "text": "<p>Die Kapazität kann erweitert werden, indem die Akkupacks einfach aufeinander gestapelt werden.</p>",
+            "text2": "",
             "text_size": "text-lg"
           }
         }
@@ -1106,11 +1116,11 @@
             "note": ""
           }
         },
-        "card_ngxa4f": {
+        "card_iMbbQd": {
           "type": "card",
           "settings": {
-            "title": "Abmessungen",
-            "content": "425×195×260 mm",
+            "title": "Lebenszyklen",
+            "content": "8000",
             "note": ""
           }
         },
@@ -1178,11 +1188,11 @@
             "note": ""
           }
         },
-        "card_iMbbQd": {
+        "card_ngxa4f": {
           "type": "card",
           "settings": {
-            "title": "Lebenszyklen",
-            "content": "8000",
+            "title": "Abmessungen",
+            "content": "425×195×260 mm",
             "note": ""
           }
         },
@@ -1190,7 +1200,7 @@
           "type": "card",
           "settings": {
             "title": "Betriebstemperatur",
-            "content": "-20°C ~ 60°C",
+            "content": "-20°C ~55°C",
             "note": ""
           }
         },
@@ -1245,7 +1255,7 @@
       },
       "block_order": [
         "card_zpKC6A",
-        "card_ngxa4f",
+        "card_iMbbQd",
         "card_LERwBg",
         "card_e4NVaY",
         "card_gQj3P3",
@@ -1254,7 +1264,7 @@
         "card_fqKtyp",
         "card_j6ECRE",
         "card_exbrwd",
-        "card_iMbbQd",
+        "card_ngxa4f",
         "card_QcQCiw",
         "card_fbUEKG",
         "card_QTqJAf",
@@ -1280,7 +1290,7 @@
             "title": "SolidFlex 2000",
             "content": "Bedienungsanleitung",
             "date": "2025-06-03",
-            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_Bedienungsanleitung.pdf?v=1750645951"
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex2000SeriesManual.pdf?v=1774602332"
           }
         },
         "card_jimMXt": {
@@ -1729,7 +1739,7 @@
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "<style>\n  .haft-div{\n  \t  padding-top:100px;\n  \t  padding-bottom:100px;\n\t  max-width:1280px;\n\t  font-size:16px;\n  }\n\n @media (max-width: 768px) {\n\t  .haft-div{\n\t  \t\t padding-top:50px;\n\t  \t\tpadding-bottom:50px;\n\t  \t\tmax-width:1280px;\n\t  \t\tfont-size:14px;\n\t  }\n }\n</style>\n<div style=\"background-color:#000000;padding:15px; display: flex;\n  justify-content: center;\n  align-items: center;\">\n<div data-page-id=\"Dm5hdIPgEokbCOxNAt2c2IiTnMc\" data-lark-html-role=\"root\" data-docx-has-block-data=\"false\">\n\n<div   class=\"haft-div\">\n\n<div data-zone-id=\"0\" data-line-index=\"0\" data-line=\"true\">\n<span style=\"color: #8A8A8A;text-align: center;\">\n<h3 style=\"color:#8A8A8A;\">Haftungsausschluss</h3>\n</span>\n</div>\n\n\n<div data-zone-id=\"0\" data-line-index=\"1\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"2\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Stromkostenersparnis, CO₂-Einsparungen: Bis zu 1.046 € pro Jahr und 1996 kg CO₂.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"3\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>1. Stromerzeugung:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"4\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Die Berechnung basiert auf der folgenden Produktkonfiguration: SolidFlex 2000 (1792 Wh) + 4 x 500W-Solarmodule (2000W) + 5 Erweiterungsakkus (8960 Wh). Die jährlichen Sonnenstunden in Deutschland betragen 1160 Stunden, und die jährliche Stromproduktion beträgt: 1160 * 2000 = 2320 kWh. Die jährliche Speicherkapazität beträgt: 10,75 x 365 = 3924 kWh.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"5\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>2. Berechnungsannahmen:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"6\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Der Eigenverbrauchsanteil beträgt 85%<a href=\"https://solar.htw-berlin.de/rechner/unabhaengigkeitsrechner\"  style=\"color:gray\" target=\"_blank\" rel=\"nofollow\">(Quelle);</a> </span></div>\n<div data-zone-id=\"0\" data-line-index=\"7\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Fester Strompreis: 0,40 €/kWh;</span></div>\n<div data-zone-id=\"0\" data-line-index=\"8\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Preisdifferenz zwischen Spitzen- und Nebenzeiten: 0,132 €/kWh.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"9\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>3. CO₂-Reduktion:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"10\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Jede 1 kWh Solarstrom reduziert die CO₂-Emissionen um ungefähr 0,997 kg.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"11\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>4. Haftungsausschluss:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"12\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Alle Daten basieren auf idealen Testbedingungen; tatsächliche Ergebnisse können je nach individuellen Umständen variieren.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"13\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"14\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Berechnungsdetails:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"15\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Jährliche Stromkostenersparnis</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"16\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= Ersparnisse aus Eigenverbrauch + Ersparnisse aus KI-optimiertem Laden</span></div>\n<div data-zone-id=\"0\" data-line-index=\"17\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= 2320 kWh × 85% × 0,40 € + (3924 kWh − 2320 kWh × 85%) × 0,132 € </span></div>\n<div data-zone-id=\"0\" data-line-index=\"18\" data-line=\"true\"><span style=\"color: #8A8A8A;\">≈ 1.046,46 €</span></div>\n<div data-zone-id=\"0\" data-line-index=\"19\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Geschätzte CO₂-Emissionsreduktion</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"20\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= 2320 kWh × 85% × 0,997</span></div>\n<div data-zone-id=\"0\" data-line-index=\"21\" data-line=\"true\"><span style=\"color: #8A8A8A;\">≈ 1996 kg</span></div>\n<div data-zone-id=\"0\" data-line-index=\"22\" data-line=\"true\"><br></div>\n \n</div>\n\n</div>",
+        "custom_liquid": "<style>\n  .haft-div{\n  \t  padding-top:100px;\n  \t  padding-bottom:100px;\n\t  max-width:1280px;\n\t  font-size:14px;\n  }\n\n @media (max-width: 768px) {\n\t  .haft-div{\n\t  \t\t padding-top:50px;\n\t  \t\tpadding-bottom:50px;\n\t  \t\tmax-width:1280px;\n\t  \t\tfont-size:14px;\n\t  }\n }\n</style>\n<div style=\"background-color:#000000;padding:15px; display: flex;\n  justify-content: center;\n  align-items: center;\">\n<div data-page-id=\"Dm5hdIPgEokbCOxNAt2c2IiTnMc\" data-lark-html-role=\"root\" data-docx-has-block-data=\"false\">\n\n<div   class=\"haft-div\">\n\n<div data-zone-id=\"0\" data-line-index=\"0\" data-line=\"true\">\n<span style=\"color: #8A8A8A;text-align: center;\">\n<h3 style=\"color:#8A8A8A;\">Haftungsausschluss</h3>\n</span>\n</div>\n\n\n<div data-zone-id=\"0\" data-line-index=\"1\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"2\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Stromkostenersparnis, CO₂-Einsparungen: Bis zu 1.046 € pro Jahr und 1996 kg CO₂.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"3\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>1. Stromerzeugung:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"4\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Die Berechnung basiert auf der folgenden Produktkonfiguration: SolidFlex 2000 (1792 Wh) + 4 x 500W-Solarmodule (2000W) + 5 Erweiterungsakkus (8960 Wh). Die jährlichen Sonnenstunden in Deutschland betragen 1160 Stunden, und die jährliche Stromproduktion beträgt: 1160 * 2000 = 2320 kWh. Die jährliche Speicherkapazität beträgt: 10,75 x 365 = 3924 kWh.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"5\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>2. Berechnungsannahmen:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"6\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Der Eigenverbrauchsanteil beträgt 85%<a href=\"https://solar.htw-berlin.de/rechner/unabhaengigkeitsrechner\"  style=\"color:gray\" target=\"_blank\" rel=\"nofollow\">(Quelle);</a> </span></div>\n<div data-zone-id=\"0\" data-line-index=\"7\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Fester Strompreis: 0,40 €/kWh;</span></div>\n<div data-zone-id=\"0\" data-line-index=\"8\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Preisdifferenz zwischen Spitzen- und Nebenzeiten: 0,132 €/kWh.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"9\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>3. CO₂-Reduktion:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"10\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Jede 1 kWh Solarstrom reduziert die CO₂-Emissionen um ungefähr 0,997 kg.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"11\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>4. Haftungsausschluss:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"12\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Alle Daten basieren auf idealen Testbedingungen; tatsächliche Ergebnisse können je nach individuellen Umständen variieren.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"13\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"14\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Berechnungsdetails:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"15\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Jährliche Stromkostenersparnis</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"16\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= Ersparnisse aus Eigenverbrauch + Ersparnisse aus KI-optimiertem Laden</span></div>\n<div data-zone-id=\"0\" data-line-index=\"17\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= 2320 kWh × 85% × 0,40 € + (3924 kWh − 2320 kWh × 85%) × 0,132 € </span></div>\n<div data-zone-id=\"0\" data-line-index=\"18\" data-line=\"true\"><span style=\"color: #8A8A8A;\">≈ 1.046,46 €</span></div>\n<div data-zone-id=\"0\" data-line-index=\"19\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Geschätzte CO₂-Emissionsreduktion</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"20\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= 2320 kWh × 85% × 0,997</span></div>\n<div data-zone-id=\"0\" data-line-index=\"21\" data-line=\"true\"><span style=\"color: #8A8A8A;\">≈ 1996 kg</span></div>\n<div data-zone-id=\"0\" data-line-index=\"22\" data-line=\"true\"><br></div>\n \n</div>\n\n</div>",
         "container": "full",
         "color_scheme": "",
         "padding_top": 60,

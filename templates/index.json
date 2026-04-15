@@ -12,50 +12,6 @@
     "slideshow_q3U4Jn": {
       "type": "slideshow",
       "blocks": {
-        "slide_iD8Nmf": {
-          "type": "slide",
-          "disabled": true,
-          "settings": {
-            "color_scheme": "scheme-1",
-            "background": "shopify://shop_images/KV_409cc498-9992-4cf4-84f3-903907e9034f.jpg",
-            "background_mobile": "shopify://shop_images/KV-0108-mob.jpg",
-            "logo_title": "",
-            "is_show_email": false,
-            "image_overlay_opacity": 0,
-            "show_content_in_container": true,
-            "content_position": "middle-center",
-            "content_position_mobile": "middle-center",
-            "text_alignment": "center",
-            "title": "",
-            "title_span": "",
-            "title_span_color": "#ffa81d",
-            "title_span_bg": "",
-            "title_span_size": "",
-            "heading_size": "hd1",
-            "title_color": "#ffffff",
-            "subheading": "",
-            "subheading_color": "#ffffff",
-            "subheading_mb": "",
-            "description": "",
-            "description_size": "text-base",
-            "description_mt": "",
-            "description_mt_mob": "",
-            "description_color": "#ffffff",
-            "date": "",
-            "date_size": "text-base",
-            "date_color": "#ffffff",
-            "date_mt": "",
-            "date_mt_mob": "",
-            "date_span": "",
-            "date_span_color": "#ffffff",
-            "date_span_size": "",
-            "button_label": "",
-            "button_link": "shopify://pages/neujahrs-sale",
-            "button_style": "btn--primary",
-            "button_mt": "",
-            "button_mt_mob": ""
-          }
-        },
         "slide_zMGnLB": {
           "type": "slide",
           "disabled": true,
@@ -65,6 +21,7 @@
             "background_mobile": "shopify://shop_images/index-fridaybg-mob.jpg",
             "logo_title": "",
             "is_show_email": false,
+            "is_show_countdown": false,
             "image_overlay_opacity": 0,
             "show_content_in_container": true,
             "content_position": "middle-center",
@@ -111,6 +68,7 @@
             "brand_logo_image2": "shopify://shop_images/brand_logo2.png",
             "logo_title": "",
             "is_show_email": false,
+            "is_show_countdown": false,
             "image_overlay_opacity": 0,
             "show_content_in_container": true,
             "content_position": "top-left",
@@ -155,6 +113,7 @@
             "background_mobile": "shopify://shop_images/home-KV-0926-mob.jpg",
             "logo_title": "",
             "is_show_email": true,
+            "is_show_countdown": false,
             "image_overlay_opacity": 0,
             "show_content_in_container": true,
             "content_position": "top-center",
@@ -192,6 +151,7 @@
         },
         "position_C8Xx6n": {
           "type": "position",
+          "disabled": true,
           "settings": {
             "color_scheme": "scheme-1",
             "background": "shopify://shop_images/position.png",
@@ -222,29 +182,29 @@
         },
         "slide_GejMF3": {
           "type": "slide",
-          "disabled": true,
           "settings": {
             "color_scheme": "scheme-1",
-            "background": "shopify://shop_images/home-kv-pc.jpg",
-            "background_mobile": "shopify://shop_images/home-kv-mob.jpg",
+            "background": "shopify://shop_images/ed-home-KV-pc.jpg",
+            "background_mobile": "shopify://shop_images/ed-home-KV-mob.jpg",
             "logo_title": "",
             "is_show_email": false,
+            "is_show_countdown": false,
             "image_overlay_opacity": 0,
             "show_content_in_container": true,
-            "content_position": "top-center",
+            "content_position": "middle-left",
             "content_position_mobile": "middle-center",
-            "text_alignment": "center",
-            "title": "Bis zu 50% Rabatt",
+            "text_alignment": "left",
+            "title": "Earth Day Special Bis zu <strong>50% Rabatt</strong>",
             "title_span": "",
             "title_span_color": "#ffffff",
             "title_span_bg": "#3250C3",
             "title_span_size": "18px",
             "heading_size": "hd2",
-            "title_color": "#df4763",
-            "subheading": "Februar-Sales | 9. - 27. Februar",
+            "title_color": "#000000",
+            "subheading": "15. – 30. April",
             "subheading_color": "#1a1a1a",
             "subheading_mb": "8px",
-            "description": "<p>Aus Liebe zur Erde.<strong> Mit Energie fürs Zuhause.</strong></p>",
+            "description": "<p>Stromkosten senken, Umwelt schützen.</p>",
             "description_size": "text-lg",
             "description_mt": "12",
             "description_mt_mob": "8",
@@ -258,7 +218,51 @@
             "date_span_color": "#ffa81d",
             "date_span_size": "28px",
             "button_label": "Mehr erfahren",
-            "button_link": "shopify://pages/february-sales",
+            "button_link": "shopify://pages/earthday",
+            "button_style": "btn--primary",
+            "button_mt": "",
+            "button_mt_mob": ""
+          }
+        },
+        "slide_iD8Nmf": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "scheme-1",
+            "background": "shopify://shop_images/KV-1200-pc_9de024eb-67fe-4d1a-b44f-904ccae1db50.jpg",
+            "background_mobile": "shopify://shop_images/KV-1200-mob_8b6446a7-04cc-44c4-94c9-5e524e8cf5bc.jpg",
+            "logo_title": "",
+            "is_show_email": false,
+            "is_show_countdown": false,
+            "image_overlay_opacity": 0,
+            "show_content_in_container": true,
+            "content_position": "middle-center",
+            "content_position_mobile": "middle-center",
+            "text_alignment": "center",
+            "title": "",
+            "title_span": "",
+            "title_span_color": "#ffa81d",
+            "title_span_bg": "",
+            "title_span_size": "",
+            "heading_size": "hd1",
+            "title_color": "#ffffff",
+            "subheading": "",
+            "subheading_color": "#ffffff",
+            "subheading_mb": "",
+            "description": "",
+            "description_size": "text-base",
+            "description_mt": "",
+            "description_mt_mob": "",
+            "description_color": "#ffffff",
+            "date": "",
+            "date_size": "text-base",
+            "date_color": "#ffffff",
+            "date_mt": "",
+            "date_mt_mob": "",
+            "date_span": "",
+            "date_span_color": "#ffffff",
+            "date_span_size": "",
+            "button_label": "",
+            "button_link": "shopify://products/indevolt-solidflex-1200-hybrid-balkonkraftwerk-mit-halbfesten-lifepo-akkus",
             "button_style": "btn--primary",
             "button_mt": "",
             "button_mt_mob": ""
@@ -266,17 +270,287 @@
         }
       },
       "block_order": [
-        "slide_iD8Nmf",
         "slide_zMGnLB",
         "slide_U9bPyj",
         "slide_wGXiEM",
         "position_C8Xx6n",
-        "slide_GejMF3"
+        "slide_GejMF3",
+        "slide_iD8Nmf"
       ],
       "custom_css": [
+        ".rich-text__heading {max-width: 450px;}",
+        "@media (min-width: 768px) {.rich-text__heading strong {margin-top: 20px; color: #007a3b; line-height: 58px; font-size: 48px; font-weight: 800; }}",
+        "@media (max-width: 768px) {.rich-text__heading {max-width: 260px;} .rich-text__heading strong {margin-top: 20px; color: #007a3b; line-height: 29px; font-size: 22px; font-weight: 800; } .slideshow__description p {font-weight: 500; }}"
+      ],
+      "settings": {
+        "container": "full",
+        "layout": "standard",
+        "slide_height": "large",
+        "show_dots": true,
+        "autoplay": true,
+        "autoplay_delay": 5,
+        "controls_position": "bottom",
+        "show_text_below": true,
+        "text_alignment_mobile": "center",
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "image_with_text_overlay_home_HBLRfh": {
+      "type": "image-with-text-overlay-home",
+      "blocks": {
+        "heading_XUnBXH": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Frühlings-Special  </strong>Bis zu 57% Rabatt",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "subheading_9e73bA": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Dein Zuhause mit Solarstrom versorgen"
+          }
+        },
+        "countdown_44cMct": {
+          "type": "countdown",
+          "settings": {
+            "countdown_title": "10. – 31. März",
+            "end_date": "2026-03-31 23:59:59",
+            "countdown_text_color": "#ffffff",
+            "countdown_style": "standard",
+            "show_days": true,
+            "show_hours": true,
+            "show_minutes": true,
+            "show_seconds": true
+          }
+        },
+        "button_ejYhYc": {
+          "type": "button",
+          "settings": {
+            "button_label_first": "Mehr erfahren",
+            "button_link_first": "shopify://pages/spring-update",
+            "button_style_first": "btn--primary",
+            "button_label_second": "",
+            "button_link_second": "",
+            "button_style_second": "white--btn--secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_XUnBXH",
+        "subheading_9e73bA",
+        "countdown_44cMct",
+        "button_ejYhYc"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".hd2 strong {display: block; color: #000000;}"
+      ],
+      "name": "首页活动页kv",
+      "settings": {
+        "container": "full",
+        "bg_color": "#ffffff",
+        "title_color": "#ff9400",
+        "text_color": "#666",
+        "btn_wrapper_alignment": "start",
+        "image": "shopify://shop_images/kv-pc_f7fdbad9-cc3a-4af6-86fd-6e8958a1705c.jpg",
+        "desktop_height": "extra-large",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 900,
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "image_mobile": "shopify://shop_images/kv-mob_3fc1a5ad-2230-461d-adf1-ccb572cb30cf.jpg",
+        "mobile_height": "auto",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_overlay_home_slib_bqR8BT": {
+      "type": "image-with-text-overlay-home-slib",
+      "blocks": {
+        "heading_NDDyMh": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Frühlings-Special  </strong>Bis zu 57% Rabatt",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "subheading_xxfTzq": {
+          "type": "subheading",
+          "settings": {
+            "subheading": "Dein Zuhause mit Solarstrom versorgen"
+          }
+        },
+        "countdown_CLagmD": {
+          "type": "countdown",
+          "settings": {
+            "countdown_title": "10. – 31. März",
+            "end_date": "2026-03-31 23:59:59",
+            "countdown_text_color": "#ffffff",
+            "countdown_style": "standard",
+            "show_days": true,
+            "show_hours": true,
+            "show_minutes": true,
+            "show_seconds": true
+          }
+        },
+        "button_X8Ft9q": {
+          "type": "button",
+          "settings": {
+            "button_label_first": "Mehr erfahren",
+            "button_link_first": "shopify://pages/spring-update",
+            "button_style_first": "btn--primary",
+            "button_label_second": "",
+            "button_link_second": "",
+            "button_style_second": "white--btn--secondary"
+          }
+        }
+      },
+      "block_order": [
+        "heading_NDDyMh",
+        "subheading_xxfTzq",
+        "countdown_CLagmD",
+        "button_X8Ft9q"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".hd2 strong {display: block; color: #000000;}"
+      ],
+      "name": "首页轮播活动页kv",
+      "settings": {
+        "container": "full",
+        "bg_color": "#ffffff",
+        "title_color": "#ff9400",
+        "text_color": "#666",
+        "btn_wrapper_alignment": "start",
+        "image": "shopify://shop_images/kv-pc_f7fdbad9-cc3a-4af6-86fd-6e8958a1705c.jpg",
+        "desktop_height": "extra-large",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 900,
+        "content_position": "middle-left",
+        "content_alignment": "left",
+        "image_mobile": "shopify://shop_images/kv-mob_3fc1a5ad-2230-461d-adf1-ccb572cb30cf.jpg",
+        "mobile_height": "auto",
+        "slide_duration": 5,
+        "autoplay": true,
+        "pause_on_hover": true,
+        "image_slib": "shopify://shop_images/kv-1200-pc.jpg",
+        "image_mobile_slib": "shopify://shop_images/kv-1200-mob_5440dc7b-7219-49a1-af14-023358e6012d.jpg",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "slideshow_8TXiGL": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_pUfmHb": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "",
+            "background": "shopify://shop_images/kv-pc_f7fdbad9-cc3a-4af6-86fd-6e8958a1705c.jpg",
+            "background_mobile": "shopify://shop_images/kv-mob_3fc1a5ad-2230-461d-adf1-ccb572cb30cf.jpg",
+            "logo_title": "",
+            "is_show_email": false,
+            "is_show_countdown": true,
+            "image_overlay_opacity": 0,
+            "show_content_in_container": true,
+            "content_position": "middle-left",
+            "content_position_mobile": "middle-center",
+            "text_alignment": "left",
+            "title": "<strong>Frühlings-Special  </strong>Bis zu 57% Rabatt",
+            "title_span": "",
+            "title_span_color": "#ffa81d",
+            "title_span_bg": "",
+            "title_span_size": "",
+            "heading_size": "hd2",
+            "title_color": "#ff9400",
+            "subheading": "",
+            "subheading_color": "#ffffff",
+            "subheading_mb": "",
+            "description": "<p>Dein Zuhause mit Solarstrom versorgen</p>",
+            "description_size": "text-lg",
+            "description_mt": "",
+            "description_mt_mob": "",
+            "description_color": "#000000",
+            "date": "",
+            "date_size": "text-base",
+            "date_color": "#ffffff",
+            "date_mt": "",
+            "date_mt_mob": "",
+            "date_span": "",
+            "date_span_color": "#ffffff",
+            "date_span_size": "",
+            "button_label": "Mehr erfahren",
+            "button_link": "shopify://pages/spring-update",
+            "button_style": "btn--primary",
+            "button_mt": "",
+            "button_mt_mob": ""
+          }
+        },
+        "slide_UWwKC6": {
+          "type": "slide",
+          "settings": {
+            "color_scheme": "",
+            "background": "shopify://shop_images/KV-1200-pc_640a29f2-52c9-40f6-b789-34e27370f497.jpg",
+            "background_mobile": "shopify://shop_images/KV-1200-mob_5d27dc8d-c79f-424d-b89f-f2677f9b34cf.jpg",
+            "logo_title": "",
+            "is_show_email": false,
+            "is_show_countdown": false,
+            "image_overlay_opacity": 0,
+            "show_content_in_container": true,
+            "content_position": "middle-center",
+            "content_position_mobile": "middle-center",
+            "text_alignment": "center",
+            "title": "",
+            "title_span": "",
+            "title_span_color": "#ffa81d",
+            "title_span_bg": "",
+            "title_span_size": "",
+            "heading_size": "hd1",
+            "title_color": "#ffffff",
+            "subheading": "",
+            "subheading_color": "#ffffff",
+            "subheading_mb": "",
+            "description": "<p>Tell your brand's story through images</p>",
+            "description_size": "text-base",
+            "description_mt": "",
+            "description_mt_mob": "",
+            "description_color": "#ffffff",
+            "date": "",
+            "date_size": "text-base",
+            "date_color": "#ffffff",
+            "date_mt": "",
+            "date_mt_mob": "",
+            "date_span": "",
+            "date_span_color": "#ffffff",
+            "date_span_size": "",
+            "button_label": "",
+            "button_link": "shopify://products/indevolt-solidflex-1200-hybrid-balkonkraftwerk-mit-halbfesten-lifepo-akkus",
+            "button_style": "btn--primary",
+            "button_mt": "",
+            "button_mt_mob": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_pUfmHb",
+        "slide_UWwKC6"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".hd2 strong {line-height: 58px !important; font-size: 48px !important; font-weight: 700 !important; display: block; color: #000000;}",
         "@media (min-width: 768px) {.block strong {margin-top: 20px; color: #1a1a1a; line-height: 29px; font-size: 24px; font-weight: 400; }}",
         "@media (max-width: 768px) {.block strong {display: inline-block; font-weight: 500; } .slideshow__description p {font-weight: 500; }}"
       ],
+      "name": "t:sections.slideshow.name",
       "settings": {
         "container": "full",
         "layout": "standard",
@@ -293,13 +567,28 @@
     "scene_list_CwKJ7V": {
       "type": "scene-list",
       "blocks": {
+        "featured_collection_xmNLUg": {
+          "type": "featured_collection",
+          "settings": {
+            "image": "shopify://shop_images/home-img-1200-pc.jpg",
+            "mobile_image": "shopify://shop_images/home-img-1200-mob.jpg",
+            "title": "SolidFlex 1200",
+            "enable_show_new": true,
+            "description": "Ideal für die vereinfachte Anmeldung bei 800W",
+            "usp": "4×600W MPPT | 1200W bidirektional | 1,8–32,4 kWh",
+            "button_title": "Jetzt kaufen",
+            "button_link": "shopify://products/indevolt-solidflex-1200-hybrid-balkonkraftwerk-mit-halbfesten-lifepo-akkus"
+          }
+        },
         "featured_collection_mjAyak": {
           "type": "featured_collection",
           "settings": {
             "image": "shopify://shop_images/index-sf2000-pc.jpg",
             "mobile_image": "shopify://shop_images/index-sf2000-mob.jpg",
             "title": "SolidFlex 2000",
-            "description": "Maximale Sicherheit, ultimative Langlebigkeit",
+            "enable_show_new": false,
+            "description": "Für mehr Sicherheit und eine längere Lebensdauer",
+            "usp": "4×600W MPPT | 2400W bidirektional | 1,8–32,4 kWh",
             "button_title": "Jetzt kaufen",
             "button_link": "shopify://products/solidflex-2000-balkonkraftwerk-mit-speicher"
           }
@@ -310,7 +599,9 @@
             "image": "shopify://shop_images/index-eco-pc.jpg",
             "mobile_image": "shopify://shop_images/index-eco-mob.jpg",
             "title": "SolidFlex 2000 ECO",
+            "enable_show_new": false,
             "description": "Optimierte Speicherlösung für deine PV-Anlage",
+            "usp": "2400W AC-Kopplung | 1,8–32,4 kWh",
             "button_title": "Jetzt kaufen",
             "button_link": "shopify://products/indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus"
           }
@@ -321,28 +612,19 @@
             "image": "shopify://shop_images/pf-new-pc.jpg",
             "mobile_image": "shopify://shop_images/pf-new-mob.jpg",
             "title": "PowerFlex 2000",
+            "enable_show_new": false,
             "description": "Größere Kapazität zur Solarspeicherung",
+            "usp": "4×600W MPPT | 2400W bidirektional | 2–36 kWh",
             "button_title": "Jetzt kaufen",
             "button_link": "shopify://products/powerflex-2000-balkonkraftwerk-mit-speicher"
-          }
-        },
-        "featured_collection_xmNLUg": {
-          "type": "featured_collection",
-          "settings": {
-            "image": "shopify://shop_images/home-bk1600-pc.jpg",
-            "mobile_image": "shopify://shop_images/home-bk1600-mob.jpg",
-            "title": "BK1600",
-            "description": "Balkonkraftwerk mit Speicher für Einsteiger",
-            "button_title": "Jetzt kaufen",
-            "button_link": "shopify://products/bk1600-balkonkraftwerk-mit-speicher"
           }
         }
       },
       "block_order": [
+        "featured_collection_xmNLUg",
         "featured_collection_mjAyak",
         "featured_collection_wBeLed",
-        "featured_collection_weNg9r",
-        "featured_collection_xmNLUg"
+        "featured_collection_weNg9r"
       ],
       "name": "场景列表",
       "settings": {
@@ -459,7 +741,7 @@
             "mobile_image": "shopify://shop_images/home-pro-2-0203.png",
             "hotsale": "Hot Sale",
             "custom_title": "SolidFlex 2000 + SFA1800*1",
-            "custom_describe": "4 MPPT, 2400W PV-Eingang\\nHöchste Sicherheit mit halbfesten Akkus\\nCycBoost-Technologie: 8000 Lebenszyklen\\n2400W AC-Kopplung",
+            "custom_describe": "4×600W MPPT | 2400W AC-Kopplung | 3,6kWh\\nMehr Sicherheit mit halbfesten Akkus\\nCycBoost-Technologie: 8000 Lebenszyklen",
             "price": "1.098,00€",
             "original": "1.898,00€",
             "button_text": "Mehr erfahren",
@@ -474,7 +756,7 @@
             "mobile_image": "shopify://shop_images/home-pro-3-0203.png",
             "hotsale": "Hot Sale",
             "custom_title": "SolidFlex 2000 + SFA1800*1 + 500W Solarpanel*4",
-            "custom_describe": "In nur 1,84 Jahren amortisiert \\nProduziert ca. 7 kWh täglich\\nErzeugt rund 2056 kWh pro Jahr\\nSpart bis zu 822€ im Jahr",
+            "custom_describe": "4×600W MPPT | 2400W AC-Kopplung | 3,6kWh\\nSchnellste Amortisation in 2,25 Jahren\\nBis zu 2320kWh Jahresertrag\\nSpart bis zu 835€ im Jahr",
             "price": "1.598,00€",
             "original": "2.57200€",
             "button_text": "Mehr erfahren",
@@ -489,7 +771,7 @@
             "mobile_image": "shopify://shop_images/home-pro-4-0203.png",
             "hotsale": "Hot Sale",
             "custom_title": "SolidFlex 2000 ECO + SFA1800*2",
-            "custom_describe": "Die Energiespeicherlösung für deine PV-Anlage\\nHöchste Sicherheit mit halbfesten Akkus\\nCycBoost-Technologie: 8000 Lebenszyklen\\n2400W AC-Kopplung",
+            "custom_describe": "2400W AC-Kopplung | 5,4kWh\\nDie Energiespeicherlösung für deine PV-Anlage\\nMehr Sicherheit mit halbfesten Akkus\\nCycBoost-Technologie: 8000 Lebenszyklen",
             "price": "1.497,00€",
             "original": "2.397,00€",
             "button_text": "Mehr erfahren",
@@ -498,6 +780,7 @@
         },
         "card_kPgxiB": {
           "type": "card",
+          "disabled": true,
           "settings": {
             "product_item": "bk1600-balkonkraftwerk-mit-speicher",
             "custom_image": "shopify://shop_images/home-pro-5-0203.png",
@@ -519,7 +802,7 @@
             "mobile_image": "shopify://shop_images/sale-pro-3-1-0203.png",
             "hotsale": "Hot Sale",
             "custom_title": "BK1600 + 445W Bifaziale Solarpanel*2",
-            "custom_describe": "In nur 1,82 Jahren amortisiert \\nProduziert ca. 3,5 kWh täglich \\nErzeugt rund 1028 kWh pro Jahr \\nSpart bis zu 411€ im Jahr",
+            "custom_describe": "2x600W MPPT | 1200W AC-Kopplung | 1,6kWh\\nSchnellste Amortisation in 2,1 Jahren \\nBis zu 1032 kWh Jahresertrag \\nSpart bis zu 317€ im Jahr",
             "price": "599,00€",
             "original": "1.398,00€",
             "button_text": "Mehr erfahren",
@@ -548,6 +831,138 @@
         "title_color": "#000000",
         "button_title_color": "#1a1a1a",
         "button_color": "btn--secondary",
+        "image_height": "216",
+        "sale-min_height": "100",
+        "mob-sale-min_height": "95",
+        "product_show_count": "4",
+        "product_show_count_mob": "1",
+        "product_onsale": "kv-size",
+        "list_style": "home-list",
+        "button_alignment": "center"
+      }
+    },
+    "product_collection_1208_bmGq4M": {
+      "type": "product-collection-1208",
+      "blocks": {
+        "card_iM4L8q": {
+          "type": "card",
+          "settings": {
+            "product_item": "indevolt-solidflex-1200-hybrid-balkonkraftwerk-mit-halbfesten-lifepo-akkus",
+            "custom_image": "shopify://shop_images/home-pro-1-43.png",
+            "mobile_image": "shopify://shop_images/home-pro-1-43.png",
+            "hotsale": "Hot Sale",
+            "custom_title": "SolidFlex 1200 + SFA1800*1",
+            "custom_describe": "4×600W MPPT | 1200W AC-Kopplung | 3,6kWh\\nHöhere Sicherheit durch halbfeste LFP-Akkus\\n8000 Ladezyklen für eine lange Lebensdauer\\nDualband-WLAN (2,4 / 5 GHz)",
+            "price": "948,00€",
+            "original": "1.698,00€",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/indevolt-solidflex-1200-hybrid-balkonkraftwerk-mit-halbfesten-lifepo-akkus?battery=43859125076067&variant=43629440696419"
+          }
+        },
+        "card_JcaGCL": {
+          "type": "card",
+          "settings": {
+            "product_item": "bk1600-balkonkraftwerk-mit-speicher",
+            "custom_image": "shopify://shop_images/home-pro-2-43.png",
+            "mobile_image": "shopify://shop_images/home-pro-2-43.png",
+            "hotsale": "Hot Sale",
+            "custom_title": "SolidFlex 2000 + SFA1800*1",
+            "custom_describe": "4×600W MPPT | 2400W AC-Kopplung | 3,6kWh\\nMehr Sicherheit mit halbfesten Akkus\\nCycBoost-Technologie: 8000 Lebenszyklen",
+            "price": "1.048,00€",
+            "original": "1.898,00€",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/solidflex-2000-balkonkraftwerk-mit-speicher?variant=43629440696419&battery=43859125076067"
+          }
+        },
+        "card_HgTchJ": {
+          "type": "card",
+          "settings": {
+            "product_item": "bk1600-balkonkraftwerk-mit-speicher",
+            "custom_image": "shopify://shop_images/home-pro-3-43.png",
+            "mobile_image": "shopify://shop_images/home-pro-3-43.png",
+            "hotsale": "Hot Sale",
+            "custom_title": "SolidFlex 2000 + SFA1800*1 + 500W Solarpanel*4",
+            "custom_describe": "4×600W MPPT | 2400W AC-Kopplung | 3,6kWh\\nSchnellste Amortisation in 2,25 Jahren\\nBis zu 2320kWh Jahresertrag\\nSpart bis zu 835€ im Jahr",
+            "price": "1.548,00€",
+            "original": "2.497,00€",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/solidflex-2000-balkonkraftwerk-mit-speicher?variant=43629440696419&battery=43859125076067&solar=43859125567587"
+          }
+        },
+        "card_iTGCtN": {
+          "type": "card",
+          "settings": {
+            "product_item": "bk1600-balkonkraftwerk-mit-speicher",
+            "custom_image": "shopify://shop_images/home-pro-6.png",
+            "mobile_image": "shopify://shop_images/home-pro-6.png",
+            "hotsale": "Hot Sale",
+            "custom_title": "SolidFlex 2000 ECO + SFA1800*2",
+            "custom_describe": "2400W AC-Kopplung | 5,4kWh\\nDie Energiespeicherlösung für deine PV-Anlage\\nMehr Sicherheit mit halbfesten Akkus\\nCycBoost-Technologie: 8000 Lebenszyklen",
+            "price": "1.447,00€",
+            "original": "2.347,00€",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus?variant=43817398173795&battery=43859125108835"
+          }
+        },
+        "card_hnewqU": {
+          "type": "card",
+          "disabled": true,
+          "settings": {
+            "product_item": "bk1600-balkonkraftwerk-mit-speicher",
+            "custom_image": "shopify://shop_images/home-pro-5-0203.png",
+            "mobile_image": "shopify://shop_images/home-pro-5-0203.png",
+            "hotsale": "Hot Sale",
+            "custom_title": "PowerFlex 2000 + PFA2000*2",
+            "custom_describe": "4 MPPT | 2400W PV-Eingang | 6kWh\\nCycBoost-Technologie: 8000 Lebenszyklen\\n2400W mit DC- & AC-Kopplung",
+            "price": "1.547,00€",
+            "original": "2.597,00€",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/powerflex-2000-balkonkraftwerk-mit-speicher?variant=43526874988643&battery=43917307445347"
+          }
+        },
+        "card_UwJqJX": {
+          "type": "card",
+          "settings": {
+            "product_item": "bk1600-balkonkraftwerk-mit-speicher",
+            "custom_image": "shopify://shop_images/home-pro-5-43.png",
+            "mobile_image": "shopify://shop_images/home-pro-5-43.png",
+            "hotsale": "Hot Sale",
+            "custom_title": "BK1600 + 445W Bifaziale Solarpanel*2",
+            "custom_describe": "2x600W MPPT | 1200W AC-Kopplung | 1,6kWh\\nSchnellste Amortisation in 2,1 Jahren \\nBis zu 1032 kWh Jahresertrag \\nSpart bis zu 317€ im Jahr",
+            "price": "599,00€",
+            "original": "1.198,00€",
+            "button_text": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher?variant=43351637426275&solar=43859125272675"
+          }
+        }
+      },
+      "block_order": [
+        "card_iM4L8q",
+        "card_JcaGCL",
+        "card_HgTchJ",
+        "card_iTGCtN",
+        "card_hnewqU",
+        "card_UwJqJX"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".product-collection-box .custom-product-price {color: #8a9d1f;}",
+        "@media (max-width: 767.98px) {strong {display: inline-block; }}"
+      ],
+      "name": "产品推荐1208",
+      "settings": {
+        "id": "fuhuojie",
+        "title": "🐣 Oster-Angebote | 4. – 10. April 🐣",
+        "padding_top": 160,
+        "padding_bottom": 80,
+        "button_height": 48,
+        "mobile_button_height": 40,
+        "section_bg_color": "#ffffff",
+        "bg_color": "",
+        "content_color": "#f5f5f5",
+        "title_color": "#000000",
+        "button_title_color": "#1a1a1a",
+        "button_color": "cyber-monday",
         "image_height": "216",
         "sale-min_height": "100",
         "mob-sale-min_height": "95",
@@ -733,8 +1148,8 @@
         "card_RzbKVY": {
           "type": "card",
           "settings": {
-            "image": "shopify://shop_images/index-compare-pc.jpg",
-            "mobile_image": "shopify://shop_images/index-compare-mob.jpg",
+            "image": "shopify://shop_images/Mask_group_e7751e2f-d779-47e0-a103-59155aa9321a.jpg",
+            "mobile_image": "shopify://shop_images/Mask_group-mob.jpg",
             "title": "Produktvergleich",
             "button_title": "Mehr erfahren >",
             "button_link": "shopify://pages/produktvergleich"
@@ -758,262 +1173,6 @@
         "padding_bottom": 80,
         "custom_pc_padding_top": 80,
         "custom_mobile_padding_top": 80
-      }
-    },
-    "flexible_scene_list_AwPzpT": {
-      "type": "flexible-scene-list",
-      "blocks": {
-        "card_V6aXeT": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/index-sence1-pc.jpg",
-            "mobile_image": "shopify://shop_images/index-sence1-mob.jpg",
-            "title": "Basismodell",
-            "description": "Den begrenzten Raum optimal nutzen, flexibel und einfach installieren.",
-            "product_img": "shopify://shop_images/home_bk1600_225_b215cf3f-cf09-4a5c-ae76-74897314e0dc.png",
-            "product_title": "Indevolt BK1600",
-            "product_des": "4*225W Flexible Solarpanels",
-            "product_price": "749,00 €",
-            "product_link": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher?variant=43351637426275&solar=43917305249891"
-          }
-        },
-        "card_LEjQRi": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/home-image-2-pc.jpg",
-            "mobile_image": "shopify://shop_images/home-image-2-mob.jpg",
-            "title": "Standardversion",
-            "description": "Drahtloser Cluster unterstützt: erweiterbar auf bis zu 3 x BK1600 – für 6 MPPT und 4,8 kWh Gesamtkapazität.",
-            "product_img": "shopify://shop_images/BK1600_2_0eacbed3-76f8-4e21-b430-c90c1076d466.jpg",
-            "product_title": "BK1600*2",
-            "product_des": "",
-            "product_price": "758,00 €",
-            "product_link": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher?variant=43685459001443"
-          }
-        },
-        "card_zdCQqN": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/index-sence3-pc.jpg",
-            "mobile_image": "shopify://shop_images/index-sence3-mob.jpg",
-            "title": "Premium-Paket 1",
-            "description": "Für Haushalte mit hohem Energiespeicherbedarf, geeignet für den täglichen Gebrauch und Arbitrage.",
-            "product_img": "shopify://shop_images/sfa1800-2.png",
-            "product_title": "SolidFlex 2000 ECO + SFA1800*2",
-            "product_des": "",
-            "product_price": "1.497,00 €",
-            "product_link": "https://de.indevolt.com/products/indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus?battery=43859125108835"
-          }
-        },
-        "card_EeN3Bj": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/index-sence4-pc.jpg",
-            "mobile_image": "shopify://shop_images/index-sence4-mob.jpg",
-            "title": "Premium-Paket 2",
-            "description": "Ideal für Haushalte mit neu installierten PV-Systemen, sicher in der Anwendung und flexibel an Orten wie Gärten oder Dächern installierbar.",
-            "product_img": "shopify://shop_images/flex-pimg4.png",
-            "product_title": "PowerFlex 2000 + PFA2000",
-            "product_des": "4*445W Bifaziales Solarmodul",
-            "product_price": "1.636,00 €",
-            "product_link": "https://de.indevolt.com/products/powerflex-2000-balkonkraftwerk-mit-speicher?battery=43917307412579&solar=43859125305443&mount=43868337274979"
-          }
-        }
-      },
-      "block_order": [
-        "card_V6aXeT",
-        "card_LEjQRi",
-        "card_zdCQqN",
-        "card_EeN3Bj"
-      ],
-      "custom_css": [
-        "@media (max-width: 767.98px) {.section-flexible-scene-list .product-collection {/* margin-top: 20px; */ }}"
-      ],
-      "name": "自定义场景列表",
-      "settings": {
-        "title": "Flexibler Installationsort",
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "custom_mobile_padding_top": 120
-      }
-    },
-    "brand_list_Bb7KJE": {
-      "type": "brand-list",
-      "blocks": {
-        "card_LKL987": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/connect-logo.png",
-            "description": "Das System SolidFlex 2000 von Indevolt setzt zur Stromspeicherung auf robuste „halbfeste\" Lithum-Eisenphosphat-Akkus und ein intelligentes Plug-and-Play-Konzept. Ganzjährig sorgt eine Batterieoptimierungs-Elektronik für Akkupflege und -konditionierung sowie ein Ausbalancieren der einzelnen Akkuzellen. Eine gut gemachte App dient dabei als zentrale Schaltstelle und unterstützt mit unterschiedlichen Betriebsarten alle relevanten Einsatzszenarien. Zudem überzeugt das Indevlot-System als Notstrom-Speicher mit schneller Umschaltzeit von 10 ms."
-          }
-        },
-        "card_jAUyAV": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/inFranken_7152f0bb-f3c5-4493-a510-6586e459a700.png",
-            "description": "„Der SolidFlex 2000 bietet innovative Technologie, die auf modernster halbfester Lithium-Eisen-Phosphat-Batterie basiert und überzeugt durch hohe Sicherheit, lange Lebensdauer und flexible Erweiterungsmöglichkeiten. Profitiere von der zukunftssicheren Technologie von INDEVOLT und mache dein Zuhause unabhängiger, sicherer und intelligenter – mit dem SolidFlex 2000!\""
-          }
-        },
-        "card_WQiLkH": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/logo8.png",
-            "description": "„Der Indevolt SolidFlex 2000 Speicher für Balkonkraftwerke oder kleine PV-Anlagen punktet durch einfache Plug-and-Play installation und unterbrechungsfreier Notstromversorgung. Außerdem lässt er sich auf bis zu 10,8 kWh erweitern und sogar ins Smart Home einbinden.\""
-          }
-        },
-        "card_KxFCJY": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/logo2.jpg",
-            "description": "„Ein echtes Highlight war für mich die intelligente Energieverteilung: An einem durchschnittlichen Sonnentag konnte ich problemlos mehrere energieintensive Geräte gleichzeitig betreiben, ohne das Stromnetz zu belasten.\""
-          }
-        },
-        "card_gYb8yP": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/logo3.jpg",
-            "description": "„Das Indevolt BK1600 überzeugt als Al-ln-One-Lösung für alle, die ihre eigene Energie dezentral erzeugen und nutzen möchten.\""
-          }
-        },
-        "card_WcqGtf": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/logo4.jpg",
-            "description": "„Die erfolgreiche Kombination von leistungsstarker PV-Technologie und effizienter Speicherlösung in einem kompakten, benutzerfreundlichen Paket überzeugt. Dieses Konzept macht das System zur idealen Wahl für Stadtbewohner und Mieter, die ohne bauliche Veränderungen in die Solarenergie einsteigen.\""
-          }
-        },
-        "card_QfmeGX": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/logo5.png",
-            "description": "„Das Indevolt BK1600 verbindet fortschrittliche Effizienz, praxisgerechte Speicherkapazität und benutzerfreundliche Bedienung in einem durchdachten Komplettsystem und markiert damit einen bedeutenden Entwicklungsschritt in Richtung urbaner Energieautonomie für Stadtbewohnerinnen und Stadtbewohner.\""
-          }
-        },
-        "card_HeAnUj": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/logo6.png",
-            "description": "„Obwohl der initiale Anschaffungspreis hoch erscheinen mag, rechtfertigen die langfristigen Einsparungen und der Beitrag zum Klimaschutz diese Investition. Das Indevolt BK1600 ist somit mehr als nur ein Produkt – es ist ein Schritt in Richtung einer nachhaltigeren und unabhängigeren Energieversorgung für Stadtbewohner.\""
-          }
-        },
-        "card_pcGKxw": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/logo1.jpg",
-            "description": "„Mit dem Indevolt BK1600 holen Sie sich mehr als ein Balkonkraftwerk nach Hause - Sie erleben UnabhangigkeitNachhaltigkeit und innovative Energieversorgung in einem kompakten System.\""
-          }
-        },
-        "card_8niDBE": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/logo7.png",
-            "description": "„Die Kombination aus Balkonkraftwerk und integriertem Speicher in einer kompakten Einheit differenziert Indevolt von zahlreichen Wettbewerbern.\""
-          }
-        },
-        "card_Nrfwak": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/logo9.png",
-            "description": "„Günstige Kombi aus Hausakku und Powerstation. Mit einem aktuellen Preis ist das Indevolt BK1600 bereits dann attraktiv, wenn man es als stationaren Akku fürBalkonkraftwerke mit der Option zur Optimierung seines dynamischen Stromtarifs verwenden will.\""
-          }
-        },
-        "card_Be3FxM": {
-          "type": "card",
-          "settings": {
-            "image": "shopify://shop_images/logo10.png",
-            "description": "„Der Energiespeicher BK1600 für Balkonkraftwerke lässt sich in Drittanbieterplattformen integrieren, was eine Echtzeit-Fernsteuerung sowie die Teilnahme an Strommarkttransaktionen ermöglicht.\""
-          }
-        }
-      },
-      "block_order": [
-        "card_LKL987",
-        "card_jAUyAV",
-        "card_WQiLkH",
-        "card_KxFCJY",
-        "card_gYb8yP",
-        "card_WcqGtf",
-        "card_QfmeGX",
-        "card_HeAnUj",
-        "card_pcGKxw",
-        "card_8niDBE",
-        "card_Nrfwak",
-        "card_Be3FxM"
-      ],
-      "custom_css": [
-        "@media (max-width: 768px) {.product-collection {/* margin-top: 85px; */ }}"
-      ],
-      "name": "品牌列表",
-      "settings": {
-        "title": "Getestet & empfohlen von",
-        "padding_top": 80,
-        "padding_bottom": 80,
-        "custom_mobile_padding_top": 100,
-        "logo_title": "",
-        "logo_position": false,
-        "logo_pc_image": "shopify://shop_images/LOGO_683abf5c-2c78-4ae6-9835-af6ac7abd327.png",
-        "logo_mobile_image": "shopify://shop_images/1219-mob.png"
-      }
-    },
-    "video_list_Aqz79r": {
-      "type": "video-list",
-      "blocks": {
-        "card_AjEQnw": {
-          "type": "card",
-          "settings": {
-            "video_url": "https://www.youtube.com/watch?v=CadoV2kNAIY&t=1089s"
-          }
-        },
-        "card_RgnLYN": {
-          "type": "card",
-          "settings": {
-            "video_url": "https://www.youtube.com/watch?v=mVXJx0M5xJc"
-          }
-        },
-        "card_dWid84": {
-          "type": "card",
-          "settings": {
-            "video_url": "https://www.youtube.com/watch?v=SpM4ZjilIiA"
-          }
-        },
-        "card_FyQyBe": {
-          "type": "card",
-          "settings": {
-            "video_url": "https://www.youtube.com/watch?v=ZLHlxPfoDAc"
-          }
-        },
-        "card_XGwY9C": {
-          "type": "card",
-          "settings": {
-            "video_url": "https://www.youtube.com/watch?v=uFcnPu05YFU"
-          }
-        },
-        "card_mCz6Xy": {
-          "type": "card",
-          "settings": {
-            "video_url": "https://www.youtube.com/watch?v=vfW3lj9f0Zg"
-          }
-        },
-        "card_NCXmiD": {
-          "type": "card",
-          "settings": {
-            "video_url": "https://www.youtube.com/watch?v=0m0xi7hpnHI"
-          }
-        }
-      },
-      "block_order": [
-        "card_AjEQnw",
-        "card_RgnLYN",
-        "card_dWid84",
-        "card_FyQyBe",
-        "card_XGwY9C",
-        "card_mCz6Xy",
-        "card_NCXmiD"
-      ],
-      "name": "视频列表",
-      "settings": {
-        "title": "Ausgewählte Videos von Experten",
-        "padding_top": 80,
-        "padding_bottom": 80
       }
     },
     "review_list_XNNiXX": {
@@ -1177,6 +1336,262 @@
         "logo_position": true
       }
     },
+    "brand_list_Bb7KJE": {
+      "type": "brand-list",
+      "blocks": {
+        "card_LKL987": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/connect-logo.png",
+            "description": "Das System SolidFlex 2000 von Indevolt setzt zur Stromspeicherung auf robuste „halbfeste\" Lithum-Eisenphosphat-Akkus und ein intelligentes Plug-and-Play-Konzept. Ganzjährig sorgt eine Batterieoptimierungs-Elektronik für Akkupflege und -konditionierung sowie ein Ausbalancieren der einzelnen Akkuzellen. Eine gut gemachte App dient dabei als zentrale Schaltstelle und unterstützt mit unterschiedlichen Betriebsarten alle relevanten Einsatzszenarien. Zudem überzeugt das Indevlot-System als Notstrom-Speicher mit schneller Umschaltzeit von 10 ms."
+          }
+        },
+        "card_jAUyAV": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/inFranken_7152f0bb-f3c5-4493-a510-6586e459a700.png",
+            "description": "„Der SolidFlex 2000 bietet innovative Technologie, die auf modernster halbfester Lithium-Eisen-Phosphat-Batterie basiert und überzeugt durch hohe Sicherheit, lange Lebensdauer und flexible Erweiterungsmöglichkeiten. Profitiere von der zukunftssicheren Technologie von INDEVOLT und mache dein Zuhause unabhängiger, sicherer und intelligenter – mit dem SolidFlex 2000!\""
+          }
+        },
+        "card_WQiLkH": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo8.png",
+            "description": "„Der Indevolt SolidFlex 2000 Speicher für Balkonkraftwerke oder kleine PV-Anlagen punktet durch einfache Plug-and-Play installation und unterbrechungsfreier Notstromversorgung. Außerdem lässt er sich auf bis zu 10,8 kWh erweitern und sogar ins Smart Home einbinden.\""
+          }
+        },
+        "card_KxFCJY": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo2.jpg",
+            "description": "„Ein echtes Highlight war für mich die intelligente Energieverteilung: An einem durchschnittlichen Sonnentag konnte ich problemlos mehrere energieintensive Geräte gleichzeitig betreiben, ohne das Stromnetz zu belasten.\""
+          }
+        },
+        "card_gYb8yP": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo3.jpg",
+            "description": "„Das Indevolt BK1600 überzeugt als Al-ln-One-Lösung für alle, die ihre eigene Energie dezentral erzeugen und nutzen möchten.\""
+          }
+        },
+        "card_WcqGtf": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo4.jpg",
+            "description": "„Die erfolgreiche Kombination von leistungsstarker PV-Technologie und effizienter Speicherlösung in einem kompakten, benutzerfreundlichen Paket überzeugt. Dieses Konzept macht das System zur idealen Wahl für Stadtbewohner und Mieter, die ohne bauliche Veränderungen in die Solarenergie einsteigen.\""
+          }
+        },
+        "card_QfmeGX": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo5.png",
+            "description": "„Das Indevolt BK1600 verbindet fortschrittliche Effizienz, praxisgerechte Speicherkapazität und benutzerfreundliche Bedienung in einem durchdachten Komplettsystem und markiert damit einen bedeutenden Entwicklungsschritt in Richtung urbaner Energieautonomie für Stadtbewohnerinnen und Stadtbewohner.\""
+          }
+        },
+        "card_HeAnUj": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo6.png",
+            "description": "„Obwohl der initiale Anschaffungspreis hoch erscheinen mag, rechtfertigen die langfristigen Einsparungen und der Beitrag zum Klimaschutz diese Investition. Das Indevolt BK1600 ist somit mehr als nur ein Produkt – es ist ein Schritt in Richtung einer nachhaltigeren und unabhängigeren Energieversorgung für Stadtbewohner.\""
+          }
+        },
+        "card_pcGKxw": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo1.jpg",
+            "description": "„Mit dem Indevolt BK1600 holen Sie sich mehr als ein Balkonkraftwerk nach Hause - Sie erleben UnabhangigkeitNachhaltigkeit und innovative Energieversorgung in einem kompakten System.\""
+          }
+        },
+        "card_8niDBE": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo7.png",
+            "description": "„Die Kombination aus Balkonkraftwerk und integriertem Speicher in einer kompakten Einheit differenziert Indevolt von zahlreichen Wettbewerbern.\""
+          }
+        },
+        "card_Nrfwak": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo9.png",
+            "description": "„Günstige Kombi aus Hausakku und Powerstation. Mit einem aktuellen Preis ist das Indevolt BK1600 bereits dann attraktiv, wenn man es als stationaren Akku fürBalkonkraftwerke mit der Option zur Optimierung seines dynamischen Stromtarifs verwenden will.\""
+          }
+        },
+        "card_Be3FxM": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/logo10.png",
+            "description": "„Der Energiespeicher BK1600 für Balkonkraftwerke lässt sich in Drittanbieterplattformen integrieren, was eine Echtzeit-Fernsteuerung sowie die Teilnahme an Strommarkttransaktionen ermöglicht.\""
+          }
+        }
+      },
+      "block_order": [
+        "card_LKL987",
+        "card_jAUyAV",
+        "card_WQiLkH",
+        "card_KxFCJY",
+        "card_gYb8yP",
+        "card_WcqGtf",
+        "card_QfmeGX",
+        "card_HeAnUj",
+        "card_pcGKxw",
+        "card_8niDBE",
+        "card_Nrfwak",
+        "card_Be3FxM"
+      ],
+      "custom_css": [
+        "@media (max-width: 768px) {.product-collection {/* margin-top: 85px; */ }}"
+      ],
+      "name": "品牌列表",
+      "settings": {
+        "title": "Getestet & empfohlen von",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "custom_mobile_padding_top": 100,
+        "logo_title": "",
+        "logo_position": false,
+        "logo_pc_image": "shopify://shop_images/LOGO_683abf5c-2c78-4ae6-9835-af6ac7abd327.png",
+        "logo_mobile_image": "shopify://shop_images/1219-mob.png"
+      }
+    },
+    "flexible_scene_list_AwPzpT": {
+      "type": "flexible-scene-list",
+      "blocks": {
+        "card_V6aXeT": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/index-sence1-pc.jpg",
+            "mobile_image": "shopify://shop_images/index-sence1-mob.jpg",
+            "title": "Basismodell",
+            "description": "Den begrenzten Raum optimal nutzen, flexibel und einfach installieren.",
+            "product_img": "shopify://shop_images/home_bk1600_225_b215cf3f-cf09-4a5c-ae76-74897314e0dc.png",
+            "product_title": "Indevolt BK1600",
+            "product_des": "4*225W Flexible Solarpanels",
+            "product_price": "749,00 €",
+            "product_link": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher?variant=43351637426275&solar=43917305249891"
+          }
+        },
+        "card_LEjQRi": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/home-image-2-pc.jpg",
+            "mobile_image": "shopify://shop_images/home-image-2-mob.jpg",
+            "title": "Standardversion",
+            "description": "Drahtloser Cluster unterstützt: erweiterbar auf bis zu 3 x BK1600 – für 6 MPPT und 4,8 kWh Gesamtkapazität.",
+            "product_img": "shopify://shop_images/BK1600_2_0eacbed3-76f8-4e21-b430-c90c1076d466.jpg",
+            "product_title": "BK1600*2",
+            "product_des": "",
+            "product_price": "758,00 €",
+            "product_link": "https://de.indevolt.com/products/bk1600-balkonkraftwerk-mit-speicher?variant=43685459001443"
+          }
+        },
+        "card_zdCQqN": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/index-sence3-pc.jpg",
+            "mobile_image": "shopify://shop_images/index-sence3-mob.jpg",
+            "title": "Premium-Paket 1",
+            "description": "Für Haushalte mit hohem Energiespeicherbedarf, geeignet für den täglichen Gebrauch und Arbitrage.",
+            "product_img": "shopify://shop_images/sfa1800-2.png",
+            "product_title": "SolidFlex 2000 ECO + SFA1800*2",
+            "product_des": "",
+            "product_price": "1.497,00 €",
+            "product_link": "https://de.indevolt.com/products/indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus?battery=43859125108835"
+          }
+        },
+        "card_EeN3Bj": {
+          "type": "card",
+          "settings": {
+            "image": "shopify://shop_images/index-sence4-pc.jpg",
+            "mobile_image": "shopify://shop_images/index-sence4-mob.jpg",
+            "title": "Premium-Paket 2",
+            "description": "Ideal für Haushalte mit neu installierten PV-Systemen, sicher in der Anwendung und flexibel an Orten wie Gärten oder Dächern installierbar.",
+            "product_img": "shopify://shop_images/flex-pimg4.png",
+            "product_title": "PowerFlex 2000 + PFA2000",
+            "product_des": "4*445W Bifaziales Solarmodul",
+            "product_price": "1.636,00 €",
+            "product_link": "https://de.indevolt.com/products/powerflex-2000-balkonkraftwerk-mit-speicher?battery=43917307412579&solar=43859125305443&mount=43868337274979"
+          }
+        }
+      },
+      "block_order": [
+        "card_V6aXeT",
+        "card_LEjQRi",
+        "card_zdCQqN",
+        "card_EeN3Bj"
+      ],
+      "custom_css": [
+        "@media (max-width: 767.98px) {.section-flexible-scene-list .product-collection {/* margin-top: 20px; */ }}"
+      ],
+      "name": "自定义场景列表",
+      "settings": {
+        "title": "Flexibler Installationsort",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "custom_mobile_padding_top": 120
+      }
+    },
+    "video_list_Aqz79r": {
+      "type": "video-list",
+      "blocks": {
+        "card_AjEQnw": {
+          "type": "card",
+          "settings": {
+            "video_url": "https://www.youtube.com/watch?v=CadoV2kNAIY&t=1089s"
+          }
+        },
+        "card_RgnLYN": {
+          "type": "card",
+          "settings": {
+            "video_url": "https://www.youtube.com/watch?v=mVXJx0M5xJc"
+          }
+        },
+        "card_dWid84": {
+          "type": "card",
+          "settings": {
+            "video_url": "https://www.youtube.com/watch?v=SpM4ZjilIiA"
+          }
+        },
+        "card_FyQyBe": {
+          "type": "card",
+          "settings": {
+            "video_url": "https://www.youtube.com/watch?v=ZLHlxPfoDAc"
+          }
+        },
+        "card_XGwY9C": {
+          "type": "card",
+          "settings": {
+            "video_url": "https://www.youtube.com/watch?v=uFcnPu05YFU"
+          }
+        },
+        "card_mCz6Xy": {
+          "type": "card",
+          "settings": {
+            "video_url": "https://www.youtube.com/watch?v=vfW3lj9f0Zg"
+          }
+        },
+        "card_NCXmiD": {
+          "type": "card",
+          "settings": {
+            "video_url": "https://www.youtube.com/watch?v=0m0xi7hpnHI"
+          }
+        }
+      },
+      "block_order": [
+        "card_AjEQnw",
+        "card_RgnLYN",
+        "card_dWid84",
+        "card_FyQyBe",
+        "card_XGwY9C",
+        "card_mCz6Xy",
+        "card_NCXmiD"
+      ],
+      "name": "视频列表",
+      "settings": {
+        "title": "Ausgewählte Videos von Experten",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
     "product_member_e7BeYy": {
       "type": "product-member",
       "blocks": {
@@ -1233,7 +1648,7 @@
           "settings": {
             "image": "shopify://shop_images/646402_e9a5f2ff-5239-41ca-ab4a-a5c5f7d18a4d.png",
             "title": "Ruf uns an",
-            "content": "+49 (0)174 3150766"
+            "content": "+491639044886"
           }
         }
       },
@@ -1367,23 +1782,39 @@
         "show_section_divider": false,
         "divider_width": "fixed"
       }
+    },
+    "custom_liquid_WLdxBd": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n    /* 全局重置 & 基础样式 */\n/*     * {\n      margin: 0;\n      padding: 0;\n      box-sizing: border-box;\n    }\n\n    body {\n      background-color: #000000;\n      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;\n      line-height: 1.5;\n    } */\n\n    /* 外部黑色背景 + 居中对齐容器 (与原设计一致) */\n    .outer-container {\n      background-color: #000000;\n      padding: 15px;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      min-height: 80vh;\n    }\n\n    /* 书页风格主容器: 左右两栏 (像书本摊开) */\n    .outer-container .book-layout {\n      max-width: 1280px;\n      width: 100%;\n      background-color: #000000;   /* 黑色底色，左右区块内部为深灰/黑底，但文本统一灰色 */\n      display: flex;\n      flex-wrap: wrap;            /* 移动端折行，保持书本风格 */\n      gap: 2rem;\n      /* 内边距模拟页面留白 (响应式继承haft-div的padding感) */\n      padding: 0px 20px;\n    }\n\n    /* 左右两个页面 (column) */\n    .outer-container .page-col {\n      flex: 1;\n      min-width: 260px;\n      background: transparent;\n      /* 类似书页的轻微分隔效果: 可选右边框线 (只在桌面版右栏左侧加分隔) */\n    }\n\n    /* 左侧栏: 主要包含前半部分文案 */\n    .outer-container .left-page {\n      /* 没有任何额外背景，保持纯粹 */\n    }\n\n    /* 右侧栏: 包含原本后半计算细节 */\n    .outer-container .right-page {\n      /* 可以增加淡淡的左侧装饰线，模拟书缝 */\n      /* border-left: 1px solid rgba(138, 138, 138, 0.25); */\n      padding-left: 1.5rem;\n    }\n\n    /* 公用文本样式，保持原有的灰色风格 */\n    .outer-container .page-col h3 {\n      color: #8A8A8A;\n      font-size: 20px;\n      margin-bottom: 1.25rem;\n      font-weight: 600;\n      letter-spacing: -0.01em;\n    }\n\n    .outer-container .page-col p, \n    .outer-container .page-col div[data-line=\"true\"] {\n      color: #8A8A8A;\n      font-size: 14px;\n      margin-bottom: 0.75rem;\n    }\n\n    /* 针对直接span或内联块保持统一 */\n    .outer-container .text-block {\n      color: #8A8A8A;\n      font-size: 14px;\n      margin-bottom: 0.75rem;\n      line-height: 1.5;\n    }\n\n    .outer-container .text-block b, .outer-container strong {\n      color: #8A8A8A;\n      font-weight: 600;\n    }\n\n    /* 链接样式 */\n    .outer-container a {\n      color: #8A8A8A;\n      text-decoration: underline;\n      text-decoration-thickness: 1px;\n      text-underline-offset: 2px;\n      transition: opacity 0.2s;\n    }\n\n    .outer-container a:hover {\n      opacity: 0.7;\n      color: #c0c0c0;\n    }\n\n    /* 公式 / 计算细节段落可以保留等宽风格 */\n    .outer-container .calc-detail {\n      font-family: 'SF Mono', 'Menlo', monospace;\n      font-size: 0.9rem;\n      background: rgba(255,255,255,0.03);\n      padding: 0.2rem 0.4rem;\n      border-radius: 6px;\n      display: inline-block;\n    }\n\n    .outer-container hr {\n      border: none;\n      border-top: 1px solid rgba(138, 138, 138, 0.2);\n      margin: 1rem 0;\n    }\n\n    /* 保持原来的空行br样式 */\n    .outer-container .spacer {\n      height: 0.75rem;\n    }\n\n    /* 移动端适配: 书本变为上下堆叠，右侧边框消失 */\n    @media (max-width: 768px) {\n      .outer-container .book-layout {\n        flex-direction: column;\n        padding: 50px 20px;\n        gap: 0rem;\n      }\n      .outer-container .right-page {\n        border-left: none;\n        padding-left: 0;\n        margin-top: 0.5rem;\n      }\n      .outer-container .page-col h3 {\n        font-size: 20px;\n      }\n      .outer-container .page-col p, .text-block {\n        font-size: 14px;\n      }\n     .outer-container .text-block {\n        font-size: 14px;\n      }\n    }\n\n    /* 保持原有haft-div风格细调: 所有文本默认灰色 */\n    .outer-container .small-note {\n      font-size: 0.85rem;\n      color: #6c6c6c;\n    }\n\n    /* 让计算区块更清晰 */\n    .outer-container .formula-line {\n      font-family: monospace;\n      word-break: break-word;\n    }\n  </style>\n \n<div class=\"outer-container\"  style=\"background-color:#000000;padding:15px; display: flex;\n  justify-content: center;\n  align-items: center;\">\n  <div class=\"book-layout\">\n    <!-- 左侧：前半部分内容（Haftungsausschluss + 介绍 + Stromerzeugung + 假设 + CO₂ + 免责说明 + 部分原始结构） -->\n    <div class=\"page-col left-page\">\n      <h3>Haftungsausschluss</h3>\n      \n \n      <div class=\"text-block\">\n        <b>1. Berechnungsgrundlagen:</b><br>\n        Die Berechnung basiert auf typischen Installationsbedingungen in Süddeutschland:\nAusrichtung der Solarmodule: Süden\nNeigungswinkel: 30°–35°\nJährliche Volllaststunden: ca. 1160 h\nEigenverbrauchsquote: Abhängig von der Speicherkonfiguration (je größer der Speicher, desto höher die Quote)\nStrompreis: 0,40 €/kWh\n      </div>\n      \n      <div class=\"text-block\">\n        <b>2. Berechnungsformel:</b><br>\n        <b>Parameter Erläuterung</b><br>\n\t\t\tA: Gesamtleistung der Solarmodule (kW)<br>\n\t\t\tB: Jährliche Sonneneinstrahlung (Volllaststunden), Standard: 1160 h<br>\n\t\t\tC: Eigenverbrauchsquote (%), Standard: 90 %<br>\n\t\t\tD: Strompreis (€/kWh), Standard: 0,40 €<br>\n\t\t\tH: Nutzungsfaktor (%) – abhängig von der Speicherkonfiguration (höherer Faktor bei größerem Speicher)<br>\n\t\t\tF: Kosten (€)<br>\n\t\t\tE: Jährlicher Ertrag (€) = A × B × C × D × H<br>\n\t\t\tG: Amortisationszeit (Jahre) = F ÷ E<br>\n\t\t\t<b>Amortisationszeit</b><br>\n\t\t\tG = F ÷ (A × B × C × D × H）<br>\n      </div>\n      \n\n      \n\n      \n      <div class=\"spacer\"></div>\n    \n    </div>\n\n    <!-- 右侧：后半部分内容（Berechnungsdetails + 完整计算过程 + 公式拆解） -->\n    <div class=\"page-col right-page\">\n      <!-- <h3>Berechnungsdetails</h3 -->\n      \n            <div class=\"text-block\">\n        <b>3. Rechnungen:</b><br>\n        <b>Konfiguration 1</b><br>\n        Produkt: SolidFlex 2000 + SFA1800 + 2000 W Solarmodule<br>\n\t\tKosten: 1598 €<br>\n\t\tJährlicher PV-Ertrag: 2000 W × 1160 h = 2320 kWh<br>\n\t\tJährlicher Ertrag: 2320 kWh × 0,40 € × 90% = 835 €<br>\n\t\tAmortisationszeit: 1598 € ÷ (835 € × 85%) ≈ 2,25 Jahre<br>\n\t\t\n\t\t        <b>Konfiguration 2</b><br>\nProdukt: BK1600 + 890 W Solarmodule<br>\nKosten: 599 €<br>\nJährlicher PV-Ertrag: 890 W × 1160 h = 1032  kWh<br>\nJährlicher Ertrag: 1032 kWh × 0,40 € × 90 % = 317  €<br>\nAmortisationszeit: 599 € ÷ (317 € × 90 %) ≈ 2,1 Jahre<br>\n      </div>\n            <div class=\"text-block\">\n        <b>4. Wichtiger Hinweis:</b><br>\n        Gemäß den deutschen „Plug-in“-Richtlinien darf der Wechselrichter maximal 800 W ins Hausnetz einspeisen.<br><br>\n        Die angegebenen Werte basieren auf idealen Testbedingungen. Die tatsächlichen Einsparungen können je nach Installationsort, individuellen Nutzungsgewohnheiten, Wetterbedingungen und tatsächlicher Systemeffizienz abweichen.\nDie Berechnung dient lediglich zur Orientierung und stellt keine Garantie für tatsächliche Erträge dar.\n      </div>\n  \n      \n      <!-- <hr> -->\n \n    </div>\n  </div>\n</div>",
+        "container": "full",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
     }
   },
   "order": [
     "slideshow_q3U4Jn",
+    "image_with_text_overlay_home_HBLRfh",
+    "image_with_text_overlay_home_slib_bqR8BT",
+    "slideshow_8TXiGL",
     "scene_list_CwKJ7V",
     "product_collection_tDncTn",
     "product_collection_1208_VKXU47",
+    "product_collection_1208_bmGq4M",
     "product_collection_1208_nCjwbg",
     "product_coupon_KwiHgH",
     "product_member_7PnRwB",
-    "flexible_scene_list_AwPzpT",
-    "brand_list_Bb7KJE",
-    "video_list_Aqz79r",
     "review_list_XNNiXX",
+    "brand_list_Bb7KJE",
+    "flexible_scene_list_AwPzpT",
+    "video_list_Aqz79r",
     "product_member_e7BeYy",
     "contact_us_VEC9Cb",
     "service_info_9aT6Kj",
-    "new_featured_blog_HxaMMR"
+    "new_featured_blog_HxaMMR",
+    "custom_liquid_WLdxBd"
   ]
 }

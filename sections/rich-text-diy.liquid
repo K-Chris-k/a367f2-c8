@@ -159,6 +159,22 @@
 
       #shopify-section-{{ section.id }} .icon-gift{ width: 3rem; height: 3rem;margin: 0px 10px;}
 
+      #shopify-section-{{ section.id }} .title-container {
+        display: flex;
+        align-items: center;  /* 关键：垂直居中 */
+        justify-content: center;
+        gap: 0px;  /* 控制间距 */
+      }
+
+      #shopify-section-{{ section.id }} .icon-gift {
+        flex-shrink: 0;  /* 防止SVG被压缩 */
+        color: #333;
+      }
+
+      #shopify-section-{{ section.id }} h2 {
+        margin: 0;  /* 移除默认边距 */
+        flex: 1;  /* 让h2占据剩余空间 */
+      }
 
   @media screen and (min-width: 2768px) {
     .easw-customBackground {
@@ -191,8 +207,10 @@
         font-size: 30px;
       }
 
-      #shopify-section-{{ section.id }} .icon-gift{ display:none;}
-
+    #shopify-section-{{ section.id }} .icon-gift{ width: 2rem; height: 1.5rem;margin: 0px 8px;}
+    #shopify-section-{{ section.id }} .title-container {
+      margin: 0px 0px;
+    }
      
   }
 
@@ -217,7 +235,7 @@
 #ea-spin-wheel-root1761204396126 .popCard{  border-top-left-radius: 20px;border-top-right-radius: 20px;} 
 .scrolling-container {
     height: 57px;
-    background-color: #ffffff;
+    background-color: #7AA14B;
     border-radius: 20px;
     border-top-left-radius: 0px;
     border-top-right-radius: 0px;
@@ -231,7 +249,7 @@
     white-space: nowrap;
     line-height:57px;
     font-size: 16px;
-    color: #C9000B;
+    color: #FFFFFF;
     animation: scroll-left 30s linear infinite;
 }
 
@@ -369,23 +387,30 @@ pre {
 
             {%- assign motion_delay = motion_delay | plus: 50 -%}
           {% when 'heading' %}
+            
+            <div class="flex items-center  " style="justify-content: center;">
+             <div class="title-container">
+                 {% if section.settings.show_title_icon != false %}
+                   {% render 'icon-gift-left' -%}
+                 {% endif %}
             <h2
-              class="page-width rich-text__heading {{ block.settings.heading_size }}"
+              class="rich-text__heading {{ block.settings.heading_size }}"
               {{ block.shopify_attributes }}
             >
               <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
-                  {% if section.settings.show_title_icon != false %}
-                   {% render 'icon-gift' -%}
-                 {% endif %}
+
                 {% render 'highlight-text',
                   text: block.settings.heading,
                   style: block.settings.heading_highlight_style
                 %}
-                  {% if section.settings.show_title_icon != false %}
-                   {% render 'icon-gift' -%}
-                 {% endif %}
+
               </motion-element>
             </h2>
+                  {% if section.settings.show_title_icon != false %}
+                   {% render 'icon-gift-right' -%}
+                 {% endif %}
+          </div>
+          </div>
             {%- assign motion_delay = motion_delay | plus: 50 -%}
           {% when 'text' %}
             <motion-element
@@ -679,20 +704,13 @@ pre {
     const videoModal = document.querySelector('.video-modal');
     const videoPlayer = document.querySelector('.video-player');
     const closeBtn = document.querySelector('.close-button');
-    var _txt= "<span>Glückwunsch an Er***chael, der 💰️PowerFlex 2000💰️ gewonnen hat!</span>"
-            +"<span>Glückwunsch an Sei***ndreas, der 30€ Rabatt gewonnen hat!</span>"
-            +"<span>Glückwunsch an JGu***Sebastian, der 55€ Rabatt gewonnen hat!</span>"
-            +"<span>Glückwunsch an Hai***Gerhard, der 30€ Rabatt gewonnen hat!</span>"
-            +"<span>Glückwunsch an Me***Ulrike, der 55€ Rabatt gewonnen hat!</span>"
-            +"<span>Glückwunsch an Nie***ven, der 55€ Rabatt gewonnen hat!</span>"
-            +"<span>Glückwunsch an Kr***Jürgen, der 30€ Rabatt gewonnen hat!</span>"
-            +"<span>Glückwunsch an Rit***Thomas, der 30€ Rabatt gewonnen hat!</span>"
-            +"<span>Glückwunsch an Lac***Bernhard, der 55€ Rabatt gewonnen hat!</span>"
-            +"<span>Glückwunsch an Fun***jamin, der 30€ Rabatt gewonnen hat!</span>"
-            +"<span>Glückwunsch an Lac***Michael, der 30€ Rabatt gewonnen hat!</span>"
-            +"<span>Glückwunsch an Weis***Moritz, der 55€ Rabatt gewonnen hat!</span>"
-            +"<span>Glückwunsch an Rei***Daniel, der 30€ Rabatt gewonnen hat!</span>"
-            +"<span>Glückwunsch an Sti***Michael, der 30€ Rabatt gewonnen hat!</span>";
+    var _txt=  
+            +"<span>Glückwunsch an Sei***ndreas, der 50€ Rabatt gewonnen hat!</span>"
+            +"<span>Glückwunsch an JGu***Sebastian, der 50€ Rabatt gewonnen hat!</span>"
+            +"<span>Glückwunsch an Hai***Gerhard, der 100€ Rabatt gewonnen hat!</span>"
+            +"<span>Glückwunsch an Me***Ulrike, der 120€ Rabatt gewonnen hat!</span>"
+            +"<span>Glückwunsch an Nie***ven, der 50€ Rabatt gewonnen hat!</span>"
+            +"<span>Glückwunsch an Kr***Jürgen, der 100€ Rabatt gewonnen hat!</span>";
       const div = document.getElementById('scroll-txt-div');
             div.innerHTML = _txt;
 
@@ -705,8 +723,10 @@ pre {
     
       }else{
          
-         var sessionDiv = document.getElementById("shopify-section-template--17825885847651__rich_text_diy_XCW8xN");
-
+         //var sessionDiv = document.getElementById("shopify-section-template--17825885847651__rich_text_diy_XCW8xN");
+         var sessionDiv = document.getElementById("shopify-section-template--18412565463139__rich_text_diy_e4YJPW");
+        //
+        //section section--padding rich-text-list-section color-scheme-1
       // 隐藏元素
       sessionDiv.style.display = "none";
       }
@@ -838,7 +858,7 @@ pre {
       "type": "range",
       "id": "padding_top",
       "min": 0,
-      "max": 120,
+      "max": 180,
       "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
@@ -848,7 +868,7 @@ pre {
       "type": "range",
       "id": "padding_bottom",
       "min": 0,
-      "max": 120,
+      "max": 180,
       "step": 2,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",

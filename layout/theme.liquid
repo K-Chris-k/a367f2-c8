@@ -21,6 +21,16 @@
   {% endif %}
 >
   <head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D0M5XKCNY6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-D0M5XKCNY6');
+</script>
+
  {% comment %} {%- render 'ecom_header' -%} {% endcomment %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -260,5 +270,6 @@
 <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siq9f25c776fb701206a4d51ba6b912285414bea8058649f54755f08d520eb83520" defer></script>
 {% comment %} <script>window.$zoho=window.$zoho || {};$zoho.salesiq=$zoho.salesiq||{ready:function(){}}</script><script id="zsiqscript" src="https://salesiq.zohopublic.com/widget?wc=siq9f25c776fb701206a4d51ba6b9122854edf63a9fe6808e2cc489261257a16732" defer></script> {% endcomment %}
 {% render 'gpo-custom' %}
-</body>
+{% comment %} {% render 'quantity-breaks-now', customer: customer, template: template, product: product, cart: cart %} {% endcomment %}
+        </body>
 </html>

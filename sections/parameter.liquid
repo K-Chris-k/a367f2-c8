@@ -1,14 +1,14 @@
 <style>
-    #shopify-section-{{ section.id }}{margin-top:{{section.settings.padding_top  }}px;margin-bottom:{{section.settings.padding_bottom  }}px;}
+    #shopify-section-{{ section.id }}{padding-top:{{section.settings.padding_top  }}px;padding-bottom:{{section.settings.padding_bottom  }}px;}
    .section-parameter h2{line-height:56px;font-size:46px;text-align:center}
-   .section-parameter .parameter-box{margin-top:40px;font-size: 16px;line-height: 21px;}
+   .section-parameter .parameter-box{margin-top:10px;font-size: 16px;line-height: 21px;}
    .section-parameter .parameter-box ul {display:flex;flex-wrap:wrap;justify-content: space-between;}
    .section-parameter .parameter-box li { width: 46%;padding:34px 0px 30px;font-size: 18px; border-bottom:1px solid #B1B1B1}
    .section-parameter .parameter-box li span{display: block;line-height:26px;}
    .section-parameter .parameter-box li .title{font-weight:600}
    .section-parameter .parameter-box li .note{margin-top:30px}
   @media (max-width: 768px) {
-    #shopify-section-{{ section.id }}{margin-top:{{section.settings.padding_top | divided_by: 2  }}px;margin-bottom:{{section.settings.padding_bottom | divided_by: 2  }}px;}
+    #shopify-section-{{ section.id }}{padding-top:{{section.settings.padding_top | divided_by: 2  }}px;padding-bottom:{{section.settings.padding_bottom | divided_by: 2  }}px;}
     .section-parameter h2{line-height:34px;font-size:28px;text-align:center}
     .section-parameter .parameter-box{margin-top:5px}
     .section-parameter .parameter-box li { width: 100%;padding:25px 0px 15px;font-size: 14px;}

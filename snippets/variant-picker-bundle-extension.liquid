@@ -119,14 +119,16 @@
       endif
     endif
 
-    # 获取主机图片
+    # 获取主机图片  elseif 拿第二张可以自由定义的图片  如果没有就拿默认的第一张
     assign host_image = null
     if host_variant and host_variant.image
       assign host_image = host_variant.image
-    elsif host_product_obj and host_product_obj.featured_image
-      assign host_image = host_product_obj.featured_image
+    elsif host_product_obj and host_product_obj.images[1]
+      assign host_image = host_product_obj.images[1]
+    else
+    assign host_image = host_product_obj.featured_image
     endif
-
+    
     # 获取电池包图片
     assign product_image = null
     assign product_image_url = null
@@ -208,11 +210,14 @@
       </div>
     {%- endif -%}
     {%- comment -%} 基础产品部分 {%- endcomment -%}
-    <div class="variant-extension-base variant-extension-variant-seletor-custom-layout">
+     <div class="variant-extension-base  variant-extension-variant-seletor-custom-layout ">
       {%- if is_multi_host -%}
+        <div class="custom-layout-main-product-image-container-host-product-custom-layout-image">
         {%- comment -%} Multi Host 模式：显示主产品基础信息 {%- endcomment -%}
         {%- if base_image -%}
+          
           <div class="variant-extension-base-image">
+            
             <img
               src="{{ base_image | image_url: width: 160 }}"
               alt="{{ option_config.base_display_name | default: main_product.title }}"
@@ -241,6 +246,7 @@
             </span>
           </div>
         </div>
+      </div>
       {%- else -%}
         {%- comment -%} Bundle with Battery 模式：显示主机信息 {%- endcomment -%}
         <div class="custom-layout-main-product-image-container-host-product-custom-layout-image">
@@ -587,7 +593,7 @@
                 data-qty="{{ qty }}"
                 data-variant-id="{{ qty_variant.id }}"
                 data-price="{{ qty_variant.price }}"
-                data-compare-price="{{ qty_variant.compare_at_price }}"
+                data-compare-price="{{ qty_variant.compare_at_price | default: qty_variant.price}}"
                 data-capacity="{{ total_capacity }}"
                 {% if button_image_url %}
                   data-image-url="{{ button_image_url }}"
@@ -713,7 +719,6 @@
           window.bundleProducts.updatePrice();
         }
 
-        console.log('[Bundle Extension] Layout selector variant changed:', variantId, 'price:', priceInCents, 'image:', imageUrl);
       }
 
       // 绑定新布局选择器事件
@@ -793,21 +798,18 @@
       // 更新主产品图片
       function updateMainProductImage(imageUrl, otherDisplayText = '') {
         if (!imageUrl) {
-          console.warn('[Bundle Extension] 没有图片URL');
           return;
         }
 
         // 找到主产品的 media gallery
         const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
         if (!productInfo) {
-          console.warn('[Bundle Extension] 找不到 product-info 元素');
           return;
         }
 
         const mainSectionId = productInfo.dataset.section;
         const mediaGallery = productInfo.querySelector(`[id^="MediaGallery-${mainSectionId}"]`);
         if (!mediaGallery) {
-          console.warn('[Bundle Extension] 找不到 MediaGallery 元素');
           return;
         }
 
@@ -822,7 +824,6 @@
           activeSlide = mediaGallery.querySelector('.product__media-item:first-child');
         }
         if (!activeSlide) {
-          console.warn('[Bundle Extension] 找不到激活的幻灯片');
           return;
         }
 
@@ -835,7 +836,6 @@
           mainImage = activeSlide.querySelector('img');
         }
         if (!mainImage) {
-          console.warn('[Bundle Extension] 找不到图片元素');
           return;
         }
         // 保存原始图片（用于取消选择时恢复）
@@ -848,7 +848,6 @@
         }
 
         // 更新图片 URL
-        console.log('[Bundle Extension] 更新图片为:', imageUrl);
 
         // 更新图片属性 - 直接设置 src 和 srcset
         if (mainImage.tagName === 'IMG') {
@@ -907,7 +906,6 @@
           // 触发 load 事件以确保图片加载
           const img = new Image();
           img.onload = () => {
-            console.log('[Bundle Extension] 图片加载成功');
           };
           img.src = imageUrl;
         }
@@ -953,13 +951,13 @@
             if (getComputedStyle(imageContainer).position === 'static') {
               imageContainer.style.position = 'relative';
             }
-            imageContainer.appendChild(textOverlay);
+            // 2026-03-18  不显示电池包数量  暂时先不隐藏
+            imageContainer.appendChild(textOverlay); 
           }
         }
 
         textOverlay.textContent = text;
         textOverlay.style.display = 'block';
-        console.log('[Bundle Extension] 显示 other_display_text:', text);
       }
 
       // 隐藏 other_display_text
@@ -969,7 +967,6 @@
         const textOverlay = slideElement.querySelector('.bundle-other-display-text');
         if (textOverlay) {
           textOverlay.style.display = 'none';
-          console.log('[Bundle Extension] 隐藏 other_display_text');
         }
       }
 
@@ -1025,7 +1022,6 @@
         const selectedBatteryBtn = document.querySelector(
           '.variant-extension-qty-buttons:not(.variant-extension-qty-buttons--layout-selector) .variant-extension-qty-btn.selected'
         );
-        // 如果当前电池没有任何选中按钮，也视为“非默认”（走 alt text 模式）
         if (!selectedBatteryBtn) return true;
         return selectedBatteryBtn.dataset.qty !== '0';
       }
@@ -1042,18 +1038,28 @@
         return match ? match[1].trim() : '';
       }
 
-      // 获取当前电池选择器的容量文案（忽略 0x）
-      function getSelectedBatteryCapacityText() {
+      // 获取当前电池选择（优先 input:checked，避免 selected class 时序问题）
+      function getSelectedBatterySelection() {
+        const checkedInput = document.querySelector('.bundle-extension-radio:checked');
+        if (checkedInput) {
+          return {
+            qty: parseInt(checkedInput.dataset.qty || '0', 10) || 0,
+            capacityText: checkedInput.dataset.capacity || '',
+          };
+        }
+
         const selectedBatteryBtn = document.querySelector(
           '.variant-extension-qty-buttons:not(.variant-extension-qty-buttons--layout-selector) .variant-extension-qty-btn.selected'
         );
-        if (!selectedBatteryBtn) return '';
-        const qty = selectedBatteryBtn.dataset.qty || '0';
-        if (qty === '0') return '';
-        return selectedBatteryBtn.dataset.capacity || '';
+        if (!selectedBatteryBtn) {
+          return { qty: 0, capacityText: '' };
+        }
+        return {
+          qty: parseInt(selectedBatteryBtn.dataset.qty || '0', 10) || 0,
+          capacityText: selectedBatteryBtn.dataset.capacity || '',
+        };
       }
 
-      // 将类似 "3584Wh" 或 "3.5 kWh" 的文案解析为数值
       function parseCapacityValue(text) {
         if (!text) return null;
         const normalized = String(text).replace(',', '.');
@@ -1066,36 +1072,58 @@
       // 从容量文案中提取单位，例如 "Wh" 或 "kWh"
       function extractCapacityUnit(text) {
         if (!text) return '';
-        const match = String(text).match(/([a-zA-Z]+)$/);
+        const t = String(text);
+        if (/kwh/i.test(t)) return 'kWh';
+        if (/wh/i.test(t)) return 'Wh';
+        const match = t.match(/([a-zA-Z]+)$/);
         return match ? match[1] : '';
       }
-
-      // 统一更新容量显示：layout 容量 + 电池容量（代码累加，页面只显示总和）
-      function updateCombinedCapacityDisplay() {
+      function updateCombinedCapacityDisplay(preferredBatterySelection) {
         if (!capacityDisplay) return;
 
         const layoutText = getSelectedLayoutCapacityText();
-        const batteryText = getSelectedBatteryCapacityText();
+        const batterySelection = preferredBatterySelection || getSelectedBatterySelection();
+        const batteryText = batterySelection.capacityText;
 
         const layoutVal = parseCapacityValue(layoutText);
-        const batteryVal = parseCapacityValue(batteryText);
+        const selectedBatteryVal = parseCapacityValue(batteryText);
+        const zeroInput = document.querySelector('.bundle-extension-radio[data-qty="0"]');
+        const zeroBatteryVal = zeroInput ? parseCapacityValue(zeroInput.dataset.capacity || '') : null;
 
-        // 如果两个都解析不到数值，就保持当前值（由后端初始渲染）
-        if (layoutVal === null && batteryVal === null) {
-          return;
+        // 两边都解析不到，就不覆盖页面初始值
+        if (layoutVal === null && selectedBatteryVal === null) return;
+
+        let sum = 0;
+        // 自适应两类商品配置：
+        // 1) 电池数据是“总容量模型”（0x 容量 ~= layout 容量）→ 直接显示当前电池容量
+        // 2) 电池数据是“增量模型”（0x=0）→ 显示 layout + 电池增量
+        const useBatteryAsTotalModel =
+          layoutVal !== null && zeroBatteryVal !== null && Math.abs(layoutVal - zeroBatteryVal) < 0.01;
+
+        if (useBatteryAsTotalModel) {
+          // 0x/1x/... 按电池按钮数据直接显示总容量
+          sum = selectedBatteryVal !== null ? selectedBatteryVal : (layoutVal || 0);
+        } else if (layoutVal === null) {
+          // 兜底：部分商品 layout 标题里解析不到容量时，直接使用电池按钮容量
+          // 避免 0x 场景被错误显示为 0Wh
+          sum = selectedBatteryVal !== null ? selectedBatteryVal : 0;
+        } else {
+          // 增量模型：qty=0 不加电池；qty>0 才加
+          const qty = batterySelection.qty || 0;
+          const batteryContribution = qty > 0 ? (selectedBatteryVal || 0) : 0;
+          sum = (layoutVal || 0) + batteryContribution;
         }
 
-        const sum = (layoutVal || 0) + (batteryVal || 0);
         const unit =
-          extractCapacityUnit(layoutText) ||
+          extractCapacityUnit(useBatteryAsTotalModel ? batteryText : layoutText) ||
           extractCapacityUnit(batteryText) ||
+          extractCapacityUnit(layoutText) ||
           '';
 
         let sumText;
         if (Number.isInteger(sum)) {
           sumText = String(sum);
         } else {
-          // 保留最多两位小数，并去掉末尾的 .00
           sumText = sum.toFixed(2).replace(/\.00$/, '');
         }
 
@@ -1174,8 +1202,6 @@
           // 清除保存的原始值
           delete mainImage.dataset.originalSrc;
           delete mainImage.dataset.originalSrcset;
-
-          console.log('[Bundle Extension] 图片恢复完成:', originalSrc);
         }
 
         // 隐藏 other_display_text
@@ -1202,21 +1228,18 @@
       // 叠加显示第二张图片到主产品图片上（主图左下，叠加图右上）
       function addOverlayImageToMainProduct(overlayImageUrl, type = 'solar', otherDisplayText = '') {
         if (!overlayImageUrl) {
-          console.warn('[Bundle Overlay] 没有叠加图片URL');
           return;
         }
 
         // 找到主产品的 media gallery
         const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
         if (!productInfo) {
-          console.warn('[Bundle Overlay] 找不到 product-info 元素');
           return;
         }
 
         const mainSectionId = productInfo.dataset.section;
         const mediaGallery = productInfo.querySelector(`[id^="MediaGallery-${mainSectionId}"]`);
         if (!mediaGallery) {
-          console.warn('[Bundle Overlay] 找不到 MediaGallery 元素');
           return;
         }
 
@@ -1229,7 +1252,6 @@
           activeSlide = mediaGallery.querySelector('.product__media-item:first-child');
         }
         if (!activeSlide) {
-          console.warn('[Bundle Overlay] 找不到激活的幻灯片');
           return;
         }
 
@@ -1239,7 +1261,6 @@
           imageContainer = activeSlide.querySelector('.product__media');
         }
         if (!imageContainer) {
-          console.warn('[Bundle Overlay] 找不到图片容器');
           return;
         }
 
@@ -1275,7 +1296,6 @@
           // 检查当前选中的电池包是否是 0x
           const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
           const isZeroBattery = selectedBatteryBtn && selectedBatteryBtn.dataset.qty === '0';
-          console.log('isZeroBattery:========>', isZeroBattery);
 
           // 如果是 0x 且有叠加图片，使用 bottom 样式；否则使用普通样式
           const styleClass = isZeroBattery ? 'bundle-main-image-adjusted-bottom' : 'bundle-main-image-adjusted';
@@ -1366,7 +1386,6 @@
 
         textOverlay.textContent = text;
         textOverlay.style.display = 'block';
-        console.log(`[Bundle Overlay] 显示 ${type} other_display_text:`, text);
       }
 
       // 隐藏叠加图片的 other_display_text
@@ -1377,7 +1396,6 @@
         const textOverlay = slideElement.querySelector(`.${textClass}`);
         if (textOverlay) {
           textOverlay.style.display = 'none';
-          console.log(`[Bundle Overlay] 隐藏 ${type} other_display_text`);
         }
       }
 
@@ -1450,8 +1468,18 @@
           const totalCapacity = this.dataset.capacity;
           const otherText = this.dataset.otherText || '';
 
-          // 更新容量显示：使用统一的 layout + 电池 组合逻辑
-          updateCombinedCapacityDisplay();
+          // 先同步选中的 radio，再计算容量，避免 0x/1x 时取到上一次值
+          const inputId = this.getAttribute('for');
+          const radio = document.getElementById(inputId);
+          if (radio) {
+            radio.checked = true;
+          }
+
+          // 使用当前点击按钮的数据优先计算（更稳）
+          updateCombinedCapacityDisplay({
+            qty: parseInt(qty || '0', 10) || 0,
+            capacityText: totalCapacity || '',
+          });
 
           // 更新电池包图片
           if (batteryImage) {
@@ -1492,12 +1520,7 @@
             }
           }
 
-          // 获取选中的 radio input 并标记为选中（Bundle 模式不需要触发 change 事件，避免触发 variant-selects 重置）
-          const inputId = this.getAttribute('for');
-          const radio = document.getElementById(inputId);
-          if (radio) {
-            radio.checked = true;
-          }
+          // Bundle 模式不需要触发 change 事件，避免触发 variant-selects 重置
 
           // 检查是否有叠加图片，如果有则根据电池包数量切换主图样式类
           const productInfo = document.querySelector('product-info[id^="MainProduct-"]');
@@ -1535,13 +1558,6 @@
           }
 
           // 触发 Bundle 专用事件
-
-          console.log('[Bundle Extension] Battery selected:', {
-            variantId: variantId || 'none (0x - no battery)',
-            price: price,
-            quantity: qty,
-            capacity: totalCapacity,
-          });
 
           document.dispatchEvent(
             new CustomEvent('bundle:battery:change', {
@@ -1586,14 +1602,11 @@
           const otherText = this.dataset.otherText || '';
           
           // 如果变体ID为空，不更新表单
-          if (!variantId || variantId.trim() === '') {
-            console.warn('[Multi Host] 变体ID为空，跳过表单更新');
-          } else {
+          if (variantId && variantId.trim() !== '') {
             // 更新 sticky-atc-bar 表单中的变体ID值，不触发change事件
             let stickBar = document.querySelector('sticky-atc-bar');
             if (stickBar) {
-              console.log('[Multi Host] 更新表单变体ID为:', variantId);
-              
+
               // 方法1: 查找 sticky-atc-bar 中的 select[name="id"]
               const variantSelect = stickBar.querySelector('select[name="id"]');
               if (variantSelect) {
@@ -1606,9 +1619,6 @@
                   variantSelect.querySelectorAll('option').forEach(opt => opt.removeAttribute('selected'));
                   // 设置当前option为选中
                   option.setAttribute('selected', 'selected');
-                  console.log('[Multi Host] 已更新 select[name="id"] 的值为:', variantId);
-                } else {
-                  console.warn('[Multi Host] select 中未找到对应的 option，value:', variantId);
                 }
               }
               
@@ -1616,7 +1626,6 @@
               const variantInput = stickBar.querySelector('input[name="id"]');
               if (variantInput) {
                 variantInput.value = variantId;
-                console.log('[Multi Host] 已更新 input[name="id"] 的值为:', variantId);
               }
               
               // 方法3: 查找所有表单中的 name="id" 元素（确保全部更新）
@@ -1627,10 +1636,7 @@
                   return;
                 }
                 input.value = variantId;
-                console.log('[Multi Host] 已更新表单元素 [name="id"] 的值为:', variantId, input);
               });
-            } else {
-              console.warn('[Multi Host] 未找到 sticky-atc-bar 元素');
             }
           }
 
@@ -1660,13 +1666,6 @@
             radio.checked = true;
             // 不触发 change 事件，避免页面重新渲染
           }
-
-          console.log('[Multi Host] Product selected:', {
-            variantId: variantId,
-            price: price,
-            totalCapacity: totalCapacity,
-            displayText: displayText,
-          });
 
           // 触发 Multi Host 专用事件
           document.dispatchEvent(
@@ -1737,12 +1736,6 @@
           }, 200);
         }
 
-        console.log('[Bundle Extension] Initial price update triggered for selected button:', {
-          variantId: variantId || 'none (0x - no battery)',
-          price: price,
-          quantity: qty,
-          capacity: totalCapacity,
-        });
       }
 
       // Multi Host 初始化
@@ -1757,18 +1750,7 @@
           }
         }, 200);
 
-        console.log('[Multi Host] Initialized with selected variant:', {
-          variantId: selectedMultiHostBtn.dataset.variantId,
-          price: selectedMultiHostBtn.dataset.price,
-          totalCapacity: selectedMultiHostBtn.dataset.capacity,
-        });
       }
-
-      console.log(
-        isMultiHost
-          ? `[Multi Host] Initialized with ${multiHostButtons.length} variant options`
-          : `[Bundle Extension] Initialized with ${bundleButtons.length} battery options`
-      );
 
       // 将函数暴露到全局作用域，供其他组件使用
       window.updateMainProductImage = updateMainProductImage;
