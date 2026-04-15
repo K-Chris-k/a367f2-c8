@@ -304,16 +304,32 @@
             data-layout-qty-selector
           >
             {%- assign selector_default_qty = option_config.layout_default_qty | default: 1 -%}
-            {%- assign layout_match_host = false -%}
-            {%- if host_variant_id != blank -%}
-              {%- assign layout_host_vid = host_variant_id | plus: 0 -%}
+            {%- assign layout_target_vid = 0 -%}
+            {%- assign layout_has_match = false -%}
+            {%- comment -%} Priority 1: URL ?variant= parameter {%- endcomment -%}
+            {%- if main_product.selected_or_first_available_variant -%}
+              {%- assign url_selected_vid = main_product.selected_or_first_available_variant.id -%}
               {%- for v in selector_variants -%}
-                {%- if v.id == layout_host_vid -%}
-                  {%- assign layout_match_host = true -%}
+                {%- if v.id == url_selected_vid -%}
+                  {%- assign layout_target_vid = url_selected_vid -%}
+                  {%- assign layout_has_match = true -%}
                   {%- break -%}
                 {%- endif -%}
               {%- endfor -%}
             {%- endif -%}
+            {%- comment -%} Priority 2: host_variant_id from block settings {%- endcomment -%}
+            {%- unless layout_has_match -%}
+              {%- if host_variant_id != blank -%}
+                {%- assign layout_host_vid = host_variant_id | plus: 0 -%}
+                {%- for v in selector_variants -%}
+                  {%- if v.id == layout_host_vid -%}
+                    {%- assign layout_target_vid = layout_host_vid -%}
+                    {%- assign layout_has_match = true -%}
+                    {%- break -%}
+                  {%- endif -%}
+                {%- endfor -%}
+              {%- endif -%}
+            {%- endunless -%}
             {%- for v in selector_variants -%}
               {%- assign btn_index = forloop.index -%}
               {%- assign v_compare = v.compare_at_price | default: 0 -%}
@@ -327,8 +343,8 @@
                 {%- assign v_image_alt = v.featured_image.alt | default: '' -%}
               {%- endif -%}
               {%- assign is_layout_btn_selected = false -%}
-              {%- if layout_match_host -%}
-                {%- if v.id == layout_host_vid -%}
+              {%- if layout_has_match -%}
+                {%- if v.id == layout_target_vid -%}
                   {%- assign is_layout_btn_selected = true -%}
                 {%- endif -%}
               {%- else -%}
