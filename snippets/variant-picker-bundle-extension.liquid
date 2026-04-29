@@ -294,6 +294,9 @@
   {% if is_multi_host %}
     data-multi-host-mode="true"
   {% endif %}
+  {%- if variant_picker_block != blank and variant_picker_block.settings.bundle_combined_image != blank -%}
+    data-bundle-combined-image-url="{{ variant_picker_block.settings.bundle_combined_image | image_url: width: 1600 }}"
+  {%- endif -%}
 >
   {%- comment -%} 容量显示 {%- endcomment -%}
   {%- if option_config.capacity_label -%}
@@ -1087,16 +1090,27 @@
       // 新布局：1x/2x/3x 选择器按钮
       const layoutQtyButtons = document.querySelectorAll('.variant-extension-qty-btn--layout');
 
-      // 预加载所有 variant 图片，点击时直接从缓存读取，无延迟
+      // 预加载所有可能用到的 variant 图片，点击时直接从浏览器缓存读取，零延迟切换
+      // 包括：layout 选择器图、电池图、addon 图、combined 图
       const preloadedImages = {};
-      layoutQtyButtons.forEach((btn) => {
-        const url = btn.dataset.imageUrl;
-        if (url && !preloadedImages[url]) {
-          const img = new Image();
-          img.src = url;
-          preloadedImages[url] = img;
-        }
-      });
+      function preloadImage(url) {
+        if (!url || preloadedImages[url]) return;
+        const img = new Image();
+        img.src = url;
+        preloadedImages[url] = img;
+      }
+
+      // 1. layout 选择器图片
+      layoutQtyButtons.forEach((btn) => preloadImage(btn.dataset.imageUrl));
+      // 2. 电池按钮图片（包含 0x 上的 host image）
+      document.querySelectorAll('.bundle-extension-btn').forEach((btn) => preloadImage(btn.dataset.imageUrl));
+      // 3. addon 按钮图片
+      document.querySelectorAll('.variant-extension-qty-btn--addon').forEach((btn) => preloadImage(btn.dataset.imageUrl));
+      // 4. combined 共用图片（电池+addon 都非0x 时使用）
+      preloadImage(getCombinedImageUrl());
+      // 5. multi-host 按钮图片
+      document.querySelectorAll('.multi-host-btn').forEach((btn) => preloadImage(btn.dataset.imageUrl));
+      window._bundlePreloadedImages = preloadedImages;
 
       function updateLayoutSelection(btn) {
         if (!btn) return;
@@ -1146,10 +1160,8 @@
           // 电池非默认 → 不切换图片，显示 alt text
           updateLayoutAltTextVisibility();
         } else {
-          // 电池默认(0x) → 切换图片，隐藏 alt text
-          if (imageUrl) {
-            updateMainProductImage(imageUrl);
-          }
+          // 电池默认(0x) → 优先 addon 图，否则使用 layout 图，并隐藏 alt text
+          applyImageForBatteryZero(imageUrl);
           updateLayoutAltTextVisibility();
         }
 
@@ -1513,11 +1525,104 @@
       // 只有电池非默认才触发 alt text 模式；太阳能板/支架等类别选择不影响
       function hasBatteryNonDefault() {
         const selectedBatteryBtn = document.querySelector(
-          '.variant-extension-qty-buttons:not(.variant-extension-qty-buttons--layout-selector) .variant-extension-qty-btn.selected'
+          '.variant-extension-section .variant-extension-qty-buttons:not(.variant-extension-qty-buttons--addon) .bundle-extension-btn.selected'
         );
         if (!selectedBatteryBtn) return true;
         return selectedBatteryBtn.dataset.qty !== '0';
       }
+
+      // 获取当前选中的 addon 按钮信息
+      function getSelectedAddonInfo() {
+        const selectedAddon = document.querySelector('.variant-extension-qty-btn--addon.selected');
+        if (!selectedAddon) return { qty: 0, imageUrl: '', text: '' };
+        return {
+          qty: parseInt(selectedAddon.dataset.qty || '0', 10) || 0,
+          imageUrl: selectedAddon.dataset.imageUrl || '',
+          text: selectedAddon.dataset.addonText || '',
+        };
+      }
+
+      // 获取当前 layout selector 选中按钮的图片
+      function getSelectedLayoutImage() {
+        const layoutBtn = document.querySelector(
+          '.variant-extension-qty-buttons--layout-selector .variant-extension-qty-btn--layout.selected'
+        );
+        if (!layoutBtn) return { url: '', alt: '' };
+        return {
+          url: layoutBtn.dataset.imageUrl || '',
+          alt: layoutBtn.dataset.imageAlt || '',
+        };
+      }
+
+      // 当电池=0x（默认）时，决定主图应该显示什么：
+      // 优先使用 addon 图片（如果 addon 选中非0x 且有 image_url），否则使用 layout 图片
+      function applyImageForBatteryZero(fallbackImageUrl) {
+        const addon = getSelectedAddonInfo();
+        if (addon.qty > 0 && addon.imageUrl) {
+          updateMainProductImage(addon.imageUrl, '');
+          return true;
+        }
+        const layoutImg = getSelectedLayoutImage();
+        if (layoutImg.url) {
+          updateMainProductImage(layoutImg.url, '');
+          return true;
+        }
+        if (fallbackImageUrl) {
+          updateMainProductImage(fallbackImageUrl, '');
+          return true;
+        }
+        restoreMainProductImage();
+        return false;
+      }
+
+      // 获取当前选中的电池按钮信息（包含图片/other_text）
+      function getSelectedBatteryInfo() {
+        const selectedBtn = document.querySelector(
+          '.variant-extension-section .variant-extension-qty-buttons:not(.variant-extension-qty-buttons--addon) .bundle-extension-btn.selected'
+        );
+        if (!selectedBtn) return { qty: 0, imageUrl: '', otherText: '' };
+        return {
+          qty: parseInt(selectedBtn.dataset.qty || '0', 10) || 0,
+          imageUrl: selectedBtn.dataset.imageUrl || '',
+          otherText: selectedBtn.dataset.otherText || '',
+        };
+      }
+
+      // 获取后台配置的 combined image URL（电池+addon 都非0x 时使用的共用图）
+      function getCombinedImageUrl() {
+        const fieldset = document.querySelector('.bundle-extension-fieldset[data-bundle-combined-image-url]');
+        return fieldset ? (fieldset.dataset.bundleCombinedImageUrl || '') : '';
+      }
+
+      // 统一决策入口：根据电池 + addon 当前状态决定主图
+      // 优先级：
+      //   1. 电池非0x AND addon非0x AND combined 图存在 → combined
+      //   2. 电池非0x → 电池图（带电池 other_text）
+      //   3. 电池=0x  → addon 图 → layout 图 → 兜底
+      // overrides 用于在 click handler 里传入"刚刚点击的按钮"的最新数据，避免依赖 DOM 时序
+      function decideAndApplyMainImage(overrides) {
+        overrides = overrides || {};
+        const battery = overrides.battery || getSelectedBatteryInfo();
+        const addon = overrides.addon || getSelectedAddonInfo();
+        const combined = getCombinedImageUrl();
+
+        if (battery.qty > 0 && addon.qty > 0 && combined) {
+          updateMainProductImage(combined, battery.otherText || '');
+          return;
+        }
+
+        if (battery.qty > 0) {
+          if (battery.imageUrl) {
+            updateMainProductImage(battery.imageUrl, battery.otherText || '');
+          } else {
+            restoreMainProductImage();
+          }
+          return;
+        }
+
+        applyImageForBatteryZero('');
+      }
+      window.decideAndApplyMainImage = decideAndApplyMainImage;
 
       // 获取当前 layout 选择器选中按钮中括号里的容量文案
       function getSelectedLayoutCapacityText() {
@@ -1994,32 +2099,20 @@
             }
           }
 
-          // 更新主产品图片
-          // 需求：
-          // - 当 qty > 0 时，用电池对应的图片（可带 other_display_text）
-          // - 当 qty === '0' 时，使用当前 layout selector 选中的变体图片，且不显示 alt text 叠加
+          // 更新主产品图片（统一决策）
+          // 优先级：电池+addon 都非0x 且配置了 combined 图 → combined
+          //         电池非0x → 电池图
+          //         电池=0x → addon 图 → layout 图 → 0x 自身配置的图
           if (qty === '0') {
-            const currentLayoutBtn = document.querySelector(
-              '.variant-extension-qty-buttons--layout-selector .variant-extension-qty-btn--layout.selected'
-            );
-            const layoutImageUrl = currentLayoutBtn ? currentLayoutBtn.dataset.imageUrl || '' : '';
-
-            if (layoutImageUrl) {
-              // 0x 场景：只切主图，不要任何 alt text 叠加
-              updateMainProductImage(layoutImageUrl, '');
-            } else if (imageUrl && imageUrl !== '') {
-              // 回退：如果 layout 没有图片，就使用 0x 上配置的图片
-              updateMainProductImage(imageUrl, '');
-            } else {
-              restoreMainProductImage();
-            }
+            applyImageForBatteryZero(imageUrl);
           } else {
-            if (imageUrl && imageUrl !== '') {
-              updateMainProductImage(imageUrl, otherText);
-            } else {
-              // 如果没有图片，恢复原始图片
-              restoreMainProductImage();
-            }
+            decideAndApplyMainImage({
+              battery: {
+                qty: parseInt(qty, 10) || 0,
+                imageUrl: imageUrl || '',
+                otherText: otherText || '',
+              },
+            });
           }
 
           // Bundle 模式不需要触发 change 事件，避免触发 variant-selects 重置
@@ -2266,15 +2359,18 @@
         const addonButtons = addonBlock.querySelectorAll('.variant-extension-qty-btn--addon');
         const source = addonBlock.dataset.addonSource || '';
 
-        function dispatchAddonChange(btn) {
+        function dispatchAddonChange(btn, options) {
           if (!btn) return;
+          const isInit = options && options.isInit === true;
           const priceVal = parseInt(btn.dataset.addonPrice || '0', 10) || 0;
           const capacityVal = btn.dataset.capacity || '';
           const addonText = btn.dataset.addonText || '';
           const addonQty = btn.dataset.qty || '0';
+          const addonImageUrl = btn.dataset.imageUrl || '';
 
           window._bundleAddonPriceInCents = priceVal;
           window._bundleAddonCapacity = capacityVal;
+          window._bundleAddonImageUrl = addonImageUrl;
 
           document.dispatchEvent(
             new CustomEvent('bundle:addon:change', {
@@ -2285,7 +2381,7 @@
                 qty: addonQty,
                 label: btn.dataset.addonLabel || '',
                 capacity: capacityVal,
-                imageUrl: btn.dataset.imageUrl || '',
+                imageUrl: addonImageUrl,
                 value: btn.dataset.addonValue || '',
                 price: priceVal,
                 text: addonText,
@@ -2299,6 +2395,22 @@
             hideAddonDisplayText(slide);
           } else {
             showAddonDisplayText(slide, addonText);
+          }
+
+          // 主图切换（统一决策）：
+          // - 电池非0x AND addon 非0x AND combined 图存在 → combined（接管）
+          // - 电池非0x AND（addon 0x 或 无 combined 图）     → 电池图（不被 addon 抢）
+          // - 电池=0x AND addon 非0x 且有图                  → addon 图
+          // - 电池=0x AND addon 0x/无图                      → layout 图
+          // 初始化阶段不强制切图（避免与电池/layout 的初始化时序冲突）
+          if (!isInit) {
+            decideAndApplyMainImage({
+              addon: {
+                qty: parseInt(addonQty, 10) || 0,
+                imageUrl: addonImageUrl,
+                text: addonText,
+              },
+            });
           }
 
           if (window.bundleProducts && window.bundleProducts.updatePrice) {
@@ -2335,7 +2447,7 @@
             }
           }
         }
-        if (initialAddon) dispatchAddonChange(initialAddon);
+        if (initialAddon) dispatchAddonChange(initialAddon, { isInit: true });
       });
 
       // 初始化完毕后同步一次互斥上限：从当前选中状态读取缓存
