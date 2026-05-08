@@ -250,7 +250,7 @@
       }
       // 基于选择的配件组合生成 bundle group ID
       // 相同的配件组合（包括 qty）会生成相同的 ID，这样 Shopify 会自动合并数量
-      function generateBundleGroupId(hostVariantId, batteryVariantId, batteryQty, solarItems) {
+      function generateBundleGroupId(hostVariantId, batteryVariantId, batteryQty, solarItems, addonItems) {
         const parts = [String(hostVariantId)];
         // 包含电池 variant 和 qty（如 2x, 5x）
         if (batteryVariantId && batteryQty > 0) {
@@ -260,6 +260,11 @@
         if (solarItems && solarItems.length > 0) {
           const solarParts = solarItems.map(s => s.variantId + 'x' + s.qty).sort();
           parts.push('s' + solarParts.join('-'));
+        }
+        // 包含 add-on variant 和 qty
+        if (addonItems && addonItems.length > 0) {
+          const addonParts = addonItems.map(a => a.variantId + 'x' + a.qty).sort();
+          parts.push('a' + addonParts.join('-'));
         }
         return parts.join('_');
       }
@@ -293,6 +298,7 @@
           let batteryVariantId = null;
           let batteryQty = 0;
           const solarItems = [];  // {variantId, qty}
+          const addonItems = []; // {variantId, qty} - custom add-on row
           
           // 2. 电池包（如果选中且 qty > 0）
           const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
@@ -310,9 +316,49 @@
               solarItems.push({ variantId, qty });
             }
           });
-          
+
+          // 4. 自定义 add-on 行（每个 fieldset 可能有一个 add-on 块）
+          // 规则：每行的 qty (1x/2x/3x) 实际是 bundle_addon_product 的"变体序号"：
+          //   - 1x = variants[0], 2x = variants[1], 3x = variants[2] ...
+          //   - 加购永远 quantity = 1，因为变体本身已经表达了"几颗打包"
+          //   - 0x 不加购
+          // data-addon-variant-id 由 liquid 渲染时按 qty 自动映射好；如果没有，
+          // 则兜底使用 fieldset 上的 default variant（仍是 quantity = 1）
+          document.querySelectorAll('.bundle-extension-fieldset').forEach((fieldset) => {
+            const selectedAddonBtn = fieldset.querySelector('.variant-extension-qty-btn--addon.selected');
+            if (!selectedAddonBtn) {
+              console.log('[Bundle Addon] no selected addon button in fieldset, skip');
+              return;
+            }
+            const addonQty = parseInt(selectedAddonBtn.dataset.qty || '0', 10) || 0;
+            const addonLabel = selectedAddonBtn.dataset.addonLabel || selectedAddonBtn.textContent.trim();
+            if (addonQty <= 0) {
+              console.log('[Bundle Addon] selected =', addonLabel, '(qty=0) → not added to cart');
+              return;
+            }
+
+            const rowVariantId = (selectedAddonBtn.dataset.addonVariantId || '').trim();
+            const defaultVariantId = (fieldset.dataset.bundleAddonDefaultVariantId || '').trim();
+            const addonProductId = (fieldset.dataset.bundleAddonProductId || '').trim();
+            const variantId = rowVariantId || defaultVariantId;
+
+            // 强保护：如果 fieldset 上既没设 add-on product，按钮上也没强制 variant id，
+            // 那这一行就只是"展示用"，不应该加购。
+            if (!variantId || (!addonProductId && !rowVariantId)) {
+              console.warn(
+                '[Bundle Addon] selected =', addonLabel,
+                '→ skip add-on add to cart because no add-on product is configured. ' +
+                'Either set "Add-on product" in the block settings, or add "0x|0" as the first Quantity option line so the default is "do not add".'
+              );
+              return;
+            }
+
+            console.log('[Bundle Addon] add to cart →', addonLabel, 'variant', variantId);
+            addonItems.push({ variantId, qty: 1 });
+          });
+
           // 基于配件组合生成 group ID（包含 qty，相同组合 = 相同 ID = 合并数量）
-          const bundleGroupId = generateBundleGroupId(hostVariantId, batteryVariantId, batteryQty, solarItems);
+          const bundleGroupId = generateBundleGroupId(hostVariantId, batteryVariantId, batteryQty, solarItems, addonItems);
 
           const bundleVariantIds = [];
 
@@ -362,13 +408,47 @@
             });
             bundleVariantIds.push(String(solar.variantId));
           });
-          
+
+          // 添加 add-on 行（自定义扩展行配置的产品）
+          // 去重保护：如果 add-on 的 variantId 已经被 host/battery/solar 加过，
+          // 跳过它，避免同一变体被合并成 ×N 误以为重复加购。
+          addonItems.forEach((addon) => {
+            const isDuplicate = items.some((it) => String(it.id) === String(addon.variantId));
+            if (isDuplicate) {
+              console.warn(
+                '[Bundle] Add-on variant', addon.variantId,
+                'was already added by host/battery/solar — skipped to avoid duplicate. ' +
+                'Please make sure the Add-on product is different from the main/host product, ' +
+                'or that the first Quantity option line is "0x|0".'
+              );
+              return;
+            }
+            items.push({
+              id: parseInt(addon.variantId),
+              quantity: addon.qty,
+              properties: {
+                _bundle_item: 'true',
+                _bundle_role: 'addon',
+                _bundle_host_id: String(hostVariantId),
+                _bundle_group_id: bundleGroupId,
+              },
+            });
+            bundleVariantIds.push(String(addon.variantId));
+          });
+
           if (hostVariantId && bundleVariantIds.length > 0) {
             saveBundleMapping(String(hostVariantId), bundleVariantIds);
           }
         } catch (e) {
           console.error('[Bundle] 收集产品出错:', e);
         }
+
+        try {
+          console.log(
+            '[Bundle] collected items →',
+            items.map((it) => ({ id: it.id, qty: it.quantity, role: it.properties?._bundle_role }))
+          );
+        } catch (_) {}
 
         return items;
       }

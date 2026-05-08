@@ -297,6 +297,14 @@
   {%- if variant_picker_block != blank and variant_picker_block.settings.bundle_combined_image != blank -%}
     data-bundle-combined-image-url="{{ variant_picker_block.settings.bundle_combined_image | image_url: width: 1600 }}"
   {%- endif -%}
+  {%- if variant_picker_block != blank and variant_picker_block.settings.bundle_addon_product != blank -%}
+    {%- assign addon_product = variant_picker_block.settings.bundle_addon_product -%}
+    {%- assign addon_default_variant = addon_product.selected_or_first_available_variant -%}
+    data-bundle-addon-product-id="{{ addon_product.id }}"
+    data-bundle-addon-product-handle="{{ addon_product.handle }}"
+    data-bundle-addon-default-variant-id="{{ addon_default_variant.id }}"
+    data-bundle-addon-product-title="{{ addon_product.title | escape }}"
+  {%- endif -%}
 >
   {%- comment -%} 容量显示 {%- endcomment -%}
   {%- if option_config.capacity_label -%}
@@ -458,6 +466,30 @@
                   assign opt_selected = true
                 endif
                 assign addon_input_id = 'bundle-addon-' | append: section.id | append: '-' | append: option.position | append: '-t-' | append: valid_idx
+                # 解析行级 variant_id：
+                #   1) 优先：value 字段如果是纯数字 variant ID (>= 1000)
+                #   2) 其次：根据 bundle_addon_product 的 variants 数组，按 opt_qty 作为 1-based 索引取对应 variant
+                #      例：opt_qty=1 → variants[0]，opt_qty=2 → variants[1]
+                assign opt_variant_id = ''
+                assign opt_value_num = opt_value | plus: 0
+                if opt_value_num > 1000
+                  assign opt_variant_id = opt_value_num
+                endif
+                if opt_variant_id == '' and opt_qty > 0 and vpb.settings.bundle_addon_product != blank
+                  assign mapped_idx = opt_qty | minus: 1
+                  assign mapped_variant = vpb.settings.bundle_addon_product.variants[mapped_idx]
+                  if mapped_variant
+                    assign opt_variant_id = mapped_variant.id
+                    if opt_price == blank
+                      assign opt_price = mapped_variant.price
+                    endif
+                    if opt_image == blank and mapped_variant.image
+                      assign opt_image = mapped_variant.image | image_url: width: 1600
+                    elsif opt_image == blank and mapped_variant.featured_image
+                      assign opt_image = mapped_variant.featured_image | image_url: width: 1600
+                    endif
+                  endif
+                endif
               -%}
               <input
                 type="radio"
@@ -478,6 +510,9 @@
                 {% endif %}
                 {% if opt_text != blank %}
                   data-addon-text="{{ opt_text | escape }}"
+                {% endif %}
+                {% if opt_variant_id != blank %}
+                  data-addon-variant-id="{{ opt_variant_id }}"
                 {% endif %}
                 {% if opt_selected %}
                   checked
@@ -500,6 +535,9 @@
                 {% endif %}
                 {% if opt_text != blank %}
                   data-addon-text="{{ opt_text | escape }}"
+                {% endif %}
+                {% if opt_variant_id != blank %}
+                  data-addon-variant-id="{{ opt_variant_id }}"
                 {% endif %}
                 data-addon-value="{{ opt_value | escape }}"
               >
