@@ -3,7 +3,7 @@
 -%}
 <style>
 
-  .title{ font-size: 48px;font-weight: 700;text-align:center;color:#000}
+  #shopify-section-{{ section.id }} .title{ font-size: 48px;font-weight: 700;text-align:center;color:#000}
   #shopify-section-{{ section.id }} {
     margin-top: {{ section.settings.padding_top }}px;
     margin-bottom: {{ section.settings.padding_bottom }}px;
@@ -117,7 +117,7 @@
   .content-wrapper .links:hover,.content-wrapper .links:focus{border-color:#DC222C!important}
 
 
-  #shopify-section-{{ section.id }} .icon-gift{ width: 3rem; height: 3rem;margin: 0px 10px;}
+  #shopify-section-{{ section.id }} .icon-gift{ width: 4rem; height: 4.5rem;margin: 0px 10px;}
 
   #shopify-section-{{ section.id }} button:hover {
       /* 不设置任何样式，或者重置为默认样式 */
@@ -155,7 +155,8 @@
     }
   }
     @media screen and (max-width: 440px) {
-    .grid-item{border-radius: 8px;height: 205px;}
+            #shopify-section-{{ section.id }} .grid-item:nth-child(1){border-radius: 8px;height: 250px;}
+    #shopify-section-{{ section.id }} .grid-item:nth-child(2){border-radius: 8px;height: 198px;}
      #shopify-section-{{ section.id }} .grid-item:nth-child(3) {
       height: 386px;
     }
@@ -164,7 +165,8 @@
     {% comment %} https://cdn.shopify.com/s/files/1/0596/6367/9587/files/mc-snow-mob.png?v=1764920183 {% endcomment %}
 
     @media screen and (max-width: 420px) {
-    .grid-item{border-radius: 8px;height: 195px;}
+        #shopify-section-{{ section.id }} .grid-item:nth-child(1){border-radius: 8px;height: 240px;}
+    #shopify-section-{{ section.id }} .grid-item:nth-child(2){border-radius: 8px;height: 190px;}
      #shopify-section-{{ section.id }} .grid-item:nth-child(3) {
       height: 365px;
     }
@@ -172,7 +174,8 @@
 
   
  @media screen and (max-width: 390px) {
-    .grid-item{border-radius: 8px;height: 185px;}
+        #shopify-section-{{ section.id }} .grid-item:nth-child(1){border-radius: 8px;height: 225px;}
+    #shopify-section-{{ section.id }} .grid-item:nth-child(2){border-radius: 8px;height: 178px;}
      #shopify-section-{{ section.id }} .grid-item:nth-child(3) {
       height: 344px;
     }
@@ -180,13 +183,14 @@
 
 
   @media screen and (max-width: 375px) {
-    .grid-item{border-radius: 8px;height: 178px;}
+    #shopify-section-{{ section.id }} .grid-item:nth-child(1){border-radius: 8px;height: 211px;}
+    #shopify-section-{{ section.id }} .grid-item:nth-child(2){border-radius: 8px;height: 166px;}
      #shopify-section-{{ section.id }} .grid-item:nth-child(3) {
       height: 332px;
     }
   }
   @media screen and (max-width: 749px) {
-    .title{ font-size: 28px;}
+    #shopify-section-{{ section.id }} .title{ font-size: 28px;}
     #shopify-section-{{ section.id }} {
       margin-top: {{ section.settings.padding_top | divided_by: 2 }}px;
       margin-bottom: {{ section.settings.padding_bottom | divided_by: 2 }}px;
@@ -239,7 +243,7 @@
     gap: 10px;
   }
 
-     #shopify-section-{{ section.id }} .icon-gift{ width: 2rem; height: 1.5rem;margin: 0px 5px;}
+     #shopify-section-{{ section.id }} .icon-gift{ width: 3rem; height: 3.2rem;margin: 0px 5px;}
 
 
   .rabatt p{max-width:100%;line-height: 15px;font-size: 12px;}
@@ -255,20 +259,20 @@
       
       <div class="flex items-center  " style="justify-content: center;">
       <div class="title-container  ">
-        {% render 'icon-gift-left' -%}
+        {% comment %} {% render 'icon-gift-left' -%} {% endcomment %}
         <h2 class="title"> 
             <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
               <span>{{section.settings.section_title}}</span>
           </motion-element>
         </h2>
-      {% render 'icon-gift-right' -%}
+      {% comment %} {% render 'icon-gift-right' -%} {% endcomment %}
     </div>
     </div>
     <div class="section__wrapper grid-container product-box" style="">
           {% for block in section.blocks %}
            {% case block.type %}
             {% when 'featured_collection' %}
-            <div class="grid-item block-{{ forloop.index }}"  {% if forloop.index==2 %}  aria-controls="PopupModal-{{ section.id }}" {% endif %} >
+            <div class="grid-item block-{{ forloop.index }}"  {% if forloop.index==1 %}  aria-controls="PopupModal-{{ section.id }}" {% endif %} >
               <div class="image-container">
                 {% if block.settings.image != blank %}
                   <picture>
@@ -311,7 +315,7 @@
                   <div class="flex-container">
                   <button
                     type="button"  data-rabatt="{{ block.settings.rabatt }}"
-                    class="btn btn--primary links copy-button"  {% if block.settings.rabatt != blank %}  aria-controls="1PopupModal-{{ section.id }}" {% endif %} 
+                    class="btn btn--primary links copy-button"  {% if block.settings.rabatt != blank %}  aria-controls="PopupModal-{{ section.id }}" {% endif %} 
                   > 
                     <a href="javascript:void(0)" class="grid-button">
                       {{ block.settings.button_title_copy }}
@@ -326,7 +330,7 @@
 
             {% endcase %}
           {% endfor %}
-                          <basic-modal id="PopupModal-off-{{section.id}}" class="drawer modal" style="--modal-width: 50rem;">
+                          <basic-modal id="PopupModal-{{section.id}}" class="drawer modal" style="--modal-width: 50rem;">
                   <div class="fixed-overlay" aria-controls="PopupModal-{{section.id}}"></div>
                   <div class="drawer__inner tip-background">
                     <div class="drawer__body v-scrollable">
@@ -336,8 +340,8 @@
                                         >
                                           {%- render 'icon-close' -%}
                                         </button>
-                        {% comment %} <h5>Kopieren erfolgreich!</h5> {% endcomment %}
-                        <div class="content">Der Gutschein wurde erfolgreich aktiviert und wird beim Checkout automatisch abgezogen.<br/>Gültig: 9. bis 27. Februar</div>
+                        {% comment %} <h5>Kopieren erfolgreich!</h5> {% endcomment %} 
+                        <div class="content">Der Gutschein wurde erfolgreich aktiviert und wird beim Checkout automatisch abgezogen.<br/>Gültig: 15. bis 30. April</div>
                     </div>
                   </div>
                 </basic-modal>

@@ -142,7 +142,7 @@
           "type": "cross_sell_products",
           "settings": {
             "title": "Vielleicht brauchst du auch",
-            "cross_sell_product_1": "indevolt-solarbank-schuko-anschlusskabel-5m",
+            "cross_sell_product_1": "indevolt-solarbank-schuko-anschlusskabel",
             "cross_sell_product_1_default": false,
             "cross_sell_product_2": "solarman-smart-plug",
             "cross_sell_product_2_default": false,
@@ -257,6 +257,54 @@
         "image_mobile": "shopify://shop_images/bk1600-ksp-1201-mob.png",
         "margin_top": 60,
         "margin_bottom": 60
+      }
+    },
+    "rich_text_video_2026_7KRc4r": {
+      "type": "rich-text-video-2026",
+      "blocks": {
+        "heading_znibJg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Wie funktioniert Indevolt BK1600?",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_UkcRgc": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Mit dem Indevolt BK1600 verwandelst du die von deinen Solarpanelen erzeugte Energie effizient in Wechselstrom für dein Zuhause. Überschüssige Energie wird in Batterien gespeichert, sodass du jederzeit auf eine zuverlässige Energiequelle zugreifen kannst, auch nachts. So versorgst du dein Zuhause rund um die Uhr mit Solarstrom, reduzierst deine Abhängigkeit vom Stromnetz und sparst Kosten.</p>",
+            "text_size": "text-lg"
+          }
+        }
+      },
+      "block_order": [
+        "heading_znibJg",
+        "text_UkcRgc"
+      ],
+      "name": "富文本+视频+2026",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "",
+        "show_title_icon": false,
+        "container": "fixed",
+        "video": "shopify://files/videos/bk1600-video2.mp4",
+        "video-height-custom": "600",
+        "video_mobile": "shopify://files/videos/bk1600-video2.mp4",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "enable_parallax": true,
+        "img-href": "",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "image_top": 60,
+        "video_radius": 0,
+        "video_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
       }
     },
     "service_info_Xz4B7e": {
@@ -573,6 +621,7 @@
         "show_title_icon": false,
         "container": "fixed",
         "video": "shopify://files/videos/德语_batch_e1110602-12d0-4fe5-b7e6-8b06fdfacf63.mp4",
+        "video-height-custom": "700",
         "video_mobile": "shopify://files/videos/德语_batch_e1110602-12d0-4fe5-b7e6-8b06fdfacf63.mp4",
         "enable_video_autoplay": true,
         "enable_video_looping": true,
@@ -583,7 +632,6 @@
         "image_top": 40,
         "video_radius": 0,
         "video_ratio": "adapt",
-        "video_aspect_ratio": "16/9",
         "show_section_divider": false,
         "divider_width": "fixed",
         "mobile_content_alignment": "center"
@@ -824,7 +872,7 @@
             "image": "shopify://shop_images/ultra-vs-bk1600-pc.jpg",
             "mobile_image": "shopify://shop_images/ultra-vs-bk1600-mob.jpg",
             "title": "BK1600",
-            "description": "<ul><li>Die beste Einstiegsoption für Balkonkraftwerk mit Speicher</li><li>PV-Anlagen und Speicher in einem Schritt (Ideal für Anfänger ohne Balkonkraftwerke)</li><li>Unterstützt die Kapazitätserweiterung durch einen drahtlosen Parallelbetrieb</li></ul>",
+            "description": "<ul><li>Die beste Einstiegsoption für Balkonkraftwerk mit Speicher</li><li>PV-Anlagen und Speicher in einem Schritt (Ideal für Anfänger ohne Balkonkraftwerke)</li><li>Unterstützt die Kapazitätserweiterung durch einen drahtlosen Parallelbetrieb</li><li>Keine EPS-Funktion</li></ul>",
             "button_title": "Jetzt kaufen",
             "button_link": "#"
           }
@@ -835,7 +883,7 @@
             "image": "shopify://shop_images/ultra-vs-ultra-pc.jpg",
             "mobile_image": "shopify://shop_images/ultra-vs-ultra-mob.jpg",
             "title": "BK1600 Ultra",
-            "description": "<ul><li>Besitzt alle Funktionen von BK1600</li><li>Unterstützt Kopplung mit Mikro-Wechselrichtern (Aufrüstung bestehender PV-Anlagen mit Energiespeicher)</li><li>Unterstützt die Kapazitätserweiterung durch den Parallelbetrieb des BK1600</li></ul>",
+            "description": "<ul><li>Besitzt alle Funktionen von BK1600</li><li>Unterstützt Kopplung mit Mikro-Wechselrichtern (Aufrüstung bestehender PV-Anlagen mit Energiespeicher)</li><li>Unterstützt die Kapazitätserweiterung durch den Parallelbetrieb des BK1600</li><li>Unterstützt EPS (Notstromfunktion)</li></ul>",
             "button_title": "Mehr erfahren",
             "button_link": "https://de.indevolt.com/products/bk1600-ultra-balkonkraftwerk-mit-speicher"
           }
@@ -1025,7 +1073,7 @@
           "type": "card",
           "settings": {
             "title": "Drittanbieter-Kompatibilität",
-            "content": "Shelly Pro 3EM<br>Shelly 3EM<br>Shelly Plug S Gen3<br>everHome EcoTracker IR<br>Solarman Meter<br>Solarman IR Reader",
+            "content": "Shelly Pro 3EM<br>Shelly Pro EM<br>Shelly 3EM<br>Shelly Plug<br>Shelly Plug S Gen3<br>everHome EcoTracker IR<br>Solarman Meter<br>Solarman IR Reader<br>stromleser.one<br>HomeWizard P1",
             "note": ""
           }
         }
@@ -1135,7 +1183,7 @@
           "settings": {
             "icon": "none",
             "heading": "Was ist der Unterschied zwischen dem BK1600 Ultra und dem BK1600?",
-            "content": "<p>Beide Geräte, der BK1600 und der BK1600 Ultra, haben ein All-in-One-Design und enthalten einen bidirektionalen Wechselrichter. Wenn in deinem Zuhause keine Solaranlage installiert ist (also ohne Mikro-Wechselrichter), solltest du den BK1600 wählen. Damit kannst du die Solarange und die Speicherung auf einmal umsetzen und den überschüssigen Strom, den die PV-Anlage tagsüber erzeugt, optimal nutzen, um ihn abends zu verwenden. Das ist die kostengünstigste Wahl. Wenn du jedoch bereits eine Solaranlage installiert hast, dann wähle den BK1600 Ultra, um eine Speicherung zu ermöglichen und zusätzlich 1200W an Solarmodulen anzuschließen.</p>",
+            "content": "<p>Beide Geräte, der BK1600 und der BK1600 Ultra, haben ein All-in-One-Design und enthalten einen bidirektionalen Wechselrichter. Wenn in deinem Zuhause keine Solaranlage installiert ist (also ohne Mikro-Wechselrichter), solltest du den BK1600 wählen. Damit kannst du die Solarange und die Speicherung auf einmal umsetzen und den überschüssigen Strom, den die PV-Anlage tagsüber erzeugt, optimal nutzen, um ihn abends zu verwenden. Das ist die kostengünstigste Wahl. Wenn du jedoch bereits eine Solaranlage installiert hast, dann wähle den BK1600 Ultra, um eine Speicherung zu ermöglichen und zusätzlich 1200W an Solarmodulen anzuschließen.<br/>Der BK1600 hat keine EPS-Funktion am Off-Grid-Ausgang – der BK1600 Ultra unterstützt EPS.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1388,53 +1436,6 @@
         "color_scheme": "",
         "padding_top": 60,
         "padding_bottom": 0
-      }
-    },
-    "rich_text_video_2026_7KRc4r": {
-      "type": "rich-text-video-2026",
-      "blocks": {
-        "heading_znibJg": {
-          "type": "heading",
-          "settings": {
-            "heading": "Wie funktioniert Indevolt BK1600?",
-            "heading_size": "hd2",
-            "heading_highlight_style": "none"
-          }
-        },
-        "text_UkcRgc": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Mit dem Indevolt BK1600 verwandelst du die von deinen Solarpanelen erzeugte Energie effizient in Wechselstrom für dein Zuhause. Überschüssige Energie wird in Batterien gespeichert, sodass du jederzeit auf eine zuverlässige Energiequelle zugreifen kannst, auch nachts. So versorgst du dein Zuhause rund um die Uhr mit Solarstrom, reduzierst deine Abhängigkeit vom Stromnetz und sparst Kosten.</p>",
-            "text_size": "text-lg"
-          }
-        }
-      },
-      "block_order": [
-        "heading_znibJg",
-        "text_UkcRgc"
-      ],
-      "name": "富文本+视频+2026",
-      "settings": {
-        "color_scheme": "",
-        "bg_color": "#ffffff",
-        "content_alignment": "center",
-        "ids": "",
-        "show_title_icon": false,
-        "container": "fixed",
-        "video": "shopify://files/videos/bk1600-video2.mp4",
-        "video_mobile": "shopify://files/videos/bk1600-video2.mp4",
-        "enable_video_autoplay": true,
-        "enable_video_looping": true,
-        "enable_parallax": true,
-        "img-href": "",
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "image_top": 60,
-        "video_radius": 0,
-        "video_aspect_ratio": "16/9",
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "mobile_content_alignment": "center"
       }
     }
   },

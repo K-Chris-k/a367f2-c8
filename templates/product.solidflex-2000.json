@@ -733,6 +733,7 @@
             "heading": "<strong>Vielseitige Verbindungen</strong>",
             "heading_size": "hd2",
             "text": "<p>Das SolidFlex 2000 bietet verschiedene Anschlussmöglichkeiten und unterstützt die lokale Steuerung ganz ohne Cloud-Server.</p>",
+            "text2": "",
             "text_size": "text-lg"
           }
         },
@@ -750,6 +751,7 @@
             "heading": "<strong>Nahtlose Integration ins Smart Home</strong>",
             "heading_size": "hd1",
             "text": "<p>Das SolidFlex 2000 verfügt über eine offene lokale API und unterstützt gängige offene Protokolle wie HTTP. So lässt es sich mühelos in Drittanbieter‑Smart‑Home‑Systeme wie Home Assistant integrieren.</p>",
+            "text2": "",
             "text_size": "text-base"
           }
         }
@@ -841,6 +843,7 @@
             "heading": "<strong>2400W bidirektionales Laden</strong>",
             "heading_size": "hd2",
             "text": "<p>Der SolidFlex 2000 ist mit einem integrierten bidirektionalen Wechselrichter ausgestattet, der Lade- und Entladeleistungen von 2400W bietet. Wenn die Strompreise niedrig sind, kann es schnell Strom speichern und so die Stromkosten senken.</p>",
+            "text2": "",
             "text_size": "text-lg"
           }
         },
@@ -858,6 +861,7 @@
             "heading": "Parallelerweiterung",
             "heading_size": "hd2",
             "text": "<p>SolidFlex 2000 bietet nahtlose Dreifach-Parallelerweiterung – ideal für Ein- und Dreiphasen-Haushalte. Nach der Erweiterung ergeben sich bis zu 7200W Systemleistung, 7200W PV-Eingang und 32,4 kWh Kapazität. Für hohe Leistungsanforderungen ist eine erstklassige Wahl.</p>",
+            "text2": "",
             "text_size": "text-lg"
           }
         },
@@ -875,6 +879,7 @@
             "heading": "<strong>Modulares Stapel-Design</strong>",
             "heading_size": "hd2",
             "text": "<p>Die Kapazität kann erweitert werden, indem die Akkupacks einfach aufeinander gestapelt werden.</p>",
+            "text2": "",
             "text_size": "text-lg"
           }
         }
@@ -1111,11 +1116,19 @@
             "note": ""
           }
         },
-        "card_ngxa4f": {
+        "card_j6ECRE": {
           "type": "card",
           "settings": {
-            "title": "Abmessungen",
-            "content": "425×195×260 mm",
+            "title": "Betriebsspannung",
+            "content": "16-60V DC",
+            "note": ""
+          }
+        },
+        "card_iMbbQd": {
+          "type": "card",
+          "settings": {
+            "title": "Lebenszyklen",
+            "content": "8000",
             "note": ""
           }
         },
@@ -1167,14 +1180,6 @@
             "note": ""
           }
         },
-        "card_j6ECRE": {
-          "type": "card",
-          "settings": {
-            "title": "Betriebsspannung",
-            "content": "16-60V DC",
-            "note": ""
-          }
-        },
         "card_exbrwd": {
           "type": "card",
           "settings": {
@@ -1183,11 +1188,11 @@
             "note": ""
           }
         },
-        "card_iMbbQd": {
+        "card_ngxa4f": {
           "type": "card",
           "settings": {
-            "title": "Lebenszyklen",
-            "content": "8000",
+            "title": "Abmessungen",
+            "content": "425×195×260 mm",
             "note": ""
           }
         },
@@ -1195,7 +1200,7 @@
           "type": "card",
           "settings": {
             "title": "Betriebstemperatur",
-            "content": "-20°C ~ 60°C",
+            "content": "-20°C ~55°C",
             "note": ""
           }
         },
@@ -1243,30 +1248,39 @@
           "type": "card",
           "settings": {
             "title": "Drittanbieter-Kompatibilität",
-            "content": "Shelly Pro 3EM<br> Shelly 3EM<br> Shelly Plug S Gen3<br>everHome EcoTracker IR<br>Solarman Meter<br>Solarman IR Reader",
+            "content": "Shelly Pro 3EM<br>Shelly Pro EM<br>Shelly 3EM<br>Shelly Plug<br>Shelly Plug S Gen3<br>everHome EcoTracker IR<br>Solarman Meter<br>Solarman IR Reader<br>stromleser.one<br>HomeWizard P1",
+            "note": ""
+          }
+        },
+        "card_j6LaVX": {
+          "type": "card",
+          "settings": {
+            "title": "App-integrierte Wechselrichtermarken",
+            "content": "Deye<br>FusionSolar<br>GOODWE<br>GROWATT<br>SolarEdge<br>Solax<br>VaySunic",
             "note": ""
           }
         }
       },
       "block_order": [
         "card_zpKC6A",
-        "card_ngxa4f",
+        "card_j6ECRE",
+        "card_iMbbQd",
         "card_LERwBg",
         "card_e4NVaY",
         "card_gQj3P3",
         "card_TbPTp3",
         "card_G8hrRR",
         "card_fqKtyp",
-        "card_j6ECRE",
         "card_exbrwd",
-        "card_iMbbQd",
+        "card_ngxa4f",
         "card_QcQCiw",
         "card_fbUEKG",
         "card_QTqJAf",
         "card_V4pWRq",
         "card_gJBB8B",
         "card_PiiBXD",
-        "card_wh7Bwj"
+        "card_wh7Bwj",
+        "card_j6LaVX"
       ],
       "name": "参数列表",
       "settings": {
@@ -1375,7 +1389,9 @@
       ],
       "name": "下载列表",
       "settings": {
-        "title": "Downloads"
+        "title": "Downloads",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "collapsible_tabs_NyK4qU": {
@@ -1734,7 +1750,7 @@
       "type": "custom-liquid",
       "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "custom_liquid": "<style>\n  .haft-div{\n  \t  padding-top:100px;\n  \t  padding-bottom:100px;\n\t  max-width:1280px;\n\t  font-size:14px;\n  }\n\n @media (max-width: 768px) {\n\t  .haft-div{\n\t  \t\t padding-top:50px;\n\t  \t\tpadding-bottom:50px;\n\t  \t\tmax-width:1280px;\n\t  \t\tfont-size:14px;\n\t  }\n }\n</style>\n<div style=\"background-color:#000000;padding:15px; display: flex;\n  justify-content: center;\n  align-items: center;\">\n<div data-page-id=\"Dm5hdIPgEokbCOxNAt2c2IiTnMc\" data-lark-html-role=\"root\" data-docx-has-block-data=\"false\">\n\n<div   class=\"haft-div\">\n\n<div data-zone-id=\"0\" data-line-index=\"0\" data-line=\"true\">\n<span style=\"color: #8A8A8A;text-align: center;\">\n<h3 style=\"color:#8A8A8A;\">Haftungsausschluss</h3>\n</span>\n</div>\n\n\n<div data-zone-id=\"0\" data-line-index=\"1\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"2\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Stromkostenersparnis, CO₂-Einsparungen: Bis zu 1.046 € pro Jahr und 1996 kg CO₂.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"3\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>1. Stromerzeugung:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"4\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Die Berechnung basiert auf der folgenden Produktkonfiguration: SolidFlex 2000 (1792 Wh) + 4 x 500W-Solarmodule (2000W) + 5 Erweiterungsakkus (8960 Wh). Die jährlichen Sonnenstunden in Deutschland betragen 1160 Stunden, und die jährliche Stromproduktion beträgt: 1160 * 2000 = 2320 kWh. Die jährliche Speicherkapazität beträgt: 10,75 x 365 = 3924 kWh.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"5\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>2. Berechnungsannahmen:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"6\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Der Eigenverbrauchsanteil beträgt 85%<a href=\"https://solar.htw-berlin.de/rechner/unabhaengigkeitsrechner\"  style=\"color:gray\" target=\"_blank\" rel=\"nofollow\">(Quelle);</a> </span></div>\n<div data-zone-id=\"0\" data-line-index=\"7\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Fester Strompreis: 0,40 €/kWh;</span></div>\n<div data-zone-id=\"0\" data-line-index=\"8\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Preisdifferenz zwischen Spitzen- und Nebenzeiten: 0,132 €/kWh.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"9\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>3. CO₂-Reduktion:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"10\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Jede 1 kWh Solarstrom reduziert die CO₂-Emissionen um ungefähr 0,997 kg.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"11\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>4. Haftungsausschluss:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"12\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Alle Daten basieren auf idealen Testbedingungen; tatsächliche Ergebnisse können je nach individuellen Umständen variieren.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"13\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"14\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Berechnungsdetails:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"15\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Jährliche Stromkostenersparnis</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"16\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= Ersparnisse aus Eigenverbrauch + Ersparnisse aus KI-optimiertem Laden</span></div>\n<div data-zone-id=\"0\" data-line-index=\"17\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= 2320 kWh × 85% × 0,40 € + (3924 kWh − 2320 kWh × 85%) × 0,132 € </span></div>\n<div data-zone-id=\"0\" data-line-index=\"18\" data-line=\"true\"><span style=\"color: #8A8A8A;\">≈ 1.046,46 €</span></div>\n<div data-zone-id=\"0\" data-line-index=\"19\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Geschätzte CO₂-Emissionsreduktion</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"20\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= 2320 kWh × 85% × 0,997</span></div>\n<div data-zone-id=\"0\" data-line-index=\"21\" data-line=\"true\"><span style=\"color: #8A8A8A;\">≈ 1996 kg</span></div>\n<div data-zone-id=\"0\" data-line-index=\"22\" data-line=\"true\"><br></div>\n \n</div>\n\n</div>",
+        "custom_liquid": "<style>\n  .haft-div{\n  \t  padding-top:40px;\n  \t  padding-bottom:40px;\n\t  max-width:1280px;\n\t  font-size:10px;\n  }\n\n @media (max-width: 768px) {\n\t  .haft-div{\n\t  \t\t padding-top:50px;\n\t  \t\tpadding-bottom:50px;\n\t  \t\tmax-width:1280px;\n\t  \t\tfont-size:12px;\n\t  }\n }\n</style>\n<div style=\"background-color:#000000;padding:15px; display: flex;\n  justify-content: center;\n  align-items: center;\">\n<div data-page-id=\"Dm5hdIPgEokbCOxNAt2c2IiTnMc\" data-lark-html-role=\"root\" data-docx-has-block-data=\"false\">\n\n<div   class=\"haft-div\">\n\n<div data-zone-id=\"0\" data-line-index=\"0\" data-line=\"true\">\n<span style=\"color: #8A8A8A;text-align: center;\">\n<h3 style=\"color:#8A8A8A;\">Haftungsausschluss</h3>\n</span>\n</div>\n\n\n<div data-zone-id=\"0\" data-line-index=\"1\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"2\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Stromkostenersparnis, CO₂-Einsparungen: Bis zu 1.046 € pro Jahr und 1996 kg CO₂.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"3\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>1. Stromerzeugung:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"4\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Die Berechnung basiert auf der folgenden Produktkonfiguration: SolidFlex 2000 (1792 Wh) + 4 x 500W-Solarmodule (2000W) + 5 Erweiterungsakkus (8960 Wh). Die jährlichen Sonnenstunden in Deutschland betragen 1160 Stunden, und die jährliche Stromproduktion beträgt: 1160 * 2000 = 2320 kWh. Die jährliche Speicherkapazität beträgt: 10,75 x 365 = 3924 kWh.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"5\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>2. Berechnungsannahmen:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"6\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Der Eigenverbrauchsanteil beträgt 85%<a href=\"https://solar.htw-berlin.de/rechner/unabhaengigkeitsrechner\"  style=\"color:gray\" target=\"_blank\" rel=\"nofollow\">(Quelle);</a> </span></div>\n<div data-zone-id=\"0\" data-line-index=\"7\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Fester Strompreis: 0,40 €/kWh;</span></div>\n<div data-zone-id=\"0\" data-line-index=\"8\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Preisdifferenz zwischen Spitzen- und Nebenzeiten: 0,132 €/kWh.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"9\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>3. CO₂-Reduktion:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"10\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Jede 1 kWh Solarstrom reduziert die CO₂-Emissionen um ungefähr 0,997 kg.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"11\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>4. Haftungsausschluss:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"12\" data-line=\"true\"><span style=\"color: #8A8A8A;\">Alle Daten basieren auf idealen Testbedingungen; tatsächliche Ergebnisse können je nach individuellen Umständen variieren.</span></div>\n<div data-zone-id=\"0\" data-line-index=\"13\" data-line=\"true\"><br></div>\n<div data-zone-id=\"0\" data-line-index=\"14\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Berechnungsdetails:</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"15\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Jährliche Stromkostenersparnis</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"16\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= Ersparnisse aus Eigenverbrauch + Ersparnisse aus KI-optimiertem Laden</span></div>\n<div data-zone-id=\"0\" data-line-index=\"17\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= 2320 kWh × 85% × 0,40 € + (3924 kWh − 2320 kWh × 85%) × 0,132 € </span></div>\n<div data-zone-id=\"0\" data-line-index=\"18\" data-line=\"true\"><span style=\"color: #8A8A8A;\">≈ 1.046,46 €</span></div>\n<div data-zone-id=\"0\" data-line-index=\"19\" data-line=\"true\"><span style=\"color: #8A8A8A;\"><b>Geschätzte CO₂-Emissionsreduktion</b></span></div>\n<div data-zone-id=\"0\" data-line-index=\"20\" data-line=\"true\"><span style=\"color: #8A8A8A;\">= 2320 kWh × 85% × 0,997</span></div>\n<div data-zone-id=\"0\" data-line-index=\"21\" data-line=\"true\"><span style=\"color: #8A8A8A;\">≈ 1996 kg</span></div>\n<div data-zone-id=\"0\" data-line-index=\"22\" data-line=\"true\"><br></div>\n \n</div>\n\n</div>",
         "container": "full",
         "color_scheme": "",
         "padding_top": 60,

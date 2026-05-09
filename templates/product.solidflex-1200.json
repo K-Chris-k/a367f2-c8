@@ -42,8 +42,8 @@
             "title": "0% MwSt. auf PV-Sets in Deutschland",
             "content": "Hiermit bestätigen Sie, dass Sie die Voraussetzungen für eine umsatzsteuerfreie Lieferung gemäß § 12 Abs. 3 von Deutschland erfüllen.",
             "taxs_title": "Erfahren Sie mehr.",
-            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie <a href='https://www.gesetze-im-internet.de/ustg_1980/__12.html' target='_blank'>hier</a> um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
-            "heading_1": "Voraussichtlicher Versandtermin: bis zum 15. April",
+            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie <a href=\"https://www.gesetze-im-internet.de/ustg_1980/__12.html\" target=\"_blank\">hier</a> um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
+            "heading_1": "",
             "heading_2": "Der Versand von Energiespeicherprodukten erfolgt standardmäßig durch DPD. Abweichungen hiervon sind gegen Aufpreis möglich.",
             "heading_new": "Hinweis: Bestellungen können in mehreren Paketen versendet werden."
           }
@@ -86,7 +86,8 @@
           "settings": {
             "bundle_display_mode": "bundle_with_battery",
             "host_product": "indevolt-solidflex-1200-hybrid-balkonkraftwerk-mit-halbfesten-lifepo-akkus",
-            "host_variant_id": "43629440696419",
+            "host_product_image": "shopify://shop_images/20251216151716_8256_61_5a395430-9fcd-4667-93e8-6e147f666497.png",
+            "host_variant_id": "",
             "battery_product": "indevolt-sfa1800-erweiterungsakku-kombination",
             "solar_product": "indevolt-bifaziale-monokristalline-solarmodule-kombination",
             "mount_flat_roof": "indevolt-halterung",
@@ -226,6 +227,7 @@
         "color_scheme": "scheme-1",
         "enable_sticky_info": true,
         "enable_product_sticky_bar": true,
+        "select_product_sticky_bar": "product-sticky-bar-1200",
         "media_size": "medium",
         "gallery_layout": "carousel",
         "mobile_thumbnails": "show",
@@ -242,8 +244,8 @@
         "title": "",
         "container": "fixed",
         "ids": "uberblick",
-        "image_pc": "shopify://shop_images/ksp-1200-320.png",
-        "image_mobile": "shopify://shop_images/ksp-1200-320-mob.png",
+        "image_pc": "shopify://shop_images/1200-ksp-pc_c3df1699-adfe-4278-9ef7-a9510d0da3ef.png",
+        "image_mobile": "shopify://shop_images/1200-ksp-mob_ee936719-b60e-4560-b57c-278149497f08.png",
         "margin_top": 80,
         "margin_bottom": 160
       }
@@ -283,7 +285,7 @@
         "color_scheme": "",
         "bg_color": "#ffffff",
         "content_alignment": "center",
-        "ids": "",
+        "ids": "eigenschaften",
         "show_title_icon": false,
         "img-href": "",
         "padding_top": 120,
@@ -314,6 +316,7 @@
             "heading": "<strong>1200W bidirektionales Laden</strong>",
             "heading_size": "hd2",
             "text": "<p>Der SolidFlex 1200 ist mit einem integrierten bidirektionalen Wechselrichter ausgestattet, der Lade- und Entladeleistungen von 1200W bietet. Wenn die Strompreise niedrig sind, kann es schnell Strom speichern und so die Stromkosten senken.</p>",
+            "text2": "",
             "text_size": "text-lg"
           }
         },
@@ -331,6 +334,7 @@
             "heading": "Die sichere Wahl: Halbfeststoff-Akku",
             "heading_size": "hd2",
             "text": "<p>Halbfeststoff-LiFePO₄-Akkus gelten in der Branche als richtungsweisende Schlüsseltechnologie der nächsten Lithium-Batterie-Generation. Diese Technologie überzeugt durch herausragende Sicherheit und stabilere Leistungsabgabe – selbst unter extremen Bedingungen bleibt sie rauch- und feuerfrei.</p>",
+            "text2": "",
             "text_size": "text-lg"
           }
         },
@@ -349,6 +353,7 @@
             "heading": "<strong>Modulares Stapel-Design</strong>",
             "heading_size": "hd2",
             "text": "<p>Die Kapazität kann erweitert werden, indem die Akkupacks einfach aufeinander gestapelt werden.</p>",
+            "text2": "",
             "text_size": "text-lg"
           }
         }
@@ -416,8 +421,8 @@
       "type": "video-hero-bes",
       "name": "阳台专题大视频",
       "settings": {
-        "container": "fixed",
-        "video": "shopify://files/videos/de.mp4",
+        "container": "full",
+        "video": "shopify://files/videos/德语.mp4",
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "",
         "video_height": "adapt",
@@ -469,8 +474,8 @@
           "settings": {
             "content_color_scheme": "",
             "navigation_title": "Dach PV-Systeme",
-            "image": "shopify://shop_images/1200-pv-1-pc.jpg",
-            "mobile_image": "shopify://shop_images/1200-pv-1-mob.jpg",
+            "image": "shopify://shop_images/1200-pv-1-pc_e502fb1b-0a86-441f-a719-2898ce2649e0.jpg",
+            "mobile_image": "shopify://shop_images/1200-pv-1-mob_c2729e95-979f-4e2d-9f24-890130306c82.jpg",
             "heading": "Collage tab heading",
             "heading_size": "h1",
             "heading_highlight_style": "none",
@@ -488,8 +493,8 @@
           "settings": {
             "content_color_scheme": "",
             "navigation_title": "Mikro-Wechselrichter-Systeme",
-            "image": "shopify://shop_images/1200-pv-2-pc.jpg",
-            "mobile_image": "shopify://shop_images/1200-pv-2-mob.jpg",
+            "image": "shopify://shop_images/1200-pv-2-pc_f8097b95-1cdd-4a59-a677-3860ecb8e4df.jpg",
+            "mobile_image": "shopify://shop_images/1200-pv-2-mob_afe0b702-4795-415e-9ad5-5b7f89af9bc0.jpg",
             "heading": "Collage tab heading",
             "heading_size": "h1",
             "heading_highlight_style": "none",
@@ -546,8 +551,8 @@
           "type": "slide",
           "settings": {
             "links": "",
-            "image_pc": "shopify://shop_images/1200-maximal-2-pc.jpg",
-            "image_mobile": "shopify://shop_images/1200_maximal-2-mob.jpg",
+            "image_pc": "shopify://shop_images/1200-maximal-2-pc-new.jpg",
+            "image_mobile": "shopify://shop_images/1200-maximal-2-mob-new.jpg",
             "author": "",
             "title": "Kompatibel mit gängigen Smart Metern",
             "describe": "<p>Indevolt integriert sich nahtlos in alle führenden Smart-Meter-Systeme. Überwache deinen Stromverbrauch sowie deine Solarerzeugung in Echtzeit, vermeide unnötige Netzeinspeisung und maximiere so deinen Eigenverbrauch.</p>",
@@ -558,8 +563,8 @@
           "type": "slide",
           "settings": {
             "links": "",
-            "image_pc": "shopify://shop_images/1200-maximal-3-pc.jpg",
-            "image_mobile": "shopify://shop_images/1200_maximal-3-mob.jpg",
+            "image_pc": "shopify://shop_images/1200-max-3-1-pc.jpg",
+            "image_mobile": "shopify://shop_images/1200-max-3-1-mob.jpg",
             "author": "",
             "title": "Offen für dein PV-System",
             "describe": "<p>Indevolt spricht die Sprache deiner PV-Anlage. Per API-Anbindung fließen alle Erzeugungsdaten direkt in dein Dashboard. Für volle Transparenz und ein smarteres Zuhause.</p>",
@@ -583,181 +588,10 @@
         "padding_bottom": 80
       }
     },
-    "rich_text_x6YUUc": {
-      "type": "rich-text",
+    "rich_text_video_2026_34Y8Dx": {
+      "type": "rich-text-video-2026",
       "blocks": {
-        "heading_tEyr3d": {
-          "type": "heading",
-          "settings": {
-            "heading": "CycBoost-Technologie",
-            "heading_mobile": "",
-            "heading_size": "hd2",
-            "heading_highlight_style": "none"
-          }
-        },
-        "text_hapjAt": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Durch unsere innovative 3-in-1 CycBoost Technologie, bestehend aus Großzellen, dedizierter Ausgleichsschaltung und <a href=\"https://blog.indevolt.com/indevolt-batterie-optimierer-maximale-nutzbare-kapazitat/\" target=\"_blank\" title=\"https://blog.indevolt.com/indevolt-batterie-optimierer-maximale-nutzbare-kapazitat/\">Batterieoptimierer</a>, beheben wir das Problem des Ungleichgewichts in Akkus. Dadurch maximieren wir die nutzbare Speicherkapazität und verlängern die Lebensdauer der Akkus, was deine Rendite erheblich steigert.</p>",
-            "text_size": "text-lg"
-          }
-        },
-        "video_popup_tFgzBG": {
-          "type": "video_popup",
-          "disabled": true,
-          "settings": {
-            "video_alignment": "center",
-            "video_type": "youtube",
-            "youtube_url": "https://www.youtube.com/watch?v=10S_L4gJkbo",
-            "shopify_video": "",
-            "custom_thumbnail": "shopify://shop_images/f94902e8c44af8c52a0841943f6be11b.jpg",
-            "video_width": 200,
-            "video_height": 64,
-            "alt_text": "产品展示视频"
-          }
-        }
-      },
-      "block_order": [
-        "heading_tEyr3d",
-        "text_hapjAt",
-        "video_popup_tFgzBG"
-      ],
-      "disabled": true,
-      "custom_css": [
-        "a {text-decoration: none; color: #3250c3;}"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "color_scheme": "",
-        "content_alignment": "center",
-        "padding_top_inner": 60,
-        "padding_bottom_inner": 0,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "mobile_content_alignment": "left"
-      }
-    },
-    "sf2000_scence_tabs_7UhwRM": {
-      "type": "sf2000-scence-tabs",
-      "blocks": {
-        "tab_JagNrW": {
-          "type": "tab",
-          "settings": {
-            "content_color_scheme": "",
-            "navigation_title": "Wohnsolarsystem",
-            "image": "shopify://shop_images/SF2000-plug1-PC.jpg",
-            "mobile_image": "shopify://shop_images/SF2000-plug1-mob.jpg",
-            "heading": "Collage tab heading",
-            "heading_size": "h1",
-            "heading_highlight_style": "none",
-            "subheading": "",
-            "description": "<p>Es ist keine Umrüstung deiner bestehenden PV-Anlagen erforderlich. Der smarte Stromzähler erkennt automatisch den ins Netz eingespeisten Strom und speichert ihn, um ihn nachts freizugeben und somit dein Zuhause mit Energie zu versorgen.</p>",
-            "text_size": "text-base",
-            "text_alignment": "center",
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style": "btn--primary"
-          }
-        },
-        "tab_DgkTDY": {
-          "type": "tab",
-          "settings": {
-            "content_color_scheme": "",
-            "navigation_title": "Mikrowechselrichter-Solarsystem",
-            "image": "shopify://shop_images/SF2000-plug2-PC.jpg",
-            "mobile_image": "shopify://shop_images/SF2000-plug2-mob.jpg",
-            "heading": "Collage tab heading",
-            "heading_size": "h1",
-            "heading_highlight_style": "none",
-            "subheading": "",
-            "description": "<p>Das SolidFlex 1200 ist mit 99% der Mikrowechselrichter kompatibel und ermöglicht eine maximale Leistung von bis zu 1200W. Es arbeitet effizient und nutzt deine Energie optimal aus.</p>",
-            "text_size": "text-base",
-            "text_alignment": "center",
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style": "btn--primary"
-          }
-        }
-      },
-      "block_order": [
-        "tab_JagNrW",
-        "tab_DgkTDY"
-      ],
-      "disabled": true,
-      "custom_css": [
-        "@media (max-width: 760px) {.text-center, .tabs__tab-name {text-align: left !important; padding-left: 0px; } .tabs__nav-wrap {justify-content: left; } .h2-title {text-align: left !important; padding-left: 0px; }}"
-      ],
-      "name": "sf2000-scence-tabs",
-      "settings": {
-        "bg_color": "#ffffff",
-        "tab_title_color": "#000000",
-        "tab_content_color": "#666",
-        "title": "Plug & Play, AC-Koppelung",
-        "heading_size": "h4",
-        "desktop_navigation_alignment": "center",
-        "desktop_image_position": "left",
-        "desktop_image_width": 100,
-        "image_aspect_ratio": "adapt",
-        "padding_top": 60,
-        "padding_bottom": 0,
-        "show_section_divider": false,
-        "divider_width": "fixed"
-      }
-    },
-    "rich_text_ETK98q": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_39L6N8": {
-          "type": "heading",
-          "settings": {
-            "heading": "Dynamische Stromtarife",
-            "heading_mobile": "",
-            "heading_size": "hd2",
-            "heading_highlight_style": "none"
-          }
-        },
-        "text_8gifBP": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Die Indevolt-App ermöglicht den Zugang zu Energieanbietern wie Nord Pool, Octopus, Tibber, aWATTar und anderen. Alle 60 Minuten analysiert sie die Tarifdaten, um bei günstigen Preisen zu laden und bei hohen Preisen einzuspeisen.</p>",
-            "text_size": "text-lg"
-          }
-        },
-        "button_YUfhEL": {
-          "type": "button",
-          "settings": {
-            "button_label": "Über dynamische Preise informieren >",
-            "button_link": "https://blog.indevolt.com/dynamische-strompreise-energiewende-smart-meter/",
-            "button_style": "btn--underline",
-            "button_target": "_self"
-          }
-        }
-      },
-      "block_order": [
-        "heading_39L6N8",
-        "text_8gifBP",
-        "button_YUfhEL"
-      ],
-      "disabled": true,
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "color_scheme": "",
-        "content_alignment": "center",
-        "padding_top_inner": 60,
-        "padding_bottom_inner": 0,
-        "padding_top": 60,
-        "padding_bottom": 0,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "mobile_content_alignment": "left"
-      }
-    },
-    "rich_text_image_list_xWPfNc": {
-      "type": "rich-text-image-list",
-      "blocks": {
-        "heading_iVL7G8": {
+        "heading_BdCVdU": {
           "type": "heading",
           "settings": {
             "heading": "<strong>Dynamische Tarife</strong>",
@@ -765,40 +599,43 @@
             "heading_highlight_style": "none"
           }
         },
-        "text_VGcCbp": {
+        "text_VD7HRq": {
           "type": "text",
           "settings": {
             "text": "<p>Die Indevolt-App ruft für Europa die aktuellen Echtzeit-Strompreise im 15-Minuten-Takt ab. So kann das System automatisch bei günstigen Preisen laden und bei hohen Preisen einspeisen – für optimierte Stromkosten, auch bei wenig Sonneneinstrahlung.</p>",
             "text_size": "text-lg"
           }
-        },
-        "image_wFhm9g": {
-          "type": "image",
-          "settings": {
-            "container": "fixed",
-            "image": "shopify://shop_images/1200-dyna-pc.jpg",
-            "mobile_image": "shopify://shop_images/1200-dyna-mob.jpg"
-          }
         }
       },
       "block_order": [
-        "heading_iVL7G8",
-        "text_VGcCbp",
-        "image_wFhm9g"
+        "heading_BdCVdU",
+        "text_VD7HRq"
       ],
-      "name": "富文本与图片",
+      "custom_css": [
+        "@media (max-width: 767.98px) {.items-center {justify-content: flex-start !important; }}"
+      ],
+      "name": "富文本+视频+2026",
       "settings": {
         "color_scheme": "",
         "bg_color": "#ffffff",
         "content_alignment": "center",
         "ids": "",
         "show_title_icon": false,
+        "container": "fixed",
+        "video": "shopify://files/videos/sf2000-video5.mp4",
+        "image_pc": "shopify://shop_images/1200-videoimg-pc.jpg",
+        "image_mobile": "shopify://shop_images/1200-videoimg-mob.jpg",
+        "video-height-custom": "700",
+        "video_mobile": "shopify://files/videos/sf2000-video5.mp4",
+        "enable_video_autoplay": true,
+        "enable_video_looping": true,
+        "enable_parallax": true,
         "img-href": "",
         "padding_top": 80,
         "padding_bottom": 160,
-        "image_top": 40,
-        "video_radius": 18,
-        "video_aspect_ratio": "16/9",
+        "image_top": 60,
+        "video_radius": 0,
+        "video_ratio": "adapt",
         "show_section_divider": false,
         "divider_width": "fixed",
         "mobile_content_alignment": "left"
@@ -812,8 +649,8 @@
           "settings": {
             "content_color_scheme": "scheme-2",
             "navigation_title": "Selbstversorgung",
-            "image": "shopify://shop_images/bes-app-1-pc.jpg",
-            "mobile_image": "shopify://shop_images/bes-app-1-mob.jpg",
+            "image": "shopify://shop_images/1200-app-1-pc.jpg",
+            "mobile_image": "shopify://shop_images/1200-app-1-mob.jpg",
             "heading": "Eigenverbrauch priorisieren",
             "heading_size": "h1",
             "heading_highlight_style": "none",
@@ -934,7 +771,7 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>1200W Notstrom – bei Stromausfall einsatzbereit</strong>",
-            "heading_size": "hd3",
+            "heading_size": "hd2",
             "heading_highlight_style": "none"
           }
         },
@@ -949,8 +786,8 @@
           "type": "image",
           "settings": {
             "container": "fixed",
-            "image": "shopify://shop_images/1200-1200w-pc.jpg",
-            "mobile_image": "shopify://shop_images/1200-1200w-mob_1337b123-7a70-4afc-9820-9b20c2fe034b.jpg"
+            "image": "shopify://shop_images/1200-1200w-pc-new.jpg",
+            "mobile_image": "shopify://shop_images/1200-1200w-mob-new.jpg"
           }
         }
       },
@@ -980,193 +817,50 @@
         "mobile_content_alignment": "left"
       }
     },
-    "image_with_text_list_9kpz7i": {
-      "type": "image-with-text-list",
+    "slider_center_1280_gk9w7B": {
+      "type": "slider-center-1280",
       "blocks": {
-        "card_H8V9yF": {
+        "card_kXkKdC": {
           "type": "card",
           "settings": {
-            "desktop_content_position": "center",
-            "desktop_content_alignment": "left",
-            "enable_reserve_pc": false,
-            "enable_parallax": false,
-            "parallax_direction": "vertical",
-            "enable_reserve_mobile": true,
-            "mobile_content_alignment": "left",
-            "image": "shopify://shop_images/SF2000-vv-mob.jpg",
-            "heading": "<strong>Vielseitige Verbindungen</strong>",
-            "heading_size": "hd2",
-            "text": "<p>Das SolidFlex 1200 bietet verschiedene Anschlussmöglichkeiten und unterstützt die lokale Steuerung ganz ohne Cloud-Server.</p>",
-            "text_size": "text-lg"
+            "title": "Wohnung",
+            "image_pc": "shopify://shop_images/1200-f3-1-pc-new.jpg",
+            "image_mobile": "shopify://shop_images/1200-f3-1-mob-new.jpg",
+            "description": ""
           }
         },
-        "card_e6me38": {
+        "card_fLDRnr": {
           "type": "card",
           "settings": {
-            "desktop_content_position": "center",
-            "desktop_content_alignment": "left",
-            "enable_reserve_pc": true,
-            "enable_parallax": false,
-            "parallax_direction": "vertical",
-            "enable_reserve_mobile": false,
-            "mobile_content_alignment": "left",
-            "image": "shopify://shop_images/SF2000-api-mob.jpg",
-            "heading": "<strong>Nahtlose Integration ins Smart Home</strong>",
-            "heading_size": "hd1",
-            "text": "<p>Das SolidFlex 1200 verfügt über eine offene lokale API und unterstützt gängige offene Protokolle wie HTTP. So lässt es sich mühelos in Drittanbieter‑Smart‑Home‑Systeme wie Home Assistant integrieren.</p>",
-            "text_size": "text-base"
+            "title": "Schuppen",
+            "image_pc": "shopify://shop_images/1200-f3-2-pc-424.jpg",
+            "image_mobile": "shopify://shop_images/1200-f3-2-mob-new.jpg",
+            "description": ""
+          }
+        },
+        "card_cAwTAx": {
+          "type": "card",
+          "settings": {
+            "title": "Garten",
+            "image_pc": "shopify://shop_images/1200-f3-3-pc-424.jpg",
+            "image_mobile": "shopify://shop_images/1200-f3-3-mob-new.jpg",
+            "description": ""
           }
         }
       },
       "block_order": [
-        "card_H8V9yF",
-        "card_e6me38"
+        "card_kXkKdC",
+        "card_fLDRnr",
+        "card_cAwTAx"
       ],
-      "disabled": true,
-      "name": "image-with-text-list",
+      "name": "滑块+tab+图片+1280",
       "settings": {
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "custom_background": "#ffffff",
-        "layout": "image_first",
-        "image_height": "adapt",
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "show_section_divider": false,
-        "divider_width": "fixed"
-      }
-    },
-    "rich_text_image_list_PJKrKJ": {
-      "type": "rich-text-image-list",
-      "blocks": {
-        "heading_xdFx6m": {
-          "type": "heading",
-          "settings": {
-            "heading": "Max.1200W Notstromversorgung",
-            "heading_size": "hd2",
-            "heading_highlight_style": "none"
-          }
-        },
-        "text_XEBDYw": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Mit einer Off-Grid AC-Steckdose schaltet die SolidFlex 1200 in nur 10 ms automatisch, damit deine wichtigsten Geräte auch bei Stromausfall sanft weiterlaufen. Im Off-Grid-Betrieb oder bei Ausfall bietet sie eine maximale Leistung von 1000W. Mit Erweiterungsakkus steigt die Leistung auf 1200W.</p>",
-            "text_size": "text-lg"
-          }
-        },
-        "image_i9e8xj": {
-          "type": "image",
-          "settings": {
-            "container": "fixed",
-            "image": "shopify://shop_images/SF2000-2400w-PC.jpg",
-            "mobile_image": "shopify://shop_images/SF2000-2400w-mob.jpg"
-          }
-        }
-      },
-      "block_order": [
-        "heading_xdFx6m",
-        "text_XEBDYw",
-        "image_i9e8xj"
-      ],
-      "disabled": true,
-      "name": "富文本与图片",
-      "settings": {
-        "color_scheme": "",
-        "bg_color": "#ffffff",
-        "content_alignment": "center",
-        "ids": "",
-        "show_title_icon": false,
-        "img-href": "",
-        "padding_top": 120,
-        "padding_bottom": 60,
-        "image_top": 60,
-        "video_radius": 18,
-        "video_aspect_ratio": "16/9",
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "mobile_content_alignment": "left"
-      }
-    },
-    "multicolumn_xTyLxF": {
-      "type": "multicolumn",
-      "blocks": {
-        "column_pP6VCj": {
-          "type": "column",
-          "settings": {
-            "show_image": true,
-            "image": "shopify://shop_images/SF2000-3-1-PC.jpg",
-            "image_link": "shopify://products/indevolt-smarter-stromzahler",
-            "image_width": "full",
-            "title": "<a href=\"/products/indevolt-smarter-stromzahler\" title=\"Indevolt Smarter Stromzähler\">Vollständige Präzisionskontrolle</a>",
-            "heading_size": "h5",
-            "text": "<p>Reaktionszeit: &lt;5s | Genauigkeit: &lt;10W</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_style": "btn--underline",
-            "button_link": "",
-            "mobile_layout": "inherit"
-          }
-        },
-        "column_iFz7dc": {
-          "type": "column",
-          "settings": {
-            "show_image": true,
-            "image": "shopify://shop_images/SF2000-3-2-PC.jpg",
-            "image_link": "shopify://products/solarman-smart-plug",
-            "image_width": "full",
-            "title": "<a href=\"/products/indevolt-smart-plug\" title=\"Indevolt Smart Plug\">Dynamischer Antwortschalter</a>",
-            "heading_size": "h5",
-            "text": "<p>Reaktionszeit: &lt;5s | Genauigkeit: &lt;10W<br/><br/></p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_style": "btn--underline",
-            "button_link": "",
-            "mobile_layout": "inherit"
-          }
-        },
-        "column_g3gYbJ": {
-          "type": "column",
-          "settings": {
-            "show_image": true,
-            "image": "shopify://shop_images/SF2000-3-3-PC.jpg",
-            "image_link": "shopify://products/shelly-pro-3em-120a",
-            "image_width": "full",
-            "title": "<a href=\"/products/shelly-pro-3em-120a\" title=\"Shelly Pro 3EM (120A)\">Drittanbieter-Kompatibilität</a>",
-            "heading_size": "h5",
-            "text": "<p>Kompatibel mit Shelly und EcoTracker IR</p>",
-            "text_size": "text-base",
-            "button_label": "",
-            "button_style": "btn--underline",
-            "button_link": "",
-            "mobile_layout": "inherit"
-          }
-        }
-      },
-      "block_order": [
-        "column_pP6VCj",
-        "column_iFz7dc",
-        "column_g3gYbJ"
-      ],
-      "disabled": true,
-      "custom_css": [],
-      "name": "t:sections.multicolumn.presets.name",
-      "settings": {
-        "color_scheme": "scheme-inverse",
-        "heading": "",
-        "heading_size": "h1",
-        "heading_highlight_style": "none",
-        "subheading": "",
-        "description": "",
-        "text_size": "text-base",
-        "column_alignment": "left",
-        "columns_desktop": 3,
-        "column_gap": "large",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "padding_top": 60,
-        "padding_bottom": 60,
-        "show_section_divider": false,
-        "divider_width": "fixed"
+        "title": "Flexibel – passend für jede Familie",
+        "tip_title": "Bekannt aus",
+        "tip_popup_title": "Was ist der „Fass-Effekt“?",
+        "tip_popup_content": "<p>Der „Fass-Effekt“ tritt auf, wenn die Leistung des schwächsten Akkus die Gesamteffizienz des Systems beeinträchtigt. Sobald ein Akku beim Laden voll ist, stoppt der Ladevorgang, wodurch die anderen Akkus nicht vollständig aufgeladen werden. Wenn dieser erschöpft ist, hören alle Akkus mit der Entladung auf.</p>",
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "rich_text_image_list_hmCAn8": {
@@ -1184,8 +878,8 @@
           "type": "image",
           "settings": {
             "container": "fixed",
-            "image": "shopify://shop_images/SF2000-package-pc.png",
-            "mobile_image": "shopify://shop_images/SF2000-package-mob.png"
+            "image": "shopify://shop_images/1200-package-pc.png",
+            "mobile_image": "shopify://shop_images/1200-package-mob.png"
           }
         }
       },
@@ -1193,7 +887,6 @@
         "heading_nEX8NT",
         "image_biTg8T"
       ],
-      "disabled": true,
       "name": "富文本与图片",
       "settings": {
         "color_scheme": "",
@@ -1202,8 +895,8 @@
         "ids": "lieferumfang",
         "show_title_icon": false,
         "img-href": "",
-        "padding_top": 60,
-        "padding_bottom": 60,
+        "padding_top": 80,
+        "padding_bottom": 80,
         "image_top": 60,
         "video_radius": 18,
         "video_aspect_ratio": "16/9",
@@ -1223,11 +916,19 @@
             "note": ""
           }
         },
-        "card_ngxa4f": {
+        "card_j6ECRE": {
           "type": "card",
           "settings": {
-            "title": "Abmessungen",
-            "content": "425×195×260 mm",
+            "title": "Betriebsspannung",
+            "content": "16-60V DC",
+            "note": ""
+          }
+        },
+        "card_iMbbQd": {
+          "type": "card",
+          "settings": {
+            "title": "Lebenszyklen",
+            "content": "8000",
             "note": ""
           }
         },
@@ -1279,14 +980,6 @@
             "note": ""
           }
         },
-        "card_j6ECRE": {
-          "type": "card",
-          "settings": {
-            "title": "Betriebsspannung",
-            "content": "16-60V DC",
-            "note": ""
-          }
-        },
         "card_exbrwd": {
           "type": "card",
           "settings": {
@@ -1295,11 +988,11 @@
             "note": ""
           }
         },
-        "card_iMbbQd": {
+        "card_ngxa4f": {
           "type": "card",
           "settings": {
-            "title": "Lebenszyklen",
-            "content": "8000",
+            "title": "Abmessungen",
+            "content": "425×195×260 mm",
             "note": ""
           }
         },
@@ -1307,7 +1000,7 @@
           "type": "card",
           "settings": {
             "title": "Betriebstemperatur",
-            "content": "-20°C ~ 60°C",
+            "content": "-20°C ~ 55°C",
             "note": ""
           }
         },
@@ -1355,30 +1048,39 @@
           "type": "card",
           "settings": {
             "title": "Drittanbieter-Kompatibilität",
-            "content": "Shelly Pro 3EM<br> Shelly 3EM<br> Shelly Plug S Gen3<br>everHome EcoTracker IR<br>Solarman Meter<br>Solarman IR Reader",
+            "content": "Shelly Pro 3EM<br>Shelly Pro EM<br>Shelly 3EM<br>Shelly Plug<br>Shelly Plug S Gen3<br>everHome EcoTracker IR<br>Solarman Meter<br>Solarman IR Reader<br>stromleser.one<br>HomeWizard P1",
+            "note": ""
+          }
+        },
+        "card_QUetiq": {
+          "type": "card",
+          "settings": {
+            "title": "App-integrierte Wechselrichtermarken",
+            "content": "Deye<br>FusionSolar<br>GOODWE<br>GROWATT<br>SolarEdge<br>Solax<br>VaySunic",
             "note": ""
           }
         }
       },
       "block_order": [
         "card_zpKC6A",
-        "card_ngxa4f",
+        "card_j6ECRE",
+        "card_iMbbQd",
         "card_LERwBg",
         "card_e4NVaY",
         "card_gQj3P3",
         "card_TbPTp3",
         "card_G8hrRR",
         "card_fqKtyp",
-        "card_j6ECRE",
         "card_exbrwd",
-        "card_iMbbQd",
+        "card_ngxa4f",
         "card_QcQCiw",
         "card_fbUEKG",
         "card_QTqJAf",
         "card_V4pWRq",
         "card_gJBB8B",
         "card_PiiBXD",
-        "card_wh7Bwj"
+        "card_wh7Bwj",
+        "card_QUetiq"
       ],
       "name": "参数列表",
       "settings": {
@@ -1394,10 +1096,19 @@
         "card_9MAiht": {
           "type": "card",
           "settings": {
-            "title": "SolidFlex 2000",
+            "title": "SolidFlex 1200",
             "content": "Bedienungsanleitung",
-            "date": "2025-06-03",
-            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_Bedienungsanleitung.pdf?v=1750645951"
+            "date": "2026-04-03",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolixFlex-1200-Manual.pdf?v=1775205207"
+          }
+        },
+        "card_dyGFTB": {
+          "type": "card",
+          "settings": {
+            "title": "SolidFlex 1200 Deutschland Grid Connection",
+            "content": "VDE",
+            "date": "2026-04-16",
+            "pdf_file": "https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_1200_Deutschland_Grid_Connection.pdf?v=1776310170"
           }
         },
         "card_jimMXt": {
@@ -1412,6 +1123,7 @@
         },
         "card_VpDFmL": {
           "type": "card",
+          "disabled": true,
           "settings": {
             "title": "SolidFlex 2000 RoHS Zertifikat",
             "content": "RoHS",
@@ -1421,6 +1133,7 @@
         },
         "card_L47jed": {
           "type": "card",
+          "disabled": true,
           "settings": {
             "title": "SolidFlex 2000 Österreich Grid Connection",
             "content": "",
@@ -1430,6 +1143,7 @@
         },
         "card_77znFt": {
           "type": "card",
+          "disabled": true,
           "settings": {
             "title": "SolidFlex 2000 Deutschland Grid Connection",
             "content": "VDE",
@@ -1439,6 +1153,7 @@
         },
         "card_qmCDBn": {
           "type": "card",
+          "disabled": true,
           "settings": {
             "title": "Deutschland Grid Connection 2400W",
             "content": "VDE",
@@ -1448,6 +1163,7 @@
         },
         "card_e7iVix": {
           "type": "card",
+          "disabled": true,
           "settings": {
             "title": "SolidFlex 2000 CE Zertifikat",
             "content": "CE",
@@ -1457,6 +1173,7 @@
         },
         "card_7ndAkh": {
           "type": "card",
+          "disabled": true,
           "settings": {
             "title": "SFA1800 CE Zertifikat",
             "content": "CE",
@@ -1466,6 +1183,7 @@
         },
         "card_N3ziDC": {
           "type": "card",
+          "disabled": true,
           "settings": {
             "title": "SolidFlex 2000 REACH-Verordnung",
             "content": "Umweltschutz",
@@ -1476,6 +1194,7 @@
       },
       "block_order": [
         "card_9MAiht",
+        "card_dyGFTB",
         "card_jimMXt",
         "card_VpDFmL",
         "card_L47jed",
@@ -1485,10 +1204,11 @@
         "card_7ndAkh",
         "card_N3ziDC"
       ],
-      "disabled": true,
       "name": "下载列表",
       "settings": {
-        "title": "Downloads"
+        "title": "Downloads",
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "collapsible_tabs_NyK4qU": {
@@ -1498,8 +1218,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Wie kann ich den Standby-Verbrauch deines Geräts minimieren?",
-            "content": "<p>Um den Energieverbrauch im Standby zu reduzieren, empfehle ich dir diese Schritte:<br/>1. Schalte die Ausgänge der Off-Grid-Steckdosen aus.<br/>2. Aktiviere den Tiefen-Standby-Modus.<br/><br/>Und so geht‘s in der App:<br/>Geh auf die Einstellungsseite, finde die Bypass-Funktion und deaktiviere sie; geh dann zurück zur Einstellungsseite, aktiviere den Tiefen-Standby-Modus und stell ihn auf „24 Stunden aktiv“.</p>",
+            "heading": "Was ist der Unterschied zwischen dem SolidFlex 1200 und dem SolidFlex 2000 – außer der Wechselstromleistung?",
+            "content": "<p>Der SolidFlex 1200 kommt ohne LoRa-Funktion, unterstützt aber 2,4 GHz und 5 GHz WLAN. Ein LAN-Modul ist nicht integriert.<br/>Der SolidFlex 2000 bietet LoRa, arbeitet im 2,4‑GHz‑WLAN und kann optional um ein LAN‑Modul erweitert werden.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1509,8 +1229,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Wie funktioniert SolidFlex 2000?",
-            "content": "<p>Schließen Sie das SolidFlex 2000 einfach an eine beliebige Steckdose im Haushalt an. Die von den Solarmodulen erzeugte Energie wird im System durch einen eingebauten Mikro-Wechselrichter umgewandelt und kann dann in das Hausnetz eingespeist werden, um den Haushaltsverbrauch zu reduzieren. Darüber hinaus kann es über das Stromnetz, bestehende Photovoltaikanlagen sowie Balkonkraftwerke geladen werden.<br/><br/></p>",
+            "heading": "Kann ich meinen Mikro-Wechselrichter mit dem SolidFlex 1200 nutzen?",
+            "content": "<p>Ja, du hast zwei Möglichkeiten:<br/>1. Schließe deinen Mikro-Wechselrichter direkt an den Off‑Grid‑Ausgang des SolidFlex 1200 an. Achte dabei darauf, dass die Ausgangsleistung 1200W nicht überschreitet.<br/>2. Nutze einen Smart Meter, um deinen Überschuss zu erfassen – das System speichert ihn automatisch, ohne dass du deine bestehende PV‑Anlage ändern musst.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1520,8 +1240,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Kann ich das SolidFlex 2000 Balkonkraftwerk selbst installieren?",
-            "content": "<p>Ja. Das SolidFlex 2000 ist ein Plug-and-Play‑Balkonkraftwerk mit einer Nennleistung von bis zu 800W und ist so konzipiert, dass eine einfache Selbstinstallation möglich ist.Wichtig: Wenn Sie eine Netto-Erzeugungsleistung von mehr als 800W anstreben, empfehlen wir dringend, die Installation von einem qualifizierten Fachbetrieb durchführen zu lassen.</p>",
+            "heading": "Welche Smart Meter und Wechselrichter werden unterstützt?",
+            "content": "<p>Wir arbeiten kontinuierlich daran, immer mehr Geräte anzubinden. Aktuell sind folgende Marken kompatibel:Smart Meter: Shelly, everHome, Solarman, HomeWizard, StormeslerWechselrichter: Deye, FusionSolar, GOODWE, GROWATT, SolarEdge, SolaX</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1531,8 +1251,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Kann man das auch im Winter verwenden? Was ist zu beachten?",
-            "content": "<p>Ja, das Gerät kann im Winter verwendet werden. Es verfügt über eine Heizfunktion, die automatisch aktiviert wird, wenn die Geräte-Temperatur unter 0 °C fällt.Wichtig: Bei niedrigen Temperaturen nimmt die Aktivität von Lithiumbatterien ab, wodurch sie schneller entladen und einen höheren Leistungsbedarf haben können.Empfehlung: Im Winter sollte stets eine Reserve an Batterieladung eingeplant werden — mindestens 30% bis 50%.Bei Schneefall: Besondere Vorsicht: Halten Sie idealerweise etwa 70% Ladezustand, damit die Batterie genügend Reservekapazität hat.<br/><br/></p>",
+            "heading": "Kann ich das System in Home Assistant einbinden?",
+            "content": "<p>Ja, du kannst den SolidFlex 1200 direkt in Home Assistant integrieren. Über die offene API lässt er sich auch in andere Smart‑Home‑Plattformen einbinden.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1542,8 +1262,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Ist die SolidFlex 2000 Solarbatterie sicher?",
-            "content": "<p>Ja. Sicherheit hat bei unserem System höchste Priorität. Im Gegensatz zu herkömmlichen Akkus setzt das System einen halbfesten Lithium-Eisenphosphat-Akku (LiFePO4) ein, die die Vorteile von Fest- und Flüssigelektrolyten kombiniert und dadurch die thermische Stabilität bereits auf Materialebene erhöht.</p>",
+            "heading": "Kann ich mehrere Solarmodule an denselben MPPT anschließen?",
+            "content": "<p>Ja, wir empfehlen eine Parallelschaltung – der MPPT regelt den Strom automatisch. Vermeide eine Reihenschaltung, damit die Spannung 60V nicht überschreitet.Für maximale Effizienz kannst du die Gesamtleistung der beiden Module auf etwa das 1,2‑ bis 1,5‑Fache der Geräteleistung auslegen (ca. 720–900W).</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1553,8 +1273,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Kann das SolidFlex 2000 Balkonkraftwerk mit Speicher im Freien verwendet werden?",
-            "content": "<p>Ja. Das SolidFlex 2000 verfügt über die Schutzart IP65, ist also staubdicht und gegen Strahlwasser aus beliebigem Winkel geschützt und damit sehr gut für den Außeneinsatz geeignet.Hinweis: Trotz IP65-Schutz sollten Sie das Gerät nicht dauerhaft in starkem Regen oder unter dauerhaft stehendem Wasser betreiben.Empfehlung: Installieren Sie das Gerät an einem gut belüfteten, stabilen Ort mit sicherer Montage und beachten Sie lokale Installationsvorgaben sowie die Bedienungsanleitung.</p>",
+            "heading": "Kann ich verschiedene Erweiterungsakkus mischen?",
+            "content": "<p>Ja, dank der BatteryFlex‑Technologie kannst du die PFA‑ und SFA‑Akkus beliebig kombinieren. Insgesamt sind bis zu fünf Akkupacks möglich.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1564,8 +1284,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Ist das SolidFlex 2000 Balkonkraftwerk mit Shelly- oder EcoTrack-Stromzählern kompatibel?",
-            "content": "<p>Ja. Das SolidFlex 2000 ist vollständig kompatibel mit Shelly- und EcoTrack-Zählern und lässt sich problemlos integrieren.</p>",
+            "heading": "Wo kann ich das Gerät aufstellen?",
+            "content": "<p>Du kannst den SolidFlex 1200 sowohl drinnen als auch draußen installieren. Achte dabei auf folgende Punkte:<br/>1. Die Umgebungstemperatur sollte idealerweise zwischen 15 °C und 30 °C liegen.<br/>2. Sorge für eine stabile WLAN‑Verbindung.<br/>3. Halte auf der Rückseite mindestens 5 cm Abstand zur Wand, damit die Luft zirkulieren kann.<br/>4. Stelle das Gerät nicht in der Nähe von brennbaren oder explosiven Gegenständen auf.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1575,8 +1295,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Kann ich meine Haushaltsgeräte über die Off-Grid-Steckdose des SolidFlex 2000 versorgen, wenn es an das Hausnetz angeschlossen ist?",
-            "content": "<p>Ja. Wenn das SolidFlex 2000 mit dem Hausnetz verbunden ist, kann die Off-Grid-Steckdose Geräte mit einer maximalen Leistung von 3600W versorgen. Leistungsteile, die über die dauerhafte Eigenleistung von 2400W hinausgehen, werden automatisch vom Hausnetz ergänzt.Hinweis: Damit das SolidFlex 2000 zuverlässig 2400W bereitstellen kann, sind mindestens zwei Erweiterungsakkus erforderlich.</p>",
+            "heading": "Kann ich das System auch im Winter nutzen?",
+            "content": "<p>Ja, der SolidFlex 1200 heizt sich bei Bedarf selbst: Sinkt die Temperatur unter 1°C, startet automatisch die integrierte Heizung.Damit der Akku auch bei Kälte zuverlässig arbeitet, empfehlen wir:Im Alltag einen Ladezustand von mindestens 30–50 % einzuplanen.Bei Schnee oder extremem Wetter einen Ladezustand über 70 % für ausreichend Reserve.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1586,8 +1306,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Welche Vorteile kann die CycBoost‑Technologie meinem Balkonkraftwerk mit Speicher bringen?",
-            "content": "<p>Der offensichtlichste Vorteil ist, dass sie vollständig verhindert, dass das Akkupack durch den schwächsten Akku ausgebremst wird. Zum Beispiel begrenzt in traditionellen Szenarien bei gemischter Nutzung alter und neuer Akkus der alte Akku die Leistungsentfaltung des neuen Akkus, wodurch die Effizienz des gesamten Akkupacks nicht vollständig freigesetzt werden kann. Genau dieses Branchenproblem löst unsere CycBoost‑Technologie.</p>",
+            "heading": "Ich habe noch keine Erfahrung mit PV – ist das System trotzdem einfach zu nutzen?",
+            "content": "<p>Absolut. Du schließt das Gerät einfach an eine normale Haushaltssteckdose an und steuerst es bequem über die App.Wenn du mal eine Frage hast, helfen dir unsere Tutorials auf YouTube oder die Hilfeseiten auf der Website weiter. Du kannst uns aber auch jederzeit per E‑Mail oder über die sozialen Medien kontaktieren.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1597,8 +1317,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Ist der Akku des SolidFlex 2000 langlebig?",
-            "content": "<p>Der SolidFlex 2000 Akku ist besonders langlebig. Selbst bei einer Entladungstiefe von 100% behält der Akku nach 8000 Zyklen noch 70% seiner anfänglichen Kapazität. Dies ist dem Einsatz von Halbfeststoff-Akkutechnologie und großvolumigen Akkuzellen zu verdanken, wodurch die Lebensdauer des Akkupacks verlängert wird.</p>",
+            "heading": "Kann ich das System auch ohne Internet nutzen?",
+            "content": "<p>Ja, du hast zwei Möglichkeiten für den lokalen Betrieb:<br/>1. Lokaler Netzwerkbetrieb: Ist der Smart Meter einmal mit dem Gerät gekoppelt und im selben Netzwerk konfiguriert, arbeitet das System auch ohne Internetverbindung zuverlässig weiter.<br/>2. Bluetooth‑Steuerung: Du kannst dich direkt per Bluetooth mit dem Gerät verbinden und es lokal steuern.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1632,8 +1352,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Wie hoch ist die maximale Ausgangsleistung des SolidFlex 2000 bei netzunabhängigem Betrieb?",
-            "content": "<p>Wenn das Gerät mit dem Stromnetz verbunden ist, kann über den netzunabhängigen Anschluss eine Leistung von bis zu 2400W bereitgestellt werden. Im netzunabhängigen Betrieb oder während eines Stromausfalls beträgt die maximale Leistung jedoch 1000W. Mit einem SFA1800 Erweiterungsakku steigt die Leistung auf 2000W, und mit zwei Akkupacks sind sogar bis zu 2400W möglich.</p>",
+            "heading": "Funktioniert der SolidFlex 1200 auch bei einem Stromausfall?",
+            "content": "<p>Ja. Das Gerät hat eine integrierte EPS‑Notstromfunktion. Bei einem Stromausfall versorgst du deine wichtigsten Geräte einfach über den Off‑Grid‑Ausgang – mit einer maximalen Leistung von 1200 W.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1691,8 +1411,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Kann das Indevolt Speichersystem auch ohne Internetverbindung genutzt werden?",
-            "content": "<p>Ja, der SolidFlex 2000 kann auch in einer Umgebung ohne Internetverbindung schnell reagieren und lokale Steuerung durchführen. Er ermöglicht intelligente Steuerung und präzises Management, sodass Ihre Haushaltsgeräte eine optimale Leistungsbilanz aufrechterhalten und unnötige Verluste reduziert werden.</p>",
+            "heading": "Was macht der Smart Meter eigentlich?",
+            "content": "<p>Der Smart Meter übernimmt drei wichtige Aufgaben:<br/>1. Er misst deinen aktuellen Stromverbrauch und hilft dem System, intelligent zu laden oder zu entladen.<br/>2. Er erfasst den Überschuss deiner PV‑Anlage – dieser wird gespeichert, ohne dass Strom ins Netz zurückfließt.<br/>3. Er dient als Datenquelle für deine PV‑Anlage und übermittelt wichtige Betriebsdaten.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1702,8 +1422,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Wie kann ich die Sicherheit und Stabilität meiner Daten gewährleisten?",
-            "content": "<p>Der SolidFlex 2000 verfügt über Funktionen zur lokalen Steuerung, bei denen die Daten ausschließlich auf der lokalen Hardware gespeichert werden. Selbst bei Netzwerkunterbrechungen oder Ausfällen von Drittanbieterdiensten kann das System stabil weiterlaufen. Daher müssen Sie sich keine Sorgen über das Risiko von Datenschutzverletzungen oder die Stabilität des Geräts machen.</p>",
+            "heading": "Und wofür ist der Smart Plug gut?",
+            "content": "<p>Den Smart Plug steckst du einfach in eine Haushaltssteckdose und schließt dein Gerät daran an. Er misst dessen Leistungsaufnahme – das INDEVOLT‑System kann dann automatisch darauf reagieren und passend entladen.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1713,8 +1433,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Unterstützt der SolidFlex 2000 die Installation von zwei unabhängigen Systemen, die gemeinsam betrieben werden? Wie kann ich einschätzen, ob mein Zuhause für eine Multisystemlösung geeignet ist?",
-            "content": "<p>Ja, der SolidFlex 2000 unterstützt den Betrieb von zwei Systemeinheiten im Kooperationsmodus und kann bis zu drei Systeme unterstützen. Wenn Ihr Strombedarf hoch ist, Sie die Abhängigkeit vom Stromnetz weiter reduzieren möchten oder signifikante Einsparungen bei den Stromkosten durch eine skalierte Konfiguration erzielen möchten, ist die Installation mehrerer Systeme eine ideale Wahl.</p>",
+            "heading": "Wie arbeitet das System im Alltag?",
+            "content": "<p>Im Selbstverbrauchsmodus nutzt du deinen Solarstrom tagsüber direkt. Überschüsse werden gespeichert und stehen dir abends zur Verfügung.In der App kannst du außerdem verschiedene Betriebsmodi wählen, um das System genau an deine Gewohnheiten anzupassen.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1748,8 +1468,8 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Wie viel Leistung kann der SolidFlex 2000 für mein Zuhause bereitstellen? Welche Geräte können betrieben werden?",
-            "content": "<p>Der SolidFlex 2000 entspricht den deutschen Vorschriften für Photovoltaikanlagen und kann von den Nutzern selbst installiert werden. Er bietet eine Leistung von 800W für Ihr Zuhause. Bitte beachten Sie: Wenn Sie eine netzgebundene Leistung von 2400W erhalten möchten, muss dies von einem zugelassenen Elektriker erfolgen, und es muss ein Installationsplan an den örtlichen Netzbetreiber eingereicht werden. Im Off-Grid-Betrieb kann er 2400W ausgeben und deckt damit die meisten mittel- und niedrigleistungsfähigen Geräte ab.</p>",
+            "heading": "Was wurde getan, damit das System sicher ist?",
+            "content": "<p>Sicherheit hat bei uns oberste Priorität. Der SolidFlex 1200 bietet daher:<br/>1. Sichere Batterietechnologie: Halbfeste Zellen, die auch im Fehlerfall rauch‑ und feuerfrei bleiben.<br/>2. Intelligentes Batteriemanagement (BMS): Es überwacht permanent alle Werte und greift bei Bedarf schützend ein.<br/>3. Passive Sicherheit: Nicht mit dem Hauptgerät verbundene Akkupacks sind im 0‑V‑Zustand – sicher auch bei versehentlichem Kontakt.<br/>4. Robustes Gehäuse: Das Aluminiumgehäuse ist besonders widerstandsfähig und brandschutzoptimiert.<br/>5. Hohe Schutzart: Mit IP65 ist das Gerät staubdicht und strahlwassergeschützt – ideal für den Außenbereich.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1759,8 +1479,19 @@
           "type": "collapsible_item",
           "settings": {
             "icon": "none",
-            "heading": "Ist es normal, dass der Ladezustand (SOC) der Akkupacks stark auseinandergeht?",
-            "content": "<p>Dies ist ein normales Phänomen und beeinträchtigt Ihre Nutzererfahrung nicht. In der Praxis ist eine Abweichung der Restladung zwischen den Akkus von bis zu 10% sinnvoll – dank des Batterieoptimierers. Dieser sorgt dafür, dass jede Zelle eigenständig laden und entladen wird, sodass ihre Leistungen sich nicht gegenseitig beeinflussen. Warum traditionelle Akkus tendenziell kleinere SOC-Unterschiede zeigen: Sie setzen auf parallele Gleichverteilung, was Ringströme erzeugt, Energieverschwendung mit sich bringt und vom „Flaschenhals-Effekt“ betroffen sein kann. Unsere Lösung adressiert genau dieses Problem.</p>",
+            "heading": "Was tun, wenn ich ein Problem habe?",
+            "content": "<p>Wir helfen dir schnell und unkompliziert. Kontaktiere uns einfach über einen der folgenden Wege:<br/>Soziale Medien: Discord, WhatsApp, Facebook<br/>E‑Mail: <a href=\"mailto:service@indevolt.com\" target=\"_blank\">service@indevolt.com</a><br/>Live‑Chat auf unserer Website<br/>Du kannst dich auch gerne mit anderen Nutzern in unserer Community austauschen – viele Fragen lassen sich dort direkt beantworten.</p>",
+            "custom_liquid": "",
+            "page": "",
+            "open": false
+          }
+        },
+        "collapsible_item_yjU7NG": {
+          "type": "collapsible_item",
+          "settings": {
+            "icon": "none",
+            "heading": "Wie pflege ich meine Batterie am besten?",
+            "content": "<p>Damit dir dein Speicher lange Freude bereitet:<br/>1. Aktiviere Tiefen‑Standby‑Modus, um unnötigen Energieverbrauch zu vermeiden.<br/>2. Führe etwa alle 15 Tage eine Volladung durch – so bleibt die Zustandsanzeige (SOC) genau.<br/>3. Plane einen Backup-SOC von mindestens 10% ein, um Tiefentladung zu vermeiden und die Lebensdauer zu verlängern.</p>",
             "custom_liquid": "",
             "page": "",
             "open": false
@@ -1791,9 +1522,13 @@
         "collapsible_item_NMrFWj",
         "collapsible_item_jqFdEe",
         "collapsible_item_Bj9bRB",
-        "collapsible_item_99WPKm"
+        "collapsible_item_99WPKm",
+        "collapsible_item_yjU7NG"
       ],
       "disabled": true,
+      "custom_css": [
+        ".rte a {color: #3250c3;}"
+      ],
       "name": "t:sections.collapsible-tabs.presets.name",
       "settings": {
         "container": "fixed",
@@ -1820,6 +1555,20 @@
         "padding_bottom": 50,
         "show_section_divider": false,
         "divider_width": "fixed"
+      }
+    },
+    "custom_liquid_Fn6f6W": {
+      "type": "custom-liquid",
+      "custom_css": [
+        "a {color: #3250c3;}"
+      ],
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <title>FAQS</title>\n    <link rel=\"stylesheet\" href=\"https://cdn.shopify.com/s/files/1/0596/6367/9587/files/1200-faqs.css?v=1775643137\">  \n    <!-- <link rel=\"stylesheet\" href=\"1200-faqs.css?v=1764308409\"> -->\n            <style type=\"text/css\">\n\t    .fas-flex{\n\t    \tdisplay: flex;\n\t    }\n\t    .category-title>div{\n\t    \tgap: 20px;\n\t    }\n    </style>\n</head>\n<body >\n    <div class=\"faq-container\">\n        <div id=\"faq\" class=\"faq-categories\">\n            <h2>FAQ</h2>\n\n        </div>\n        <div class=\"faq-main\">\n            <div class=\"faq-left\">\n                <div class=\"search-container\" style=\"display:none;\">\n                    <div class=\"search-box\">\n                        <input type=\"text\" id=\"search-input\" placeholder=\"Suchen\">\n                        <button id=\"search-btn\">\n                            <svg xmlns=\"http://www.w3.org/2000/svg\" class=\"icon icon-search icon--large\"\n                                viewBox=\"0 0 24 24\" fill=\"none\">\n                                <path\n                                    d=\"M10.875 18.75C15.2242 18.75 18.75 15.2242 18.75 10.875C18.75 6.52576 15.2242 3 10.875 3C6.52576 3 3 6.52576 3 10.875C3 15.2242 6.52576 18.75 10.875 18.75Z\"\n                                    stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\"\n                                    stroke-linejoin=\"round\"></path>\n                                <path d=\"M16.4434 16.4453L20.9997 21.0016\" stroke=\"currentColor\" stroke-width=\"1.5\"\n                                    stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n                            </svg>\n                        </button>\n                    </div>\n                </div>\n\n                <ul class=\"category-list\" id=\"category-list\">\n                </ul>\n            </div>\n            <!-- 右侧内容 -->\n            <div class=\"faq-content\">\n                <div class=\"current-category\">\n                    <a href=\"javascript:void(0);\">\n                        <i class=\"fas fa-folder\"></i>\n                        <span id=\"current-category-path\">Alle anzeigen</span>\n                    </a>\n                </div>\n\n\n                <div class=\"faq-list\" id=\"faq-list\">\n                    <div class=\"no-results\" id=\"no-results\">\n                        <i class=\"fas fa-search fa-3x\"></i>\n                        <h3>Wurden keine Ergebnisse gefunden.</h3>\n                        <p>Überprüfen Sie die Rechtschreibung oder verwenden Sie ein anderes Wort oder eine andere\n                            Phrase.\n                        </p>\n                    </div>\n                </div>\n\n                <!-- 分页控件 -->\n                <div class=\"pagination\" id=\"pagination\" style=\"display: none;\">\n                    <button id=\"prev-page\" disabled>\n                        <svg viewBox=\"64 64 896 896\" focusable=\"false\" data-icon=\"left\" width=\"1em\" height=\"1em\"\n                            fill=\"currentColor\" aria-hidden=\"true\">\n                            <path\n                                d=\"M724 218.3V141c0-6.7-7.7-10.4-12.9-6.3L260.3 486.8a31.86 31.86 0 000 50.3l450.8 352.1c5.3 4.1 12.9.4 12.9-6.3v-77.3c0-4.9-2.3-9.6-6.1-12.6l-360-281 360-281.1c3.8-3 6.1-7.7 6.1-12.6z\">\n                            </path>\n                        </svg>\n                    </button>\n                    <div class=\"pagination-numbers\" id=\"pagination-numbers\"></div>\n                    <button id=\"next-page\">\n                        <svg viewBox=\"64 64 896 896\" focusable=\"false\" data-icon=\"right\" width=\"1em\" height=\"1em\"\n                            fill=\"currentColor\" aria-hidden=\"true\">\n                            <path\n                                d=\"M765.7 486.8L314.9 134.7A7.97 7.97 0 00302 141v77.3c0 4.9 2.3 9.6 6.1 12.6l360 281.1-360 281.1c-3.9 3-6.1 7.7-6.1 12.6V883c0 6.7 7.7 10.4 12.9 6.3l450.8-352.1a31.96 31.96 0 000-50.4z\">\n                            </path>\n                        </svg>\n                    </button>\n                    <!-- <div class=\"pagination-info\" id=\"pagination-info\"></div> -->\n                </div>\n            </div>\n        </div>\n\n    </div>\n   <script type=\"text/javascript\">\n   const faqList = document.getElementById(\"faq-list\"),\n   typeList = document.getElementById(\"category-list\"),\n   errorMessage = document.getElementById(\"no-results\"),\n   //    <br>\n   produkteArr = [\n     \"Anwendbare Produkte: SolidFlex 2000、PowerFlex 2000、BK1600、BK1600 Ultra\",\n     \"Anwendbare Produkte: SolidFlex 2000、PowerFlex 2000\",\n     \"Anwendbare Produkte: SolidFlex 2000\",\n     \"Anwendbare Produkte: BK1600、BK1600 Ultra\",\n     \"Anwendbare Produkte: SolidFlex 2000、PowerFlex 2000、BK1600 Ultra\",\n   ],\n   jsonDataType = {\n     types: [\n       { categories: \"Unterschiede & Kompatibilität\", name: \"Unterschiede & Kompatibilität\", childrens: \"\" },\n       { categories: \"Installation & Betriebsumgebung\", name: \"Installation & Betriebsumgebung\", childrens: \"\" },\n       { categories: \"Funktionen & Systembetrieb\", name: \"Funktionen & Systembetrieb\", childrens: \"\" },\n       { categories: \"Sicherheit & Support\", name: \"Sicherheit & Support\", childrens: \"\" },\n     ],\n   },\n   jsonData = {\n     contents: [\n       {\n         categories: \"Unterschiede & Kompatibilität\",\n         question: \"Was ist der Unterschied zwischen dem SolidFlex 1200 und dem SolidFlex 2000 – außer der Wechselstromleistung?\",\n         answer:\n           \"Der SolidFlex 1200 unterstützt kein LoRa, dafür aber 2,4 GHz und 5 GHz WLAN. Ein LAN-Modul ist nicht integriert. Zudem verfügt er über keine LED-Leiste zur Anzeige des Batteriestatus.<br>Der SolidFlex 2000 unterstützt LoRa und 2,4 GHz WLAN. Ein LAN-Modul ist optional erhältlich. Er ist mit einer LED-Leiste zur Anzeige des Batteriestatus ausgestattet.\",\n       },\n       {\n         categories: \"Unterschiede & Kompatibilität\",\n         question: \"Kann ich meinen Mikro-Wechselrichter mit dem SolidFlex 1200 nutzen?\",\n         answer:\n           \"Ja, du hast zwei Möglichkeiten:<br>1. Schließe deinen Mikro-Wechselrichter direkt an den Off‑Grid‑Ausgang des SolidFlex 1200 an. Achte dabei darauf, dass die Ausgangsleistung 1200W nicht überschreitet.<br>2. Nutze einen Smart Meter, um deinen Überschuss zu erfassen – das System speichert ihn automatisch, ohne dass du deine bestehende PV‑Anlage ändern musst.\",\n       },\n  \n       {\n         categories: \"Unterschiede & Kompatibilität\",\n         question: \"Welche Smart Meter und Wechselrichter werden unterstützt?\",\n         answer:\n           \"Wir arbeiten kontinuierlich daran, immer mehr Geräte anzubinden. Aktuell sind folgende Marken kompatibel:<br>Smart Meter: Shelly, everHome, Solarman, HomeWizard, Stormesler<br>Wechselrichter: Deye, FusionSolar, GOODWE, GROWATT, SolarEdge, SolaX\",\n       },\n       {\n         categories: \"Unterschiede & Kompatibilität\",\n         question: \"Kann ich das System in Home Assistant einbinden?\",\n         answer:\n           \"Ja, du kannst den SolidFlex 1200 direkt in Home Assistant integrieren. Über die offene API lässt er sich auch in andere Smart‑Home‑Plattformen einbinden.\",\n       },\n       {\n         categories: \"Unterschiede & Kompatibilität\",\n         question: \"Kann ich mehrere Solarmodule an denselben MPPT anschließen?\",\n         answer:\n           \"Ja, wir empfehlen eine Parallelschaltung – der MPPT regelt den Strom automatisch. Vermeide eine Reihenschaltung, damit die Spannung 60V nicht überschreitet.Für maximale Effizienz kannst du die Gesamtleistung der beiden Module auf etwa das 1,2‑ bis 1,5‑Fache der Geräteleistung auslegen (ca. 720–900W).\",\n       },\n       {\n         categories: \"Unterschiede & Kompatibilität\",\n         question: \"Kann ich verschiedene Erweiterungsakkus mischen?\",\n         answer:\n           \"Ja, dank der BatteryFlex‑Technologie kannst du die PFA‑ und SFA‑Akkus beliebig kombinieren. Insgesamt sind bis zu fünf Akkupacks möglich.\",\n       },\n       \n       {\n           categories: \"Installation & Betriebsumgebung\",\n           question: \"Wo kann ich das Gerät aufstellen?\",\n           answer:\n             \"Du kannst den SolidFlex 1200 sowohl drinnen als auch draußen installieren. Achte dabei auf folgende Punkte:<br>1. Die Umgebungstemperatur sollte idealerweise zwischen 15 °C und 30 °C liegen.<br>2. Sorge für eine stabile WLAN‑Verbindung.<br>3. Halte auf der Rückseite mindestens 5 cm Abstand zur Wand, damit die Luft zirkulieren kann.<br>4. Stelle das Gerät nicht in der Nähe von brennbaren oder explosiven Gegenständen auf.\",\n         },\n  \n       {\n         categories: \"Installation & Betriebsumgebung\",\n         question: \"Kann ich das System auch im Winter nutzen?\",\n         answer:\n           \"Ja, der SolidFlex 1200 heizt sich bei Bedarf selbst: Sinkt die Temperatur unter 1°C, startet automatisch die integrierte Heizung.<br>Damit der Akku auch bei Kälte zuverlässig arbeitet, empfehlen wir:<br>Im Alltag einen Ladezustand von mindestens 30–50 % einzuplanen.<br>Bei Schnee oder extremem Wetter einen Ladezustand über 70 % für ausreichend Reserve.\",\n       },\n       {\n         categories: \"Installation & Betriebsumgebung\",\n         question: \"Ich habe noch keine Erfahrung mit PV – ist das System trotzdem einfach zu nutzen?\",\n         answer:\n           \"Absolut. Du schließt das Gerät einfach an eine normale Haushaltssteckdose an und steuerst es bequem über die App.<br>Wenn du mal eine Frage hast, helfen dir unsere Tutorials auf YouTube oder die Hilfeseiten auf der Website weiter. Du kannst uns aber auch jederzeit per E‑Mail oder über die sozialen Medien kontaktieren.\",\n       },\n       {\n         categories: \"Funktionen & Systembetrieb\",\n         question: \"Kann ich das System auch ohne Internet nutzen?\",\n         answer:\n           \"Ja, du hast zwei Möglichkeiten für den lokalen Betrieb:<br>1. Lokaler Netzwerkbetrieb: Ist der Smart Meter einmal mit dem Gerät gekoppelt und im selben Netzwerk konfiguriert, arbeitet das System auch ohne Internetverbindung zuverlässig weiter.<br>2. Bluetooth‑Steuerung: Du kannst dich direkt per Bluetooth mit dem Gerät verbinden und es lokal steuern.\",\n       },\n       {\n         categories: \"Funktionen & Systembetrieb\",\n         question: \"Funktioniert der SolidFlex 1200 auch bei einem Stromausfall?\",\n         answer:\n           \"Ja. Das Gerät hat eine integrierte EPS‑Notstromfunktion. Bei einem Stromausfall versorgst du deine wichtigsten Geräte einfach über den Off‑Grid‑Ausgang – mit einer maximalen Leistung von 1200 W.\",\n       },\n       {\n         categories: \"Funktionen & Systembetrieb\",\n         question: \"Was macht der Smart Meter eigentlich?\",\n         answer:  \n           \"Der Smart Meter übernimmt drei wichtige Aufgaben:<br>1. Er misst deinen aktuellen Stromverbrauch und hilft dem System, intelligent zu laden oder zu entladen.<br>2. Er erfasst den Überschuss deiner PV‑Anlage – dieser wird gespeichert, ohne dass Strom ins Netz zurückfließt.<br>3. Er dient als Datenquelle für deine PV‑Anlage und übermittelt wichtige Betriebsdaten.\",\n       },\n       {\n         categories: \"Funktionen & Systembetrieb\",\n         question: \"Und wofür ist der Smart Plug gut?\",\n         answer: \"Den Smart Plug steckst du einfach in eine Haushaltssteckdose und schließt dein Gerät daran an. Er misst dessen Leistungsaufnahme – das INDEVOLT‑System kann dann automatisch darauf reagieren und passend entladen.\",\n       },\n       {\n         categories: \"Funktionen & Systembetrieb\",\n         question: \"Wie arbeitet das System im Alltag?\",\n         answer: \"Im Selbstverbrauchsmodus nutzt du deinen Solarstrom tagsüber direkt. Überschüsse werden gespeichert und stehen dir abends zur Verfügung.<br>In der App kannst du außerdem verschiedene Betriebsmodi wählen, um das System genau an deine Gewohnheiten anzupassen.\",\n       },\n       {\n         categories: \"Sicherheit & Support\",\n         question: \"Was wurde getan, damit das System sicher ist?\",\n         answer:\n           \"Sicherheit hat bei uns oberste Priorität. Der SolidFlex 1200 bietet daher:<br>1. Sichere Batterietechnologie: Halbfeste Zellen, die auch im Fehlerfall rauch‑ und feuerfrei bleiben.<br>2. Intelligentes Batteriemanagement (BMS): Es überwacht permanent alle Werte und greift bei Bedarf schützend ein.<br>3. Passive Sicherheit: Nicht mit dem Hauptgerät verbundene Akkupacks sind im 0‑V‑Zustand – sicher auch bei versehentlichem Kontakt.<br>4. Robustes Gehäuse: Das Aluminiumgehäuse ist besonders widerstandsfähig und brandschutzoptimiert.<br>5. Hohe Schutzart: Mit IP65 ist das Gerät staubdicht und strahlwassergeschützt – ideal für den Außenbereich.\",\n       },\n       {\n         categories: \"Sicherheit & Support\",\n         question: \"Was tun, wenn ich ein Problem habe?\",\n         answer:\n           \"Wir helfen dir schnell und unkompliziert. Kontaktiere uns einfach über einen der folgenden Wege:<br>Soziale Medien: Discord, WhatsApp, Facebook<br>E‑Mail: <a target='_blank' href='https://de.indevolt.com/pages/contact-us/'>service@indevolt.com</a><br>Live‑Chat auf unserer Website<br>Du kannst dich auch gerne mit anderen Nutzern in unserer Community austauschen – viele Fragen lassen sich dort direkt beantworten.\",\n       },\n       {\n         categories: \"Sicherheit & Support\",\n         question: \"Wie pflege ich meine Batterie am besten?\",\n         answer:\n           \"Damit dir dein Speicher lange Freude bereitet:<br>1. Aktiviere Tiefen‑Standby‑Modus, um unnötigen Energieverbrauch zu vermeiden.<br>2. Führe etwa alle 15 Tage eine Volladung durch – so bleibt die Zustandsanzeige (SOC) genau.<br>3. Plane einen Backup-SOC von mindestens 10% ein, um Tiefentladung zu vermeiden und die Lebensdauer zu verlängern.\",\n       },\n     ],\n   };\n\n document.addEventListener(\"DOMContentLoaded\", function () {\n   typesFromJSON(jsonDataType);\n   generateListFromJSON(jsonData, function () {\n     const faqItems = document.querySelectorAll(\".faq-item\"),\n       searchInput = document.getElementById(\"search-input\"),\n       searchBtn = document.getElementById(\"search-btn\"),\n       categoryItems = document.querySelectorAll(\".category-item\"),\n       subItems = document.querySelectorAll(\".sub-item\"),\n       noResults = document.getElementById(\"no-results\"),\n       pagination = document.getElementById(\"pagination\"),\n       prevPageBtn = document.getElementById(\"prev-page\"),\n       nextPageBtn = document.getElementById(\"next-page\"),\n       paginationNumbers = document.getElementById(\"pagination-numbers\"),\n       currentCategoryPath = document.getElementById(\"current-category-path\");\n\n     let currentPage = 1;\n     const itemsPerPage = 9;\n     let currentVisibleItems = [];\n\n     document.getElementById(\"current-category-path\").addEventListener(\"click\", function (e) {\n       searchInput.value = \"\";\n       clearAllActive();\n       currentCategoryPath.textContent = \"Alle anzeigen\";\n       currentPage = 1;\n       performSearch();\n     });\n\n     faqItems.forEach((item) => {\n       item.querySelector(\".faq-question\").addEventListener(\"click\", () => {\n         item.classList.toggle(\"active\");\n       });\n     });\n\n     categoryItems.forEach((item) => {\n       const chevron = item.querySelector(\".fa-chevron-down\");\n       console.log(chevron);\n       const title = item.querySelector(\".category-title\");\n       chevron &&\n         title &&\n         title.addEventListener(\"click\", function (e) {\n           e.stopPropagation();\n           item.classList.toggle(\"expanded\");\n         });\n       item.addEventListener(\"click\", function (e) {\n         (!e.target.closest(\".category-title\") || !chevron) &&\n           (clearAllActive(),\n           item.classList.add(\"active\"),\n           (currentCategoryPath.textContent = item.querySelector(\"span\").textContent),\n           console.log(currentCategoryPath),\n           (currentPage = 1),\n           performSearch());\n       });\n     });\n\n     subItems.forEach((item) => {\n       item.addEventListener(\"click\", function (e) {\n         e.stopPropagation();\n         clearAllActive();\n         item.classList.add(\"active\");\n         const parentCategory = item.closest(\".category-item\");\n         if (parentCategory) {\n           const parentName = parentCategory.querySelector(\".category-title span\").textContent,\n             subName = item.querySelector(\"span\").textContent;\n           currentCategoryPath.textContent = `${parentName} > ${subName}`;\n         } else currentCategoryPath.textContent = item.querySelector(\"span\").textContent;\n         currentPage = 1;\n         performSearch();\n       });\n     });\n\n     function clearAllActive() {\n       categoryItems.forEach((i) => i.classList.remove(\"active\"));\n       subItems.forEach((i) => i.classList.remove(\"active\"));\n     }\n\n     function updatePagination(totalItems) {\n       const totalPages = Math.ceil(totalItems / itemsPerPage);\n       if (totalPages <= 1 || totalItems === 0) {\n         pagination.style.display = \"none\";\n         return;\n       }\n       if (\n         ((pagination.style.display = \"flex\"),\n         (prevPageBtn.disabled = currentPage === 1),\n         (nextPageBtn.disabled = currentPage === totalPages),\n         (paginationNumbers.innerHTML = \"\"),\n         totalPages <= 6)\n       )\n         for (let i = 1; i <= totalPages; i++) createPageNumber(i);\n       else if (currentPage <= 3) {\n         for (let i = 1; i <= 4; i++) createPageNumber(i);\n         createEllipsis();\n         createPageNumber(totalPages);\n       } else if (currentPage >= totalPages - 2) {\n         createPageNumber(1);\n         createEllipsis();\n         for (let i = totalPages - 3; i <= totalPages; i++) createPageNumber(i);\n       } else {\n         createPageNumber(1);\n         createEllipsis();\n         for (let i = currentPage - 1; i <= currentPage + 1; i++) createPageNumber(i);\n         createEllipsis();\n         createPageNumber(totalPages);\n       }\n\n       function createPageNumber(page) {\n         const pageNumber = document.createElement(\"div\");\n         (pageNumber.className = \"pagination-number\"),\n           page === currentPage && pageNumber.classList.add(\"active\"),\n           (pageNumber.textContent = page),\n           pageNumber.addEventListener(\"click\", () => {\n             currentPage = page;\n             displayCurrentPage();\n           }),\n           paginationNumbers.appendChild(pageNumber);\n       }\n\n       function createEllipsis() {\n         const ellipsis = document.createElement(\"div\");\n         (ellipsis.className = \"pagination-ellipsis\"),\n           (ellipsis.textContent = \"...\"),\n           paginationNumbers.appendChild(ellipsis);\n       }\n     }\n\n     function highlightText(element, text) {\n       if (!text || !element) return;\n       const innerHTML = element.innerHTML,\n         index = innerHTML.toLowerCase().indexOf(text.toLowerCase());\n       index >= 0 &&\n         (element.innerHTML =\n           innerHTML.substring(0, index) +\n           \"<span class='highlight'>\" +\n           innerHTML.substring(index, index + text.length) +\n           \"</span>\" +\n           innerHTML.substring(index + text.length));\n     }\n\n     function displayCurrentPage() {\n       faqItems.forEach((item) => {\n         item.style.display = \"none\";\n       });\n       const totalItems = currentVisibleItems.length,\n         startIndex = (currentPage - 1) * itemsPerPage,\n         endIndex = Math.min(startIndex + itemsPerPage, totalItems);\n       for (let i = startIndex; i < endIndex; i++) {\n         const item = currentVisibleItems[i];\n         item.style.display = \"block\";\n       }\n       updatePagination(totalItems);\n     }\n\n     function performSearch() {\n       var searchTerm = searchInput.value.toLowerCase().trim();\n       searchTerm = searchTerm\n         .replace(/sf2000/gi, \"SolidFlex 2000\")\n         .replace(/sf 2000/gi, \"SolidFlex 2000\")\n         .replace(/solidflex2000/gi, \"SolidFlex 2000\")\n         .replace(/solid flex 2000/gi, \"SolidFlex 2000\")\n         .replace(/solid flex2000/gi, \"SolidFlex 2000\")\n         .replace(/pf2000/gi, \"PowerFlex 2000\")\n         .replace(/pf 2000/gi, \"PowerFlex 2000\")\n         .replace(/power flex 2000/gi, \"PowerFlex 2000\")\n         .replace(/power flex2000/gi, \"PowerFlex 2000\")\n         .replace(/powerflex2000/gi, \"PowerFlex 2000\")\n         .replace(/bk 1600/gi, \"BK1600\")\n         .toLowerCase();\n       const activeItem = document.querySelector(\".category-item.active, .sub-item.active\"),\n         activeCategoryId = activeItem ? activeItem.getAttribute(\"data-category\") : \"all\";\n       if (\n         (currentVisibleItems = []),\n         faqItems.forEach((item) => {\n           item.querySelectorAll(\".highlight\").forEach((hl) => {\n             const parent = hl.parentNode;\n             parent.replaceChild(document.createTextNode(hl.textContent), hl);\n             parent.normalize();\n           });\n           const question = item.querySelector(\".faq-question span\").textContent.toLowerCase(),\n             answer = item.querySelector(\".faq-answer\").textContent.toLowerCase(),\n             categories = item.getAttribute(\"data-categories\").split(\",\"),\n             isCategoryMatch = activeCategoryId === \"all\" || categories.includes(activeCategoryId),\n             isSearchMatch = searchTerm === \"\" || question.includes(searchTerm) || answer.includes(searchTerm);\n           isCategoryMatch && isSearchMatch && currentVisibleItems.push(item);\n         }),\n         displayCurrentPage(),\n         searchTerm.length > 0\n       ) {\n         const startIndex = (currentPage - 1) * itemsPerPage,\n           endIndex = Math.min(startIndex + itemsPerPage, currentVisibleItems.length);\n         for (let i = startIndex; i < endIndex; i++) {\n           const item = currentVisibleItems[i];\n           highlightText(item.querySelector(\".faq-question span\"), searchTerm);\n           highlightText(item.querySelector(\".faq-answer p\"), searchTerm);\n           const answerSpan = item.querySelector(\".faq-answer span\");\n           answerSpan && highlightText(answerSpan, searchTerm);\n         }\n       }\n       noResults.style.display = currentVisibleItems.length === 0 ? \"block\" : \"none\";\n     }\n\n     prevPageBtn.addEventListener(\"click\", () => {\n       currentPage > 1 && (currentPage--, displayCurrentPage());\n     });\n\n     nextPageBtn.addEventListener(\"click\", () => {\n       const totalPages = Math.ceil(currentVisibleItems.length / itemsPerPage);\n       currentPage < totalPages && (currentPage++, displayCurrentPage());\n     });\n\n     searchInput.addEventListener(\"input\", () => {\n       currentPage = 1;\n       performSearch();\n     });\n\n     searchBtn.addEventListener(\"click\", () => {\n       currentPage = 1;\n       performSearch();\n     });\n\n     performSearch();\n   });\n });\n\n function typesFromJSON(data) {\n   typeList.innerHTML = \"\";\n   data.types.forEach((type) => {\n     const typeLi = document.createElement(\"li\");\n     typeLi.dataset.category = type.categories;\n     typeLi.className = \"category-item\";\n     const typeDIV = document.createElement(\"div\");\n     typeDIV.className = \"category-title\";\n     const typechlDIV = document.createElement(\"div\");\n     typechlDIV.className = \"category-box\";\n     const i = document.createElement(\"i\");\n     i.className = \"fas fas-flex\";\n     i.innerHTML = `<svg class=\"icon icon-slider-prev icon--small\"  width=\"15\" height=\"15\" viewBox=\"0 0 20 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n   <path d=\"M7.5 3.74121L13.75 9.99121L7.5 16.2412\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"></path>\n </svg>`;\n     const span = document.createElement(\"span\");\n     span.textContent = type.name;\n     const hasChli = document.createElement(\"i\");\n     if (\n       ((hasChli.className = \"fas fa-chevron-down\"),\n       typechlDIV.appendChild(span),\n       typechlDIV.appendChild(i),\n       typeDIV.appendChild(typechlDIV),\n       type.childrens && Array.isArray(type.childrens) && typeDIV.appendChild(hasChli),\n       typeLi.appendChild(typeDIV),\n       type.childrens && Array.isArray(type.childrens))\n     ) {\n       const chiUl = document.createElement(\"ul\");\n       chiUl.className = \"subcategory\";\n       type.childrens.forEach((children) => {\n         const childrenLi = document.createElement(\"li\");\n         childrenLi.dataset.category = children.categories;\n         childrenLi.className = \"sub-item\";\n         const childrenLiDIV = document.createElement(\"div\"),\n           childrenLiDIVi = document.createElement(\"i\");\n         childrenLiDIVi.className = \"fas\";\n         const childrenLiDIVspan = document.createElement(\"span\");\n         (childrenLiDIVspan.textContent = children.name),\n           childrenLiDIV.appendChild(childrenLiDIVi),\n           childrenLiDIV.appendChild(childrenLiDIVspan),\n           childrenLi.appendChild(childrenLiDIV),\n           chiUl.appendChild(childrenLi);\n       });\n       typeLi.appendChild(chiUl);\n     }\n     typeList.appendChild(typeLi);\n   });\n }\n\n function generateListFromJSON(data, cb) {\n   try {\n     if (!data || !data.contents || !Array.isArray(data.contents))\n       throw new Error(\"无效的JSON数据格式\");\n     data.contents.forEach((content) => {\n       const itemDIV = document.createElement(\"div\");\n       itemDIV.dataset.categories = content.categories;\n       itemDIV.className = \"faq-item\";\n       const questionDIV = document.createElement(\"div\");\n       questionDIV.className = \"faq-question\";\n       const span = document.createElement(\"span\");\n       span.textContent = content.question;\n       const i = document.createElement(\"i\");\n       questionDIV.appendChild(span);\n       questionDIV.appendChild(i);\n       const answerDIV = document.createElement(\"div\");\n       answerDIV.className = \"faq-answer\";\n       const answerP = document.createElement(\"p\");\n       if (\n         ((answerP.innerHTML = content.answer),\n         answerDIV.appendChild(answerP),\n         content.produkte)\n       ) {\n         const answerP2 = document.createElement(\"span\");\n         (answerP2.className = \"faq-answer-produkte\"),\n           (answerP2.innerHTML = \"<br>\" + produkteArr[content.produkte]),\n           answerDIV.appendChild(answerP2);\n       }\n       itemDIV.appendChild(questionDIV),\n         itemDIV.appendChild(answerDIV),\n         faqList.appendChild(itemDIV);\n     });\n   } catch (error) {\n     showError(\"ERROR: \" + error.message);\n   }\n   cb();\n }\n\n function showError(message) {\n   errorMessage.textContent = message;\n   errorMessage.style.display = \"block\";\n }\n \n   </script>\n</body>\n</html>",
+        "container": "fixed",
+        "color_scheme": "",
+        "padding_top": 80,
+        "padding_bottom": 80
       }
     },
     "1758853090704a66e2": {
@@ -1868,19 +1617,15 @@
     "video_wcxYyA",
     "bk1600ultra_scence_tabs_myPAPz",
     "fullscreen_slider_1200_HbUqMH",
-    "rich_text_x6YUUc",
-    "sf2000_scence_tabs_7UhwRM",
-    "rich_text_ETK98q",
-    "rich_text_image_list_xWPfNc",
+    "rich_text_video_2026_34Y8Dx",
     "bes_product_accordion_Rtimqn",
     "rich_text_image_list_fg6cwJ",
-    "image_with_text_list_9kpz7i",
-    "rich_text_image_list_PJKrKJ",
-    "multicolumn_xTyLxF",
+    "slider_center_1280_gk9w7B",
     "rich_text_image_list_hmCAn8",
     "parameter_3GPQ6x",
     "download_eFJ3zG",
     "collapsible_tabs_NyK4qU",
+    "custom_liquid_Fn6f6W",
     "1758853090704a66e2",
     "custom_liquid_EnNBbQ"
   ]

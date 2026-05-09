@@ -4,6 +4,7 @@
   assign enable_image_zoom = section.settings.enable_image_zoom | default: false
   assign enable_sticky_info = section.settings.enable_sticky_info
   assign enable_product_sticky_bar = section.settings.enable_product_sticky_bar
+  assign select_product_sticky_bar = section.settings.select_product_sticky_bar
 
   assign product_class = 'product--' | append: section.settings.media_size
   assign product_class = product_class | append: ' product--' | append: media_layout
@@ -533,7 +534,11 @@
   </script>
 </product-info>
 {% if enable_product_sticky_bar %}
-  {% render 'product-sticky-bar', section_id: section.id %}
+  {% if select_product_sticky_bar=='product-sticky-bar-1200' %}
+    {% render 'product-sticky-bar-1200', section_id: section.id %}
+  {% else %}
+    {% render 'product-sticky-bar', section_id: section.id %}
+  {% endif %}
 {% endif %}
 {% schema %}
 {
@@ -2437,6 +2442,22 @@
       "id": "enable_product_sticky_bar",
       "default": false,
       "label": "产品导航显示"
+    },
+        {
+      "type": "select",
+      "id": "select_product_sticky_bar",
+      "options": [
+        {
+          "value": "product-sticky-bar",
+          "label": "通用型"
+        },
+        {
+          "value": "product-sticky-bar-1200",
+          "label": "1200定制"
+        }
+      ],
+      "default": "product-sticky-bar",
+      "label": "导航类型"
     },
     {
       "type": "header",

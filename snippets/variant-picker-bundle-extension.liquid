@@ -466,29 +466,11 @@
                   assign opt_selected = true
                 endif
                 assign addon_input_id = 'bundle-addon-' | append: section.id | append: '-' | append: option.position | append: '-t-' | append: valid_idx
-                # 解析行级 variant_id：
-                #   1) 优先：value 字段如果是纯数字 variant ID (>= 1000)
-                #   2) 其次：根据 bundle_addon_product 的 variants 数组，按 opt_qty 作为 1-based 索引取对应 variant
-                #      例：opt_qty=1 → variants[0]，opt_qty=2 → variants[1]
+                # 解析行级 variant_id：value 字段如果是纯数字（>= 1000），视为 variant ID
                 assign opt_variant_id = ''
                 assign opt_value_num = opt_value | plus: 0
                 if opt_value_num > 1000
                   assign opt_variant_id = opt_value_num
-                endif
-                if opt_variant_id == '' and opt_qty > 0 and vpb.settings.bundle_addon_product != blank
-                  assign mapped_idx = opt_qty | minus: 1
-                  assign mapped_variant = vpb.settings.bundle_addon_product.variants[mapped_idx]
-                  if mapped_variant
-                    assign opt_variant_id = mapped_variant.id
-                    if opt_price == blank
-                      assign opt_price = mapped_variant.price
-                    endif
-                    if opt_image == blank and mapped_variant.image
-                      assign opt_image = mapped_variant.image | image_url: width: 1600
-                    elsif opt_image == blank and mapped_variant.featured_image
-                      assign opt_image = mapped_variant.featured_image | image_url: width: 1600
-                    endif
-                  endif
                 endif
               -%}
               <input
@@ -683,12 +665,13 @@
             {%- endif -%}
           </h3>
           <div class="variant-extension-base-price" data-multi-host-price-container>
-            <span class="current-price" data-multi-host-current-price>{{ base_variant.price | money }}</span>
+            {% comment %} <span class="current-price" data-multi-host-current-price>{{ base_variant.price | money }}</span>
             <span class="original-price" data-multi-host-original-price style="{% unless base_variant.compare_at_price > base_variant.price %}display: none;{% endunless %}">
               {%- if base_variant.compare_at_price > base_variant.price -%}
                 {{ base_variant.compare_at_price | money }}
               {%- endif -%}
-            </span>
+            </span> {% endcomment %}
+            <span >{{host_option_config.mppt_des | default: '2 x 600W MPPT'}}</span>
           </div>
         </div>
       </div>
@@ -728,10 +711,11 @@
           </h3>
           {%- unless is_selector_layout -%}
             <div class="variant-extension-base-price">
-              <span class="current-price">{{ host_variant.price | money }}</span>
+              {% comment %} <span class="current-price">{{ host_variant.price | money }}</span>
               {%- if host_variant.compare_at_price > host_variant.price -%}
                 <span class="original-price">{{ host_variant.compare_at_price | money }}</span>
-              {%- endif -%}
+              {%- endif -%} {% endcomment %}
+              <span >{{host_option_config.mppt_des | default: ''}}</span>
             </div>
           {%- endunless -%}
         </div>
@@ -996,8 +980,12 @@
 
                 # 获取图片 URL（优先从配置中获取）
                 assign button_image_url = null
-                if value_mapping.image_url != blank
+         if value_mapping.image_url != blank
+                  if host_option_config.base_display_name =='SolidFlex 1200'
+                  assign button_image_url = value_mapping.image_url_1200
+                  else
                   assign button_image_url = value_mapping.image_url
+                  endif
                 elsif qty_variant.image
                   assign button_image_url = qty_variant.image | image_url: width: 160
                 elsif product.featured_image

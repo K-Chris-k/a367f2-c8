@@ -1724,6 +1724,21 @@
       const salePrice = stickyContainer.querySelector('.f-price-item--sale'); 
       const regularPrice = stickyContainer.querySelector('.f-price-item--regular');
 
+      const discountRules = [
+        { min: 100000, max: 139999, discount: 5000 },
+        { min: 140000, max: 179999, discount: 8000 },
+        { min: 180000, max: 219999, discount: 11000 },
+        { min: 220000, max: 249999, discount: 15000 },
+        { min: 250000, max: Infinity, discount: 20000 }
+      ];
+
+       for (const rule of discountRules) {
+        if (totalPriceInCents >= rule.min && totalPriceInCents <= rule.max) {
+          totalPriceInCents -= rule.discount;
+          break;
+        }
+      }
+
       // 格式化价格（欧元格式：1.234,56 €）
       {% comment %} const priceInEuros = totalPriceInCents / 100;
       const parts = priceInEuros.toFixed(2).split('.');

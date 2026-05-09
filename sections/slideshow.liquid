@@ -25,7 +25,7 @@
     .mobile-show{display:none}
     .section-{{ section.id }} .slideshow__content .slideshow__text{max-width: 50%;}
     .section-{{ section.id }}  .slideshow__title{text-align:left;width:100%}
-    .section-{{ section.id }} .slideshow__subtitle {line-height: 29px;font-size: 24px;font-weight: 500;padding-top:20px;}
+    .section-{{ section.id }} .slideshow__subtitle {line-height: 58px;font-size: 48px;font-weight: 800;padding-top:20px;}
     .slideshow__subtitle strong{font-size: 32px;}
     .slideshow__subtitle span{font-size: 18px;text-decoration-line: line-through;}
     {% comment %} .section-{{ section.id }} .slideshow__content{ align-items: self-start;} {% endcomment %}
@@ -150,16 +150,27 @@
       fill: var(--color);
       stroke: none;
     }
-    .text-lg {
-      font-size:24px;
-      line-height: 29px;
+    #shopify-section-{{ section.id }} .text-lg {
+      font-size:22px;
+      line-height: 27px;
+      font-weight: 500;
     }
 
-        #shopify-section-{{ section.id }} .mob_show{
+    #shopify-section-{{ section.id }} .mob_show{
       display: none;
     }
     #shopify-section-{{ section.id }} .pc_show{
       display: block;
+    }
+
+    #shopify-section-{{ section.id }} .rich-text__heading{
+      font-size:26px;
+      line-height:31px;
+      font-weight: 600;
+    }
+
+    #shopify-section-{{ section.id }} .description_mt{
+      margin-top: 25px;
     }
 
     @keyframes ripple {
@@ -253,7 +264,8 @@
 
         .section-{{ section.id }} .slideshow__text{padding:0px 2.0rem}
         .section-{{ section.id }} .swiper-slide .slideshow__title{flex-flow: column; width: auto;gap: 0px;line-height:29px;font-size:22px;text-align:center}
-        .slideshow__description.text-lg,.section-{{ section.id }} .slideshow__subtitle{line-height:17px;font-size:1.4rem}
+        .section-{{ section.id }} .slideshow__description.text-lg{line-height:17px;font-size:1.4rem}
+        .section-{{ section.id }} .slideshow__subtitle{line-height:31px;font-size:26px;}
         .section-{{ section.id }} .slideshow__buttons .btn{height:30px}
         .slideshow__subtitle span{font-size: 12px;}
         {% comment %} .section-{{ section.id }} .slideshow__subtitle {line-height: 17px;font-size: 14px;} {% endcomment %}
@@ -284,6 +296,21 @@
           }
           #shopify-section-{{ section.id }} .mob_show{
             display: flex;
+          }
+
+          #shopify-section-{{ section.id }} .rich-text__heading{
+            font-size:16px;
+            line-height:19px;
+            font-weight: 600;
+          }
+
+           #shopify-section-{{ section.id }} .text-lg {
+            font-size:16px;
+            line-height:19px;
+            font-weight: 500;
+          }
+          #shopify-section-{{ section.id }} .description_mt{
+            margin-top: 12px;
           }
       }
 </style>
@@ -537,10 +564,10 @@
                       </h2>
                       </motion-element>
                       <motion-element
-                        class="block slideshow__description {{ description_size }} rich-text__text rte"
+                        class="block slideshow__description {{ description_size }} rich-text__text rte description_mt"
                         data-text
                         hold
-                        style="color:{{ block.settings.description_color }};margin-top:{{ block.settings.description_mt }}px;"
+                        style="color:{{ block.settings.description_color }};"
                       >
                         {{- block.settings.description -}}
                       </motion-element>

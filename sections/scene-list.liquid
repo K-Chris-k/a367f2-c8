@@ -40,6 +40,38 @@
                 border-radius: 5px;       /* 微调圆角比例 */
                 margin-left: 6px;          /* 间隙不变，可自行调节 */
                 }
+
+
+
+                
+    
+ 
+  
+ 
+  
+  /* 渐变遮罩层 - 上半部分从深到浅渐变，下半部分透明 */
+  #shopify-section-{{ section.id }} .image-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%; /* 只覆盖上半部分 */
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.7) 0%,      /* 顶部深色 */
+      rgba(0, 0, 0, 0.3) 50%,     /* 中间过渡 */
+      rgba(0, 0, 0, 0) 100%       /* 底部完全透明（到达50%高度时已透明） */
+    );
+    pointer-events: none; /* 让遮罩不干扰点击 */
+    z-index: 1;
+  }
+  
+  /* 确保内容在遮罩之上（如果需要文字在遮罩上方显示） */
+  #shopify-section-{{ section.id }} .content-wrapper {
+    position: relative;
+    z-index: 2;
+  }
         }
 
 </style>
@@ -96,6 +128,7 @@
                 {% endif %}
               </div>
               <div class="content-wrapper">
+                
                 <h2 class="grid-title {% if block.settings.enable_show_new %} h2-badge {% endif %}">{{ block.settings.title }}
                    {% if block.settings.enable_show_new %}
                        <span class="new-badge">NEU</span>
@@ -103,6 +136,8 @@
 
                 </h2>
                 <h4 class="grid-des">{{ block.settings.description }}</h4>
+                <h4 class="grid-usp">{{ block.settings.usp }}</h4>
+                
                 {% if block.settings.button_link != blank %} 
                   <button
                     type="button"
@@ -168,6 +203,11 @@
           "type": "text",
           "id": "description",
           "label": "描述"
+        },
+       {
+          "type": "text",
+          "id": "usp",
+          "label": "卖点"
         },
         {
           "type": "text",

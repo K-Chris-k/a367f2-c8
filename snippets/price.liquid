@@ -96,9 +96,9 @@
           {% endif %}
         </s>
       </span>
-        {%- if product.id==7970665693283 -%}
+        {% comment %} {%- if product.id==7970665693283 -%}
         <span class="f-price-item--regular" style="color:#666666;padding-left:4px;">(50€ Sofortrabatt bei Zahlung)</span>
-         {%- endif -%}
+         {%- endif -%} {% endcomment %}
     {%- endunless -%}
   </div>
   {% if compare_at_price > price and request.page_type == 'product' %}

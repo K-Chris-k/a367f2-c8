@@ -25,4 +25,6 @@ if (!customElements.get("footer-details")) {
     }
   }
   customElements.define('footer-details', FooterDetails, { extends: 'details' });
+
+  
 }

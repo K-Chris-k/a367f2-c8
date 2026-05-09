@@ -78,7 +78,7 @@
             "bundle_display_mode": "bundle_with_battery",
             "host_product": "powerflex-2000-balkonkraftwerk-mit-speicher",
             "host_variant_id": "43526874988643",
-            "battery_product": "pfa2000-erweiterungsakku-1",
+            "battery_product": "indevolt-sfa1800-erweiterungsakku-kombination",
             "solar_product": "indevolt-bifaziale-monokristalline-solarmodule-kombination",
             "mount_flat_roof": "indevolt-halterung",
             "mount_flat_roof_connect_solar_quantity": true,
@@ -143,7 +143,7 @@
           "type": "cross_sell_products",
           "settings": {
             "title": "Vielleicht brauchst du auch",
-            "cross_sell_product_1": "indevolt-sfa1800-erweiterungsakku-kombination",
+            "cross_sell_product_1": "indevolt-sfa1800-erweiterungsakku",
             "cross_sell_product_1_default": false,
             "cross_sell_product_2": "shelly-pro-3em-120a",
             "cross_sell_product_2_default": false,
@@ -850,6 +850,7 @@
             "heading": "<strong>2400W bidirektionales Laden</strong>",
             "heading_size": "hd1",
             "text": "<p>Der PowerFlex 2000 ist mit einem integrierten bidirektionalen Wechselrichter ausgestattet, der Lade- und Entladeleistungen von 2400W bietet. Wenn die Strompreise niedrig sind, kann es schnell Strom speichern und so die Stromkosten senken.</p>",
+            "text2": "",
             "text_size": "text-base"
           }
         },
@@ -867,6 +868,7 @@
             "heading": "Parallelerweiterung",
             "heading_size": "hd1",
             "text": "<p>PowerFlex 2000 bietet nahtlose Dreifach-Parallelerweiterung – ideal für Ein- und Dreiphasen-Haushalte. Nach der Erweiterung ergeben sich bis zu 7200W Systemleistung, 7200W PV-Eingang und 36 kWh Kapazität. Für hohe Leistungsanforderungen ist eine erstklassige Wahl.</p>",
+            "text2": "",
             "text_size": "text-base"
           }
         },
@@ -884,6 +886,7 @@
             "heading": "<strong>Modulares Stapel-Design</strong>",
             "heading_size": "hd1",
             "text": "<p>Die Kapazität kann erweitert werden, indem die Akkupacks einfach aufeinander gestapelt werden.</p>",
+            "text2": "",
             "text_size": "text-base"
           }
         }
@@ -1120,11 +1123,11 @@
             "note": ""
           }
         },
-        "card_ngxa4f": {
+        "card_iMbbQd": {
           "type": "card",
           "settings": {
-            "title": "Abmessungen",
-            "content": "425×195×260 mm",
+            "title": "Lebenszyklen",
+            "content": "8000",
             "note": ""
           }
         },
@@ -1192,11 +1195,11 @@
             "note": ""
           }
         },
-        "card_iMbbQd": {
+        "card_ngxa4f": {
           "type": "card",
           "settings": {
-            "title": "Lebenszyklen",
-            "content": "8000",
+            "title": "Abmessungen",
+            "content": "425×195×260 mm",
             "note": ""
           }
         },
@@ -1204,7 +1207,7 @@
           "type": "card",
           "settings": {
             "title": "Betriebstemperatur",
-            "content": "-20°C ~ 60°C",
+            "content": "-20°C ~ 55°C",
             "note": ""
           }
         },
@@ -1252,14 +1255,22 @@
           "type": "card",
           "settings": {
             "title": "Drittanbieter-Kompatibilität",
-            "content": "Shelly Pro 3EM<br>Shelly 3EM<br>Shelly Plug S Gen3<br>everHome EcoTracker IR<br>Solarman Meter<br>Solarman IR Reader",
+            "content": "Shelly Pro 3EM<br>Shelly Pro EM<br>Shelly 3EM<br>Shelly Plug<br>Shelly Plug S Gen3<br>everHome EcoTracker IR<br>Solarman Meter<br>Solarman IR Reader<br>stromleser.one<br>HomeWizard P1",
+            "note": ""
+          }
+        },
+        "card_WXjq4q": {
+          "type": "card",
+          "settings": {
+            "title": "App-integrierte Wechselrichtermarken",
+            "content": "Deye<br>FusionSolar<br>GOODWE<br>GROWATT<br>SolarEdge<br>Solax<br>VaySunic",
             "note": ""
           }
         }
       },
       "block_order": [
         "card_zpKC6A",
-        "card_ngxa4f",
+        "card_iMbbQd",
         "card_LERwBg",
         "card_e4NVaY",
         "card_gQj3P3",
@@ -1268,14 +1279,15 @@
         "card_fqKtyp",
         "card_j6ECRE",
         "card_exbrwd",
-        "card_iMbbQd",
+        "card_ngxa4f",
         "card_QcQCiw",
         "card_fbUEKG",
         "card_QTqJAf",
         "card_V4pWRq",
         "card_gJBB8B",
         "card_PiiBXD",
-        "card_zPGTXc"
+        "card_zPGTXc",
+        "card_WXjq4q"
       ],
       "name": "参数列表",
       "settings": {
@@ -1373,7 +1385,9 @@
       ],
       "name": "下载列表",
       "settings": {
-        "title": "Downloads"
+        "title": "Downloads",
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
     "collapsible_tabs_NyK4qU": {

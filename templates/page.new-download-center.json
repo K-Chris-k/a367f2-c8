@@ -25,7 +25,7 @@
           "disabled": true,
           "settings": {
             "heading": "Download-Center",
-            "heading_size": "hd2",
+            "heading_size": "hd3",
             "heading_highlight_style": "none"
           }
         }
@@ -43,7 +43,7 @@
         "title_color": "#000000",
         "text_color": "#666",
         "btn_wrapper_alignment": "start",
-        "image": "shopify://shop_images/help-kv-pc.jpg",
+        "image": "shopify://shop_images/helpcenter-kv-pc.jpg",
         "desktop_height": "adapt",
         "overlay_opacity": 0,
         "enable_parallax": false,
@@ -52,7 +52,7 @@
         "max_width": 720,
         "content_position": "middle-left",
         "content_alignment": "left",
-        "image_mobile": "shopify://shop_images/help-kv-mob.jpg",
+        "image_mobile": "shopify://shop_images/helpcenter-kv-mob-new.jpg",
         "mobile_height": "auto",
         "padding_top": 0,
         "padding_bottom": 0
@@ -65,7 +65,7 @@
           "type": "category",
           "settings": {
             "category_name": "Balkonkraftwerk mit Speicher",
-            "pdf_list": "Indevolt Bedienungsanleitung|https://docs.indevolt.com/docs/hardware/doc-intro/|123|\nSolidFlex 2000 Serie|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex2000SeriesManual.pdf?v=1774602332\nPowerFlex 2000 Serie|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/PwerFlex2000SeriesManual.pdf?v=1774602333\nBK1600 Ultra|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Bedienungsanleitung_BK1600_Ultra.pdf?v=1749526304\nBK1600|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Indevolt_BK1600.pdf?v=1737610402"
+            "pdf_list": "Indevolt Bedienungsanleitung|https://docs.indevolt.com/docs/hardware/doc-intro/|123|\nSolidFlex 1200 Serie|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolixFlex-1200-Manual.pdf?v=1775205207\nSolidFlex 2000 Serie|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex2000SeriesManual.pdf?v=1774602332\nPowerFlex 2000 Serie|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/PwerFlex2000SeriesManual.pdf?v=1774602333\nBK1600 Ultra|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Bedienungsanleitung_BK1600_Ultra.pdf?v=1749526304\nBK1600|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/Indevolt_BK1600.pdf?v=1737610402"
           }
         },
         "category_jEXBRN": {
@@ -118,7 +118,7 @@
           "type": "category",
           "settings": {
             "category_name": "SolidFlex 2000 Serie",
-            "pdf_list": "SolidFlex 2000 Serie RoHS Zertifikat|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000-RoHS.pdf?v=1757316238\nSolidFlex 2000 Serie Österreich Grid Connection|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_Osterreich_Grid_Connection.pdf?v=1757316388\nSolidFlex 2000 Serie Deutschland Grid Connection|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_Zertifikat_fur_den_NA-Schutz.pdf?v=1757316512\nDeutschland Grid Connection 2400W|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/2400W_VDE-AR-N_4105.pdf?v=1768447347\nSolidFlex 2000 Serie CE Zertifikat|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_CE_Zertifikat.pdf?v=1757316616\nSFA1800 CE Zertifikat|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SFA1800_CE_Zertifikat.pdf?v=1757316694\nSolidFlex 2000 Serie REACH-Verordnung|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_REACH-Verordnung.pdf?v=1757330086"
+            "pdf_list": "SolidFlex 1200 Deutschland Grid Connection|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_1200_Deutschland_Grid_Connection.pdf?v=1776310170\nSolidFlex 2000 Serie RoHS Zertifikat|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000-RoHS.pdf?v=1757316238\nSolidFlex 2000 Serie Österreich Grid Connection|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_Osterreich_Grid_Connection.pdf?v=1757316388\nSolidFlex 2000 Serie Deutschland Grid Connection|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_Zertifikat_fur_den_NA-Schutz.pdf?v=1757316512\nDeutschland Grid Connection 2400W|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/2400W_VDE-AR-N_4105.pdf?v=1768447347\nSolidFlex 2000 Serie CE Zertifikat|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_CE_Zertifikat.pdf?v=1757316616\nSFA1800 CE Zertifikat|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SFA1800_CE_Zertifikat.pdf?v=1757316694\nSolidFlex 2000 Serie REACH-Verordnung|https://cdn.shopify.com/s/files/1/0596/6367/9587/files/SolidFlex_2000_REACH-Verordnung.pdf?v=1757330086"
           }
         },
         "category_yanKkc": {

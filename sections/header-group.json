@@ -17,16 +17,25 @@
         "announcement_bar_npRHcX": {
           "type": "announcement_bar",
           "settings": {
-            "text": "Frühlings-Special: Bis zu 57% Rabatt  <a href=\"/pages/spring-update\" title=\"Spring Update\">Mehr erfahren →</a>",
+            "text": "Muttertagsaktion: 7. – 12. Mai  <a href=\"#mumsale\" title=\"#mumsale\">Jetzt entdecken</a>",
+            "link": ""
+          }
+        },
+        "announcement_bar_dM3fLk": {
+          "type": "announcement_bar",
+          "disabled": true,
+          "settings": {
+            "text": "Kostenloser & schneller Versand丨30 Tage Preisgarantie",
             "link": ""
           }
         }
       },
       "block_order": [
-        "announcement_bar_npRHcX"
+        "announcement_bar_npRHcX",
+        "announcement_bar_dM3fLk"
       ],
       "custom_css": [
-        ".color-scheme-4 {background-image: url(\"https://cdn.shopify.com/s/files/1/0596/6367/9587/files/sp-top-pc.png?v=1773111438\"); background-size: cover;}",
+        ".color-scheme-4 {background-image: linear-gradient(#b9d7fb, #c4dafa) !important; background-size: cover;}",
         "@media (max-width: 768px) {.announcement-bar__text a {padding-left: 5px; /* 确保a标签宽度为父容器的100% */ } .announcement-bar__text span {display: inline-block; } .announcement-bar__text a {display: inline-block; }}",
         "@media (max-width: 413px) {.announcement-bar__text a {/* display: flex; */ justify-content: center; /* 确保a标签宽度为父容器的100% */ }}"
       ],
@@ -54,35 +63,41 @@
               "solidflex-2000-balkonkraftwerk-mit-speicher",
               "indevolt-solidflex-2000-eco-balkonkraftwerk-mit-halbfesten-lifepo-akkus",
               "indevolt-solidflex-1200-hybrid-balkonkraftwerk-mit-halbfesten-lifepo-akkus",
-              "indevolt-sfa1800-erweiterungsakku",
-              "bk1600-balkonkraftwerk-mit-speicher",
-              "bk1600-ultra-balkonkraftwerk-mit-speicher",
               "powerflex-2000-balkonkraftwerk-mit-speicher",
-              "pfa2000-erweiterungsakku"
+              "bk1600-balkonkraftwerk-mit-speicher",
+              "bk1600-ultra-balkonkraftwerk-mit-speicher"
             ],
             "heading_1": "Balkonkraftwerk mit Speicher",
             "heading_size_1": "h5",
             "description_1": "",
             "promotion_link_1": "",
             "promo_image_2": [
-              "indevolt-mikrowechselrichter",
-              "indevolt-2000w-balkonkraftwerk-mit-mikrowechselrichter-deye-m200g4"
+              "indevolt-sfa1800-erweiterungsakku",
+              "pfa2000-erweiterungsakku"
             ],
-            "heading_2": "",
+            "heading_2": "Erweiterungsakku",
             "heading_size_2": "h5",
             "description_2": "",
             "promotion_link_2": "",
             "promo_image_3": [
-              "indevolt-bifaziale-monokristalline-solarmodule-500w-2er-pack",
-              "indevolt-bifacial-monocrystalline-solarpanel",
-              "indevolt-860w-solarpanels-430w-2er-pack",
-              "indevolt-flexibles-solarpanel"
+              "indevolt-mikrowechselrichter",
+              "indevolt-2000w-balkonkraftwerk-mit-mikrowechselrichter-deye-m200g4"
             ],
             "heading_3": "",
             "heading_size_3": "h5",
             "description_3": "",
             "promotion_link_3": "",
             "promo_image_4": [
+              "indevolt-bifaziale-monokristalline-solarmodule-500w-2er-pack",
+              "indevolt-bifacial-monocrystalline-solarpanel",
+              "indevolt-860w-solarpanels-430w-2er-pack",
+              "indevolt-flexibles-solarpanel"
+            ],
+            "heading_4": "",
+            "heading_size_4": "h5",
+            "description_4": "",
+            "promotion_link_4": "",
+            "promo_image_5": [
               "solarman-smart-plug",
               "indevolt-smarter-stromzahler",
               "solarman-lora-smarter-stromzahler-smd1",
@@ -93,15 +108,10 @@
               "halterung-fur-flachdach-und-garten",
               "indevolt-halterung-fur-dachziegel",
               "indevolt-halterung-fur-bitumen-und-metalldach",
-              "indevolt-solarbank-schuko-anschlusskabel-5m",
+              "indevolt-solarbank-schuko-anschlusskabel",
               "indevolt-ac-verlangerungskabel-fur-solidflex-und-powerflex-serie",
               "indevolt-pv-verlangerungskabel"
             ],
-            "heading_4": "",
-            "heading_size_4": "h5",
-            "description_4": "",
-            "promotion_link_4": "",
-            "promo_image_5": [],
             "heading_5": "",
             "heading_size_5": "h5",
             "description_5": "",

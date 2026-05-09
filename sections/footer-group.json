@@ -90,11 +90,11 @@
         "image_text_F3FNhx": {
           "type": "image_text",
           "settings": {
-            "block_width": 25,
+            "block_width": 32,
             "heading": "Power Genius GmbH",
             "heading_size": "h6",
             "image_width": 150,
-            "text": "<p><a href=\"mailto:service@indevolt.com\" title=\"mailto:service@indevolt.com\">Email: service@indevolt.com</a></p>",
+            "text": "<p>Adresse: Wallbergstraße 3, 82024 Taufkirchen<br/>Handelsregister-Nr.: HRB 249343<br/>USt-IdNr.: DE327056372<br/>Vertreten durch: Cui Yuan<br/><a href=\"mailto:service@indevolt.com\" title=\"mailto:service@indevolt.com\">Email: service@indevolt.com</a></p>",
             "button_label": "",
             "button_link": "",
             "open_default": false,
@@ -125,7 +125,8 @@
         "newsletter_3qCrWc"
       ],
       "custom_css": [
-        ".form-control {--color-border: var(--color-field);}"
+        ".form-control {--color-border: var(--color-field);}",
+        ".footer__top {font-size: 12px;}"
       ],
       "settings": {
         "color_scheme": "scheme-inverse",

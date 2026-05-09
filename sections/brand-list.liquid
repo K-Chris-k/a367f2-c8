@@ -17,7 +17,7 @@
     {% comment %} overflow-wrap: break-word;word-break:break-word; {% endcomment %}
   display: -webkit-box;-webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
-            overflow: hidden;
+            overflow: hidden ;
             text-overflow: ellipsis;
             max-height: calc(1.2em * 8); 
             line-height: 1.2;
@@ -82,6 +82,63 @@
      .logo-position-center{padding-bottom:0px}
      .logo-title{margin-top:7rem}
   }
+
+
+  /* 父容器需要设置相对定位 */
+.custom-tooltip {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+  z-index: 9999; /* 确保父元素也有层级 */
+}
+
+/* 提示框主体 */
+.custom-tooltip::before {
+  content: attr(data-tooltip); /* 从自定义属性读取文本 */
+  position: absolute;
+  bottom: 5%; /* 显示在上方，可根据需求调整 */
+  left: 30%;
+  transform: translateX(-20%);
+  background-color: rgba(51, 51, 51, 0.85); /* 70% 不透明度 */
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  white-space: normal; /* 防止文字换行，也可改为 normal */
+  z-index: 9999;
+  
+  /* 初始状态隐藏，并设置过渡效果 */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+}
+
+/* 小三角箭头 */
+.custom-tooltip::after {
+  content: "";
+  position: absolute;
+  bottom: 115%; /* 位于提示框下方 */
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent; /* 上三角箭头配色 */
+  z-index: 10;
+  
+  /* 初始状态隐藏 */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+}
+
+/* 悬停时显示 */
+.custom-tooltip:hover::before,
+.custom-tooltip:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+
 </style>
 {% liquid
     assign motion_delay = 50
@@ -159,7 +216,9 @@
               {{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
             {% endif %}
           </div>
-          <div class="detail"   title='{{ block.settings.description }}'>{{ block.settings.description }}</div>
+          <div class="custom-tooltip" data-tooltip='{{ block.settings.description }}' >
+          <div class="detail"    >{{ block.settings.description }}</div>
+          </div>
         </div>
       {% endfor %}
     </div>
@@ -207,7 +266,7 @@
       slidesToShow: 3,
       dots: true,
       arrows: false,
-      autoplay: true,
+      autoplay: false,
       speed: 300,  // 动画速度(毫秒)
       touchThreshold: 10,  // 触摸阈值
       waitForAnimate: true,  // 等待动画完成

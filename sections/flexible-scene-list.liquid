@@ -2,7 +2,7 @@
     #shopify-section-{{ section.id }} .section-flexible-scene-list .product-collection{padding-top: {{ section.settings.padding_top }}px;padding-bottom: {{ section.settings.padding_bottom }}px;}
     #shopify-section-{{ section.id }} .section-flexible-scene-list .product-collection .title{ font-size: 46px;font-weight: 700;text-align:center;color:#000}
     #shopify-section-{{ section.id }} .section-flexible-scene-list .product-tip .title{text-align:left;}
-    .section-flexible-scene-list .flex-title-box{ position: absolute;max-width:394px;bottom: 40px;left:48px;font-size: 16px;color: #fff;}
+    .section-flexible-scene-list .flex-title-box{ position: absolute;max-width:500px;bottom: 40px;left:48px;font-size: 16px;color: #fff;}
     .section-flexible-scene-list .flex-title-box .flex-title{font-size: 36px;color: #fff;}
      .section-flexible-scene-list .flex-title-box .flex-des{margin-top:8px;line-height:19px;font-size: 16px;}
     .section-flexible-scene-list .thumbnail-slider .flex-title-box h4{line-height:34px;font-size: 30px;}
@@ -27,7 +27,7 @@
       width: 100%;
       height: 600px;
       object-fit: cover;
-      border-radius: 20px;
+      {% comment %} border-radius: 20px; {% endcomment %}
       display: block;
     }
     .section-flexible-scene-list .thumbnail-slider .slick-list{padding:0px!important}
