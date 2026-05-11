@@ -1581,10 +1581,10 @@
       }
 
       // 当电池=0x（默认）时，决定主图应该显示什么：
-      // 优先使用 addon 图片（如果 addon 选中非0x 且有 image_url），否则使用 layout 图片
+      // 优先使用 addon 图片（只要有 image_url 就用，包括 0x），否则使用 layout 图片
       function applyImageForBatteryZero(fallbackImageUrl) {
         const addon = getSelectedAddonInfo();
-        if (addon.qty > 0 && addon.imageUrl) {
+        if (addon.imageUrl) {
           updateMainProductImage(addon.imageUrl, '');
           return true;
         }
@@ -2484,6 +2484,17 @@
         _addonQtyCache = initAddon ? (parseInt(initAddon.dataset.qty || '0', 10) || 0) : 0;
       }
       syncQtyCap();
+
+      // 所有组件初始化完毕后，再同步一次主图（确保 addon 0x 的图片被正确应用）
+      // 如果 URL 带有 addon / addon_variant 参数，跳过此同步，由 autoSelectFromUrl 统一处理
+      (function () {
+        var urlParams = new URLSearchParams(window.location.search);
+        if (!urlParams.get('addon') && !urlParams.get('addon_variant')) {
+          setTimeout(function () {
+            decideAndApplyMainImage();
+          }, 300);
+        }
+      })();
 
       // 将函数暴露到全局作用域，供其他组件使用
       window.updateMainProductImage = updateMainProductImage;
