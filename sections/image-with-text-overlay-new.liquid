@@ -24,9 +24,9 @@
 
 
     #shopify-section-{{ section.id }} .hd2 { line-height: 58px;font-size: 48px;}
-    #shopify-section-{{ section.id }} .hd2  strong{ color: #007A3B;}
+    #shopify-section-{{ section.id }} .hd2  strong{ color: #FF9613;}
     #shopify-section-{{ section.id }} .rich-text__text { margin-top:5px; line-height: 22px;font-size: 18px;}
-    #shopify-section-{{ section.id }} .rich-text__text p { margin-top:12px; color:#000000;line-height: 31px;font-size: 26px;font-weight: 600;}
+    #shopify-section-{{ section.id }} .rich-text__text p { margin-top:12px; color:#000000;line-height: 29px;font-size: 24px;font-weight: 500;}
     #shopify-section-{{ section.id }} .btn-wrapper{display:flex; gap:30px; flex-wrap:wrap;justify-content:{{section.settings.btn_wrapper_alignment }}}
     #shopify-section-{{ section.id }} .white--btn--secondary,#shopify-section-{{ section.id }} .white--btn--secondary:before, 
     #shopify-section-{{ section.id }} .white--btn--secondary:hover:before{ transition: none;background:none;border:2px solid #fff}
@@ -123,6 +123,12 @@
       order: 3; 
     }
 
+    #shopify-section-{{ section.id }} .content-overlay {
+    top: 0;
+    padding-top: 66px;
+
+}
+
 
   }
 
@@ -210,7 +216,7 @@
                   </motion-element>
                   {%- assign motion_delay = motion_delay | plus: 50 -%}
                 {% when 'heading' %}
-                  <h2 class="pc_show rich-text__heading {{ block.settings.heading_size }}" style="max-width:440px;color:{{ section.settings.title_color }}" {{ block.shopify_attributes }} >
+                  <h2 class="pc_show rich-text__heading {{ block.settings.heading_size }}" style="max-width:840px;color:{{ section.settings.title_color }}" {{ block.shopify_attributes }} >
                     <motion-element data-motion="fade-up" data-motion-delay="{{ motion_delay }}" class="block">
                       {% render 'highlight-text',
                         text: block.settings.heading,
@@ -221,7 +227,7 @@
                   <h2 class="mob_show rich-text__heading {{ block.settings.heading_size }}" style="color:{{ section.settings.title_color }}" {{ block.shopify_attributes }} >
                     <motion-element data-motion="fade-up" data-motion-delay="{{ motion_delay }}" class="block">
                       {% render 'highlight-text',
-                        text: 'Bis zu <strong>50%</strong> Rabatt',
+                        text: 'May Special Bis <br>zu <strong>50% Rabatt</strong>',
                         style: block.settings.heading_highlight_style
                       %}
                     </motion-element>

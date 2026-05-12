@@ -69,7 +69,14 @@
             "button_style": "circle",
             "button_size": 40,
             "size_title": "Size",
-            "size_chart_from_page": ""
+            "size_chart_from_page": "",
+            "bundle_addon_enable": false,
+            "bundle_addon_product": "",
+            "bundle_addon_title": "",
+            "bundle_addon_subtitle": "",
+            "bundle_addon_default_option": 1,
+            "bundle_addon_options": "",
+            "bundle_addon_position": "middle"
           }
         },
         "bundle_products_8gdJxJ": {
@@ -217,6 +224,7 @@
         "color_scheme": "scheme-1",
         "enable_sticky_info": true,
         "enable_product_sticky_bar": false,
+        "select_product_sticky_bar": "product-sticky-bar",
         "media_size": "medium",
         "gallery_layout": "carousel",
         "mobile_thumbnails": "show",
@@ -1247,7 +1255,7 @@
           "type": "card",
           "settings": {
             "title": "Einhaltung der Zertifizierung",
-            "content": "VDE-AR-N 4105IEC 62619EN 62109IEC 61000-6-2/4EN 50549UN38.3+MSDSRoHS 2.0",
+            "content": "VDE-AR-N 4105<br>IEC 62619<br>EN 62109<br>IEC 61000-6-2/4<br>EN 50549<br>UN38.3+MSDS<br>RoHS 2.0",
             "note": ""
           }
         },

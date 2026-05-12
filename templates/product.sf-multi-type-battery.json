@@ -83,7 +83,7 @@
             "bundle_addon_product": "sfa3600-erweiterungsakku",
             "bundle_addon_title": "SFA3600 Erweiterungsakku",
             "bundle_addon_subtitle": "3600Wh pro Akku",
-            "bundle_addon_default_option": 1,
+            "bundle_addon_default_option": 5,
             "bundle_addon_options": "0x|0|||https://cdn.shopify.com/s/files/1/0596/6367/9587/files/sf-1-pro.png?v=1777023970||\n1x|1|1792Wh||https://cdn.shopify.com/s/files/1/0596/6367/9587/files/2000_3600.png?v=1778307403|69900|SFA3600×1\n2x|2|2792Wh||https://cdn.shopify.com/s/files/1/0596/6367/9587/files/2000_3600x2_18eec3bf-3d9a-4f64-b6bd-5ae6f84810cd.png?v=1778307402|139800|SFA3600×2\n3x|3|3792Wh||https://cdn.shopify.com/s/files/1/0596/6367/9587/files/2000_3600x3_0e200314-fe4e-4ff3-9e87-bcc8ca58cc6c.png?v=1778307400|209700|SFA3600×3\n4x|4|3792Wh||https://cdn.shopify.com/s/files/1/0596/6367/9587/files/2000_3600x4_459d6367-8f02-4457-8bdb-f911db90316e.png?v=1778307401|279600|SFA3600×4\n5x|5|3792Wh||https://cdn.shopify.com/s/files/1/0596/6367/9587/files/2000_3600x5_bf308729-aa21-4fbb-b91c-5072687940b8.png?v=1778307400|349500|SFA3600×5",
             "bundle_addon_position": "middle",
             "bundle_combined_image": "shopify://shop_images/2000_1800_3600.png"

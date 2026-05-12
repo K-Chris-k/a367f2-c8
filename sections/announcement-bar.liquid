@@ -46,6 +46,7 @@
               {%- if block.settings.text != blank -%}
                 <p class="announcement-bar__text">{{ block.settings.text }}</p>
               {%- endif -%}
+
               {%- if block.settings.link != blank -%}
                 </a>
               {%- else -%}
@@ -56,18 +57,9 @@
                 {%- if block.settings.text != blank -%}
                   <div class="md:text-base text-sm-extra">{{ block.settings.text }}</div>
                 {%- endif -%}
-                {%- if block.settings.type == 'evergreen' or block.settings.time != blank -%}
-                  {%- render 'countdown-timer',
-                    id: block.id,
-                    type: block.settings.type,
-                    duration: block.settings.duration,
-                    time: block.settings.time,
-                    display_text: false,
-                    number_size: 'h4',
-                    custom_class: 'flex items-center justify-center',
-                    block_class: 'font-body-bolder'
-                  -%}
-                {%- endif -%}
+                 
+                {% render 'tip-countdown-diy',block:block %}
+           
                 {%- if block.settings.button_label != blank -%}
                   <a
                     href="{{ block.settings.button_link | default: "#" }}"
@@ -185,6 +177,12 @@
           "id": "text",
           "label": "t:sections.all.text.label",
           "default": "Welcome to our store"
+        },
+        {
+          "type": "checkbox",
+          "id": "is_show_countdown",
+          "label": "是否显示倒计时",
+          "default": false
         },
         {
           "type": "url",

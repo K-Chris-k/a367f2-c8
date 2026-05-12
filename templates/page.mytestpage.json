@@ -357,7 +357,7 @@
           "type": "countdown",
           "settings": {
             "countdown_title": "10. – 31. März",
-            "end_date": "2026-03-31 23:59:59",
+            "end_date": "2026-05-31 23:59:59",
             "countdown_text_color": "#ffffff",
             "countdown_style": "standard",
             "show_days": true,
@@ -384,7 +384,6 @@
         "countdown_38HJKV",
         "button_nrkX8w"
       ],
-      "disabled": true,
       "name": "首页活动页kv",
       "settings": {
         "container": "full",

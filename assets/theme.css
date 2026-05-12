@@ -1291,7 +1291,7 @@ h6,
 }
 
 *:focus-visible {
-  outline: 0.2rem solid rgb(var(--color-keyboard-focus));
+  outline: 0.0rem solid rgb(var(--color-keyboard-focus));
   outline-offset: 0.3rem;
 }
 
@@ -3816,7 +3816,8 @@ input:is([type=radio])::after {
 
 .modal--newsletter-alert .alert {
   background: none !important;
-  padding: 0 !important;
+  padding: 0 15px; !important;
+  justify-items: center;
 }
 
 .product-card__wrapper {
