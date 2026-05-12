@@ -40,7 +40,9 @@
   .variant-extension-addon[data-addon-position="middle"] {
     border-top: none;
     border-bottom: 1px solid #e5e5e5;
-    padding-bottom: 16px;
+    padding-bottom: 30px;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 30px;
   }
   .variant-extension-addon[data-addon-position="top"] {
     border-top: none;
@@ -132,6 +134,14 @@
       font-size: 11px;
       padding: 4px 8px;
     }
+    .variant-extension-addon{
+      margin-top: 10px;
+    }
+    .variant-extension-addon[data-addon-position="middle"] {
+    border-top: none;
+  
+    padding-top: 20px;
+  }
   }
   @media (min-width: 769px) and (max-width: 1024px) {
     .bundle-other-display-text,
@@ -366,14 +376,12 @@
 
       assign ca = option_config.custom_addon
       assign show_custom_addon = false
-      assign ca_default_idx = 0
       if theme_addon_show == false and ca != blank
         unless ca.enabled == false
           if ca.options != blank
             assign show_custom_addon = true
           endif
         endunless
-        assign ca_default_idx = ca.default_selected | default: 0 | plus: 0
       endif
     -%}
     {% capture addon_block_html %}
@@ -383,7 +391,6 @@
         if theme_def_raw < 1
           assign theme_def_raw = 1
         endif
-        assign theme_def_idx = theme_def_raw | minus: 1
       -%}
       <div
         class="variant-extension-addon"
@@ -460,9 +467,7 @@
                   assign opt_value = opt_label
                 endif
                 assign opt_selected = false
-                assign valid_idx_num = valid_idx | plus: 0
-                assign theme_def_idx_num = theme_def_idx | plus: 0
-                if valid_idx_num == theme_def_idx_num
+                if valid_idx == 0
                   assign opt_selected = true
                 endif
                 assign addon_input_id = 'bundle-addon-' | append: section.id | append: '-' | append: option.position | append: '-t-' | append: valid_idx
@@ -576,7 +581,7 @@
               assign opt_price = opt.price | default: ''
               assign opt_text = opt.text | default: ''
               assign opt_selected = false
-              if forloop.index0 == ca_default_idx
+              if forloop.index0 == 0
                 assign opt_selected = true
               endif
               assign addon_input_id = 'bundle-addon-' | append: section.id | append: '-' | append: option.position | append: '-' | append: forloop.index0
