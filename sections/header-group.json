@@ -38,6 +38,10 @@
         },
         "announcement_bar_dM3fLk": {
           "type": "announcement_bar",
+<<<<<<< HEAD
+=======
+          "disabled": true,
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
           "settings": {
             "text": "Kostenloser & schneller Versand丨30 Tage Preisgarantie",
             "is_show_countdown": false,
@@ -88,8 +92,11 @@
             "description_1": "",
             "promotion_link_1": "",
             "promo_image_2": [
+<<<<<<< HEAD
               "indevolt-sfa3600-erweiterungsakku-mit-halbfeste-lfp-akkus",
               "indevolt-pfa4000-erweiterungsakku",
+=======
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
               "indevolt-sfa1800-erweiterungsakku",
               "pfa2000-erweiterungsakku"
             ],

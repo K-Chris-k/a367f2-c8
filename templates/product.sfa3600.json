@@ -42,11 +42,18 @@
             "title": "0% MwSt. auf PV-Sets in Deutschland",
             "content": "Hiermit bestätigen Sie, dass Sie die Voraussetzungen für eine umsatzsteuerfreie Lieferung gemäß § 12 Abs. 3 von Deutschland erfüllen.",
             "taxs_title": "Erfahren Sie mehr.",
+<<<<<<< HEAD
             "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie <a href=\"https://www.gesetze-im-internet.de/ustg_1980/__12.html\" target=\"_blank\">hier</a> um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
             "heading_0": "",
             "heading_1": "Nicht auf Lager – Lieferzeit ca. 10 Werktage.",
             "heading_2": "Der Versand von Energiespeicherprodukten erfolgt standardmäßig durch DPD. Abweichungen hiervon sind gegen Aufpreis möglich.",
             "heading_new": "Hinweis: Bestellungen können in mehreren Paketen versendet werden."
+=======
+            "taxs_popup_content": "<p><strong>0% MwSt. bei Lieferungen nach Deutschland</strong></p><p>es ist möglich, dass für die ausgewählten Produkte Nullsteuersatz gemäß § 12 Abs. 3 UStG für Deutschland gilt. Bitte prüfen Sie, ob die Voraussetzungen in Ihrem Fall erfüllt sind. Der Verkäufer leistet keine Steuerberatung und übernimmt keine Gewähr für das Eintreten steuerrechtlicher Tatbestände. Klicken Sie <a href='https://www.gesetze-im-internet.de/ustg_1980/__12.html' target='_blank'>hier</a> um den Gesetzestext des § 12 Abs. 3 UStG in Deutschland zu lesen.</p><p>﻿Bitte prüfen Sie für die nach Deutschland verkaufte(n) Ware(n), ob die Voraussetzungen für die Umsatzsteuerbefreiung nach § 12 Abs. 3 UStG erfüllt sind. Ist dies der Fall, kreuzen Sie bitte an, dass Sie beim Kauf der Ware von der Umsatzsteuer befreit sind. Mit dem Ankreuzen dieses Feldesversichern Sie, dass﻿</p><ul><li>die Liefer- und Rechnungsadresse in Deutschland liegt,</li><li>das erworbene Produkt auf oder in der Nähe von Privatwohnungen, Wohnungen, öffentlichen und anderen Gebäuden, die für Tätigkeiten im öffentlichen Interesse genutzt werden, oder auf Wohnwagen oder Wohnschiffen, die nicht oder nur gelegentlich bewegt werden, installiert wird, und</li><li>die installierte Bruttoleistung der Photovoltaikanlage laut Marktstammdatenregister nicht mehr als 30 Kilowatt (peak) nicht übersteigt oder nicht übersteigen wird.</li></ul><p>Die Anwendung des Nullsteuersatzes ist nicht mit einem verbindlichen Preisangebot des Verkäufers verbunden. Der Gesamtpreis ergibt sich aus den Produktpreisen und Steuern sowie ggf. zusätzlichen Kosten wie Versand etc. Wenn der Kunde angibt, dass ein Steuersatz von 0% anwendbar ist, wird der angegebene Preis auf dieser Grundlage angezeigt.</p>",
+            "heading_1": "Hinweis: Bestellungen können in mehreren Paketen versendet werden.",
+            "heading_2": "Der Versand von Energiespeicherprodukten erfolgt standardmäßig durch DPD. Abweichungen hiervon sind gegen Aufpreis möglich.",
+            "heading_new": ""
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
           }
         },
         "description": {
@@ -177,8 +184,13 @@
           "type": "image",
           "settings": {
             "container": "fixed",
+<<<<<<< HEAD
             "image": "shopify://shop_images/3600-package-pc.png",
             "mobile_image": "shopify://shop_images/3600-package-mob.png"
+=======
+            "image": "shopify://shop_images/sfa1800-pc.png",
+            "mobile_image": "shopify://shop_images/sfa1800-mob.png"
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
           }
         }
       },
@@ -195,7 +207,11 @@
         "show_title_icon": false,
         "img-href": "",
         "padding_top": 60,
+<<<<<<< HEAD
         "padding_bottom": 60,
+=======
+        "padding_bottom": 0,
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
         "image_top": 28,
         "video_radius": 18,
         "video_aspect_ratio": "16/9",
@@ -207,6 +223,7 @@
     "parameter_4LRUmi": {
       "type": "parameter",
       "blocks": {
+<<<<<<< HEAD
         "card_yy6Uma": {
           "type": "card",
           "settings": {
@@ -219,18 +236,32 @@
           "type": "card",
           "settings": {
             "title": "Batterietyp",
+=======
+        "card_6czAnV": {
+          "type": "card",
+          "settings": {
+            "title": "Akkutyp",
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
             "content": "Semi-solid LiFePO₄",
             "note": ""
           }
         },
+<<<<<<< HEAD
         "card_rL3pYU": {
           "type": "card",
           "settings": {
             "title": "Nennkapazität",
+=======
+        "card_emQ4eg": {
+          "type": "card",
+          "settings": {
+            "title": "Kapazität",
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
             "content": "3584 Wh",
             "note": ""
           }
         },
+<<<<<<< HEAD
         "card_c4w3dG": {
           "type": "card",
           "settings": {
@@ -264,6 +295,17 @@
           }
         },
         "card_Xxzx8g": {
+=======
+        "card_K6QTEw": {
+          "type": "card",
+          "settings": {
+            "title": "Abmessungen",
+            "content": "425x255x300 mm",
+            "note": ""
+          }
+        },
+        "card_AfzUFY": {
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
           "type": "card",
           "settings": {
             "title": "Gewicht",
@@ -271,6 +313,7 @@
             "note": ""
           }
         },
+<<<<<<< HEAD
         "card_6czAnV": {
           "type": "card",
           "settings": {
@@ -317,6 +360,32 @@
         "card_emQ4eg",
         "card_K6QTEw",
         "card_AfzUFY"
+=======
+        "card_C4QT4g": {
+          "type": "card",
+          "settings": {
+            "title": "Betriebstemperatur",
+            "content": "-20~55°C",
+            "note": ""
+          }
+        },
+        "card_wmpCnz": {
+          "type": "card",
+          "settings": {
+            "title": "Schutzgrad",
+            "content": "IP65",
+            "note": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_6czAnV",
+        "card_emQ4eg",
+        "card_K6QTEw",
+        "card_AfzUFY",
+        "card_C4QT4g",
+        "card_wmpCnz"
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
       ],
       "name": "参数列表",
       "settings": {
@@ -342,7 +411,10 @@
       "block_order": [
         "card_CLibNw"
       ],
+<<<<<<< HEAD
       "disabled": true,
+=======
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
       "name": "下载列表",
       "settings": {
         "title": "Downloads",
@@ -368,7 +440,11 @@
       ],
       "settings": {
         "include_margins": true,
+<<<<<<< HEAD
         "padding_top": 60,
+=======
+        "padding_top": 0,
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
         "padding_bottom": 0
       }
     }

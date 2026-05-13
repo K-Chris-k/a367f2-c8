@@ -88,12 +88,109 @@
         "padding_bottom": 0
       }
     },
+<<<<<<< HEAD
     "app_sticky_rEhNqt": {
       "type": "app-sticky",
       "custom_css": [
         ".black-friday-nav {background: linear-gradient(to right, #589222, #589222);}",
         ".black-friday-nav .nav-link:hover {background: linear-gradient(to right, #ffffff, #ffffff); color: #335007;}",
         ".black-friday-nav .nav-link.active,.black-friday-nav .nav-link[aria-current=\"true\"] {background: linear-gradient(to right, #fff, #fff); color: #335007;}"
+=======
+    "image_with_text_overlay_new_atxzwY": {
+      "type": "image-with-text-overlay-new",
+      "blocks": {
+        "subheading_yGEeCR": {
+          "type": "subheading",
+          "disabled": true,
+          "settings": {
+            "subheading": "Bis zu 60% sparen"
+          }
+        },
+        "heading_ij7C3d": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "<strong>Cyber Monday Deal</strong>",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "text_biyBL9": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>Lass dir die Tiefstpreise des Jahres nicht entgehen! </p>",
+            "text_size": "text-base"
+          }
+        },
+        "countdown_xPUcPq": {
+          "type": "countdown",
+          "disabled": true,
+          "settings": {
+            "countdown_title": "29. Nov. - 1. Dez.",
+            "end_date": "2025-12-01 23:59:59",
+            "countdown_text_color": "#ffffff",
+            "countdown_style": "standard",
+            "show_days": true,
+            "show_hours": true,
+            "show_minutes": true,
+            "show_seconds": true
+          }
+        }
+      },
+      "block_order": [
+        "subheading_yGEeCR",
+        "heading_ij7C3d",
+        "text_biyBL9",
+        "countdown_xPUcPq"
+      ],
+      "disabled": true,
+      "custom_css": [
+        ".hd2 strong {background: linear-gradient(to right, #fea744, #bc000a); -webkit-background-clip: text; background-clip: text; color: transparent;}",
+        ".countdown-wrapper {text-align: center;}",
+        ".countdown-number {border: 1px solid #fea744;}",
+        "@media (max-width: 767.98px) {.countdown-title {margin-bottom: 30px; }}"
+      ],
+      "name": "黑五活动页kv",
+      "settings": {
+        "container": "full",
+        "bg_color": "#ffffff",
+        "title_color": "#ffffff",
+        "text_color": "#fff",
+        "btn_wrapper_alignment": "center",
+        "image": "shopify://shop_images/mc-KV-1208.png",
+        "desktop_height": "large",
+        "overlay_opacity": 0,
+        "enable_parallax": false,
+        "parallax_direction": "vertical",
+        "color_scheme": "",
+        "max_width": 1200,
+        "content_position": "top-center",
+        "content_alignment": "center",
+        "image_mobile": "shopify://shop_images/mc-KV-128-mob.png",
+        "mobile_height": "adapt",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "black_friday_sticky_WMyTMR": {
+      "type": "black-friday-sticky",
+      "disabled": true,
+      "custom_css": [
+        ".black-friday-nav {background: #dc222c;}",
+        ".black-friday-nav .nav-link:hover {background: #ffffff; color: #dc222c;}",
+        ".black-friday-nav .nav-link.active,.black-friday-nav .nav-link[aria-current=\"true\"] {background: #ffffff; color: #dc222c;}"
+      ],
+      "name": "Black Friday Sticky",
+      "settings": {}
+    },
+    "app_sticky_rEhNqt": {
+      "type": "app-sticky",
+      "custom_css": [
+        ".black-friday-nav {background: linear-gradient(to right, #007a3b, #007a3b);}",
+        ".black-friday-nav .nav-link:hover {background: linear-gradient(to right, #ffffff, #ffffff); color: #007a3b;}",
+        ".black-friday-nav .nav-link.active,.black-friday-nav .nav-link[aria-current=\"true\"] {background: linear-gradient(to right, #fff, #fff); color: #007a3b;}"
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
       ],
       "name": "自定义锚点导航",
       "settings": {}
@@ -198,7 +295,11 @@
       ],
       "name": "优惠券列表五月",
       "settings": {
+<<<<<<< HEAD
         "ids": "ExklusiveVorteile",
+=======
+        "ids": "",
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
         "section_title": "Exklusive Vorteile",
         "padding_top_inner": 140,
         "padding_bottom_inner": 70,
@@ -278,6 +379,7 @@
         "padding_bottom": 0
       }
     },
+<<<<<<< HEAD
     "product_collection_may_MWRMwq": {
       "type": "product-collection-may",
       "blocks": {
@@ -311,10 +413,28 @@
             "bottom_text": "*PFA4000: Versand innerhalb von 20 Werktagen",
             "button_text": "Mehr erfahren",
             "button_link": ""
+=======
+    "sale_new_product_93YRTw": {
+      "type": "sale-new-product",
+      "blocks": {
+        "featured_collection_3ME6c6": {
+          "type": "featured_collection",
+          "settings": {
+            "image": "shopify://shop_images/ed_new-product-pc.jpg",
+            "mobile_image": "shopify://shop_images/ed_new-product-mob.jpg",
+            "title": "SolidFlex 1200 + 455W Bifaziale Solarpanel*2",
+            "description": "Plug-and-Play | 1200W bidirektional AC",
+            "diytext": "<p>Sonderpreis: <strong> 749€</strong></p>",
+            "button_title": "Mehr erfahren",
+            "button_link": "https://de.indevolt.com/products/indevolt-solidflex-1200-hybrid-balkonkraftwerk-mit-halbfesten-lifepo-akkus?variant=43629440696419&solar=43859125272675",
+            "button_title_copy": "",
+            "rabatt": ""
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
           }
         }
       },
       "block_order": [
+<<<<<<< HEAD
         "card_pYU3qg",
         "card_W3tTLt"
       ],
@@ -404,6 +524,21 @@
         "product_onsale": "home-size",
         "list_style": "kv-list",
         "button_alignment": "left"
+=======
+        "featured_collection_3ME6c6"
+      ],
+      "custom_css": [
+        ".color-scheme-1 {background-image: linear-gradient(#e8f6ea, #e8f6ea);}"
+      ],
+      "name": "活动页新品",
+      "settings": {
+        "ids": "Neuheiten",
+        "section_title": "Neu eingetroffen",
+        "padding_top_inner": 80,
+        "padding_bottom_inner": 80,
+        "padding_top": 0,
+        "padding_bottom": 0
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
       }
     },
     "rich_text_titimg_pWUk4x": {
@@ -1422,12 +1557,21 @@
   "order": [
     "main",
     "image_with_text_overlay_new_9UKtD3",
+<<<<<<< HEAD
+=======
+    "image_with_text_overlay_new_atxzwY",
+    "black_friday_sticky_WMyTMR",
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
     "app_sticky_rEhNqt",
     "countdown_timer_rPza4m",
     "may_rabbt_NMcjjV",
     "new_year_rabbt_3BQ8Wz",
+<<<<<<< HEAD
     "product_collection_may_MWRMwq",
     "product_collection_may_gL4WHP",
+=======
+    "sale_new_product_93YRTw",
+>>>>>>> 6b8a68b963308f282e3223bd6e2e7570067f4dd8
     "rich_text_titimg_pWUk4x",
     "product_collection_EM9Fzb",
     "custom_product_content_JiycMe",
