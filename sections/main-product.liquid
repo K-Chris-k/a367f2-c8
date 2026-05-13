@@ -4,6 +4,7 @@
   assign enable_image_zoom = section.settings.enable_image_zoom | default: false
   assign enable_sticky_info = section.settings.enable_sticky_info
   assign enable_product_sticky_bar = section.settings.enable_product_sticky_bar
+  assign select_product_sticky_bar = section.settings.select_product_sticky_bar
 
   assign product_class = 'product--' | append: section.settings.media_size
   assign product_class = product_class | append: ' product--' | append: media_layout
@@ -377,6 +378,8 @@
           battery: params.get('battery'), // 电池包 variant ID
           solar: params.get('solar'), // 太阳能板 variant ID
           mount: params.get('mount'), // 支架 variant ID
+          addon: params.get('addon'), // add-on qty（1/2/3...）
+          addon_variant: params.get('addon_variant'), // add-on variant ID（精确指定）
         };
       }
 
@@ -386,7 +389,7 @@
         const params = getUrlParams();
 
         // 如果没有任何参数，跳过
-        if (!params.variant && !params.battery && !params.solar && !params.mount) {
+        if (!params.variant && !params.battery && !params.solar && !params.mount && !params.addon && !params.addon_variant) {
           return;
         }
 
@@ -410,7 +413,14 @@
             selectMount(params.mount);
           }
 
-          // 4. 触发价格更新
+          // 4. 选择 add-on（如果有 addon 或 addon_variant 参数）
+          if (params.addon_variant) {
+            selectAddon({ variantId: params.addon_variant });
+          } else if (params.addon) {
+            selectAddon({ qty: params.addon });
+          }
+
+          // 5. 触发价格更新
           setTimeout(() => {
             if (typeof updateBundlePrice === 'function') {
               updateBundlePrice();
@@ -481,6 +491,40 @@
         }
       }
 
+      // Add-on 行（根据 qty 或 variant ID）
+      function selectAddon(opts) {
+        const addonBtns = document.querySelectorAll('.variant-extension-qty-btn--addon');
+        if (addonBtns.length === 0) {
+          console.warn('[Bundle Auto Select] 未找到 add-on 按钮');
+          return;
+        }
+
+        let targetBtn = null;
+
+        if (opts.variantId) {
+          addonBtns.forEach(function (btn) {
+            if (btn.dataset.addonVariantId === opts.variantId) {
+              targetBtn = btn;
+            }
+          });
+        }
+
+        if (!targetBtn && opts.qty) {
+          addonBtns.forEach(function (btn) {
+            if (btn.dataset.qty === String(opts.qty)) {
+              targetBtn = btn;
+            }
+          });
+        }
+
+        if (targetBtn && !targetBtn.classList.contains('disabled')) {
+          console.log('[Bundle Auto Select] 选择 add-on:', targetBtn.textContent.trim());
+          targetBtn.click();
+        } else {
+          console.warn('[Bundle Auto Select] 未找到 add-on 按钮, opts:', opts);
+        }
+      }
+
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', autoSelectFromUrl);
       } else {
@@ -490,7 +534,11 @@
   </script>
 </product-info>
 {% if enable_product_sticky_bar %}
-  {% render 'product-sticky-bar', section_id: section.id %}
+  {% if select_product_sticky_bar=='product-sticky-bar-1200' %}
+    {% render 'product-sticky-bar-1200', section_id: section.id %}
+  {% else %}
+    {% render 'product-sticky-bar', section_id: section.id %}
+  {% endif %}
 {% endif %}
 {% schema %}
 {
@@ -790,6 +838,12 @@
           "label": "Add-on image"
         },
         {
+          "type": "product",
+          "id": "bundle_addon_product",
+          "label": "Add-on product (added to cart)",
+          "info": "Required to add this row to cart. Used as the product when an Add-on quantity > 0 is selected."
+        },
+        {
           "type": "text",
           "id": "bundle_addon_title",
           "label": "Title"
@@ -806,13 +860,13 @@
           "max": 10,
           "step": 1,
           "default": 1,
-          "label": "Default option (1 = first non-empty line)"
+          "label": "Default option"
         },
         {
           "type": "textarea",
           "id": "bundle_addon_options",
           "label": "Quantity options (one per line)",
-          "info": "Format: Label|qty|capacity|value|image_url|price(cents)|text — fields after qty are optional. Example: 0x|0 or 1x|1|1792Wh|||29900|BP1600×1"
+          "info": "Format: Label|qty|capacity|value|image_url|price(cents)|text — fields after qty are optional.\nThe qty (2nd field) is used as a 1-based VARIANT INDEX of the Add-on product:\n  1 → variants[0], 2 → variants[1], 3 → variants[2] ...\nEach selection adds 1 unit of the matched variant to cart (NOT N units of the same variant).\nIf the 4th field (value) is a numeric variant ID, it overrides the index mapping.\nExample: 1x|1|1792Wh|||29900\n         2x|2|3584Wh|||59800"
         },
         {
           "type": "select",
@@ -824,6 +878,12 @@
             { "value": "middle", "label": "Middle (between layout & battery)" },
             { "value": "bottom", "label": "Bottom (after battery row)" }
           ]
+        },
+        {
+          "type": "image_picker",
+          "id": "bundle_combined_image",
+          "label": "Combined image (battery + add-on both selected)",
+          "info": "Used only when battery qty > 0 AND add-on qty > 0. Falls back to per-item images when one of them is 0x."
         }
       ]
     },
@@ -2285,6 +2345,11 @@
         },
         {
           "type": "inline_richtext",
+          "id": "heading_0",
+          "label": "Hinweis content"
+        },
+        {
+          "type": "inline_richtext",
           "id": "heading_1",
           "default": "Hinweis: Bestellungen werden in mehreren Pakets versendet.",
           "label": "Hinweis content"
@@ -2382,6 +2447,22 @@
       "id": "enable_product_sticky_bar",
       "default": false,
       "label": "产品导航显示"
+    },
+        {
+      "type": "select",
+      "id": "select_product_sticky_bar",
+      "options": [
+        {
+          "value": "product-sticky-bar",
+          "label": "通用型"
+        },
+        {
+          "value": "product-sticky-bar-1200",
+          "label": "1200定制"
+        }
+      ],
+      "default": "product-sticky-bar",
+      "label": "导航类型"
     },
     {
       "type": "header",

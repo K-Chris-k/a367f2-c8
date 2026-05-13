@@ -458,6 +458,12 @@
           "label": "Add-on image"
         },
         {
+          "type": "product",
+          "id": "bundle_addon_product",
+          "label": "Add-on product (added to cart)",
+          "info": "Required to add this row to cart. Used as the product when an Add-on quantity > 0 is selected."
+        },
+        {
           "type": "text",
           "id": "bundle_addon_title",
           "label": "Title"
@@ -474,13 +480,13 @@
           "max": 10,
           "step": 1,
           "default": 1,
-          "label": "Default option (1 = first non-empty line)"
+          "label": "Default option"
         },
         {
           "type": "textarea",
           "id": "bundle_addon_options",
           "label": "Quantity options (one per line)",
-          "info": "Format: Label|qty|capacity|value|image_url|price(cents)|text — fields after qty are optional. Example: 0x|0 or 1x|1|1792Wh|||29900|BP1600×1"
+          "info": "Format: Label|qty|capacity|value|image_url|price(cents)|text — fields after qty are optional.\nIf the 4th field (value) is a numeric variant ID it will be used as the cart variant for this row (qty = 1).\nOtherwise the row uses the Add-on product's first available variant with quantity = qty.\nExample: 1x|1|1792Wh|44219098431685|https://...|29900|BP1600×1"
         },
         {
           "type": "select",
@@ -492,6 +498,12 @@
             { "value": "middle", "label": "Middle (between layout & battery)" },
             { "value": "bottom", "label": "Bottom (after battery row)" }
           ]
+        },
+        {
+          "type": "image_picker",
+          "id": "bundle_combined_image",
+          "label": "Combined image (battery + add-on both selected)",
+          "info": "Used only when battery qty > 0 AND add-on qty > 0. Falls back to per-item images when one of them is 0x."
         }
       ]
     },

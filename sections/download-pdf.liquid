@@ -156,7 +156,7 @@
     to { transform: translateY(0); opacity: 1;}
   }
 </style>
-<div class="page-width section-padding pdf-catalog-container" data-section-id="{{ section.id }}" id="Gebrauchsanweisungen">
+<div class="page-width section-padding pdf-catalog-container" data-section-id="{{ section.id }}" id="{{ section.settings.title }}">
     <h2>
       <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">  {%- render 'icon-note', size: 'small' -%} <span>{{ section.settings.title }}</span></motion-element>
     </h2>

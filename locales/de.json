@@ -113,7 +113,7 @@
     },
     "newsletter": {
         "label": "E-Mail",
-        "success": "Danke für dein Abonnement! Der exklusive Abonnement-Gutschein lautet:  CODE50  (Gültig ab einem Bestellwert von 500 €)",
+        "success": "Danke für dein Abonnement! Der exklusive Abonnement-Gutschein lautet:  CODE30  (Gültig ab einem Bestellwert von 500 €)",
         "already_subscribed": "Sie haben sich bereits angemeldet!",
         "button_label": "Abonnieren",
         "consent_required": "Bitte stimmen Sie den Allgemeinen Gesch\u00e4ftsbedingungen zu, bevor Sie sich anmelden."

@@ -35,7 +35,7 @@
   }
    .section-black-member .coupon-list .coupon-content-wrapper h2,
    .section-black-member .coupon-list .coupon-content-wrapper h4 {
-    color: #1A1A1A;
+    color: #FFFFFF;
     margin: 0;
   }
    .section-black-member .coupon-list .coupon-content-wrapper h2{line-height:36px;font-size:30px;}
@@ -86,6 +86,7 @@
         gap: 0px;  /* 控制间距 */
       }
 
+  #shopify-section-{{ section.id }} .icon-gift{ width: 4rem; height: 4.5rem;}
   @media (max-width: 767px) {
      #shopify-section-{{ section.id }} { background:{{ section.settings.bg_color }};padding-top:{{ section.settings.padding_top | divided_by: 2  }}px;padding-bottom:{{ section.settings.padding_bottom | divided_by: 2  }}px;}
     .section-black-member .coupon-list .grid-item .coupon-content-wrapper {margin-top:24px!important; max-width: 280px;padding:0px 24px!important; text-align: left}
@@ -102,7 +103,7 @@
     .section-black-member .coupon-list .coupon-content-wrapper h2{line-height:22px; font-size: 18px;}
     .section-black-member .coupon-list .coupon-content-wrapper h4{ margin-top:10px;font-size: 12px;}
     
-    #shopify-section-{{ section.id }} .icon-gift{ width: 2rem; height: 1.5rem;}
+    #shopify-section-{{ section.id }} .icon-gift{ width: 3rem; height: 3.2rem;}
     #shopify-section-{{ section.id }} .icon-gift-left{ margin: 0px 0px 0px 40px;}
     #shopify-section-{{ section.id }} .icon-gift-right{ margin: 0px 40px 0px 0px;}
   }
@@ -115,7 +116,7 @@
 
       <div class="title-container">
           {% if section.settings.show_title_icon != false %}
-              {% render 'icon-gift-left' -%}
+              {% comment %} {% render 'icon-gift-left' -%} {% endcomment %}
           {% endif %}
               <h2 class="title" style="color:{{ section.settings.title_color }}">
                 <motion-element class="block" data-motion="fade-up" data-motion-delay="{{ motion_delay }}">
@@ -125,7 +126,7 @@
                 </motion-element>
               </h2>
         {% if section.settings.show_title_icon != false %}
-          {% render 'icon-gift-right' -%}
+          {% comment %} {% render 'icon-gift-right' -%} {% endcomment %}
         {% endif %}
      </div>
       <div class="coupon-list">

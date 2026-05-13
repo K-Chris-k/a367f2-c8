@@ -57,6 +57,7 @@
         "text_zKWHUj",
         "image_A9NEnK"
       ],
+      "disabled": true,
       "custom_css": [
         "a {color: #3250c3;}",
         ".text-lg {width: 74%; text-align: left;}",
@@ -139,11 +140,50 @@
         "divider_width": "fixed",
         "mobile_content_alignment": "center"
       }
+    },
+    "image_with_text_list_YnqDWU": {
+      "type": "image-with-text-list",
+      "blocks": {
+        "card_G8iXnT": {
+          "type": "card",
+          "settings": {
+            "desktop_content_position": "center",
+            "desktop_content_alignment": "left",
+            "enable_reserve_pc": false,
+            "enable_parallax": false,
+            "parallax_direction": "vertical",
+            "enable_reserve_mobile": true,
+            "mobile_content_alignment": "left",
+            "image": "shopify://shop_images/Mask_group_b8d58f81-764d-437f-9ca5-c93b07fa9fb5.jpg",
+            "heading": "Jetzt Verdienen",
+            "heading_size": "hd2",
+            "text": "<p><strong>1.Registrieren Sie sich als Publisher auf Awin.</strong></p><p><strong>2.Suchen Sie nach Indevolt oder der Programm-ID: 110350 und klicken Sie auf „Beitreten“. </strong></p><p>Hinweis: Nach Prüfung Ihres Profils weisen wir Ihnen manuell eine spezifische Provisionsstufe (3 %, 5 % oder 10 %) zu, basierend auf den Inhalten und der Performance Ihres Kanals.</p>",
+            "text2": "<p><a href=\"https://ui.awin.com/publisher-signup/de/awin/\" target=\"_blank\" title=\"https://ui.awin.com/publisher-signup/de/awin/\">Jetzt beitreten auf AWIN →</a></p>",
+            "text_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "card_G8iXnT"
+      ],
+      "name": "image-with-text-list",
+      "settings": {
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "custom_background": "#ffffff",
+        "layout": "image_first",
+        "image_height": "adapt",
+        "padding_top": 50,
+        "padding_bottom": 50,
+        "show_section_divider": false,
+        "divider_width": "fixed"
+      }
     }
   },
   "order": [
     "main",
     "rich_text_image_list_bfCtqM",
-    "rich_text_image_list_landr_NtyQti"
+    "rich_text_image_list_landr_NtyQti",
+    "image_with_text_list_YnqDWU"
   ]
 }

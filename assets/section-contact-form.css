@@ -14,15 +14,16 @@
 .contact-desc{ margin-top:12px; padding-bottom: var(--header-padding-bottom);line-height:19px;font-size: 16px;color: #999;font-weight: 500;}
 .contact-form-box{gap: 56px;}
 .contact-form-box .form-control{ border-radius: 0.5rem;border-color: #C2C2C2;}
-.contact-methods li{display: flex;align-items: center;margin-bottom:58px;gap:22px;line-height:19px;font-size: 16px;font-weight: 500;}
+.contact-methods li{display: flex;align-items: flex-start;margin-bottom:58px;gap:22px;line-height:19px;font-size: 16px;font-weight: 500;}
 .contact-methods li strong{display: block;color:#000}
-.contact-methods li span{ color: #666;}
+.contact-methods li span{ color: #666;min-width:320px;}
 .contact__fields .form-field--full{text-align: left;}
 .form-required-indicator{margin-left: -4px;}
 @media (max-width: 767.98px) {
   .contact__wrapper{padding:2rem}
   .contact-desc{padding-bottom: var(--header-padding-bottom-mobile);}
   .contact-form-box{ flex-flow: column;}
+  .contact-methods li span{ min-width:280px;}
 }
 .contact__button {
   margin-top: 1.6rem;

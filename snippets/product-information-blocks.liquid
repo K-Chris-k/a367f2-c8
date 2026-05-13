@@ -368,6 +368,12 @@
                 </basic-modal>
               </div>
             {% endif %}
+            {%- if block.settings.heading_0 != blank -%}
+              <div class="item-content item-content1">
+                {%- render 'icon-light', size: 'small' -%}
+                {{ block.settings.heading_0 }}
+              </div>
+            {%- endif -%}
             {%- if block.settings.heading_1 != blank -%}
               <div class="item-content item-content1">
                 {%- render 'icon-light', size: 'small' -%}

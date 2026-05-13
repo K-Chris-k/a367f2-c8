@@ -86,57 +86,7 @@
               </select>
               {%- render 'icon-caret-down' -%}
             </div>
-            {% comment %}
-              {%- if section.settings.show_quantity -%}
-                <div id="QuantitySticky-{{ section.id }}">
-                  {%- liquid
-                    assign qty_class = ''
-                    unless product.has_only_default_variant
-                      assign qty_class = 'hidden md:flex'
-                    endunless
-
-                    assign cart_qty = cart | item_count_for_variant: product.selected_or_first_available_variant.id
-                  -%}
-                  <quantity-input
-                    class="quantity {{ qty_class }}"
-                    data-section-id="{{ section.id }}"
-                    data-product-id="{{ product.id }}"
-                  >
-                    <button class="quantity__button" name="minus" type="button">
-                      <span class="visually-hidden">
-                        {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
-                      </span>
-                      {% render 'icon-minus' %}
-                    </button>
-                    <input
-                      class="quantity__input"
-                      type="number"
-                      name="quantity"
-                      id="Quantity-{{ section.id }}"
-                      data-cart-quantity="{{ cart_qty }}"
-                      step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
-                      value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                      data-quantity-variant-id="{{ product.selected_or_first_available_variant.id }}"
-                      data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                      min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-                      {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
-                        data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                        max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                      {% endif %}
-                      inputmode="numeric"
-                      autocomplete="off"
-                      form="{{ product_form_id }}"
-                    >
-                    <button class="quantity__button" name="plus" type="button">
-                      <span class="visually-hidden">
-                        {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
-                      </span>
-                      {% render 'icon-plus' %}
-                    </button>
-                  </quantity-input>
-                </div>
-              {% endif %}
-            {% endcomment %}
+    
             <div class="product-form__buttons flex items-center">
               {% comment %} {{ product.price  }} {% endcomment %}
               {%- if section.settings.show_atc_button -%}
@@ -250,7 +200,7 @@
       }
       // 基于选择的配件组合生成 bundle group ID
       // 相同的配件组合（包括 qty）会生成相同的 ID，这样 Shopify 会自动合并数量
-      function generateBundleGroupId(hostVariantId, batteryVariantId, batteryQty, solarItems) {
+      function generateBundleGroupId(hostVariantId, batteryVariantId, batteryQty, solarItems, addonItems) {
         const parts = [String(hostVariantId)];
         // 包含电池 variant 和 qty（如 2x, 5x）
         if (batteryVariantId && batteryQty > 0) {
@@ -260,6 +210,11 @@
         if (solarItems && solarItems.length > 0) {
           const solarParts = solarItems.map(s => s.variantId + 'x' + s.qty).sort();
           parts.push('s' + solarParts.join('-'));
+        }
+        // 包含 add-on variant 和 qty
+        if (addonItems && addonItems.length > 0) {
+          const addonParts = addonItems.map(a => a.variantId + 'x' + a.qty).sort();
+          parts.push('a' + addonParts.join('-'));
         }
         return parts.join('_');
       }
@@ -293,6 +248,7 @@
           let batteryVariantId = null;
           let batteryQty = 0;
           const solarItems = [];  // {variantId, qty}
+          const addonItems = []; // {variantId, qty} - custom add-on row
           
           // 2. 电池包（如果选中且 qty > 0）
           const selectedBatteryBtn = document.querySelector('.bundle-extension-btn.selected');
@@ -310,9 +266,42 @@
               solarItems.push({ variantId, qty });
             }
           });
-          
+
+          document.querySelectorAll('.bundle-extension-fieldset').forEach((fieldset) => {
+            const selectedAddonBtn = fieldset.querySelector('.variant-extension-qty-btn--addon.selected');
+            if (!selectedAddonBtn) {
+              console.log('[Bundle Addon] no selected addon button in fieldset, skip');
+              return;
+            }
+            const addonQty = parseInt(selectedAddonBtn.dataset.qty || '0', 10) || 0;
+            const addonLabel = selectedAddonBtn.dataset.addonLabel || selectedAddonBtn.textContent.trim();
+            if (addonQty <= 0) {
+              console.log('[Bundle Addon] selected =', addonLabel, '(qty=0) → not added to cart');
+              return;
+            }
+
+            const rowVariantId = (selectedAddonBtn.dataset.addonVariantId || '').trim();
+            const defaultVariantId = (fieldset.dataset.bundleAddonDefaultVariantId || '').trim();
+            const addonProductId = (fieldset.dataset.bundleAddonProductId || '').trim();
+            const variantId = rowVariantId || defaultVariantId;
+
+            // 强保护：如果 fieldset 上既没设 add-on product，按钮上也没强制 variant id，
+            // 那这一行就只是"展示用"，不应该加购。
+            if (!variantId || (!addonProductId && !rowVariantId)) {
+              console.warn(
+                '[Bundle Addon] selected =', addonLabel,
+                '→ skip add-on add to cart because no add-on product is configured. ' +
+                'Either set "Add-on product" in the block settings, or add "0x|0" as the first Quantity option line so the default is "do not add".'
+              );
+              return;
+            }
+
+            console.log('[Bundle Addon] add to cart →', addonLabel, 'variant', variantId);
+            addonItems.push({ variantId, qty: 1 });
+          });
+
           // 基于配件组合生成 group ID（包含 qty，相同组合 = 相同 ID = 合并数量）
-          const bundleGroupId = generateBundleGroupId(hostVariantId, batteryVariantId, batteryQty, solarItems);
+          const bundleGroupId = generateBundleGroupId(hostVariantId, batteryVariantId, batteryQty, solarItems, addonItems);
 
           const bundleVariantIds = [];
 
@@ -362,13 +351,47 @@
             });
             bundleVariantIds.push(String(solar.variantId));
           });
-          
+
+          // 添加 add-on 行（自定义扩展行配置的产品）
+          // 去重保护：如果 add-on 的 variantId 已经被 host/battery/solar 加过，
+          // 跳过它，避免同一变体被合并成 ×N 误以为重复加购。
+          addonItems.forEach((addon) => {
+            const isDuplicate = items.some((it) => String(it.id) === String(addon.variantId));
+            if (isDuplicate) {
+              console.warn(
+                '[Bundle] Add-on variant', addon.variantId,
+                'was already added by host/battery/solar — skipped to avoid duplicate. ' +
+                'Please make sure the Add-on product is different from the main/host product, ' +
+                'or that the first Quantity option line is "0x|0".'
+              );
+              return;
+            }
+            items.push({
+              id: parseInt(addon.variantId),
+              quantity: addon.qty,
+              properties: {
+                _bundle_item: 'true',
+                _bundle_role: 'addon',
+                _bundle_host_id: String(hostVariantId),
+                _bundle_group_id: bundleGroupId,
+              },
+            });
+            bundleVariantIds.push(String(addon.variantId));
+          });
+
           if (hostVariantId && bundleVariantIds.length > 0) {
             saveBundleMapping(String(hostVariantId), bundleVariantIds);
           }
         } catch (e) {
           console.error('[Bundle] 收集产品出错:', e);
         }
+
+        try {
+          console.log(
+            '[Bundle] collected items →',
+            items.map((it) => ({ id: it.id, qty: it.quantity, role: it.properties?._bundle_role }))
+          );
+        } catch (_) {}
 
         return items;
       }
@@ -754,72 +777,7 @@
         });
       })();
 
-      // (function initAddToCart() {
-      //   const addToCartBtn = document.querySelector('.sticky-atc-bar__form button[type="submit"][name="add"]');
-      //   const addToCartBtnText = addToCartBtn.querySelector('.add-to-cart-btn');
-      //   if (!addToCartBtn) {
-      //     console.warn('[Sticky Bar] 找不到 Add to Cart 按钮');
-      //     return;
-      //   }
-      //   // addToCartBtn.addEventListener(
-      //   //   'click',
-      //   //   async function (e) {
-      //   //     console.log('=== Add to Cart 点击事件触发 ===');
-      //   //     e.preventDefault();
-      //   //     e.stopPropagation();
-      //   //     e.stopImmediatePropagation();
-      //   //     // 检查是否是 Bundle 模式
-      //   //     const bundleConfigEl = document.querySelector('[id^="BundleProductsConfig-"]');
-      //   //     if (!bundleConfigEl) {
-      //   //       console.log('[Sticky Bar] 非 Bundle 模式，使用默认提交');
-      //   //       return; // 让表单正常提交
-      //   //     }
-      //   //     console.log('[Sticky Bar] Bundle 模式，开始添加产品');
 
-      //   //     try {
-      //   //       const items = addToCartCollectAllProducts();
-
-      //   //       if (items.length === 0) {
-      //   //         console.warn('[Sticky Bar] 没有产品可添加');
-      //   //         return;
-      //   //       }
-
-      //   //       console.log('[Sticky Bar] 收集到的产品:', items);
-
-      //   //       // 添加商品到购物车
-      //   //       const response = await fetch('/cart/add.js', {
-      //   //         method: 'POST',
-      //   //         headers: { 'Content-Type': 'application/json' },
-      //   //         body: JSON.stringify({ items }),
-      //   //       });
-
-      //   //       if (response.ok) {
-      //   //         console.log('[Sticky Bar] Bundle 产品添加成功');
-
-      //   //         // 触发购物车更新
-      //   //         document.dispatchEvent(new CustomEvent('cart:refresh'));
-
-      //   //         // 显示购物车抽屉
-      //   //         setTimeout(() => {
-      //   //           const cartDrawer = document.querySelector('cart-drawer');
-      //   //           if (cartDrawer && typeof cartDrawer.show === 'function') {
-      //   //             cartDrawer.show();
-      //   //           }
-      //   //         }, 100);
-      //   //       } else {
-      //   //         console.error('[Sticky Bar] 添加失败:', await response.text());
-      //   //       }
-      //   //     } catch (error) {
-      //   //       console.error('[Sticky Bar] 添加出错:', error);
-      //   //     }
-
-      //   //   },
-      //   //   true
-      //   // ); // 使用捕获阶段，优先执行
-
-      //   console.log('[Sticky Bar] Add to Cart 按钮已绑定');
-      // })();
-      // 绑定立即购买按钮（只绑定一次，防止重复）
       (function initBuyItNowButton() {
         const buyNowBtn = document.querySelector('#ProductSubmitButton');
         if (buyNowBtn && !buyNowBtn._buyNowHandlerBound) {

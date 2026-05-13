@@ -41,33 +41,28 @@
   flex: 1;  /* 让h2占据剩余空间 */
 }
 
-
-   #shopify-section-{{ section.id }} {
-     margin-top: {{ section.settings.padding_top }}px;margin-bottom: {{ section.settings.padding_bottom }}px;
-     {%- if section.settings.video_ratio == 'adapt' %}
-       {%- if poster != null -%}
-       --media-ratio: {{ poster.aspect_ratio }};
-       {%- else -%}
-       --media-ratio: 16/9;
-       {%- endif -%}
-     {% else -%}
-       --media-ratio: {{ section.settings.video_ratio }};
-     {%- endif -%}
-
-   }
-
    #shopify-section-{{ section.id }} .video_desk_show{ display:block; }
    #shopify-section-{{ section.id }} .video_mobile_show{ display:none;}
    #shopify-section-{{ section.id }} .video-width-image-section{padding-top:40px;}
-   #shopify-section-{{ section.id }} video{  width: 100%;
-  height: 100%;
-  object-fit: contain; }
+   #shopify-section-{{ section.id }} video{ 
+     width: 90%;
+  height: 100%;;
+  object-fit: contain; 
+}
+
+  #shopify-section-{{ section.id }} .video_desk_show .media {
+    {% comment %} aspect-ratio:32/15; {% endcomment %}
+  }
+
+  #shopify-section-{{ section.id }} .input-width-custom{
+    max-height:{{ section.settings.video-height-custom }}px; 
+  }
+
    @media (max-width: 767.98px) {
     {% if section.settings.video_mobile != blank %}
          #shopify-section-{{ section.id }} .video_desk_show{ display:none;!important}
          #shopify-section-{{ section.id }} .video_mobile_show{ display:block;!important}
          #shopify-section-{{ section.id }} .video_mobile_show .media{ height:200px}
-         #shopify-section-{{ section.id }} video{ object-fit: fill;}
          #shopify-section-{{ section.id }} .video-width-image-section{padding-top:30px;}
          
     {% endif %}
@@ -213,7 +208,7 @@
       <!-- 桌面端视频 -->
       <div class="{% if section.settings.enable_radius %}blocks-radius{% endif %} video_desk_show">
         <parallax-element
-          class="block overflow-hidden"
+          class="block overflow-hidden input-width-custom"  
           {% if section.settings.enable_parallax %}
             data-parallax="0.3" data-parallax-direction="{{ section.settings.parallax_direction }}"
           {% endif %}
@@ -271,6 +266,45 @@
           </parallax-element>
         </div>
       {% endif %}
+
+
+
+    {% if section.settings.image_pc != blank %}
+      <div class="image-wrapper">
+        <picture>
+          <!-- 移动端图片 -->
+          <source
+            media="(max-width: 749px)"
+            srcset="
+              {{ section.settings.image_mobile | img_url: '800x' }} 1x,
+              {{ section.settings.image_mobile | img_url: '1600x' }} 2x
+            "
+          >
+
+          <!-- 桌面端图片 -->
+          <source
+            media="(min-width: 750px)"
+            srcset="
+              {{ section.settings.image_pc | img_url: '1200x' }} 1x,
+              {{ section.settings.image_pc | img_url: '2400x' }} 2x
+            "
+          >
+
+          <!-- 默认图片 -->
+          <img
+            src="{{ section.settings.image_pc | img_url: '1200x' }}"
+            alt="{{ section.settings.title | escape }}"
+            class="service-image"
+            loading="lazy"
+            width="{{ section.settings.image_pc.width }}"
+            height="{{ section.settings.image_pc.height }}"
+          >
+        </picture>
+        </div>
+      {% endif %}
+
+
+
     </div>
   </div>
   {% if section.settings.image != blank %}
@@ -470,6 +504,21 @@
       "id": "video"
     },
     {
+    "type": "image_picker",
+    "id": "image_pc",
+    "label": "PC端图片"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "手机端图片"
+    },
+    {
+      "type": "text",
+      "id": "video-height-custom",
+      "label": "视频高度"
+    },
+    {
       "type": "video",
       "label": "手机端",
       "id": "video_mobile"
@@ -555,8 +604,8 @@
           "label": "t:sections.video.settings.video_ratio.options__3.label"
         },
         {
-          "value": "4/5",
-          "label": "t:sections.video.settings.video_ratio.options__4.label"
+          "value": "16/7.5",
+          "label": "16/7.5"
         },
         {
           "value": "16/9",
@@ -569,18 +618,7 @@
       ],
       "default": "adapt"
     },
-    {
-      "type": "select",
-      "id": "video_aspect_ratio",
-      "label": "视频比例",
-      "options": [
-        {"value": "16/9", "label": "16:9 (横屏)"},
-        {"value": "9/16", "label": "9:16 (竖屏)"},
-        {"value": "1/1", "label": "1:1 (方形)"},
-        {"value": "4/3", "label": "4:3 (标准)"}
-      ],
-      "default": "16/9"
-    },
+ 
     {
       "type": "header",
       "content": "t:sections.all.divider.content"

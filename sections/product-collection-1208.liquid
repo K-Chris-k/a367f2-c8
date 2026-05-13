@@ -27,7 +27,7 @@
    #shopify-section-{{ section.id }} .product-collection-box .item{ display:flex;flex-direction:column;justify-content:space-between;height:100%;border-radius:20px;background:{{section.settings.content_color}};}
    #shopify-section-{{ section.id }} .product-collection-box .content-box{ padding: 0px 30px 30px 30px;}
    #shopify-section-{{ section.id }} .product-collection-box .custom-product-describe .icon-vector{margin-right:8px;vertical-align: middle;}
-   #shopify-section-{{ section.id }} .product-collection-box .custom-product-price{margin-top:2px;text-align: left;color: #3250C3;}
+   #shopify-section-{{ section.id }} .product-collection-box .custom-product-price{margin-top:2px;text-align: left;color: {{ section.settings.price_title_color }}}
    #shopify-section-{{ section.id }} .product-collection-box .custom-product-price .original-price{font-size:18px;line-height:22px;display: block;font-weight: 500;color: #8D8D8D;text-decoration: line-through;}
    #shopify-section-{{ section.id }} .product-collection-box .custom-product-button{display:flex;
     {% comment %} left: 50%;transform: translateX(-50%); {% endcomment %}
@@ -41,7 +41,7 @@
    #shopify-section-{{ section.id }} .btn--black{ background:#212121;color:#fff}
    #shopify-section-{{ section.id }} .cyber-monday{
   background: rgb(var(--color-secondary-button));
-  border-color: #DF4763;}
+  border-color: #F45B5F;}
    #shopify-section-{{ section.id }} .describe-min-height{min-height: {{ section.settings.sale-min_height }}px;}
 
    #shopify-section-{{ section.id }} .bottom-box{
@@ -545,6 +545,12 @@
       "id": "button_title_color",
       "label": "按钮文本颜色",
       "default": "#1A1A1A"
+    },
+    {
+      "type": "color",
+      "id": "price_title_color",
+      "label": "价格颜色",
+      "default": "#3250C3"
     },
     {
       "type": "select",
