@@ -357,6 +357,7 @@
       endif
       assign theme_addon_show = false
       assign theme_lines = '' | split: ','
+      assign theme_cmp_lines = '' | split: ','
       if vpb != blank and vpb.settings.bundle_addon_enable
         assign raw_opts = vpb.settings.bundle_addon_options | default: ''
         assign raw_opts_br = raw_opts | newline_to_br
@@ -370,6 +371,12 @@
         endfor
         if theme_line_count > 0
           assign theme_addon_show = true
+        endif
+        # 解析 add-on 原价（compare-at price）配置：每行 "qtyLabel-price(cents)"
+        assign raw_cmp = vpb.settings.bundle_addon_compare_prices | default: ''
+        if raw_cmp != blank
+          assign raw_cmp_br = raw_cmp | newline_to_br
+          assign theme_cmp_lines = raw_cmp_br | split: '<br />'
         endif
       endif
 
@@ -487,6 +494,21 @@
                     assign opt_variant_id = auto_variant.id
                   endif
                 endif
+
+                # 查找 add-on compare-at price：根据 opt_label 在 theme_cmp_lines 里匹配
+                assign opt_compare_price = ''
+                for cl in theme_cmp_lines
+                  assign cls = cl | strip
+                  if cls != blank
+                    assign cps = cls | split: '-'
+                    if cps.size >= 2
+                      assign cp_label = cps[0] | strip
+                      if cp_label == opt_label
+                        assign opt_compare_price = cps[1] | strip
+                      endif
+                    endif
+                  endif
+                endfor
               -%}
               <input
                 type="radio"
@@ -505,6 +527,9 @@
                 {% if opt_price != blank %}
                   data-addon-price="{{ opt_price }}"
                 {% endif %}
+                {% if opt_compare_price != blank %}
+                  data-compare-price="{{ opt_compare_price }}"
+                {% endif %}
                 {% if opt_text != blank %}
                   data-addon-text="{{ opt_text | escape }}"
                 {% endif %}
@@ -521,6 +546,9 @@
                 class="variant-extension-qty-btn variant-extension-qty-btn--addon {% if opt_selected %}selected{% endif %}"
                 data-qty="{{ opt_qty }}"
                 data-addon-label="{{ opt_label | escape }}"
+                {% if opt_compare_price != blank %}
+                  data-compare-price="{{ opt_compare_price }}"
+                {% endif %}
                 {% if opt_capacity != blank %}
                   data-capacity="{{ opt_capacity | escape }}"
                 {% endif %}

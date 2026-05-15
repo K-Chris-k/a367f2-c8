@@ -1619,8 +1619,19 @@
       const bundleCategoryGridPriceInCents = getBundleCategoryGridPrice();
       const bundleCategoryGridOriginalPrice = getBundleCategoryGridOriginalPrice();
 
-      // 加上自定义扩展块（addon）的价格
-      const addonPriceInCents = window._bundleAddonPriceInCents || 0;
+      // 加上自定义扩展块（addon）的价格 —— 遍历所有 addon 行求总和
+      // 每行用当前选中按钮的 data-addon-price 作为售价、data-compare-price 作为原价
+      // 缺省 compare-price 时回退为售价（视为无折扣，避免出现负折扣）
+      let addonPriceInCents = 0;
+      let addonComparePriceInCents = 0;
+      document.querySelectorAll('[data-variant-addon-block]').forEach((block) => {
+        const sel = block.querySelector('.variant-extension-qty-btn--addon.selected');
+        if (!sel) return;
+        const priceVal = parseInt(sel.dataset.addonPrice || '0', 10) || 0;
+        const cmpVal = parseInt(sel.dataset.comparePrice || '0', 10) || 0;
+        addonPriceInCents += priceVal;
+        addonComparePriceInCents += (cmpVal > 0 ? cmpVal : priceVal);
+      });
 
       // 同步更新价格（addon 价格累加到 battery 列，避免改函数签名）
       updateStickyBarPriceWithBundle(
@@ -1628,7 +1639,7 @@
         batteryPriceInCents + addonPriceInCents,
         bundleCategoryGridPriceInCents,
         hostOriginalPrice,
-        batteryOriginalPrice + addonPriceInCents,
+        batteryOriginalPrice + addonComparePriceInCents,
         bundleCategoryGridOriginalPrice
       );
     }

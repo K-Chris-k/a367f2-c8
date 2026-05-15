@@ -489,6 +489,12 @@
           "info": "Format: Label|qty|capacity|value|image_url|price(cents)|text — fields after qty are optional.\nIf the 4th field (value) is a numeric variant ID it will be used as the cart variant for this row (qty = 1).\nOtherwise the row uses the Add-on product's first available variant with quantity = qty.\nExample: 1x|1|1792Wh|44219098431685|https://...|29900|BP1600×1"
         },
         {
+          "type": "textarea",
+          "id": "bundle_addon_compare_prices",
+          "label": "Add-on compare-at prices (one per line)",
+          "info": "Format: qtyLabel-comparePrice(cents). Used to render data-compare-price for discount calculation.\nMatches by qty label (the 1st field of Quantity options).\nExample:\n  0x-0\n  1x-79900\n  2x-159800"
+        },
+        {
           "type": "select",
           "id": "bundle_addon_position",
           "label": "Add-on row position",

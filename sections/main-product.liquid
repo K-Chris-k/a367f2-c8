@@ -869,6 +869,12 @@
           "info": "Format: Label|qty|capacity|value|image_url|price(cents)|text — fields after qty are optional.\nThe qty (2nd field) is used as a 1-based VARIANT INDEX of the Add-on product:\n  1 → variants[0], 2 → variants[1], 3 → variants[2] ...\nEach selection adds 1 unit of the matched variant to cart (NOT N units of the same variant).\nIf the 4th field (value) is a numeric variant ID, it overrides the index mapping.\nExample: 1x|1|1792Wh|||29900\n         2x|2|3584Wh|||59800"
         },
         {
+          "type": "textarea",
+          "id": "bundle_addon_compare_prices",
+          "label": "Add-on compare-at prices (one per line)",
+          "info": "Format: qtyLabel-comparePrice(cents). Used to render data-compare-price for discount calculation.\nMatches by qty label (the 1st field of Quantity options).\nExample:\n  0x-0\n  1x-79900\n  2x-159800"
+        },
+        {
           "type": "select",
           "id": "bundle_addon_position",
           "label": "Add-on row position",
