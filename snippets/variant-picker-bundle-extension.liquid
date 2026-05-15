@@ -1593,6 +1593,15 @@
         return selectedBatteryBtn.dataset.qty !== '0';
       }
 
+      // 检查 addon 选择器是否处于非默认选中状态（qty > 0）
+      // 与电池一样，addon 非默认时也要触发 layout alt text 显示
+      function hasAddonNonDefault() {
+        const selectedAddonBtn = document.querySelector('.variant-extension-qty-btn--addon.selected');
+        if (!selectedAddonBtn) return false;
+        const q = parseInt(selectedAddonBtn.dataset.qty || '0', 10) || 0;
+        return q > 0;
+      }
+
       // 获取当前选中的 addon 按钮信息
       function getSelectedAddonInfo() {
         const selectedAddon = document.querySelector('.variant-extension-qty-btn--addon.selected');
@@ -1818,9 +1827,12 @@
         if (!activeSlide) return;
 
         const batteryActive = hasBatteryNonDefault();
+        const addonActive = hasAddonNonDefault();
         const altText = window._bundleLayoutAltText || '';
 
-        if (batteryActive && altText) {
+        // 电池非默认 OR addon 非默认 → 显示 alt text；
+        // 仅选中 layout（电池/addon 都为默认）时不显示。
+        if ((batteryActive || addonActive) && altText) {
           showLayoutAltText(activeSlide, altText);
         } else {
           hideLayoutAltText(activeSlide);
@@ -2482,6 +2494,10 @@
           updateCombinedCapacityDisplay();
           _addonQtyCache = parseInt(addonQty || '0', 10) || 0;
           syncQtyCap();
+
+          // addon 状态变化后，刷新 layout alt text 显示
+          // 这样：仅 layout 选中 → 不显示；layout + addon(非0x) → 显示（与电池一致）
+          updateLayoutAltTextVisibility();
         }
 
         addonButtons.forEach((btn) => {
