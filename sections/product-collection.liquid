@@ -37,9 +37,9 @@
    #shopify-section-{{ section.id }} .hotsale{margin-top:20px;line-height:17px;font-size: 14px;color:#EF0F0F;font-weight: 600;}
    #shopify-section-{{ section.id }} .content-box .button-wrap{ display:flex;justify-content:{{ section.settings.button_alignment }}}
    #shopify-section-{{ section.id }} .home-size{ line-height:24px;font-size: 18px;}
-   #shopify-section-{{ section.id }} .kv-size{ line-height:29px;font-size: 24px;}
+   #shopify-section-{{ section.id }} .kv-size{ line-height:29px;font-size: 24px;color:{{ section.settings.buttonprice_bg_color }}}
    #shopify-section-{{ section.id }} .btn--black{ background:#212121;color:#fff}
-   #shopify-section-{{ section.id }} .cyber-monday{ background:transparent;border-color:#007A3B}
+   #shopify-section-{{ section.id }} .cyber-monday{background:{{ section.settings.buttonprice_bg_color }};color:{{ section.settings.button_title_color }}}
    #shopify-section-{{ section.id }} .describe-min-height{min-height: {{ section.settings.sale-min_height }}px;}
 
    #shopify-section-{{ section.id }} .bottom-box {display:flex;gap:50px;align-items: center;margin-top:15px;}
@@ -149,7 +149,7 @@
                           {{ block.settings.custom_title | default: block.settings.title }}
                         </h3>
                         {%- assign desc_list = block.settings.custom_describe | split: '\n' -%}
-                        {% if desc_list.size > 1 %}
+                        {% if desc_list.size > 0 %}
                           <ul class="custom-product-describe describe-min-height">
                             {% for desc in desc_list %}
                               {% if desc != blank %}
@@ -312,6 +312,12 @@
       "type": "color",
       "id": "button_title_color",
       "label": "按钮文本颜色",
+      "default": "#1A1A1A"
+    },
+    {
+      "type": "color",
+      "id": "buttonprice_bg_color",
+      "label": "按钮背景/价格颜色",
       "default": "#1A1A1A"
     },
     {

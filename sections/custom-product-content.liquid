@@ -355,7 +355,7 @@
                                   <a
                                     class="btn {{ block.settings.button_style }}"
                                     {% if block.settings.button_title_color != blank %}
-                                      style="color:{{block.settings.price_color }};border: 2px solid {{block.settings.price_color }};"
+                                      style="background:{{block.settings.price_color }} !important;"
                                     {% endif %}
                                     {% if block.settings.button_link != blank %}
                                       href="{{ block.settings.button_link }}"

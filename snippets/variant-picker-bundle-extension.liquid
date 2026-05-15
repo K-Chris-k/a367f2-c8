@@ -476,6 +476,17 @@
                 if opt_value_num > 1000
                   assign opt_variant_id = opt_value_num
                 endif
+
+                # 自动映射：未显式指定 variant_id 且配置了 add-on 产品时，
+                # 按 qty 自动对应到 add-on 产品的第 (qty-1) 个变体（1x→variants[0]，2x→variants[1]…）。
+                # 这样选不同 label 加购才能命中对应变体，而不是始终用默认变体。
+                if opt_variant_id == blank and opt_qty > 0 and vpb != blank and vpb.settings.bundle_addon_product != blank
+                  assign auto_variant_index = opt_qty | minus: 1
+                  assign auto_variant = vpb.settings.bundle_addon_product.variants[auto_variant_index]
+                  if auto_variant and auto_variant.id != blank
+                    assign opt_variant_id = auto_variant.id
+                  endif
+                endif
               -%}
               <input
                 type="radio"
@@ -584,6 +595,23 @@
                 assign opt_selected = true
               endif
               assign addon_input_id = 'bundle-addon-' | append: section.id | append: '-' | append: option.position | append: '-' | append: forloop.index0
+
+              # 解析行级 variant_id：value 字段如果是纯数字（>= 1000），视为 variant ID
+              assign opt_variant_id = ''
+              assign opt_value_num = opt_value | plus: 0
+              if opt_value_num > 1000
+                assign opt_variant_id = opt_value_num
+              endif
+
+              # 自动映射：未显式指定 variant_id 且配置了 add-on 产品时，
+              # 按 qty 自动对应到 add-on 产品的第 (qty-1) 个变体（1x→variants[0]，2x→variants[1]…）。
+              if opt_variant_id == blank and opt_qty > 0 and vpb != blank and vpb.settings.bundle_addon_product != blank
+                assign auto_variant_index = opt_qty | minus: 1
+                assign auto_variant = vpb.settings.bundle_addon_product.variants[auto_variant_index]
+                if auto_variant and auto_variant.id != blank
+                  assign opt_variant_id = auto_variant.id
+                endif
+              endif
             -%}
             <input
               type="radio"
@@ -604,6 +632,9 @@
               {% endif %}
               {% if opt_text != blank %}
                 data-addon-text="{{ opt_text | escape }}"
+              {% endif %}
+              {% if opt_variant_id != blank %}
+                data-addon-variant-id="{{ opt_variant_id }}"
               {% endif %}
               {% if opt_selected %}
                 checked
@@ -626,6 +657,9 @@
               {% endif %}
               {% if opt_text != blank %}
                 data-addon-text="{{ opt_text | escape }}"
+              {% endif %}
+              {% if opt_variant_id != blank %}
+                data-addon-variant-id="{{ opt_variant_id }}"
               {% endif %}
               data-addon-value="{{ opt_value | escape }}"
             >
