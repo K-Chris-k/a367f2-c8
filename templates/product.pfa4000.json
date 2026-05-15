@@ -247,22 +247,6 @@
             "note": ""
           }
         },
-        "card_khPgDc": {
-          "type": "card",
-          "settings": {
-            "title": "Ladeleistung",
-            "content": "2000 W",
-            "note": ""
-          }
-        },
-        "card_HbgwWP": {
-          "type": "card",
-          "settings": {
-            "title": "Entladeleistung",
-            "content": "2400 W",
-            "note": ""
-          }
-        },
         "card_3C4awP": {
           "type": "card",
           "settings": {
@@ -310,8 +294,6 @@
         "card_emQ4eg",
         "card_FeRTBi",
         "card_mmMjiU",
-        "card_khPgDc",
-        "card_HbgwWP",
         "card_3C4awP",
         "card_pcxnBc",
         "card_4C38Mb",

@@ -30,7 +30,7 @@
    #shopify-section-{{ section.id }} .product-collection-box .custom-product-price{margin-top:15px;font-size:18px;text-align: left;color: #3250C3;}
    #shopify-section-{{ section.id }} .product-collection-box .custom-product-price .original-price{font-weight: 500;color: #8D8D8D;text-decoration: line-through;}
    #shopify-section-{{ section.id }} .product-collection-box .custom-product-button{display:flex;
-    {% comment %} left: 50%;transform: translateX(-50%); {% endcomment %}
+    border: none;
     margin-top:14px;max-width:220px;min-width:100%;min-height:{{ section.settings.button_height }}px;color:{{  section.settings.button_title_color }}}
    #shopify-section-{{ section.id }} .product-collection-box .custom-product-button:hover{color:#fff}
    .section-product-collection .slick-dotted .slick-dots{display: none;margin-top:0px}
@@ -49,13 +49,13 @@
 }
  @media (max-width: 1023px) {
  .section-product-collection .slick-dotted .slick-dots {margin-top:30px;display: flex ;visibility:visible;gap:8px;align-items: center;justify-content: center;}
- .slick-dotted .slick-dots .slick-active button{ background: #3250C3;}
- .slick-dotted .slick-dots button {
+ #shopify-section-{{ section.id }} .slick-dotted .slick-dots .slick-active button{ background: #5CA52B;}
+ #shopify-section-{{ section.id }} .slick-dotted .slick-dots button {
     padding:0px;
     width: 20px;
-    height: 4px;
+    height: 6px;
     border-radius:2px;
-    background: #D9D9D9;
+    background: #BADBC7;
     color: transparent;
     transition: all .4s ease;
   }

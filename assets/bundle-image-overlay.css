@@ -32,12 +32,17 @@
   transform: scale(0.8) translate(-16%, 12%);
 }
 
-/* 响应式调整 */
+
+/* body:has(.variant-category-card.selected):has(.variant-extension-base.variant-extension-variant-seletor-custom-layout .selected) .bundle-main-image-adjusted-bottom {
+  transform: scale(0.8) translate(-16%, 30%);
+} */
 @media (max-width: 768px) {
   .bundle-other-display-text{
     left:0 !important;
   }
-  
+  /* body:has(.variant-category-card.selected):has(.variant-extension-base.variant-extension-variant-seletor-custom-layout .selected) .bundle-main-image-adjusted-bottom {
+  transform: scale(0.8) translate(0%, 30%) !important;
+} */
   /* 主图移动端调整 */
   .bundle-main-image-adjusted {
     transform: scale(0.8) translate(0, 10%) !important;

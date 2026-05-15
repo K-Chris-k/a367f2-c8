@@ -79,7 +79,7 @@
         "enable_parallax": false,
         "parallax_direction": "vertical",
         "color_scheme": "",
-        "max_width": 760,
+        "max_width": 960,
         "content_position": "top-center",
         "content_alignment": "center",
         "image_mobile": "shopify://shop_images/may-sale-KV-mob.jpg",
@@ -154,8 +154,8 @@
         "newsletter_formitem_may_MfLKjH": {
           "type": "NewsletterFormitem-may",
           "settings": {
-            "image": "shopify://shop_images/may-A.png",
-            "mobile_image": "shopify://shop_images/may-a-mob.png",
+            "image": "shopify://shop_images/may-rabb-a-pc.png",
+            "mobile_image": "shopify://shop_images/may-rabb-a-mob.png",
             "subheading": "Abonnieren & bis zu 50€ sichern",
             "description": "",
             "text_size": "text-base",
@@ -168,7 +168,7 @@
         "featured_collection_9xmY6i": {
           "type": "featured_collection",
           "settings": {
-            "image": "shopify://shop_images/may-rabb-b-pc.png",
+            "image": "shopify://shop_images/may-rabb-b-pc_3ff37cff-a3c9-4249-b146-2f13013aa56d.png",
             "mobile_image": "shopify://shop_images/may-rabb-b-mob.png",
             "title": "",
             "description": "",
@@ -290,11 +290,11 @@
             "hotsale": "NEU",
             "custom_title": "SFA3600 | 3,6kWh",
             "custom_describe": "",
-            "price": "699€",
-            "original": "",
+            "price": "749€",
+            "original": "849€",
             "bottom_text": "*SFA3600: Versand innerhalb von 7 Werktagen",
             "button_text": "Mehr erfahren",
-            "button_link": ""
+            "button_link": "https://de.indevolt.com/products/indevolt-sfa3600-erweiterungsakku-mit-halbfeste-lfp-akkus"
           }
         },
         "card_W3tTLt": {
@@ -306,11 +306,11 @@
             "hotsale": "NEU",
             "custom_title": "PFA4000 | 4kWh",
             "custom_describe": "",
-            "price": "699€",
-            "original": "",
+            "price": "749€",
+            "original": "849€",
             "bottom_text": "*PFA4000: Versand innerhalb von 20 Werktagen",
             "button_text": "Mehr erfahren",
-            "button_link": ""
+            "button_link": "https://de.indevolt.com/products/indevolt-pfa4000-erweiterungsakku"
           }
         }
       },
@@ -320,17 +320,17 @@
       ],
       "name": "产品推荐五月促销",
       "settings": {
-        "id": "",
+        "id": "Neuheiten",
         "title": "Vorbestellung für Neuheiten",
         "padding_top": 70,
         "padding_bottom": 80,
         "button_height": 48,
         "mobile_button_height": 40,
-        "section_bg_color": "linear-gradient(#edf6dd, #edf6dd) !important;",
+        "section_bg_color": "linear-gradient(#edf6dd, #EEF5E1) !important;",
         "bg_color": "",
         "content_color": "#ffffff",
         "title_color": "#000000",
-        "button_title_color": "#5ca52b",
+        "button_title_color": "#ffffff",
         "button_color": "cyber-monday",
         "image_height": "216",
         "sale-min_height": "0",
@@ -351,14 +351,14 @@
             "product_item": "sfa3600-erweiterungsakku",
             "custom_image": "shopify://shop_images/may-sf1200-pc.png",
             "mobile_image": "shopify://shop_images/may-sf1200-mob.png",
-            "hotsale": "NEU",
-            "custom_title": "SFA3600 | 3,6kWh",
+            "hotsale": "Standard-Set",
+            "custom_title": "SolidFlex 1200",
             "custom_describe": "4×600 W MPPT | 1200W AC-Kopplung | 1,8kWh",
-            "price": "699€",
-            "original": "",
+            "price": "549€",
+            "original": "899€",
             "bottom_text": "",
             "button_text": "Mehr erfahren",
-            "button_link": ""
+            "button_link": "https://de.indevolt.com/products/indevolt-solidflex-1200-hybrid-balkonkraftwerk-mit-halbfesten-lifepo-akkus"
           }
         },
         "card_de8B7q": {
@@ -367,14 +367,14 @@
             "product_item": "sfa3600-erweiterungsakku",
             "custom_image": "shopify://shop_images/may-sf1200-445-pc.png",
             "mobile_image": "shopify://shop_images/may-sf1200-445-mob.png",
-            "hotsale": "NEU",
-            "custom_title": "PFA4000 | 4kWh",
+            "hotsale": "Standard-Set",
+            "custom_title": "SolidFlex 1200 + 455W Solarpanel*2",
             "custom_describe": "4×600 W MPPT | 1200W AC-Kopplung | 1,8kWh",
-            "price": "699€",
-            "original": "",
+            "price": "749€",
+            "original": "1.298€",
             "bottom_text": "",
             "button_text": "Mehr erfahren",
-            "button_link": ""
+            "button_link": "https://de.indevolt.com/products/indevolt-solidflex-1200-hybrid-balkonkraftwerk-mit-halbfesten-lifepo-akkus?solar=43859125272675"
           }
         }
       },
@@ -384,17 +384,17 @@
       ],
       "name": "产品推荐五月促销",
       "settings": {
-        "id": "",
+        "id": "Mai-Angebote",
         "title": "Einfach einsteigen. Sofort sparen.",
         "padding_top": 70,
         "padding_bottom": 70,
         "button_height": 48,
         "mobile_button_height": 40,
-        "section_bg_color": "linear-gradient(#edf6dd, #edf6dd) !important;",
+        "section_bg_color": "linear-gradient(#EEF5E1, #EEF5E5) !important;",
         "bg_color": "",
         "content_color": "#ffffff",
         "title_color": "#000000",
-        "button_title_color": "#5ca52b",
+        "button_title_color": "#ffffff",
         "button_color": "cyber-monday",
         "image_height": "216",
         "sale-min_height": "0",
@@ -589,7 +589,7 @@
         "text_pzDN8W"
       ],
       "custom_css": [
-        ".color-scheme-1 {background-image: linear-gradient(#edf6dd, #edf6dd) !important;}",
+        ".color-scheme-1 {background-image: linear-gradient(#eef5e5, #eff5e9) !important;}",
         ".f-flex {border-radius: 20px;}"
       ],
       "name": "专题活动产品",
@@ -683,7 +683,7 @@
         "padding_bottom": 70,
         "button_height": 48,
         "mobile_button_height": 40,
-        "section_bg_color": "linear-gradient(#edf6dd, #edf6dd) !important;",
+        "section_bg_color": "linear-gradient(#EFF5E9, #EFF4ED) !important;",
         "bg_color": "transparent",
         "content_color": "#ffffff",
         "title_color": "#000000",
@@ -745,7 +745,7 @@
         "text_C6XnXY"
       ],
       "custom_css": [
-        ".color-scheme-1 {background-image: linear-gradient(#edf6dd, #edf6dd) !important;}",
+        ".color-scheme-1 {background-image: linear-gradient(#eff4ed, #f0f4f0) !important;}",
         ".f-flex {border-radius: 20px;}",
         "@media (max-width: 768px) {.hd2 strong {display: inline-block; }}"
       ],
@@ -841,7 +841,7 @@
         "padding_bottom": 70,
         "button_height": 48,
         "mobile_button_height": 40,
-        "section_bg_color": "linear-gradient(#edf6dd, #edf6dd) !important;",
+        "section_bg_color": "linear-gradient(#F0F4F0, #F0F4F3) !important;",
         "bg_color": "transparent",
         "content_color": "#ffffff",
         "title_color": "#000000",
@@ -1064,7 +1064,7 @@
         "text_J3XmYF"
       ],
       "custom_css": [
-        ".color-scheme-1 {background-image: linear-gradient(#edf6dd, #edf6dd) !important;}",
+        ".color-scheme-1 {background-image: linear-gradient(#f0f4f3, #f0f4f3) !important;}",
         ".f-flex {border-radius: 20px;}"
       ],
       "name": "专题活动产品",
@@ -1159,7 +1159,7 @@
         "padding_bottom": 70,
         "button_height": 48,
         "mobile_button_height": 40,
-        "section_bg_color": "linear-gradient(#edf6dd, #edf6dd) !important;",
+        "section_bg_color": "linear-gradient(#f0f4f3, #F1F4F6) !important;",
         "bg_color": "transparent",
         "content_color": "#ffffff",
         "title_color": "#000000",
@@ -1314,6 +1314,7 @@
         "card_Kb9ryM",
         "card_ANngjE"
       ],
+      "disabled": true,
       "custom_css": [
         ".section-black-member {background: #edf6dd !important;}",
         ".section-black-member .coupon-list .coupon-content-wrapper a.grid-button {background: linear-gradient(to right, #3250c3, #3250c3);}"
@@ -1326,98 +1327,6 @@
         "bg_color": "#edf6dd",
         "padding_top": 72,
         "padding_bottom": 72
-      }
-    },
-    "rich_text_image_list_6XDBRY": {
-      "type": "rich-text-image-list",
-      "blocks": {
-        "heading_iVWhf3": {
-          "type": "heading",
-          "settings": {
-            "heading": "Gründe, uns zu wählen",
-            "heading_size": "hd2",
-            "heading_highlight_style": "none"
-          }
-        },
-        "image_Eqihin": {
-          "type": "image",
-          "settings": {
-            "container": "fixed",
-            "image": "shopify://shop_images/ed-neue-pc.png",
-            "mobile_image": "shopify://shop_images/ed-neue-mob.png"
-          }
-        }
-      },
-      "block_order": [
-        "heading_iVWhf3",
-        "image_Eqihin"
-      ],
-      "custom_css": [
-        ".color-scheme-1 {background: #edf6dd !important;}",
-        "h2 {color: #1a1a1a;}"
-      ],
-      "name": "富文本+图片+视频",
-      "settings": {
-        "color_scheme": "",
-        "bg_color": "#ffffff",
-        "content_alignment": "center",
-        "ids": "limitiertegeschenke",
-        "show_title_icon": false,
-        "img-href": "",
-        "padding_top": 70,
-        "padding_bottom": 120,
-        "image_top": 40,
-        "video_radius": 0,
-        "video_aspect_ratio": "16/9",
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "mobile_content_alignment": "center"
-      }
-    },
-    "rich_text_9hxcEy": {
-      "type": "rich-text",
-      "blocks": {
-        "text_bGjyc3": {
-          "type": "text",
-          "settings": {
-            "text": "<p><strong>Aktionsbedingungen:</strong></p><p><strong>1. Versandzeitraum: </strong>Bestellungen, die während des Aktionszeitraums vom 15. April bis 30. April eingehen, werden innerhalb von 3 Werktagen versandt.</p><p><strong>2. Versandkosten: </strong>Der Standardversand ist während der Aktion kostenlos.<br/>Sollten Sie einen bestimmten Logistikdienstleister wünschen, kontaktieren Sie bitte unseren Kundenservice (ggf. gegen Aufpreis).<br/>Für Lieferungen in entlegene Gebiete Deutschlands sowie nach Österreich können zusätzliche Versandkosten anfallen. In diesem Fall wird Sie unser Kundenservice per E-Mail kontaktieren. Bitte prüfen Sie regelmäßig Ihren Posteingang.</p><p><strong>3. Gratisbeigaben:<br/></strong>Gratisbeigaben werden in der Regel zusammen mit den Akuus versandt. In Einzelfällen kann der Versand jedoch separat erfolgen. Bei Fragen wenden Sie sich bitte an unseren Kundenservice.</p><p><strong>4. Nutzung von Rabattcodes:</strong><br/>Für diese Aktion stehen zwei Kategorien von Rabattcodes zur Verfügung:<br/>Kategorie A: Automatische Rabatte, Newsletter-Abonnement-Codes.<br/>Kategorie B: Influencer-Codes, Mitglieder-Rabatte, 50 € Empfehlungs-Gutscheine.<br/>Kombinationsregeln: Pro Bestellung können maximal zwei Rabattcodes verwendet werden. Ein Code aus Kategorie A ist mit einem Code aus Kategorie B kombinierbar.Codes innerhalb der gleichen Kategorie sind nicht miteinander kombinierbar.Sollten mehrere Codes derselben Kategorie anwendbar sein, wird automatisch der Code mit dem höchsten Rabattwert berücksichtigt.</p>",
-            "text_size": "text-base"
-          }
-        }
-      },
-      "block_order": [
-        "text_bGjyc3"
-      ],
-      "custom_css": [
-        ".color-scheme-1 {background: #edf6dd !important;}",
-        "a {color: #ffa81d;}",
-        "p {color: #1a1a1a;}",
-        ".rich-text p:first-of-type strong:first-of-type {font-size: 20px; /* 您想要的字号 */}",
-        "p {line-height: 17px; font-size: 14px;}",
-        "@media (max-width: 767.98px) {p {line-height: 15px; font-size: 12px; }}"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "color_scheme": "",
-        "content_alignment": "left",
-        "padding_top_inner": 20,
-        "padding_bottom_inner": 120,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "show_section_divider": false,
-        "divider_width": "fixed",
-        "mobile_content_alignment": "left"
-      }
-    },
-    "custom_liquid_dJyEHh": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "custom_liquid": "<style>\n    /* 全局重置 & 基础样式 */\n/*     * {\n      margin: 0;\n      padding: 0;\n      box-sizing: border-box;\n    }\n\n    body {\n      background-color: #000000;\n      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;\n      line-height: 1.5;\n    } */\n\n    /* 外部黑色背景 + 居中对齐容器 (与原设计一致) */\n    .outer-container {\n      background-color: #000000;\n      padding: 15px;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      min-height: 50vh;\n    }\n\n    /* 书页风格主容器: 左右两栏 (像书本摊开) */\n    .outer-container .book-layout {\n      max-width: 1280px;\n      width: 100%;\n      background-color: #000000;   /* 黑色底色，左右区块内部为深灰/黑底，但文本统一灰色 */\n      display: flex;\n      flex-wrap: wrap;            /* 移动端折行，保持书本风格 */\n      gap: 2rem;\n      /* 内边距模拟页面留白 (响应式继承haft-div的padding感) */\n      padding: 0px 20px;\n    }\n\n    /* 左右两个页面 (column) */\n    .outer-container .page-col {\n      flex: 1;\n      min-width: 260px;\n      background: transparent;\n      /* 类似书页的轻微分隔效果: 可选右边框线 (只在桌面版右栏左侧加分隔) */\n    }\n\n    /* 左侧栏: 主要包含前半部分文案 */\n    .outer-container .left-page {\n      /* 没有任何额外背景，保持纯粹 */\n    }\n\n    /* 右侧栏: 包含原本后半计算细节 */\n    .outer-container .right-page {\n      /* 可以增加淡淡的左侧装饰线，模拟书缝 */\n      /* border-left: 1px solid rgba(138, 138, 138, 0.25); */\n      padding-left: 1.5rem;\n    }\n\n    /* 公用文本样式，保持原有的灰色风格 */\n    .outer-container .page-col h3 {\n      color: #8A8A8A;\n      font-size: 20px;\n      margin-bottom: 1.25rem;\n      font-weight: 600;\n      letter-spacing: -0.01em;\n    }\n\n    .outer-container .page-col p, \n    .outer-container .page-col div[data-line=\"true\"] {\n      color: #8A8A8A;\n      font-size: 10px;\n      margin-bottom: 0.75rem;\n    }\n\n    /* 针对直接span或内联块保持统一 */\n    .outer-container .text-block {\n      color: #8A8A8A;\n      font-size: 10px;\n      margin-bottom: 0.75rem;\n      line-height: 1.5;\n    }\n\n    .outer-container .text-block b, .outer-container strong {\n      color: #8A8A8A;\n      font-weight: 600;\n    }\n\n    /* 链接样式 */\n    .outer-container a {\n      color: #8A8A8A;\n      text-decoration: underline;\n      text-decoration-thickness: 1px;\n      text-underline-offset: 2px;\n      transition: opacity 0.2s;\n    }\n\n    .outer-container a:hover {\n      opacity: 0.7;\n      color: #c0c0c0;\n    }\n\n    /* 公式 / 计算细节段落可以保留等宽风格 */\n    .outer-container .calc-detail {\n      font-family: 'SF Mono', 'Menlo', monospace;\n      font-size: 0.9rem;\n      background: rgba(255,255,255,0.03);\n      padding: 0.2rem 0.4rem;\n      border-radius: 6px;\n      display: inline-block;\n    }\n\n    .outer-container hr {\n      border: none;\n      border-top: 1px solid rgba(138, 138, 138, 0.2);\n      margin: 1rem 0;\n    }\n\n    /* 保持原来的空行br样式 */\n    .outer-container .spacer {\n      height: 0.75rem;\n    }\n\n    /* 移动端适配: 书本变为上下堆叠，右侧边框消失 */\n    @media (max-width: 768px) {\n      .outer-container .book-layout {\n        flex-direction: column;\n        padding: 50px 20px;\n        gap: 0rem;\n      }\n      .outer-container .right-page {\n        border-left: none;\n        padding-left: 0;\n        margin-top: 0.5rem;\n      }\n      .outer-container .page-col h3 {\n        font-size: 16px;\n      }\n      .outer-container .page-col p, .text-block {\n        font-size: 12px;\n      }\n     .outer-container .text-block {\n        font-size: 12px;\n      }\n    }\n\n    /* 保持原有haft-div风格细调: 所有文本默认灰色 */\n    .outer-container .small-note {\n      font-size: 0.85rem;\n      color: #6c6c6c;\n    }\n\n    /* 让计算区块更清晰 */\n    .outer-container .formula-line {\n      font-family: monospace;\n      word-break: break-word;\n    }\n  </style>\n \n<div class=\"outer-container\"  style=\"background-color:#000000;padding:15px; display: flex;\n  justify-content: center;\n  align-items: center;\">\n  <div class=\"book-layout\">\n    <!-- 左侧：前半部分内容（Haftungsausschluss + 介绍 + Stromerzeugung + 假设 + CO₂ + 免责说明 + 部分原始结构） -->\n    <div class=\"page-col left-page\">\n      <h3>Haftungsausschluss</h3>\n      \n \n      <div class=\"text-block\">\n        <b>1. Berechnungsgrundlagen:</b><br>\n        Die Berechnung basiert auf typischen Installationsbedingungen in Süddeutschland:\nAusrichtung der Solarmodule: Süden\nNeigungswinkel: 30°–35°\nJährliche Volllaststunden: ca. 1160 h\nEigenverbrauchsquote: Abhängig von der Speicherkonfiguration (je größer der Speicher, desto höher die Quote)\nStrompreis: 0,40 €/kWh\n      </div>\n      \n      <div class=\"text-block\">\n        <b>2. Berechnungsformel:</b><br>\n        <b>Parameter Erläuterung</b><br>\n\t\t\tA: Gesamtleistung der Solarmodule (kW)<br>\n\t\t\tB: Jährliche Sonneneinstrahlung (Volllaststunden), Standard: 1160 h<br>\n\t\t\tC: Eigenverbrauchsquote (%), Standard: 90 %<br>\n\t\t\tD: Strompreis (€/kWh), Standard: 0,40 €<br>\n\t\t\tH: Nutzungsfaktor (%) – abhängig von der Speicherkonfiguration (höherer Faktor bei größerem Speicher)<br>\n\t\t\tF: Kosten (€)<br>\n\t\t\tE: Jährlicher Ertrag (€) = A × B × C × D × H<br>\n\t\t\tG: Amortisationszeit (Jahre) = F ÷ E<br>\n\t\t\t<b>Amortisationszeit</b><br>\n\t\t\tG = F ÷ (A × B × C × D × H）<br>\n      </div>\n      \n\n      \n\n      \n      <div class=\"spacer\"></div>\n    \n    </div>\n\n    <!-- 右侧：后半部分内容（Berechnungsdetails + 完整计算过程 + 公式拆解） -->\n    <div class=\"page-col right-page\">\n      <!-- <h3>Berechnungsdetails</h3 -->\n      \n            <div class=\"text-block\">\n        <b>3. Rechnungen:</b><br>\n        <b>Konfiguration 1</b><br>\n        Produkt: SolidFlex 2000 + SFA1800 + 2000 W Solarmodule<br>\n\t\tKosten: 1598 €<br>\n\t\tJährlicher PV-Ertrag: 2000 W × 1160 h = 2320 kWh<br>\n\t\tJährlicher Ertrag: 2320 kWh × 0,40 € × 90% = 835 €<br>\n\t\tAmortisationszeit: 1598 € ÷ (835 € × 85%) ≈ 2,25 Jahre<br>\n\t\t\n\t\t        <b>Konfiguration 2</b><br>\nProdukt: BK1600 + 890 W Solarmodule<br>\nKosten: 599 €<br>\nJährlicher PV-Ertrag: 890 W × 1160 h = 1032  kWh<br>\nJährlicher Ertrag: 1032 kWh × 0,40 € × 90 % = 317  €<br>\nAmortisationszeit: 599 € ÷ (317 € × 90 %) ≈ 2,1 Jahre<br>\n      </div>\n            <div class=\"text-block\">\n        <b>4. Wichtiger Hinweis:</b><br>\n        Gemäß den deutschen „Plug-in“-Richtlinien darf der Wechselrichter maximal 800 W ins Hausnetz einspeisen.<br><br>\n        Die angegebenen Werte basieren auf idealen Testbedingungen. Die tatsächlichen Einsparungen können je nach Installationsort, individuellen Nutzungsgewohnheiten, Wetterbedingungen und tatsächlicher Systemeffizienz abweichen.\nDie Berechnung dient lediglich zur Orientierung und stellt keine Garantie für tatsächliche Erträge dar.\n      </div>\n  \n      \n      <!-- <hr> -->\n \n    </div>\n  </div>\n</div>",
-        "container": "full",
-        "color_scheme": "",
-        "padding_top": 0,
-        "padding_bottom": 0
       }
     },
     "bes_product_tabs_may_hmqLNT": {
@@ -1491,30 +1400,42 @@
             "button_link": "",
             "button_style": "btn--primary",
             "sale_height_diy": "h75px",
-            "custom_title1": "",
-            "price1": "",
-            "button_text1": "",
-            "button_link1": "",
-            "custom_title2": "",
-            "price2": "",
-            "button_text2": "",
-            "button_link2": "",
-            "custom_title3": "",
-            "price3": "",
-            "button_text3": "",
-            "button_link3": "",
-            "custom_title4": "",
-            "price4": "",
-            "button_text4": "",
-            "button_link4": "",
-            "custom_title5": "",
-            "price5": "",
-            "button_text5": "",
-            "button_link5": "",
-            "custom_title6": "",
-            "price6": "",
-            "button_text6": "",
-            "button_link6": ""
+            "custom_image1": "shopify://shop_images/may-plug.jpg",
+            "mobile_image1": "shopify://shop_images/may-plug.jpg",
+            "custom_title1": "Smart Plug",
+            "price1": "29,00€",
+            "button_text1": "Mehr erfahren",
+            "button_link1": "https://de.indevolt.com/products/solarman-smart-plug",
+            "custom_image2": "shopify://shop_images/may-meter.jpg",
+            "mobile_image2": "shopify://shop_images/may-meter.jpg",
+            "custom_title2": "Smarter Stromzähler",
+            "price2": "99,00€",
+            "button_text2": "Mehr erfahren",
+            "button_link2": "https://de.indevolt.com/products/indevolt-smarter-stromzahler",
+            "custom_image3": "shopify://shop_images/may-shelly.jpg",
+            "mobile_image3": "shopify://shop_images/may-shelly.jpg",
+            "custom_title3": "Shelly Pro 3EM (120A)",
+            "price3": "109,00€",
+            "button_text3": "Mehr erfahren",
+            "button_link3": "https://de.indevolt.com/products/shelly-pro-3em-120a",
+            "custom_image4": "shopify://shop_images/may-line-bk.jpg",
+            "mobile_image4": "shopify://shop_images/may-line-bk.jpg",
+            "custom_title4": "AC Verlängerungskabel für BK1600 und BK1600 Ultra",
+            "price4": "29,00€",
+            "button_text4": "Mehr erfahren",
+            "button_link4": "https://de.indevolt.com/products/indevolt-solarbank-schuko-anschlusskabel",
+            "custom_image5": "shopify://shop_images/may-line-sf.jpg",
+            "mobile_image5": "shopify://shop_images/may-line-sf.jpg",
+            "custom_title5": "AC Verlängerungskabel für SolidFlex und PowerFlex",
+            "price5": "39,00€",
+            "button_text5": "Mehr erfahren",
+            "button_link5": "https://de.indevolt.com/products/indevolt-ac-verlangerungskabel-fur-solidflex-und-powerflex-serie",
+            "custom_image6": "shopify://shop_images/may-line-pv.jpg",
+            "mobile_image6": "shopify://shop_images/may-line-pv.jpg",
+            "custom_title6": "PV Verlängerungskabel",
+            "price6": "19,00€",
+            "button_text6": "Mehr erfahren",
+            "button_link6": "https://de.indevolt.com/products/indevolt-pv-verlangerungskabel"
           }
         }
       },
@@ -1523,7 +1444,7 @@
         "tab_UYeRCa"
       ],
       "custom_css": [
-        ".page-width {background: #edf6dd !important;}"
+        ".page-width {background-image: linear-gradient(#f1f4f6, #f1f4f6) !important;}"
       ],
       "name": "五月促销产品滑块",
       "settings": {
@@ -1536,10 +1457,102 @@
         "desktop_image_position": "left",
         "desktop_image_width": 100,
         "image_aspect_ratio": "adapt",
-        "padding_top": 50,
-        "padding_bottom": 50,
+        "padding_top": 70,
+        "padding_bottom": 70,
         "show_section_divider": false,
         "divider_width": "fixed"
+      }
+    },
+    "rich_text_image_list_6XDBRY": {
+      "type": "rich-text-image-list",
+      "blocks": {
+        "heading_iVWhf3": {
+          "type": "heading",
+          "settings": {
+            "heading": "Gründe, uns zu wählen",
+            "heading_size": "hd2",
+            "heading_highlight_style": "none"
+          }
+        },
+        "image_Eqihin": {
+          "type": "image",
+          "settings": {
+            "container": "fixed",
+            "image": "shopify://shop_images/may-uns-pc.png",
+            "mobile_image": "shopify://shop_images/may-uns-mob.png"
+          }
+        }
+      },
+      "block_order": [
+        "heading_iVWhf3",
+        "image_Eqihin"
+      ],
+      "custom_css": [
+        ".color-scheme-1 {background-image: linear-gradient(#f1f4f6, #f1f4f9) !important;}",
+        "h2 {color: #1a1a1a;}"
+      ],
+      "name": "富文本+图片+视频",
+      "settings": {
+        "color_scheme": "",
+        "bg_color": "#ffffff",
+        "content_alignment": "center",
+        "ids": "Vorteile",
+        "show_title_icon": false,
+        "img-href": "",
+        "padding_top": 70,
+        "padding_bottom": 120,
+        "image_top": 40,
+        "video_radius": 0,
+        "video_aspect_ratio": "16/9",
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "center"
+      }
+    },
+    "rich_text_9hxcEy": {
+      "type": "rich-text",
+      "blocks": {
+        "text_bGjyc3": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Aktionsbedingungen:</strong></p><p><strong>1. Versandzeitraum: </strong>Bestellungen, die während des Aktionszeitraums vom 18. Mai bis 29. Mai eingehen, werden innerhalb von 3 Werktagen versandt.</p><p><strong>2. Versandkosten: </strong>Der Standardversand ist während der Aktion kostenlos.<br/>Sollten Sie einen bestimmten Logistikdienstleister wünschen, kontaktieren Sie bitte unseren Kundenservice (ggf. gegen Aufpreis).<br/>Für Lieferungen in entlegene Gebiete Deutschlands sowie nach Österreich können zusätzliche Versandkosten anfallen. In diesem Fall wird Sie unser Kundenservice per E-Mail kontaktieren. Bitte prüfen Sie regelmäßig Ihren Posteingang.</p><p><strong>3. Gratisbeigaben:<br/></strong>Gratisbeigaben werden in der Regel zusammen mit den Akuus versandt. In Einzelfällen kann der Versand jedoch separat erfolgen. Bei Fragen wenden Sie sich bitte an unseren Kundenservice.</p><p><strong>4. Nutzung von Rabattcodes:</strong><br/>Für diese Aktion stehen zwei Kategorien von Rabattcodes zur Verfügung:<br/>Kategorie A: Automatische Rabatte, Newsletter-Abonnement-Codes.<br/>Kategorie B: Influencer-Codes, Mitglieder-Rabatte, 50 € Empfehlungs-Gutscheine.<br/>Kombinationsregeln: Pro Bestellung können maximal zwei Rabattcodes verwendet werden. Ein Code aus Kategorie A ist mit einem Code aus Kategorie B kombinierbar.Codes innerhalb der gleichen Kategorie sind nicht miteinander kombinierbar.Sollten mehrere Codes derselben Kategorie anwendbar sein, wird automatisch der Code mit dem höchsten Rabattwert berücksichtigt.</p>",
+            "text_size": "text-base"
+          }
+        }
+      },
+      "block_order": [
+        "text_bGjyc3"
+      ],
+      "custom_css": [
+        ".color-scheme-1 {background: #f2f3fb !important;}",
+        "a {color: #ffa81d;}",
+        "p {color: #1a1a1a;}",
+        ".rich-text p:first-of-type strong:first-of-type {font-size: 20px; /* 您想要的字号 */}",
+        "p {line-height: 17px; font-size: 14px;}",
+        "@media (max-width: 767.98px) {p {line-height: 15px; font-size: 12px; }}"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "color_scheme": "",
+        "content_alignment": "left",
+        "padding_top_inner": 20,
+        "padding_bottom_inner": 120,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "show_section_divider": false,
+        "divider_width": "fixed",
+        "mobile_content_alignment": "left"
+      }
+    },
+    "custom_liquid_dJyEHh": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n    /* 全局重置 & 基础样式 */\n/*     * {\n      margin: 0;\n      padding: 0;\n      box-sizing: border-box;\n    }\n\n    body {\n      background-color: #000000;\n      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;\n      line-height: 1.5;\n    } */\n\n    /* 外部黑色背景 + 居中对齐容器 (与原设计一致) */\n    .outer-container {\n      background-color: #000000;\n      padding: 15px;\n      display: flex;\n      justify-content: center;\n      align-items: center;\n      min-height: 50vh;\n    }\n\n    /* 书页风格主容器: 左右两栏 (像书本摊开) */\n    .outer-container .book-layout {\n      max-width: 1280px;\n      width: 100%;\n      background-color: #000000;   /* 黑色底色，左右区块内部为深灰/黑底，但文本统一灰色 */\n      display: flex;\n      flex-wrap: wrap;            /* 移动端折行，保持书本风格 */\n      gap: 2rem;\n      /* 内边距模拟页面留白 (响应式继承haft-div的padding感) */\n      padding: 0px 20px;\n    }\n\n    /* 左右两个页面 (column) */\n    .outer-container .page-col {\n      flex: 1;\n      min-width: 260px;\n      background: transparent;\n      /* 类似书页的轻微分隔效果: 可选右边框线 (只在桌面版右栏左侧加分隔) */\n    }\n\n    /* 左侧栏: 主要包含前半部分文案 */\n    .outer-container .left-page {\n      /* 没有任何额外背景，保持纯粹 */\n    }\n\n    /* 右侧栏: 包含原本后半计算细节 */\n    .outer-container .right-page {\n      /* 可以增加淡淡的左侧装饰线，模拟书缝 */\n      /* border-left: 1px solid rgba(138, 138, 138, 0.25); */\n      padding-left: 1.5rem;\n    }\n\n    /* 公用文本样式，保持原有的灰色风格 */\n    .outer-container .page-col h3 {\n      color: #8A8A8A;\n      font-size: 20px;\n      margin-bottom: 1.25rem;\n      font-weight: 600;\n      letter-spacing: -0.01em;\n    }\n\n    .outer-container .page-col p, \n    .outer-container .page-col div[data-line=\"true\"] {\n      color: #8A8A8A;\n      font-size: 10px;\n      margin-bottom: 0.75rem;\n    }\n\n    /* 针对直接span或内联块保持统一 */\n    .outer-container .text-block {\n      color: #8A8A8A;\n      font-size: 10px;\n      margin-bottom: 0.75rem;\n      line-height: 1.5;\n    }\n\n    .outer-container .text-block b, .outer-container strong {\n      color: #8A8A8A;\n      font-weight: 600;\n    }\n\n    /* 链接样式 */\n    .outer-container a {\n      color: #8A8A8A;\n      text-decoration: underline;\n      text-decoration-thickness: 1px;\n      text-underline-offset: 2px;\n      transition: opacity 0.2s;\n    }\n\n    .outer-container a:hover {\n      opacity: 0.7;\n      color: #c0c0c0;\n    }\n\n    /* 公式 / 计算细节段落可以保留等宽风格 */\n    .outer-container .calc-detail {\n      font-family: 'SF Mono', 'Menlo', monospace;\n      font-size: 0.9rem;\n      background: rgba(255,255,255,0.03);\n      padding: 0.2rem 0.4rem;\n      border-radius: 6px;\n      display: inline-block;\n    }\n\n    .outer-container hr {\n      border: none;\n      border-top: 1px solid rgba(138, 138, 138, 0.2);\n      margin: 1rem 0;\n    }\n\n    /* 保持原来的空行br样式 */\n    .outer-container .spacer {\n      height: 0.75rem;\n    }\n\n    /* 移动端适配: 书本变为上下堆叠，右侧边框消失 */\n    @media (max-width: 768px) {\n      .outer-container .book-layout {\n        flex-direction: column;\n        padding: 50px 20px;\n        gap: 0rem;\n      }\n      .outer-container .right-page {\n        border-left: none;\n        padding-left: 0;\n        margin-top: 0.5rem;\n      }\n      .outer-container .page-col h3 {\n        font-size: 16px;\n      }\n      .outer-container .page-col p, .text-block {\n        font-size: 12px;\n      }\n     .outer-container .text-block {\n        font-size: 12px;\n      }\n    }\n\n    /* 保持原有haft-div风格细调: 所有文本默认灰色 */\n    .outer-container .small-note {\n      font-size: 0.85rem;\n      color: #6c6c6c;\n    }\n\n    /* 让计算区块更清晰 */\n    .outer-container .formula-line {\n      font-family: monospace;\n      word-break: break-word;\n    }\n  </style>\n \n<div class=\"outer-container\"  style=\"background-color:#000000;padding:15px; display: flex;\n  justify-content: center;\n  align-items: center;\">\n  <div class=\"book-layout\">\n    <!-- 左侧：前半部分内容（Haftungsausschluss + 介绍 + Stromerzeugung + 假设 + CO₂ + 免责说明 + 部分原始结构） -->\n    <div class=\"page-col left-page\">\n      <h3>Haftungsausschluss</h3>\n      \n \n      <div class=\"text-block\">\n        <b>1. Berechnungsgrundlagen:</b><br>\n        Die Berechnung basiert auf typischen Installationsbedingungen in Süddeutschland:\nAusrichtung der Solarmodule: Süden\nNeigungswinkel: 30°–35°\nJährliche Volllaststunden: ca. 1160 h\nEigenverbrauchsquote: Abhängig von der Speicherkonfiguration (je größer der Speicher, desto höher die Quote)\nStrompreis: 0,40 €/kWh\n      </div>\n      \n      <div class=\"text-block\">\n        <b>2. Berechnungsformel:</b><br>\n        <b>Parameter Erläuterung</b><br>\n\t\t\tA: Gesamtleistung der Solarmodule (kW)<br>\n\t\t\tB: Jährliche Sonneneinstrahlung (Volllaststunden), Standard: 1160 h<br>\n\t\t\tC: Eigenverbrauchsquote (%), Standard: 90 %<br>\n\t\t\tD: Strompreis (€/kWh), Standard: 0,40 €<br>\n\t\t\tH: Nutzungsfaktor (%) – abhängig von der Speicherkonfiguration (höherer Faktor bei größerem Speicher)<br>\n\t\t\tF: Kosten (€)<br>\n\t\t\tE: Jährlicher Ertrag (€) = A × B × C × D × H<br>\n\t\t\tG: Amortisationszeit (Jahre) = F ÷ E<br>\n\t\t\t<b>Amortisationszeit</b><br>\n\t\t\tG = F ÷ (A × B × C × D × H）<br>\n      </div>\n      \n\n      \n\n      \n      <div class=\"spacer\"></div>\n    \n    </div>\n\n    <!-- 右侧：后半部分内容（Berechnungsdetails + 完整计算过程 + 公式拆解） -->\n    <div class=\"page-col right-page\">\n      <!-- <h3>Berechnungsdetails</h3 -->\n      \n            <div class=\"text-block\">\n        <b>3. Rechnungen:</b><br>\n        <b>Konfiguration 1</b><br>\n        Produkt: SolidFlex 2000 + SFA1800 + 2000 W Solarmodule<br>\n\t\tKosten: 1598 €<br>\n\t\tJährlicher PV-Ertrag: 2000 W × 1160 h = 2320 kWh<br>\n\t\tJährlicher Ertrag: 2320 kWh × 0,40 € × 90% = 835 €<br>\n\t\tAmortisationszeit: 1598 € ÷ (835 € × 85%) ≈ 2,25 Jahre<br>\n\t\t\n\t\t        <b>Konfiguration 2</b><br>\nProdukt: BK1600 + 890 W Solarmodule<br>\nKosten: 599 €<br>\nJährlicher PV-Ertrag: 890 W × 1160 h = 1032  kWh<br>\nJährlicher Ertrag: 1032 kWh × 0,40 € × 90 % = 317  €<br>\nAmortisationszeit: 599 € ÷ (317 € × 90 %) ≈ 2,1 Jahre<br>\n      </div>\n            <div class=\"text-block\">\n        <b>4. Wichtiger Hinweis:</b><br>\n        Gemäß den deutschen „Plug-in“-Richtlinien darf der Wechselrichter maximal 800 W ins Hausnetz einspeisen.<br><br>\n        Die angegebenen Werte basieren auf idealen Testbedingungen. Die tatsächlichen Einsparungen können je nach Installationsort, individuellen Nutzungsgewohnheiten, Wetterbedingungen und tatsächlicher Systemeffizienz abweichen.\nDie Berechnung dient lediglich zur Orientierung und stellt keine Garantie für tatsächliche Erträge dar.\n      </div>\n  \n      \n      <!-- <hr> -->\n \n    </div>\n  </div>\n</div>",
+        "container": "full",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     }
   },
@@ -1564,9 +1577,9 @@
     "product_collection_3jE33f",
     "text_screen_slider_FEpkKa",
     "black_member_bPHcAn",
+    "bes_product_tabs_may_hmqLNT",
     "rich_text_image_list_6XDBRY",
     "rich_text_9hxcEy",
-    "custom_liquid_dJyEHh",
-    "bes_product_tabs_may_hmqLNT"
+    "custom_liquid_dJyEHh"
   ]
 }
